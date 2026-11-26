@@ -69,10 +69,10 @@
   },
   "local-de-estanco-klagenfurt": {
    "modelo": "realvisxl",
-   "semilla": 182,
+   "semilla": 183,
    "encuadre": "70% 55%",
-   "concepto": "un pequeño local a pie de calle en un edificio de Klagenfurt, parecido al real",
-   "prompt": "ground floor of a pastel-coloured three-storey mixed-use building with a small shop with a large plain window and no awning, seen at an angle from across a quiet pedestrian street in Klagenfurt, morning"
+   "concepto": "una calle peatonal del casco antiguo de Klagenfurt, no el local",
+   "prompt": "pastel-coloured historic buildings along a quiet pedestrian street in Klagenfurt old town, only the upper floors and windows in view, no shop fronts, morning"
   },
   "vivienda-schwarzer-weg-18-graz": {
    "modelo": "realvisxl",
