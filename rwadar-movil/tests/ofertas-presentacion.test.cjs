@@ -130,16 +130,16 @@ function esencial(detalle, etiqueta) {
   return fila ? textoVisible(fila.children[1]).replace(/\s+/g, ' ').trim() : null;
 }
 
-// Los datos de la línea Mínimo · España de la tarjeta, como pares [rótulo, valor].
+// Los datos de la mínimo de la tarjeta, como pares [rótulo, valor].
 function datosTarjeta(ui, tarjeta) {
   return nodos(tarjeta).filter(n => n.tipo === 'View' && n.props?.style === ui.estilos.datoTarjeta)
-    .map(n => n.children.filter(h => h?.tipo === 'Text' && h.props.style !== ui.estilos.datoPunto).map(textoVisible));
+    .map(n => n.children.filter(h => h?.tipo === 'Text').map(textoVisible));
 }
 
 // Tarjeta de la lista sencilla (decisión de Víctor del 05/11/2026, igual que la
-// web): título, proveedor · lugar y una línea Mínimo · España. La salida, los
+// web): título, proveedor · lugar y el mínimo. La salida, los
 // avisos ordinarios, la vigencia y las fechas se quedan en la ficha.
-test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo demás sigue en la ficha', () => {
+test('la tarjeta de la lista enseña título, proveedor y el mínimo; lo demás sigue en la ficha', () => {
   const ui = componentes();
   const oferta = dato();
   let abiertas = 0;
@@ -148,7 +148,7 @@ test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo
   const etiqueta = tarjeta.props.accessibilityLabel;
   const textos = nodos(tarjeta).filter(nodo => nodo.tipo === 'Text').map(textoVisible);
   assert.ok(textos.indexOf(oferta.titulo) < textos.indexOf(oferta.plataformaNombre));
-  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', 'No verificado'], ['España', 'Sin confirmar']]);
+  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', 'No verificado']]);
   for (const fuera of ['Salida', 'Sin documentar', 'Ver ficha →', 'válidas', 'Revisa', 'avisos en la ficha',
     oferta.avisos[0].texto, '7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, '999 EUR', '123 CHF',
     oferta.resumen]) {
@@ -161,7 +161,7 @@ test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo
   assert.equal(nodos(tarjeta).filter(nodo => nodo.tipo === 'Pressable').length, 1);
   assert.equal(tarjeta.props.accessibilityRole, 'button');
   assert.ok(etiqueta.startsWith(`Ver ficha de ${oferta.titulo} en ${oferta.plataformaNombre}. `));
-  assert.match(etiqueta, /Mínimo: No verificado\. España: Sin confirmar/);
+  assert.match(etiqueta, /Mínimo: No verificado/);
   const flecha = nodos(tarjeta).find(n => n.tipo === 'Text' && textoVisible(n) === '›');
   assert.equal(flecha.props.accessible, false);
   tarjeta.props.onPress();
@@ -178,7 +178,7 @@ test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo
 // Las ofertas del catálogo publicado (la lectura en línea de la revisión que lleva la web), todas,
 // por el mismo camino que la app (adaptarCatalogoV2), dos días después de su revisión. Cuántas son lo
 // dice el propio lote (24 hasta la entrega 2026-11-05; 22 desde la 2026-11-05.2, sin BILLA ni Casa de Outeiro).
-test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de la misma función que la ficha, que lo conserva todo', async () => {
+test('las ofertas reales publicadas: la tarjeta lleva solo el mínimo, de la misma función que la ficha, que lo conserva todo', async () => {
   assert.ok(DOC_ACTUAL, `sin lectura en línea de la revisión ${REVISION_WEB}`);
   const revisadas = JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8'))[0].verificada_el.slice(0, 10);
   const dia = n => new Date(Date.parse(revisadas + 'T12:00:00Z') + n * 86400000);
@@ -190,7 +190,6 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
   const { ofertas } = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
   assert.equal(ofertas.length, lote.ofertas.length, 'el lector de la app no deja ninguna fuera');
   assert.equal(ofertas.length, lote.plataformas[0].ofertas_esperadas, 'todas las que declara el lote');
-  const corta = { 'Sí, según la fuente': 'Sí', 'No, según la fuente': 'No', 'Sin confirmar': 'Sin confirmar' };
   let conPuntos = 0;
   for (const o of ofertas) {
     const tarjeta = ui.FichaOferta({ oferta: o });
@@ -200,12 +199,11 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
     assert.equal(nodos(tarjeta).filter(n => n.tipo === 'Pressable').length, 1, o.slug);
     assert.ok(etiqueta.startsWith(`Ver ficha de ${o.titulo} en ${o.plataformaNombre}. `), o.slug);
     assert.ok(visible.includes(o.titulo) && visible.includes(o.plataformaNombre), o.slug);
-    // Los dos datos de la tarjeta son los de «Lo esencial» de la ficha, España en corto.
-    const [[rMinimo, minimo], [rEspana, espana], ...mas] = datosTarjeta(ui, tarjeta);
-    assert.deepEqual([rMinimo, rEspana, mas.length], ['Mínimo', 'España', 0], o.slug);
+    const [[rotulo, minimo], ...mas] = datosTarjeta(ui, tarjeta);
+    assert.deepEqual([rotulo, mas.length], ['Mínimo', 0], o.slug);
     assert.equal(minimo, esencial(detalle, 'Mínimo'), o.slug);
-    assert.equal(espana, corta[esencial(detalle, 'España')], o.slug);
-    assert.ok(etiqueta.includes(`Mínimo: ${minimo}. España: ${espana}`), o.slug);
+    assert.ok(esencial(detalle, 'España'), o.slug);
+    assert.ok(etiqueta.includes(`Mínimo: ${minimo}`), o.slug);
     // Fuera de la tarjeta (y de lo que oye el lector), dentro de la ficha.
     const salida = esencial(detalle, 'Salida');
     assert.ok(salida, o.slug);
@@ -239,7 +237,7 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
   assert.equal(caducado.caducado, true);
   for (const o of caducado.ofertas) {
     const tarjeta = uiTarde.FichaOferta({ oferta: o, catalogoCaducado: true, nueva: true });
-    assert.deepEqual(datosTarjeta(uiTarde, tarjeta), [['Mínimo', 'No verificado'], ['España', 'Sin confirmar']], o.slug);
+    assert.deepEqual(datosTarjeta(uiTarde, tarjeta), [['Mínimo', 'No verificado']], o.slug);
     assert.match(textoVisible(tarjeta), /Cifras por actualizar|Fuentes en conflicto/, o.slug);
     assert.doesNotMatch(textoVisible(tarjeta), /Nueva/, o.slug);
   }
@@ -250,7 +248,7 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
       ['robinhood-classic-stock-tokens', 'View details for Classic Stock Tokens: derivados sobre acciones de EE. UU. from Robinhood Europe. ']]) {
       const etiqueta = ui.FichaOferta({ oferta: ofertas.find(o => o.slug === slug) }).props.accessibilityLabel;
       assert.ok(etiqueta.startsWith(nombre), etiqueta);
-      assert.match(etiqueta, /Minimum: .+\. Spain: (Yes|No|Unconfirmed)/);
+      assert.match(etiqueta, /Minimum: .+/);
     }
   } finally { await idioma.cambiarIdioma('es'); }
 });
@@ -347,7 +345,7 @@ test('la tarjeta muestra un mínimo en euros solo desde una referencia fechada, 
   const ui = componentes();
   const tarjeta = ui.FichaOferta({oferta});
   // Forma corta de la web: «Mínimo», sin «(EUR)», porque el dato ya lleva el €.
-  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', '1000 €'], ['España', 'Sin confirmar']]);
+  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', '1000 €']]);
   assert.match(tarjeta.props.accessibilityLabel,/Mínimo: 1000 €/);
   assert.doesNotMatch(textoVisible(tarjeta),/999 EUR|Disponible desde España|Sin documentar/);
   // Las fechas de la fuente y la salida, solo en la ficha (05/11/2026).
@@ -384,7 +382,7 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
   const ui = componentes();
   const tarjeta = textoVisible(ui.FichaOferta({oferta:dato(),plataforma}));
   assert.doesNotMatch(tarjeta,/Registro confirmado/);
-  assert.match(tarjeta,/España Sin confirmar/);
+  assert.doesNotMatch(tarjeta,/España Sin confirmar/);
   const abiertos = [];
   const detalle = ui.DetalleOferta({oferta:dato(),plataforma,onAbrirEnlace:url=>abiertos.push(url)});
   assert.match(textoVisible(detalle),/Registro del proveedor ·\s+Registro confirmado\s+· revisión\s+21\/09\/2026/);
@@ -533,12 +531,11 @@ test('sin revisión vigente la tarjeta dice el problema sin cifras; reventa y pr
   const caducado = ui.FichaOferta({ oferta: dato({ disponibleEs: false }), catalogoCaducado: true, nueva: true });
   assert.match(textoVisible(caducado), /Cifras por actualizar/);
   assert.doesNotMatch(textoVisible(caducado), /Nueva|No disponible en España/);
-  assert.deepEqual(datosTarjeta(ui, caducado)[1], ['España', 'Sin confirmar']);
-  // En plazo y fuera de España, sí lo dice, y el dato de España dice «No»:
-  // nunca «Sin confirmar» al lado de «No disponible en España» (igual que la web).
+  assert.equal(datosTarjeta(ui, caducado).length, 1);
+  // En plazo y fuera de España, conserva el aviso territorial.
   const fueraDeEspana = ui.FichaOferta({ oferta: dato({ disponibleEs: false }) });
   assert.match(textoVisible(fueraDeEspana), /No disponible en España/);
-  assert.deepEqual(datosTarjeta(ui, fueraDeEspana)[1], ['España', 'No']);
+  assert.equal(datosTarjeta(ui, fueraDeEspana).length, 1);
   assert.doesNotMatch(textoVisible(fueraDeEspana), /Sin confirmar/);
   for (const [coleccion, supra, estado] of [['secundario', 'Reventa entre inversores', /sin confirmar que se pueda operar/],
     ['en_camino', 'Próxima', /sin confirmar que abra/]]) {
@@ -653,8 +650,8 @@ test('el detalle muestra éxito y gestión separados con fechas y enlaces propio
 
 test('compactación no reduce la legibilidad ni fija alturas sobre condiciones o riesgos', () => {
   const { estilos } = componentes();
-  // La miniatura de la fila de la web (80 px, cuadrada; 05/11/2026).
-  assert.equal(estilos.imagenFicha.aspectRatio, 1);
+  assert.equal(estilos.imagenFicha.aspectRatio, 16 / 9);
+  assert.equal(estilos.imagenFicha.width, '100%');
   assert.ok(estilos.titulo.fontSize >= 16);
   assert.ok(estilos.datoValor.fontSize >= 16);
   for (const nombre of ['plataforma', 'datoTarjetaEtiqueta', 'datoTarjetaValor', 'alertaRevision', 'noDisponible', 'avisoFichaTxt', 'referencia']) {

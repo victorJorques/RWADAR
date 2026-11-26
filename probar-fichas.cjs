@@ -168,7 +168,7 @@ verificar('importes no aparecen como condiciones vigentes sin ejecutar la guarda
   }
   // LISTA-FINAL.md fila 44 (revisión de frases que pidió Víctor, 04/11/2026).
   assert(pagina.includes('El dato puede ser más antiguo'));
-  assert(pagina.includes('No es una fotografía del activo real'));
+  assert(/<figure><img[^>]+alt=""[^>]*><\/figure>/.test(pagina));
 });
 verificar('la ficha abierta reevalúa la caducidad al volver y sin HTML de la fuente',()=>{
   const codigo=fs.readFileSync(path.join(raiz,'rwadar-site/assets/ficha-pagina-20261022.js'),'utf8');

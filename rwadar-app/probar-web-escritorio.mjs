@@ -226,7 +226,7 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
 // Necesita el contexto de la web ya cargado (pestanaCatalogo) con EMI y P.
 export function probarTarjetaYComparador({ c, prueba }) {
   // Tarjeta sencilla (decisión de Víctor del 05/11/2026), en cada oferta del
-  // catálogo: Mínimo y España en corto (la misma función que «Lo esencial»),
+  // catálogo: El mínimo (la misma función que «Lo esencial»),
   // un único botón «›» con nombre accesible y nada anidado; y lo que sale de
   // la tarjeta (puntos fuertes, vigencia, Salida, avisos ordinarios y fechas)
   // sigue en la ficha. Se compara el HTML que ve la persona, no el código.
@@ -240,7 +240,7 @@ export function probarTarjetaYComparador({ c, prueba }) {
     const puntos = puntosFuertesOferta(o).map(x => escHtml(textoLocal(x.texto)));
     const fuera = [...puntos, ...ordinarios, ...fechas];
     return { datos: [...t.matchAll(/<dt>([^<]+)<\/dt><dd>([^<]+)<\/dd>/g)].map(m => m[1] + '=' + m[2]).join('|'),
-      esperado: 'Mínimo=' + escHtml(d.minimo) + '|España=' + escHtml(d.espanaCorta), corta: d.espanaCorta, larga: d.espana,
+      esperado: 'Mínimo=' + escHtml(d.minimo),
       botones: (t.match(/<button\b/g) || []).length, anidado: /<button\b[^>]*>(?:(?!<\/button>)[\s\S])*<button\b/.test(t),
       ver: t.includes('<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="' + escHtml(o.slug) + '" aria-label="Ver ficha de ' +
         escHtml(o.titulo) + ' en ' + escHtml(o.plataformaNombre) + '"><span aria-hidden="true">›</span></button>'),
@@ -249,9 +249,8 @@ export function probarTarjetaYComparador({ c, prueba }) {
         fuera.every(x => f.includes(x)) && f.includes(escHtml(e.clase === 'caducado' ? e.texto : e.texto.replace(/^cifras /, ''))) };
   });
   const filas = vm.runInContext('(' + revisar + ')()', c);
-  prueba('cada tarjeta: Mínimo y España en corto (misma función que la ficha) y un único «›» con nombre accesible, sin botones anidados',
-    filas.length > 0 && filas.every(f => f.datos === f.esperado && f.botones === 2 && !f.anidado && f.ver &&
-      ({ 'Sí': 'Sí, según la fuente', 'No': 'No, según la fuente', 'Sin confirmar': 'Sin confirmar' })[f.corta] === f.larga));
+  prueba('cada tarjeta: mínimo (misma función que la ficha) y un único «›» con nombre accesible, sin botones anidados',
+    filas.length > 0 && filas.every(f => f.datos === f.esperado && f.botones === 2 && !f.anidado && f.ver));
   prueba('lo que sale de la tarjeta (puntos fuertes, vigencia, Salida, avisos ordinarios y fechas) sigue en la ficha de cada oferta',
     filas.every(f => f.sobra.length === 0 && f.ficha));
   // Los textos nuevos de la tarjeta tienen su inglés (diccionario compartido con la app).

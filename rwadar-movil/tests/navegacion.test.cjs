@@ -172,7 +172,7 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.doesNotMatch(componente, /imagenes-ofertas|imagenOferta\(oferta\.slug\)/);
   // Sin etiqueta encima de la foto: el pie del manifiesto va debajo, como en la web (04/11/2026).
   assert.doesNotMatch(componente, /\{editorial\.etiqueta\}/);
-  assert.match(componente, /\{PIE_EDITORIAL\}/);
+  assert.doesNotMatch(componente, /\{PIE_EDITORIAL\}/);
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
   // La ficha de la web final (04/11/2026) ya no dice si el proveedor está en el radar.
@@ -251,7 +251,7 @@ test('la ficha compacta prioriza imagen y una parada accesible, y las exclusione
   // en ofertas-presentacion.test.cjs; aquí, que siga siendo una sola parada.
   assert.equal((ficha.match(/<Pressable\b/g) || []).length, 1);
   assert.doesNotMatch(ficha, /vigenciaSobreImagen|datoCompactoSecundario/);
-  assert.match(detalle, /<ImagenOferta oferta=\{oferta\} grande \/>/);
+  assert.match(detalle, /<ImagenOferta oferta=\{oferta\} grande decorativa \/>/);
 
   assert.match(exclusiones, /const \[abiertas, setAbiertas\] = useState\(false\)/);
   assert.match(exclusiones, /accessibilityState=\{\{ expanded: abiertas \}\}/);

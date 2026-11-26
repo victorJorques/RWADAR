@@ -461,7 +461,7 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     const tarjetaMovil = textoRenderizado(componentes.FichaOferta({ oferta: o }));
     for (const tarjeta of [tarjetaWeb, tarjetaMovil]) {
       assert.match(tarjeta, /No verificado/);
-      assert.match(tarjeta, /Sin confirmar/);
+      assert.doesNotMatch(tarjeta, /Sin confirmar/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
     // La tarjeta web sencilla (05/11/2026) no lleva fecha: la fecha de la fuente, en la ficha.
