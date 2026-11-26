@@ -48,6 +48,9 @@ const antes = (await filas(vulnerable, `select
 if (!antes.uuid_anon || !antes.inserta || !antes.modera_antigua) {
   throw new Error('la precondicion vulnerable de 16 no se reprodujo');
 }
+// Las plataformas que trae la semilla (cambia con cada alta o retirada del radar): el cierre no debe tocar ninguna.
+const plataformasAntes = (await filas(vulnerable, 'select count(*)::int n from plataformas'))[0].n;
+if (plataformasAntes < 1) throw new Error('la semilla no trae plataformas');
 
 await vulnerable.exec(fs.readFileSync('db/fallo_cerrado.sql', 'utf8'));
 const despues = (await filas(vulnerable, `select
@@ -67,7 +70,7 @@ if (despues.catalogo || despues.uuid_anon || despues.inserta
 }
 const conservadas = (await filas(vulnerable,
   'select count(*)::int n from plataformas'))[0].n;
-if (conservadas !== 30) throw new Error('el cierre alteró los datos del catálogo');
+if (conservadas !== plataformasAntes) throw new Error('el cierre alteró los datos del catálogo');
 console.log('Fallo universal seguro: OK (API aislada, relojes parados, datos conservados)');
 await vulnerable.close();
 
