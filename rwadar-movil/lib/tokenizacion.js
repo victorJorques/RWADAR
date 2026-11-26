@@ -71,7 +71,7 @@ function cambio24hCreible(c) {
 }
 /* Un dato {valor, cambio24h}: valor en dólares (entero) y cambio en % o null.
    Un cambio no creíble se guarda como null (la foto diaria tampoco lo guarda);
-   validarDato sigue aceptando hasta el 10.000 % para no tirar fotos antiguas. */
+   validarDato acepta el formato histórico, pero normaliza los cambios anómalos a null. */
 function dato(valor, cambio) {
   if (typeof valor !== 'number' || !Number.isFinite(valor) || valor <= 0 || valor >= VALOR_MAX) return null;
   const creible = cambio24hCreible(cambio);
@@ -82,7 +82,7 @@ function validarDato(d, donde) {
   exigir(Number.isInteger(d.valor) && d.valor > 0 && d.valor < VALOR_MAX, donde + ': valor no válido');
   exigir(d.cambio24h === null || (typeof d.cambio24h === 'number' && Number.isFinite(d.cambio24h) && d.cambio24h > -100 && d.cambio24h < 10000),
     donde + ': cambio no válido');
-  return { valor: d.valor, cambio24h: d.cambio24h };
+  return { valor: d.valor, cambio24h: cambio24hCreible(d.cambio24h) };
 }
 
 /* De la lista de categorías de CoinGecko a una foto. Lanza si falta el total
@@ -181,8 +181,8 @@ function resumir({ historico, actual = null, fuente = actual ? 'coingecko' : 'fo
   const ultima = fotos.length ? fotos[fotos.length - 1] : null;
   if (base) fuente = fuente === 'foto-guardada' ? 'foto-guardada' : 'coingecko';
   else { base = ultima; fuente = 'foto-guardada'; }
-  // Sin dato en vivo, la foto guardada más reciente de las dos.
-  if (base && fuente === 'foto-guardada' && ultima && ultima.actualizado > base.actualizado) base = ultima;
+  // Una lectura retrasada nunca desplaza una observación guardada más reciente.
+  if (base && ultima && ultima.actualizado > base.actualizado) { base = ultima; fuente = 'foto-guardada'; }
   const guardadoDesde = fotos.length ? fotos[0].fecha : null;
   const comun = { version: 1, atribucion: { nombre: FUENTE.nombre, url: FUENTE.url }, guardadoDesde, margenDias: MARGEN_DIAS };
   if (!base) {
@@ -1421,8 +1421,9 @@ function cifraGrande(serie, vivo) {
 /* «Cambio en 24 h»: con una serie fina, del primer al último punto de la
    pestaña «24 h» (de hace 24 horas, o 5 minutos menos, a ahora: los mismos
    que se pintan; la de 5 minutos o, si falta, la horaria); si no, el de la serie diaria si sus dos últimos
-   puntos son de días seguidos (el de la cifra grande); si no, el de la
-   categoría de CoinGecko si es creíble (|x| < 25 %); si tampoco, null («—»).
+   puntos son de días seguidos (el de la cifra grande); si hay una serie
+   sin dos días seguidos, null («—»). Solo sin serie se usa el cambio de la
+   categoría de CoinGecko si es creíble (|x| < 25 %).
    Nunca el +124 % que daba CoinGecko el 11/11/2026 con el mercado plano. */
 function cambio24h(serie, vivo) {
   const e = seriePestana(serie, '1d');
@@ -1435,6 +1436,8 @@ function cambio24h(serie, vivo) {
     const a = p[p.length - 2], b = p[p.length - 1];
     if (msFecha(b.fecha) - msFecha(a.fecha) === DIA_MS) return { cambio: cambioPct(b.valor, a.valor), fuente: 'serie', desde: a.fecha, hasta: b.fecha };
   }
+  // No atribuir al subconjunto del gráfico un cambio de todo el mercado.
+  if (Array.isArray(p) && p.length) return { cambio: null, fuente: null, desde: null, hasta: null };
   const c = cambio24hCreible(vivo?.total?.cambio24h);
   return { cambio: c, fuente: c === null ? null : 'coingecko', desde: null, hasta: null };
 }
