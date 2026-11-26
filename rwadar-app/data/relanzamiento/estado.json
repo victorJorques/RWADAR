@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-26.2 (4601a164) aplicado y sincronizado; noticias del 25/11; gráfico #206",
+  "nota": "Catálogo 2026-11-26.3 (25b54edc) sincronizado: 11 ofertas y 7 plataformas internacionales, las nuevas primero, fotos realistas y noticias del 26/11",
   "revisionAprobada": {
-    "commit": "063db88861606c484d3c97d5e04d1699f5d39097",
-    "contenidoSha256": "sha256:648ae7349ae0108f226f2a24ba1c73ca2d8b377eca9d7e444eae266a05f53de4",
+    "commit": "741046cde7289aa4c7cc6a3f54d77741fd865a4a",
+    "contenidoSha256": "sha256:5d0ad95e750b7b9090e0a4d294b4d8b95d18a2f9a5d6d4213452004d1db6a2da",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
