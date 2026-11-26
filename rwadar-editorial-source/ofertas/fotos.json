@@ -69,10 +69,10 @@
   },
   "local-de-estanco-klagenfurt": {
    "modelo": "realvisxl",
-   "semilla": 181,
+   "semilla": 182,
    "encuadre": "70% 55%",
    "concepto": "un pequeño local a pie de calle en un edificio de Klagenfurt, parecido al real",
-   "prompt": "small ground-floor shop with a large window and a plain grey awning in a pastel mixed-use building on a pedestrian street in Klagenfurt, morning"
+   "prompt": "ground floor of a pastel-coloured three-storey mixed-use building with a small shop with a large plain window and no awning, seen at an angle from across a quiet pedestrian street in Klagenfurt, morning"
   },
   "vivienda-schwarzer-weg-18-graz": {
    "modelo": "realvisxl",
@@ -83,10 +83,10 @@
   },
   "vivienda-sonnleithnergasse-2-viena": {
    "modelo": "realvisxl",
-   "semilla": 193,
-   "encuadre": "70% 50%",
-   "concepto": "un gran bloque de viviendas de Viena alrededor de un patio verde, visto desde el aire, parecido al real",
-   "prompt": "aerial photo of a large Viennese residential block with many balconies around a big green courtyard with mature trees, spring day"
+   "semilla": 194,
+   "encuadre": "70% 55%",
+   "concepto": "un gran bloque de viviendas de Viena visto desde su patio verde, parecido al real",
+   "prompt": "large Viennese residential housing block with many balconies seen from its green courtyard with mature trees and a lawn, spring day"
   },
   "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
    "modelo": "realvisxl",
