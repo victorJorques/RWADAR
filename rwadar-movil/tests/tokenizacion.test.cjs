@@ -82,6 +82,19 @@ test('el histórico: ordenado, sin repetidos, sin campos de más; una foto por d
   assert.deepEqual(semilla.fotos, [t.extraerFoto(COINGECKO, { ahora: AHORA })]);
 });
 
+test('una anomalía histórica se normaliza también al leer, sin alterar el valor observado', () => {
+  const antigua = foto('2026-11-11', 49687023588);
+  antigua.total.cambio24h = 123.9998;
+  antigua.tipos['credito-privado'].cambio24h = -30;
+  const h = { ...t.historicoVacio(), fotos: [antigua] };
+  const validada = t.validarHistorico(h).fotos[0];
+  assert.equal(validada.total.valor, 49687023588);
+  assert.equal(validada.total.cambio24h, null);
+  assert.equal(validada.tipos['credito-privado'].cambio24h, null);
+  assert.equal(t.resumir({ historico: h }).periodos[0].estado, 'sin-datos');
+  assert.equal(antigua.total.cambio24h, 123.9998, 'se conserva el registro original');
+});
+
 test('periodos solo con fotos reales: la más cercana a ±2 días; si no, «sin-datos»', () => {
   const hoy = foto('2026-11-10', 110e9);
   // Solo la de hoy: 24 h de CoinGecko y el resto sin datos, con la fecha desde la que se guardan.
@@ -117,9 +130,12 @@ test('sin CoinGecko: la foto guardada más reciente, con su fecha; sin nada, un 
   assert.equal(r.fuente, 'foto-guardada');
   assert.equal(r.fecha, '2026-11-09');
   assert.equal(r.actualizado, '2026-11-09T06:23:00.000Z');
-  // Una foto guardada en caché más vieja que la última del histórico no gana.
+  // Una foto retrasada, incluso si llega del proveedor en vivo, no gana.
   r = t.resumir({ historico: h, actual: foto('2026-11-08', 1), fuente: 'foto-guardada' });
   assert.equal(r.fecha, '2026-11-09');
+  r = t.resumir({ historico: h, actual: foto('2026-11-08', 1), fuente: 'coingecko' });
+  assert.equal(r.fecha, '2026-11-09');
+  assert.equal(r.fuente, 'foto-guardada');
   r = t.resumir({ historico: t.historicoVacio(), actual: null });
   assert.equal(r.fuente, 'sin-datos');
   assert.equal(r.total, null);
@@ -510,14 +526,15 @@ test('cabecera: la cifra grande es el último punto de la serie (el de la cruz e
   assert.equal(t.cifraGrande({ puntos: [] }, { total: null }), null);
 });
 
-test('cabecera: «Cambio en 24 h» sale de la serie si sus dos últimos días son seguidos; si no, el de CoinGecko solo si |x| < 25 %; si no, «—»', () => {
+test('cabecera: el cambio de la serie no se sustituye por el de toda la categoría', () => {
   const u = SERIE.puntos[SERIE.puntos.length - 1], a = SERIE.puntos[SERIE.puntos.length - 2];
   const vivo = { ...RESUMEN, total: { valor: 49690e6, cambio24h: 124.415 } };
   assert.deepEqual(t.cambio24h(SERIE, vivo), { cambio: t.cambioPct(u.valor, a.valor), fuente: 'serie', desde: a.fecha, hasta: u.fecha });
   assert.equal(t.porcentaje(t.cambio24h(SERIE, vivo).cambio), '−0,1\u00a0%', 'hoy: −0,09 %, nunca el +124 %');
   const conHueco = { ...SERIE, puntos: [...SERIE.puntos.slice(0, -2), u] };
   assert.deepEqual(t.cambio24h(conHueco, vivo), { cambio: null, fuente: null, desde: null, hasta: null }, 'serie con hueco y CoinGecko disparatado: «—»');
-  assert.deepEqual(t.cambio24h(conHueco, { ...vivo, total: { valor: 1, cambio24h: -0.8626 } }), { cambio: -0.8626, fuente: 'coingecko', desde: null, hasta: null });
+  assert.deepEqual(t.cambio24h(conHueco, { ...vivo, total: { valor: 1, cambio24h: -0.8626 } }), { cambio: null, fuente: null, desde: null, hasta: null });
+  assert.deepEqual(t.cambio24h(null, { ...vivo, total: { valor: 1, cambio24h: -0.8626 } }), { cambio: -0.8626, fuente: 'coingecko', desde: null, hasta: null });
   assert.equal(t.cambio24h(null, null).cambio, null);
 });
 
