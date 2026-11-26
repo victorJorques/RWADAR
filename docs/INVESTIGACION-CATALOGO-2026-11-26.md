@@ -44,9 +44,47 @@ que es de hoy con lo que hiciste y lanza la actualización de toda la app y la w
 
 ## Lo que queda
 
-- Candidatas nuevas: no se buscaron en este ciclo (sin agentes).
+- Candidatas nuevas: llegaron con el informe global de Codex del 26/11 (abajo, entrega 2026-11-26.3).
 - Hausera: si anuncia otra operación, se valora como alta nueva.
 - Spiko Smart Cash: la AMF sigue sin la ficha del fondo en GECO.
 - La referencia «Historial publicado» de Hausera no se re-fechó: salió con la tarjeta.
 
 Detalle: `rwadar-app/data/verificaciones/2026-11-26-v2/` y `2026-11-26.2-v2/`.
+
+## Entrega 2026-11-26.3 · altas del informe global de Codex
+
+Por orden de la dirección del 26/11 («añádelo a la actualización», «RWAdar es internacional», «no descartes las
+internacionales», «pon las nuevas en primera portada»), sin subagentes. Cada dato se leyó hoy en su fuente, como
+visitante (copias y SHA-256 en `2026-11-26.3-v2/fuentes/`; avisos de entrada y cookies aceptados con permiso).
+
+| Oferta | Dónde | Colección | Lo que dice su fuente |
+|---|---|---|---|
+| TOHKN IBER1 | El Salvador | Principales | Bono corporativo tokenizado, 7,00 %, 100 USD, abierto |
+| TOHKN MMLTI1 | El Salvador | Principales | Bono corporativo tokenizado, 6,20 %, 100 USD, abierto |
+| TOHKN RNCRrev | El Salvador | Principales | Ingresos de un condominio, TIR objetivo 15–20 % (sin cifra en la tarjeta) |
+| Liqi, créditos a empresas | Brasil | Principales | 7 tramos en captación; el mayor, 20,98 % anual en reales |
+| FINEXITY bono 2026-2030 serie B | Alemania | Principales | Euríbor 6m + 6 %, mínimo 7 %; oferta pública solo en Alemania |
+| Groma Real Estate Trust | EE. UU. | Principales | REIT (Reg D / Reg CF), 1,07 USD, 3,97 % |
+| Neuberger Securitize HINC | EE. UU. | Principales | Fondo de renta tokenizado, 100.000 USD, solo acreditados |
+| BlackRock HKD Digital Liquidity | Hong Kong | Principales | Participaciones tokenizadas de un monetario en HKD |
+| Amundi Core STOXX Europe 600 tokenizada | Luxemburgo | Principales | Clase tokenizada (05/11); acceso no publicado |
+| Franklin OnChain Euro Liquidity | Luxemburgo | En camino | Anunciado el 23/11; minoristas de siete países, España incluida |
+| Bono digital de Mitsui (ALTERNA) | Japón | En camino | Pre-solicitud; tipo orientativo 1,80–2,40 %, se fija en enero |
+
+- Plataformas nuevas (7): ALTERNA, Amundi, BlackRock, FINEXITY, Groma, Liqi y TOHKN, con 10 fuentes nuevas
+  comprobadas (`comprobaciones-fuentes.json`) y la región «Latinoamérica».
+- Lo que no se tomó del informe: retirar las 11 de Brickwise (sus órdenes se comprobaron hoy en su API); el detalle de
+  HSBC RedCoin (solo prensa); las ~30 plataformas solo de radar de su sección 09 (otro ciclo).
+- Catálogo: 32 plataformas y 32 ofertas (17 principales, 13 de reventa, 2 en camino); revisión e74636ea, sobre la
+  4601a164. Ensayo PGlite: 20 pruebas y 9 casos de fallo que no dejan nada.
+- Orden: en Ofertas (web y app), «Más nuevas primero» por defecto; Inicio ya enseña las 6 más nuevas.
+- Imágenes: 11 fotos nuevas generadas con el mismo modelo que las demás (RealVisXL), una por oferta y sin repetir
+  ciudad ni escena. Las fotos reales de Wikimedia siguen sin poder descargarse desde aquí (responde 429).
+- Noticias del 26/11: Singapur (fondos no tradicionales), SBI Solana Global y las primeras operaciones con oro
+  digital mayorista; salen OKXICE, HSBC RedCoin y el aviso de BaFin. Gráfico: las 16 fotos de Codex cuadran con las
+  de `datos-tokenizacion`, más la del 26/11.
+
+- Lo que seguía con fecha del 21/11: la comprobación de mTBILL en BaFin se volvió a leer hoy y pasa al 26/11; la de
+  su documentación legal (docs.midas.app) responde 403 a la lectura automática y conserva el 21/11, su última lectura.
+
+Detalle: `rwadar-app/data/verificaciones/2026-11-26.3-v2/` y `rwadar-app/data/noticias-diarias/2026-11-26/`.

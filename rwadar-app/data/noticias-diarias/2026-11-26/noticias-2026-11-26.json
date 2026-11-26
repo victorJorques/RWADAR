@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-26",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "singapur-mas-fondos-minoristas-no-tradicionales",
+      "fecha": "2026-11-26",
+      "seccion": "hoy",
+      "categoria": "regulacion",
+      "ambito": "Mundo",
+      "titulo": "Singapur acorta la aprobación de fondos no tradicionales",
+      "resumen": "La autoridad monetaria de Singapur crea un anexo para autorizar fondos minoristas con características nuevas que no encajan en las normas actuales de inversión. El primer fondo de cada tipo tardará unos tres meses, en lugar de seis a doce, y los siguientes del mismo tipo, tres semanas.",
+      "porQueImporta": "Se mantienen las salvaguardas de custodia y liquidez, y cada tipo nuevo tendrá protecciones propias, como más información. Aprobar antes un fondo no lo hace adecuado para todos ni lo abre a inversores de fuera de Singapur.",
+      "en": {
+        "titulo": "Singapore speeds up approval of non-traditional funds",
+        "resumen": "Singapore’s monetary authority creates an appendix to authorise retail funds with new features that fall outside existing investment guidelines. The first fund of each type will take about three months instead of six to twelve, and later funds of the same type three weeks.",
+        "porQueImporta": "Custody and liquidity safeguards remain, and each new type gets its own protections, such as enhanced disclosures. Faster approval does not make a fund suitable for everyone or open it to investors outside Singapore.",
+        "tituloInformativo": "Singapore’s monetary authority streamlines approval of non-traditional retail funds"
+      },
+      "fuente": {
+        "nombre": "Autoridad Monetaria de Singapur, comunicado del 26/11/2026 sobre fondos minoristas no tradicionales",
+        "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-streamlines-approval-of-non-traditional-retail-funds",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "La autoridad monetaria de Singapur agiliza la aprobación de fondos minoristas no tradicionales",
+      "imagen": "fondos-liquidez"
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "fecha": "2026-11-25",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Hong Kong estrena una plataforma de bonos tokenizados",
+      "resumen": "La autoridad monetaria de Hong Kong anuncia el lanzamiento de CMU Digital Asset Platform. La infraestructura permite emitir deuda, liquidar compras y ventas, pagar cupones y amortizar los títulos al vencimiento. También permite tokenizar deuda existente.",
+      "porQueImporta": "El sistema permite liquidar operaciones en varias monedas las 24 horas mediante tokens de efectivo. La posible incorporación de fondos y otros activos queda en la hoja de ruta.",
+      "en": {
+        "titulo": "Hong Kong launches a platform for tokenised bonds",
+        "resumen": "Hong Kong’s monetary authority announces the launch of CMU Digital Asset Platform. The infrastructure supports debt issuance, trade settlement, coupon payments and redemption at maturity. Existing debt securities can also be tokenised.",
+        "porQueImporta": "The system supports round-the-clock settlement in several currencies using digital cash tokens. Funds and other assets are possible additions on the roadmap.",
+        "tituloInformativo": "Hong Kong’s monetary authority launches a platform for issuing and settling tokenised debt"
+      },
+      "fuente": {
+        "nombre": "Autoridad Monetaria de Hong Kong, comunicado del 25/11/2026 sobre CMU Digital Asset Platform",
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada",
+      "imagen": "real-sala-servidores-bastidores"
+    },
+    {
+      "id": "sbi-solana-global-empieza-operar-japon",
+      "fecha": "2026-11-25",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
+      "resumen": "SBI Holdings, el grupo bancario Sumitomo Mitsui y la Fundación Solana cierran los acuerdos de su empresa conjunta, SBI Solana Global, que empieza a operar. Quiere trabajar en pagos con monedas estables, tokenización de activos financieros y reales y gestión de activos en cadena.",
+      "porQueImporta": "Es una empresa para desarrollar ese negocio en Japón y Asia, no un producto en el que se pueda invertir. Muestra que grandes bancos japoneses entran en la tokenización.",
+      "en": {
+        "titulo": "SBI and SMBC launch an on-chain finance company in Japan",
+        "resumen": "SBI Holdings, Sumitomo Mitsui Financial Group and the Solana Foundation complete the agreements for their joint venture, SBI Solana Global, which begins operations. It plans to work on stablecoin payments, tokenisation of financial and real-world assets and on-chain asset management.",
+        "porQueImporta": "It is a company to build that business in Japan and Asia, not a product you can invest in. It shows large Japanese banks moving into tokenisation.",
+        "tituloInformativo": "SBI, SMBC Group and the Solana Foundation start operations at their joint venture SBI Solana Global"
+      },
+      "fuente": {
+        "nombre": "SBI Solana Global, comunicado del 25/11/2026 sobre el inicio de operaciones",
+        "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "SBI Holdings, el grupo Sumitomo Mitsui y la Fundación Solana ponen en marcha su empresa conjunta SBI Solana Global",
+      "imagen": "moneda-digital"
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "fecha": "2026-11-25",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "La CNMV difunde alertas del supervisor belga",
+      "resumen": "La CNMV publica una lista de entidades no registradas que le ha remitido el supervisor financiero de Bélgica, la FSMA. El documento identifica por nombre y dirección web las entidades advertidas y marca expresamente un caso de suplantación.",
+      "porQueImporta": "El aviso permite distinguir a las entidades que figuran en la lista, incluso cuando un nombre comercial se parece al de una empresa legítima.",
+      "en": {
+        "titulo": "Spain’s CNMV shares warnings from the Belgian regulator",
+        "resumen": "Spain’s CNMV publishes a list of unregistered entities reported by Belgium’s financial regulator, the FSMA. The document identifies the entities by name and website and explicitly flags one case of impersonation.",
+        "porQueImporta": "The warning helps distinguish the entities listed, including when a trading name resembles that of a legitimate firm.",
+        "tituloInformativo": "Spain’s CNMV publishes Belgian regulator warnings about unregistered entities"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencias de supervisores internacionales del 25/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas",
+      "imagen": "real-cnmv-sede-madrid"
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "fecha": "2026-11-24",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "El BCE propone criterios comunes para la tokenización",
+      "resumen": "El BCE propone un modelo de referencia con cinco criterios para conectar mercados tokenizados. Entre ellos figuran que las redes puedan comunicarse, que los activos se puedan mover y que se mantenga el control sobre sus reglas.",
+      "porQueImporta": "El marco servirá como aportación al trabajo del grupo europeo de estándares de tokenización. Compartir criterios técnicos podría reducir la fragmentación entre plataformas.",
+      "en": {
+        "titulo": "ECB proposes common criteria for tokenisation",
+        "resumen": "The ECB proposes a reference model with five criteria for connecting tokenised markets. They include allowing networks to communicate, enabling assets to move and keeping their rules enforceable.",
+        "porQueImporta": "The framework will feed into the European Tokenisation Standards Group’s work. Shared technical criteria could reduce fragmentation between platforms.",
+        "tituloInformativo": "The ECB proposes a five-criterion reference model for tokenisation standards discussions"
+      },
+      "fuente": {
+        "nombre": "Banco Central Europeo, propuesta de marco para la estandarización DLT del 24/11/2026",
+        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "El BCE propone un modelo de referencia con cinco criterios para debatir estándares de tokenización",
+      "imagen": "real-servidores-cables"
+    },
+    {
+      "id": "world-gold-council-primeras-operaciones-oro-digital",
+      "fecha": "2026-11-24",
+      "seccion": "importante",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Primeras operaciones reales con oro digital mayorista",
+      "resumen": "HSBC, JPMorgan y StoneX han negociado, liquidado y usado como garantía participaciones en oro agrupado (Pooled Gold Interests) en operaciones reales del mercado mayorista. Lingotes físicos de Londres entraron en el sistema y salieron al terminar el ciclo.",
+      "porQueImporta": "Es una prueba piloto entre grandes entidades, no un producto para particulares. Busca que el oro físico se pueda transferir y usar como garantía en formato electrónico sin perder la propiedad del lingote.",
+      "en": {
+        "titulo": "First live trades with wholesale digital gold in London",
+        "resumen": "HSBC, JPMorgan and StoneX have traded, settled and used Pooled Gold Interests as collateral in live wholesale-market transactions. Physical London gold bars entered the system and were withdrawn once the cycle was complete.",
+        "porQueImporta": "It is a pilot between large institutions, not a product for individuals. It aims to let physical gold be transferred and used as collateral electronically while keeping ownership of the bars.",
+        "tituloInformativo": "The World Gold Council facilitates the first live transactions using Pooled Gold Interests"
+      },
+      "fuente": {
+        "nombre": "World Gold Council, comunicado del 24/11/2026 sobre Pooled Gold Interests",
+        "url": "https://www.gold.org/news-and-events/press-releases/world-gold-council-facilitates-first-live-transactions-using-pooled",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "El World Gold Council anuncia las primeras operaciones reales con participaciones en oro agrupado",
+      "imagen": "real-lingotes-oro-400oz"
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "El BCE aceptará ciertos valores tokenizados en garantía",
+      "resumen": "El BCE ha aprobado que ciertos valores negociables emitidos en plataformas autorizadas bajo el régimen piloto DLT de la UE puedan servir de garantía en operaciones de crédito del Eurosistema. La aplicación está prevista para junio de 2027.",
+      "porQueImporta": "Las entidades que se financian con el Eurosistema podrán aportar esos valores como respaldo si cumplen los criterios habituales y los requisitos específicos. El sistema de liquidación tendrá que ofrecer acceso a TARGET2-Securities.",
+      "en": {
+        "titulo": "ECB to accept some tokenised securities as collateral",
+        "resumen": "The ECB has approved the use of certain marketable securities issued on platforms authorised under the EU DLT Pilot Regime as collateral in Eurosystem credit operations. Implementation is planned for June 2027.",
+        "porQueImporta": "Institutions borrowing from the Eurosystem will be able to pledge those securities if they meet standard and specific requirements. Their settlement system must offer settlement in TARGET2-Securities.",
+        "tituloInformativo": "The ECB expands eligible Eurosystem collateral to certain marketable securities issued on authorised DLT platforms"
+      },
+      "fuente": {
+        "nombre": "Banco Central Europeo, comunicado del 23/11/2026 sobre activos basados en DLT como garantía",
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "El BCE amplía las garantías admisibles del Eurosistema a ciertos valores negociables emitidos en plataformas DLT autorizadas",
+      "imagen": "real-bce-francfort"
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Franklin Templeton lanza un monetario tokenizado en euros",
+      "resumen": "Franklin Templeton anuncia un fondo monetario en euros domiciliado en Luxemburgo que registra las participaciones en una infraestructura con blockchain. La gestora prevé ofrecerlo a minoristas de siete países, incluido España.",
+      "porQueImporta": "La gestora prevé transferencias de participaciones entre carteras digitales aprobadas las 24 horas. Esa función está sujeta a la elegibilidad de los participantes. El comunicado remite al folleto y al documento de datos fundamentales.",
+      "en": {
+        "titulo": "Franklin Templeton launches a tokenised euro money fund",
+        "resumen": "Franklin Templeton announces a Luxembourg-domiciled euro money market fund that records ownership using blockchain infrastructure. The manager plans to make it available to retail investors in seven countries, including Spain.",
+        "porQueImporta": "The manager plans round-the-clock transfers of fund shares between approved digital wallets. This feature is subject to participant eligibility. The announcement refers readers to the prospectus and key information document.",
+        "tituloInformativo": "Franklin Templeton launches a tokenised euro money market fund with planned retail availability in Spain"
+      },
+      "fuente": {
+        "nombre": "Franklin Templeton, comunicado del 23/11/2026 sobre Franklin OnChain Euro Liquidity Fund",
+        "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-26",
+      "tituloInformativo": "Franklin Templeton lanza un fondo monetario tokenizado en euros y prevé ofrecerlo a minoristas en España",
+      "imagen": "real-monedas-euro-bandera"
+    }
+  ]
+}

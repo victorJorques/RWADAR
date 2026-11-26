@@ -1,0 +1,189 @@
+MMLTI1 MultiMoney Tokenized Corporate Bond | TOHKN (El Salvador)
+Dismiss banner
+US Stocks & ETFsInvest in tokenized U.S. stocks and ETFs through TOHKN
+View issuance
+Investments
+Learn
+Download the TOHKN App
+
+MMLTI1
+
+Invest in MultiMoney's credit portfolio growth
+
+Invest in the growth of MultiMoney's credit portfolio through MMLTI1, the first tranche of the MMY issuance programme, a public digital debt offering in El Salvador with a $100 minimum investment.
+
+MultiMoney is a Salvadoran savings and credit institution (Sociedad de Ahorro y Crédito) supervised by the Superintendency of the Financial System (SSF), focused on delivering fast, accessible financial solutions. MMLTI1, the first tranche of the MMY issuance programme, pays 6.20% fixed annual interest, with interest paid monthly and principal due at the end of a 24-month term.
+
+Investing is available exclusively through the TOHKN app.
+
+Download the TOHKN app
+View offering documents
+Offering Summary
+
+Key information to help you understand the offering before reviewing the official documents and detailed terms.
+
+Name
+MMLTI1
+Status
+Open
+Minimum investment
+$100 (1 token)
+First tranche amount
+Up to $2,000,000
+Token type
+Debt Token
+Underlying asset
+Credit claim of the debt token holder against Sociedad de Ahorro y Crédito Multimoney, S.A. (the Issuer)
+Rights represented
+Right to receive principal and interest under the terms of the issuance programme.
+Issuer
+Sociedad de Ahorro y Crédito Multimoney, S.A.
+Digital Asset Service Provider
+MIO3, S.A. de C.V.
+Jurisdiction
+El Salvador
+Issuance programme name
+MMY
+Maximum authorized programme issuance
+Up to $10,000,000
+Fixed annual interest rate
+6.20% for the First Tranche
+Interest payment
+Monthly, in arrears
+Term
+24 months for the First Tranche
+Blockchain
+Polygon
+Token standard
+ERC-3643
+
+The complete information and final terms are contained in the Relevant Information Document (DIR) and the official documentation of the Programme. In case of any discrepancy, the Spanish version of the DIR and the official documents shall prevail.
+
+The Offering
+
+MMLTI1 is the first tranche of MultiMoney's MMY issuance programme (the “Issuance Programme”), designed for investors seeking access to a fixed-rate debt investment tied to a regulated financial institution in El Salvador.
+
+MultiMoney is a savings and credit institution incorporated in 2013, supervised by the Superintendency of the Financial System (SSF) and regulated by the Central Reserve Bank of El Salvador. It offers financial products and services including deposit-taking, lending, and the administration of financial operations.
+
+Its business model is oriented toward fast, accessible, technology-enabled financial solutions, with an emphasis on serving individuals and segments that need efficient financing alternatives.
+
+MMLTI1, as the First Tranche of the MMY Issuance Programme, is part of MultiMoney's strategy to strengthen and expand its credit portfolio, allowing investors to participate through a regulated digital debt instrument available on TOHKN.
+
+Through MMLTI1, investors acquire debt tokens representing a credit claim against MultiMoney. This entitles holders to receive principal and interest payments from MultiMoney under the terms and conditions of the Issuance Programme.
+
+The MMLTI1 first tranche (the “First Tranche”) carries a 6.20% fixed annual interest rate, monthly interest payments, and a 24-month term. Principal is due at maturity, except in the early redemption cases defined in the Relevant Information Document (DIR) and the issuance programme agreements, which may be exercised at the Issuer's option only.
+
+Proceeds will be used to strengthen, expand, and develop MultiMoney's ordinary financial intermediation operations, including the origination, granting, administration, and expansion of its credit portfolio.
+
+Investing involves risk. Always review the DIR and the official offering documents before investing.
+
+How MMLTI1 works
+
+Each MMLTI1 token has a reference value of $100. When you invest through the TOHKN app, you acquire MMLTI1 debt tokens representing a credit claim against MultiMoney.
+
+The tokens do not represent equity in MultiMoney or in its assets, and grant no voting rights, corporate rights, or direct ownership rights over the Issuer's assets.
+
+Transfers and secondary market activity, if enabled, are subject to eligibility verification, KYC, KYB, KYT, and AML controls, and to the restrictions described in the official documents, including a 180-day trading restriction period from token acquisition. Liquidity is not guaranteed.
+
+MMLTI1 pays interest monthly. Interest accrues from the effective token issuance date and is paid in arrears, successively, under the official terms of the issuance programme.
+
+For the First Tranche, interest is payable on the last day of each month.
+
+Principal is paid at the end of the 24-month term, unless an early redemption process applies at the Issuer's option under the DIR.
+
+Payments are made in USDT or USDC through the TOHKN app.
+
+How to invest
+
+Getting started takes just a few minutes. Download the TOHKN app, create your account, complete verification, review the offering documents, and invest directly from the app.
+
+Download the TOHKN app
+Official Documents
+
+The following documents contain the legal, financial, and operational information for this offering. You can review the DIR with its annexes, the certification report, the public offering notice, and the terms and conditions of the issuance programme.
+
+ESPAÑOL
+ENGLISH
+Documento de Información Relevante MMLTI1 (DIR)
+MMLTI1 Relevant Information Document (DIR)
+Certificación de la Emisión MMLTI1
+MMLTI1 Offering Certification
+Aviso de Oferta Pública MMLTI1
+MMLTI1 Public Offering Notice
+Términos y Condiciones Emisión MMLTI1
+MMLTI1 Offering Terms & Conditions
+
+These documents are issued by the Issuer and may be updated in accordance with regulatory requirements or operational changes. We recommend reviewing the most recent version before investing.
+
+About TOHKN
+
+TOHKN is building a more open and inclusive investment ecosystem for Latin America, where anyone can access opportunities that were once limited to a few. We believe investing should be simple, transparent, and accessible, empowering people to grow their wealth with confidence. By combining education, technology, and a seamless user experience within a solid regulatory framework, TOHKN is redefining how the next generation participates in financial markets.
+
+TOHKN is a registered trademark of MIO3, S.A. de C.V., a Digital Asset Service Provider authorized in the Republic of El Salvador (PSAD-0016). All services are provided by MIO3, S.A. de C.V. in accordance with the regulatory framework applicable to digital assets and under the supervision of the National Commission of Digital Assets (CNAD).
+
+Frequently Asked Questions (FAQ)
+What is MMLTI1?
+What do I receive when I invest?
+What is the interest rate?
+How often is interest paid?
+When is principal paid?
+What is the minimum investment?
+What currency is used?
+Can I redeem early?
+Can I sell or transfer my tokens?
+Who is the issuer?
+What will the funds be used for?
+Is this an authorized public offering?
+What risks should I consider?
+Regulatory framework
+
+This offering is structured and registered in accordance with El Salvador's Digital Assets Issuance Law (LEAD) and complies with the regulatory framework for public offerings overseen by the National Commission of Digital Assets (CNAD). MultiMoney is registered as an issuer before the CNAD under registration number EAD-0046. The MMY Issuance Programme is authorized for public offering under registration number AD-00252.
+
+View the CNAD Issuers Registry
+→
+View the CNAD Public Offering Registry
+→
+
+Legal Notice. The information contained regarding this offering is for informational purposes only and should not be construed as investment advice. Participation in this offering is subject to eligibility verification, acceptance of terms, and regulatory compliance within the TOHKN app. All investments involve risk, and decisions based on the offering information documents are the sole responsibility of the investor.
+
+The investment platform for Latin America.
+
+Access investment opportunities across Latin America through the TOHKN app.
+
+Download the TOHKN App
+Invest
+Investments
+Issuances
+Fee Schedule
+Resources
+Academy
+Help Center
+Insights
+Company
+About
+For Issuers
+Press
+Legal
+Terms
+Privacy
+Cookies
+Instagram
+X
+LinkedIn
+TikTok
+Facebook
+Language
+English
+Español
+
+TOHKN is a registered trademark of MIO3, S.A. de C.V., a Digital Asset Service Provider authorized in the Republic of El Salvador (PSAD-0016). Services are provided by MIO3, S.A. de C.V. under the applicable digital asset regulatory framework and under the supervision of the National Commission of Digital Assets (CNAD).
+
+MIO3, S.A. de C.V. is also registered as a Bitcoin Service Provider (PSB) with the Central Reserve Bank of El Salvador (BCR). Certain activities may be subject to oversight or examination by competent authorities, including the Superintendencia del Sistema Financiero (SSF).
+
+All investments involve risk, including the possible loss of principal. Past performance does not guarantee future results. Nothing on this website constitutes financial, legal, or tax advice. Information on this website is provided for informational purposes only and does not constitute an offer or solicitation to buy or sell any financial instrument or digital asset.
+
+Investment opportunities may be subject to eligibility requirements, regulatory approvals, jurisdictional restrictions, and identity verification (KYC). Certain services or offerings may not be available in all jurisdictions.
+
+MIO3 complies with applicable anti-money laundering and counter-terrorist financing (AML/CFT) obligations. Identity verification is required, and suspicious or prohibited activity may be reported to competent authorities.
+
+© 2026 MIO3, S.A. de C.V. All rights reserved. MIO3 and TOHKN are trademarks of MIO3, S.A. de C.V.

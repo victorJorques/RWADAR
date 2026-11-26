@@ -163,7 +163,8 @@ export default function App() {
   const [busquedaOfertas, setBusquedaOfertas] = useState('');
   const [grupoOfertas, setGrupoOfertas] = useState('principales');
   // Orden de Ofertas, como el selector de la web: «aldia» o «nuevas».
-  const [ordenOfertas, setOrdenOfertas] = useState('aldia');
+  // Por defecto, las más nuevas primero (26/11/2026, como la web).
+  const [ordenOfertas, setOrdenOfertas] = useState('nuevas');
   const [tipoOferta, setTipoOferta] = useState('');
   const [proveedorOferta, setProveedorOferta] = useState('');
   const [grupoProveedorAbierto, setGrupoProveedorAbierto] = useState('');
@@ -1078,7 +1079,7 @@ export default function App() {
                     <View style={e.ordenOfertas} accessibilityRole="radiogroup" accessibilityLabel="Ordenar por">
                       <Text style={e.ordenOfertasEtiqueta}>Ordenar por</Text>
                       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.ordenOfertasChips}>
-                        {[['aldia', 'Las más al día primero'], ['nuevas', 'Más nuevas primero']].map(([valor, texto]) => (
+                        {[['nuevas', 'Más nuevas primero'], ['aldia', 'Las más al día primero']].map(([valor, texto]) => (
                           <Pressable key={valor} onPress={() => { tacto.eleccion(); setOrdenOfertas(valor); }} style={e.chipOrden}
                             accessibilityRole="radio" accessibilityState={{ checked: ordenOfertas === valor }} accessibilityLabel={texto}>
                             {({ pressed }) => (

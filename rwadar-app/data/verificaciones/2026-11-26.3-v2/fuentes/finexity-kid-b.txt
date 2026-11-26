@@ -1,0 +1,210 @@
+Basisinformationsblatt
+Zweck
+Dieses Informationsblatt stellt Ihnen wesentliche Informationen über dieses Anlageprodukt zur Verfügung. Es handelt sich nich t um
+Werbematerial. Diese Informationen sind gesetzlich vorgeschrieben, um Ihnen dabei zu helfen, die Art, das Risiko, die Kosten sowie die
+möglichen Gewinne und Verluste dieses Produkts zu verstehen, und Ihnen dabei zu helfen, es mit anderen Produkten zu vergleichen.
+
+Produkt: "Unternehmensanleihe 2026/2030 der Finexity AG - Serie B“ (ISIN: DE000A5GS8B3 / WKN: A5GS8B)
+Hersteller des Produkts: Emittentin ist die Finexity AG, Hamburg, eingetragen im Handelsregister des Amtsgerichts Hamburg unter HRB
+153232 („Emittentin“). / Webseite: https://finexity-group.com / Weitere Informationen erhalten Sie telefonisch unter +49 40 8221 7720.
+Zuständige Behörde: Die Bundesanstalt für Finanzdienstleistungsaufsicht (Bafin), Deutschland ist für die Aufsicht der Emittentin in Bezug
+auf dieses Basisinformationsblatt zuständig.
+Erstellungsdatum des Basisinformationsblatts: 04.11.2026
+Sie sind im Begriff, ein Produkt zu erwerben, das nicht einfach ist und schwer zu verstehen sein kann.
+
+Um welche Art von Produkt handelt es sich?
+Art: Dieses Produkt ist eine elektronisch im Sinne des § 2 Absatz 1 des Gesetzes über elektronische Wertpapiere („eWpG“) als Krypto-
+wertpapier begebene, tokenisierte Inhaberschuldverschreibung nach deutschem Recht („Schuldverschreibung“). Die Schuldverschrei-
+bungen sind nicht nachrangig, nicht besichert und untereinander gleichrangig. Sie werden durch Eintragung in ein Kryptowertpapierre-
+gister im Sinne des § 4 Absatz 1 Nr. 2 eWpG begeben; eine Urkunde wird nicht ausgestellt und ein Anspruch auf Ausreichung einzelner
+Urkunden besteht nicht. Der Nennbetrag je Schuldverschreibung beträgt EUR 1,00. Der Ausgabebetrag beträgt 100 % des Nennbetrags.
+Der Gesamtnennbetrag beträgt bis zu EUR 4.500.000,00 zusammen mit der klassisch verbrieften Schuldverschreibung der Serie A (ISIN
+DE000A5GS8A5), für die ein eigenes Basisinformationsblatt gilt. Die Anleihebedingungen können durch Mehrheitsbeschluss der Anleihe-
+gläubiger nach dem Schuldverschreibungsgesetz (SchVG) auch mit Wirkung für überstimmte Anleger geändert werden.
+Laufzeit: Die Laufzeit der Schuldverschreibung beginnt am 27.11.2026 und endet am 27.11.2030 („Endfälligkeitstag“). Die Schuld-
+verschreibungen werden am Endfälligkeitstag zu 100 % ihres Nennbetrags zuzüglich aufgelaufener Zinsen zurückgezahlt, soweit sie nicht
+vorher zurückgezahlt oder zurückerworben worden sind. Eine ordentliche Kündigung seitens der Anleger ist ausgeschlossen. Das Recht
+zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt (§ 6 der Anleihebedingungen). Die Emittentin ist berechtigt, die
+Schuldverschreibungen ab dem 27.11.2027 unter Einhaltung einer Frist von mindestens 30 und höchstens 60 Tagen ganz oder teilw eise
+zu kündigen, und zwar zu 103 % (ab dem 27.11.2027), zu 101,5 % (ab dem 27.11.2028) bzw. zu 100 % (ab dem 27.11.2029) des
+Nennbetrags, jeweils zuzüglich aufgelaufener Zinsen (§ 8.1, § 8.4 der Anleihebedingungen). Ferner kann die Emittentin die Sch uldver-
+schreibungen zu 100 % des Nennbetrags zuzüglich aufgelaufener Zinsen aus steuerlichen Gründen (§ 8.2 der Anleihebedingungen) sowie
+dann kündigen, wenn weniger als 20 % des Gesamtnennbetrags der Serie B ausstehen (§ 8.3 der Anleihebedingungen). Im Falle ein es
+Kontrollwechsels (wie in den Anleihebedingungen definiert) haben Sie das Recht, die Rückzahlung Ihrer Schuldverschreibungen zu 101
+% des Nennbetrags zuzüglich aufgelaufener Zinsen zu verlangen (§ 7 der Anleihebedingungen).
+Ziele: Mit der Schuldverschreibung erwerben Sie unbedingte, nicht nachrangige und nicht besicherte Ansprüche gegen die Emittentin auf
+Rückzahlung des Nennbetrags und auf Zahlung variabler Zinsen. Der Zinssatz entspricht dem 6-Monats-EURIBOR zuzüglich einer Marge
+von 6,00 % p.a.. Liegt der 6-Monats-EURIBOR unter 1,00 % p.a., wird ein 6-Monats-EURIBOR von 1,00 % p.a. zugrunde gelegt (Min-
+destzinssatz somit 7,00 % p.a.). Ein Höchstzinssatz besteht nicht. Der Zinssatz wird jeweils am zweiten TARGET-Geschäftstag (wie in den
+Anleihebedingungen definiert) vor Beginn jeder Zinsperiode von der Emittentin als Berechnungsstelle festgelegt. Bei Wegfall des EURIBOR
+wird die Emittentin einen Nachfolgesatz bestimmen und der Floor weiter gilt. Die Zinsen sind halbjährlich nachträglich am 27.05. und
+27.11. eines jeden Jahres zahlbar („Zinszahlungstag“). Die erste Zinszahlung ist am 27.05.2027, die letzte am 27.11.2030 fällig. Zins-
+tagequotient ist Actual/Actual (ICMA). Zahlungen von Zinsen und Kapital erfolgen durch die Emittentin als Zahlstelle an die am maßgeb-
+lichen Stichtag (fünfter Bankarbeitstag vor dem Zahlungstag) im Kryptowertpapierregister eingetragenen Anleger durch Überweisung auf
+ein von ihnen benanntes Bankkonto. Beispiel: Bei einem 6-Monats-EURIBOR von 2,994 % (Stand 19.10.2026) betrüge der Zinssatz 8,994
+% p.a. Die künftige Entwicklung des 6-Monats-EURIBOR und damit künftige Zinssätze sind ungewiss. Zinszahlungen und Rückzahlung
+hängen von der Zahlungsfähigkeit der Emittentin ab. Eine Kündigung durch die Emittentin ist vor allem bei sinkendem Zinsniveau wahr-
+scheinlich; die Anleger erhalten dann keine weiteren Zinsen. Die Emittentin beabsichtigt, den Emissionserlös für die allgemeine Unterneh-
+mensfinanzierung, insbesondere für Wachstum und Konsolidierung sowie als Liquiditätsreserve, zu verwenden. Diese Mittelverwendung
+ist nicht bindend. Die Anleger nehmen nicht am Gewinn oder Verlust der Emittentin teil; sie tragen jedoch deren Ausfallrisiko. Das in
+diesem Basisinformationsblatt kalkulierte Risiko- und Renditeprofil der Schuldverschreibung setzt voraus, dass Sie die Schuldverschreibung
+bis zum Ende der Empfohlenen Haltedauer halten, wie nachstehend unter der Überschrift „Wie lange sollte ich die Anlage halten und kann
+ich vorzeitig Geld entnehmen?“ beschrieben.
+Kleinanleger-Zielgruppe: Das Produkt ist an Privatanleger gerichtet, die beabsichtigen, Privatvermögen zu bilden und einen mittel-
+fristigen Anlagehorizont (rund vier Jahre) haben. Der Anleger sollte erweiterte Kenntnisse und / oder Erfahrung mit Finanzprodukten
+(insbesondere Anleihen) haben und bereit und in der Lage sein, Verluste des eingesetzten Anlagebetrages bis hin zum Totalverlust zu
+tragen. Die Mindestzeichnungssumme für einen Anleger beträgt EUR 1.000,00 (1.000 Schuldverschreibungen). Zeichnungen über einen
+geringeren Betrag sind nicht zulässig. Der in diesem Basisinformationsblatt unterstellte Anlagebetrag von EUR 10.000 ist gesetzlich
+vorgeschrieben, um eine Vergleichbarkeit verschiedener Basisinformationsblätter für verschiedene Produkte herzustellen. Es handelt sich
+um ein hypothetisches Szenario. Der Anleger muss bereit sein, ein Wallet bei dem qualifizierten Kryptoverwahrer führen zu lassen; hierfür
+fallen für den Anleger keine Kosten an.
+
+
+Welche Risiken bestehen und was könnte ich im Gegenzug dafür bekommen?
+ 1            2             3            4            5            6                                                  7
+ Niedrigeres Risiko                                                                                              Höheres Risiko →
+           Dieser Risikoindikator beruht auf der Annahme, dass Sie das Produkt bis zum Endfälligkeitstag am 27.11.2030 halten. Wenn
+           Sie die Anlage frühzeitig auflösen, kann das tatsächliche Risiko erheblich davon abweichen und Sie erhalten unter Umständen
+           weniger zurück. Sie können die Anlage möglicherweise nicht frühzeitig einlösen. Sie können Ihr Produkt möglicherweise nicht
+           ohne Weiteres verkaufen oder Sie müssen es unter Umständen zu einem Preis verkaufen, der sich erheblich auf Ihren Erlös
+          auswirkt.
+
+                                                                                                                                             1
+Der Gesamtrisikoindikator hilft Ihnen, das mit diesem Produkt verbundene Risiko im Vergleich zu anderen Produkten einzuschätz en. Er
+zeigt, wie hoch die Wahrscheinlichkeit ist, dass Sie bei diesem Produkt Geld verlieren, weil sich die Märkte in einer bestim mten Weise
+entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen.
+Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft, wobei 6 der zweithöchsten Risikoklasse entspricht.
+Das Risiko potentieller Verluste aus der künftigen Wertentwicklung wird als „hoch“ eingestuft. Bei ungünstigen Marktbedingungen ist es
+sehr wahrscheinlich, dass die Fähigkeit der Emittentin beeinträchtigt wird, Sie auszubezahlen.
+Dieses Produkt beinhaltet keinen Schutz vor künftigen Marktentwicklungen, sodass Sie das angelegte Kapital ganz oder teilweise verlieren
+können. Wenn wir Ihnen nicht das zahlen können, was Ihnen zusteht, könnten Sie das gesamte angelegte Kapital verlieren.
+
+Performance-Szenarien
+Was Sie bei diesem Produkt am Ende herausbekommen, hängt von der künftigen Marktentwicklung ab. Die künftige Marktentwicklung ist
+ungewiss und lässt sich nicht mit Bestimmtheit vorhersagen.
+Die dargestellten Szenarien beruhen auf Schätzungen basierend auf Ergebnissen der Vergangenheit und bestimmten Annahmen; sie
+sind kein exakter Indikator. Die Märkte könnten sich künftig völlig anders entwickeln.
+
+    Empfohlene Haltedauer:        4 Jahre (bis zum 27.11.2030)
+    Anlagebeispiel:               10.000 EUR
+                                                                                           Wenn Sie nach 1 Jahr     Wenn Sie nach 4
+                                                                                           aussteigen               Jahren aussteigen
+    Szenarien*
+    Minimum                       Es gibt keine garantierte Mindestrendite. Sie könnten Ihre Anlage ganz oder teilweise verlieren. (Gilt
+                                  für den Ausstieg nach 1 Jahr und nach 4 Jahren.)
+    Stressszenario                Was Sie am Ende nach Abzug der Kosten her-               0,00 EUR                 0,00 EUR
+                                  ausbekommen könnten
+                                  Jährliche Durchschnittsrendite                           -100,00 %                -100,00 %
+    Pessimistisches Szenario      Was Sie am Ende nach Abzug der Kosten her-               9.200,00 EUR             11.300,00 EUR
+                                  ausbekommen könnten
+                                  Jährliche Durchschnittsrendite                           -8,00 %                  3,25 %
+    Mittleres Szenario            Was Sie am Ende nach Abzug der Kosten her-               10.899,40 EUR            13.597,60 EUR
+                                  ausbekommen könnten
+                                  Jährliche Durchschnittsrendite                           8,99 %                   8,99 %
+    Optimistisches Szenario       Was Sie am Ende nach Abzug der Kosten her-               11.000,00 EUR            14.000,00 EUR
+                                  ausbekommen könnten
+                                  Jährliche Durchschnittsrendite                           10,00 %                  10,00 %
+* Die Werte für den Ausstieg nach 1 Jahr unterstellen einen Verkauf der Schuldverschreibungen am Zweitmarkt, da eine ordentliche
+Kündigung durch den Anleger ausgeschlossen ist; im Stressszenario wird ein Verkaufskurs von 0 %, im pessimistischen Szenario von 85
+% und im mittleren und optimistischen Szenario von 100 % angenommen. Zinsannahmen: 6-Monats-EURIBOR von 1,00 % (pessimis-
+tisch), 2,994 % (mittel) und 4,00 % (optimistisch) über die gesamte Laufzeit. Sämtliche Werte verstehen sich nach Abzug der Einstiegs-
+kosten von 500 EUR und der laufenden Kosten von 125 EUR pro Jahr.
+In den angeführten Zahlen sind sämtliche Kosten des Produkts selbst enthalten, jedoch unter Umständen nicht alle Kosten, die Sie an
+Ihren Berater oder Ihre Vertriebsstelle zahlen müssen, sowie die Kosten Ihres Beraters oder Ihrer Vertriebsstelle. Unberücks ichtigt ist
+auch Ihre persönliche steuerliche Situation, die sich ebenfalls auf den am Ende erzielten Betrag auswirken kann.
+Das Stressszenario zeigt, was Sie unter extremen Marktbedingungen zurückbekommen könnten. Das pessimistische Szenario beschreibt
+eine Wertentwicklung, die sich unter ungünstigen Bedingungen ergibt. Das mittlere Szenario beschreibt eine Wertentwicklung, die sich
+unter üblichen Bedingungen ergibt. Das optimistische Szenario beschreibt eine Entwicklung, die sich unter günstigen Bedingungen ergibt.
+Dieses Produkt kann nicht einfach aufgelöst werden. Wenn Sie früher als zum Ende der empfohlenen Haltedauer aussteigen, können
+zusätzliche Kosten anfallen.
+
+Was geschieht, wenn die Finexity AG nicht in der Lage ist, die Auszahlung vorzunehmen?
+Sie sind dem Risiko ausgesetzt, dass die Emittentin ihre Verpflichtungen aus dem Produkt – beispielsweise im Falle einer Insolvenz
+(Zahlungsunfähigkeit / Überschuldung) – nicht erfüllen kann. Wenn die Emittentin nicht in der Lage ist, ihren Zahlungsverpflichtungen
+nachzukommen, können Sie Verluste aus diesem Produkt erleiden. Ein Totalverlust des eingesetzten Kapitals ist möglich. Ein möglicher
+Verlust ist nicht durch ein Entschädigungs- oder Sicherungssystem für Anleger abgesichert.
+
+Welche Kosten entstehen?
+Die Person, die Ihnen dieses Produkt verkauft oder Sie dazu berät, kann Ihnen weitere Kosten berechnen. Sollte dies der Fall sein, teilt
+diese Person Ihnen diese Kosten mit und legt dar, wie sich diese Kosten auf Ihre Anlage auswirken werden.
+Kosten im Zeitverlauf
+In den Tabellen werden Beträge dargestellt, die zur Deckung verschiedener Kostenarten von Ihrer Anlage entnommen werden. Dies e
+Beträge hängen davon ab, wie viel Sie anlegen und wie lange Sie das Produkt halten. Die hier dargestellten Beträge veranschaulichen
+einen beispielhaften Anlagebetrag und verschiedene mögliche Anlagezeiträume.
+Wir haben folgende Annahme zugrunde gelegt:
+•    10.000 EUR werden angelegt
+
+                                                                                                                                            2
+•    Das Produkt entwickelt sich wie im mittleren Szenario dargestellt
+    Anlage: 10.000 EUR
+    Szenarien                                        Wenn Sie nach 1 Jahr aussteigen         Wenn Sie nach 4 Jahren aussteigen
+
+    Kosten insgesamt                                 625 EUR                                 1.000 EUR
+    Jährliche Auswirkungen der Kosten (*)            6,25 %                                  2,50 % pro Jahr
+(*) Diese Angaben veranschaulichen, wie die Kosten Ihre Rendite pro Jahr während der Haltedauer verringern. Wenn Sie beispielsweise
+zum Ende der empfohlenen Haltedauer aussteigen, wird Ihre durchschnittliche Rendite pro Jahr voraussichtlich 11,49 % vor Kosten und
+8,99 % nach Kosten betragen.
+Wir können einen Teil der Kosten zwischen uns und der Person aufteilen, die Ihnen das Produkt verkauft, um die für Sie erbrac hten
+Dienstleistungen zu decken. Diese Zahlen enthalten die höchste Vertriebsvergütung, die die Person, die Ihnen das Produkt verkauft,
+erhalten kann (5,00 % des Anlagebetrags einmalig sowie 1,25 % p.a. Bestandsprovision). Der Betrag wird Ihnen mitgeteilt.
+Zusammensetzung der Kosten
+    Einmalige Kosten bei Einstieg oder Ausstieg                                                    Wenn Sie nach 4 Jahren aussteigen
+    Einstiegskosten                          Auswirkung der Kosten, die Sie zahlen müssen,         5,00 % des Anlagebetrags; 500 EUR
+                                             wenn Sie Ihre Anlage tätigen. Angegeben sind
+                                             Höchstkosten, eventuell zahlen Sie weniger.
+    Ausstiegskosten                          Für dieses Produkt entstehen keine Ausstiegskosten.   0 EUR – 0,00 %
+    Laufende Kosten pro Jahr
+    Verwaltungsgebühren und sons-            Für dieses Produkt fallen laufende Kosten in Form     1,25 % des Werts Ihrer Anlage pro
+    tige Verwaltungs- oder Be-               einer Bestandsprovision für die Vertriebsstelle an.   Jahr; 125 EUR
+    triebskosten                             Für die Führung des Wallets fallen keine Kosten an.
+    Transaktionskosten              Für dieses Produkt entstehen keine Transaktionskos-            0 EUR – 0,00 %
+                                    ten.
+    Zusätzliche Kosten unter bestimmten Bedingungen
+    Erfolgsgebühren                          Für dieses Produkt wird keine Erfolgsgebühr berech-   0 EUR – 0,00 %
+                                             net.
+
+Wie lange sollte ich die Anlage halten, und kann ich vorzeitig Geld entnehmen?
+Empfohlene Haltedauer: Bis zum Endfälligkeitstag am 27.11.2030
+Es wird empfohlen, das Produkt bis zum Endfälligkeitstag zu halten, um den Nennbetrag zurückzuerhalten und alle Zinszahlungen zu
+vereinnahmen. Derzeit existiert kein liquider Zweitmarkt für die Schuldverschreibung. Eine Veräußerung der Schuldverschreibung durch
+den Anleger ist zwar grundsätzlich möglich, die Möglichkeit zum Verkauf ist jedoch aufgrund der geringen Marktgröße und Handelstätigkeit
+nicht sichergestellt. Für eine solche Transaktion werden keine Gebühren oder Sanktionen von der Emittentin erhoben, jedoch kö nnen
+gegebenenfalls Kosten durch die Veräußerung (etwa Ausführungsgebühren Ihres Vermittlers, des Kryptoverwahrers oder des technischen
+Plattformbetreibers) anfallen. Der Betrag, den Sie bei einem solchen Verkauf erhalten, kann – gegebenenfalls auch erheblich – unterhalb
+des Betrages liegen, den Sie erhalten hätten, wenn Sie das Produkt bis zum Ende der Laufzeit gehalten hätten. In außergewöhnlichen
+Marktsituationen oder bei technischen Störungen kann ein Erwerb bzw. Verkauf des Produkts vorübergehend verhindert und/oder ausge-
+setzt oder nicht möglich sein.
+
+Wie kann ich mich beschweren?
+Beschwerden über den Wertpapierdienstleister, der Sie zu dem Produkt berät oder es Ihnen verkauft, können über die relevante Inter-
+netseite direkt an ihn gerichtet werden. Beschwerden über das Produkt oder über das Verhalten der Emittentin können in Textform (z.B.
+per Brief oder E-Mail) an die Finexity AG unter folgender Anschrift gerichtet werden: Finexity AG, Holzdamm 28-32, 20099 Hamburg, E-
+Mail: support@finexity.com. Für Streitigkeiten aus der Anwendung der Vorschriften des Bürgerlichen Gesetzbuchs betreffend Fernabsatz-
+verträge über Finanzdienstleistungen können Verbraucher, unbeschadet ihres Rechts, die Gerichte anzurufen, die bei der Deutschen
+Bundesbank eingerichtete Verbraucherschlichtungsstelle anrufen, sofern keine zuständige anerkannte private Verbraucherschlichtungs-
+stelle besteht. Sämtliche Informationen über die Zuständigkeit der Schlichtungsstelle und das Beschwerdeverfahren sind erhältlich bei der
+Deutschen Bundesbank, Schlichtungsstelle, Postfach 10 06 02, 60006 Frankfurt am Main, https://www.bundesbank.de/de/service/schlich-
+tungsstelle.
+
+Sonstige zweckdienliche Angaben
+Das aktuelle Basisinformationsblatt sowie die Anleihebedingungen sind online unter https://finexity-group.com im Bereich „Investor Re-
+lations“, Rubrik „Anleihe 2026/2030“ veröffentlicht. Dieses Dokument könnte seit seiner Auflage solange das Produkt zum Verkauf, inklu-
+sive einer etwaigen Marketingperiode, angeboten wird, aktualisiert worden sein. Bevor Sie eine Entscheidung über den Erwerb des Pro-
+dukts treffen, sollten Sie die Anleihebedingungen zu dem Produkt sorgfältig gelesen haben und bei Ihrer Entscheidung berücksichtigen.
+Die Emittentin benennt die Cashlink Technologies GmbH, Wiesenhüttenplatz 25, 60329 Frankfurt am Main, als registerführende Stelle im
+Sinne des § 16 Absatz 2 Satz 1 eWpG für die Schuldverschreibung. Die Anleihebedingungen werden vor der Eintragung bei der register-
+führenden Stelle niedergelegt (§ 5 eWpG). Die Emittentin behält sich einen Wechsel der registerführenden Stelle ohne Zustimmung der
+Anleger vor. Mit der Eintragung in Bezug auf eine Schuldverschreibung im Kryptowertpapierregister wird gleichzeitig für jede Schuldver-
+schreibung in Einzeleintragung ein digitaler Token geschaffen. Anleger, für die Schuldverschreibungen in Einzeleintragung ein getragen
+werden sollen, sind verpflichtet, von dem qualifizierten Kryptoverwahrer ein Wallet führen zu lassen, in das der Token geliefert werden
+kann. Die Emittentin benennt die Tangany GmbH, Brienner Straße 53, 80333 München, als qualifizierten Kryptoverwahrer im Sinne des §
+1 Abs. 1a Satz 2 Nr. 6 KWG. Mit der Zeichnung der Schuldverschreibung beantragt der Anleger automatisch den Abschluss eines Nut-
+zungsvertrags über die Führung eines Wallets mit dem qualifizierten Kryptoverwahrer; dieser entscheidet nach eigenem Ermessen über
+den Vertragsschluss. Die Emittentin behält sich einen Wechsel des qualifizierten Kryptoverwahrers sowie die Ersetzung der elektronischen
+Begebung durch eine inhaltsgleiche Urkunde (§ 6 Abs. 2 Nr. 2 eWpG) ohne Zustimmung der Anleger vor.
+
+
+
+
+                                                                                                                                            3
+

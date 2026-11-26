@@ -1,0 +1,301 @@
+Neuberger Securitize High Income Tokenized Fund
+Securitize Third Quarter 2026 Results
+
+Investments
+
+Solutions
+
+Resources
+
+Ecosystem
+
+Company
+
+Sign Up
+Log In
+Neuberger Securitize High
+Income Tokenized Fund
+
+This fund seeks to generate attractive, high current income by investing the majority of its assets in high yield bonds, with the remainder in CLOs, bank loans, and other high-yielding fixed income instruments, without the use of leverage.
+
+Explore HINC →
+Create Account →
+
+Minimum investment
+
+$100,000
+
+Net Asset Value 1
+
+$1,000
+
+(1) NAV is updated daily. As a result, this value may not reflect the actual NAV at a given time.
+
+SPEAKERS
+Tyler Gile
+
+SVP, Associate Portfolio Manager, Neuberger
+
+Giang Bui
+SVP, Head of Issuer Growth, Securitize
+Jason Fightmaster
+Moderator · Head of Operations, Securitize Capital
+WEBINAR · SECURITIZE × NEUBERGER BERMAN
+Institutional high yield, natively onchain.
+
+What’s actually behind the yield you’re offered onchain? The portfolio management team explains where HINC’s return comes from and what can move it.
+
+01
+Why does Neuberger Berman hold more CCC credits than the benchmark?
+02
+What happens to HINC when credit spreads widen?
+03
+How is it different from a tokenized Treasury fund?
+Watch the webinar
+
+Overview
+
+For Investors Seeking High Current Income Through Institutionally Managed Credit
+
+This Fund provides tokenized exposure to a diversified portfolio of U.S. high yield bonds and CLOs, with Neuberger Berman fully responsible for sourcing, underwriting, and selecting all portfolio investments. The Fund seeks to deliver high current income through institutional-grade credit strategies.
+
+
+
+
+Fees
+
+Management Fee: 0.50%
+
+Total Expense Ratio: 0.60% 3
+
+Currency: USDC, USD
+
+Subscription
+
+Subscription Frequency: On-Demand 4
+
+Subscription Deadline: 2:00pm ET
+
+Investor Qualification: AI and QP
+
+Redemptions
+
+Redemption Request Frequency: Daily 7
+
+Targeted Redemption Payout Timing: T+1 5
+
+Token Transfer Lock-up: 24 hours 6
+
+(3) The Fund’s total operating expenses are capped at 0.60% per annum of the Fund’s net assets and includes the management fees of the Fund. Any expenses in excess of this cap will be waived and/or reimbursed by the Manager. The expense cap may be modified or terminated in accordance with the Fund’s governing documents. (4) The Fund's base currency is USD. The Investment Advisor may, in its sole discretion, accept subscriptions in certain stablecoins or other Digital Assets. (6) Token purchases are available via a smart contract swap with USDC. The swap may be subject to delays due to blockchain settlement mechanics. (5) Not available to US individuals, trusts, and estates at this time. 8 Redemption requests may be made on any Business Day, subject to the same 2:00 p.m. ET Cut-Off. The Fund targets T+1 settlement for related liquidations; actual settlement may occur on a T+2, T+3, or longer basis depending on the liquidity of the Fund's underlying investments, and no particular timing is guaranteed. (6) Tokens can be transferred to other whitelisted holders one day after issuance.
+
+Who is this
+fund for?
+
+*Risk/Reward scale reflects the strategy’s general risk characteristics. Higher risk does not necessarily result in higher returns and may increase the risk of loss.
+
+Overview
+
+For Investors Seeking High Current Income Through Institutionally Managed Credit
+
+The Neuberger Securitize High Current Income Tokenized Fund provides exposure to U.S. high yield bonds and high-yielding fixed income instruments including CLOs and bank loans, with global asset manager, Neuberger Berman, fully responsible for sourcing, underwriting, and selecting all portfolio investments, leveraging its deep credit expertise and emphasis on fundamental credit analysis across primary and secondary markets.
+
+High Current Income Strategy
+
+
+
+Access institutional fixed-income markets through a professionally managed portfolio.
+
+Tokenized Access & Liquidity
+
+
+
+Daily subscription and redemption requests are accepted (subject to a 2:30pm ET Cut-Off and a 24-hour Lock-Up), and redemptions aim to support a T+1 settlement target.
+
+Active Credit Selection
+
+
+
+Neuberger Berman’s fundamental credit analysis targets high income with potential for capital appreciation.
+
+Diversified High-Income Strategy
+
+
+
+Combining high yield bonds with CLOs and bank loans diversifies sources of credit exposure and income within a single, professionally managed portfolio.
+
+Model Portfolio (As Of July 15, 2026)
+
+Asset Allocation & Gross Yield Profile
+
+Portfolio Weight by Sleeve
+
+100%
+Total Portfolio
+High Yield Bonds
+CLOs
+
+Gross Yield Contribution by Sleeve
+
+4.95%
+High Yield
+Bonds
+2.67%
+CLOs
+
+PORTFOLIO CHARACTERISTICS
+
+Weighted Avg Price	99.90
+Weighted Avg Gross Yield	7.62%
+Weighted Avg Spread	335 bps
+Weighted Avg Duration	2.52 yrs
+Weighted Avg Spread Duration	3.86 yrs
+Weighted Avg Time to Maturity	7.97 yrs
+
+The model portfolio's indicated gross yield reflects a 70% core high yield bond allocation with a 30% floating-rate BB CLO sleeve; the CLO sleeve is expected to range 0–30% over time.
+
+Weighted average yield is an illustrative gross portfolio yield based on the model holdings shown as of July 15, 2026. It is not a distribution yield, expected return, target return or guarantee of future income. It does not reflect Fund-level fees and expenses, trading costs, defaults, realized losses, taxes or changes in market value. Actual portfolio composition and yield may differ materially. The Fund is newly launched or not yet operational, and the model portfolio does not represent actual holdings.
+
+Model Portfolio (As Of July 15, 2026)
+
+Model Portfolio - Credit Quality Distribution as of July 15, 2026
+CCC and Below
+6.88%
+B
+30.00%
+BB
+63.12%
+Ratings are based on the applicable rating source as of the stated date, are subject to change and do not eliminate the risk of default or loss
+
+CCC ALLOCATION
+
+CCC-and-below exposure sits entirely in the high yield corporate sleeve — a HY allocation that spans the full non-investment-grade spectrum.
+
+The CLO sleeve is focused on BB-rated tranches only — higher up the CLO capital structure, with no allocation to CLO equity.
+
+Getting Started
+Subscription Process
+
+The Securitize subscription process is similar to other investment platforms. Once you verify your identity, you can quickly invest in offerings without having to go through the same onboarding process again.
+
+01
+Create Account / Log In
+
+Verify your identity, complete your investment profile questionnaire, and submit an accreditation application
+
+Create Account
+Log In
+02
+Choose Your Investment
+
+Select the fund you wish to invest in and enter the investment amount.
+
+03
+Sign Documents
+
+View and sign subscription documents & follow funding instructions to fund your investment via wire transfer or ACH. Here, you'll be able to decide if you'd like to self custody or hold your investment in your Securitize account.
+
+Behind The Investment
+
+$613B
+
+Assets Under Management 7
+
+1939
+
+Founded
+
+~2,900
+
+Employees, 39 Cities7
+
+Decades of Credit Expertise
+
+
+
+
+Neuberger Berman Investment Advisers LLC, the Fund's Subadvisor, brings decades of fixed income and credit research experience to the selection and management of high yield bonds and CLOs.
+
+100% Independent, Employee-Owned
+
+
+
+
+As a private, employee-owned firm, Neuberger Berman's interests are aligned directly with the outcomes of the clients and funds it manages.
+
+Institutional-Grade Research & Risk Management
+
+
+
+
+The Fund's portfolio management draws on Neuberger Berman's global research platform and risk management infrastructure.
+
+Global Scale, Focused Expertise
+
+
+
+
+With roughly 2,900 employees across 39 cities worldwide, Neuberger Berman combines global reach with deep, sector-specific credit expertise.
+
+(7) Source: Neuberger Berman Firm Profile, 1Q 2026, as of March 31, 2026. Firm-wide figures across all Neuberger Berman strategies; not specific to, or a measure of, this Fund.
+
+This is neither an offer to sell nor a solicitation to purchase any security. This summary is qualified in its entirety by more detailed information included in the offering documents of the Neuberger Securitize High Income Tokenized Fund. Investors should carefully consider the investment objectives, risks, charges, and expenses of Neuberger Securitize High Income Tokenized Fund Ltd. (the "Fund").This and other important information about the Fund are contained in the Private Placement Memorandum ("PPM") available for download above. Please read the PPM carefully before investing. Past performance is not a guarantee of future results. Investing in the Fund is for highly sophisticated investors and involves risks, including lack of operating history, below-investment-grade credit risk, CLO structural risk, liquidity of portfolio risk, diversification and concentration risk, and long-term investment risk, as well as the risk that you may receive little or no return on your investment or that you may lose part or all of your investment. The ability of the Fund to achieve its investment objective depends, in part, on the ability of the Adviser to allocate the assets of the Fund effectively. There can be no assurance that the actual allocations will be effective in achieving the Fund's investment objective or delivering positive returns. The investment return and principal value of an investment will fluctuate so that an investor's shares, when ultimately sold, may be worth more or less than the original cost. Current performance may be lower or higher than the performance quoted. No secondary market exists for the Fund's shares though the Advisor will seek to develop one. There can be no guarantee that the Advisor will be successful in developing a secondary market. Due to these restrictions, an investor should consider an investment in the Fund to be of limited liquidity. The Fund is suitable only for investors who can bear the risks associated with the limited liquidity of the Fund and should be viewed as a long-term investment. Investing in the Fund is speculative and involves a high degree of risk, including the risk of a substantial loss of investment. There is no guarantee that the investment strategies will work under all market conditions, and there is no guarantee that a diversified portfolio will enhance overall returns or outperform a non-diversified portfolio. This is for informational purposes only and should not be considered as investment advice or a recommendation of any particular security, strategy or investment product or be relied upon for any other purpose. Information contained herein has been obtained from sources deemed to be reliable, but not guaranteed. This material represents views as of the date of this publication and is subject to change without notice of any kind. Private market investments are speculative and considered risky, including potential loss of your investment, and may not be appropriate for every investor. Private investments are generally an illiquid asset class; investors cannot sell their funds when they want to without potentially facing high losses. Any discussion of liquidity is purely speculative. Securities are offered through Securitize Markets, LLC, ("Securitize Markets") a registered broker-dealer and member FINRA/SIPC. Neither Securitize Markets, nor any of its affiliates provide any investment advice or make any investment recommendations to any persons, ever, and no communication through herein or in any other medium should be construed as such. Digital assets, private placements, start-up or tokens using blockchain, are speculative, involve a high degree of risk, are generally illiquid, and can be different from traditional markets. You should be prepared to lose some or all of your investment. Private placements may not be appropriate for every investor. Any discussion of liquidity is purely speculative. Offers to sell, or the solicitations of offers to buy any security can only be made through official offering documents that contain important information about risks, fees and expenses associated with the applicable securities available for trading on the Securitize Markets ATS. Investors should conduct their own due diligence, and are encouraged to consult with a financial professional. Past performance is not indicative of future results. There is no guarantee that a diversified portfolio will enhance overall returns, outperform a non-diversified portfolio, or prevent against loss.
+
+
+
+
+Not a deposit | May lose value | No bank guarantee | Not insured by the FDIC, NCUA or any other government agency. ©2026 Securitize Capital, LLC. All rights reserved.
+
+Investments
+All Assets
+Public Stocks
+Solutions
+Tokenization As A Service
+Fund Administration
+Ecosystem
+Partner Ecosystem
+Resources
+Intro to Tokenization
+Whitepapers & Research
+Articles
+Videos
+About
+Company
+Media Coverage
+Press Releases
+Investor Relations
+Careers
+Media Kit ↓
+Developers
+APIs
+Bug Bounty
+Vault Registrar Sandbox
+
+© 2026 Securitize LLC.
+
+Disclosures
+Fee Schedule
+info@securitize.io
+
+Securitize Markets, LLC is an SEC-registered broker-dealer and member of FINRA/SIPC. Check the background of Securitize Markets on FINRA BrokerCheck.
+
+For covered orders in NMS securities, Securitize Markets' Rule 605 order execution quality reports are available here.
+
+Investing involves risk, including possible loss of principal. Digital asset securities may involve additional risks and may not be suitable for all investors.
+
+Securities are offered through Securitize Markets, LLC (“Securitize Markets”), a registered broker-dealer and member of FINRA/SIPC. Securitize Markets may provide recommendations at times but does not provide investment advice or ongoing monitoring. No communication herein, or in any medium, should be construed as investment advice or a recommendation to buy or sell any security.
+
+Securities offered on the Securitize Markets Alternative Trading System (ATS) are not registered under the Securities Act of 1933 and may not be offered or sold in the United States without registration or an applicable exemption. Digital assets or tokens utilizing blockchain technology are speculative, involve significant risk, may be illiquid or without value, have limited regulatory certainty, and may be subject to market manipulation. Private placements are also speculative and high-risk. Investors must be able to bear the loss of their entire investment.
+
+Eligibility to trade on the Securitize Markets ATS is determined solely by Securitize Markets. Any offer or solicitation can be made only through official offering documents describing the risks, fees, and expenses of the applicable securities. Investors should conduct their own due diligence and are encouraged to consult with a financial advisor, attorney, accountant, or tax advisor.
+
+Past performance is not indicative of future results. Neither the SEC nor any federal or state regulator has recommended or approved any investment or verified the accuracy or completeness of any information herein. Valuations provided by issuers may not reflect market or industry values, and Securitize Markets and its affiliates make no representations regarding such information. Securitize Markets may collect information about you to comply with securities regulations and the USA PATRIOT Act, which requires firms to obtain, verify, and record information that identifies each applicant. This information also helps us understand your investment profile and determine suitability. The term “Investors,” as used on this website, generally refers to accredited investors where applicable. If we cannot verify the information you provide, we may need to restrict or deny your account. Trading during extended hours carries unique risks, including higher volatility, lower liquidity, wider spreads, and reduced market visibility, and may not be appropriate for all investors. Diversification does not guarantee improved returns or prevent losses. Securitize Markets is regulated by FINRA and the SEC; however, membership and registration do not guarantee compliance with all rules. By accessing this site, you agree to our Terms of Service and Privacy Policy.
+
+Crypto services are provided by Zero Hash and are not associated with Securitize Markets or its affiliates. Crypto assets are not protected by SIPC, SIPA, or federal securities laws. SIPC protection does not apply to funds held at SIPC-member broker-dealers if such funds are unrelated to eligible securities transactions, intended for the purchase of crypto assets not recognized as securities under SIPA, or transferred to a crypto platform. Crypto assets are neither cash nor cash equivalents and are not covered by the FDIC. Their value is highly volatile, and they involve increased risks of fraud, cyberattack, and operational failures. Zero Hash LLC and Zero Hash Liquidity Services are licensed to engage in Virtual Currency Business Activity by the New York State Department of Financial Services.
+
+EU Disclosures
+
+In the European Union, investment services are offered by Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”), a Spanish investment firm.
+
+Securitize Europe, with Spanish tax identification number A13691464, has its registered office at Calle Don Ramón de la Cruz 38, 28001 Madrid, Spain and is registered with the Commercial Registry of Madrid in the sheet number M-794351, page 81 et seq., of volume 45141, section 8, and is authorized, registered and supervised by the Spanish Securities Market Commission, the Comisión Nacional del Mercado de Valores (“CNMV”), with registration number 327.
+
+Securitize Europe has permission to provide investment services in the countries of the European Union listed here.

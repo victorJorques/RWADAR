@@ -5,8 +5,9 @@ Cada ficha del catálogo tiene su propia imagen, `oferta-<slug>.webp`
 
 - de fondo, una **fotografía generada** del activo, parecida al real según su
   fuente oficial (tipo de edificio, plantas, fachada, entorno: palmeras, mar,
-  montaña, viñedo…), retocada para que se vea como una foto de inmobiliaria
-  y no como un dibujo;
+  montaña, viñedo…), con aspecto de foto documental normal (luz de día real,
+  colores fieles, sin HDR) y casi sin edición: solo recorte y una nitidez
+  muy ligera (26/11/2026);
 - limpia: sin texto dibujado ni velo (desde el 03/11/2026). El lugar y los
   **tres pasos** (qué haces, qué pasa y cómo recibes o sales) van como texto en
   el manifiesto, en el texto alternativo y en la ficha.
@@ -55,7 +56,7 @@ usan la ilustración de su categoría.
   lectura, viñeta, grano fino y el texto con las fuentes Geist de la web.
 - `escenas.mjs`, `motor.mjs` y `plantilla.mjs`: el dibujo isométrico en SVG,
   de reserva.
-- `generar.mjs`: retoca cada foto (recorte, color, nitidez), le pone el texto,
+- `generar.mjs`: recorta cada foto (y le da una nitidez muy ligera), le pone el texto,
   borra las que sobran y reescribe el manifiesto, el bloque
   `EDITORIAL_OFERTA_POR_SLUG` de la web (con el lugar, que la tarjeta enseña
   con su chincheta) y los `require` de la app.

@@ -1,0 +1,185 @@
+IBER1 Tokenized Corporate Bond | TOHKN (El Salvador)
+Dismiss banner
+US Stocks & ETFsInvest in tokenized U.S. stocks and ETFs through TOHKN
+View issuance
+Investments
+Learn
+Download the TOHKN App
+
+IBER1
+
+Invest in Iberplastic's Recycling Expansion
+
+Invest in Iberplastic's recycling expansion through IBER1, a public digital debt offering in El Salvador with a $100 minimum investment.
+
+Iberplastic manufactures plastic cleaning products and uses recycled materials in its production process. The IBER1 first tranche pays 7.00% fixed annual interest, with interest paid monthly and principal due at the end of a 24-month term.
+
+Investing is available exclusively through the TOHKN app.
+
+Download the TOHKN app
+View offering documents
+Offering Summary
+
+Key information to help you understand the offering before reviewing the official documents and detailed terms.
+
+Name
+IBER1
+Status
+Open
+Minimum investment
+$100 (1 token)
+First tranche amount
+$2,000,000
+Token type
+Debt Token
+Underlying asset
+Credit claim against Iberplastic, S.A. de C.V.
+Rights represented
+Right to receive principal and interest under the issuance terms
+Issuer
+Iberplastic, S.A. de C.V.
+Digital Asset Service Provider
+MIO3, S.A. de C.V.
+Jurisdiction
+El Salvador
+Maximum authorized issuance
+$4,000,000
+Fixed annual interest rate
+7.00% for the First Tranche
+Interest payment
+Monthly, in arrears
+Term
+24 months for the First Tranche
+Blockchain
+Polygon
+Token standard
+ERC-3643
+
+The complete information and final terms are contained in the Relevant Information Document (DIR) and the official program documentation. In case of any discrepancy, the Spanish version of the DIR and the official documents shall prevail.
+
+The Offering
+
+IBER1 is the first tranche of Iberplastic's public digital debt issuance. It is designed for investors who want access to a fixed-rate debt investment tied to a real operating company in El Salvador.
+
+Iberplastic is a Salvadoran manufacturer founded in 1997. The company produces plastic cleaning products, including brooms, brushes, and household items, and uses recycled raw materials in its production process.
+
+Through IBER1, investors purchase debt tokens that represent a credit right against Iberplastic. This gives holders the right to receive principal and interest payments under the terms of the issuance.
+
+The first tranche has a fixed annual interest rate of 7.00%, monthly interest payments, and a 24-month term. Principal is payable at maturity, except in the early redemption cases defined in the official documents.
+
+The funds raised will be used exclusively to finance the expansion and remodeling of Iberplastic's recycling plants.
+
+Investing involves risks. Always review the DIR and the official offering documents before investing.
+
+How IBER1 works
+
+Each IBER1 token has a reference value of $100. When you invest through the TOHKN app, you purchase IBER1 debt tokens that represent a contractual payment right against Iberplastic.
+
+The tokens do not represent ownership of Iberplastic, Escobas El Tucán, the recycling plants, or any company shares. They do not grant voting rights, corporate rights, or direct ownership rights over the issuer's assets.
+
+IBER1 tokens are issued on Polygon under the ERC-3643 token standard, which supports identity verification, transfer restrictions, and compliance controls.
+
+Transfers and secondary market activity, if enabled, are subject to eligibility verification, KYC, KYB, KYT, AML controls, and the restrictions described in the official documents. Liquidity is not guaranteed.
+
+IBER1 pays interest monthly. Interest accrues from the effective subscription date of the tokens and is paid in arrears according to the official issuance terms.
+
+For the First Tranche, interest is due on the last day of each month. If tokens are purchased after the fifteenth day of a month, the interest accrued through the end of that month is paid together with the following month's interest.
+
+The principal amount is paid at the end of the 24-month term, unless an early redemption process applies under the DIR.
+
+Payments are made in USDT or USDC through the TOHKN app.
+
+How to invest
+
+Getting started takes just a few minutes. Download the TOHKN app, create your account, complete verification, review the offering documents, and invest directly from the app.
+
+Download the TOHKN app
+Official Documents
+
+The following documents contain the legal, financial, and operational information for this offering. You can review the DIR, the public offering notice, the issuance terms, the certification report, and the associated participation conditions.
+
+ESPAÑOL
+ENGLISH
+Documento de Información Relevante IBER (DIR)
+IBER Relevant Information Document (DIR)
+Certificación de la Emisión IBER
+IBER Offering Certification
+Aviso de Oferta Pública IBER1
+IBER1 Public Offering Notice
+Términos y Condiciones Emisión IBER
+IBER Offering Terms & Conditions
+
+These documents are issued by the issuer and may be updated in accordance with regulatory requirements or operational changes. We recommend reviewing the most recent version before investing.
+
+About TOHKN
+
+TOHKN is building a more open and inclusive investment ecosystem for Latin America, where anyone can access opportunities that were once limited to a few. We believe investing should be simple, transparent, and accessible, empowering people to grow their wealth with confidence. By combining education, technology, and a seamless user experience within a strong regulatory framework, TOHKN is redefining how the next generation participates in financial markets.
+
+TOHKN is a registered trademark of MIO3, S.A. de C.V., a Digital Asset Service Provider authorized in the Republic of El Salvador (PSAD-0016). All services are provided by MIO3, S.A. de C.V. in accordance with the applicable digital asset regulatory framework and under the supervision of the National Commission of Digital Assets (CNAD).
+
+Frequently Asked Questions (FAQ)
+What is IBER1?
+What do I receive when I invest?
+What is the interest rate?
+How often is interest paid?
+When is principal paid?
+What is the minimum investment?
+What currency is used?
+Can I redeem early?
+Can I sell or transfer my tokens?
+Who is the issuer?
+What will the funds be used for?
+Is this an authorized public offering?
+What risks should I consider?
+Regulatory framework
+
+This offering is structured and registered in accordance with El Salvador's Digital Assets Issuance Law (LEAD) and complies with the regulatory framework for public offerings overseen by the National Commission of Digital Assets (CNAD). Iberplastic is registered as an issuer before the CNAD under registration number EAD-0047. The IBER1 issuance is registered under issuance number AD-00253.
+
+View the CNAD Issuers Registry
+→
+View the CNAD Public Offering Registry
+→
+
+Legal Notice. The information contained regarding this offering is for informational purposes only and should not be interpreted as investment advice. Participation in this offering is subject to eligibility verification, acceptance of terms, and regulatory compliance within the TOHKN app. All investments involve risks, and decisions based on the offering information documents are the sole responsibility of the investor.
+
+The investment platform for Latin America.
+
+Access investment opportunities across Latin America through the TOHKN app.
+
+Download the TOHKN App
+Invest
+Investments
+Issuances
+Fee Schedule
+Resources
+Academy
+Help Center
+Insights
+Company
+About
+For Issuers
+Press
+Legal
+Terms
+Privacy
+Cookies
+Instagram
+X
+LinkedIn
+TikTok
+Facebook
+Language
+English
+Español
+
+TOHKN is a registered trademark of MIO3, S.A. de C.V., a Digital Asset Service Provider authorized in the Republic of El Salvador (PSAD-0016). Services are provided by MIO3, S.A. de C.V. under the applicable digital asset regulatory framework and under the supervision of the National Commission of Digital Assets (CNAD).
+
+MIO3, S.A. de C.V. is also registered as a Bitcoin Service Provider (PSB) with the Central Reserve Bank of El Salvador (BCR). Certain activities may be subject to oversight or examination by competent authorities, including the Superintendencia del Sistema Financiero (SSF).
+
+All investments involve risk, including the possible loss of principal. Past performance does not guarantee future results. Nothing on this website constitutes financial, legal, or tax advice. Information on this website is provided for informational purposes only and does not constitute an offer or solicitation to buy or sell any financial instrument or digital asset.
+
+Investment opportunities may be subject to eligibility requirements, regulatory approvals, jurisdictional restrictions, and identity verification (KYC). Certain services or offerings may not be available in all jurisdictions.
+
+MIO3 complies with applicable anti-money laundering and counter-terrorist financing (AML/CFT) obligations. Identity verification is required, and suspicious or prohibited activity may be reported to competent authorities.
+
+© 2026 MIO3, S.A. de C.V. All rights reserved. MIO3 and TOHKN are trademarks of MIO3, S.A. de C.V.

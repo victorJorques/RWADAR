@@ -71,6 +71,16 @@
     "spiko-regafi": ["Spiko Finance", "19183"],
     "spiko-regafi-pasaporte-es": ["ESPAGNE", "Libre prestation de services"],
     "spiko-cnmv-iic": ["SPIKO SICAV", "2380\\W+30/01/2026", "Entidades comercializadoras"],
-    "spiko-cnmv-lps": ["SPIKO FINANCE SASU", "5325\\W+14/01/2026", "Libre Prestaci[oó]n"]
+    "spiko-cnmv-lps": ["SPIKO FINANCE SASU", "5325\\W+14/01/2026", "Libre Prestaci[oó]n"],
+    "alterna-ofertas": ["三井物産", "仮申込受付中", "第3277号"],
+    "amundi-indice": ["tokenised share class", "public Ethereum"],
+    "blackrock-hkd": ["HKD Digital Liquidity Fund", "tokenized units"],
+    "finexity-bono": ["DE000A5GS8B3", "EUR 1,000"],
+    "finexity-terminos": ["Public offer in Germany only", "6M Euribor \\+ 6\\.00%"],
+    "groma-reit": ["Regulation D 506\\(c\\)", "Colonial Stock Transfer"],
+    "groma-invertir": ["Wefunder", "GromaCoin"],
+    "liqi-ofertas": ["Em captação", "RCVM 88"],
+    "tohkn-emisiones": ["IBER1", "PSAD-0016", "CNAD"],
+    "tohkn-condiciones": ["Restricted Jurisdictions", "MIO3"]
   }
 }

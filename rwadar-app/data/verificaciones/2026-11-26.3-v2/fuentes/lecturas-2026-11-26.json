@@ -1,0 +1,129 @@
+{
+  "tohkn-emisiones": {
+    "url": "https://www.tohkn.com/en/issuances",
+    "horaUtc": "2026-11-26T19:40:53Z",
+    "http": 200,
+    "archivo": "fuentes/tohkn-emisiones.txt",
+    "sha256": "027eaecb7b974ebe52a73d012b3a65e484c27adde39460df975053f790d47f31"
+  },
+  "tohkn-iber1": {
+    "url": "https://www.tohkn.com/en/issuances/iber1",
+    "horaUtc": "2026-11-26T19:40:53Z",
+    "http": 200,
+    "archivo": "fuentes/tohkn-iber1.txt",
+    "sha256": "e026b1c8ae644838546e3dedd05e94bfe78ec55dafcf0d46905832debedeb928"
+  },
+  "tohkn-mmlti1": {
+    "url": "https://www.tohkn.com/en/issuances/mmlti1",
+    "horaUtc": "2026-11-26T19:40:53Z",
+    "http": 200,
+    "archivo": "fuentes/tohkn-mmlti1.txt",
+    "sha256": "9c6c02d8f978891f7af7f3131d4f96f75eff978b4c0465e02d025ba3bd298e18"
+  },
+  "tohkn-rncrrev": {
+    "url": "https://www.tohkn.com/en/issuances/rncrrev",
+    "horaUtc": "2026-11-26T19:40:53Z",
+    "http": 200,
+    "archivo": "fuentes/tohkn-rncrrev.txt",
+    "sha256": "b6fafbd294cc202196a5191cb0f84db692cef6db1c7b37b8a5ed2924e6a0bbf3"
+  },
+  "liqi-ofertas": {
+    "url": "https://tokens.liqi.com.br/tokens",
+    "horaUtc": "2026-11-26T19:41:01Z",
+    "http": 200,
+    "archivo": "fuentes/liqi-ofertas.txt",
+    "sha256": "5f0eb6226ae38647334a57e677dfc09abaf760668214933e2e3aad7e0ffac938"
+  },
+  "liqi-pedu": {
+    "url": "https://tokens.liqi.com.br/tokens/PEDU?tranche=PEDUUNQ09",
+    "horaUtc": "2026-11-26T19:41:01Z",
+    "http": 200,
+    "archivo": "fuentes/liqi-pedu.txt",
+    "sha256": "8299bd2250a819f3387eaca6b5b491cceefbfc391652504badb66517a8fc6695"
+  },
+  "finexity-bono": {
+    "url": "https://finexity-group.com/investor-relations/bond-2026-2030",
+    "horaUtc": "2026-11-26T19:42:46Z",
+    "http": 200,
+    "archivo": "fuentes/finexity-bono.txt",
+    "sha256": "f3c105ae6cceb82477474ec222265ad3b7419a6cf055af9eec168e1acb9ab992"
+  },
+  "finexity-terminos": {
+    "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+    "horaUtc": "2026-11-26T19:43:59Z",
+    "http": 200,
+    "archivo": "fuentes/finexity-terminos.txt",
+    "sha256": "f6406254627ad54f988134848ec61848622211634315448dd00dbe1e557e710c"
+  },
+  "finexity-kid-b": {
+    "url": "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf",
+    "horaUtc": "2026-11-26T19:43:59Z",
+    "http": 200,
+    "archivo": "fuentes/finexity-kid-b.txt",
+    "sha256": "56e053eb0c39c4285ac4c4e2b8d393dd2d7266037ccba40f2e29c87cacd7f2a5"
+  },
+  "groma-reit": {
+    "url": "https://www.gromareit.com/",
+    "horaUtc": "2026-11-26T19:41:16Z",
+    "http": 200,
+    "archivo": "fuentes/groma-reit.txt",
+    "sha256": "1d67f629e6165a88dc0debc0fd49e66c762340a67f59364ec7b67cea25a064ec"
+  },
+  "groma-invertir": {
+    "url": "https://invest.groma.com/",
+    "horaUtc": "2026-11-26T19:41:16Z",
+    "http": 200,
+    "archivo": "fuentes/groma-invertir.txt",
+    "sha256": "473bc30551eb45d95978f4d17ce1596d465220e47bce5bf8256b7afaaaae037e"
+  },
+  "securitize-hinc": {
+    "url": "https://securitize.io/hinc",
+    "horaUtc": "2026-11-26T19:41:22Z",
+    "http": 200,
+    "archivo": "fuentes/securitize-hinc.txt",
+    "sha256": "75eb6f5568c4cd95b55f8659fcb8b85e03da901a277c8c7463a357de7ccb0ab4"
+  },
+  "franklin-euro": {
+    "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+    "horaUtc": "2026-11-26T19:43:59Z",
+    "http": 200,
+    "archivo": "fuentes/franklin-euro.txt",
+    "sha256": "9baadb9d4a242de2d273c6ef6691b009d4c9f99be846b7425ff5b0bba0cf1c19"
+  },
+  "alterna-ofertas": {
+    "url": "https://app.alterna-z.com/offerings",
+    "horaUtc": "2026-11-26T19:42:55Z",
+    "http": 200,
+    "archivo": "fuentes/alterna-ofertas.txt",
+    "sha256": "7749cba0caf32dcb25c591861c2d7ea9e1c3b612f78560d162ba6cb8ceef80ec"
+  },
+  "tohkn-condiciones": {
+    "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+    "horaUtc": "2026-11-26T19:41:01Z",
+    "http": 200,
+    "archivo": "fuentes/tohkn-condiciones.txt",
+    "sha256": "f905cb436f33241047020ee68169014f491ecf3099ed1bea44de74f78067a1d1",
+    "nota": "extracto: el documento completo tiene 187.734 caracteres"
+  },
+  "blackrock-hkd": {
+    "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+    "horaUtc": "2026-11-26T19:53:25Z",
+    "http": 200,
+    "archivo": "fuentes/blackrock-hkd.txt",
+    "sha256": "bc4905c0c4ea6c503e3c4a4fc21b8f28949ed436eec5fa9c9ebc6381cff39395"
+  },
+  "amundi-indice": {
+    "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+    "horaUtc": "2026-11-26T19:53:39Z",
+    "http": 200,
+    "archivo": "fuentes/amundi-indice.txt",
+    "sha256": "218e835623f9c7af84d79aab57087959b2ee83244549dddd7dbacaf0c0d4478f"
+  },
+  "bafin-midas": {
+    "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche",
+    "horaUtc": "2026-11-26T20:22:11Z",
+    "http": 200,
+    "archivo": "fuentes/bafin-midas.txt",
+    "sha256": "fbd833ae717ff4a9e6d76d50658f96b9e51c99626efe72807ae18f6aee90ac59"
+  }
+}

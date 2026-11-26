@@ -1,7 +1,9 @@
-// Página de 1280×880 para las fotografías generadas: la foto, graduada y con
-// una viñeta suave, ocupa todo el lienzo. Desde el 03/11/2026 (Víctor: «deja
-// una foto limpia») la imagen no lleva rótulos: el lugar y los tres pasos van
-// como texto en la ficha. Con rotulo:true se recupera el velo con el texto.
+// Página de 1280×880 para las fotografías generadas: la foto ocupa todo el
+// lienzo. Desde el 03/11/2026 (Víctor: «deja una foto limpia») la imagen no
+// lleva rótulos: el lugar y los tres pasos van como texto en la ficha. Desde el
+// 26/11/2026 («lo más realistas posibles sin mucha edición») la foto limpia va
+// tal cual, sin graduar, sin viñeta y sin grano. Con rotulo:true se recupera el
+// velo con el texto (y su graduación).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,8 +22,8 @@ export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar, ro
   return `<!doctype html><html><head><meta charset="utf-8"><style>${FUENTES}
   *{margin:0;padding:0;box-sizing:border-box}
   body{width:${W}px;height:${H}px;background:#0B0A0A;font-family:Geist,sans-serif;color:#F7F5F0;overflow:hidden;position:relative}
-  .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${encuadre};
-    filter:contrast(1.06) saturate(1.08) brightness(.97)}
+  .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${encuadre}}
+  ${rotulo ? '.foto{filter:contrast(1.06) saturate(1.08) brightness(.97)}' : ''}
   /* velo de lectura a la izquierda, viñeta y una base oscura abajo */
   .velo{position:absolute;inset:0;background:
     linear-gradient(90deg,rgba(9,9,10,.94) 0%,rgba(9,9,10,.82) 26%,rgba(9,9,10,.42) 46%,rgba(9,9,10,0) 62%),
@@ -43,9 +45,9 @@ export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar, ro
   .pasos li:not(:last-child) .n::after{content:'';position:absolute;left:50%;top:58px;width:3.5px;height:18px;background:${color};opacity:.55;transform:translateX(-50%)}
   </style></head><body>
   <img class="foto" src="${foto}" alt="">
-  ${rotulo ? '<div class="velo"></div>' : '<div class="vineta"></div>'}
+  ${rotulo ? `<div class="velo"></div>
   <svg class="grano" width="${W}" height="${H}"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
-  ${rotulo ? `<div class="acento"></div>
+  <div class="acento"></div>
   <div class="bloque">${lugar ? `<div class="lugar"><i></i>${esc(lugar)}</div>` : ''}<ol class="pasos">${pasos.map((t, i) => `<li><span class="n">${i + 1}</span><span>${esc(t)}</span></li>`).join('')}</ol></div>` : ''}
   </body></html>`;
 }
