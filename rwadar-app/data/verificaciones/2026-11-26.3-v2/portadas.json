@@ -44,17 +44,17 @@
     {
       "empresa": "Liqi",
       "maestro": "liqi.webp",
-      "semilla": 331,
+      "semilla": 332,
       "descripcionVisual": "Edificios de oficinas de la avenida Paulista de São Paulo, donde operan las empresas que se financian en Liqi.",
-      "prompt": "office buildings along Avenida Paulista in Sao Paulo seen from street level, cloudy day",
+      "prompt": "wide avenue in Sao Paulo lined with straight modern office buildings on both sides, seen from the pavement at eye level, cloudy day, empty street",
       "paginaReferencia": "https://tokens.liqi.com.br/tokens"
     },
     {
       "empresa": "TOHKN",
       "maestro": "tohkn.webp",
-      "semilla": 337,
+      "semilla": 338,
       "descripcionVisual": "Vista de San Salvador con el volcán detrás, ciudad de las emisiones de activos digitales de TOHKN.",
-      "prompt": "view over San Salvador with modern office buildings and the green San Salvador volcano behind, clear day",
+      "prompt": "view over San Salvador with low-rise buildings and a few modern office towers, the lush green tropical San Salvador volcano covered in forest behind, clear day, no snow",
       "paginaReferencia": "https://www.tohkn.com/en/issuances"
     }
   ]
