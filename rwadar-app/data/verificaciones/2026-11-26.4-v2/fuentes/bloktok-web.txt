@@ -1,0 +1,600 @@
+Bloktok | Tokenizar activos, ahora es infraestructura
+Bloktok
+Solución
+API
+Mercados
+Proceso
+Marco legal
+Blog
+Acceso Inversionistas
+Agenda una reunión
+PARA EMPRESAS · FONDOS · EMISORES
+BLOKTOK 2026
+¿Ya eres inversionista en Bloktok?
+Tokenizar activos,
+ahora es infraestructura.
+
+Consultoría, plataforma white label y operación integral — en un solo partner en regulación por la CMF.
+
+Agenda una reunión
+Ver cómo trabajamos
+PLATAFORMA WHITE LABEL
+LIVE
+EN OPERACIÓN HOY
+
+3 verticales activas
+
++
+Arquitectura extensible a diferentes verticales de mercado
+
+01
+
+Inmobiliario
+
+02
+
+Fondos de inversión
+
+03
+
+Retail
+
+MARCO
+
+Ley Fintec 21.521
+
+ESTADO
+
+En regulación CMF
+
+MODELO INTEGRAL
+
+Consultoría + Implementación + Operación mensual
+
+EMISIÓN DE TOKENS
+Crea y publica
+tus tokens hoy.
+
+Estructuramos tu emisión, la publicamos en la plataforma y tus inversionistas la transan — bajo el marco de la Ley Fintec 21.521.
+
+Agenda una reunión
+
+EL MERCADO YA ESTÁ OPERANDO
+
+MERCADO DE INVERSIONISTAS · EN VIVO
+Un mercado real, operando ahora
+
+Inversionistas comprando y vendiendo tokens de propiedades reales. Estas son las órdenes abiertas en este momento.
+
+BLOKTOK://MERCADO-INVERSIONISTA
+EN VIVO
+COMPRAS · BID
+VENTAS · ASK
+CHI-SAN-P05
+Parking Público II Santiago
+$51.000
+2 tok · +2.0%
+CHI-SAN-P01
+Suecia 3005, Copahue
+$50.000
+1 tok · +0.0%
+70W-PETRA-1
+70W Casa Petra 1
+$50.000
+9 tok · +0.0%
+CHI-SAN-P05
+Parking Público II Santiago
+$50.000
+2 tok · +0.0%
+CHI-SAN-P03
+Tandem E15 E17 Brasil 601
+$49.690
+10 tok · -0.6%
+CHI-SAN-P05
+Parking Público II Santiago
+$49.200
+4 tok · -1.6%
+70W-PETRA-1
+70W Casa Petra 1
+$47.000
+20 tok · -6.0%
+CHI-SAN-P03
+Tandem E15 E17 Brasil 601
+$47
+50 tok · -99.9%
+$52.450
+40 tok · +4.9%
+CHI-SAN-P01
+Suecia 3005, Copahue
+11 órdenes
+4 proyectos
+UF $41.405,45
+BLOKTOK EN UNA FRASE
+Construimos la infraestructura que permite a empresas emitir activos financieros digitales bajo la Ley Fintec, sin asumir el costo de desarrollarla internamente.
+
+Nuestro modelo se apoya en tres pilares: un motor de tokenización propio, una capa jurídica alineada con la CMF y una plataforma white label que cada cliente recibe bajo su propia marca.
+
+3
+
+Verticales operando
+
+Inmobiliario · Fondos · Retail
+
+21.521
+
+Ley Fintec
+
+Activos Financieros Digitales
+
+100%
+
+Infraestructura propia
+
+Motor · legal · custodia · compliance
+
+24h
+
+Respuesta equipo
+
+Onboarding empresarial
+
+01 · SOLUCIÓN
+Tú pones el activo.
+Nosotros, el motor.
+
+Entregamos una plataforma completa bajo tu marca y operamos la infraestructura regulatoria que hace posible la emisión. Un modelo diseñado para que puedas enfocarte en tu activo y en tus inversores.
+
+TU EMPRESA RECIBE
+Plataforma white label a tu medida para operar
+
+Portal con tu marca
+
+Dominio propio, identidad visual, UI brandeada end-to-end.
+
+Dashboard emisor
+
+Control de proyecto, investidores, emisiones y KPIs financieros.
+
+Portal del inversor
+
+Onboarding KYC, suscripción, cartera, rentas y reportes.
+
+Marketplace secundario
+
+Liquidez y transferencia de tokens entre inversores verificados.
+
+BLOKTOK OPERA
+Infraestructura, regulación y operación
+
+Motor de tokenización
+
+Smart contracts, emisión, custodia institucional.
+
+Capa legal & compliance
+
+Estructuración Ley Fintec, KYC/AML, auditorías.
+
+Reportería regulatoria
+
+DJ1932 SII, reportes CMF, informes periódicos.
+
+Operación 24/7
+
+Infraestructura, monitoreo, soporte y SLAs.
+
+02 · INTEGRACIÓN
+Conéctate a nuestra API.
+Embebe tokenización en tu stack.
+
+Para empresas con equipos de ingeniería o productos financieros propios, Bloktok expone una API REST de grado institucional. Emite, distribuye, consulta portfolios y automatiza reportería regulatoria desde tu infraestructura — con la misma plataforma que opera Bloktok.
+
+API.BLOKTOK.IO · CREATE EMISSION
+COPIAR
+curl -X POST https://api.bloktok.io/v1/emissions \
+  -H "Authorization: Bearer $BLOKTOK_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "asset_type": "real_estate",
+    "issuer_id": "iss_8f3a9c21",
+    "token_supply": 50000,
+    "nominal_uf": 100,
+    "min_ticket_uf": 25,
+    "funding_window_days": 45
+  }'
+200 · OK
+RESPONSE · 96 MS
+{ "id": "em_Ht82kLq", "status": "draft", "token_address": "0xF32a..98b1" }
+ENDPOINTS CLAVE
+POST
+/v1/emissions
+GET
+/v1/emissions/:id
+POST
+/v1/investors
+GET
+/v1/investors/:id/portfolio
+POST
+/v1/payouts
+GET
+/v1/reports/dj1932
+
+ENTORNOS DISPONIBLES
+
+SANDBOX
+PRODUCCIÓN
+OPENAPI 3.1
+
+REST + Webhooks
+
+Endpoints versionados con contratos OpenAPI y callbacks firmados HMAC-SHA256.
+
+Baja latencia
+
+p95 < 120 ms para lectura. Colas asíncronas para emisión y liquidación.
+
+Autenticación mTLS
+
+API keys + mTLS opcional. Scopes granulares por entorno (sandbox / prod).
+
+Eventos en tiempo real
+
+token.issued · investment.confirmed · kyc.verified · payout.settled.
+
+Documentación técnica completa + sandbox disponibles bajo NDA.
+
+API ACCESS · INSTITUCIONAL · ON-DEMAND
+
+Solicitar acceso API
+→
+03 · MERCADOS
+Cualquier activo real puede tokenizarse.
+
+Nuestra experiencia cubre tres verticales con proyectos en operación — inmobiliario, fondos de inversión y retail — y nuestra plataforma está disponible para habilitar cualquier otro activo real elegible bajo la Ley Fintec.
+
+ACTIVO
+Inmobiliario
+
+Desarrolladoras, inmobiliarias y fondos que buscan financiar proyectos residenciales, de oficinas, hoteleros o logísticos.
+
+VALOR
+
+Levantamiento de capital más rápido que un bono. Inversores fraccionados con ticket definidos por el negocio.
+
+TOKEN DE RENTA Y PLUSVALÍA
+ACTIVO
+Fondos de inversión
+
+Gestores de fondos de inversión privados o públicos que desean digitalizar la distribución y secundario de cuotas.
+
+VALOR
+
+Reducción de mínimos de ticket, liquidez en marketplace propio, compliance automatizado.
+
+TOKEN DE CUOTAS DE FONDO
+ACTIVO
+Retail
+
+Cadenas y proyectos retail con flujos de ventas, franquicias, remodelaciones o expansión financiable.
+
+VALOR
+
+Financiamiento revenue-based tokenizado. Tarjetas de crédito con garantías.
+
+TOKEN REVENUE-BASED
+DISPONIBLE
+Energía renovable
+
+IPPs, parques solares y eólicos, PPAs de largo plazo, créditos de carbono.
+
+VALOR
+
+Flujo contractual predecible → token de ingreso fijo. Apela a inversores ESG.
+
+TOKEN DE INGRESO CONTRACTUAL
+DISPONIBLE
+Commodities
+
+Productores de cobre, litio, oro, trading houses con inventarios respaldados.
+
+VALOR
+
+Tokenización de inventario físico → liquidez anticipada del activo.
+
+TOKEN RESPALDADO POR INVENTARIO
+DISPONIBLE
+Agroindustria
+
+Viñedos, huertos frutales, forestales, salmoneras y agroexportadoras.
+
+VALOR
+
+Financiamiento de expansión agrícola con retorno ligado a producción.
+
+TOKEN LIGADO A PRODUCCIÓN
+DISPONIBLE
+Conservación y turismo
+
+Parques privados, reservas naturales, lodges, ecoturismo, proyectos de conservación ambiental y áreas protegidas con modelo de ingresos sostenible.
+
+VALOR
+
+Tokenización de derechos de uso y flujos turísticos. Acceso a inversores ESG e impacto con retorno ligado a ocupación y servicios.
+
+TOKEN DE USO Y SERVICIOS
+DISPONIBLE
+Infraestructura
+
+Concesiones, carreteras, telecom, obras públicas y privadas de gran escala.
+
+VALOR
+
+Acceso a activo tradicionalmente cerrado al retail. Horizonte largo, rentabilidad estable.
+
+TOKEN DE CONCESIÓN
+¿Tu activo no aparece? Conversemos
+04 · PROCESO
+Un único partner,
+tres proyectos integrados.
+
+Cada cliente corporativo atraviesa tres fases de trabajo con Bloktok: una consultoría preliminar, la habilitación de la plataforma y la operación mensual continua. Cada fase tiene entregables, timelines y equipos asignados.
+
+01
+1 SEMANA
+Consultoría
+Análisis del activo y estructuración
+
+Entendemos el activo, su flujo de caja y el objetivo de capital. Estructuramos la emisión legal, financiera y tributariamente, y definimos el roadmap del proyecto.
+
+EQUIPO ASIGNADO
+EJECUTIVO CUENTA
+ASESOR LEGAL
+ANALISTA FINANCIERO
+ENTREGABLES
+Análisis técnico del activo y due diligence preliminar
+Propuesta de estructura legal (SPV, contratos, garantías)
+Modelo financiero y proyección de rentabilidad
+Plan de emisión, calendario regulatorio y roadmap
+02
+1 A 2 SEMANAS
+Implementación
+Habilitación de la plataforma white label
+
+Desplegamos tu plataforma brandeada, programamos los smart contracts, preparamos la documentación legal final y dejamos todo listo para emitir.
+
+EQUIPO ASIGNADO
+INGENIERÍA PLATAFORMA
+LEGAL SENIOR
+COMPLIANCE
+PRODUCT MANAGER
+ENTREGABLES
+Plataforma white label con dominio y branding propio
+Smart contracts auditados (si aplican), custodia institucional configurada
+Documentación legal final: contratos emisor-inversor, prospecto
+Onboarding KYC/AML, sistema reportería CMF habilitado
+03
+RECURRENTE
+Operación mensual
+Gestión integral y compliance continuo
+
+Una vez emitido el token, operamos la plataforma mes a mes: distribución de rentas, reportería regulatoria, soporte a inversores y mantención de infraestructura.
+
+EQUIPO ASIGNADO
+OPERACIONES
+SOPORTE
+COMPLIANCE OFFICER
+INGENIERÍA ON-CALL
+ENTREGABLES
+Plataforma operativa 24/7
+Reportería DJ1932 SII y reportes periódicos CMF
+Soporte nivel 1-3 a Empresa Emisora
+Monitoreo, patching, auditorías de seguridad y SLAs
+05 · MARCO LEGAL
+Ley Fintec 21.521.
+Marco regulatorio claro.
+
+Los tokens emitidos a través de Bloktok son activos financieros digitales definidos en la Ley Fintec 21.521, artículo III. Bloktok opera en proceso regulatorio ante la CMF y se encarga del cumplimiento normativo punta a punta.
+
+LEY 21.521 · ART. III · NUMERALES 3º Y 5º
+
+“Activos financieros virtuales: representación digital de unidades de valor, bienes o servicios, con excepción de dinero, ya sea en moneda nacional o divisas, que pueden ser transferidos, almacenados o intercambiados digitalmente.”
+
+EN REGULACIÓN CMF
+REQUERIMIENTOS PARA LA EMPRESA EMISORA
+Calidad del activo
+Activo real, verificable y valuable por tercero independiente
+Flujo de caja o revalorización proyectable y auditable
+Titularidad limpia y libre de gravámenes no declarados
+Estructura legal del emisor
+Sociedad SpA, S.A. o fondo legalmente constituido en Chile
+Documentación corporativa al día (estatutos, balances auditados)
+Representante legal identificado con facultades de emisión
+Compliance y transparencia
+Entrega de información financiera periódica
+Cumplimiento KYC/AML hacia inversores (gestionado por Bloktok)
+Reportería DJ1932 a SII y reportes CMF (operados por Bloktok)
+Garantías para el inversor
+Garantía, póliza o pagaré por el monto total de la emisión
+Activo como respaldo subyacente del token
+Plan de contingencia y devolución de capital si no se completa la emisión
+
+Este contenido es de naturaleza informativa y no constituye asesoría legal. El detalle completo de requisitos regulatorios aplicables se define caso a caso durante la fase de consultoría.
+
+06 · TRAYECTORIA
+Una historia
+construida sobre ejecución.
+
+Cada hito de Bloktok está respaldado por proyectos reales, alianzas estratégicas y compromiso con el marco regulatorio chileno. Hoy operamos tres verticales en producción y abrimos el modelo white label al mercado corporativo.
+
+2023
+Fundación de Bloktok
+
+Nace el proyecto con foco en construir infraestructura de tokenización de activos reales bajo regulación chilena.
+
+2024
+Primeras alianzas inmobiliarias
+
+Primeras alianzas inmobiliarias con emisión de tokens inmobiliarios con rentabilidad en CLP o UF.
+
+2025
+Extensión a fondos de inversión y retail
+
+Tokenización de cuotas de fondos privados y estructuración de proyectos de financiamiento retail.
+
+2026
+Modelo white label y expansión corporativa
+
+Lanzamiento del modelo de plataforma white label para empresas, fondos y emisores. Pipeline B2B abierto.
+
+07 · CARTERA ACTUAL
+Proyectos en curso
+en tres verticales.
+
+Bloktok tiene hoy tres proyectos trabajando en distintas fases: uno en plena operación y dos en estructuración. Cada uno representa una vertical diferente y demuestra la versatilidad de nuestra infraestructura.
+
+INMOBILIARIO
+EN OPERACIÓN
+Gestoras Inmobiliarias
+
+Emisiones tokenizadas de varios proyectos. Proyectos inmobiliarios con rentabilidad en CLP o UF y garantía inmobiliaria respaldada.
+
+VERTICAL
+
+Inmobiliario
+
+PLAZO
+
+24 meses
+
+ESTADO
+
+Activo
+
+FONDOS
+EN ESTRUCTURACIÓN
+Fondo de Inversión
+
+Tokenización de cuotas de fondo privado. Modelo digital de suscripción y secundario para fraccionar el ticket mínimo tradicional.
+
+VERTICAL
+
+Fondo privado
+
+FOCO
+
+Fraccionamiento
+
+LANZAMIENTO
+
+2026 H2
+
+RETAIL
+EN LANZAMIENTO
+Proyecto Retail
+
+Proyecto retail de ventas recurrentes. Emisión revenue-based tokenizada con distribución periódica a inversores.
+
+VERTICAL
+
+Retail
+
+MODELO
+
+Revenue-based
+
+LANZAMIENTO
+
+2026 H1
+
+Detalles financieros y documentación regulatoria disponibles bajo acuerdo de confidencialidad para inversionistas cualificados y contrapartes empresariales.
+
+08 · PREGUNTAS FRECUENTES
+Lo que empresas,
+fondos y emisores nos preguntan.
+¿Qué tipo de empresas pueden trabajar con Bloktok?
+
+Empresas constituidas en Chile o en el extranjero con un activo real o flujo proyectable: inmobiliarias, desarrolladoras, fondos de inversión, gestores patrimoniales, empresas de energía renovable, productores de commodities, retailers con proyectos de expansión, entre otros. Caso a caso evaluamos elegibilidad durante la fase de consultoría.
+
+¿Cuánto tiempo toma el proceso completo?
+
+La fase de consultoría dura 1 semana. La implementación completa de la plataforma white label toma entre 1 y 2 semanas dependiendo de la complejidad del activo y la documentación legal. La operación mensual es recurrente una vez emitido el token.
+
+¿Cuál es el modelo de ingresos? ¿Cómo cobra Bloktok?
+
+Cobramos en dos hitos: (1) un fee único de consultoría + implementación pagado al inicio del proyecto, que cubre el análisis, estructuración legal y la habilitación de la plataforma white label; y (2) un fee recurrente mensual de operación que incluye hosting, compliance, reportería regulatoria y soporte. Los montos se definen según el tamaño y complejidad del proyecto.
+
+¿La plataforma realmente queda con nuestra marca?
+
+Sí. El modelo white label implica dominio propio, identidad visual completa (logo, colores, tipografía), experiencia de inversor end-to-end bajo tu marca. Bloktok opera la infraestructura en backend pero el cliente final interactúa exclusivamente con tu marca.
+
+¿Qué activos no son elegibles?
+
+Activos con titularidad disputada, sin valuación posible por tercero independiente, sin respaldo legal claro, o que no cumplan el marco de la Ley Fintec 21.521. Proyectos en fase conceptual sin activo tangible tampoco son elegibles en este momento.
+
+¿Bloktok está regulado por la CMF?
+
+Bloktok se encuentra en proceso regulatorio ante la Comisión para el Mercado Financiero (CMF) bajo la Ley Fintec 21.521, que regula los activos financieros digitales. Operamos bajo los estándares establecidos por la ley y mantenemos un programa activo de compliance con la autoridad regulatoria.
+
+¿Quién colecta el dinero por la emisión de tokens?
+
+Bloktok actúa como custodio financiero de la emisión. Dependiendo de la estructura de cada proyecto, la custodia de los fondos puede realizarla Bloktok directamente o quedar en manos de la empresa emisora — por ejemplo, en el caso de fondos de inversión privados o estructuras SPV con cuentas segregadas propias. Esta definición forma parte de la fase de consultoría, donde se diseña el circuito financiero más adecuado al activo, a la regulación aplicable y a las necesidades del emisor.
+
+¿Los tokens emitidos son transferibles entre inversores?
+
+Sí. Cada plataforma white label incluye un marketplace secundario donde inversores verificados pueden transferir tokens entre ellos. La liquidez depende del volumen de interés de cada emisión específica.
+
+09 · CONVERSEMOS
+¿Tienes un activo
+para tokenizar?
+
+Cuéntanos qué activo tienes en mente. Nuestro equipo de originación revisa cada solicitud en menos de 24 horas hábiles y agenda una reunión de discovery inicial sin costo.
+
+AGENDAR REUNIÓN CORPORATIVA
+Pre-calificación en 3 minutos.
+
+Completa el formulario de pre-calificación y nuestro equipo te contactará para coordinar una sesión de discovery.
+
+Agendar reunión
+
+RESPUESTA
+
+< 24 h hábiles
+
+HORARIO
+
+L–V · 9–18 CLT
+
+CONTACTO
+
+contacto@bloktok.io
+
+OFICINAS
+
+Santiago, Chile
+
+Bloktok
+
+Infraestructura regulada de tokenización de activos reales para empresas, fondos y emisores en Chile.
+
+contacto@bloktok.io
+Acceso Inversionistas
+PRODUCTO
+Solución white label
+API
+Mercados
+Proceso
+Marco legal
+COMPAÑÍA
+Trayectoria
+Blog
+Centro de ayuda
+Agenda una reunión
+LEGAL
+Ley Fintec 21.521
+Términos y Condiciones
+Privacidad
+Condiciones Generales
+Preferencias de cookies
+© 2026 Bloktok SpA
+·
+Santiago, Chile
+EN PROCESO REGULATORIO CMF · LEY FINTEC 21.521

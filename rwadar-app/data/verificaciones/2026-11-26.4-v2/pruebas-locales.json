@@ -1,0 +1,105 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-26T22:30:27.991Z",
+  "etiqueta": "2026-11-26.4",
+  "revisionAnterior": "25b54edc-1f69-35fa-e02d-40f2b86d6875",
+  "revisionNueva": "7f745c7d-5a25-2385-9e6c-d855a22c9d02",
+  "sha256AplicarYAprobar": "b01e195b44b0ff556d7c9cee23c0e5feda0867370f0b97da50bfba93c6dd1e74",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada 25b54edc con su huella 25b54edc1f69…, catálogo no retirado, fecha del 26/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las regiones «África» y «Oriente Medio» y las 25 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 109 en fuentes, 57 en plataformas, 209 en plataforma_fuentes, 57 en alertas, 67 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
+    "cadena de producción (seed antes de ARTEX + 24 lotes, del 2026-10-22 a la 2026-11-26.3): la publicada es la 25b54edc",
+    "antes de aplicar, PGlite enseña la 2026-11-26.3 local (32 plataformas, 32 ofertas 17/13/2, documentación idéntica) y lo leído como visitante en lectura-publica/",
+    "idempotente: aplicarla dos veces da lo mismo",
+    "public.plataformas: las 37 de antes, idénticas, y las 25 nuevas exactas (57 en el radar y 5 descartadas); regiones «África» y «Oriente Medio» añadidas; public.fuentes, cambios de estado, avisos y emisiones, intactos (dar de alta no avisa a nadie); las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: 57 plataformas y 32 ofertas (17 principales, 13 de reventa y 2 en camino); las 25 plataformas nuevas, con sus datos de altas.json; las 32 ofertas y las 32 plataformas de antes, idénticas a la 2026-11-26.3 salvo la revisión y el manifiesto del lote (32 → 57 plataformas); las 5 descartadas, iguales",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 57 plataformas y 32 ofertas con 2 en camino; vale el 26/11 y el 03/12 y caduca el 04/12; las 32 tarjetas se ven igual que antes",
+    "sincronizador real con estas vistas: 57 plataformas, 32 ofertas y 5 descartadas (CSV de 62 filas); sin añadir las 25 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 94 páginas, las 25 nuevas incluidas y en el sitemap",
+    "worker con la lista nueva: las 25 fichas de plataforma nuevas se sirven",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/export264 lo que leería un visitante después de aplicar",
+    "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
+    "falla y no deja nada: la publicada no es la 2026-11-26.3 (es la 2026-11-26.2, 4601a164) → Publicación distinta de la revisión anterior prevista: 4601a164-0884-8198-2e8a-23998e4e3120. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior",
+    "falla y no deja nada: una plataforma nueva ya existe con otros datos → La plataforma mesh ya existe con otros datos: no aplicar.",
+    "falla y no deja nada: una región ya existe con otro nombre → La región africa ya existe con otro nombre: no aplicar.",
+    "falla y no deja nada: el radar no tiene las 32 plataformas previstas (hay una más) → El radar no tiene 32 plataformas (ni las 57 de este lote): no aplicar."
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
+      "falla": false,
+      "publicada": "7f745c7d-5a25-2385-9e6c-d855a22c9d02"
+    },
+    {
+      "caso": "la publicada no es la 2026-11-26.3 (es la 2026-11-26.2, 4601a164)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: 4601a164-0884-8198-2e8a-23998e4e3120. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma nueva ya existe con otros datos",
+      "falla": true,
+      "error": "La plataforma mesh ya existe con otros datos: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una región ya existe con otro nombre",
+      "falla": true,
+      "error": "La región africa ya existe con otro nombre: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el radar no tiene las 32 plataformas previstas (hay una más)",
+      "falla": true,
+      "error": "El radar no tiene 32 plataformas (ni las 57 de este lote): no aplicar.",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 109,
+    "rwadar_catalogo.plataformas": 57,
+    "rwadar_catalogo.plataforma_fuentes": 209,
+    "rwadar_catalogo.alertas": 57,
+    "rwadar_catalogo.alerta_fuentes": 67,
+    "rwadar_catalogo.ofertas": 32,
+    "public.regiones": 2,
+    "public.plataformas": 25
+  },
+  "lecturaPublica": true,
+  "tarjetasNuevas": {},
+  "resultado": "correcto"
+}

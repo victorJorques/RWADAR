@@ -1,0 +1,444 @@
+Cradle — On-chain real-world assets for Africa
+Cradle
+Products
+Assets
+Whitepaper
+Blog
+Open App
+Join Waitlist
+Africa's real-world assets
+on-chain.
+
+Cradle is the regulated home for tokenized African securities — from local-currency stablecoins to listed equities, sovereign bonds, and new token offerings. Issue, trade, lend, and raise capital in one ecosystem.
+
+Join the waitlist
+Explore the ecosystem
+THE ECOSYSTEM
+Three apps. One on-chain rail.
+
+Issuers tokenize. Investors trade. Companies raise. Every flow settles on the same rail, against the same compliance layer.
+
+MARKETPLACE
+Trade tokenized real-world assets
+
+Order-book trading on listed African equities, bonds, and local-currency stablecoins. Lending pools, portfolio tracking, and pre-listing token subscriptions in one app.
+
+Limit & market orders
+Lending pools
+Portfolio analytics
+Open Marketplace
+ISSUER
+Bring real-world assets on-chain
+
+A regulated pathway for issuers to tokenize equities, bonds, and stablecoins — guided onboarding, automated compliance, and 70% of every trade fee paid back to you.
+
+ERC-3643 token standard
+KYB & beneficial ownership
+Per-trade fee revenue
+Open Issuer Console
+LAUNCHPAD
+Raise capital through token offerings
+
+Launch compliant token sales — IPOs, sovereign bond issuances, infrastructure raises — with built-in vesting, investor management, and on-chain distribution.
+
+7-step offering wizard
+Automated vesting
+Investor cap-table
+Open Launchpad
+TAKE A LOOK INSIDE
+See what each app actually looks like.
+
+Live mockups of the three product surfaces. The data here mirrors what ships in the live console.
+
+MARKETPLACE · MARKETS
+Every tokenized asset, sorted the way you trade.
+
+Browse equities, bonds, and stablecoins side-by-side. Live prices, 24-hour metrics, exchange tags, and one-click drilldown into the order book.
+
+Equities, bonds, stablecoins in one view
+Filter by asset class and exchange
+Click any row to open the order book
+Open Marketplace
+app.cradlemarkets.com
+Cradle
+Marketplace
+ICO
+Lending
+Portfolio
+W
+whale
+Markets
+
+Browse and trade tokenized assets
+
+Search by name or symbol...
+All Exchanges ▾
+All Classes ▾
+ASSET	SYMBOL	PRICE	24H CHANGE	24H VOLUME	MARKET CAP	EXCHANGE
+Safaricom PLC	SFCG	$34.10	+0.86%	$1,528.74	$1,528.74	Nairobi Securities Exchange
+Kenya Power	KPLC	$4.93	+0.41%	$921.65	$921.65	Nairobi Securities Exchange
+Safcom Bond 2030	SBND	$101.77	+0.00%	$16.51	$16.51	Nairobi Securities Exchange
+Nairobi REIT	NRBT	$15.67	+0.00%	$0	$0	Nairobi Securities Exchange
+MARKETPLACE · TRADE
+A real order book — not a swap pretending to be one.
+
+Limit and market orders with price-time priority. Live candlestick chart, order book, and recent trades all on the same WebSocket feed that matches your fills.
+
+Limit and market orders with full price-time priority
+Live order book + candlestick chart
+Recent trades, open orders, trade history tabs
+Start trading
+app.cradlemarkets.com
+Cradle
+Marketplace
+ICO
+Lending
+Portfolio
+W
+whale
+SFCG/USDC
+Spot
+$34.10
+
+24H CHANGE
+
++0.86%
+
+24H VOLUME
+
+$51,882
+
+24H HIGH
+
+$34.31
+
+24H LOW
+
+$33.81
+
+1H
+4H
+1D
+1W
+1M
+
+ORDER BOOK
+
+PRICE
+QTY
+TOTAL
+34.18
+240
+8,203
+34.15
+1,820
+62,153
+34.12
+915
+31,220
+34.11
+320
+10,915
+$34.10
+Spread $0.08
+34.10
+1,240
+42,284
+34.08
+880
+29,990
+34.05
+2,150
+73,207
+34.02
+415
+14,118
+Buy
+Sell
+Limit
+Market
+Price
+34.10
+USDC
+Quantity
+100
+SFCG
+Total
+3,410.00 USDC
+Buy SFCG
+Recent Trades
+Open Orders
+Trade History
+TIME	PRICE	QTY
+17:56:26	$29.85	402.05
+23:58:12	$29.91	11.88
+07:39:16	$29.70	94.77
+12:27:07	$29.75	195.20
+ISSUER CONSOLE
+Tokenize an asset and earn on every trade.
+
+KPIs for assets issued, pending audits, listings, and lifetime fee revenue. Recent assets list with status badges and one-click drilldown into the lifecycle timeline.
+
+Live KPIs sourced from on-chain state
+70% of every trade fee paid back to issuers
+Full asset lifecycle from draft to listed
+Open Issuer Console
+issuer.cradlemarkets.com
+Cradle
+Issuer
+Dashboard
+Applications
+Assets
+Liquidity
+Compliance
+Earnings
+
+Atlantic Issuers
+
+treasury@atlanticissuers.co
+
+Dashboard
+
+Welcome back, Treasury.
+
+Your issuance overview
+Compliance
+Declare asset
+TOTAL ASSETS
+
+12
+
+assets issued
+
+PENDING AUDITS
+
+2
+
+Needs attention
+
+LISTED ASSETS
+
+9
+
+Live on market
+
+TOTAL EARNINGS
+
+$184.2K
+
+Lifetime revenue
+
+Recent assets
+
+Latest assets you have issued.
+
+View all
+NG
+
+Naira Stable
+
+NGNS · stablecoin
+
+listed
+PA
+
+Pan-African Telecom
+
+PAT · shares
+
+listed
+CE
+
+Continental Energy
+
+CEC · shares
+
+pending audit
+LI
+
+Lagos Infra Bond
+
+LIB · bond
+
+draft
+LAUNCHPAD
+Raise capital with built-in vesting and KYC.
+
+Aggregate progress across every offering you run, with per-offering raise breakdowns, investor counts, and status badges. Subscribe-to-list flows and on-chain distribution included.
+
+Aggregate funds management across offerings
+Per-offering progress with hard caps and investor counts
+Automated vesting and on-chain claims
+Open Launchpad
+launchpad.cradlemarkets.com
+Cradle
+Launchpad
+Dashboard
+Offerings
+Investors
+Settings
+
+Continental Energy
+
+treasury@continental.energy
+
+Dashboard
+Funds raised
+
+Live offerings, raise progress, and investor counts at a glance.
+
+New offering
+
+Active offerings
+
+2
+
+Total raised
+
+$29.4M
+
+Investor count
+
+1,254
+
+Completed
+
+1
+
+Aggregate funds management
+$29.36M / $41.00M
+CE
+Continental Energy IPO
+$8.2M / $12M
+Active
+LI
+Lagos Infra Bond
+$3.1M / $5M
+Active
+PA
+Pan-African Telecom Series B
+$18.0M / $18M
+Completed
+NG
+Naira Stable Reserve
+$0.0M / $6M
+Draft
+ASSET CLASSES
+The full breadth of African capital markets, tokenized.
+
+One platform, four asset classes — settled on the same regulated rail. No bridges between brokers, no fragmented liquidity, no three-day settlement lag.
+
+Browse markets
+Issue an asset
+Local-Currency Stablecoins
+
+Naira-, Shilling-, and Cedi-backed tokens redeemable 1:1 against fiat reserves.
+
+Equities
+
+Fractional ownership of listed African corporations, settled on-chain.
+
+Bonds
+
+Sovereign and corporate debt instruments with transparent yield curves.
+
+Commodities
+
+Gold, oil, and agricultural products backed by physical reserves.
+
+HOW IT WORKS
+One protocol. The whole capital cycle.
+01
+Issuers tokenize
+
+Asset originators onboard through the Issuer console — entity verification, custody confirmation, and asset declaration with regulator-ready documentation.
+
+Open Issuer Console
+02
+Tokens go live
+
+Verified assets list on the Marketplace as ERC-3643 permissioned tokens. Identity-aware transfers, on-chain compliance, no off-chain reconciliation.
+
+View Markets
+03
+Investors trade
+
+Order-book trading, lending pools, and portfolio analytics — all in the consumer Marketplace. Local-currency stablecoins keep capital on-shore.
+
+Start trading
+04
+New raises launch
+
+Companies use the Launchpad for compliant token offerings — corporate IPOs, infrastructure bonds, sovereign issuances. Vesting and distribution handled on-chain.
+
+Launch an offering
+BUILT FOR AFRICA
+Designed for the markets we serve — not retrofitted from elsewhere.
+
+Cradle's first listings are African equities, bonds, and local-currency stablecoins. Every product surface is built around the constraints — and the opportunities — of these markets.
+
+Local-currency settlement
+
+Naira and Shilling stablecoins keep capital on-shore. No FX leakage, no offshore detour.
+
+Listed on local exchanges
+
+Asset declarations link to the source exchange (NSE, NGX, JSE) so audits trace cleanly.
+
+Regulator-aware compliance
+
+ERC-3643 identity registry enforces jurisdictional restrictions before any transfer settles.
+
+FAQ
+Frequently asked questions
+What is Cradle?
+
+Cradle is a regulated, on-chain marketplace for African real-world assets — equities, bonds, local-currency stablecoins, and tokenized fund offerings. It bundles three apps (Issuer, Marketplace, Launchpad) onto a shared compliance and settlement rail.
+
+How is Cradle different from offshore tokenization platforms?
+
+Cradle is built around African listings and settles in local-currency stablecoins (NGN, KES, GHS). No offshore detour, no FX leakage, no foreign jurisdictional friction layered on top of local trading.
+
+What token standard do you use?
+
+ERC-3643 (T-REX) — permissioned tokens with on-chain identity and compliance hooks. Trades only settle between verified, jurisdictionally-eligible parties, without sacrificing the composability of an ERC-20-like surface.
+
+Who can issue an asset?
+
+Issuers complete a 7-step onboarding wizard covering entity verification, beneficial ownership, KYB documents, and compliance attestations. Once approved, you can declare assets, confirm custody, and request token mints — all from the Issuer console.
+
+Where do trading fees go?
+
+Issuers receive 70% of every trade fee on the assets they originate. Splits happen at the smart-contract level on every fill — accrued fees are claimable directly from the Issuer console with no invoicing or reconciliation.
+
+When do you launch?
+
+The Marketplace, Issuer console, and Launchpad are in active development. Join the waitlist below to be notified when we open up new jurisdictions and asset listings.
+
+JOIN THE WAITLIST
+Be first when we open new markets.
+
+Product updates, new asset listings, and pilot invitations — sent sparingly, no spam.
+
+Notify me
+Cradle
+
+The regulated on-chain home for African real-world assets.
+
+PRODUCTS
+Marketplace
+Issuer Console
+Launchpad
+RESOURCES
+Documentation
+Whitepaper
+Blog
+COMPANY
+About
+Terms
+Privacy
+
+© 2026 Cradle Protocol. All rights reserved.
+
+Terms
+Privacy

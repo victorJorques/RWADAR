@@ -1,0 +1,58 @@
+{
+  "tipo": "altas",
+  "fecha": "2026-11-26",
+  "etiqueta": "2026-11-26.4",
+  "revisionAnterior": "25b54edc-1f69-35fa-e02d-40f2b86d6875",
+  "revisionNueva": "7f745c7d-5a25-2385-9e6c-d855a22c9d02",
+  "decision": "Orden de la dirección del 26/11/2026: añadir las plataformas del radar del informe global de Codex que se verifiquen como reales en su propia web (aceptando cookies si hace falta); RWAdar es internacional.",
+  "archivos": {
+    "altas.json": "db8e7709f16b2926905dd443df5dcfefda017ef4424b7285ae7209a73106bf6b",
+    "fuentes/lecturas-2026-11-26.json": "0217a30c0ec3ca3c70b8dd39253f1241ad79897b68835301e6634b207c2ce0dd"
+  },
+  "altas": {
+    "regiones": [
+      {
+        "slug": "africa",
+        "nombre": "África"
+      },
+      {
+        "slug": "oriente-medio",
+        "nombre": "Oriente Medio"
+      }
+    ],
+    "plataformas": [
+      "raiz",
+      "tokeniza",
+      "etherfuse",
+      "hator",
+      "real-tokn",
+      "bloktok",
+      "bit2me-stx",
+      "assetera",
+      "estating",
+      "seturion",
+      "digishares",
+      "ctrl-alt",
+      "digift",
+      "sdax",
+      "terazo",
+      "tokinvest",
+      "prypco-mint",
+      "mesh",
+      "oaksvale",
+      "cradle",
+      "shard",
+      "luxivana",
+      "tangiblex",
+      "caliber",
+      "okxice"
+    ],
+    "ofertas": []
+  },
+  "colecciones": {
+    "principales": 17,
+    "secundario": 13,
+    "en_camino": 2
+  },
+  "lecturaPublica": "Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-26T22:30:19Z – 2026-11-26T22:30:23Z"
+}

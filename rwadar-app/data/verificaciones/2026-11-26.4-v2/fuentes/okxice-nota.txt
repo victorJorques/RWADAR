@@ -1,0 +1,194 @@
+24/7 Securities Trading Arrives on OKXICE | OKX Europe
+Looks like you're in the United States. Switch to the United States site for products available in your region.
+
+Switch site
+Skip to main content
+Buy crypto
+SEPA, Visa, Mastercard, and more
+Check real-time conversion rates and crypto values
+Deposit
+Add cash to your account balance using a bank transfer to start trading
+Transfer crypto from an on-chain wallet or exchange
+Markets
+Trade
+Quick conversion, zero trading fees, no slippage
+Buy and sell crypto with ease
+Trade futures with leverage
+Trade stocks, ETF and commodities using crypto
+Automate your trades with AI agents and community-built skills
+Multiple strategies to help you trade with ease
+Custom multi-leg strategies and block trades
+Grow
+Don’t just HODL. Earn
+Institutional
+The world’s most powerful suite of crypto trading solutions
+Digital assets-as-a-service for regulated institutions
+Seamless and ultra-low latency API connectivity
+Manage sub-accounts, trade easily and safely with more profits
+Candlesticks, aggregate trades, order book data and more
+Our latest institutional trading research, news, and more
+Learn
+Build strong crypto fundamentals with simple guides and tutorials
+Follow step-by-step instructions to buy crypto
+Find answers to common questions on your crypto journey
+Track real-time crypto prices and market moves
+Stay on top of the latest crypto news and trends
+Read insights and stories from our team
+More
+Log in
+Sign up
+This page is for information purposes only. Certain services and features may not be available in your jurisdiction.
+Learn
+Blog
+Article
+OKX
+24/7 Securities Trading Arrives on OKXICE
+OKX Learn
+Published on Nov 23, 2026
+Updated on Nov 23, 2026
+3 min read
+BTC+0.99%
+ETH+1.11%
+SOL+1.37%
+
+The future of securities trading is here. Starting at noon ET today, eligible U.S. customers can trade available assets around the clock on OKXICE’s Tokenized Securities Venue (TSV), found in the TSV tab of the OKX app.
+
+The venue has confirmed 113 assets, including stocks, ETFs and ETPs, which will become available on a rolling basis beginning today. Confirmed issuers and asset managers include Better.com, BitGo, Circle, Coinbase, Direxion, eToro, Fidelity Investments, Robinhood, Securitize, Strategy, Strive and Vida Global.
+
+A market that never closes
+
+Company developments, economic data and global events can unfold outside traditional market hours. OKXICE TSV brings securities trading onchain and makes it available around the clock to eligible participants, giving them more flexibility to choose when they trade.
+
+Behind the venue is OKXICE, a joint venture between OKX and Intercontinental Exchange (ICE), parent company of the New York Stock Exchange. It brings together OKX’s onchain technology and ICE’s market infrastructure expertise.
+
+How the TSV works
+
+Each digital asset is a security entitlement backed one-to-one by an underlying share, with applicable shareholder rights and economic benefits, including dividends, voting rights and corporate actions.
+
+Trading takes place through automated market maker (AMM) liquidity pools on Uniswap v4, built on X Layer, OKX’s Ethereum Layer 2 network. Smart contracts restrict trading and liquidity provision to eligible wallets. Securitize provides the infrastructure for bringing the securities onchain.
+
+Customers hold their securities in self-custodial wallets; OKXICE TSV does not hold customer assets or private keys.
+
+Getting started
+
+The venue is available only to eligible U.S.-based OKX Inc. customers who complete identity verification, activate a CeDeFi Wallet and complete OKX Inc. onboarding. Access is subject to geographic and other eligibility requirements.
+
+Eligible customers can find the venue in the TSV tab of the OKX app starting at noon ET.
+
+Securities trading involves risk, including loss of principal. Tokenized securities may trade at prices different from the underlying share, especially outside market hours. Self-custodied assets are not SIPC- or FDIC-protected, and lost keys cannot be recovered.
+
+OKXICE TSV is offered by OKXICE LLC under a temporary SEC exemption; the NYSE does not operate or oversee this venue. It is not a registered exchange or broker-dealer and is not approved by the SEC. No information provided by OKXICE TSV is a recommendation to buy or sell any Tokenized NMS Stock. T&Cs apply.
+
+Disclaimer
+This content is provided for informational purposes only and may cover products that are not available in your region. It is not intended to provide (i) investment advice or an investment recommendation; (ii) an offer or solicitation to buy, sell, or hold crypto/digital assets, or (iii) financial, accounting, legal, or tax advice. Crypto/digital asset holdings, including stablecoins, involve a high degree of risk and can fluctuate greatly. You should carefully consider whether trading or holding crypto/digital assets is suitable for you in light of your financial condition. Please consult your legal/tax/investment professional for questions about your specific circumstances. Information (including market data and statistical information, if any) appearing in this post is for general information purposes only. While all reasonable care has been taken in preparing this data and graphs, no responsibility or liability is accepted for any errors of fact or omission expressed herein.
+
+Digital Assets subject to volatility and not insured. Not financial/investment advice. Not all products and services offered in all regions. Exclusions and T&Cs apply.
+
+© 2026 OKX. This article may be reproduced or distributed in its entirety, or excerpts of 100 words or less of this article may be used, provided such use is non-commercial. Any reproduction or distribution of the entire article must also prominently state: “This article is © 2026 OKX and is used with permission.” Permitted excerpts must cite to the name of the article and include attribution, for example “Article Name, [author name if applicable], © 2026 OKX.” Some content may be generated or assisted by artificial intelligence (AI) tools. No derivative works or other uses of this article are permitted.
+Expand
+A market that never closes
+How the TSV works
+Getting started
+Related articles
+View more
+What You Unlock as an Accredited Investor on OKX Singapore
+This article is relevant only to users of OKX Singapore. Accredited Investor Benefits Your assets, spending and trading could reward you more. As an Accredited Investor with OKX Singapore, you can ac
+Nov 26, 2026
+How to get +2% extra cashback on your Black Friday spend
+Earn 2% extra in cashback till 30 November. Black Friday is nearly here. Whether you’re picking up gifts, booking a winter trip or finally buying something that’s been sitting in your basket, the pur
+Nov 25, 2026
+Everyone Can Take a View on Anthropic: Watch Its Valuation Before It Lists
+Anthropic launched its much anticipated IPO roadshow last week. It's offering 825 million Class A shares at $70 to $78 each and plans to list on Nasdaq under the ticker ANT. The question is, how accur
+Nov 16, 2026
+Anthropic stock: IPO date and how to trade before the listing
+Anthropic has filed for an IPO, bringing the company behind Claude a step closer to the stock market. If you’re following Anthropic stock, there are still important details to come, including the offe
+Nov 11, 2026
+Digital Securities are Coming to OKXICE TSV, with 70+ Assets to be Listed
+Beginning November 23, eligible U.S. customers will be able to trade digital securities around the clock through the OKXICE Tokenized Securities Venue (TSV), directly in the OKX app. More than 70 asse
+Nov 11, 2026
+What is Bitcoin? A Simple Explanation for Beginners
+In today's digital world, you've almost certainly heard of Bitcoin. It's a topic that appears in headlines, financial news, and conversations about the future of money. But what exactly is it? To many
+Oct 24, 2025
+©2017 - 2026 OKX.COM
+English/EUR
+More about OKX
+About us
+Candidate Privacy Notice
+Careers
+Contact us
+Terms of Service
+Terms of Service (Derivatives)
+Privacy Notice
+OKX EU Disclosures
+OEM Disclosures
+Conflicts of interest disclosure
+Whistleblower notice
+Law enforcement
+OKX app
+Cookie preferences
+Products
+Buy crypto
+P2P trading
+Convert
+Trade
+Earn
+Trading bots
+All cryptocurrencies
+Learn
+TradingView
+X-RWA
+Outcome markets
+Stock price
+Services
+Affiliate
+API
+Historical market data
+CEX fee schedule
+Listing application
+P2P Merchant application
+Support
+Support center
+Channel verification
+Announcements
+Connect with OKX
+Buy crypto
+Buy USDC
+Buy Bitcoin
+Buy Ethereum
+Buy ADA
+Buy Solana
+Buy Litecoin
+Buy XRP
+Crypto calculator
+BTC to USD
+ETH to USD
+USDC to USD
+SOL to USD
+XRP to USD
+PI to USD
+Trade
+BTC USDC
+ETH USDC
+LTC USDC
+SOL USDC
+XRP USDC
+Bitcoin price
+Ethereum price
+Pi Network price
+Solana price
+XRP price
+Bitcoin price prediction
+Ethereum price prediction
+XRP price prediction
+Pi Network price prediction
+How to buy crypto
+How to buy Bitcoin
+How to buy Ethereum
+How to buy Solana
+How to buy Pi Network
+Trade on the go with OKX
+Register
+Scan to download OKX app
+Community
+OKX Europe Limited, a Maltese limited liability company, is licensed by the Malta Financial Services Authority (“MFSA”) as a Crypto-Asset Service Provider under Regulation (EU) 2023/1114 on Markets in Crypto-Assets (“MiCA”), as implemented in Malta by the Markets in Crypto-Assets Act, Chapter 647. It is authorised to provide: custody and administration of crypto-assets; operation of a crypto-asset trading platform; exchange of crypto-assets for funds or other crypto-assets; execution, reception and transmission of orders; placing of crypto-assets; portfolio management; and transfer services for crypto-assets. OKX Europe Limited is also licensed and regulated by the MFSA as a financial institution under the Financial Institutions Act, Chapter 376, to provide services enabling cash to be placed on and withdrawn from payment accounts and to execute payment transactions by direct debit, payment card or similar device, and credit transfer, including standing orders
+Chat with us

@@ -1,0 +1,245 @@
+{
+ "raiz-web": {
+  "url": "https://raiz.finance/",
+  "horaUtc": "2026-11-26T22:12:39Z",
+  "http": 200,
+  "archivo": "fuentes/raiz-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "9eb0988b0e09b9fc8f3b262b0354078f9f0ba23707d7a95a7cd98621d837b0ef"
+ },
+ "tokeniza-web": {
+  "url": "https://tokeniza.com.br/",
+  "horaUtc": "2026-11-26T22:15:40Z",
+  "http": 200,
+  "archivo": "fuentes/tokeniza-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "90132f3c9884beb243c81e5b41c14b5528bf93735acd29e406d3779218c10174"
+ },
+ "tokeniza-invista": {
+  "url": "https://tokeniza.com.br/invista/",
+  "horaUtc": "2026-11-26T22:12:39Z",
+  "http": 200,
+  "archivo": "fuentes/tokeniza-invista.txt",
+  "cookiesAceptadas": null,
+  "sha256": "b04a0ef502e141791987105729db565948d1dd39de0c2c084362b4b4f1c23a8c"
+ },
+ "etherfuse-web": {
+  "url": "https://etherfuse.com/es",
+  "horaUtc": "2026-11-26T22:12:39Z",
+  "http": 200,
+  "archivo": "fuentes/etherfuse-web.txt",
+  "cookiesAceptadas": "Continuar a agendar\n→",
+  "sha256": "683ec83f8b7a8dfaf64350e8c0c3ec984daf61cf6d7c8d5677d07be5259e2bcf",
+  "urlPedida": "https://etherfuse.com/"
+ },
+ "hator-web": {
+  "url": "https://hatorsecurities.com/",
+  "horaUtc": "2026-11-26T22:12:48Z",
+  "http": 200,
+  "archivo": "fuentes/hator-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "870b65e990ac342dedde3109c50ad1bb5bce7130f8fe0477f3fbe272a866aaf1"
+ },
+ "realtokn-inversores": {
+  "url": "https://www.realtokn.com/en/investors.html",
+  "horaUtc": "2026-11-26T22:13:34Z",
+  "http": 200,
+  "archivo": "fuentes/realtokn-inversores.txt",
+  "cookiesAceptadas": "Accept",
+  "sha256": "6a585a23c14e92c2a745eee9ce761b4caf6b5640b713c4d8fc202ace50e224ad"
+ },
+ "bloktok-web": {
+  "url": "https://www.bloktok.io/",
+  "horaUtc": "2026-11-26T22:13:38Z",
+  "http": 200,
+  "archivo": "fuentes/bloktok-web.txt",
+  "cookiesAceptadas": "Aceptar todas",
+  "sha256": "a82177471dd5e8dac8ab8b55d0b21add6ccdf79a22284737eee8e9d3d0922586"
+ },
+ "bit2me-stx-cnmv": {
+  "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+  "horaUtc": "2026-11-26T22:12:51Z",
+  "http": 200,
+  "archivo": "fuentes/bit2me-stx-cnmv.txt",
+  "cookiesAceptadas": null,
+  "sha256": "6b918b25d140dbcc60c1458812d27d04c1a327d52ae9e56d7a92404471577871"
+ },
+ "assetera-web": {
+  "url": "https://www.assetera.com/",
+  "horaUtc": "2026-11-26T22:12:53Z",
+  "http": 200,
+  "archivo": "fuentes/assetera-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "0e59364bd467a9305dffcc0452f3ef8b48242c1f639e87848e24c6d41e1af039"
+ },
+ "estating-web": {
+  "url": "https://www.estating.com/",
+  "horaUtc": "2026-11-26T22:12:58Z",
+  "http": 200,
+  "archivo": "fuentes/estating-web.txt",
+  "cookiesAceptadas": "Accept All",
+  "sha256": "b506e717ea8280465c45887568384f38c9e3541826a71e9e977e2cfc3c325d6b"
+ },
+ "estating-alianza": {
+  "url": "https://www.estating.com/press-releases/estating-and-reental-sign-strategic-partnership-connecting-institutional-infrastructure-and-tokenised-investment-rails",
+  "horaUtc": "2026-11-26T22:16:52Z",
+  "http": 200,
+  "archivo": "fuentes/estating-alianza.txt",
+  "cookiesAceptadas": null,
+  "sha256": "676d9cb68ca4e558ae02fccb353adaf6febafe2a5d64ba6eb81f2c7b12006599"
+ },
+ "seturion-web": {
+  "url": "https://group.boerse-stuttgart.com/en/seturion/",
+  "horaUtc": "2026-11-26T22:13:49Z",
+  "http": 200,
+  "archivo": "fuentes/seturion-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "1f1dd1defca995eb7b6cbfa0c5f25138804cafbfdf307a39d54bcd89ea7b273f",
+  "urlPedida": "https://www.seturion.com/"
+ },
+ "digishares-web": {
+  "url": "https://digishares.io/",
+  "horaUtc": "2026-11-26T22:13:46Z",
+  "http": 200,
+  "archivo": "fuentes/digishares-web.txt",
+  "cookiesAceptadas": "Accept all",
+  "sha256": "be6e82a4f29cc7e02acaee7ccb11742cc07be24baf654a862dbac3fca491e5f1"
+ },
+ "ctrlalt-web": {
+  "url": "https://ctrl-alt.co/",
+  "horaUtc": "2026-11-26T22:13:41Z",
+  "http": 200,
+  "archivo": "fuentes/ctrlalt-web.txt",
+  "cookiesAceptadas": "Allow all",
+  "sha256": "327ff386955f9eb23813ff6986e1756e02ebd689607bb5d1ffaf8e48852f8e02"
+ },
+ "digift-web": {
+  "url": "https://www.digift.io/",
+  "horaUtc": "2026-11-26T22:13:02Z",
+  "http": 200,
+  "archivo": "fuentes/digift-web.txt",
+  "cookiesAceptadas": "Accept All",
+  "sha256": "55ee0fe8075a509db555bc04adaa1ef577ac450fad64a93c332aca7b8edc1e7e"
+ },
+ "sdax-listados": {
+  "url": "https://www.sdax.co/listings/",
+  "horaUtc": "2026-11-26T22:13:03Z",
+  "http": 200,
+  "archivo": "fuentes/sdax-listados.txt",
+  "cookiesAceptadas": null,
+  "sha256": "ab2e3fa2093de33d80cb5611bffc273340c67fad31102341b22689d38332c656"
+ },
+ "terazo-web": {
+  "url": "https://www.terazo.network/",
+  "horaUtc": "2026-11-26T22:15:50Z",
+  "http": 200,
+  "archivo": "fuentes/terazo-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "543fbd01b2460fc42655f4a9aa4ec37037fb19bb52981e2d8fc7f27d58ddcec6"
+ },
+ "terazo-oryx": {
+  "url": "https://www.terazo.network/invest-in-oryx",
+  "horaUtc": "2026-11-26T22:13:07Z",
+  "http": 200,
+  "archivo": "fuentes/terazo-oryx.txt",
+  "cookiesAceptadas": null,
+  "sha256": "d030d5bbe8f74d4f192cb2accf48f2653d510bc36b6c03133477c61605cdf040"
+ },
+ "tokinvest-vara": {
+  "url": "https://www.vara.ae/en/licenses-and-register/public-register/tokinvest-dmcc/",
+  "horaUtc": "2026-11-26T22:13:09Z",
+  "http": 200,
+  "archivo": "fuentes/tokinvest-vara.txt",
+  "cookiesAceptadas": null,
+  "sha256": "fd610fd5c89a4564af50e66565c393a9d64c2beb17311b0c1d01e503956f0a24"
+ },
+ "tokinvest-web": {
+  "url": "https://tokinvest.capital/",
+  "horaUtc": "2026-11-26T22:18:30Z",
+  "http": 200,
+  "archivo": "fuentes/tokinvest-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "0f4b0f79c5b25661a34b72b1ec0a1e7ee72fa9c824edee0d1c37eeaefee84a45"
+ },
+ "prypco-mint": {
+  "url": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint",
+  "horaUtc": "2026-11-26T22:13:15Z",
+  "http": 200,
+  "archivo": "fuentes/prypco-mint.txt",
+  "cookiesAceptadas": null,
+  "sha256": "ec15b1733aaf5ef7750ac9f55561ac1010cdfa537abbdbf744f593413a0c0097"
+ },
+ "mesh-sobre": {
+  "url": "https://www.mesh.trade/about-us/",
+  "horaUtc": "2026-11-26T22:15:03Z",
+  "http": 200,
+  "archivo": "fuentes/mesh-sobre.txt",
+  "cookiesAceptadas": null,
+  "sha256": "9fce86c73c2214d166af06cf18028b7c598ae9d4f3c2bd3f78f3589def961f42"
+ },
+ "mesh-bcfs": {
+  "url": "https://www.mesh.trade/im/bcfs/",
+  "horaUtc": "2026-11-26T22:15:03Z",
+  "http": 200,
+  "archivo": "fuentes/mesh-bcfs.txt",
+  "cookiesAceptadas": null,
+  "sha256": "e9afab3a797dc9aa55e1f8d1ff59b078e293c4610f4944d15c6934172127a3a2"
+ },
+ "oaksvale-web": {
+  "url": "https://oaksvale.com/",
+  "horaUtc": "2026-11-26T22:13:16Z",
+  "http": 200,
+  "archivo": "fuentes/oaksvale-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "0d7f30a971ed126a2f42ff6d745470ca06af936617f51fbb407e09c461c03a50"
+ },
+ "cradle-web": {
+  "url": "https://cradlemarkets.com/",
+  "horaUtc": "2026-11-26T22:13:18Z",
+  "http": 200,
+  "archivo": "fuentes/cradle-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "7c2e07dd28880d3363583fee2d4540f44e9b6d4651e95d2d4ac0ca4953901c8c"
+ },
+ "shard-web": {
+  "url": "https://shard.africa/",
+  "horaUtc": "2026-11-26T22:13:53Z",
+  "http": 200,
+  "archivo": "fuentes/shard-web.txt",
+  "cookiesAceptadas": "Accept all",
+  "sha256": "6109b123b160a0b919c0c6b1a5ce490174450b72e65edb7efda34acafa9e8b72"
+ },
+ "luxivana-web": {
+  "url": "https://www.luxivana.com/",
+  "horaUtc": "2026-11-26T22:13:24Z",
+  "http": 200,
+  "archivo": "fuentes/luxivana-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "159f5b5ccb55d85680f8199d81e6adb645cebc67aa0305b5efc60ab3ec5dc614"
+ },
+ "tangiblex-web": {
+  "url": "https://www.tangiblex.com.au/",
+  "horaUtc": "2026-11-26T22:13:56Z",
+  "http": 200,
+  "archivo": "fuentes/tangiblex-web.txt",
+  "cookiesAceptadas": null,
+  "sha256": "6cd7e918067d03a1672c8f078e1f0f692ff96232b571c43ff38c7c8e6cbb6fa0"
+ },
+ "caliber-nota": {
+  "url": "https://www.caliberco.com/caliber-goes-live-with-tokenization-of-three-more-real-estate-offerings/",
+  "horaUtc": "2026-11-26T22:13:26Z",
+  "http": 200,
+  "archivo": "fuentes/caliber-nota.txt",
+  "cookiesAceptadas": "Accept",
+  "sha256": "867721183c1edc6cc7e1703f163f55dc88170c46002d6726e7a07b3f8f66ed9f",
+  "redaccion": "Copia del texto visible con un cambio: el nombre, teléfono y correo de los contactos de prensa e inversores se sustituyen por una nota (datos personales que no se guardan). El resto, tal cual."
+ },
+ "okxice-nota": {
+  "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+  "horaUtc": "2026-11-26T22:13:27Z",
+  "http": 200,
+  "archivo": "fuentes/okxice-nota.txt",
+  "cookiesAceptadas": "Accept All Cookies",
+  "sha256": "184275f0696dbec67644b8ba73e39bc51e6a66e11f0c95c13985ed9afa09e324"
+ }
+}
