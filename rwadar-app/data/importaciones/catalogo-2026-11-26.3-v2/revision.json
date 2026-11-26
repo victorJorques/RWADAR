@@ -1,0 +1,52 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "e74636ea-b683-d40c-18dd-edb788b7ded8",
+  "hash": "e74636eab683d40c18ddedb788b7ded8c6e9d266cc11f8274e7d7c201ce362fd",
+  "revisionAnterior": "4601a164-0884-8198-2e8a-23998e4e3120",
+  "hashRevisionAnterior": "4601a164088481982e8a23998e4e312086955b88b3aef86b5de292506396e241",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-26.3-v2/lectura-publica/",
+  "etiqueta": "2026-11-26.3",
+  "fechaRadar": "2026-11-26",
+  "revisionDocumental": "2026-11-26",
+  "plataformas": 32,
+  "ofertas": 32,
+  "colecciones": {
+    "principales": 17,
+    "secundario": 13,
+    "en_camino": 2
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 11,
+  "ofertasAltas": [
+    "tohkn-iber1",
+    "tohkn-mmlti1",
+    "tohkn-rncrrev",
+    "liqi-creditos-empresas",
+    "finexity-bono-2026-2030-serie-b",
+    "groma-real-estate-trust",
+    "securitize-hinc",
+    "blackrock-hkd-digital-liquidity",
+    "amundi-core-stoxx-europe-600-tokenizada",
+    "franklin-onchain-euro-liquidity",
+    "alterna-bono-digital-mitsui"
+  ],
+  "plataformasAltas": [
+    "alterna",
+    "amundi",
+    "blackrock",
+    "finexity",
+    "groma",
+    "liqi",
+    "tohkn"
+  ],
+  "retiradas": 0,
+  "tablasPublicas": [
+    "public.regiones",
+    "public.plataformas"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

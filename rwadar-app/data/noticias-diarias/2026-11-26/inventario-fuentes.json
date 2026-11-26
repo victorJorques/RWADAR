@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "fecha": "2026-11-26",
+  "generado": "2026-11-26T20:17:01.624Z",
+  "fuentes": [
+    {
+      "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-streamlines-approval-of-non-traditional-retail-funds",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 853817,
+      "sha256": "32d883b5ee72ce41074c724f558d57cafb88d9fcbe7b3de878705e68d81cbae6",
+      "horaUtc": "2026-11-26T20:16:58.647Z",
+      "error": null
+    },
+    {
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 82055,
+      "sha256": "e5a97585f6d118cc05f0668c148fbd916a2f0ffd8c1d1f5f38b2b07281817f94",
+      "horaUtc": "2026-11-26T20:16:58.713Z",
+      "error": null
+    },
+    {
+      "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 9449,
+      "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
+      "horaUtc": "2026-11-26T20:16:58.714Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 177715,
+      "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+      "horaUtc": "2026-11-26T20:16:58.715Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 101601,
+      "sha256": "7b3f41feb2917d1c0da5f1fb9867941e7020780678e1989ad65cd9f179aea957",
+      "horaUtc": "2026-11-26T20:16:58.718Z",
+      "error": null
+    },
+    {
+      "url": "https://www.gold.org/news-and-events/press-releases/world-gold-council-facilitates-first-live-transactions-using-pooled",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 71752,
+      "sha256": "e26b45225290301883d8a44b901952af9eecd61343f6f3b97d963f2509ec2fb6",
+      "horaUtc": "2026-11-26T20:16:58.721Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 105540,
+      "sha256": "04568b7fbc088a9fd1deea64507a999710fa65cfccbcc2583040d14686c8e854",
+      "horaUtc": "2026-11-26T20:17:01.485Z",
+      "error": null
+    },
+    {
+      "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 2357,
+      "sha256": "ae112d1aeb327651ae4f54f04afbef06947cdc6821efc4bea4140b555006e585",
+      "horaUtc": "2026-11-26T20:16:58.722Z",
+      "error": null
+    }
+  ]
+}

@@ -167,6 +167,83 @@
    "encuadre": "60% 55%",
    "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
    "prompt": "Generic Parisian financial district street at early morning with cream limestone Haussmann-style office buildings, wrought iron balconies, soft golden sunrise light, wet cobblestones, empty sidewalk, no signage, no logos, no text, no flags"
+  },
+  "tohkn-iber1": {
+   "modelo": "realvisxl",
+   "semilla": 41,
+   "encuadre": "70% 55%",
+   "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
+   "prompt": "modern plastic recycling plant in Central America, clean white industrial hall with neat bales of sorted plastic bottles in the yard, green volcano and tropical trees behind, golden hour"
+  },
+  "tohkn-mmlti1": {
+   "modelo": "realvisxl",
+   "semilla": 43,
+   "encuadre": "70% 55%",
+   "concepto": "una pequeña oficina de servicios financieros en una avenida con palmeras, no la de la empresa",
+   "prompt": "small modern two-storey office building with white facade and large glass storefront on a quiet palm-lined avenue in San Salvador, warm interior lights at dusk, tidy pavement"
+  },
+  "tohkn-rncrrev": {
+   "modelo": "realvisxl",
+   "semilla": 47,
+   "encuadre": "70% 55%",
+   "concepto": "un condominio de casas nuevas con jardines tropicales, no el del proyecto",
+   "prompt": "new gated residential condominium of modern two-storey houses with white and warm grey facades, tropical gardens and young palm trees, San Salvador volcano in the background, warm late afternoon light"
+  },
+  "liqi-creditos-empresas": {
+   "modelo": "realvisxl",
+   "semilla": 53,
+   "encuadre": "70% 55%",
+   "concepto": "una calle de pequeños negocios en una ciudad de Brasil, no de las empresas que piden el crédito",
+   "prompt": "tree-lined street of low-rise commercial buildings with small workshops and shops in a Brazilian city, Sao Paulo skyline in the far distance, soft morning light, clean pavement"
+  },
+  "finexity-bono-2026-2030-serie-b": {
+   "modelo": "realvisxl",
+   "semilla": 59,
+   "encuadre": "70% 55%",
+   "concepto": "edificios de oficinas de ladrillo junto a un canal de Hamburgo, no los de la empresa",
+   "prompt": "historic red-brick warehouse office buildings along a calm canal in Hamburg at blue hour, warm windows reflected in the water, small iron bridge"
+  },
+  "groma-real-estate-trust": {
+   "modelo": "realvisxl",
+   "semilla": 61,
+   "encuadre": "70% 55%",
+   "concepto": "edificios de pisos de ladrillo en una calle de Boston, no los del fondo",
+   "prompt": "classic red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, golden afternoon light, quiet sidewalk"
+  },
+  "securitize-hinc": {
+   "modelo": "realvisxl",
+   "semilla": 67,
+   "encuadre": "70% 50%",
+   "concepto": "el distrito financiero de Manhattan desde el agua",
+   "prompt": "Lower Manhattan financial district skyline seen from the water at blue hour, glass towers with warm lit windows, calm harbour reflections"
+  },
+  "blackrock-hkd-digital-liquidity": {
+   "modelo": "realvisxl",
+   "semilla": 71,
+   "encuadre": "70% 50%",
+   "concepto": "el puerto de Victoria y los rascacielos de Hong Kong",
+   "prompt": "Victoria Harbour and the Hong Kong island skyline at blue hour, mountains behind, glass skyscrapers with warm lights reflected on calm water"
+  },
+  "amundi-core-stoxx-europe-600-tokenizada": {
+   "modelo": "realvisxl",
+   "semilla": 73,
+   "encuadre": "70% 50%",
+   "concepto": "el distrito financiero de Fráncfort junto al río Meno",
+   "prompt": "Frankfurt am Main financial district skyline across the river Main at dusk, modern office towers with warm lights, calm river reflections, old bridge in the foreground"
+  },
+  "franklin-onchain-euro-liquidity": {
+   "modelo": "realvisxl",
+   "semilla": 79,
+   "encuadre": "70% 55%",
+   "concepto": "el casco antiguo de la ciudad de Luxemburgo sobre el valle",
+   "prompt": "Luxembourg City old town on sandstone cliffs above the green Alzette valley, historic stone houses and church spires, golden hour light"
+  },
+  "alterna-bono-digital-mitsui": {
+   "modelo": "realvisxl",
+   "semilla": 83,
+   "encuadre": "70% 55%",
+   "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
+   "prompt": "Marunouchi business district in Tokyo at dusk, modern glass office towers along a wide tree-lined avenue with ginkgo trees, warm lit windows, empty clean street"
   }
  }
 }

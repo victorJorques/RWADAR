@@ -1758,7 +1758,9 @@ const emisionValida=e=>e&&typeof e==='object'&&String(e.t||'').trim()&&
  String(e.pl||'').trim()&&Object.hasOwn(CATMETA,String(e.cat||''))&&urlHttps(e.url)&&
  /^\d{4}-\d{2}-\d{2}$/.test(String(e.ver||''));
 
-let emiOrden='cierra',emiCat='',emiColeccion='principales';
+/* Orden de Ofertas (26/11/2026, orden de Víctor: «pon las nuevas en primera portada tanto en inicio como en ofertas»):
+   por defecto, las más nuevas primero (fecha de alta). Sin catálogo V2 no hay fechas de alta y se vuelve a «cierra». */
+let emiOrden='nuevas',emiCat='',emiColeccion='principales';
 function emisionesVisibles(){
  const estados=new Set(['abierta','programada','en_estudio']);
  const actuales=EMI.filter(emisionValida).filter(e=>estados.has(e.est||'abierta')).filter(e=>{const d=diasHasta(e.cierra);return d===null||d>=0});
@@ -3026,6 +3028,7 @@ function activaControlesEscaparateLocal(v2=false){
  activarDetallesOfertas();
  if(v2)return;
  const orden=document.getElementById('emiOrden');
+ if(emiOrden==='nuevas')emiOrden='cierra';
  if(orden)orden.innerHTML='<option value="cierra">Las más al día primero</option><option value="rent">Rentabilidad publicada (mayor primero)</option><option value="min">Mínimo en euros (menor primero)</option><option value="az">Empresa (A-Z)</option>';
  const fechaOferta=ESCAPARATE_LOCAL&&ESCAPARATE_LOCAL.fuente&&ESCAPARATE_LOCAL.fuente.actualizacionLocal
   ?ESCAPARATE_LOCAL.fuente.actualizacionLocal.verificadoEl:'';

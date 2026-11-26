@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "pase": 1,
+  "fecha": "2026-11-26",
+  "edicionSha256": "20524dd759474fa1ba9a9e5f98caec36e69436e8396c8da76f13aa2f12898a57",
+  "veredicto": "conforme",
+  "hoyCorrecto": true,
+  "faltaAlgo": [],
+  "correcciones": [],
+  "noticias": [
+    {
+      "id": "singapur-mas-fondos-minoristas-no-tradicionales",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-streamlines-approval-of-non-traditional-retail-funds",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:13:02Z",
+        "sha256": "b269be634a362a7f1dd8e749b0cf851a30860a5a59fe629085c71b9dcabe1577",
+        "caida": false
+      },
+      "literal": "The process would now take about three months, instead of six to twelve months under the previous framework. Authorisation of subsequent funds of the same type will take three weeks.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.713Z",
+        "sha256": "e5a97585f6d118cc05f0668c148fbd916a2f0ffd8c1d1f5f38b2b07281817f94",
+        "caida": false
+      },
+      "literal": "The Hong Kong Monetary Authority (HKMA) announced today (25 November) the official launch of CMU Digital Asset Platform (CMU DAP).",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "sbi-solana-global-empieza-operar-japon",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.714Z",
+        "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
+        "caida": false
+      },
+      "literal": "they have completed a series of agreements for the transition to a new joint venture structure among the three parties, and that SBI R3 Japan Co., Ltd. has commenced full-scale operations as “SBI Solana Global Co., Ltd.”",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.715Z",
+        "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+        "caida": false
+      },
+      "literal": "25 de noviembre de 2026. La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales sobre las entidades no registradas (FSMA - BELGICA).",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.718Z",
+        "sha256": "7b3f41feb2917d1c0da5f1fb9867941e7020780678e1989ad65cd9f179aea957",
+        "caida": false
+      },
+      "literal": "ECB proposes framework for working with market participants on DLT standardisation. 24 November 2026",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "world-gold-council-primeras-operaciones-oro-digital",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.gold.org/news-and-events/press-releases/world-gold-council-facilitates-first-live-transactions-using-pooled",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.721Z",
+        "sha256": "e26b45225290301883d8a44b901952af9eecd61343f6f3b97d963f2509ec2fb6",
+        "caida": false
+      },
+      "literal": "HSBC, J.P. Morgan and StoneX have traded, settled and used Pooled Gold Interests (PGI) as collateral in live, legally binding wholesale-market transactions for the first time.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:17:01.485Z",
+        "sha256": "04568b7fbc088a9fd1deea64507a999710fa65cfccbcc2583040d14686c8e854",
+        "caida": false
+      },
+      "literal": "ECB expands acceptance of DLT-based assets as eligible Eurosystem collateral",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+        "http": 200,
+        "horaUtc": "2026-11-26T20:16:58.722Z",
+        "sha256": "ae112d1aeb327651ae4f54f04afbef06947cdc6821efc4bea4140b555006e585",
+        "caida": false
+      },
+      "literal": "Franklin Templeton Launches Tokenised Euro Money Market Fund",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    }
+  ]
+}

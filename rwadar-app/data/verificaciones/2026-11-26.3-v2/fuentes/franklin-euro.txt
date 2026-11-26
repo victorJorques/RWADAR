@@ -1,0 +1,140 @@
+Franklin Templeton Launches Tokenised Euro Money Market Fund | Franklin Templeton
+Skip to content
+Skip to content
+
+Institutional
+Contact Us
+About Us
+Investment Managers
+Capabilities
+Insights
+Search Franklin Templeton
+23 NOVEMBER 2026
+Franklin Templeton Launches Tokenised Euro Money Market Fund
+
+New Franklin OnChain Euro Liquidity Fund extends established Benji suite into euro-denominated money market investments
+
+Luxembourg – 23 November 2026 – Franklin Templeton1, a global investment leader and pioneer in digital assets technology, today announced the launch of the Franklin OnChain Euro Liquidity Fund2, a Luxembourg-registered UCITS SICAV under its Franklin Templeton OnChain Funds (FTOCF) umbrella. The new Fund will be available to retail investors in Austria, France, Germany, Luxembourg, the Netherlands, Portugal and Spain, and to institutional investors in Italy and Switzerland.
+
+The Franklin OnChain Euro Liquidity Fund is a euro-denominated, short-term Low Volatility Net Asset Value (LVNAV) money market fund, designed for investors seeking capital preservation, liquidity and returns in line with euro money market rates.
+
+The new Fund’s objective is to maintain capital value while seeking to produce a return to the investor in line with Euro money market rates and to maintain a low volatility Net Asset Value of EUR 1 per Share. It will aim to achieve this by investing in a diversified portfolio of high-quality eligible money market instruments denominated in euro or fully hedged into euro. These include short-term debt securities, commercial paper and certificates of deposit alongside eligible deposits and reverse repurchase agreements.
+
+The launch marks a further step in Franklin Templeton's expansion of its digital assets capabilities in Europe as investors increasingly explore how tokenisation can support liquidity management, asset transfers and other institutional financial workflows. The new Fund complements the Luxembourg-domiciled Franklin OnChain U.S. Government Liquidity Fund which launched in February 2025.
+
+Matthew Harrison, Head of EMEA and Americas (ex-US), Franklin Templeton commented: “European investors are looking for more choice in how they access and manage their liquidity. The launch of the Franklin OnChain Euro Liquidity Fund extends our Benji offering into euros, bringing our money market expertise to investors in their local currency. By combining the familiarity and established investment disciplines of a regulated euro money market fund with tokenised ownership, we are making this technology relevant to the way investors manage their liquidity today and supporting the evolving needs of our clients across Europe.”
+
+Combining traditional liquidity management with blockchain technology
+
+Through Franklin Templeton's proprietary Benji technology platform, the Fund uses blockchain-integrated transfer agency infrastructure to record share ownership and transactions enabling eligible investors to transfer fund shares directly between approved digital wallets.
+
+Unlike traditional fund structures, where income is often distributed periodically, the Fund will distribute and reinvest income daily, 365 days a year. Its leading capabilities include 24/7 peer-to-peer (P2P) transfers of shares between approved wallets and Intraday Yield, which allocates income accrued by the second according to how long investors hold shares during a NAV cycle, including when shares are transferred.
+
+These capabilities are designed for investors seeking short-term euro money market exposure alongside blockchain-enabled ownership and transfer capabilities. The Fund can support corporate treasury management, institutional funding arrangements and intercompany transfers. Subject to regulatory and operational requirements, potential applications also include collateral and settlement workflows.
+
+Sandy Kaul, Head of Innovation, Franklin Templeton commented: “Tokenisation is about much more than putting traditional investment products on a blockchain. It has the potential to fundamentally change how financial assets are held, transferred and used across the financial ecosystem.
+
+“With the Franklin OnChain Euro Liquidity Fund we're bringing this technology into euro liquidity management, enabling investors to transfer fund shares between approved wallets while income is allocated according to how long those shares are held. This is a practical example of how tokenisation can make financial assets more flexible and open up new possibilities for institutional liquidity management.”
+
+Building on Franklin Templeton's Benji platform
+
+The Fund is powered by the Benji Technology Platform, Franklin Templeton’s proprietary blockchain-integrated stack, designed to facilitate trading, management, and administration of token-based investments. Using this platform, Franklin Templeton launched the world’s first U.S. registered mutual fund in 2021 using blockchain-integrated technology to process transactions and record share ownership. The platform is available to clients via several tokenized money market funds launched by Franklin Templeton for a variety of global institutional and retail use cases - fully on-chain, without parallel recordkeeping.
+
+Franklin Templeton is a pioneer in digital asset investing and blockchain innovation, combining tokenomics research, data science, and technical expertise to deliver cutting-edge solutions since 2018.
+
+ENDS
+
+Contacts:
+
+Saira Khan
+
+Franklin Templeton
+
+Cannon Place, 78 Cannon Street
+
+London EC4N 6HL
+
+Tel: +44 20 7073 8644
+
+Email: saira.khan@franklintempleton.co.uk
+
+	
+
+Shelly Durrant
+
+Franklin Templeton
+
+Cannon Place, 78 Cannon Street
+
+London EC4N 6HL
+
+Tel: +44 20 7073 8521
+
+Email: shelly.durrant@franklintempleton.co.uk
+
+Notes to Editors: 
+
+This is a marketing communication. Please refer to the prospectus of the UCITS and to the KID before making any final investment decisions.
+
+1. Franklin Templeton is a trusted investment partner, delivering tailored solutions that align with clients’ strategic goals. With deep portfolio management expertise across public and private markets, we combine investment excellence with cutting-edge technology. Since our founding in 1947, we have empowered clients through strategic partnership, forward-looking insights, and continuous innovation – providing the tools and resources to navigate change and capture opportunity. With $1.81 trillion in assets under management as of October 31, 2026, Franklin Templeton operates globally in more than 35 countries.
+
+To learn more, visit franklintempleton.com and follow us on LinkedIn.
+
+Franklin Templeton, Inc. [NYSE: BEN]
+
+2. The Franklin Onchain Euro Liquidity Fund is a sub-fund of the Luxembourg-domiciled SICAV Franklin Templeton OnChain Funds (the "Fund” or “FTOCF”). The sub-fund has been duly authorised by the CSSF in accordance with the provisions of the MMFR. The value of an investment in the Fund, in contrast to a deposit, may fluctuate.
+
+In addition, the Fund is a tokenised investment vehicle natively operating on blockchain infrastructure. Shares of the Fund are issued exclusively in the form of digital tokens recorded on the relevant blockchain network. Subscriptions and redemptions can only be processed through a whitelisted wallet address, and investors must complete the required onboarding and wallet-whitelisting procedures before transacting. These operational features do not alter the rights or obligations of shareholders under Luxembourg law but reflect the Fund’s use of distributed ledger technology for the issuance and recording of shares.
+
+This marketing material is intended to be of general interest only and should not be construed as investment advice nor does it constitute legal or tax advice and it is not an offer for shares or an invitation to apply for shares of the "Fund”. For the avoidance of doubt, if you make a decision to invest, you will be buying units/shares in the Fund and will not be investing directly in the underlying assets of the Fund.
+
+The value of shares in the Fund and income received from it can go down as well as up, and investors may not get back the full amount invested. Past performance does not predict future returns. Currency fluctuations may affect the value of overseas investments. When investing in a fund denominated in a foreign currency, your performance may also be affected by currency fluctuations.
+
+Franklin Templeton ("FT") shall not be liable to any user of this document or to any other person or entity for the inaccuracy of information or any errors or omissions in its contents, regardless of the cause of such inaccuracy, error or omission. Any opinions expressed are the author's at publication date and they are subject to change without prior notice. Any research and analysis contained in this marketing material has been procured by FT for its own purposes and is provided to you only incidentally. Data from third party sources may have been used in the preparation of this document and FT has not independently verified, validated or audited such data. References to particular industries, sectors or companies are for general information and are not necessarily indicative of the Fund's holding at any one time.
+
+No shares of the Fund may be directly or indirectly offered or sold to residents of the United States of America. Shares of the Fund are not available for public distribution in all jurisdictions and prospective investors should consult their financial advisor before deciding to invest. The Fund may invest in shares of other short-term MMFs which may entail specific risks more fully described in the Fund's Prospectus and, where available, in the relevant KID or any other relevant offering document.
+
+Subscriptions to shares of the Fund can only be made on the basis of the current Prospectus of the Fund, and, where available, the relevant KID (or any other relevant offering document), accompanied by the latest available audited annual report and the latest semi-annual report if published thereafter. These documents can be found on our website at www.ftidocuments.com, obtained, free of charge, from your local FT representative or can be requested via FT's European Facilities Service which is available at https://www.eifs.lu/franklintempleton. The Fund's documents are available in English.
+
+In addition, a summary of investor rights is available from franklintempleton.lu. The summary is available in English.
+
+The sub-funds of FTOCF are notified for marketing in multiple EU Member States under the UCITS Directive. FTOCF can terminate such notifications for any share class and / or sub-fund at any time using the process contained in Article 93a of the UCITS Directive.
+
+Franklin Templeton International Services S.à r.l. – Supervised by the Commission de Surveillance du Secteur Financier - 8A, rue Albert Borschette, L-1246 Luxembourg - Tel: +352 46 66 67-1 - Fax: +352 342080 9861.
+
+CFA® and Chartered Financial Analyst® are trademarks owned by CFA Institute. Indices are unmanaged, and one cannot invest directly in an index. They do not reflect any fees, expenses or sales charges.
+
+Important data provider notices and terms available at www.franklintempletondatasources.com.
+
+Issued in Luxembourg by Franklin Templeton International Services S.à r.l.
+
+Austria/Germany: Issued in Austria and Germany by Franklin Templeton International  Services S.à r.l.,Niederlassung Deutschland, Mainzer Landstr. 16, 60325 Frankfurt/Main, franklintempleton.de, franklintempleton.at. France: Franklin Templeton International Services S.à r.l., French branch. 14 boulevard de la Madeleine, 75008 Paris France - Tél: +33 (0)1 40 73 86 00 / Fax: +352 342080 9876. Italy: Issued by Franklin Templeton International Services S.à.r.l. – Italian Branch, Corso Italia, 1 – Milan, 20122, Italy. Netherlands: Franklin Templeton International Services Sàrl, Dutch branch, NoMA House, Gustav Mahlerlaan 1212, 1081 LA, Amsterdam. Spain: Issued by Franklin Templeton International Services S.à r.l. – Spanish Branch, Professional of the Financial Sector under the Supervision of CNMV, José Ortega y Gasset 29, Madrid, Spain. Tel +34 91 426 3600. Switzerland: Issued by Franklin Templeton Switzerland Ltd, Talstrasse 41, CH-8001 Zurich. Paying agent in Switzerland is BNP Paribas Securities Services, Paris, succursale de Zurich, Selnaustrasse16, 8002 Zurich.
+
+©2026 Franklin Templeton. All rights reserved.
+
+CONTACT
+
+Franklin Templeton
+
+Shelly Durrant
+
++44 20 7073 8521
+
+This website is intended for EMEA residents.
+EMEA Institutional
+Our Company
+Why Choose Franklin Templeton
+Sustainable Investing and Stewardship
+Investment Capabilities
+Investment Strategies
+Investment Themes
+Insights
+Insights Library
+Franklin Templeton Institute
+Financial Crimes Compliance
+Privacy and Cookies for FTSI Tenants Only
+Privacy Notice
+Change Cookie Settings
+Security & Fraud Awareness
+Connect with us
+Copyright © 2026 Franklin Templeton. All Rights Reserved.

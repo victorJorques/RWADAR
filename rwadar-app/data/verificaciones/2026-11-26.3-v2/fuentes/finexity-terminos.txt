@@ -1,0 +1,183 @@
+                                                                                                                         MARKETING COMMUNICATION
+
+
+
+–       TE RM          S HE ET   ·    FIN EX IT Y          AG     B ON D      20 26 /2 03 0
+
+
+
+Bond 2026/2030
+6M Euribor + 600 bp · min. 7.00% p.a.
+FINEXITY          AG    ·   HAMBURG   ·   HRB   153232                                    ISIN     A   DE000A5GS8A5         ·   ISIN     B   DE000A5GS8B3
+
+
+
+
+                                                                                                                                        INTEREST
+VOLUME                                COUPON                                        TERM
+                                                                                                                                        DATES
+
+up to €4.5m                           6M Euribor + 6.00%                            27.11.2026 – 27.11.2030                             27.05. · 27.11.
+Series A and B together               at least 7.00% p.a., no cap                   4 years · redemption at 100%                        first on 27.05.2027
+
+
+
+
+KEY     TERMS
+
+ISSUER                           Finexity AG, Holzdamm 28–32, 20099 Hamburg (HRB 153232) · shares listed on XETRA (ISIN DE000A40ET88)
+
+INSTRUMENT                       Bearer bonds · senior, unsecured, ranking pari passu among themselves · German law
+
+SERIES                           Series A (ISIN DE000A5GS8A5 / WKN A5GS8A): global note, denomination €1,000 · Series B (ISIN
+                                 DE000A5GS8B3 / WKN A5GS8B): crypto security under the eWpG, denomination €1 · minimum subscription
+                                 €1,000 per series, issue price 100% · economically identical, each with its own terms, own KID, own body of
+                                 holders
+
+VOLUME                           Up to €4.5m aggregate principal amount for Series A and Series B together · no further subscriptions once the
+                                 amount is reached
+
+COUPON                           6M Euribor + 6.00% p.a. · reference rate floor 1.00%, hence at least 7.00% p.a. · no cap · fixing on the second
+                                 TARGET business day before each interest period (Reuters EURIBOR01), first on 25.11.2026 · calculation agent:
+                                 the issuer
+
+INTEREST · REDEMPTION            Semi-annually in arrear on 27.05. and 27.11., first on 27.05.2027 · interest accrues from 27.11.2026 for all investors ·
+                                 Act/Act (ICMA) · redemption on 27.11.2030 at 100%
+
+RISKS                            The acquisition of these securities (Series A bonds, tokenised Series B bonds) involves considerable risks. The
+                                 maximum risk is a total loss. Unsecured, no deposit protection; interest and repayment depend solely on the
+                                 solvency of Finexity AG, which is in its growth phase and currently not profitable · floating rate, at least 7.00%
+                                 p.a. · no ordinary termination right for investors, issuer call right · no liquid secondary market · Series B:
+                                 technical risks of wallet custody
+
+PAYING AGENT ·                   Series A: paying agent mwb fairtrade Wertpapierhandelsbank AG, Gräfelfing; custody Clearstream Banking AG
+REGISTER                         · Series B: paying agent the issuer; crypto securities register Cashlink Technologies GmbH; qualified crypto
+                                 custodian Tangany GmbH
+
+OFFER                            Public offer in Germany only, 06.11.2026 to 05.11.2027 · no securities prospectus · key information document per
+                                 series · may be shortened, suspended or terminated at any time, no entitlement to an allocation
+
+COSTS PER KID                    Entry costs up to 5.00% of the investment amount (distribution fee, maximum) · ongoing costs 1.25% p.a. (trail
+                                 commission for the distributor) · no issuer fees in the issue price; third-party custody and bank charges
+                                 possible · costs reduce the return
+
+USE OF PROCEEDS                  Growth and consolidation of the group, liquidity reserve – non-binding
+
+
+
+
+COUPON       BY        6M   EURIBOR       ·   EXAMPLES                             CALL²       AND     PUT
+
+6M EURIBOR                                                 COUPON P.A.             EVENT                                                                PRICE
+
+≤ 1.00% (floor)                                                      7.00%         Issuer call from 27.11.2027 / 28 / 29               103 / 101.5 / 100%
+
+2.00%                                                                8.00%         Clean-up (< 20% outstanding)                                        100.0%
+
+2.994% (02.11.2026)¹                                                8.994%         Tax reasons, any time                                               100.0%
+
+4.00%                                                               10.00%         Put on change of control (30 days)                                  101.0%
+
+
+¹ 6M Euribor of 02.11.2026 (source: EMMI) as an example; only the value on the respective fixing date is decisive – not a forecast. ² In each case plus accrued
+interest · ordinary call with 30 to 60 days' notice, in whole or in part (partial at least €100,000, pro rata) · clean-up per series, based on the aggregate
+principal amount originally issued. This overview summarises the terms and conditions; only the terms and conditions and the key information document
+of the respective series (finexity-group.com, Investor Relations, section “Anleihe 2026/2030”) and the subscription form are authoritative.
+
+
+FINEXITY           GROUP                                    MARKETING COMMUNICATION · TERM SHEET · NOVEMBER 2026                                  ·     1 / 2
+      MARKETING COMMUNICATION                    –     TE RM         S HE ET     ·    PAR T      2
+
+
+
+Creditor rights, settlement and issuer
+CREDITOR         RIGHTS         AND     COVENANTS          ·    ISSUER      LEVEL
+
+CREDITOR RIGHTS                    No ordinary termination right · termination for cause · put right on change of control at 101% plus interest, to be
+                                   exercised within 30 days of the notice
+
+EVENTS OF DEFAULT                  Non-payment after 30 days · other breach not remedied within 60 days · cross default · insolvency, cessation of
+                                   payments, liquidation
+
+CHANGE OF CONTROL                  Acquisition of more than 50% of the voting rights or sale of all or substantially all assets · exception: holding
+                                   without a majority shareholder
+
+NEGATIVE PLEDGE                    No security for capital market indebtedness without equal and rateable security for the bond · exceptions:
+                                   existing and statutory security, asset and acquisition financing
+
+CROSS DEFAULT                      Financial indebtedness of more than €3m in aggregate not paid when due or accelerated
+
+DISTRIBUTIONS                      Dividends, other distributions and payments on subordinated shareholder liabilities together capped at 50% of
+                                   the prior year's net income per financial year · subordinated shareholder liabilities: subordinated liabilities to
+                                   shareholders or related parties (Sec. 39 (1) no. 5 InsO)
+
+FURTHER UNDERTAKINGS               Transactions with related parties only at arm's length · no maintenance financial covenants
+
+RESOLUTIONS                        SchVG · vote without meeting · qualified majority (75%) for material amendments · separate body of holders
+                                   per series
+
+LAW                                German law · place of jurisdiction Hamburg · substitution of the issuer by a controlled company only with a
+                                   guarantee from Finexity AG
+
+
+
+SUBSCRIPTION              AND     SETTLEMENT
+
+                                SERIES A · ACCOUNT                                               SERIES B · WALLET
+
+Subscription                    Online at bond.finexity-group.com or with the subscription As Series A · the subscription automatically applies for
+                                form – directly or via tied agents                         the wallet user agreement with the crypto custodian
+
+Subscription account            Finexity AG · Commerzbank · IBAN DE83 2004 0000 0541             Same account · reference: surname, first name, place of
+                                6490 00 · BIC COBADEFFXXX · reference: surname, first            residence, “Anleihe 2026/2030 Serie B”
+                                name, place of residence, “Anleihe 2026/2030 Serie A”
+
+Value dates                     27.11.2026 (receipt by 25.11.2026, 12 noon) · 11.12. and         as Series A
+                                23.12.2026 · monthly on the 27th from 01/2027 · receipt two
+                                bank business days before the value date, otherwise the
+                                next date
+
+Accrued interest                None for value dates up to 31.12.2026 · from 2027: nominal       as Series A
+                                × rate ÷ 2 × days since interest start or last interest date ÷
+                                days in period · example 27.01.2027 at 7.0%: €11.80 per
+                                €1,000
+
+Delivery                        After receipt of payment on the value date, free of charge,      After receipt of payment and wallet opening, free of
+                                to the stated custodian bank                                     charge, into the wallet with the crypto custodian
+
+Payments                        Via the paying agent and Clearstream to the custodian            By the issuer to the bank account named by the holder ·
+                                banks                                                            record date: fifth bank business day before the payment
+                                                                                                 date
+
+Trading                         Inclusion in the open market possible – no commitment            Transferable under the eWpG · currently no liquid
+                                                                                                 secondary market
+
+KEY      FIGURES       PRO      FORMA³                                  PROFILE
+
+                                    9M 2026                2025         FINEXITY Group is building the infrastructure of the digital capital market – for
+                                                                        Europe and the UAE. Four brands cover the chain: nolivius (structuring),
+Revenue                                €7.31m            €8.19m         Nundara (register and DLT OTC), Effecta⁴ (liability umbrella, 45+ tied agents),
+                                                                        VolksInvest (investor app); 300+ tokenised bonds since 2020. Next step: own
+vs. budget / prior year                +18.8%            +15.5%
+                                                                        trading – DLT TSS licence for the EEA (application H2 2026), MTF and
+EBITDA                                −€2.46m            −€3.2m         settlement licence in the UAE (target 2028)⁵ – white label from 2030. Guidance
+                                                                        2026: revenue €9.6m, EBITDA −€3.5m (pro forma). The group is in its growth
+Infrastructure share                       75%                 73%      phase, currently not profitable; the sole debtor of the bond is Finexity AG.
+
+
+
+      Subscription: bond.finexity-group.com · terms and conditions and key information document per series: finexity-group.com, Investor
+      Relations, section “Anleihe 2026/2030” · contact: support@finexity.com · +49 40 8221 7720
+
+Prospectus notice: The information in this document is addressed exclusively to persons resident or habitually resident in the Federal Republic
+of Germany. It constitutes neither an offer to purchase or subscribe for the bonds nor an invitation to make an offer, is of a purely promotional
+nature and is not financial or other investment advice. For the assessment of the bonds only the information in the key information document
+and in the terms and conditions of the respective series is authoritative; these are published on the issuer's website (finexity-group.com, Investor
+Relations, section “Anleihe 2026/2030”), where they can be downloaded free of charge. Risks and taxes: The material risks are set out on page 1.
+Further information on risks and costs is set out in the key information document of the respective series. The tax treatment depends on the
+personal circumstances of the investor and may be subject to change in future. · ³ Preliminary, unaudited, pro forma incl. Effecta GmbH
+(corporate news of 29.10.2026); 2025 pro forma, reviewed · ⁴ Acquisition of 90.1% of Effecta GmbH subject to the BaFin ownership control
+procedure · ⁵ Subject to licensing; non-binding planning, not a forecast.
+
+FINEXITY         GROUP                                         MARKETING COMMUNICATION · TERM SHEET · NOVEMBER 2026                           ·      2 / 2
+

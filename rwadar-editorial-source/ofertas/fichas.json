@@ -1,6 +1,6 @@
 {
  "versionEsquema": 1,
- "revisadoEl": "2026-11-02",
+ "revisadoEl": "2026-11-26",
  "nota": "Una entrada por ficha. «concepto» completa la frase «Ilustración editorial de …». Las escenas están en escenas.mjs; los pasos y el lugar se comprueban contra la fuente de la ficha (sin cifras, marcas ni promesas).",
  "fichas": [
   {
@@ -296,6 +296,141 @@
     "Pides el reembolso"
    ],
    "concepto": "un fondo en euros ligado al tipo a un día del euro, representado por una calle financiera parisina genérica"
+  },
+  {
+   "slug": "tohkn-iber1",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "El Salvador",
+   "pasos": [
+    "Compras tokens de deuda",
+    "Iberplastic paga intereses cada mes",
+    "Recuperas el capital al vencimiento"
+   ],
+   "concepto": "una planta de reciclaje de plástico"
+  },
+  {
+   "slug": "tohkn-mmlti1",
+   "escena": "cartera_credito",
+   "lugar": "El Salvador",
+   "pasos": [
+    "Compras tokens de deuda",
+    "MultiMoney paga intereses cada mes",
+    "Recuperas el capital al vencimiento"
+   ],
+   "concepto": "una oficina de crédito"
+  },
+  {
+   "slug": "tohkn-rncrrev",
+   "escena": "condominio",
+   "lugar": "San Salvador · El Salvador",
+   "pasos": [
+    "Compras tokens de ingresos",
+    "Se construyen y venden las viviendas",
+    "Cobras tu parte de las ventas"
+   ],
+   "concepto": "un condominio residencial"
+  },
+  {
+   "slug": "liqi-creditos-empresas",
+   "escena": "cartera_credito",
+   "lugar": "Brasil",
+   "pasos": [
+    "Compras certificados de un tramo",
+    "La empresa devuelve el crédito",
+    "Cobras al vencimiento"
+   ],
+   "concepto": "oficinas de pequeñas empresas"
+  },
+  {
+   "slug": "finexity-bono-2026-2030-serie-b",
+   "escena": "empresa",
+   "lugar": "Hamburgo · Alemania",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras el cupón cada semestre",
+    "Recuperas el nominal al vencimiento"
+   ],
+   "concepto": "oficinas en Hamburgo"
+  },
+  {
+   "slug": "groma-real-estate-trust",
+   "escena": "edificio",
+   "op": {
+    "pisos": 3,
+    "mat": "arena",
+    "semilla": 61
+   },
+   "lugar": "Boston · EE. UU.",
+   "pasos": [
+    "Compras acciones del REIT",
+    "Los pisos se alquilan",
+    "Reparto cada trimestre"
+   ],
+   "concepto": "edificios de pisos en una ciudad de EE. UU."
+  },
+  {
+   "slug": "securitize-hinc",
+   "escena": "credito",
+   "lugar": "Nueva York · EE. UU.",
+   "pasos": [
+    "Compras participaciones del fondo",
+    "Neuberger Berman gestiona los bonos",
+    "Pides el reembolso cuando quieras"
+   ],
+   "concepto": "un distrito financiero"
+  },
+  {
+   "slug": "blackrock-hkd-digital-liquidity",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Compras participaciones tokenizadas",
+    "El fondo invierte a corto plazo en dólares de Hong Kong",
+    "Reembolsas por tu distribuidor"
+   ],
+   "concepto": "el puerto de Hong Kong"
+  },
+  {
+   "slug": "amundi-core-stoxx-europe-600-tokenizada",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "lugar": "Europa",
+   "pasos": [
+    "Compras participaciones tokenizadas",
+    "El fondo sigue a las grandes empresas europeas",
+    "Reembolsas según el fondo"
+   ],
+   "concepto": "el distrito financiero de una gran ciudad europea"
+  },
+  {
+   "slug": "franklin-onchain-euro-liquidity",
+   "escena": "tesoro",
+   "lugar": "Luxemburgo",
+   "pasos": [
+    "Fondo monetario tokenizado en euros",
+    "Aún no admite suscripciones",
+    "Se abrirá a minoristas en varios países"
+   ],
+   "concepto": "la ciudad de Luxemburgo"
+  },
+  {
+   "slug": "alterna-bono-digital-mitsui",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "lugar": "Tokio · Japón",
+   "pasos": [
+    "Haces la pre-solicitud",
+    "El tipo se fija en enero",
+    "Cobras al vencimiento"
+   ],
+   "concepto": "oficinas en Tokio"
   }
  ]
 }

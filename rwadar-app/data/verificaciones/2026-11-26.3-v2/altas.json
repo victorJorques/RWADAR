@@ -1,0 +1,2574 @@
+{
+ "fecha": "2026-11-26",
+ "region": {
+  "slug": "latinoamerica",
+  "nombre": "Latinoamérica"
+ },
+ "plataformas": [
+  {
+   "slug": "alterna",
+   "nombre": "ALTERNA (Mitsui & Co. Digital Asset Management)",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://app.alterna-z.com/offerings",
+    "aval": "La opera Mitsui & Co. Digital Asset Management, que en su web figura como intermediario financiero registrado en Japón (Kanto Local Finance Bureau, n.º 3277).",
+    "nota": "Plataforma japonesa de valores digitales del grupo Mitsui: inmuebles y, ahora, el primer bono digital de Mitsui & Co. para particulares."
+   },
+   "fuentes": [
+    {
+     "id": "alterna-ofertas",
+     "tipo": "empresa",
+     "titulo": "ALTERNA · Lista de ofertas",
+     "url": "https://app.alterna-z.com/offerings",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "alterna-ofertas": [
+     "三井物産",
+     "仮申込受付中",
+     "第3277号"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su lista de ofertas muestra dos en pre-solicitud: un bono digital de Mitsui & Co. y cuatro edificios residenciales en Tokio.",
+     "fuentes": [
+      "alterna-ofertas"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La web dice que Mitsui & Co. Digital Asset Management está registrada como intermediario financiero en Japón (n.º 3277 de la Oficina de Finanzas de Kanto). No lo hemos comprobado en el registro del supervisor japonés.",
+     "fuentes": [
+      "alterna-ofertas"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Web y documentos solo en japonés; las ofertas se dirigen a inversores en Japón. No publica qué países admite.",
+     "fuentes": [
+      "alterna-ofertas"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Productos japoneses, sin folleto ni KID europeos; la CNMV no los supervisa.",
+      "fuentes": [
+       "alterna-ofertas"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "amundi",
+   "nombre": "Amundi",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "union-europea",
+    "actor": "Emisor",
+    "acceso": "Institucional",
+    "ticket": "No aplica",
+    "cadenas": "Ethereum",
+    "web": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+    "aval": "Gestora europea que tokeniza clases de sus propios fondos con CACEIS (grupo Crédit Agricole) como agente de tokenización; el fondo sigue también en sus canales habituales.",
+    "nota": "Clases tokenizadas de fondos de Amundi: un monetario en euros y, desde el 05/11/2026, su fondo índice STOXX Europe 600."
+   },
+   "fuentes": [
+    {
+     "id": "amundi-indice",
+     "tipo": "empresa",
+     "titulo": "Amundi · «Amundi extends tokenisation to index investing» (05/11/2026)",
+     "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "amundi-indice": [
+     "tokenised share class",
+     "public Ethereum"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Amundi anuncia el 05/11/2026 la clase tokenizada de uno de sus fondos índice de acciones europeas, emitida en Ethereum con CACEIS.",
+     "fuentes": [
+      "amundi-indice"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Amundi es una gestora europea supervisada; en este anuncio no cita el registro ni el documento de la clase tokenizada, y no lo hemos comprobado.",
+     "fuentes": [
+      "amundi-indice"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "El anuncio habla de clientes institucionales y plataformas digitales; no publica quién puede comprar la clase tokenizada, el mínimo ni cómo se reembolsa.",
+     "fuentes": [
+      "amundi-indice"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "acceso_sin_publicar",
+      "detalle": "Que la clase esté emitida en una blockchain pública no significa que cualquiera pueda comprarla: Amundi no ha publicado sus condiciones de acceso.",
+      "fuentes": [
+       "amundi-indice"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "blackrock",
+   "nombre": "BlackRock",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+    "aval": "Su web de Hong Kong, de BlackRock Asset Management North Asia (licencia de la SFC), dice que los fondos que presenta están autorizados por la SFC para venderse al público en Hong Kong.",
+    "nota": "Gestora estadounidense; en Hong Kong ofrece un fondo monetario en dólares de Hong Kong con participaciones tokenizadas y convencionales."
+   },
+   "fuentes": [
+    {
+     "id": "blackrock-hkd",
+     "tipo": "empresa",
+     "titulo": "BlackRock Hong Kong · BlackRock HKD Digital Liquidity Fund",
+     "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "blackrock-hkd": [
+     "HKD Digital Liquidity Fund",
+     "tokenized units"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web de Hong Kong presenta el BlackRock HKD Digital Liquidity Fund, con acceso por canales tradicionales y digitales.",
+     "fuentes": [
+      "blackrock-hkd"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La web dice que la sociedad tiene licencia de la SFC (CE AFF275) y que sus fondos están autorizados para el público de Hong Kong. No lo hemos comprobado en el registro de la SFC.",
+     "fuentes": [
+      "blackrock-hkd"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Para inversores en Hong Kong, a través de distribuidores; se puede pagar en dólares de Hong Kong o en dinero digital admitido, como stablecoins reguladas en Hong Kong.",
+     "fuentes": [
+      "blackrock-hkd"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Fondo autorizado en Hong Kong, sin KID europeo; la CNMV no lo supervisa.",
+      "fuentes": [
+       "blackrock-hkd"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "finexity",
+   "nombre": "FINEXITY",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "union-europea",
+    "actor": "Infraestructura",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://finexity-group.com/investor-relations/bond-2026-2030",
+    "aval": "Finexity AG cotiza en Xetra (ISIN DE000A40ET88). Su bono 2026/2030 tiene un KID por serie, con la BaFin como autoridad competente para ese documento.",
+    "nota": "Grupo alemán que emite, registra y distribuye valores tokenizados; ahora coloca su propio bono 2026/2030, también como criptovalor (ley alemana eWpG)."
+   },
+   "fuentes": [
+    {
+     "id": "finexity-bono",
+     "tipo": "empresa",
+     "titulo": "FINEXITY · Bono 2026/2030 (relación con inversores)",
+     "url": "https://finexity-group.com/investor-relations/bond-2026-2030",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "finexity-terminos",
+     "tipo": "documento_legal",
+     "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+     "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "finexity-bono": [
+     "DE000A5GS8B3",
+     "EUR 1,000"
+    ],
+    "finexity-terminos": [
+     "Public offer in Germany only",
+     "6M Euribor \\+ 6\\.00%"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su página de relación con inversores ofrece suscribir las series A y B del bono 2026/2030, con su hoja de términos y sus KID.",
+     "fuentes": [
+      "finexity-bono"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "confirmada_documento_producto",
+     "detalle": "La hoja de términos identifica al emisor (Finexity AG, Hamburgo, HRB 153232, acciones en Xetra) y dice que no hay folleto; cada serie tiene su KID.",
+     "fuentes": [
+      "finexity-terminos"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Oferta pública solo en Alemania, del 06/11/2026 al 05/11/2027, desde 1.000 €.",
+     "fuentes": [
+      "finexity-terminos"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "solo_alemania",
+      "detalle": "El bono se ofrece al público solo en Alemania y sin folleto.",
+      "fuentes": [
+       "finexity-terminos"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "groma",
+   "nombre": "Groma",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "ee-uu",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://www.gromareit.com/",
+    "aval": "Groma NAV REIT, Inc. publica su memorando de colocación y sus presentaciones ante la SEC (Form D y Regulation Crowdfunding); el registro oficial de acciones lo lleva Colonial Stock Transfer.",
+    "nota": "Fondo inmobiliario (REIT) de pisos en ciudades de EE. UU. cuyas acciones se pueden tener en cadena como GromaCoin."
+   },
+   "fuentes": [
+    {
+     "id": "groma-reit",
+     "tipo": "empresa",
+     "titulo": "Groma Real Estate Trust",
+     "url": "https://www.gromareit.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "groma-invertir",
+     "tipo": "empresa",
+     "titulo": "Groma · Invertir",
+     "url": "https://invest.groma.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "groma-reit": [
+     "Regulation D 506\\(c\\)",
+     "Colonial Stock Transfer"
+    ],
+    "groma-invertir": [
+     "Wefunder",
+     "GromaCoin"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Ofrece invertir por su campaña en Wefunder o comprando GromaCoin directamente; publica precio por acción y repartos del 3T 2026.",
+     "fuentes": [
+      "groma-invertir",
+      "groma-reit"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Se ofrece con exenciones de la SEC (Regulation D 506(c) y Regulation Crowdfunding a través de Wefunder); no es un fondo registrado. No hemos abierto sus presentaciones en la SEC.",
+     "fuentes": [
+      "groma-reit"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Directo solo para inversores acreditados (Reg D 506(c)); los no acreditados, solo por su campaña en Wefunder (Reg CF). No publica si admite inversores de fuera de EE. UU.",
+     "fuentes": [
+      "groma-reit",
+      "groma-invertir"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Oferta de EE. UU. con exenciones de la SEC, sin folleto ni KID europeos.",
+      "fuentes": [
+       "groma-reit"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "liqi",
+   "nombre": "Liqi",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "latinoamerica",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://tokens.liqi.com.br/tokens",
+    "aval": "Marca sus ofertas con la Resolución CVM 88, el régimen de la CVM brasileña para la financiación participativa.",
+    "nota": "Plataforma brasileña de renta fija tokenizada: certificados de recebíveis (CR) de empresas, en reales."
+   },
+   "fuentes": [
+    {
+     "id": "liqi-ofertas",
+     "tipo": "empresa",
+     "titulo": "Liqi · Ofertas de tokens",
+     "url": "https://tokens.liqi.com.br/tokens",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "liqi-ofertas": [
+     "Em captação",
+     "RCVM 88"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su lista de ofertas muestra 7 emisiones en captación y otras ya cerradas que están pagando.",
+     "fuentes": [
+      "liqi-ofertas"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Liqi marca sus ofertas con «RCVM 88» (financiación participativa de la CVM brasileña). No hemos comprobado su registro en la CVM.",
+     "fuentes": [
+      "liqi-ofertas"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Web en portugués y en reales; no publica si admite inversores que no residan en Brasil.",
+     "fuentes": [
+      "liqi-ofertas"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Emisiones brasileñas en reales, sin folleto ni KID europeos; la CNMV no las supervisa.",
+      "fuentes": [
+       "liqi-ofertas"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tohkn",
+   "nombre": "TOHKN",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "latinoamerica",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Polygon",
+    "web": "https://www.tohkn.com/en/issuances",
+    "aval": "Marca de MIO3, S.A. de C.V., que dice estar autorizada en El Salvador como proveedor de servicios de activos digitales (PSAD-0016), bajo la supervisión de la CNAD.",
+    "nota": "Plataforma salvadoreña que coloca emisiones tokenizadas registradas en la CNAD (deuda de empresas, proyectos inmobiliarios) y acciones y ETF de EE. UU. tokenizados."
+   },
+   "fuentes": [
+    {
+     "id": "tohkn-emisiones",
+     "tipo": "empresa",
+     "titulo": "TOHKN · Emisiones de activos digitales",
+     "url": "https://www.tohkn.com/en/issuances",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "tohkn-condiciones",
+     "tipo": "documento_legal",
+     "titulo": "TOHKN · Términos y condiciones",
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "tohkn-emisiones": [
+     "IBER1",
+     "PSAD-0016",
+     "CNAD"
+    ],
+    "tohkn-condiciones": [
+     "Restricted Jurisdictions",
+     "MIO3"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su lista de emisiones marca como abiertas IBER1, MMLTI1, RNCRrev y la familia de acciones y ETF tokenizados; THKN1, cerrada.",
+     "fuentes": [
+      "tohkn-emisiones"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "TOHKN dice que MIO3, S.A. de C.V. está autorizada por la CNAD de El Salvador (PSAD-0016). No hemos podido abrir el registro público de la CNAD para comprobarlo.",
+     "fuentes": [
+      "tohkn-emisiones"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Se invierte solo desde su app, tras verificar la identidad. Sus condiciones excluyen jurisdicciones restringidas sin publicar la lista.",
+     "fuentes": [
+      "tohkn-condiciones"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Emisiones registradas en El Salvador, sin folleto ni KID europeos; la CNMV no las supervisa.",
+      "fuentes": [
+       "tohkn-emisiones"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "ofertas": [
+  {
+   "oferta": {
+    "slug": "tohkn-iber1",
+    "tipo": "rendimiento",
+    "titulo": "IBER1: deuda tokenizada de Iberplastic al 7 % fijo anual (El Salvador)",
+    "plataformaSlug": "tohkn",
+    "plataformaNombre": "TOHKN",
+    "categoria": "Crédito privado",
+    "pais": "SV",
+    "resumen": "Primer tramo de deuda digital de Iberplastic, fabricante salvadoreño de productos de limpieza con material reciclado: 7,00 % fijo anual, intereses cada mes y devolución a los 24 meses. Se compra solo en la app de TOHKN.",
+    "url": "https://www.tohkn.com/en/issuances/iber1",
+    "cta": "Ver fuente",
+    "imagenAlt": "IBER1: deuda tokenizada de Iberplastic al 7 % fijo anual (El Salvador)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "7,00 %",
+     "literal": "Interés fijo anual del primer tramo, pagado cada mes, según TOHKN (consultado el 26/11/2026). Lo promete el emisor: si Iberplastic no paga, puedes perder lo invertido."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100 USD (1 token)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Iberplastic, S.A. de C.V. (El Salvador)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "24 meses (primer tramo); capital al vencimiento"
+     },
+     {
+      "etiqueta": "Intereses",
+      "valor": "Cada mes, en USDT o USDC"
+     },
+     {
+      "etiqueta": "Importe",
+      "valor": "2.000.000 USD el primer tramo (hasta 4.000.000 USD autorizados)"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "Oferta pública de activos digitales en El Salvador (CNAD); token ERC-3643 en Polygon"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Emisión registrada en El Salvador, no en la UE: sin folleto ni KID europeos y sin supervisión de la CNMV.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es deuda de una sola empresa: si Iberplastic no paga, puedes perder parte o todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "TOHKN no publica qué países admite: comprueba en su app si puedes invertir desde donde vives.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Cobras en USDT o USDC (stablecoins en dólares): hay riesgo de cambio y riesgo de la stablecoin.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Solo se puede vender antes del vencimiento si TOHKN habilita un secundario; la liquidez no está asegurada.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.tohkn.com/en/issuances/iber1",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Deuda digital (token de deuda) de Iberplastic, S.A. de C.V., fabricante salvadoreño fundado en 1997. El primer tramo, de 2.000.000 USD, paga un 7,00 % fijo anual con intereses mensuales y devuelve el capital a los 24 meses. Los fondos se destinan a ampliar sus plantas de reciclaje. Se invierte desde 100 USD solo en la app de TOHKN, tras verificar la identidad; los pagos se hacen en USDT o USDC.",
+    "fuentes": [
+     "https://www.tohkn.com/en/issuances/iber1",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "TOHKN (MIO3, S.A. de C.V.)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Iberplastic, S.A. de C.V."
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un derecho de cobro de capital e intereses frente a Iberplastic; no da propiedad de la empresa ni votos"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD (pagos en USDT o USDC)"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100 USD (1 token)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/iber1",
+      "alcance": "Resumen de la oferta en la ficha de IBER1 de TOHKN."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: TOHKN no publica qué países admite",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/legal/terms-and-conditions",
+      "alcance": "Sus condiciones excluyen jurisdicciones restringidas sin publicar la lista."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (24 meses); antes, solo si TOHKN abre un mercado secundario",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/iber1",
+      "alcance": "Ficha de IBER1: la liquidez no está garantizada."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "7,00 % fijo anual (primer tramo)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/iber1",
+      "alcance": "Interés fijo del primer tramo, pagado cada mes."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "La documentación de IBER1 es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Al vencimiento (24 meses)",
+    "puntos": [
+     {
+      "texto": "Interés fijo y pago mensual",
+      "fuente": {
+       "titulo": "TOHKN · IBER1",
+       "url": "https://www.tohkn.com/en/issuances/iber1"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "nave"
+    },
+    "lugar": "El Salvador",
+    "pasos": [
+     "Compras tokens de deuda",
+     "Iberplastic paga intereses cada mes",
+     "Recuperas el capital al vencimiento"
+    ],
+    "concepto": "una planta de reciclaje de plástico",
+    "foto": {
+     "semilla": 41,
+     "encuadre": "70% 55%",
+     "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
+     "prompt": "modern plastic recycling plant in Central America, clean white industrial hall with neat bales of sorted plastic bottles in the yard, green volcano and tropical trees behind, golden hour"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "tohkn-mmlti1",
+    "tipo": "rendimiento",
+    "titulo": "MMLTI1: deuda tokenizada de MultiMoney al 6,20 % fijo anual (El Salvador)",
+    "plataformaSlug": "tohkn",
+    "plataformaNombre": "TOHKN",
+    "categoria": "Crédito privado",
+    "pais": "SV",
+    "resumen": "Primer tramo del programa de deuda digital de MultiMoney, sociedad salvadoreña de ahorro y crédito: 6,20 % fijo anual, intereses cada mes y devolución a los 24 meses. Se compra solo en la app de TOHKN.",
+    "url": "https://www.tohkn.com/en/issuances/mmlti1",
+    "cta": "Ver fuente",
+    "imagenAlt": "MMLTI1: deuda tokenizada de MultiMoney al 6,20 % fijo anual (El Salvador)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "6,20 %",
+     "literal": "Interés fijo anual del primer tramo, pagado cada mes, según TOHKN (consultado el 26/11/2026). Lo promete el emisor: si MultiMoney no paga, puedes perder lo invertido."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100 USD (1 token)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Sociedad de Ahorro y Crédito Multimoney, S.A. (El Salvador)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "24 meses (primer tramo); capital al vencimiento"
+     },
+     {
+      "etiqueta": "Intereses",
+      "valor": "Cada mes"
+     },
+     {
+      "etiqueta": "Importe",
+      "valor": "Hasta 2.000.000 USD el primer tramo (programa MMY de hasta 10.000.000 USD)"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "Oferta pública de activos digitales en El Salvador (CNAD); token ERC-3643 en Polygon"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Emisión registrada en El Salvador, no en la UE: sin folleto ni KID europeos y sin supervisión de la CNMV.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es deuda de una sola entidad: si MultiMoney no paga, puedes perder parte o todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "TOHKN no publica qué países admite: comprueba en su app si puedes invertir desde donde vives.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Precio y pagos en dólares: riesgo de cambio frente al euro.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Solo se puede vender antes del vencimiento si TOHKN habilita un secundario; la liquidez no está asegurada.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.tohkn.com/en/issuances/mmlti1",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Deuda digital del programa MMY de la Sociedad de Ahorro y Crédito Multimoney, S.A. (El Salvador). El primer tramo, de hasta 2.000.000 USD, paga un 6,20 % fijo anual con intereses mensuales y devuelve el capital a los 24 meses; el dinero financia el crecimiento de su cartera de créditos. Se invierte desde 100 USD solo en la app de TOHKN, tras verificar la identidad.",
+    "fuentes": [
+     "https://www.tohkn.com/en/issuances/mmlti1",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "TOHKN (MIO3, S.A. de C.V.)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Sociedad de Ahorro y Crédito Multimoney, S.A."
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un derecho de cobro de capital e intereses frente a MultiMoney, según el programa de emisión"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100 USD (1 token)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/mmlti1",
+      "alcance": "Resumen de la oferta en la ficha de MMLTI1 de TOHKN."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: TOHKN no publica qué países admite",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/legal/terms-and-conditions",
+      "alcance": "Sus condiciones excluyen jurisdicciones restringidas sin publicar la lista."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (24 meses); antes, solo si TOHKN abre un mercado secundario",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/mmlti1",
+      "alcance": "Ficha de MMLTI1 de TOHKN."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "6,20 % fijo anual (primer tramo)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/mmlti1",
+      "alcance": "Interés fijo del primer tramo, pagado cada mes."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "La documentación de MMLTI1 es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Al vencimiento (24 meses)",
+    "puntos": [
+     {
+      "texto": "Interés fijo y pago mensual",
+      "fuente": {
+       "titulo": "TOHKN · MMLTI1",
+       "url": "https://www.tohkn.com/en/issuances/mmlti1"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "cartera_credito",
+    "lugar": "El Salvador",
+    "pasos": [
+     "Compras tokens de deuda",
+     "MultiMoney paga intereses cada mes",
+     "Recuperas el capital al vencimiento"
+    ],
+    "concepto": "una oficina de crédito",
+    "foto": {
+     "semilla": 43,
+     "encuadre": "70% 55%",
+     "concepto": "una pequeña oficina de servicios financieros en una avenida con palmeras, no la de la empresa",
+     "prompt": "small modern two-storey office building with white facade and large glass storefront on a quiet palm-lined avenue in San Salvador, warm interior lights at dusk, tidy pavement"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "tohkn-rncrrev",
+    "tipo": "rendimiento",
+    "titulo": "Renacer Condominio: ingresos por la venta de pisos en San Salvador (RNCRrev)",
+    "plataformaSlug": "tohkn",
+    "plataformaNombre": "TOHKN",
+    "categoria": "Inmobiliario",
+    "pais": "SV",
+    "resumen": "Token de ingresos ligado a las ventas de un condominio residencial en San Salvador: el promotor apunta a una TIR del 15 % al 20 % en unos 29 meses, sin garantía. Se compra solo en la app de TOHKN.",
+    "url": "https://www.tohkn.com/en/issuances/rncrrev",
+    "cta": "Ver fuente",
+    "imagenAlt": "Renacer Condominio: ingresos por la venta de pisos en San Salvador (RNCRrev)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": false,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100 USD (1 token)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Desarrolladora Orizaba S.A. de C.V. (El Salvador)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Derechos económicos sobre lo que se cobre por la venta de las viviendas"
+     },
+     {
+      "etiqueta": "TIR objetivo del promotor",
+      "valor": "15 % a 20 % (objetivo, no garantizado)"
+     },
+     {
+      "etiqueta": "Plazo estimado",
+      "valor": "29 meses, sujeto a que se termine el proyecto"
+     },
+     {
+      "etiqueta": "Importe objetivo",
+      "valor": "7.000.000 USD"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Emisión registrada en El Salvador, no en la UE: sin folleto ni KID europeos y sin supervisión de la CNMV.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "La TIR es un objetivo del promotor: si el proyecto se retrasa o las viviendas se venden peor, puedes ganar menos o perder parte o todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "No compras viviendas: compras un derecho a parte de lo que se cobre al venderlas.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "TOHKN no publica qué países admite: comprueba en su app si puedes invertir desde donde vives.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.tohkn.com/en/issuances/rncrrev",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Token de ingresos de Renacer Condominio, un proyecto residencial de Desarrolladora Orizaba en San Salvador. Da derechos económicos sobre los flujos de la venta de las viviendas; el promotor apunta a una TIR del 15 % al 20 % en un plazo estimado de 29 meses, sujeto a que el proyecto se termine. Se invierte desde 100 USD solo en la app de TOHKN.",
+    "fuentes": [
+     "https://www.tohkn.com/en/issuances/rncrrev",
+     "https://www.tohkn.com/en/issuances",
+     "https://www.tohkn.com/en/legal/terms-and-conditions"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "TOHKN (MIO3, S.A. de C.V.)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Desarrolladora Orizaba S.A. de C.V."
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Derechos económicos sobre los flujos de venta de las viviendas; no la propiedad"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100 USD (1 token)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/rncrrev",
+      "alcance": "Resumen de la oferta en la ficha de RNCRrev de TOHKN."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: TOHKN no publica qué países admite",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/legal/terms-and-conditions",
+      "alcance": "Sus condiciones excluyen jurisdicciones restringidas sin publicar la lista."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Cuando se vendan las viviendas (unos 29 meses, sin fecha cierta)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.tohkn.com/en/issuances/rncrrev",
+      "alcance": "Ficha de RNCRrev: plazo estimado y sujeto a terminar el proyecto."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "La documentación de RNCRrev es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "TOHKN · Emisiones de activos digitales",
+      "url": "https://www.tohkn.com/en/issuances"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Venta de las viviendas",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "condominio",
+    "lugar": "San Salvador · El Salvador",
+    "pasos": [
+     "Compras tokens de ingresos",
+     "Se construyen y venden las viviendas",
+     "Cobras tu parte de las ventas"
+    ],
+    "concepto": "un condominio residencial",
+    "foto": {
+     "semilla": 47,
+     "encuadre": "70% 55%",
+     "concepto": "un condominio de casas nuevas con jardines tropicales, no el del proyecto",
+     "prompt": "new gated residential condominium of modern two-storey houses with white and warm grey facades, tropical gardens and young palm trees, San Salvador volcano in the background, warm late afternoon light"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "liqi-creditos-empresas",
+    "tipo": "rendimiento",
+    "titulo": "Liqi: 7 emisiones de crédito a empresas brasileñas en captación (20,98 % anual en reales)",
+    "plataformaSlug": "liqi",
+    "plataformaNombre": "Liqi",
+    "categoria": "Crédito privado",
+    "pais": "BR",
+    "resumen": "Siete emisiones tokenizadas de crédito a empresas brasileñas (certificados de recebíveis) abiertas en Liqi, todas al 20,98 % anual en reales, con vencimientos entre abril de 2027 y mayo de 2028.",
+    "url": "https://tokens.liqi.com.br/tokens",
+    "cta": "Ver fuente",
+    "imagenAlt": "Liqi: 7 emisiones de crédito a empresas brasileñas en captación (20,98 % anual en reales)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "20,98 %",
+     "literal": "Rentabilidad anual en reales que muestra Liqi para los 7 tramos en captación (equivale al 149,26 % del CDI brasileño), consultada el 26/11/2026. No es neta, no está en euros y no está garantizada."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "BRL",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Tramos en captación",
+      "valor": "PEDUUNQ09 (Principia, vence 04/12/2027) · PSALES01UNQ06 (Paysales, 02/06/2027) · MTGINCUNQ17 (Lebasq Invest, 07/05/2027) · SCUNQ20 (Smart Compass, 20/04/2027) · CLFIXUNQ17 (Clubtech, 26/06/2027) · STBROUNQ13 (Starbro Sport Tech, 26/05/2028) · MOV2UNQ13 (Movens, 12/05/2027)"
+     },
+     {
+      "etiqueta": "Instrumento",
+      "valor": "Certificado de recebíveis (CR), régimen de financiación participativa CVM 88"
+     },
+     {
+      "etiqueta": "Precio por unidad",
+      "valor": "R$ 25,00 (PEDUUNQ09)"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "Reales brasileños (BRL)"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Emisiones brasileñas en reales, sin folleto ni KID europeos; la CNMV no las supervisa.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Son créditos a empresas pequeñas: si una no paga, puedes perder parte o todo lo invertido en ese tramo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "La cifra es en reales y antes de impuestos; con la inflación y el cambio frente al euro, lo que cobres en euros puede ser mucho menor.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Liqi no publica si admite inversores que no residan en Brasil.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "No consta un mercado secundario: cuenta con esperar al vencimiento.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://tokens.liqi.com.br/tokens",
+     "https://tokens.liqi.com.br/tokens/PEDU?tranche=PEDUUNQ09"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Liqi coloca emisiones tokenizadas de crédito (certificados de recebíveis) de empresas brasileñas bajo la Resolución CVM 88. El 26/11/2026 tenía siete tramos en captación, todos al 20,98 % anual en reales (149,26 % del CDI): PEDUUNQ09 (Principia), PSALES01UNQ06 (Paysales), MTGINCUNQ17 (Lebasq Invest), SCUNQ20 (Smart Compass), CLFIXUNQ17 (Clubtech), STBROUNQ13 (Starbro Sport Tech) y MOV2UNQ13 (Movens). Cada tramo tiene su originador, su importe y su vencimiento.",
+    "fuentes": [
+     "https://tokens.liqi.com.br/tokens",
+     "https://tokens.liqi.com.br/tokens/PEDU?tranche=PEDUUNQ09"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Liqi Digital Assets (Brasil)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Certificados de recebíveis tokenizados: derecho a cobrar los pagos de un crédito a una empresa"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "BRL"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde R$ 25 (una unidad de PEDUUNQ09)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://tokens.liqi.com.br/tokens/PEDU?tranche=PEDUUNQ09",
+      "alcance": "Ficha del tramo PEDUUNQ09 en Liqi: precio unitario R$ 25,00."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: Liqi no publica si admite residentes fuera de Brasil",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://tokens.liqi.com.br/tokens",
+      "alcance": "Web en portugués y en reales."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento de cada tramo (2027 a 2028); no consta mercado secundario",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://tokens.liqi.com.br/tokens",
+      "alcance": "Lista de ofertas de Liqi con el vencimiento de cada tramo."
+     },
+     {
+      "etiqueta": "Tramos en captación",
+      "valor": "7 (PEDUUNQ09, PSALES01UNQ06, MTGINCUNQ17, SCUNQ20, CLFIXUNQ17, STBROUNQ13 y MOV2UNQ13)",
+      "fechaDato": "2026-11-26",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://tokens.liqi.com.br/tokens",
+      "alcance": "Lista de ofertas de Liqi: «Em captação»."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Liqi opera en Brasil bajo la CVM; no está autorizada por un supervisor de la UE ni inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Liqi · Ofertas de tokens (RCVM 88)",
+      "url": "https://tokens.liqi.com.br/tokens"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Emisiones brasileñas del régimen CVM 88; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "Liqi · Ofertas de tokens",
+      "url": "https://tokens.liqi.com.br/tokens"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "R$ 25",
+    "salidaCorta": "Al vencimiento",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "cartera_credito",
+    "lugar": "Brasil",
+    "pasos": [
+     "Compras certificados de un tramo",
+     "La empresa devuelve el crédito",
+     "Cobras al vencimiento"
+    ],
+    "concepto": "oficinas de pequeñas empresas",
+    "foto": {
+     "semilla": 53,
+     "encuadre": "70% 55%",
+     "concepto": "una calle de pequeños negocios en una ciudad de Brasil, no de las empresas que piden el crédito",
+     "prompt": "tree-lined street of low-rise commercial buildings with small workshops and shops in a Brazilian city, Sao Paulo skyline in the far distance, soft morning light, clean pavement"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "finexity-bono-2026-2030-serie-b",
+    "tipo": "rendimiento",
+    "titulo": "FINEXITY: bono tokenizado 2026/2030 (serie B) a Euribor + 6 %, con un mínimo del 7 %",
+    "plataformaSlug": "finexity",
+    "plataformaNombre": "FINEXITY",
+    "categoria": "Crédito privado",
+    "pais": "DE",
+    "resumen": "Bono de Finexity AG, empresa alemana que cotiza en Xetra, emitido como criptovalor (serie B): cupón semestral del Euribor a 6 meses + 6 %, con un mínimo del 7 % anual, y devolución al 100 % el 27/11/2030. Se ofrece al público solo en Alemania.",
+    "url": "https://finexity-group.com/investor-relations/bond-2026-2030",
+    "cta": "Ver fuente",
+    "imagenAlt": "FINEXITY: bono tokenizado 2026/2030 (serie B) a Euribor + 6 %, con un mínimo del 7 %",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": false,
+    "eu": true,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "7,00 % mínimo",
+     "literal": "Cupón = Euribor a 6 meses + 6,00 %, con un mínimo del 7,00 % anual y sin tope, pagado cada semestre, según la hoja de términos (consultada el 26/11/2026). Antes de costes: el KID prevé hasta un 5 % de entrada y un 1,25 % al año."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1.000 EUR"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Finexity AG (Hamburgo); cotiza en Xetra"
+     },
+     {
+      "etiqueta": "ISIN",
+      "valor": "DE000A5GS8B3 (serie B, criptovalor según la ley alemana eWpG)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "27/11/2026 a 27/11/2030; devolución al 100 %"
+     },
+     {
+      "etiqueta": "Importe",
+      "valor": "Hasta 4,5 M EUR entre las series A y B"
+     },
+     {
+      "etiqueta": "Costes (KID)",
+      "valor": "Entrada hasta el 5,00 %; 1,25 % anual para el distribuidor"
+     },
+     {
+      "etiqueta": "Riesgo KID",
+      "valor": "6 de 7"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "La oferta pública es solo en Alemania y no tiene folleto: comprueba si la puedes suscribir desde tu país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Bono sin garantía y sin protección de depósitos: si Finexity AG, que según la hoja de términos aún no es rentable, no paga, puedes perderlo todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Los costes del KID (hasta un 5 % de entrada y un 1,25 % al año) reducen lo que cobras.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "No hay mercado secundario líquido y no puedes pedir la devolución antes; el emisor sí puede amortizarlo desde 2027.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "La serie B se guarda en un wallet: hay riesgos técnicos de custodia.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://finexity-group.com/investor-relations/bond-2026-2030",
+     "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Bono 2026/2030 de Finexity AG (Hamburgo, HRB 153232), sénior y sin garantía, de ley alemana. La serie B (ISIN DE000A5GS8B3) es un criptovalor registrado por Cashlink y custodiado por Tangany. Paga cada 27/05 y 27/11 el Euribor a 6 meses más un 6,00 %, con un mínimo del 7,00 % anual, y se devuelve al 100 % el 27/11/2030. Importe de hasta 4,5 millones de euros entre las dos series; oferta pública solo en Alemania, sin folleto, del 06/11/2026 al 05/11/2027.",
+    "fuentes": [
+     "https://finexity-group.com/investor-relations/bond-2026-2030",
+     "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "FINEXITY (Finexity AG)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Finexity AG, Hamburgo (HRB 153232)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un bono sénior sin garantía; la serie B, como criptovalor en un wallet"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1.000 €",
+      "fechaDato": "2026-11-06",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+      "alcance": "Hoja de términos del bono 2026/2030."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "No: oferta pública solo en Alemania, sin folleto",
+      "fechaDato": "2026-11-06",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+      "alcance": "Hoja de términos: «Public offer in Germany only»."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (27/11/2030); sin mercado secundario líquido",
+      "fechaDato": "2026-11-06",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+      "alcance": "Hoja de términos: sin derecho a pedir la devolución anticipada; el emisor puede amortizar desde 2027."
+     },
+     {
+      "etiqueta": "Riesgo (KID)",
+      "valor": "6 de 7",
+      "fechaDato": "2026-11-04",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf",
+      "alcance": "KID de la serie B (04/11/2026)."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La vende el propio emisor alemán sin folleto; no consta como entidad autorizada inscrita en la CNMV para esta venta.",
+     "fuente": {
+      "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+      "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Tiene KID en alemán, pero la oferta pública es solo en Alemania.",
+     "fuente": {
+      "titulo": "FINEXITY · Hoja de términos («Public offer in Germany only»)",
+      "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (2030)",
+    "puntos": [
+     {
+      "texto": "Cupón mínimo del 7 % anual",
+      "fuente": {
+       "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+       "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "empresa",
+    "lugar": "Hamburgo · Alemania",
+    "pasos": [
+     "Suscribes el bono",
+     "Cobras el cupón cada semestre",
+     "Recuperas el nominal al vencimiento"
+    ],
+    "concepto": "oficinas en Hamburgo",
+    "foto": {
+     "semilla": 59,
+     "encuadre": "70% 55%",
+     "concepto": "edificios de oficinas de ladrillo junto a un canal de Hamburgo, no los de la empresa",
+     "prompt": "historic red-brick warehouse office buildings along a calm canal in Hamburg at blue hour, warm windows reflected in the water, small iron bridge"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "groma-real-estate-trust",
+    "tipo": "rendimiento",
+    "titulo": "Groma Real Estate Trust: REIT de pisos en EE. UU. con acciones en cadena (GromaCoin)",
+    "plataformaSlug": "groma",
+    "plataformaNombre": "Groma",
+    "categoria": "Inmobiliario",
+    "pais": "US",
+    "resumen": "Fondo inmobiliario (REIT) de 160 edificios y 725 viviendas en ciudades de EE. UU. Las acciones se pueden tener en cadena como GromaCoin; en el 3T 2026 valían 1,07 USD y repartieron el equivalente a un 3,97 % anual.",
+    "url": "https://invest.groma.com/",
+    "cta": "Ver fuente",
+    "imagenAlt": "Groma Real Estate Trust: REIT de pisos en EE. UU. con acciones en cadena (GromaCoin)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": false,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "3,97 %",
+     "literal": "Reparto del 3T 2026 (1,0625 centavos por acción) pasado a tasa anual, según Groma (consultado el 26/11/2026). Es un reparto pasado, no un tipo fijo: puede bajar o suspenderse."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Precio por acción",
+      "valor": "1,07 USD (3T 2026; 1,00 USD al inicio)"
+     },
+     {
+      "etiqueta": "Patrimonio neto estimado",
+      "valor": "94,6 millones USD (3T 2026)"
+     },
+     {
+      "etiqueta": "Inmuebles",
+      "valor": "160 edificios y 725 viviendas; 97 % de ocupación en los estabilizados"
+     },
+     {
+      "etiqueta": "Cómo se invierte",
+      "valor": "Acreditados: compra directa (Reg D 506(c)); resto: campaña en Wefunder (Reg CF)"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "Libro oficial de acciones en Colonial Stock Transfer; GromaCoin lo refleja en cadena"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Oferta de EE. UU. con exenciones de la SEC, sin folleto ni KID europeos; la CNMV no la supervisa.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es un REIT no cotizado: su web no explica cómo vender las acciones, así que la salida puede ser difícil.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "El reparto pasado no asegura el futuro y el precio por acción lo calcula la propia gestora.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "En dólares: riesgo de cambio frente al euro.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Groma no publica si admite inversores de fuera de EE. UU.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://invest.groma.com/",
+     "https://www.gromareit.com/"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Groma NAV REIT, Inc. (Maryland) compra y gestiona edificios de pisos pequeños y medianos en ciudades de EE. UU. Con datos del 3T 2026: 160 edificios, 725 viviendas, 97 % de ocupación en los estabilizados, patrimonio neto estimado de 94,6 millones de dólares y acción a 1,07 USD (empezó en 1,00). Los acreditados compran directamente (Reg D 506(c)) y los no acreditados, solo por su campaña en Wefunder (Reg CF). Las acciones se pueden tener en cadena como GromaCoin; el libro oficial lo lleva Colonial Stock Transfer.",
+    "fuentes": [
+     "https://invest.groma.com/",
+     "https://www.gromareit.com/"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Groma"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Groma NAV REIT, Inc. (Maryland, EE. UU.)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Acciones del REIT, que se pueden tener en cadena como GromaCoin"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Sin mínimo publicado en su web",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://invest.groma.com/",
+      "alcance": "Página de inversión de Groma."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: oferta de EE. UU. con exenciones de la SEC",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.gromareit.com/",
+      "alcance": "Reg D 506(c) para acreditados y Reg CF en Wefunder."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "No consta en su web cómo vender: es un REIT no cotizado",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.gromareit.com/",
+      "alcance": "Web de Groma Real Estate Trust."
+     },
+     {
+      "etiqueta": "Reparto del 3T 2026",
+      "valor": "1,0625 centavos por acción (3,97 % anualizado)",
+      "fechaDato": "2026-09-30",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.gromareit.com/",
+      "alcance": "Web de Groma Real Estate Trust."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La ofrece el propio REIT con exenciones de la SEC; no hay entidad autorizada en la UE ni inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Groma Real Estate Trust (Reg D 506(c) y Reg CF)",
+      "url": "https://www.gromareit.com/"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Memorando de colocación de EE. UU.; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "Groma Real Estate Trust",
+      "url": "https://www.gromareit.com/"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin mínimo publicado",
+    "salidaCorta": "Sin salida publicada",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "edificio",
+    "op": {
+     "pisos": 3,
+     "mat": "arena",
+     "semilla": 61
+    },
+    "lugar": "Boston · EE. UU.",
+    "pasos": [
+     "Compras acciones del REIT",
+     "Los pisos se alquilan",
+     "Reparto cada trimestre"
+    ],
+    "concepto": "edificios de pisos en una ciudad de EE. UU.",
+    "foto": {
+     "semilla": 61,
+     "encuadre": "70% 55%",
+     "concepto": "edificios de pisos de ladrillo en una calle de Boston, no los del fondo",
+     "prompt": "classic red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, golden afternoon light, quiet sidewalk"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "securitize-hinc",
+    "tipo": "rendimiento",
+    "titulo": "HINC: fondo tokenizado de bonos de alto rendimiento de Neuberger Berman (Securitize)",
+    "plataformaSlug": "securitize",
+    "plataformaNombre": "Securitize",
+    "categoria": "Crédito privado",
+    "pais": "US",
+    "resumen": "Fondo tokenizado que invierte en bonos de alto rendimiento de EE. UU. y CLO, gestionado por Neuberger Berman y distribuido por Securitize. Solo para inversores acreditados y cualificados, desde 100.000 USD.",
+    "url": "https://securitize.io/hinc",
+    "cta": "Ver fuente",
+    "imagenAlt": "HINC: fondo tokenizado de bonos de alto rendimiento de Neuberger Berman (Securitize)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": false,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100.000 USD"
+     },
+     {
+      "etiqueta": "Quién puede invertir",
+      "valor": "Solo inversores acreditados (AI) y compradores cualificados (QP); no particulares de EE. UU."
+     },
+     {
+      "etiqueta": "Gestora",
+      "valor": "Neuberger Berman"
+     },
+     {
+      "etiqueta": "Comisiones",
+      "valor": "Gestión 0,50 %; gastos totales con tope del 0,60 % anual"
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Peticiones diarias (corte 14:00 ET); pago objetivo T+1, sin garantía"
+     },
+     {
+      "etiqueta": "Rendimiento bruto de la cartera modelo (15/07/2026)",
+      "valor": "7,62 %; no es la rentabilidad del fondo"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Solo para inversores profesionales o acreditados con 100.000 USD o más: no es para particulares.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Bonos de alto rendimiento y CLO: más riesgo de impago que la deuda pública; puedes perder dinero.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "El pago del reembolso en T+1 es un objetivo y puede tardar más si los activos se venden mal.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "En dólares o USDC: riesgo de cambio y, con USDC, riesgo de la stablecoin.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://securitize.io/hinc"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Neuberger Securitize High Income Tokenized Fund (HINC): fondo tokenizado que invierte sobre todo en bonos de alto rendimiento de EE. UU. y el resto en CLO, préstamos bancarios y otra renta fija de alto rendimiento, sin apalancamiento. Gestiona Neuberger Berman; Securitize lo distribuye. Mínimo 100.000 USD; solo para inversores acreditados y compradores cualificados, y no para particulares de EE. UU. Comisión de gestión 0,50 % con gastos totales limitados al 0,60 % anual.",
+    "fuentes": [
+     "https://securitize.io/hinc"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Securitize"
+     },
+     {
+      "etiqueta": "Gestora",
+      "valor": "Neuberger Berman"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones tokenizadas de un fondo de renta fija de alto rendimiento"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD o USDC"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100.000 USD",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://securitize.io/hinc",
+      "alcance": "Ficha de HINC en Securitize."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "No para particulares: solo inversores acreditados o cualificados",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://securitize.io/hinc",
+      "alcance": "Ficha de HINC: «Investor Qualification: AI and QP»."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Diario, con pago objetivo T+1 (no garantizado)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://securitize.io/hinc",
+      "alcance": "Ficha de HINC en Securitize."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Lo distribuye Securitize desde EE. UU.; no consta autorización de un supervisor de la UE ni inscripción en la CNMV para este fondo.",
+     "fuente": {
+      "titulo": "Securitize · HINC",
+      "url": "https://securitize.io/hinc"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay folleto ni KID europeos publicados para este fondo.",
+     "fuente": {
+      "titulo": "Securitize · HINC",
+      "url": "https://securitize.io/hinc"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100.000 USD",
+    "salidaCorta": "Reembolso diario",
+    "puntos": [
+     {
+      "texto": "Reembolso diario",
+      "fuente": {
+       "titulo": "Securitize · HINC",
+       "url": "https://securitize.io/hinc"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "credito",
+    "lugar": "Nueva York · EE. UU.",
+    "pasos": [
+     "Compras participaciones del fondo",
+     "Neuberger Berman gestiona los bonos",
+     "Pides el reembolso cuando quieras"
+    ],
+    "concepto": "un distrito financiero",
+    "foto": {
+     "semilla": 67,
+     "encuadre": "70% 50%",
+     "concepto": "el distrito financiero de Manhattan desde el agua",
+     "prompt": "Lower Manhattan financial district skyline seen from the water at blue hour, glass towers with warm lit windows, calm harbour reflections"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "blackrock-hkd-digital-liquidity",
+    "tipo": "rendimiento",
+    "titulo": "BlackRock HKD Digital Liquidity Fund: fondo monetario en dólares de Hong Kong con participaciones tokenizadas",
+    "plataformaSlug": "blackrock",
+    "plataformaNombre": "BlackRock",
+    "categoria": "Tesoro y fondos",
+    "pais": "HK",
+    "resumen": "Fondo monetario de valor constante en dólares de Hong Kong que invierte en letras públicas y depósitos a corto plazo. Tiene participaciones tokenizadas y convencionales, y admite pagos en dólares de Hong Kong o en dinero digital como stablecoins reguladas en Hong Kong.",
+    "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+    "cta": "Ver fuente",
+    "imagenAlt": "BlackRock HKD Digital Liquidity Fund: fondo monetario en dólares de Hong Kong con participaciones tokenizadas",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": false,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "HKD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Tipo",
+      "valor": "Fondo monetario de valor liquidativo constante (CNAV), según la SFC"
+     },
+     {
+      "etiqueta": "Invierte en",
+      "valor": "Instrumentos del mercado monetario en HKD, públicos o garantizados, y depósitos en bancos de calidad"
+     },
+     {
+      "etiqueta": "Participaciones",
+      "valor": "Tokenizadas y convencionales"
+     },
+     {
+      "etiqueta": "Cómo se paga",
+      "valor": "HKD o dinero digital admitido, como stablecoins reguladas en Hong Kong"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Fondo autorizado en Hong Kong, sin KID europeo; la CNMV no lo supervisa.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "BlackRock no publica en su web el mínimo ni qué distribuidores lo venden: compruébalo antes.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Un fondo monetario puede perder valor; no es un depósito.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "En dólares de Hong Kong: riesgo de cambio frente al euro.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Fondo de BlackRock para Hong Kong que invierte en instrumentos del mercado monetario a corto plazo en dólares de Hong Kong, emitidos o garantizados por gobiernos y organismos públicos, y en depósitos en bancos con calificación de grado de inversión. Es un fondo monetario de valor constante (CNAV). Ofrece participaciones tokenizadas, registradas en blockchain, y convencionales, por canales tradicionales y digitales.",
+    "fuentes": [
+     "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "BlackRock (Hong Kong)"
+     },
+     {
+      "etiqueta": "Gestora",
+      "valor": "BlackRock Asset Management North Asia (licencia de la SFC)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones de un fondo monetario; pueden ser tokenizadas"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "HKD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Sin mínimo publicado en la web de BlackRock",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+      "alcance": "Ficha del fondo en la web de BlackRock Hong Kong."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "No: fondo autorizado para el público de Hong Kong",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+      "alcance": "Web de BlackRock Hong Kong."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Por el distribuidor; BlackRock no publica plazos en esta página",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+      "alcance": "Ficha del fondo en la web de BlackRock Hong Kong."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Autorizado por la SFC de Hong Kong, no por un supervisor de la UE ni inscrito en la CNMV.",
+     "fuente": {
+      "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
+      "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No tiene KID europeo: sus documentos son los de Hong Kong.",
+     "fuente": {
+      "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
+      "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin mínimo publicado",
+    "salidaCorta": "Por el distribuidor",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "tesoro",
+    "lugar": "Hong Kong",
+    "pasos": [
+     "Compras participaciones tokenizadas",
+     "El fondo invierte a corto plazo en dólares de Hong Kong",
+     "Reembolsas por tu distribuidor"
+    ],
+    "concepto": "el puerto de Hong Kong",
+    "foto": {
+     "semilla": 71,
+     "encuadre": "70% 50%",
+     "concepto": "el puerto de Victoria y los rascacielos de Hong Kong",
+     "prompt": "Victoria Harbour and the Hong Kong island skyline at blue hour, mountains behind, glass skyscrapers with warm lights reflected on calm water"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "amundi-core-stoxx-europe-600-tokenizada",
+    "tipo": "valor",
+    "titulo": "Amundi Core STOXX Europe 600: clase tokenizada del fondo índice de acciones europeas",
+    "plataformaSlug": "amundi",
+    "plataformaNombre": "Amundi",
+    "categoria": "Acciones y capital privado",
+    "pais": "LU",
+    "resumen": "Clase tokenizada, emitida en Ethereum con CACEIS, de uno de los fondos índice de acciones europeas más grandes de Amundi (STOXX Europe 600). Amundi no ha publicado quién puede comprarla, el mínimo ni cómo se reembolsa.",
+    "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+    "cta": "Ver fuente",
+    "imagenAlt": "Amundi Core STOXX Europe 600: clase tokenizada del fondo índice de acciones europeas",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": true,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Qué es",
+      "valor": "Una clase de participaciones del fondo, en forma de token en Ethereum; no son acciones de cada empresa"
+     },
+     {
+      "etiqueta": "Índice",
+      "valor": "STOXX Europe 600 (unas 600 empresas europeas)"
+     },
+     {
+      "etiqueta": "Tokenización",
+      "valor": "CACEIS, agente de tokenización"
+     },
+     {
+      "etiqueta": "Lanzamiento",
+      "valor": "05/11/2026"
+     },
+     {
+      "etiqueta": "Acceso",
+      "valor": "Sin publicar: Amundi habla de clientes institucionales y plataformas digitales"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Amundi no ha publicado quién puede comprar esta clase, el mínimo, las comisiones ni cómo se reembolsa.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es renta variable: el valor sube y baja con la bolsa europea y puedes perder dinero.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Que el token esté en una blockchain pública no significa que cualquiera pueda comprarlo o venderlo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Amundi lanzó el 05/11/2026 una clase de participaciones tokenizada de su fondo índice Core STOXX Europe 600, emitida en la blockchain pública Ethereum con CACEIS como agente de tokenización. La clase sigue integrada en el funcionamiento del fondo, que se puede comprar también por los canales tradicionales. El token representa participaciones del fondo, no acciones de cada empresa. Amundi dirige esta línea a clientes institucionales y plataformas digitales y no ha publicado las condiciones de acceso de la clase.",
+    "fuentes": [
+     "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Amundi"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones del fondo índice en forma de token"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Sin publicar para la clase tokenizada",
+      "fechaDato": "2026-11-05",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "alcance": "Anuncio de Amundi del 05/11/2026."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: Amundi no ha publicado quién puede comprarla",
+      "fechaDato": "2026-11-05",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "alcance": "Anuncio de Amundi del 05/11/2026."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Sin publicar para la clase tokenizada",
+      "fechaDato": "2026-11-05",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "alcance": "Anuncio de Amundi del 05/11/2026."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "El anuncio no identifica qué entidad vende la clase tokenizada ni su inscripción.",
+     "fuente": {
+      "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
+      "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Amundi no ha publicado un KID ni folleto para la clase tokenizada.",
+     "fuente": {
+      "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
+      "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Sin publicar",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "torre"
+    },
+    "lugar": "Europa",
+    "pasos": [
+     "Compras participaciones tokenizadas",
+     "El fondo sigue a las grandes empresas europeas",
+     "Reembolsas según el fondo"
+    ],
+    "concepto": "el distrito financiero de una gran ciudad europea",
+    "foto": {
+     "semilla": 73,
+     "encuadre": "70% 50%",
+     "concepto": "el distrito financiero de Fráncfort junto al río Meno",
+     "prompt": "Frankfurt am Main financial district skyline across the river Main at dusk, modern office towers with warm lights, calm river reflections, old bridge in the foreground"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "franklin-onchain-euro-liquidity",
+    "tipo": "rendimiento",
+    "titulo": "Franklin OnChain Euro Liquidity Fund: fondo monetario en euros tokenizado (anunciado para minoristas)",
+    "plataformaSlug": "franklin-templeton",
+    "plataformaNombre": "Franklin Templeton",
+    "categoria": "Tesoro y fondos",
+    "pais": "LU",
+    "resumen": "Fondo monetario UCITS de Luxemburgo, en euros y tokenizado con la tecnología Benji. Franklin Templeton lo anunció el 23/11/2026 y dice que estará disponible para minoristas en Austria, Francia, Alemania, Luxemburgo, Países Bajos, Portugal y España.",
+    "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+    "cta": "Ver fuente",
+    "imagenAlt": "Franklin OnChain Euro Liquidity Fund: fondo monetario en euros tokenizado (anunciado para minoristas)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": true,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "no_verificable",
+    "coleccion": "en_camino",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Anuncio",
+      "valor": "23/11/2026"
+     },
+     {
+      "etiqueta": "Tipo",
+      "valor": "Fondo monetario UCITS LVNAV en euros; objetivo de 1 EUR por participación"
+     },
+     {
+      "etiqueta": "Para quién",
+      "valor": "Minoristas en AT, FR, DE, LU, NL, PT y ES; institucionales en IT y CH"
+     },
+     {
+      "etiqueta": "Tecnología",
+      "valor": "Benji: registro en blockchain y traspasos 24/7 entre wallets aprobados"
+     },
+     {
+      "etiqueta": "Rendimiento",
+      "valor": "Reparte y reinvierte cada día, en línea con los tipos del euro"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es un anuncio: todavía no hemos encontrado dónde ni cómo puede contratarlo un particular.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Un fondo monetario puede perder valor; no es un depósito.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Franklin Templeton anunció el 23/11/2026 el Franklin OnChain Euro Liquidity Fund, un fondo monetario UCITS registrado en Luxemburgo dentro de su paraguas Franklin Templeton OnChain Funds. Es de valor liquidativo de baja volatilidad (LVNAV), busca mantener 1 euro por participación y reparte y reinvierte el rendimiento cada día. Las participaciones se registran con su tecnología Benji y se pueden traspasar 24/7 entre wallets aprobados. Según el comunicado, estará disponible para minoristas en Austria, Francia, Alemania, Luxemburgo, Países Bajos, Portugal y España, y para institucionales en Italia y Suiza.",
+    "fuentes": [
+     "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Franklin Templeton"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones de un fondo monetario UCITS, registradas en blockchain"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Sin publicar todavía",
+      "fechaDato": "2026-11-23",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "alcance": "Comunicado de Franklin Templeton del 23/11/2026."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Anunciado para minoristas en España; canal aún sin publicar",
+      "fechaDato": "2026-11-23",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "alcance": "Comunicado de Franklin Templeton del 23/11/2026."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Sin publicar todavía",
+      "fechaDato": "2026-11-23",
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "alcance": "Comunicado de Franklin Templeton del 23/11/2026."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Todavía no hay entidad ni canal publicados para venderlo en España.",
+     "fuente": {
+      "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
+      "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Aún no hemos encontrado su KID en español.",
+     "fuente": {
+      "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
+      "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Sin publicar",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "tesoro",
+    "lugar": "Luxemburgo",
+    "pasos": [
+     "Fondo monetario tokenizado en euros",
+     "Aún no admite suscripciones",
+     "Se abrirá a minoristas en varios países"
+    ],
+    "concepto": "la ciudad de Luxemburgo",
+    "foto": {
+     "semilla": 79,
+     "encuadre": "70% 55%",
+     "concepto": "el casco antiguo de la ciudad de Luxemburgo sobre el valle",
+     "prompt": "Luxembourg City old town on sandstone cliffs above the green Alzette valley, historic stone houses and church spires, golden hour light"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "alterna-bono-digital-mitsui",
+    "tipo": "rendimiento",
+    "titulo": "Mitsui & Co.: primer bono digital para particulares en Japón, en pre-solicitud (ALTERNA)",
+    "plataformaSlug": "alterna",
+    "plataformaNombre": "ALTERNA (Mitsui & Co. Digital Asset Management)",
+    "categoria": "Crédito privado",
+    "pais": "JP",
+    "resumen": "Primer bono digital sin garantía de Mitsui & Co. para particulares, a 1 año, con un tipo provisional del 1,80 % al 2,40 % anual y calificación AA (R&I). Está en pre-solicitud en ALTERNA; el tipo se fija el 05/01/2027.",
+    "url": "https://app.alterna-z.com/offerings",
+    "cta": "Ver fuente",
+    "imagenAlt": "Mitsui & Co.: primer bono digital para particulares en Japón, en pre-solicitud (ALTERNA)",
+    "verificadaEl": "2026-11-26",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "no_verificable",
+    "coleccion": "en_camino",
+    "moneda": "JPY",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Tipo provisional",
+      "valor": "1,80 % a 2,40 % anual antes de impuestos (se fija el 05/01/2027)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "1 año"
+     },
+     {
+      "etiqueta": "Calificación",
+      "valor": "AA (R&I)"
+     },
+     {
+      "etiqueta": "Estado",
+      "valor": "Pre-solicitud abierta (quedaban 40 días el 26/11/2026)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Mitsui & Co., Ltd."
+     },
+     {
+      "etiqueta": "Instrumento",
+      "valor": "Bono sin garantía en forma de security token, con transmisión restringida"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Es una pre-solicitud: el tipo y la calificación se confirman el 05/01/2027.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Producto japonés en yenes y en japonés; no publica si admite inversores de fuera de Japón.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     },
+     {
+      "texto": "Un bono sin garantía puede no pagarse si el emisor falla.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-26"
+     }
+    ],
+    "fuentesActuales": [
+     "https://app.alterna-z.com/offerings"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-26",
+    "descripcion": "Mitsui & Co. emite por primera vez para particulares un bono digital sin garantía (security token), con transmisión restringida, a través de ALTERNA, la plataforma de Mitsui & Co. Digital Asset Management. Plazo de 1 año; tipo provisional del 1,80 % al 2,40 % anual antes de impuestos y calificación AA de R&I, que se fijan el 05/01/2027. El 26/11/2026 estaba en pre-solicitud.",
+    "fuentes": [
+     "https://app.alterna-z.com/offerings"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "ALTERNA (Mitsui & Co. Digital Asset Management)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Mitsui & Co., Ltd."
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un bono sin garantía en forma de security token"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "JPY"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Sin publicar en la lista de ofertas",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://app.alterna-z.com/offerings",
+      "alcance": "Lista de ofertas de ALTERNA."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: plataforma japonesa, solo en japonés",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://app.alterna-z.com/offerings",
+      "alcance": "Lista de ofertas de ALTERNA."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (1 año); transmisión restringida",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-26",
+      "fuente": "https://app.alterna-z.com/offerings",
+      "alcance": "Lista de ofertas de ALTERNA."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La vende una entidad japonesa; no hay autorización de un supervisor de la UE ni inscripción en la CNMV.",
+     "fuente": {
+      "titulo": "ALTERNA · Lista de ofertas",
+      "url": "https://app.alterna-z.com/offerings"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Documentos solo en japonés; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "ALTERNA · Lista de ofertas",
+      "url": "https://app.alterna-z.com/offerings"
+     },
+     "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Al vencimiento (1 año)",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "torre"
+    },
+    "lugar": "Tokio · Japón",
+    "pasos": [
+     "Haces la pre-solicitud",
+     "El tipo se fija en enero",
+     "Cobras al vencimiento"
+    ],
+    "concepto": "oficinas en Tokio",
+    "foto": {
+     "semilla": 83,
+     "encuadre": "70% 55%",
+     "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
+     "prompt": "Marunouchi business district in Tokyo at dusk, modern glass office towers along a wide tree-lined avenue with ginkgo trees, warm lit windows, empty clean street"
+    }
+   }
+  }
+ ]
+}

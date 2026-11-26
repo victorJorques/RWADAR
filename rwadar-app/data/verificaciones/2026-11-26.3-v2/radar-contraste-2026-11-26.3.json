@@ -1,0 +1,130 @@
+{
+  "fecha": "2026-11-26",
+  "fuentesNuevas": 10,
+  "correctas": 10,
+  "contraste": [
+    {
+      "id": "alterna-ofertas",
+      "url": "https://app.alterna-z.com/offerings",
+      "horaUtc": "2026-11-26T19:42:55Z",
+      "copia": "fuentes/alterna-ofertas.txt",
+      "sha256": "7749cba0caf32dcb25c591861c2d7ea9e1c3b612f78560d162ba6cb8ceef80ec",
+      "comprobaciones": [
+        "三井物産",
+        "仮申込受付中",
+        "第3277号"
+      ],
+      "ok": true
+    },
+    {
+      "id": "amundi-indice",
+      "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "horaUtc": "2026-11-26T19:53:39Z",
+      "copia": "fuentes/amundi-indice.txt",
+      "sha256": "218e835623f9c7af84d79aab57087959b2ee83244549dddd7dbacaf0c0d4478f",
+      "comprobaciones": [
+        "tokenised share class",
+        "public Ethereum"
+      ],
+      "ok": true
+    },
+    {
+      "id": "blackrock-hkd",
+      "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+      "horaUtc": "2026-11-26T19:53:25Z",
+      "copia": "fuentes/blackrock-hkd.txt",
+      "sha256": "bc4905c0c4ea6c503e3c4a4fc21b8f28949ed436eec5fa9c9ebc6381cff39395",
+      "comprobaciones": [
+        "HKD Digital Liquidity Fund",
+        "tokenized units"
+      ],
+      "ok": true
+    },
+    {
+      "id": "finexity-bono",
+      "url": "https://finexity-group.com/investor-relations/bond-2026-2030",
+      "horaUtc": "2026-11-26T19:42:46Z",
+      "copia": "fuentes/finexity-bono.txt",
+      "sha256": "f3c105ae6cceb82477474ec222265ad3b7419a6cf055af9eec168e1acb9ab992",
+      "comprobaciones": [
+        "DE000A5GS8B3",
+        "EUR 1,000"
+      ],
+      "ok": true
+    },
+    {
+      "id": "finexity-terminos",
+      "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+      "horaUtc": "2026-11-26T19:43:59Z",
+      "copia": "fuentes/finexity-terminos.txt",
+      "sha256": "f6406254627ad54f988134848ec61848622211634315448dd00dbe1e557e710c",
+      "comprobaciones": [
+        "Public offer in Germany only",
+        "6M Euribor \\+ 6\\.00%"
+      ],
+      "ok": true
+    },
+    {
+      "id": "groma-reit",
+      "url": "https://www.gromareit.com/",
+      "horaUtc": "2026-11-26T19:41:16Z",
+      "copia": "fuentes/groma-reit.txt",
+      "sha256": "1d67f629e6165a88dc0debc0fd49e66c762340a67f59364ec7b67cea25a064ec",
+      "comprobaciones": [
+        "Regulation D 506\\(c\\)",
+        "Colonial Stock Transfer"
+      ],
+      "ok": true
+    },
+    {
+      "id": "groma-invertir",
+      "url": "https://invest.groma.com/",
+      "horaUtc": "2026-11-26T19:41:16Z",
+      "copia": "fuentes/groma-invertir.txt",
+      "sha256": "473bc30551eb45d95978f4d17ce1596d465220e47bce5bf8256b7afaaaae037e",
+      "comprobaciones": [
+        "Wefunder",
+        "GromaCoin"
+      ],
+      "ok": true
+    },
+    {
+      "id": "liqi-ofertas",
+      "url": "https://tokens.liqi.com.br/tokens",
+      "horaUtc": "2026-11-26T19:41:01Z",
+      "copia": "fuentes/liqi-ofertas.txt",
+      "sha256": "5f0eb6226ae38647334a57e677dfc09abaf760668214933e2e3aad7e0ffac938",
+      "comprobaciones": [
+        "Em captação",
+        "RCVM 88"
+      ],
+      "ok": true
+    },
+    {
+      "id": "tohkn-emisiones",
+      "url": "https://www.tohkn.com/en/issuances",
+      "horaUtc": "2026-11-26T19:40:53Z",
+      "copia": "fuentes/tohkn-emisiones.txt",
+      "sha256": "027eaecb7b974ebe52a73d012b3a65e484c27adde39460df975053f790d47f31",
+      "comprobaciones": [
+        "IBER1",
+        "PSAD-0016",
+        "CNAD"
+      ],
+      "ok": true
+    },
+    {
+      "id": "tohkn-condiciones",
+      "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+      "horaUtc": "2026-11-26T19:41:01Z",
+      "copia": "fuentes/tohkn-condiciones.txt",
+      "sha256": "f905cb436f33241047020ee68169014f491ecf3099ed1bea44de74f78067a1d1",
+      "comprobaciones": [
+        "Restricted Jurisdictions",
+        "MIO3"
+      ],
+      "ok": true
+    }
+  ],
+  "nota": "Las 69 fuentes de antes se comprobaron hoy en la entrega 2026-11-26 (radar-contraste-2026-11-26.json)."
+}
