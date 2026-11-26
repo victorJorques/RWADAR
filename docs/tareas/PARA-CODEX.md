@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de noviembre de 2026 (49) · Claude · Altas internacionales del informe de Codex (11 ofertas, 7 plataformas), las nuevas primero, fotos realistas y noticias del 26/11
+
+- **Orden de Víctor:** añadir a la actualización el informe global de Codex del 26/11 verificado («RWAdar es
+  internacional», «no descartes las internacionales», «pon las nuevas en primera portada»), noticias y gráfico;
+  fotos «lo más realistas posibles, sin mucha edición», sin texto y sin repetir; **sin agentes** (todo a mano).
+- **Catálogo `2026-11-26.3`** (revisión `25b54edc`, aplicada con «Aplicar catálogo» 45900639213; lectura como
+  visitante 21:50 UTC): 32 plataformas y 32 ofertas (17/13/2). Altas: TOHKN IBER1, MMLTI1 y RNCRrev, Liqi, FINEXITY
+  bono serie B, Groma, Neuberger Securitize HINC, BlackRock HKD Digital Liquidity, Amundi STOXX Europe 600 tokenizada;
+  en camino, Franklin OnChain Euro Liquidity y el bono digital de Mitsui (ALTERNA). Plataformas nuevas: ALTERNA,
+  Amundi, BlackRock, FINEXITY, Groma, Liqi y TOHKN (+ región `latinoamerica`). Fuente única: `2026-11-26.3-v2/altas.py`
+  → `altas.json`; `preparar-entrega.mjs` (SQL con altas guardadas en `public.regiones`/`public.plataformas`),
+  `comprobar-entrega.mjs` (PGlite, 20 pruebas y 9 fallos), `despues-de-aplicar.mjs` (lista cerrada, transparencia,
+  **portadas** de plataforma) y `portadas.json`/`portadas.py`. Lo de Codex que **no** se tomó: retirar las 11 de
+  Brickwise (sus órdenes se comprobaron), el detalle de HSBC RedCoin y las ~30 plataformas solo de radar (otro ciclo).
+- **Orden por defecto:** «Más nuevas primero» en Ofertas (web `emiOrden='nuevas'`, app `ordenOfertas='nuevas'`).
+  Con ese orden la lista va sin grupos ni bloque «Selección» (aparecen con «Las más al día primero»). Inicio enseña las
+  6 más nuevas y el explicador de las 5 comprobaciones solo si alguna las pasa.
+- **Fotos:** las 32 de las ofertas, rehechas con RealVisXL (estilo documental, sin HDR) y revisadas una a una: sin
+  letras ni personas, ninguna escena repetida. `generar.mjs` solo recorta y da una nitidez ligera; `plantilla-foto.mjs`
+  ya no gradúa ni pone viñeta ni grano en la foto limpia. Las fotos reales de Commons siguen sin poder bajarse desde
+  aquí (429).
+- **Pruebas adaptadas** (sin debilitarlas): `probar-verificacion.mjs` compara las plataformas antes y después (sin 30
+  fijo); `probar-web.mjs` prueba la agrupación y la Selección con «Las más al día primero» y añade «por defecto, las
+  más nuevas primero»; la portada admite la herramienta RealVisXL además de ImageGen.
+- **Datos:** «No disponible…» explícito en las tres que no se contratan desde España (la tarjeta y la ficha dicen
+  lo mismo); el título de Mitsui sin «&» (la página pasaba de 65 caracteres al escaparlo); mTBILL: BaFin releído hoy
+  (su documentación da 403 y conserva el 21/11).
+- **Noticias del 26/11** (`noticias-diarias/2026-11-26/`, verificación hecha por Claude en las fuentes, sin
+  subagentes): Singapur (fondos no tradicionales), SBI Solana Global y oro digital mayorista; salen OKXICE, HSBC y
+  BaFin. **Gráfico:** las 16 fotos de Codex cuadran con `datos-tokenizacion`, más la del 26/11.
+- **Pendiente tras unir este PR:** «Publicar web» (revisión y producción), OTA Android y «Avisar novedad»; borrar
+  `claude/cerrojo-ciclo-2026-11-26`.
+
 ## 26 de noviembre de 2026 (48) · Claude · Catálogo re-verificado (vigente hasta el 03/12), Hausera fuera e integración de Codex · PUBLICADO
 
 - **Integrado de Codex/ChatGPT:** #204 (noticias del 25/11) y #206 (integridad del gráfico). La prueba de 400 días de `rwadar-movil/tests/tokenizacion.test.cjs` se ajusta a la regla de #206. Vuestro lote `catalogo-2026-11-25-v2` **no se aplicó**: lo sustituyen las entregas de hoy (ver su `LEEME.md`).

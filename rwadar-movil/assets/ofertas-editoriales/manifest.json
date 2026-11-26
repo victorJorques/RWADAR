@@ -72,10 +72,10 @@
       "archivo": "oferta-aktionariat.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 80274,
-      "hashSha256": "6bbae9285e61f658560afea041b312700623451d639668b3e9cf8b5bfb1c083e",
-      "alt": "Ilustración editorial de un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
-      "concepto": "un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "bytes": 99300,
+      "hashSha256": "4649f78335e4abd72fd1727b2f08a3ce49a9067c188e693c8bd23c41abc4778b",
+      "alt": "Ilustración editorial de unas viñas que bajan hasta el lago de Zúrich con una oficina moderna entre ellas, no la de la empresa, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "unas viñas que bajan hasta el lago de Zúrich con una oficina moderna entre ellas, no la de la empresa",
       "pasos": [
         "Compras acciones",
         "Eres accionista",
@@ -84,7 +84,47 @@
       "lugar": "Erlenbach · Suiza",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "alterna-bono-digital-mitsui",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-alterna-bono-digital-mitsui.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 80366,
+      "hashSha256": "1d003a70e29d6ebb6b14fe530f62ba25e534db1e4991db46b2b79dbc62a4bce9",
+      "alt": "Ilustración editorial de el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa, imagen generada con IA. Pasos: haces la pre-solicitud; el tipo se fija en enero; cobras al vencimiento. No es una foto del activo real.",
+      "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
+      "pasos": [
+        "Haces la pre-solicitud",
+        "El tipo se fija en enero",
+        "Cobras al vencimiento"
+      ],
+      "lugar": "Tokio · Japón",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "amundi-core-stoxx-europe-600-tokenizada",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-amundi-core-stoxx-europe-600-tokenizada.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 47096,
+      "hashSha256": "cbc52fc3902f821003a004b90b79e2398426fb89cccddfb0ef921186080a97c7",
+      "alt": "Ilustración editorial de un puerto de mercancías del norte de Europa, imagen genérica de las empresas europeas, imagen generada con IA. Pasos: compras partes tokenizadas; sigue a empresas europeas; reembolsas según el fondo. No es una foto del activo real.",
+      "concepto": "un puerto de mercancías del norte de Europa, imagen genérica de las empresas europeas",
+      "pasos": [
+        "Compras partes tokenizadas",
+        "Sigue a empresas europeas",
+        "Reembolsas según el fondo"
+      ],
+      "lugar": "Europa",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "apartamento-vacacional-hinterstoder-50",
@@ -92,10 +132,10 @@
       "archivo": "oferta-apartamento-vacacional-hinterstoder-50.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 73288,
-      "hashSha256": "e82bb98969f67300a793f6b4f29ac4b93e06d293a3b269a6c2a5cbdacdfaaf32",
-      "alt": "Ilustración editorial de un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real, imagen generada con IA. Pasos: compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real",
+      "bytes": 90748,
+      "hashSha256": "4a58d1603cc721d94059387c29a79a6d4346a09c0f8fc7998deb9409dc60635b",
+      "alt": "Ilustración editorial de un aparthotel de madera en un valle alpino en verano, parecido al real, imagen generada con IA. Pasos: compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un aparthotel de madera en un valle alpino en verano, parecido al real",
       "pasos": [
         "Compras participaciones",
         "El apartamento se alquila",
@@ -103,8 +143,28 @@
       ],
       "lugar": "Hinterstoder · Austria",
       "origen": "foto-generada",
-      "modelo": "Canva, generación de imágenes (21/10/2026)",
-      "revisadoEl": "2026-11-02"
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "blackrock-hkd-digital-liquidity",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-blackrock-hkd-digital-liquidity.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 32140,
+      "hashSha256": "e5e95cb705d7283efd6f0caa85e91ab7c701aaaea2cbd4c0fee6e3b6c844f561",
+      "alt": "Ilustración editorial de el puerto de Victoria y los rascacielos de Hong Kong, imagen generada con IA. Pasos: compras partes tokenizadas; invierte a corto plazo en HKD; reembolsas por tu distribuidor. No es una foto del activo real.",
+      "concepto": "el puerto de Victoria y los rascacielos de Hong Kong",
+      "pasos": [
+        "Compras partes tokenizadas",
+        "Invierte a corto plazo en HKD",
+        "Reembolsas por tu distribuidor"
+      ],
+      "lugar": "Hong Kong",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "boss-info",
@@ -112,10 +172,10 @@
       "archivo": "oferta-boss-info.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 51458,
-      "hashSha256": "32dead28d06946e9420ec0c8e37691a537bba70bcf99f6424ce59c09da9a879b",
-      "alt": "Ilustración editorial de un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
-      "concepto": "un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones",
+      "bytes": 76546,
+      "hashSha256": "abf469f0793c1387cde5304ba985ce3c50711f1289080d96954ec30e73637152",
+      "alt": "Ilustración editorial de una pequeña oficina moderna en un pueblo suizo al pie del Jura, no la de la empresa, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "una pequeña oficina moderna en un pueblo suizo al pie del Jura, no la de la empresa",
       "pasos": [
         "Compras acciones",
         "Eres accionista",
@@ -124,7 +184,7 @@
       "lugar": "Farnern · Suiza",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "drautalresidenz-paternion",
@@ -132,10 +192,10 @@
       "archivo": "oferta-drautalresidenz-paternion.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 69354,
-      "hashSha256": "e717ea4a8bb46173b5c794b1064214650d9e33058541ac832f5e96eb218e9f17",
-      "alt": "Ilustración editorial de un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real",
+      "bytes": 111950,
+      "hashSha256": "0c6825f4c96ecaf3adfa593b51e97c2e5fc59aec48326ad42065156a5fa882d2",
+      "alt": "Ilustración editorial de un conjunto de viviendas con balcones de madera en un valle de Carintia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un conjunto de viviendas con balcones de madera en un valle de Carintia, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -143,8 +203,28 @@
       ],
       "lugar": "Paternion · Austria",
       "origen": "foto-generada",
-      "modelo": "Canva, generación de imágenes (21/10/2026)",
-      "revisadoEl": "2026-11-02"
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "finexity-bono-2026-2030-serie-b",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-finexity-bono-2026-2030-serie-b.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 66366,
+      "hashSha256": "b80f6bd0ee06b1cfe133c7a9aa2432b69ff9041a48bf9df28bbf9017eabcdef5",
+      "alt": "Ilustración editorial de un edificio de oficinas moderno junto al Elba en Hamburgo, no el de la empresa, imagen generada con IA. Pasos: suscribes el bono; cobras el cupón cada semestre; recuperas el nominal al final. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas moderno junto al Elba en Hamburgo, no el de la empresa",
+      "pasos": [
+        "Suscribes el bono",
+        "Cobras el cupón cada semestre",
+        "Recuperas el nominal al final"
+      ],
+      "lugar": "Hamburgo · Alemania",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "fotovoltaica-cohotel",
@@ -152,10 +232,10 @@
       "archivo": "oferta-fotovoltaica-cohotel.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 28988,
-      "hashSha256": "55021f73ab61afcf163b0db6a5acbcfc22b80b084f41d7b3e4aa13f612802f59",
-      "alt": "Ilustración editorial de unos paneles solares en la cubierta plana de un edificio comercial austriaco, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
-      "concepto": "unos paneles solares en la cubierta plana de un edificio comercial austriaco",
+      "bytes": 93276,
+      "hashSha256": "4036cfe59f0c5847876fe4261af732fc805b9fe6b265133916a1efed77308066",
+      "alt": "Ilustración editorial de paneles solares en el tejado de un edificio comercial junto al Danubio, no los del proyecto, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "paneles solares en el tejado de un edificio comercial junto al Danubio, no los del proyecto",
       "pasos": [
         "Compras participaciones",
         "Los paneles dan energía",
@@ -163,8 +243,8 @@
       ],
       "lugar": "Steyregg · Austria",
       "origen": "foto-generada",
-      "modelo": "Canva, generación de imágenes (21/10/2026)",
-      "revisadoEl": "2026-11-02"
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "fotovoltaica-greenpoint",
@@ -172,10 +252,10 @@
       "archivo": "oferta-fotovoltaica-greenpoint.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 42242,
-      "hashSha256": "2fed77fa3218c8bddfcaea150998a8c012752319fe091bd1d421b5a3b86a8eb9",
-      "alt": "Ilustración editorial de unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
-      "concepto": "unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca",
+      "bytes": 97804,
+      "hashSha256": "219f127843a2692aeb1f1ab37af5bc1629c0f30ff2cad43caa777d590146536c",
+      "alt": "Ilustración editorial de paneles solares en la cubierta plana de una nave, vistos desde el aire, no los del proyecto, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "paneles solares en la cubierta plana de una nave, vistos desde el aire, no los del proyecto",
       "pasos": [
         "Compras participaciones",
         "Los paneles dan energía",
@@ -183,8 +263,48 @@
       ],
       "lugar": "Wiener Neustadt · Austria",
       "origen": "foto-generada",
-      "modelo": "Canva, generación de imágenes (21/10/2026)",
-      "revisadoEl": "2026-11-02"
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "franklin-onchain-euro-liquidity",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-franklin-onchain-euro-liquidity.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 110634,
+      "hashSha256": "f253d6f8261bfa05d2553b4a6b603555601cdb8d2abd2e495ff1246e922806af",
+      "alt": "Ilustración editorial de el casco antiguo de la ciudad de Luxemburgo sobre el valle, imagen generada con IA. Pasos: monetario tokenizado en euros; aún no admite suscripciones; se abrirá a minoristas. No es una foto del activo real.",
+      "concepto": "el casco antiguo de la ciudad de Luxemburgo sobre el valle",
+      "pasos": [
+        "Monetario tokenizado en euros",
+        "Aún no admite suscripciones",
+        "Se abrirá a minoristas"
+      ],
+      "lugar": "Luxemburgo",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "groma-real-estate-trust",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-groma-real-estate-trust.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 112358,
+      "hashSha256": "699145315a5dbd90f0d87db2e0abd7e3a347080eddfc026b7d0994325680ae9c",
+      "alt": "Ilustración editorial de edificios de pisos de ladrillo en una calle de Boston, no los del fondo, imagen generada con IA. Pasos: compras acciones del REIT; los pisos se alquilan; reparto cada trimestre. No es una foto del activo real.",
+      "concepto": "edificios de pisos de ladrillo en una calle de Boston, no los del fondo",
+      "pasos": [
+        "Compras acciones del REIT",
+        "Los pisos se alquilan",
+        "Reparto cada trimestre"
+      ],
+      "lugar": "Boston · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "kraken-xstocks",
@@ -192,10 +312,10 @@
       "archivo": "oferta-kraken-xstocks.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 72266,
-      "hashSha256": "e4c9079349464a13c1d5317855d3f25313bcfb97b99abacf532d25b9a85ff891",
-      "alt": "Ilustración editorial de un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras con euros; vendes o retiras. No es una foto del activo real.",
-      "concepto": "un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses",
+      "bytes": 65890,
+      "hashSha256": "15797377bdf5f10524bbad9c5278606e557f463bcb4d4a7392da62914c5695fa",
+      "alt": "Ilustración editorial de el puerto deportivo de Limasol a mediodía, imagen generada con IA. Pasos: abres cuenta y test; compras con euros; vendes o retiras. No es una foto del activo real.",
+      "concepto": "el puerto deportivo de Limasol a mediodía",
       "pasos": [
         "Abres cuenta y test",
         "Compras con euros",
@@ -204,7 +324,27 @@
       "lugar": "Limasol · Chipre",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "liqi-creditos-empresas",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-liqi-creditos-empresas.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 53736,
+      "hashSha256": "d07dd99d8cc90c3fb46b183943a5dbc3b7409e686cc07a3ed5ce120fe81410a5",
+      "alt": "Ilustración editorial de el taller de carpintería de una pequeña empresa, imagen genérica de las empresas que piden el crédito, imagen generada con IA. Pasos: compras certificados de un tramo; la empresa devuelve el crédito; cobras al vencimiento. No es una foto del activo real.",
+      "concepto": "el taller de carpintería de una pequeña empresa, imagen genérica de las empresas que piden el crédito",
+      "pasos": [
+        "Compras certificados de un tramo",
+        "La empresa devuelve el crédito",
+        "Cobras al vencimiento"
+      ],
+      "lugar": "Brasil",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "local-de-estanco-klagenfurt",
@@ -212,10 +352,10 @@
       "archivo": "oferta-local-de-estanco-klagenfurt.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 71194,
-      "hashSha256": "3dbf790c9daac6d9b2a55b31fb0256759d65da92ccd989849540a59c3e7ebbaa",
-      "alt": "Ilustración editorial de un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca",
+      "bytes": 71286,
+      "hashSha256": "e20a54c0f1d5fb6d59e319287d9c52e5efcf96f11cd6aafe7b93295340c60475",
+      "alt": "Ilustración editorial de una calle peatonal del casco antiguo de Klagenfurt, no el local, imagen generada con IA. Pasos: compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "una calle peatonal del casco antiguo de Klagenfurt, no el local",
       "pasos": [
         "Compras participaciones",
         "El local se alquila",
@@ -224,7 +364,7 @@
       "lugar": "Klagenfurt · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "mtbill",
@@ -232,10 +372,10 @@
       "archivo": "oferta-mtbill.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 48184,
-      "hashSha256": "ef5c23199fa59b2206acea48baba409d48c86123359238539b4b3bdf13cfd1c4",
-      "alt": "Ilustración editorial de un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos, imagen generada con IA. Pasos: compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.",
-      "concepto": "un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos",
+      "bytes": 87376,
+      "hashSha256": "125dd44ff45d19b1ebf6d1f8d4afb34e2c8c401ad1d259b2c744dba3e76d8570",
+      "alt": "Ilustración editorial de Washington con los cerezos en flor, imagen genérica de Estados Unidos, imagen generada con IA. Pasos: compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.",
+      "concepto": "Washington con los cerezos en flor, imagen genérica de Estados Unidos",
       "pasos": [
         "Compras el token",
         "Sigue letras del Tesoro",
@@ -244,7 +384,7 @@
       "lugar": "Estados Unidos",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "prosegur-digital-gold",
@@ -252,10 +392,10 @@
       "archivo": "oferta-prosegur-digital-gold.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 80572,
-      "hashSha256": "8d91c4b46bf49b02231fdac694694ab7ad27a388f8bd3c1f3b53d79ae364e332",
-      "alt": "Ilustración editorial de unos lingotes de oro sin marcas en una cámara acorazada, imagen generada con IA. Pasos: compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.",
-      "concepto": "unos lingotes de oro sin marcas en una cámara acorazada",
+      "bytes": 36586,
+      "hashSha256": "f6b9d786738bf7ba21f30ef308aa1235b472d0c8cfe41f75fceba9c18df414ae",
+      "alt": "Ilustración editorial de unos lingotes de oro en una cámara acorazada, imagen generada con IA. Pasos: compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.",
+      "concepto": "unos lingotes de oro en una cámara acorazada",
       "pasos": [
         "Compras gramos de oro",
         "Se guarda en una cámara",
@@ -264,7 +404,7 @@
       "lugar": "Custodia en España",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "randhartingergasse-9-viena",
@@ -272,10 +412,10 @@
       "archivo": "oferta-randhartingergasse-9-viena.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 67360,
-      "hashSha256": "9dcba7c3c88018958d26a2d195737374613876414052784b3627ded0561750db",
-      "alt": "Ilustración editorial de un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real",
+      "bytes": 85936,
+      "hashSha256": "9d5bee86e7ec84945d6e807afdf888495105853fc4dd9830077f3e00a6d01c2a",
+      "alt": "Ilustración editorial de un ático reformado sobre un edificio clásico de Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un ático reformado sobre un edificio clásico de Viena, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -284,7 +424,7 @@
       "lugar": "Viena · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "robinhood-classic-stock-tokens",
@@ -292,10 +432,10 @@
       "archivo": "oferta-robinhood-classic-stock-tokens.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 70850,
-      "hashSha256": "3c6185987cd88e1eb49a189dc2d21146ec113c20567426ca940e071f69a93e0e",
-      "alt": "Ilustración editorial de la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras en euros; cierras con la contraparte. No es una foto del activo real.",
-      "concepto": "la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses",
+      "bytes": 54094,
+      "hashSha256": "4d4da4ae0153a9b80c10933ce1db5b94b0f13d3cd777a71349df0dcb27c80209",
+      "alt": "Ilustración editorial de una sala de operaciones vacía, imagen generada con IA. Pasos: abres cuenta y test; compras en euros; cierras con la contraparte. No es una foto del activo real.",
+      "concepto": "una sala de operaciones vacía",
       "pasos": [
         "Abres cuenta y test",
         "Compras en euros",
@@ -304,7 +444,27 @@
       "lugar": "Estados Unidos",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "securitize-hinc",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-securitize-hinc.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 41750,
+      "hashSha256": "3fa5f3028685b136827d8d8d9bc8f75683f1623ddd8b5dfe3b53c7cabdddf039",
+      "alt": "Ilustración editorial de el vestíbulo de una torre de oficinas de Nueva York, no la de la gestora, imagen generada con IA. Pasos: compras partes del fondo; neuberger Berman lo gestiona; pides el reembolso. No es una foto del activo real.",
+      "concepto": "el vestíbulo de una torre de oficinas de Nueva York, no la de la gestora",
+      "pasos": [
+        "Compras partes del fondo",
+        "Neuberger Berman lo gestiona",
+        "Pides el reembolso"
+      ],
+      "lugar": "Nueva York · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "spiko-letras-del-tesoro-dolar",
@@ -312,10 +472,10 @@
       "archivo": "oferta-spiko-letras-del-tesoro-dolar.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 73448,
-      "hashSha256": "d4ac6a5fa2c11128d9bb9ebbd07a220d49e689f32edd00e72b3df42e3cce8230",
-      "alt": "Ilustración editorial de un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense, imagen generada con IA. Pasos: abres cuenta con KYC; compras participaciones; pides el reembolso. No es una foto del activo real.",
-      "concepto": "un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense",
+      "bytes": 82224,
+      "hashSha256": "3909e9cb501e861f429f7aa8e00ce8ad9a5bb927838d1294f5afbc16003451a0",
+      "alt": "Ilustración editorial de el puente de Brooklyn y Manhattan desde la orilla, imagen genérica de Estados Unidos, imagen generada con IA. Pasos: abres cuenta con KYC; compras participaciones; pides el reembolso. No es una foto del activo real.",
+      "concepto": "el puente de Brooklyn y Manhattan desde la orilla, imagen genérica de Estados Unidos",
       "pasos": [
         "Abres cuenta con KYC",
         "Compras participaciones",
@@ -324,7 +484,7 @@
       "lugar": "Estados Unidos",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "spiko-letras-del-tesoro-euro",
@@ -332,10 +492,10 @@
       "archivo": "oferta-spiko-letras-del-tesoro-euro.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 51748,
-      "hashSha256": "d979cec8a75a2fc0210eaa9fefe7a03c385f937eda68bc2bcca73e12531dfc8a",
-      "alt": "Ilustración editorial de un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro, imagen generada con IA. Pasos: compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.",
-      "concepto": "un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro",
+      "bytes": 70828,
+      "hashSha256": "86b1caebb730d518733ab5d7003e0ae992c32d8985f96628a7e312a40b25727a",
+      "alt": "Ilustración editorial de el Sena en París con sus puentes de piedra, imagen genérica de la zona euro, imagen generada con IA. Pasos: compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.",
+      "concepto": "el Sena en París con sus puentes de piedra, imagen genérica de la zona euro",
       "pasos": [
         "Compras participaciones",
         "El fondo compra letras",
@@ -344,7 +504,7 @@
       "lugar": "Zona euro",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "spiko-smart-cash-euro",
@@ -352,10 +512,10 @@
       "archivo": "oferta-spiko-smart-cash-euro.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 118542,
-      "hashSha256": "629bd9730c82775512c59a4f02f5fa88d352a8448835489da32e30f415eefac9",
-      "alt": "Ilustración editorial de una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario, imagen generada con IA. Pasos: abres cuenta con KYC; transfieres euros; pides el reembolso. No es una foto del activo real.",
-      "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
+      "bytes": 46984,
+      "hashSha256": "a4f7657f07e6daef2ef2125125153a27c944a9c3d0a0388c2a67791f0c86d8f0",
+      "alt": "Ilustración editorial de el barrio de negocios de La Défense, en París, imagen generada con IA. Pasos: abres cuenta con KYC; transfieres euros; pides el reembolso. No es una foto del activo real.",
+      "concepto": "el barrio de negocios de La Défense, en París",
       "pasos": [
         "Abres cuenta con KYC",
         "Transfieres euros",
@@ -364,7 +524,7 @@
       "lugar": "París · Francia",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "switzerlend",
@@ -372,10 +532,10 @@
       "archivo": "oferta-switzerlend.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 85238,
-      "hashSha256": "23711b2bbeee7ea7fe23de5655ce596d85f2e033d0c0833776db5c94e35cdbb8",
-      "alt": "Ilustración editorial de un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
-      "concepto": "un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "bytes": 75912,
+      "hashSha256": "9c0a47715083bde61db81bcc2650231c4cf292fc95d49cc3e57c3781f91785bb",
+      "alt": "Ilustración editorial de el casco antiguo de Zúrich nevado junto al río, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "el casco antiguo de Zúrich nevado junto al río",
       "pasos": [
         "Compras acciones",
         "Eres accionista",
@@ -384,7 +544,67 @@
       "lugar": "Zúrich · Suiza",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tohkn-iber1",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-tohkn-iber1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 61612,
+      "hashSha256": "6c25bcf215b726a5f0abddf61d97b15d38f5f44c5128ab030d5484da6951d463",
+      "alt": "Ilustración editorial de una planta de reciclaje de plástico en Centroamérica, no la de la empresa, imagen generada con IA. Pasos: compras tokens de deuda; iberplastic paga interés mensual; recuperas el capital al final. No es una foto del activo real.",
+      "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
+      "pasos": [
+        "Compras tokens de deuda",
+        "Iberplastic paga interés mensual",
+        "Recuperas el capital al final"
+      ],
+      "lugar": "El Salvador",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tohkn-mmlti1",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-tohkn-mmlti1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 45436,
+      "hashSha256": "867dfc6bc32d3bc2af266738e249847f3dad1b9671dc1e6627df9108f49e3875",
+      "alt": "Ilustración editorial de una pequeña oficina de servicios financieros en una avenida de San Salvador, no la de la empresa, imagen generada con IA. Pasos: compras tokens de deuda; multiMoney paga interés mensual; recuperas el capital al final. No es una foto del activo real.",
+      "concepto": "una pequeña oficina de servicios financieros en una avenida de San Salvador, no la de la empresa",
+      "pasos": [
+        "Compras tokens de deuda",
+        "MultiMoney paga interés mensual",
+        "Recuperas el capital al final"
+      ],
+      "lugar": "El Salvador",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tohkn-rncrrev",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-tohkn-rncrrev.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 86744,
+      "hashSha256": "6702c9fdcf9792a162b5ca3c01b53242c1fdc533a566287c22403a599bcc96b3",
+      "alt": "Ilustración editorial de un condominio nuevo con piscina entre jardines tropicales, no el del proyecto, imagen generada con IA. Pasos: compras tokens de ingresos; se hacen y venden las viviendas; cobras tu parte de las ventas. No es una foto del activo real.",
+      "concepto": "un condominio nuevo con piscina entre jardines tropicales, no el del proyecto",
+      "pasos": [
+        "Compras tokens de ingresos",
+        "Se hacen y venden las viviendas",
+        "Cobras tu parte de las ventas"
+      ],
+      "lugar": "San Salvador · El Salvador",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "vivienda-pluddemanngasse-101-graz",
@@ -392,10 +612,10 @@
       "archivo": "oferta-vivienda-pluddemanngasse-101-graz.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 68174,
-      "hashSha256": "3874ae69492f071bcaaf7553db714a553c5aedecab76fd67e8bcd92044a1004c",
-      "alt": "Ilustración editorial de un bloque de pisos moderno de fachada blanca en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un bloque de pisos moderno de fachada blanca en Graz, parecido al real",
+      "bytes": 66874,
+      "hashSha256": "3714f8742297f5169489b2083b65c11ee93bbbb6f8dd17cb2e8d31780b8c712b",
+      "alt": "Ilustración editorial de un edificio de viviendas moderno en una calle de Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas moderno en una calle de Graz, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -404,7 +624,7 @@
       "lugar": "Graz · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -412,10 +632,10 @@
       "archivo": "oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 53048,
-      "hashSha256": "c5f1e2e4424c32c52980217b9048d10dd05ac047c0b4c6089430e42124f3cf3f",
-      "alt": "Ilustración editorial de un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real",
+      "bytes": 46338,
+      "hashSha256": "e926854900be15e62a1f963bf3904d164f1466295e404953b84bbbe736629515",
+      "alt": "Ilustración editorial de un edificio de viviendas en una esquina tras la lluvia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas en una esquina tras la lluvia, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -424,7 +644,7 @@
       "lugar": "Wiener Neustadt · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
@@ -432,10 +652,10 @@
       "archivo": "oferta-vivienda-schwarzer-weg-18-graz.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 87208,
-      "hashSha256": "cf42aabbf7453680833964bfe29f7bce7a1d2699fa84ae2dc8112d223f1a80a5",
-      "alt": "Ilustración editorial de un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real",
+      "bytes": 77846,
+      "hashSha256": "9127603dabd251984524c86a03ad462a5775b9423a9f464be09043fa5cb46369",
+      "alt": "Ilustración editorial de un edificio de viviendas cúbico visto desde su jardín, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas cúbico visto desde su jardín, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -444,7 +664,7 @@
       "lugar": "Graz · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "vivienda-sonnleithnergasse-2-viena",
@@ -452,10 +672,10 @@
       "archivo": "oferta-vivienda-sonnleithnergasse-2-viena.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 116316,
-      "hashSha256": "b58c4d119e7d9527e5aecf7557deb386c6d8c0668e06cd5b522607d3679ffa8d",
-      "alt": "Ilustración editorial de un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real",
+      "bytes": 106116,
+      "hashSha256": "a0c16ae4727653e10116bccdbe7c6fd6725d6ec9de1a86355f182b0a793b9fe5",
+      "alt": "Ilustración editorial de un gran bloque de viviendas de Viena visto desde su patio verde, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un gran bloque de viviendas de Viena visto desde su patio verde, parecido al real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -464,7 +684,7 @@
       "lugar": "Viena · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     },
     {
       "slug": "vivienda-stallhofstra-e-28-gratwein",
@@ -472,10 +692,10 @@
       "archivo": "oferta-vivienda-stallhofstra-e-28-gratwein.webp",
       "ancho": 960,
       "alto": 660,
-      "bytes": 99456,
-      "hashSha256": "bb8310aaad5a09e36700959b232244dd91d05cc2918df7b5612ccaebdf5d2263",
-      "alt": "Ilustración editorial de un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
-      "concepto": "un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real",
+      "bytes": 75388,
+      "hashSha256": "9fcefbb96e068729a0c54b0d24c826d24b489bda37649a61933daad06c745cca",
+      "alt": "Ilustración editorial de una casa de vecinos con tejado rojo en un pueblo de Estiria, parecida a la real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "una casa de vecinos con tejado rojo en un pueblo de Estiria, parecida a la real",
       "pasos": [
         "Compras participaciones",
         "La vivienda se alquila",
@@ -484,7 +704,7 @@
       "lugar": "Gratwein · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
+      "revisadoEl": "2026-11-26"
     }
   ]
 }

@@ -63,6 +63,56 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "alterna-bono-digital-mitsui": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La vende una entidad japonesa; no hay autorización de un supervisor de la UE ni inscripción en la CNMV.",
+      "fuente": {
+        "titulo": "ALTERNA · Lista de ofertas",
+        "url": "https://app.alterna-z.com/offerings"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Documentos solo en japonés; no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "ALTERNA · Lista de ofertas",
+        "url": "https://app.alterna-z.com/offerings"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Al vencimiento (1 año)",
+    "puntos": []
+  },
+  "amundi-core-stoxx-europe-600-tokenizada": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "El anuncio no identifica qué entidad vende la clase tokenizada ni su inscripción.",
+      "fuente": {
+        "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
+        "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Amundi no ha publicado un KID ni folleto para la clase tokenizada.",
+      "fuente": {
+        "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
+        "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Sin publicar",
+    "puntos": []
+  },
   "apartamento-vacacional-hinterstoder-50": {
     "verificadaEl": "2026-11-26",
     "anadidaEl": "2026-09-30",
@@ -95,6 +145,31 @@ export const TRANSPARENCIA_POR_SLUG = {
         }
       }
     ]
+  },
+  "blackrock-hkd-digital-liquidity": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Autorizado por la SFC de Hong Kong, no por un supervisor de la UE ni inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
+        "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No tiene KID europeo: sus documentos son los de Hong Kong.",
+      "fuente": {
+        "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
+        "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin mínimo publicado",
+    "salidaCorta": "Por el distribuidor",
+    "puntos": []
   },
   "boss-info": {
     "verificadaEl": "2026-11-26",
@@ -158,6 +233,39 @@ export const TRANSPARENCIA_POR_SLUG = {
         "fuente": {
           "titulo": "Brickwise · mercado de reventa en la app (26/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
+        }
+      }
+    ]
+  },
+  "finexity-bono-2026-2030-serie-b": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La vende el propio emisor alemán sin folleto; no consta como entidad autorizada inscrita en la CNMV para esta venta.",
+      "fuente": {
+        "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+        "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Tiene KID en alemán, pero la oferta pública es solo en Alemania.",
+      "fuente": {
+        "titulo": "FINEXITY · Hoja de términos («Public offer in Germany only»)",
+        "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (2030)",
+    "puntos": [
+      {
+        "texto": "Cupón variable con un mínimo fijado",
+        "fuente": {
+          "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+          "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
         }
       }
     ]
@@ -228,6 +336,56 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "franklin-onchain-euro-liquidity": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Todavía no hay entidad ni canal publicados para venderlo en España.",
+      "fuente": {
+        "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
+        "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Aún no hemos encontrado su KID en español.",
+      "fuente": {
+        "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
+        "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin publicar",
+    "salidaCorta": "Sin publicar",
+    "puntos": []
+  },
+  "groma-real-estate-trust": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La ofrece el propio REIT con exenciones de la SEC; no hay entidad autorizada en la UE ni inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Groma Real Estate Trust (Reg D 506(c) y Reg CF)",
+        "url": "https://www.gromareit.com/"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Memorando de colocación de EE. UU.; no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "Groma Real Estate Trust",
+        "url": "https://www.gromareit.com/"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "Sin mínimo publicado",
+    "salidaCorta": "Sin salida publicada",
+    "puntos": []
+  },
   "kraken-xstocks": {
     "verificadaEl": "2026-11-26",
     "anadidaEl": "2026-11-03",
@@ -260,6 +418,31 @@ export const TRANSPARENCIA_POR_SLUG = {
         }
       }
     ]
+  },
+  "liqi-creditos-empresas": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Liqi opera en Brasil bajo la CVM; no está autorizada por un supervisor de la UE ni inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Liqi · Ofertas de tokens (RCVM 88)",
+        "url": "https://tokens.liqi.com.br/tokens"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Emisiones brasileñas del régimen CVM 88; no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "Liqi · Ofertas de tokens",
+        "url": "https://tokens.liqi.com.br/tokens"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "R$ 25",
+    "salidaCorta": "Al vencimiento",
+    "puntos": []
   },
   "local-de-estanco-klagenfurt": {
     "verificadaEl": "2026-11-26",
@@ -304,7 +487,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "BaFin · Base de datos de empresas (búsqueda «Midas»: solo una sociedad danesa distinta)",
         "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche"
       },
-      "consultadaEl": "2026-11-21"
+      "consultadaEl": "2026-11-26"
     },
     "documentoEspana": {
       "cumple": true,
@@ -443,6 +626,39 @@ export const TRANSPARENCIA_POR_SLUG = {
         "fuente": {
           "titulo": "Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)",
           "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"
+        }
+      }
+    ]
+  },
+  "securitize-hinc": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Lo distribuye Securitize desde EE. UU.; no consta autorización de un supervisor de la UE ni inscripción en la CNMV para este fondo.",
+      "fuente": {
+        "titulo": "Securitize · HINC",
+        "url": "https://securitize.io/hinc"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay folleto ni KID europeos publicados para este fondo.",
+      "fuente": {
+        "titulo": "Securitize · HINC",
+        "url": "https://securitize.io/hinc"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100.000 USD",
+    "salidaCorta": "Reembolso diario",
+    "puntos": [
+      {
+        "texto": "Reembolso diario",
+        "fuente": {
+          "titulo": "Securitize · HINC",
+          "url": "https://securitize.io/hinc"
         }
       }
     ]
@@ -592,6 +808,97 @@ export const TRANSPARENCIA_POR_SLUG = {
         }
       }
     ]
+  },
+  "tohkn-iber1": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "La documentación de IBER1 es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Al vencimiento (24 meses)",
+    "puntos": [
+      {
+        "texto": "Interés fijo y pago mensual",
+        "fuente": {
+          "titulo": "TOHKN · IBER1",
+          "url": "https://www.tohkn.com/en/issuances/iber1"
+        }
+      }
+    ]
+  },
+  "tohkn-mmlti1": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "La documentación de MMLTI1 es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Al vencimiento (24 meses)",
+    "puntos": [
+      {
+        "texto": "Interés fijo y pago mensual",
+        "fuente": {
+          "titulo": "TOHKN · MMLTI1",
+          "url": "https://www.tohkn.com/en/issuances/mmlti1"
+        }
+      }
+    ]
+  },
+  "tohkn-rncrrev": {
+    "verificadaEl": "2026-11-26",
+    "anadidaEl": "2026-11-26",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La vende MIO3 (TOHKN), autorizada en El Salvador según su web, no por un supervisor de la UE ni inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "La documentación de RNCRrev es salvadoreña (DIR y aviso de oferta pública ante la CNAD); no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "TOHKN · Emisiones de activos digitales",
+        "url": "https://www.tohkn.com/en/issuances"
+      },
+      "consultadaEl": "2026-11-26"
+    },
+    "minimoCorto": "100 USD",
+    "salidaCorta": "Venta de las viviendas",
+    "puntos": []
   },
   "vivienda-pluddemanngasse-101-graz": {
     "verificadaEl": "2026-11-26",
