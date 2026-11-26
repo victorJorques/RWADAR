@@ -2481,7 +2481,18 @@ for(const [nombre,alterar] of [
     !/class="ofertas-grupo"/.test(movilSinGrupos) && !/Cada una conserva su fuente/.test(movilSinGrupos) &&
     (movilSinGrupos.match(/data-oferta-detalle=/g)||[]).length===vm.runInContext("EMI.filter(o=>o.coleccion==='principales').length",c));
   vm.runInContext("window.matchMedia=()=>({matches:false})",c);
+  // Por defecto, las más nuevas primero (26/11/2026, orden de Víctor): lista sin grupos, de la más nueva a la más antigua.
+  const ordenInicial=vm.runInContext('emiOrden',c);
+  const porDefecto=vm.runInContext("tarjetasPorProveedorHtml(ordenarOfertasLocales(EMI.filter(o=>o.coleccion==='principales')))",c);
+  const primerasEsperadas=JSON.parse(vm.runInContext("JSON.stringify(EMI.filter(o=>o.coleccion==='principales').slice().sort(masNuevasPrimero).map(o=>o.slug))",c));
+  const primerasVistas=[...porDefecto.matchAll(/data-oferta-detalle="([^"]+)"/g)].map(m=>m[1]);
+  prueba('por defecto, Ofertas enseña primero las más nuevas y sin grupos por proveedor',
+    ordenInicial==='nuevas' && !/class="ofertas-grupo"/.test(porDefecto) &&
+    primerasVistas.length===primerasEsperadas.length && primerasVistas.every((s,i)=>s===primerasEsperadas[i]));
+  // Con otro orden (aquí «Las más al día primero»), el escritorio vuelve a agrupar por proveedor.
+  vm.runInContext("emiOrden='cierra'",c);
   const todo=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='principales'))",c);
+  vm.runInContext("emiOrden="+JSON.stringify(ordenInicial),c);
   const esperado=JSON.parse(vm.runInContext("(()=>{const l=EMI.filter(o=>o.coleccion==='principales'),g={};"+
     "l.forEach(o=>{g[o.plataformaSlug]=(g[o.plataformaSlug]||0)+1});return JSON.stringify({n:l.length,g:Object.values(g).filter(x=>x>1)})})()",c));
   prueba('agrupar proveedores conserva cada referencia individual y el nombre común sin escoger un ticker',
