@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-26T20:39:26.280Z",
+  "ejecutadoEl": "2026-11-26T21:25:17.780Z",
   "etiqueta": "2026-11-26.3",
   "revisionAnterior": "4601a164-0884-8198-2e8a-23998e4e3120",
   "revisionNueva": "dd99e41e-7a84-7b44-0c65-8eb58d4e297f",
@@ -8,14 +8,13 @@
   "pruebas": [
     "inventario: una transacción serializable; guarda (publicada 4601a164 con su huella 4601a1640884…, catálogo no retirado, fecha del 26/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (la región «Latinoamérica» y las 7 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 79 en fuentes, 32 en plataformas, 130 en plataforma_fuentes, 32 en alertas, 42 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
     "cadena de producción (seed antes de ARTEX + 23 lotes, del 2026-10-22 a la 2026-11-26.2): la publicada es la 4601a164",
-    "antes de aplicar, PGlite enseña la 2026-11-26.2 local (25 plataformas, 21 ofertas 8/13/0, documentación idéntica) (lectura-publica/ pendiente)",
+    "antes de aplicar, PGlite enseña la 2026-11-26.2 local (25 plataformas, 21 ofertas 8/13/0, documentación idéntica) y lo leído como visitante en lectura-publica/",
     "idempotente: aplicarla dos veces da lo mismo",
     "public.plataformas: las 30 de antes, idénticas, y las 7 nuevas exactas (32 en el radar y 5 descartadas); región «Latinoamérica» añadida; public.fuentes, cambios de estado, avisos y emisiones, intactos (dar de alta no avisa a nadie); las revisiones anteriores se conservan y la nueva queda aprobada",
     "publicada la revisión nueva: 32 plataformas y 32 ofertas (17 principales, 13 de reventa y 2 en camino); las 11 ofertas y las 7 plataformas nuevas, con sus datos de altas.json; las 21 ofertas y las 25 plataformas de antes, idénticas a la 2026-11-26.2 salvo la revisión y el manifiesto del lote (21 → 32); las 5 descartadas, iguales",
     "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 32/32 con 2 en camino; vale el 26/11 y el 03/12 y caduca el 04/12; las 21 tarjetas de antes se ven igual y las 11 nuevas tienen mínimo, acceso desde España y salida",
     "sincronizador real con estas vistas: 32 plataformas, 32 ofertas y 5 descartadas (CSV de 37 filas); sin añadir las 18 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 69 páginas, las 18 nuevas incluidas y en el sitemap",
     "worker con la lista nueva: las 11 fichas de oferta y las 7 de plataforma nuevas se sirven",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/export263b lo que leería un visitante después de aplicar",
     "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
     "falla y no deja nada: la publicada no es la 2026-11-26.2 (es la 2026-11-26, 47b53d7d) → Publicación distinta de la revisión anterior prevista: 47b53d7d-e223-b1fb-dc78-f06745466eef. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
@@ -99,7 +98,7 @@
     "public.regiones": 1,
     "public.plataformas": 7
   },
-  "lecturaPublica": false,
+  "lecturaPublica": true,
   "tarjetasNuevas": {
     "tohkn-iber1": {
       "minimo": "Desde 100 USD (1 token)",
