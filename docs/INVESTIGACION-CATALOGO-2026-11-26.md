@@ -88,3 +88,38 @@ visitante (copias y SHA-256 en `2026-11-26.3-v2/fuentes/`; avisos de entrada y c
   su documentación legal (docs.midas.app) responde 403 a la lectura automática y conserva el 21/11, su última lectura.
 
 Detalle: `rwadar-app/data/verificaciones/2026-11-26.3-v2/` y `rwadar-app/data/noticias-diarias/2026-11-26/`.
+
+## Entrega 2026-11-26.4 · plataformas del radar del informe de Codex (sección 09)
+
+Por orden de la dirección del 26/11 («añade las 30 plataformas del radar de Codex», «las que verifiques que son
+reales; si pide aceptar cookies, acéptalas»), sin subagentes. Cada plataforma se leyó ese día en su propia web, como
+visitante y aceptando el aviso de cookies o de entrada cuando lo pedía (copias, hora, HTTP y SHA-256 en
+`2026-11-26.4-v2/fuentes/`). Cada frase en la que se apoya una ficha está en esas copias (`plataformas.py` lo
+comprueba al generar `altas.json`). En la copia de Caliber se taparon los datos de contacto de personas.
+
+| Región | Plataformas nuevas |
+|---|---|
+| Latinoamérica | Raíz, Tokeniza, Etherfuse, HATOR, Real Tokn, Bloktok |
+| España y Unión Europea | Bit2Me STX, Assetera, Estating, Seturion, DigiShares |
+| Reino Unido | Ctrl Alt |
+| Asia-Pacífico | DigiFT, SDAX, Terazo, Luxivana, TangibleX |
+| Oriente Medio (región nueva) | Tokinvest (licencia comprobada en el registro de VARA), PRYPCO Mint |
+| África (región nueva) | Mesh, Oaksvale, Cradle, Shard |
+| EE. UU. | Caliber, OKXICE |
+
+- Licencias: solo la de Tokinvest se comprobó en el registro del supervisor; en el resto la ficha dice lo que declara
+  la web y que no lo hemos comprobado, o que no declara ninguna (Raíz, Bloktok, Oaksvale y Shard).
+- Fuera, con su motivo en `plataformas.py`: AndX (promete un retorno mínimo sin regulador), Expedit (cita CNMV, SEC y
+  FINRA sin números de registro), Tokenia (piloto en red de pruebas), PropertyHandle (sin ofertas, esperando al
+  regulador), Mercado Bitcoin y WisdomTree (403 como visitante), DAMREV (429) y RedSwan, Binaryx y NewEarthX (el
+  propio informe las descarta).
+- Catálogo: 57 plataformas y las mismas 32 ofertas (17/13/2); revisión 7f745c7d, sobre la 25b54edc. SQL con guardas:
+  en `public.*` solo inserta las regiones «África» y «Oriente Medio» y las 25 plataformas. Ensayo PGlite: 20 pruebas y
+  9 casos de fallo que no dejan nada; antes de aplicar, PGlite = lo publicado leído como visitante.
+- Portadas: 25 nuevas con RealVisXL, realistas, sin texto ni personas y sin repetir escena. Por indicación de la
+  dirección («el camino raro verde parece IA») se rehicieron con luz normal y colores apagados las que parecían
+  artificiales (HATOR, SDAX, Seturion, Shard, Cradle) y las que repetían encuadre (Bit2Me STX, Terazo, PRYPCO Mint).
+- App: el diccionario inglés suma «África», «Oriente Medio» y «Varias»; la prueba del radar de Inicio compara el
+  lienzo con las cifras reales del catálogo (ya hay categorías con más de 9).
+
+Detalle: `rwadar-app/data/verificaciones/2026-11-26.4-v2/`.
