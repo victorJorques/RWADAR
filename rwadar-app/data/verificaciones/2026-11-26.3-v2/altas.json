@@ -694,10 +694,10 @@
     ],
     "concepto": "una planta de reciclaje de plástico",
     "foto": {
-     "semilla": 41,
+     "semilla": 42,
      "encuadre": "70% 55%",
      "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
-     "prompt": "plastic recycling plant in Central America, plain white industrial hall with bales of sorted plastic bottles in the yard, green hills behind, midday"
+     "prompt": "plastic recycling plant in Central America, plain white industrial hall with neatly stacked bales of sorted plastic in front of it, green hills behind, midday"
     }
    }
   },

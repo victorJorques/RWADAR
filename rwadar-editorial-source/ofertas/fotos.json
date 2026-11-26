@@ -146,10 +146,10 @@
   },
   "spiko-letras-del-tesoro-dolar": {
    "modelo": "realvisxl",
-   "semilla": 131,
+   "semilla": 132,
    "encuadre": "70% 50%",
-   "concepto": "Manhattan desde el puente de Brooklyn, imagen genérica de Estados Unidos",
-   "prompt": "view along the walkway of the Brooklyn Bridge towards Lower Manhattan, steel cables and stone arch, clear morning"
+   "concepto": "el puente de Brooklyn y Manhattan desde la orilla, imagen genérica de Estados Unidos",
+   "prompt": "the stone towers of the Brooklyn Bridge seen from an empty riverside park in Brooklyn, Lower Manhattan skyline behind, early morning, nobody around"
   },
   "robinhood-classic-stock-tokens": {
    "modelo": "realvisxl",
@@ -174,10 +174,10 @@
   },
   "tohkn-iber1": {
    "modelo": "realvisxl",
-   "semilla": 41,
+   "semilla": 42,
    "encuadre": "70% 55%",
    "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
-   "prompt": "plastic recycling plant in Central America, plain white industrial hall with bales of sorted plastic bottles in the yard, green hills behind, midday"
+   "prompt": "plastic recycling plant in Central America, plain white industrial hall with neatly stacked bales of sorted plastic in front of it, green hills behind, midday"
   },
   "tohkn-mmlti1": {
    "modelo": "realvisxl",
