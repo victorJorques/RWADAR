@@ -35,8 +35,9 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   45910859108 (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» 45911427742 (anuncio 17: «25 plataformas
   nuevas en el radar, con África y Oriente Medio por primera vez»). Cerrojo del ciclo borrado con «Limpiar ramas»
   45911558018.
-- **Pendiente:** comprobar en el registro de cada supervisor las licencias que hoy solo declara la web (todas menos
-  Tokinvest); fotos reales de Commons cuando deje de responder 429.
+- **Licencias (decisión de Víctor, 26/11):** «las licencias son cosa de cada plataforma». No se buscan en los registros
+  de los supervisores; la ficha sigue diciendo lo que declara cada web y si lo hemos comprobado o no.
+- **Pendiente:** fotos reales de Commons cuando deje de responder 429.
 
 ## 26 de noviembre de 2026 (49) · Claude · Altas internacionales del informe de Codex (11 ofertas, 7 plataformas), las nuevas primero, fotos realistas y noticias del 26/11 · PUBLICADO
 
