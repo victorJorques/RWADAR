@@ -1,20 +1,20 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-27T12:00:45.217Z",
+  "ejecutadoEl": "2026-11-27T12:07:41.142Z",
   "etiqueta": "2026-11-27.2",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
-  "revisionNueva": "0ce78939-919f-832e-93d5-3fe16d804267",
-  "sha256AplicarYAprobar": "150c89f2b213a8928516934f7b728cd79ffcbd0d3b0e1dc8e0fe139328149845",
+  "revisionNueva": "bfb446d0-66e3-2039-5b90-b099c7ff566e",
+  "sha256AplicarYAprobar": "f554a0ca9685435d5c3e71f0441e20154b145bbdb90519c9de63d7b4bbea31f3",
   "pruebas": [
-    "inventario: una transacción serializable; guarda (publicada 529a54f7 con su huella 529a54f70c13…, catálogo no retirado, fecha del 27/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 6 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 132 en fuentes, 71 en plataformas, 259 en plataforma_fuentes, 76 en alertas, 87 en alerta_fuentes, 41 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
+    "inventario: una transacción serializable; guarda (publicada 529a54f7 con su huella 529a54f70c13…, catálogo no retirado, fecha del 27/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 6 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 132 en fuentes, 71 en plataformas, 259 en plataforma_fuentes, 76 en alertas, 87 en alerta_fuentes, 40 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
     "cadena de producción (seed antes de ARTEX + 26 lotes, del 2026-10-22 a la 2026-11-27): la publicada es la 529a54f7",
     "antes de aplicar, PGlite enseña la 2026-11-27 local (65 plataformas, 32 ofertas 17/13/2, documentación idéntica) y lo leído como visitante en lectura-publica/",
     "idempotente: aplicarla dos veces da lo mismo",
     "public.plataformas: las 70 de antes, idénticas, y las 6 nuevas exactas (71 en el radar y 5 descartadas); regiones, igual; public.fuentes, cambios de estado, avisos y emisiones, intactos (dar de alta no avisa a nadie); las revisiones anteriores se conservan y la nueva queda aprobada",
-    "publicada la revisión nueva: 71 plataformas y 41 ofertas (25 principales, 13 de reventa y 3 en camino); las 6 plataformas y las 9 ofertas nuevas, con sus datos de altas.json; las 32 ofertas y las 65 plataformas de antes, iguales a la 2026-11-27 salvo la revisión, el manifiesto del lote y las fechas de consulta (y el libro de órdenes de Brickwise); las 5 descartadas, iguales",
-    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 71 plataformas y 41 ofertas con 3 en camino; el lote vale del 27/11 al 04/12 y caduca el 05/12; cada tarjeta vale 7 días desde su comprobación (las re-fechadas y las nuevas, hasta el 04/12; Liqi, Mitsui y mTBILL, hasta el 03/12); las de antes solo cambian de fecha",
-    "sincronizador real con estas vistas: 71 plataformas, 41 ofertas y 5 descartadas (CSV de 76 filas); sin añadir las 15 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 117 páginas, las 15 nuevas incluidas y en el sitemap",
-    "worker con la lista nueva: las 15 fichas nuevas (ofertas y plataformas) se sirven",
+    "publicada la revisión nueva: 71 plataformas y 40 ofertas (24 principales, 13 de reventa y 3 en camino); las 6 plataformas y las 8 ofertas nuevas, con sus datos de altas.json; las 32 ofertas y las 65 plataformas de antes, iguales a la 2026-11-27 salvo la revisión, el manifiesto del lote y las fechas de consulta (y el libro de órdenes de Brickwise); las 5 descartadas, iguales",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 71 plataformas y 40 ofertas con 3 en camino; el lote vale del 27/11 al 04/12 y caduca el 05/12; cada tarjeta vale 7 días desde su comprobación (las re-fechadas y las nuevas, hasta el 04/12; Liqi, Mitsui y mTBILL, hasta el 03/12); las de antes solo cambian de fecha",
+    "sincronizador real con estas vistas: 71 plataformas, 40 ofertas y 5 descartadas (CSV de 76 filas); sin añadir las 14 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 116 páginas, las 14 nuevas incluidas y en el sitemap",
+    "worker con la lista nueva: las 14 fichas nuevas (ofertas y plataformas) se sirven",
     "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
     "falla y no deja nada: la publicada no es la 2026-11-27 (es la 2026-11-26.4, 7f745c7d) → Publicación distinta de la revisión anterior prevista: 7f745c7d-5a25-2385-9e6c-d855a22c9d02. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
@@ -29,7 +29,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
       "falla": false,
-      "publicada": "0ce78939-919f-832e-93d5-3fe16d804267"
+      "publicada": "bfb446d0-66e3-2039-5b90-b099c7ff566e"
     },
     {
       "caso": "la publicada no es la 2026-11-27 (es la 2026-11-26.4, 7f745c7d)",
@@ -87,7 +87,7 @@
     "rwadar_catalogo.plataforma_fuentes": 259,
     "rwadar_catalogo.alertas": 76,
     "rwadar_catalogo.alerta_fuentes": 87,
-    "rwadar_catalogo.ofertas": 41,
+    "rwadar_catalogo.ofertas": 40,
     "public.regiones": 0,
     "public.plataformas": 6
   },
@@ -114,17 +114,10 @@
       "estado": "Datos con fuente y fecha · consulta las condiciones",
       "vencida": false
     },
-    "mesh-ccs-income-notes": {
-      "minimo": "Desde 5.000 ZAR",
-      "espana": "Sin comprobar si se puede contratar desde España",
-      "salida": "Salida: Al vencimiento (5 años); antes, en el mercado de Mesh si hay comprador",
-      "estado": "Datos con fuente y fecha · consulta las condiciones",
-      "vencida": false
-    },
     "hsbc-hkd-money-fund-class-sd": {
       "minimo": "Desde 100 HKD (se paga con 100 RCHKD)",
       "espana": "No disponible desde España según la fuente",
-      "salida": "Reembolso: Según el folleto del fondo, en la app de HSBC; el anuncio no da plazos",
+      "salida": "Reembolso: El anuncio no lo explica: lo dicen los documentos del fondo, en la app y la web de HSBC",
       "estado": "Datos con fuente y fecha · consulta las condiciones",
       "vencida": false
     },

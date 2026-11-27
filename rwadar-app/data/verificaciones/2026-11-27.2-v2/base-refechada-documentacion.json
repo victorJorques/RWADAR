@@ -964,12 +964,12 @@
         "alcance": "Lista «All Trades» de la página de operaciones (17:45:29Z). En 12 meses solo hubo 2 operaciones entre accionistas, de 1 acción cada una."
       },
       {
-        "etiqueta": "Salida · 27/11/2026",
+        "etiqueta": "Salida · 26/11/2026",
         "valor": "Sin órdenes de compra entre accionistas; la venta más barata pide 67,00 ZCHF",
-        "fechaDato": "2026-11-27",
-        "fechaConsulta": "2026-11-27",
+        "fechaDato": "2026-11-26",
+        "fechaConsulta": "2026-11-26",
         "fuente": "https://shares.lend.ch/trade",
-        "alcance": "Libro entre accionistas del portal leído el 27/11/2026 (18:17 UTC, datos que usa el portal): ninguna orden de compra; la orden de venta más barata, 15 acciones a 67,00 ZCHF. Cambia a diario."
+        "alcance": "Libro entre accionistas del portal leído el 26/11/2026 (18:17 UTC, datos que usa el portal): ninguna orden de compra; la orden de venta más barata, 15 acciones a 67,00 ZCHF. Cambia a diario."
       },
       {
         "etiqueta": "Acceso desde España",

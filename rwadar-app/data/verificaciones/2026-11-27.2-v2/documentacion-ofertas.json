@@ -964,12 +964,12 @@
         "alcance": "Lista «All Trades» de la página de operaciones (17:45:29Z). En 12 meses solo hubo 2 operaciones entre accionistas, de 1 acción cada una."
       },
       {
-        "etiqueta": "Salida · 27/11/2026",
+        "etiqueta": "Salida · 26/11/2026",
         "valor": "Sin órdenes de compra entre accionistas; la venta más barata pide 67,00 ZCHF",
-        "fechaDato": "2026-11-27",
-        "fechaConsulta": "2026-11-27",
+        "fechaDato": "2026-11-26",
+        "fechaConsulta": "2026-11-26",
         "fuente": "https://shares.lend.ch/trade",
-        "alcance": "Libro entre accionistas del portal leído el 27/11/2026 (18:17 UTC, datos que usa el portal): ninguna orden de compra; la orden de venta más barata, 15 acciones a 67,00 ZCHF. Cambia a diario."
+        "alcance": "Libro entre accionistas del portal leído el 26/11/2026 (18:17 UTC, datos que usa el portal): ninguna orden de compra; la orden de venta más barata, 15 acciones a 67,00 ZCHF. Cambia a diario."
       },
       {
         "etiqueta": "Acceso desde España",
@@ -4326,66 +4326,6 @@
       }
     ]
   },
-  "mesh-ccs-income-notes": {
-    "revisadaEl": "2026-11-27",
-    "descripcion": "Notas a 5 años y 1 día de la plataforma de inversión de Commercial Credit Solutions (CCS), que financia equipos productivos de pymes sudafricanas: las empresas pagan una cuota mensual por el equipo y con ella se paga el interés, variable (tipo prime de Sudáfrica + 3 puntos al año) y mensual. El capital se devuelve al vencimiento. Es una oferta pública con folleto registrado en la CIPC, desde 5.000 rand, disponible solo en Mesh; después se pueden vender en su mercado secundario si hay comprador.",
-    "fuentes": [
-      "https://www.mesh.trade/im/ccs/",
-      "https://www.mesh.trade/ccs-income-notes-investor-faq/"
-    ],
-    "caracteristicas": [
-      {
-        "etiqueta": "Proveedor",
-        "valor": "Mesh"
-      },
-      {
-        "etiqueta": "Emisor",
-        "valor": "CCS Investment Platform (Commercial Credit Solutions)"
-      },
-      {
-        "etiqueta": "Qué se adquiere",
-        "valor": "Notas de deuda respaldadas por contratos de financiación de equipos"
-      },
-      {
-        "etiqueta": "Moneda",
-        "valor": "ZAR"
-      }
-    ],
-    "referencias": [
-      {
-        "etiqueta": "Mínimo de inversión",
-        "valor": "Desde 5.000 ZAR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-11-27",
-        "fuente": "https://www.mesh.trade/im/ccs/",
-        "alcance": "Términos clave en la ficha de Mesh."
-      },
-      {
-        "etiqueta": "Acceso desde España",
-        "valor": "Sin confirmar: Mesh no publica qué países admite",
-        "fechaDato": null,
-        "fechaConsulta": "2026-11-27",
-        "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
-        "alcance": "Preguntas frecuentes: hace falta verificar la identidad (FICA)."
-      },
-      {
-        "etiqueta": "Salida",
-        "valor": "Al vencimiento (5 años); antes, en el mercado de Mesh si hay comprador",
-        "fechaDato": null,
-        "fechaConsulta": "2026-11-27",
-        "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
-        "alcance": "Preguntas frecuentes: el mercado secundario no tiene apoyo."
-      },
-      {
-        "etiqueta": "Rentabilidad publicada",
-        "valor": "Prime + 3 % anual, variable",
-        "fechaDato": null,
-        "fechaConsulta": "2026-11-27",
-        "fuente": "https://www.mesh.trade/im/ccs/",
-        "alcance": "Términos clave en la ficha de Mesh."
-      }
-    ]
-  },
   "hsbc-hkd-money-fund-class-sd": {
     "revisadaEl": "2026-11-27",
     "descripcion": "HSBC ha lanzado en Hong Kong una clase tokenizada (SD) de su fondo monetario HSBC Global Money Funds – Hong Kong Dollar, que gestiona HSBC Asset Management desde 1991. Los clientes elegibles la compran desde 100 HKD en la app del banco, pagando con su moneda estable HSBC RedCoin (RCHKD), que no da intereses. HSBC tokeniza la clase y la custodia con sus propios servicios. El fondo reparte dividendos, que pueden variar.",
@@ -4429,7 +4369,7 @@
       },
       {
         "etiqueta": "Reembolso",
-        "valor": "Según el folleto del fondo, en la app de HSBC; el anuncio no da plazos",
+        "valor": "El anuncio no lo explica: lo dicen los documentos del fondo, en la app y la web de HSBC",
         "fechaDato": null,
         "fechaConsulta": "2026-11-27",
         "fuente": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
@@ -4439,7 +4379,7 @@
   },
   "mufg-realty-token-kioicho": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "MUFG Realty Token sobre las plantas de oficinas del Tokyo Garden Terrace Kioicho, un complejo de 2016 junto a la estación de Nagatacho (Tokio); la parte en la que se invierte estaba tasada en 105.000 millones de yenes el 30/09/2026. Son derechos de beneficiario de un fideicomiso (fiduciario: Mitsubishi UFJ Trust and Banking) registrados en blockchain. Los vende Daiwa Securities: 341.000 unidades de 100.000 yenes, con solicitudes del 01/12 al 08/12/2026, pago el 09/12 y entrega el 10/12. Plazo de unos 5 años y 2 meses; el reparto previsto de los dos primeros periodos incluye devolución de capital.",
+    "descripcion": "MUFG Realty Token sobre las plantas 10 a 16 de oficinas y una parte del suelo (cerca del 18,6 %) del Tokyo Garden Terrace Kioicho, un complejo de 2016 junto a la estación de Nagatacho (Tokio); la parte en la que se invierte estaba tasada en 105.000 millones de yenes el 30/09/2026. Son derechos de beneficiario de un fideicomiso (fiduciario: Mitsubishi UFJ Trust and Banking) registrados en blockchain. Los vende Daiwa Securities: 341.000 unidades de 100.000 yenes, con solicitudes del 01/12 al 08/12/2026, pago el 09/12 y entrega el 10/12. Plazo de unos 5 años y 2 meses; el reparto previsto de los dos primeros periodos incluye devolución de capital.",
     "fuentes": [
       "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
     ],
@@ -4541,7 +4481,7 @@
   },
   "osl-taikang-kaitai-usd-mmf": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "El Taikang Kaitai USD Money Market Fund es un fondo público de Hong Kong, con estructura de fideicomiso autorizada por la SFC, gestionado por Taikang Asset Management (Hong Kong), que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se listan, distribuyen y custodian en OSL: se compran desde 1 USD en la app, tras un test de riesgo, sin comisiones de suscripción ni de reembolso según OSL. El rendimiento se acumula cada día en el precio.",
+    "descripcion": "El Taikang Kaitai USD Money Market Fund es un fondo público de Hong Kong, con estructura de fideicomiso que según OSL está autorizada por la SFC, gestionado por Taikang Asset Management (Hong Kong), que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se listan, distribuyen y custodian en OSL: se compran desde 1 USD en la app, tras un test de riesgo, sin comisiones de suscripción ni de reembolso según OSL. El rendimiento se acumula cada día en el precio.",
     "fuentes": [
       "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
       "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs"
@@ -4568,10 +4508,10 @@
       {
         "etiqueta": "Mínimo de inversión",
         "valor": "Desde 1 USD en OSL",
-        "fechaDato": null,
+        "fechaDato": "2025-12-17",
         "fechaConsulta": "2026-11-27",
         "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
-        "alcance": "Página del fondo en OSL."
+        "alcance": "Página del fondo en OSL, fechada el 17/12/2025."
       },
       {
         "etiqueta": "Acceso desde España",
@@ -4584,16 +4524,16 @@
       {
         "etiqueta": "Reembolso",
         "valor": "En la app de OSL, sin comisión de reembolso según OSL",
-        "fechaDato": null,
+        "fechaDato": "2025-12-17",
         "fechaConsulta": "2026-11-27",
         "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
-        "alcance": "Página del fondo en OSL."
+        "alcance": "Página del fondo en OSL, fechada el 17/12/2025."
       }
     ]
   },
   "conda-devolo-bono-2026": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "Bono de devolo solutions GmbH (Aquisgrán), marca de equipos de red doméstica y Powerline, colocado por CONDA Capital, proveedor de financiación participativa autorizado en la UE. Paga un 7 % anual en efectivo o un 10 % en vales de la marca, cada 30/11 desde 2027, y devuelve el nominal el 30/11/2029. Unidades de 250 €, hasta 2.000.000 € con un umbral de 400.000 €. Está inscrito como token de bono en el registro de criptovalores de NYALA. Se ofrece en Alemania y Austria; el 27/11/2026 quedaban 13 días de campaña.",
+    "descripcion": "Bono de devolo solutions GmbH (Aquisgrán), marca de equipos de red doméstica y Powerline, colocado por CONDA Capital, que dice ser proveedor de financiación participativa autorizado en la UE. La empresa anterior pasó por dos procedimientos de insolvencia en 2022 y 2023; la sociedad actual sigue con el negocio desde abril de 2024. Paga un 7 % anual en efectivo o un 10 % en vales de la marca, cada 30/11 desde 2027, y devuelve el nominal el 30/11/2029. Unidades de 250 €, hasta 2.000.000 € con un umbral de 400.000 €. Está inscrito como token de bono en el registro de criptovalores de NYALA. Se ofrece en Alemania y Austria; el 27/11/2026 quedaban 13 días de campaña.",
     "fuentes": [
       "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
       "https://www.nyala.de/en/products/electronic-securities"

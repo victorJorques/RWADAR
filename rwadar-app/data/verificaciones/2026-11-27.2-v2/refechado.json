@@ -122,6 +122,11 @@
    "switzerlend",
    "Última operación entre accionistas · 26/11/2026",
    "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "switzerlend",
+   "Salida · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
   ]
  ],
  "cambiosBrickwise": [
@@ -228,6 +233,11 @@
   ],
   [
    "aktionariat",
+   "oferta/metricas/3/valor",
+   "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026)"
+  ],
+  [
+   "aktionariat",
    "ficha/referencias/2/etiqueta",
    "Número de accionistas publicado · 26/11/2026"
   ],
@@ -313,6 +323,11 @@
   ],
   [
    "boss-info",
+   "oferta/metricas/1/valor",
+   "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026)"
+  ],
+  [
+   "boss-info",
    "ficha/referencias/0/etiqueta",
    "Número de accionistas publicado · 26/11/2026"
   ],
@@ -368,6 +383,11 @@
   ],
   [
    "switzerlend",
+   "oferta/metricas/1/valor",
+   "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+  ],
+  [
+   "switzerlend",
    "ficha/referencias/0/etiqueta",
    "Número de accionistas publicado · 26/11/2026"
   ],
@@ -415,6 +435,26 @@
    "switzerlend",
    "ficha/referencias/6/fechaConsulta",
    "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/7/etiqueta",
+   "Salida · 26/11/2026"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/7/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/7/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/7/alcance",
+   "Libro entre accionistas del portal leído el 26/11/2026 (18:17 UTC, datos que usa el portal): ninguna orden de compra; la orden de venta más barata, 15 acciones "
   ]
  ]
 }

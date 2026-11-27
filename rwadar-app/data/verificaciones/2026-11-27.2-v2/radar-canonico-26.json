@@ -1726,7 +1726,7 @@
       },
       "licenciaRegistro": {
         "estado": "no_verificable",
-        "detalle": "Es una casa de valores japonesa; la página del producto no da su número de registro y no lo hemos comprobado.",
+        "detalle": "Casa de valores japonesa; la página del producto da su registro (Kanto, n.º 108), que no hemos comprobado en el supervisor japonés.",
         "fuentes": [
           "daiwa-mufg"
         ]
@@ -1909,7 +1909,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "USTNT es solo para inversores profesionales, con KYC; desde EE. UU. la web bloquea el acceso.",
+        "detalle": "USTNT es solo para inversores profesionales, con KYC.",
         "fuentes": [
           "exio-ustnt"
         ]

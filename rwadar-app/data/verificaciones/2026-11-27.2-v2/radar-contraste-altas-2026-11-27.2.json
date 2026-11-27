@@ -8,7 +8,7 @@
       "url": "https://www.hwk1365.de/anleihe/",
       "horaUtc": "2026-11-27T11:21:00Z",
       "copia": "fuentes/hwk-anleihe.txt",
-      "sha256": "a84c94c6164b8dc4087a82c5344e46991477624e8ee570b03755be84be89d07d",
+      "sha256": "e37bbcd3e97c820647382754179a94e1d66a73e2c51edfe1d3b457225b20a7ae",
       "comprobaciones": [
         "Holding der Hüttenwerke Königsbronn",
         "DE000A5GS3Q2",
@@ -21,7 +21,7 @@
       "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
       "horaUtc": "2026-11-27T11:21:02Z",
       "copia": "fuentes/hwk-wib.txt",
-      "sha256": "4fdbd7b06ccc7ec9763ae49b96b355208afb7302872150c1ceedf4dae228c7a4",
+      "sha256": "d1024b1f632a5bd4919f36f7bf80ee851448c2d8ff7c29e330b26bacd2575b53",
       "comprobaciones": [
         "Polygon Blockchain",
         "Fortführung der Unternehmenstätigkeit ist"
@@ -95,7 +95,7 @@
       "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
       "horaUtc": "2026-11-27T11:50:31Z",
       "copia": "fuentes/conda-devolo.txt",
-      "sha256": "7b157dd44b40fd35399ac207971d5a121a843726570582509f54f923ea1e69eb",
+      "sha256": "fc921d8f2fcc20d6493d64b774c5878157dff6c363aadfe4633afe6b4ca0fda9",
       "comprobaciones": [
         "zugelassener Dienstleister für Schwarmfinanzierung gemäß VO \\(EU\\) 2020/1503",
         "Angeboten in"

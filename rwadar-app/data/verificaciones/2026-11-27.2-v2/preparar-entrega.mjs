@@ -95,7 +95,7 @@ const conFuentes = campo => ({ ...campo, fuentes: campo.fuentes.map(id => fuente
 const CANONICA = /^(?:M[ií]nimo de inversi[oó]n|Acceso desde Espa[ñn]a|Salida|Reembolso)$/;
 const plataformasRadar = new Set(radar.plataformas.map(p => p.slug));
 const slugsO = A.ofertas.map(x => x.oferta.slug);
-assert.ok(slugsO.length === 9 && slugsO.every(s => !escaparateBase.ofertas.some(o => o.slug === s)), 'nueve ofertas nuevas, ninguna ya publicada');
+assert.ok(slugsO.length === 8 && slugsO.every(s => !escaparateBase.ofertas.some(o => o.slug === s)), 'ocho ofertas nuevas, ninguna ya publicada');
 for (const { oferta: o, documentacion: d } of A.ofertas) {
   assert.ok(plataformasRadar.has(o.plataformaSlug), `${o.slug}: plataforma fuera del radar`);
   assert.equal(o.avisos[0].texto, escaparateBase.ofertas[0].avisos[0].texto, `${o.slug}: el primer aviso es el editorial común`);
@@ -126,7 +126,7 @@ escaparate.plataformas = radar.plataformas.map(p => {
 });
 const colecciones = { principales: 0, secundario: 0, en_camino: 0 };
 for (const o of escaparate.ofertas) colecciones[o.coleccion]++;
-assert.deepEqual(colecciones, { principales: 25, secundario: 13, en_camino: 3 });
+assert.deepEqual(colecciones, { principales: 24, secundario: 13, en_camino: 3 });
 escaparate.fuente.notaOrigen += ` Entrega ${ETIQUETA} (${FES}): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: ` +
   `${A.ofertas.length} ofertas (${nuevasPrincipales.length} principales y ${nuevasCamino.length} en camino) y ${A.plataformas.length} plataformas.`;
 escaparate.fuente.actualizacionLocal = { ...escaparate.fuente.actualizacionLocal, verificadoEl: FECHA,

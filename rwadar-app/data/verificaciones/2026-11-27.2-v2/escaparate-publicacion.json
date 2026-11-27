@@ -1,13 +1,13 @@
 {
   "versionEsquema": 2,
   "fuente": {
-    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 9 ofertas (8 principales y 1 en camino) y 6 plataformas.",
+    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 8 ofertas (7 principales y 1 en camino) y 6 plataformas.",
     "actualizacionLocal": {
       "verificadoEl": "2026-11-27",
       "archivo": "rwadar-app/data/verificaciones/2026-11-27.2-v2/contraste-2026-11-27.2.json",
       "publicable": false,
       "derechosImagenVerificados": false,
-      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 41 fichas (25 principales, 13 de reventa y 3 en camino) y 71 plataformas."
+      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 40 fichas (24 principales, 13 de reventa y 3 en camino) y 71 plataformas."
     },
     "actualizacionRadarLocal": {
       "verificadoEl": "2026-11-27",
@@ -1277,7 +1277,7 @@
         },
         "licenciaRegistro": {
           "estado": "no_verificable",
-          "detalle": "Es una casa de valores japonesa; la página del producto no da su número de registro y no lo hemos comprobado.",
+          "detalle": "Casa de valores japonesa; la página del producto da su registro (Kanto, n.º 108), que no hemos comprobado en el supervisor japonés.",
           "fuentes": [
             {
               "id": "daiwa-mufg",
@@ -1624,7 +1624,7 @@
         },
         "acceso": {
           "estado": "confirmado_condicionado",
-          "detalle": "USTNT es solo para inversores profesionales, con KYC; desde EE. UU. la web bloquea el acceso.",
+          "detalle": "USTNT es solo para inversores profesionales, con KYC.",
           "fuentes": [
             {
               "id": "exio-ustnt",
@@ -5322,7 +5322,7 @@
           "verificadaEl": "2026-11-27"
         },
         {
-          "texto": "Pagas un 15 % más que el valor de la plata por ser una pieza única: si la plata no sube, pierdes.",
+          "texto": "Pagas un 15 % más que el valor de la plata por ser una pieza única; al final el lingote se vende por un agente independiente y nada asegura que se recupere ese 15 %.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-27"
@@ -5453,105 +5453,6 @@
       ],
       "fuentesActuales": [
         "https://tokinvest.capital/case-studies/great-hampton-street-works"
-      ]
-    },
-    {
-      "slug": "mesh-ccs-income-notes",
-      "tipo": "rendimiento",
-      "titulo": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
-      "plataformaSlug": "mesh",
-      "plataformaNombre": "Mesh",
-      "categoria": "Crédito privado",
-      "pais": "ZA",
-      "resumen": "Notas a 5 años de Commercial Credit Solutions (CCS), que financia equipos de pymes sudafricanas: interés variable del tipo prime más 3 puntos, pagado cada mes, y capital al final. Oferta pública con folleto registrado, desde 5.000 rand, solo en Mesh.",
-      "url": "https://www.mesh.trade/im/ccs/",
-      "cta": "Ver fuente",
-      "imagenAlt": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
-      "verificadaEl": "2026-11-27",
-      "vigenciaDias": 7,
-      "permanente": false,
-      "disponibleEs": null,
-      "eu": false,
-      "fueraLadrillo": true,
-      "puntuacion": null,
-      "rentabilidad": {
-        "mostrada": "Prime + 3 %",
-        "literal": "Interés variable: el tipo prime de Sudáfrica más 3 puntos al año, pagado cada mes, según Mesh (consultado el 27/11/2026). No es fijo ni está garantizado."
-      },
-      "precio": null,
-      "estadoRevision": "actual",
-      "coleccion": "principales",
-      "moneda": "ZAR",
-      "patrocinada": false,
-      "metricas": [
-        {
-          "etiqueta": "Mínimo",
-          "valor": "5.000 ZAR"
-        },
-        {
-          "etiqueta": "Plazo",
-          "valor": "5 años y 1 día; capital al vencimiento"
-        },
-        {
-          "etiqueta": "Intereses",
-          "valor": "Cada mes; tipo prime de Sudáfrica + 3 puntos"
-        },
-        {
-          "etiqueta": "Respaldo",
-          "valor": "Contratos de financiación de equipos de pymes de CCS"
-        },
-        {
-          "etiqueta": "Registro",
-          "valor": "Oferta pública con folleto registrado en la CIPC (Sudáfrica)"
-        }
-      ],
-      "avisos": [
-        {
-          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "Es crédito a pequeñas empresas: si no pagan, puedes perder parte o todo.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "El interés cambia con el tipo prime sudafricano.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "Se invierte en rand: hay riesgo de cambio frente al euro.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "Vender antes depende de que haya comprador en el mercado de Mesh; la liquidez no está asegurada.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "Oferta sudafricana. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        },
-        {
-          "texto": "Mesh pide verificar la identidad (FICA) y no publica qué países admite.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-27"
-        }
-      ],
-      "fuentesActuales": [
-        "https://www.mesh.trade/im/ccs/",
-        "https://www.mesh.trade/ccs-income-notes-investor-faq/"
       ]
     },
     {
@@ -5740,7 +5641,7 @@
       "plataformaNombre": "OSL",
       "categoria": "Tesoro y fondos",
       "pais": "HK",
-      "resumen": "Fondo monetario público en dólares, autorizado por la SFC de Hong Kong y gestionado por Taikang Asset Management, que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se compran en la app de OSL desde 1 USD, sin comisiones de suscripción ni de reembolso.",
+      "resumen": "Fondo monetario público en dólares, autorizado por la SFC de Hong Kong según OSL, y gestionado por Taikang Asset Management, que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se compran en la app de OSL desde 1 USD, sin comisiones de suscripción ni de reembolso.",
       "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
       "cta": "Ver fuente",
       "imagenAlt": "Taikang Kaitai: fondo monetario en dólares con participaciones tokenizadas, desde 1 USD (OSL, Hong Kong)",
@@ -5768,7 +5669,7 @@
         },
         {
           "etiqueta": "Fondo",
-          "valor": "Público, autorizado por la SFC; invierte solo en depósitos bancarios"
+          "valor": "Público; según OSL, autorizado por la SFC; invierte solo en depósitos bancarios"
         },
         {
           "etiqueta": "Comisiones",
@@ -5890,7 +5791,7 @@
           "verificadaEl": "2026-11-27"
         },
         {
-          "texto": "La empresa se reorganizó en 2022 y 2023; la sociedad actual funciona desde abril de 2024.",
+          "texto": "La empresa anterior pasó por dos procedimientos de insolvencia en 2022 y 2023; la sociedad actual sigue con el negocio desde abril de 2024.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-27"
@@ -7364,7 +7265,7 @@
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (27/11/2026)"
+          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026)"
         },
         {
           "etiqueta": "Venta",
@@ -7591,7 +7492,7 @@
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (27/11/2026)"
+          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026)"
         }
       ],
       "avisos": [
@@ -7683,7 +7584,7 @@
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (27/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+          "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (26/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
         }
       ],
       "avisos": [
@@ -9092,7 +8993,7 @@
       "plataformaNombre": "Daiwa Securities",
       "categoria": "Inmobiliario",
       "pais": "JP",
-      "resumen": "Valores tokenizados sobre las plantas de oficinas de un rascacielos de 2016 en Kioicho (Tokio). Se solicitan del 01/12 al 08/12/2026 en Daiwa Securities, desde 100.000 yenes, para unos 5 años y 2 meses.",
+      "resumen": "Valores tokenizados sobre las plantas 10 a 16 de oficinas (y parte del suelo) de un rascacielos de 2016 en Kioicho (Tokio). Se solicitan del 01/12 al 08/12/2026 en Daiwa Securities, desde 100.000 yenes, para unos 5 años y 2 meses.",
       "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
       "cta": "Ver fuente",
       "imagenAlt": "MUFG Realty Token: oficinas del Tokyo Garden Terrace Kioicho, solicitudes del 1 al 8 de diciembre",
@@ -9143,7 +9044,7 @@
           "verificadaEl": "2026-11-27"
         },
         {
-          "texto": "Aún no se puede solicitar: las solicitudes abren el 01/12/2026.",
+          "texto": "Solicitudes del 01/12 al 08/12/2026; en línea, hasta el 03/12 a las 12:00 (hora de Japón).",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-27"

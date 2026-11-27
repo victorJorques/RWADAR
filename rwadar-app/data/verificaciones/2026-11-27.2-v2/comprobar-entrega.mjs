@@ -1,8 +1,8 @@
-// Ensayo local de la entrega «2026-11-27.2» (las 32 ofertas re-fechadas al 27/11 con lo leído hoy, 9 ofertas y 6
+// Ensayo local de la entrega «2026-11-27.2» (las 32 ofertas re-fechadas al 27/11 con lo leído hoy, 8 ofertas y 6
 // plataformas nuevas del suplemento de ofertas del 27/11) en PGlite, sin red, sobre la misma cadena que producción (el
 // seed de antes de ARTEX y los lotes del 22/10 a la 2026-11-27, con la migración 38 tras el 2026-11-20). Adaptado de la
 // 2026-11-27. Comprueba el inventario del SQL, que antes de aplicar PGlite enseña lo publicado, que después queda la
-// revisión nueva (71 plataformas, 41 ofertas 25/13/3) con las de antes iguales salvo fechas de consulta y el libro de
+// revisión nueva (71 plataformas, 40 ofertas 24/13/3) con las de antes iguales salvo fechas de consulta y el libro de
 // Brickwise, el lector de la web y de la app, el sincronizador y las fichas, y que con producción distinta falla sin dejar nada.
 //
 //   node rwadar-app/data/verificaciones/2026-11-27.2-v2/comprobar-entrega.mjs [--exportar=DIR]
@@ -46,9 +46,9 @@ const LOTES = [...D26.cadena, '2026-11-26', '2026-11-26.2', '2026-11-26.3', '202
 const REV_264 = leer(path.join(APP, 'data/importaciones/catalogo-2026-11-26.4-v2/revision.json')).revisionId;
 const A = leer(path.join(DIR, 'altas.json'));
 const ALTAS = A.ofertas.map(x => x.oferta.slug), PALTAS = A.plataformas.map(p => p.slug), RS = A.regiones;
-assert.equal(ALTAS.length, 9);
+assert.equal(ALTAS.length, 8);
 const NP = 65 + PALTAS.length, NO = 32 + ALTAS.length;
-const COL = { principales: 25, secundario: 13, en_camino: 3 };
+const COL = { principales: 24, secundario: 13, en_camino: 3 };
 const MIGRACIONES_TRAS_LOTE = { '2026-11-20': ['db/38_textos_radar.sql'] };
 const base26 = path.join(APP, `data/verificaciones/${DESDE}-v2`);
 const esc26 = leer(path.join(base26, 'escaparate-publicacion.json')), doc26 = leer(path.join(base26, 'documentacion-ofertas.json'));
@@ -238,7 +238,7 @@ const listaDespues = [...new Set([...manifiestoFichas, ...NUEVAS_PAGINAS])];
       isDeepStrictEqual(x.colecciones_esperadas, COL)));
     const col = Object.fromEntries(['principales', 'secundario', 'en_camino'].map(c => [c, v1.o.filter(o => o.coleccion === c).length]));
     assert.deepEqual(col, COL);
-    assert.deepEqual(v1.o.map(o => o.slug).sort(), [...v0.o.map(o => o.slug), ...ALTAS].sort(), 'las 32 de antes y las 9 nuevas');
+    assert.deepEqual(v1.o.map(o => o.slug).sort(), [...v0.o.map(o => o.slug), ...ALTAS].sort(), 'las 32 de antes y las 8 nuevas');
     assert.ok(PALTAS.every(s => v1.p.some(p => p.slug === s)), 'las 3 plataformas, dentro');
     // Re-fechadas al 27/11 todas menos las 3 cuya página no se pudo leer hoy (refechado.json); las nuevas, del 27/11.
     const NO_REFECHADAS = leer(path.join(DIR, 'refechado.json')).no.map(x => x[0]);
@@ -261,7 +261,7 @@ const listaDespues = [...new Set([...manifiestoFichas, ...NUEVAS_PAGINAS])];
         [x.titulo, x.plataformaSlug, x.coleccion, x.rentabilidad?.mostrada ?? null, x.disponibleEs, x.url], `${x.slug}: como en altas.json`);
     }
     assert.deepEqual(v1.d, v0.d, 'las 5 descartadas, iguales');
-    ok(`publicada la revisión nueva: ${NP} plataformas y ${NO} ofertas (25 principales, 13 de reventa y 3 en camino); las ${PALTAS.length} plataformas y las ${ALTAS.length} ofertas nuevas, con sus datos de altas.json; las 32 ofertas y las 65 plataformas de antes, iguales a la ${DESDE} salvo la revisión, el manifiesto del lote y las fechas de consulta (y el libro de órdenes de Brickwise); las 5 descartadas, iguales`);
+    ok(`publicada la revisión nueva: ${NP} plataformas y ${NO} ofertas (24 principales, 13 de reventa y 3 en camino); las ${PALTAS.length} plataformas y las ${ALTAS.length} ofertas nuevas, con sus datos de altas.json; las 32 ofertas y las 65 plataformas de antes, iguales a la ${DESDE} salvo la revisión, el manifiesto del lote y las fechas de consulta (y el libro de órdenes de Brickwise); las 5 descartadas, iguales`);
 
     const lector = hoy => validarLotePublicoV2(v1.p, v1.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy, permitirAmpliacion: true });
     const r = lector(FECHA);

@@ -44,9 +44,9 @@
     {
       "empresa": "CONDA",
       "maestro": "conda.webp",
-      "semilla": 971,
+      "semilla": 983,
       "descripcionVisual": "Una calle de una ciudad centroeuropea con edificios clásicos y tranvía, imagen genérica de la plataforma de financiación participativa; no es su oficina.",
-      "prompt": "classic central European city street with historic facades and a tram, autumn morning, soft natural light, no signs",
+      "prompt": "empty classic central European city street with historic facades and a parked tram at dawn, deserted, soft natural light, no signs",
       "paginaReferencia": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
     }
   ]

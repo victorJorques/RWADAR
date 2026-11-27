@@ -3,15 +3,15 @@
   "fecha": "2026-11-27",
   "etiqueta": "2026-11-27.2",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
-  "revisionNueva": "0ce78939-919f-832e-93d5-3fe16d804267",
+  "revisionNueva": "bfb446d0-66e3-2039-5b90-b099c7ff566e",
   "decision": "Órdenes de la dirección del 27/11/2026: «el resto pon que está verificado hasta el día de hoy» y añadir las ofertas del suplemento de ese día. Las fichas se re-fechan solo con lo leído hoy; entran las ofertas con fuente primaria y condiciones comprobadas.",
   "archivos": {
-    "altas.json": "d4752d1bc0efd7ddf6944cdceaefcee7ca6b146561740b71b86b4dce0b560766",
-    "fuentes/lecturas-2026-11-27.json": "5d5d7ba59cb2ebc3f38933b46a45ac5b5bf0227b5908affe2a72da4c0d63c583",
+    "altas.json": "b414c1bde6b3caf6145e9cbdc997c639207817a1b1d66b12861d6298469d9243",
+    "fuentes/lecturas-2026-11-27.json": "f26af8a275470e18b35d1a8bf4a616f646b56df56f5b71cbfb2e15b98b7d662e",
     "fuentes/releidas-2026-11-27.txt": "468534a87e9ddb470053002e97a6a0c8d24b3960daec541afb5dfd8da80548c8",
-    "refechado.json": "bbad032e75861ad3e0db74c9c6033ebdd2531a42b42da21a763884478ecc5cc3",
-    "base-refechada-escaparate.json": "93c8f9b32b60071681a52fa5872b4c4d2bfdb971699522e79532a54fcca674a1",
-    "base-refechada-documentacion.json": "149d0cf154023b20a30f34a81ad7277be5f220e9ee86b28c72ba9a8b9944230d",
+    "refechado.json": "ad14e5ba15ce2e0d8fde28df07fd6d2f7427a20ed904e9b4d40723093ebae2ef",
+    "base-refechada-escaparate.json": "beec73ff6cab281e3f8bae1daa086a9af7400b56384031b31bd6b3f5183998c1",
+    "base-refechada-documentacion.json": "9a246379c34e3a0ed76f6ce7e9eb4d718411e46aed46a52d18432edffdf2483c",
     "vigia.json": "ae0cd26fad7aad538d65c2739dac7fdc2326245a877ab484a5740ea439f4dd0b"
   },
   "altas": {
@@ -28,7 +28,6 @@
       "hwk-1365-zukunftsanleihe",
       "tokinvest-lingote-plata-record",
       "tokinvest-great-hampton-street",
-      "mesh-ccs-income-notes",
       "hsbc-hkd-money-fund-class-sd",
       "mufg-realty-token-kioicho",
       "exio-ustnt-bonos-tesoro-eeuu",
@@ -37,7 +36,7 @@
     ]
   },
   "colecciones": {
-    "principales": 25,
+    "principales": 24,
     "secundario": 13,
     "en_camino": 3
   },

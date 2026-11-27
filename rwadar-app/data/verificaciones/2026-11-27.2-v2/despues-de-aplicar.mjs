@@ -1,12 +1,12 @@
 // Entrega «2026-11-27.2» · lo que cambia (adaptado de la 2026-11-27 y de la 2026-11-26.3) en el repositorio DESPUÉS de aplicar el SQL en Supabase y de sincronizar
 // (`node rwadar-app/sincronizar.js`). Sin red: solo lee y escribe archivos del repositorio. Aquí se dan de alta 6
-// plataformas del radar y 9 ofertas, y se re-fechan las ofertas comprobadas hoy.
+// plataformas del radar y 8 ofertas, y se re-fechan las ofertas comprobadas hoy.
 //
-//   1. Comprueba que el catálogo sincronizado es la revisión nueva: 71 plataformas y 41 ofertas (25/13/3), con las
+//   1. Comprueba que el catálogo sincronizado es la revisión nueva: 71 plataformas y 40 ofertas (24/13/3), con las
 //      altas de altas.json. Si no, no toca nada.
 //   2. Lista cerrada de fichas (rwadar-fichas-manifiesto.js): entran las páginas de las plataformas y ofertas nuevas,
 //      en su orden alfabético. Sin eso, rwadar-fichas.js no las genera y el worker no las sirve.
-//   3. rwadar-editorial-source/ofertas/transparencia.json: las 9 entradas nuevas, la fecha de las re-fechadas, revisión y lote (
+//   3. rwadar-editorial-source/ofertas/transparencia.json: las 8 entradas nuevas, la fecha de las re-fechadas, revisión y lote (
 //      validado con transparencia.mjs).
 //   4. La portada de cada plataforma nueva (portadas.json): WebP 720×720, plataformas/fuentes.json, publicables y
 //      distintivo de la web.
@@ -29,7 +29,7 @@ const leer = p => JSON.parse(fs.readFileSync(p, 'utf8'));
 const ETIQUETA = '2026-11-27.2', FECHA = '2026-11-27';
 const A = leer(path.join(DIR, 'altas.json'));
 const ALTAS = A.ofertas.map(x => x.oferta.slug), PALTAS = A.plataformas.map(p => p.slug);
-assert.equal(ALTAS.length, 9, 'nueve ofertas nuevas');
+assert.equal(ALTAS.length, 8, 'ocho ofertas nuevas');
 const revision = leer(path.join(ROOT, `rwadar-app/data/importaciones/catalogo-${ETIQUETA}-v2/revision.json`));
 const cambios = [];
 

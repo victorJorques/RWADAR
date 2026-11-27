@@ -40,7 +40,9 @@ CONSULTA = [
     (r'(mismo SHA-256 el )' + PFES, r'\g<1>' + FES),
 ]
 # Observaciones hechas a mano en la app a una hora concreta: hoy no se han repetido, se quedan con su fecha.
-OBSERVACION_APP = re.compile(r'observada en la app|\b\d{2}:\d{2}:\d{2}Z')
+# También las lecturas fechadas a una hora del 26/11 fuera del vigía (p. ej. el libro de Switzerlend a las 18:17 UTC):
+# hoy el vigía no las repite enteras (no mira las órdenes de compra), así que conservan su fecha.
+OBSERVACION_APP = re.compile(r'observada en la app|\b\d{2}:\d{2}:\d{2}Z|\(\d{2}:\d{2} UTC')
 def consulta(t):
     if not isinstance(t, str): return t
     for a, b in CONSULTA: t = re.sub(a, b, t)
@@ -71,8 +73,8 @@ for o in esc['ofertas']:
         if a.get('verificadaEl') == PFECHA: a['verificadaEl'] = FECHA
         if s in SUIZAS: a['texto'] = a['texto'].replace(f' el {PFES}', f' el {FES}')  # cifras del vigía, iguales hoy
     if o.get('rentabilidad'): o['rentabilidad']['literal'] = consulta(o['rentabilidad']['literal'])
-    for m in o['metricas']:
-        if s in SUIZAS or 'FINMA' in m['valor']: m['valor'] = m['valor'].replace(f'({PFES})', f'({FES})')
+    # La métrica «no figura en el registro de FINMA (26/11/2026)» conserva su fecha: hoy solo se leyó la portada del
+    # registro, no la búsqueda de cada entidad.
     for r in d['referencias']:
         if r['fechaConsulta'] != PFECHA: continue
         l = leida(r['fuente'])

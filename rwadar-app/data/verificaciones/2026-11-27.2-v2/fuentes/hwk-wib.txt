@@ -76,7 +76,7 @@
                        verwahrt keine Token für Investoren.
 3. Emittentin/         Identität der Emittentin und Anbieterin: Anbieterin und Emittentin ist die HWK 1365 SE, eine Europäische Aktiengesellschaft (Societas
     Anbieterin/        Europaea) mit Sitz in Königsbronn, Geschäftsanschrift: Heidenheimer Straße 1, 89551 Königsbronn, eingetragen im Handelsregister des
-    Geschäftstätig     Amtsgerichts Ulm unter HRB 748635. Geschäftsführender Direktor: [nombre retirado], Stuttgart, geboren am 30. August 1966. Die
+    Geschäftstätig     Amtsgerichts Ulm unter HRB 748635. Geschäftsführender Direktor: [nombre retirado], [datos personales retirados]. Die
     keit/ etwaige      Gesellschaft wird durch ihren geschäftsführenden Direktor vertreten. Legal Entity Identifier (LEI): 52990074939JQNKXRD43.
     Garantiegeber      Aktionärsstruktur: Die Hauptaktionäre der Emittentin sind die C Elf GmbH (Zug/CH), deren alleiniger Gesellschafter [nombre retirado] ist,
                        mit einer Beteiligung von 33,34 % sowie [nombre retirado] (Versoix/CH) mit einer Beteiligung von 32,99 % am Grundkapital der Emittentin.
@@ -602,7 +602,7 @@ Königsbronn, den 29. April 2026
 
 HWK 1365 SE, Königsbronn
 
-Roman Zitzeisberger
+[nombre retirado]
 Geschäftsführender Direktor
 
                                                                                                    -6-
@@ -767,7 +767,7 @@ Stuttgart, den 29. April 2026
 Grant Thornton AG
 Wirtschaftsprüfungsgesellschaft
 
-Hämmerle                          Sälzer
+[nombre retirado]                          [nombre retirado]
 Wirtschaftsprüfer                 Wirtschaftsprüfer
 
                                                       HWK 1365 SE - 2025/023668 4

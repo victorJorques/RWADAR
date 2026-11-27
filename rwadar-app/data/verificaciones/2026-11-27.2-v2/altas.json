@@ -184,7 +184,7 @@
     },
     "licenciaRegistro": {
      "estado": "no_verificable",
-     "detalle": "Es una casa de valores japonesa; la página del producto no da su número de registro y no lo hemos comprobado.",
+     "detalle": "Casa de valores japonesa; la página del producto da su registro (Kanto, n.º 108), que no hemos comprobado en el supervisor japonés.",
      "fuentes": [
       "daiwa-mufg"
      ]
@@ -255,7 +255,7 @@
     },
     "acceso": {
      "estado": "confirmado_condicionado",
-     "detalle": "USTNT es solo para inversores profesionales, con KYC; desde EE. UU. la web bloquea el acceso.",
+     "detalle": "USTNT es solo para inversores profesionales, con KYC.",
      "fuentes": [
       "exio-ustnt"
      ]
@@ -282,7 +282,7 @@
     "ticket": "Bajo",
     "cadenas": "No la publica",
     "web": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
-    "aval": "Plataforma de activos digitales de Hong Kong que lista, distribuye y custodia las participaciones tokenizadas del fondo monetario de Taikang, autorizado por la SFC.",
+    "aval": "Plataforma de activos digitales de Hong Kong que lista, distribuye y custodia las participaciones tokenizadas del fondo monetario de Taikang, que según OSL está autorizado por la SFC.",
     "nota": "En Hong Kong ofrece, desde su app, un fondo monetario en dólares con participaciones tokenizadas para particulares e instituciones."
    },
    "fuentes": [
@@ -356,7 +356,7 @@
     "ticket": "Bajo",
     "cadenas": "No la publica",
     "web": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
-    "aval": "CONDA Capital GmbH es un proveedor de financiación participativa autorizado según el reglamento europeo (UE) 2020/1503; la propia web avisa de que la autorización no es una garantía del Estado.",
+    "aval": "Según su web, CONDA Capital GmbH es un proveedor de financiación participativa autorizado según el reglamento europeo (UE) 2020/1503 (no lo hemos comprobado); la propia web avisa de que la autorización no es una garantía del Estado.",
     "nota": "Plataforma europea de financiación participativa, en alemán; coloca, entre otros, bonos de empresas registrados como criptovalores."
    },
    "fuentes": [
@@ -695,7 +695,7 @@
       "verificadaEl": "2026-11-27"
      },
      {
-      "texto": "Pagas un 15 % más que el valor de la plata por ser una pieza única: si la plata no sube, pierdes.",
+      "texto": "Pagas un 15 % más que el valor de la plata por ser una pieza única; al final el lingote se vende por un agente independiente y nada asegura que se recupere ese 15 %.",
       "tono": "warn",
       "esAntiguedad": false,
       "verificadaEl": "2026-11-27"
@@ -826,10 +826,10 @@
     ],
     "concepto": "un lingote de plata",
     "foto": {
-     "semilla": 977,
+     "semilla": 989,
      "encuadre": "70% 55%",
-     "concepto": "granalla de plata en un cuenco, imagen genérica del metal; no el lingote del producto",
-     "prompt": "heap of shiny silver casting grains in a small white ceramic bowl on a wooden table, soft window daylight, close-up"
+     "concepto": "granalla de plata sobre pizarra, imagen genérica del metal; no el lingote del producto",
+     "prompt": "pile of bright polished metallic silver granules with mirror-like reflections on a dark slate surface, soft window daylight, macro close-up"
     }
    }
   },
@@ -1041,216 +1041,6 @@
   },
   {
    "oferta": {
-    "slug": "mesh-ccs-income-notes",
-    "tipo": "rendimiento",
-    "titulo": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
-    "plataformaSlug": "mesh",
-    "plataformaNombre": "Mesh",
-    "categoria": "Crédito privado",
-    "pais": "ZA",
-    "resumen": "Notas a 5 años de Commercial Credit Solutions (CCS), que financia equipos de pymes sudafricanas: interés variable del tipo prime más 3 puntos, pagado cada mes, y capital al final. Oferta pública con folleto registrado, desde 5.000 rand, solo en Mesh.",
-    "url": "https://www.mesh.trade/im/ccs/",
-    "cta": "Ver fuente",
-    "imagenAlt": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
-    "verificadaEl": "2026-11-27",
-    "vigenciaDias": 7,
-    "permanente": false,
-    "disponibleEs": null,
-    "eu": false,
-    "fueraLadrillo": true,
-    "puntuacion": null,
-    "rentabilidad": {
-     "mostrada": "Prime + 3 %",
-     "literal": "Interés variable: el tipo prime de Sudáfrica más 3 puntos al año, pagado cada mes, según Mesh (consultado el 27/11/2026). No es fijo ni está garantizado."
-    },
-    "precio": null,
-    "estadoRevision": "actual",
-    "coleccion": "principales",
-    "moneda": "ZAR",
-    "patrocinada": false,
-    "metricas": [
-     {
-      "etiqueta": "Mínimo",
-      "valor": "5.000 ZAR"
-     },
-     {
-      "etiqueta": "Plazo",
-      "valor": "5 años y 1 día; capital al vencimiento"
-     },
-     {
-      "etiqueta": "Intereses",
-      "valor": "Cada mes; tipo prime de Sudáfrica + 3 puntos"
-     },
-     {
-      "etiqueta": "Respaldo",
-      "valor": "Contratos de financiación de equipos de pymes de CCS"
-     },
-     {
-      "etiqueta": "Registro",
-      "valor": "Oferta pública con folleto registrado en la CIPC (Sudáfrica)"
-     }
-    ],
-    "avisos": [
-     {
-      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "Es crédito a pequeñas empresas: si no pagan, puedes perder parte o todo.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "El interés cambia con el tipo prime sudafricano.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "Se invierte en rand: hay riesgo de cambio frente al euro.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "Vender antes depende de que haya comprador en el mercado de Mesh; la liquidez no está asegurada.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "Oferta sudafricana. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     },
-     {
-      "texto": "Mesh pide verificar la identidad (FICA) y no publica qué países admite.",
-      "tono": "warn",
-      "esAntiguedad": false,
-      "verificadaEl": "2026-11-27"
-     }
-    ],
-    "fuentesActuales": [
-     "https://www.mesh.trade/im/ccs/",
-     "https://www.mesh.trade/ccs-income-notes-investor-faq/"
-    ]
-   },
-   "documentacion": {
-    "revisadaEl": "2026-11-27",
-    "descripcion": "Notas a 5 años y 1 día de la plataforma de inversión de Commercial Credit Solutions (CCS), que financia equipos productivos de pymes sudafricanas: las empresas pagan una cuota mensual por el equipo y con ella se paga el interés, variable (tipo prime de Sudáfrica + 3 puntos al año) y mensual. El capital se devuelve al vencimiento. Es una oferta pública con folleto registrado en la CIPC, desde 5.000 rand, disponible solo en Mesh; después se pueden vender en su mercado secundario si hay comprador.",
-    "fuentes": [
-     "https://www.mesh.trade/im/ccs/",
-     "https://www.mesh.trade/ccs-income-notes-investor-faq/"
-    ],
-    "caracteristicas": [
-     {
-      "etiqueta": "Proveedor",
-      "valor": "Mesh"
-     },
-     {
-      "etiqueta": "Emisor",
-      "valor": "CCS Investment Platform (Commercial Credit Solutions)"
-     },
-     {
-      "etiqueta": "Qué se adquiere",
-      "valor": "Notas de deuda respaldadas por contratos de financiación de equipos"
-     },
-     {
-      "etiqueta": "Moneda",
-      "valor": "ZAR"
-     }
-    ],
-    "referencias": [
-     {
-      "etiqueta": "Mínimo de inversión",
-      "valor": "Desde 5.000 ZAR",
-      "fechaDato": null,
-      "fechaConsulta": "2026-11-27",
-      "fuente": "https://www.mesh.trade/im/ccs/",
-      "alcance": "Términos clave en la ficha de Mesh."
-     },
-     {
-      "etiqueta": "Acceso desde España",
-      "valor": "Sin confirmar: Mesh no publica qué países admite",
-      "fechaDato": null,
-      "fechaConsulta": "2026-11-27",
-      "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
-      "alcance": "Preguntas frecuentes: hace falta verificar la identidad (FICA)."
-     },
-     {
-      "etiqueta": "Salida",
-      "valor": "Al vencimiento (5 años); antes, en el mercado de Mesh si hay comprador",
-      "fechaDato": null,
-      "fechaConsulta": "2026-11-27",
-      "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
-      "alcance": "Preguntas frecuentes: el mercado secundario no tiene apoyo."
-     },
-     {
-      "etiqueta": "Rentabilidad publicada",
-      "valor": "Prime + 3 % anual, variable",
-      "fechaDato": null,
-      "fechaConsulta": "2026-11-27",
-      "fuente": "https://www.mesh.trade/im/ccs/",
-      "alcance": "Términos clave en la ficha de Mesh."
-     }
-    ]
-   },
-   "transparencia": {
-    "verificadaEl": "2026-11-27",
-    "anadidaEl": "2026-11-27",
-    "supervisada": {
-     "cumple": false,
-     "motivo": "Oferta pública sudafricana con folleto registrado en la CIPC; no la supervisa ningún organismo de la UE ni está inscrita en la CNMV.",
-     "fuente": {
-      "titulo": "Mesh · CCS Income Notes FAQ",
-      "url": "https://www.mesh.trade/ccs-income-notes-investor-faq/"
-     },
-     "consultadaEl": "2026-11-27"
-    },
-    "documentoEspana": {
-     "cumple": false,
-     "motivo": "Folleto sudafricano en inglés; no hay folleto ni KID europeos.",
-     "fuente": {
-      "titulo": "Mesh · CCS Income Notes FAQ",
-      "url": "https://www.mesh.trade/ccs-income-notes-investor-faq/"
-     },
-     "consultadaEl": "2026-11-27"
-    },
-    "minimoCorto": "5.000 ZAR",
-    "salidaCorta": "Al vencimiento (5 años)",
-    "puntos": [
-     {
-      "texto": "Cupón mensual y folleto registrado",
-      "fuente": {
-       "titulo": "Mesh · CCS",
-       "url": "https://www.mesh.trade/im/ccs/"
-      }
-     }
-    ]
-   },
-   "editorial": {
-    "escena": "cartera_credito",
-    "lugar": "Sudáfrica",
-    "pasos": [
-     "Compras las notas",
-     "Las pymes pagan sus equipos",
-     "Cobras interés cada mes"
-    ],
-    "concepto": "equipos de pequeñas empresas",
-    "foto": {
-     "semilla": 917,
-     "encuadre": "70% 55%",
-     "concepto": "un taller con maquinaria de una pequeña empresa sudafricana, no las de CCS",
-     "prompt": "small engineering workshop with lathes and workbenches in Johannesburg, empty, morning daylight through large windows"
-    }
-   }
-  },
-  {
-   "oferta": {
     "slug": "hsbc-hkd-money-fund-class-sd",
     "tipo": "rendimiento",
     "titulo": "HSBC: clase tokenizada de su fondo monetario en dólares de Hong Kong, desde 100 HKD",
@@ -1376,7 +1166,7 @@
      },
      {
       "etiqueta": "Reembolso",
-      "valor": "Según el folleto del fondo, en la app de HSBC; el anuncio no da plazos",
+      "valor": "El anuncio no lo explica: lo dicen los documentos del fondo, en la app y la web de HSBC",
       "fechaDato": null,
       "fechaConsulta": "2026-11-27",
       "fuente": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
@@ -1423,7 +1213,7 @@
     "pasos": [
      "Pagas con RedCoin en la app",
      "El fondo invierte a corto plazo",
-     "Reembolsas en la app"
+     "Lees el folleto en la app"
     ],
     "concepto": "el distrito financiero de Hong Kong",
     "foto": {
@@ -1443,7 +1233,7 @@
     "plataformaNombre": "Daiwa Securities",
     "categoria": "Inmobiliario",
     "pais": "JP",
-    "resumen": "Valores tokenizados sobre las plantas de oficinas de un rascacielos de 2016 en Kioicho (Tokio). Se solicitan del 01/12 al 08/12/2026 en Daiwa Securities, desde 100.000 yenes, para unos 5 años y 2 meses.",
+    "resumen": "Valores tokenizados sobre las plantas 10 a 16 de oficinas (y parte del suelo) de un rascacielos de 2016 en Kioicho (Tokio). Se solicitan del 01/12 al 08/12/2026 en Daiwa Securities, desde 100.000 yenes, para unos 5 años y 2 meses.",
     "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
     "cta": "Ver fuente",
     "imagenAlt": "MUFG Realty Token: oficinas del Tokyo Garden Terrace Kioicho, solicitudes del 1 al 8 de diciembre",
@@ -1494,7 +1284,7 @@
       "verificadaEl": "2026-11-27"
      },
      {
-      "texto": "Aún no se puede solicitar: las solicitudes abren el 01/12/2026.",
+      "texto": "Solicitudes del 01/12 al 08/12/2026; en línea, hasta el 03/12 a las 12:00 (hora de Japón).",
       "tono": "warn",
       "esAntiguedad": false,
       "verificadaEl": "2026-11-27"
@@ -1530,7 +1320,7 @@
    },
    "documentacion": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "MUFG Realty Token sobre las plantas de oficinas del Tokyo Garden Terrace Kioicho, un complejo de 2016 junto a la estación de Nagatacho (Tokio); la parte en la que se invierte estaba tasada en 105.000 millones de yenes el 30/09/2026. Son derechos de beneficiario de un fideicomiso (fiduciario: Mitsubishi UFJ Trust and Banking) registrados en blockchain. Los vende Daiwa Securities: 341.000 unidades de 100.000 yenes, con solicitudes del 01/12 al 08/12/2026, pago el 09/12 y entrega el 10/12. Plazo de unos 5 años y 2 meses; el reparto previsto de los dos primeros periodos incluye devolución de capital.",
+    "descripcion": "MUFG Realty Token sobre las plantas 10 a 16 de oficinas y una parte del suelo (cerca del 18,6 %) del Tokyo Garden Terrace Kioicho, un complejo de 2016 junto a la estación de Nagatacho (Tokio); la parte en la que se invierte estaba tasada en 105.000 millones de yenes el 30/09/2026. Son derechos de beneficiario de un fideicomiso (fiduciario: Mitsubishi UFJ Trust and Banking) registrados en blockchain. Los vende Daiwa Securities: 341.000 unidades de 100.000 yenes, con solicitudes del 01/12 al 08/12/2026, pago el 09/12 y entrega el 10/12. Plazo de unos 5 años y 2 meses; el reparto previsto de los dos primeros periodos incluye devolución de capital.",
     "fuentes": [
      "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
     ],
@@ -1822,7 +1612,7 @@
     "plataformaNombre": "OSL",
     "categoria": "Tesoro y fondos",
     "pais": "HK",
-    "resumen": "Fondo monetario público en dólares, autorizado por la SFC de Hong Kong y gestionado por Taikang Asset Management, que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se compran en la app de OSL desde 1 USD, sin comisiones de suscripción ni de reembolso.",
+    "resumen": "Fondo monetario público en dólares, autorizado por la SFC de Hong Kong según OSL, y gestionado por Taikang Asset Management, que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se compran en la app de OSL desde 1 USD, sin comisiones de suscripción ni de reembolso.",
     "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
     "cta": "Ver fuente",
     "imagenAlt": "Taikang Kaitai: fondo monetario en dólares con participaciones tokenizadas, desde 1 USD (OSL, Hong Kong)",
@@ -1850,7 +1640,7 @@
      },
      {
       "etiqueta": "Fondo",
-      "valor": "Público, autorizado por la SFC; invierte solo en depósitos bancarios"
+      "valor": "Público; según OSL, autorizado por la SFC; invierte solo en depósitos bancarios"
      },
      {
       "etiqueta": "Comisiones",
@@ -1894,7 +1684,7 @@
    },
    "documentacion": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "El Taikang Kaitai USD Money Market Fund es un fondo público de Hong Kong, con estructura de fideicomiso autorizada por la SFC, gestionado por Taikang Asset Management (Hong Kong), que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se listan, distribuyen y custodian en OSL: se compran desde 1 USD en la app, tras un test de riesgo, sin comisiones de suscripción ni de reembolso según OSL. El rendimiento se acumula cada día en el precio.",
+    "descripcion": "El Taikang Kaitai USD Money Market Fund es un fondo público de Hong Kong, con estructura de fideicomiso que según OSL está autorizada por la SFC, gestionado por Taikang Asset Management (Hong Kong), que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se listan, distribuyen y custodian en OSL: se compran desde 1 USD en la app, tras un test de riesgo, sin comisiones de suscripción ni de reembolso según OSL. El rendimiento se acumula cada día en el precio.",
     "fuentes": [
      "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
      "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs"
@@ -1921,10 +1711,10 @@
      {
       "etiqueta": "Mínimo de inversión",
       "valor": "Desde 1 USD en OSL",
-      "fechaDato": null,
+      "fechaDato": "2025-12-17",
       "fechaConsulta": "2026-11-27",
       "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
-      "alcance": "Página del fondo en OSL."
+      "alcance": "Página del fondo en OSL, fechada el 17/12/2025."
      },
      {
       "etiqueta": "Acceso desde España",
@@ -1937,10 +1727,10 @@
      {
       "etiqueta": "Reembolso",
       "valor": "En la app de OSL, sin comisión de reembolso según OSL",
-      "fechaDato": null,
+      "fechaDato": "2025-12-17",
       "fechaConsulta": "2026-11-27",
       "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
-      "alcance": "Página del fondo en OSL."
+      "alcance": "Página del fondo en OSL, fechada el 17/12/2025."
      }
     ]
    },
@@ -1949,7 +1739,7 @@
     "anadidaEl": "2026-11-27",
     "supervisada": {
      "cumple": false,
-     "motivo": "Fondo autorizado por la SFC de Hong Kong, no por un supervisor de la UE; no está inscrito en la CNMV.",
+     "motivo": "Según OSL, el fondo lo autorizó la SFC de Hong Kong (no lo hemos comprobado), no un supervisor de la UE; no está inscrito en la CNMV.",
      "fuente": {
       "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
       "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
@@ -2075,7 +1865,7 @@
       "verificadaEl": "2026-11-27"
      },
      {
-      "texto": "La empresa se reorganizó en 2022 y 2023; la sociedad actual funciona desde abril de 2024.",
+      "texto": "La empresa anterior pasó por dos procedimientos de insolvencia en 2022 y 2023; la sociedad actual sigue con el negocio desde abril de 2024.",
       "tono": "warn",
       "esAntiguedad": false,
       "verificadaEl": "2026-11-27"
@@ -2100,7 +1890,7 @@
    },
    "documentacion": {
     "revisadaEl": "2026-11-27",
-    "descripcion": "Bono de devolo solutions GmbH (Aquisgrán), marca de equipos de red doméstica y Powerline, colocado por CONDA Capital, proveedor de financiación participativa autorizado en la UE. Paga un 7 % anual en efectivo o un 10 % en vales de la marca, cada 30/11 desde 2027, y devuelve el nominal el 30/11/2029. Unidades de 250 €, hasta 2.000.000 € con un umbral de 400.000 €. Está inscrito como token de bono en el registro de criptovalores de NYALA. Se ofrece en Alemania y Austria; el 27/11/2026 quedaban 13 días de campaña.",
+    "descripcion": "Bono de devolo solutions GmbH (Aquisgrán), marca de equipos de red doméstica y Powerline, colocado por CONDA Capital, que dice ser proveedor de financiación participativa autorizado en la UE. La empresa anterior pasó por dos procedimientos de insolvencia en 2022 y 2023; la sociedad actual sigue con el negocio desde abril de 2024. Paga un 7 % anual en efectivo o un 10 % en vales de la marca, cada 30/11 desde 2027, y devuelve el nominal el 30/11/2029. Unidades de 250 €, hasta 2.000.000 € con un umbral de 400.000 €. Está inscrito como token de bono en el registro de criptovalores de NYALA. Se ofrece en Alemania y Austria; el 27/11/2026 quedaban 13 días de campaña.",
     "fuentes": [
      "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
      "https://www.nyala.de/en/products/electronic-securities"
@@ -2163,7 +1953,7 @@
     "anadidaEl": "2026-11-27",
     "supervisada": {
      "cumple": false,
-     "motivo": "CONDA está autorizada en la UE como plataforma de financiación participativa, pero el bono no se ofrece en España ni está inscrito en la CNMV.",
+     "motivo": "Según su web, CONDA está autorizada en la UE como plataforma de financiación participativa (no lo hemos comprobado); el bono no se ofrece en España ni está inscrito en la CNMV.",
      "fuente": {
       "titulo": "CONDA · devolo solutions GmbH – Anleihe",
       "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"

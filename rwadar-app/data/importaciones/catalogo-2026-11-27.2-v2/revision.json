@@ -1,7 +1,7 @@
 {
   "versionEsquema": 2,
-  "revisionId": "0ce78939-919f-832e-93d5-3fe16d804267",
-  "hash": "0ce78939919f832e93d53fe16d80426767212a75e08633620e51e413568167da",
+  "revisionId": "bfb446d0-66e3-2039-5b90-b099c7ff566e",
+  "hash": "bfb446d066e320395b90b099c7ff566eb89963f91431f21619e1a619b5cac401",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
   "hashRevisionAnterior": "529a54f70c134b0704333b67273bdd86413b8cb122192e9889372763b63fb420",
   "revisionAnteriorComprobadaEnRemoto": true,
@@ -10,20 +10,19 @@
   "fechaRadar": "2026-11-27",
   "revisionDocumental": "2026-11-27",
   "plataformas": 71,
-  "ofertas": 41,
+  "ofertas": 40,
   "colecciones": {
-    "principales": 25,
+    "principales": 24,
     "secundario": 13,
     "en_camino": 3
   },
   "vigenciaDias": 7,
   "venceTrasEl": "2026-12-03",
-  "nuevasAltas": 9,
+  "nuevasAltas": 8,
   "ofertasAltas": [
     "hwk-1365-zukunftsanleihe",
     "tokinvest-lingote-plata-record",
     "tokinvest-great-hampton-street",
-    "mesh-ccs-income-notes",
     "hsbc-hkd-money-fund-class-sd",
     "mufg-realty-token-kioicho",
     "exio-ustnt-bonos-tesoro-eeuu",

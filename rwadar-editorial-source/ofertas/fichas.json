@@ -477,24 +477,13 @@
    "concepto": "una antigua fábrica convertida en pisos"
   },
   {
-   "slug": "mesh-ccs-income-notes",
-   "escena": "cartera_credito",
-   "lugar": "Sudáfrica",
-   "pasos": [
-    "Compras las notas",
-    "Las pymes pagan sus equipos",
-    "Cobras interés cada mes"
-   ],
-   "concepto": "equipos de pequeñas empresas"
-  },
-  {
    "slug": "hsbc-hkd-money-fund-class-sd",
    "escena": "tesoro",
    "lugar": "Hong Kong",
    "pasos": [
     "Pagas con RedCoin en la app",
     "El fondo invierte a corto plazo",
-    "Reembolsas en la app"
+    "Lees el folleto en la app"
    ],
    "concepto": "el distrito financiero de Hong Kong"
   },
