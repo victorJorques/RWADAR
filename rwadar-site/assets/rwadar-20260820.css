@@ -2425,7 +2425,6 @@ html[lang="en"] .disp-pais [data-es],html:not([lang="en"]) .disp-pais [data-en]{
 [data-pais-estado="disponible"]>div:nth-child(2) dd{color:var(--senal)}
 [data-pais-estado="con_requisitos"]>div:nth-child(2) dd{color:var(--aviso)}
 [data-pais-estado="no_disponible"]>div:nth-child(2) dd{color:var(--aviso)}
-.disp-pais-fuentes li{font-size:.85rem;line-height:1.45}
 .ini-por-pais-lista b{color:var(--senal)}
 /* Inicio, lo primero (27/11/2026): el país de residencia. */
 .ini-pais{margin:24px 0 8px;padding:18px;border-radius:var(--r-l,16px);background:linear-gradient(var(--s1),var(--s1)) padding-box,linear-gradient(135deg,color-mix(in srgb,var(--senal) 70%,transparent),transparent 70%) border-box;border:1px solid transparent}

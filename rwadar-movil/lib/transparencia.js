@@ -230,20 +230,11 @@ export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, t
   return [['Mínimo', minimo], [nombrePaisUsuario(pais), enPais], ['Salida', salida]];
 }
 
-/* España con UNA función para la tarjeta y la ficha, como la web
-   (textoEspanaOferta). La lista dice solo «Sí» o «No» (decisión de Víctor del
-   05/11/2026); la ficha, «Sí, según la fuente», con la fuente al lado. */
-export function textoEspanaOferta(resumen, corto = false) {
-  const acceso = resumen && resumen.accesoEspana && resumen.accesoEspana.estado;
-  return acceso === 'si' ? (corto ? 'Sí' : 'Sí, según la fuente')
-    : acceso === 'no' ? (corto ? 'No' : 'No, según la fuente') : 'Sin confirmar';
-}
-
 /* La tarjeta de la lista (05/11/2026): solo dos datos, el mínimo de
-   datosCortosOferta y España en corto. Sin cifras nuevas: con la revisión o
-   el catálogo caducados manda lo mismo que en la ficha. Si la oferta no se
-   contrata desde España (noEspana), el dato dice «No»: nunca «Sin confirmar»
-   al lado de «No disponible en España». Igual que la web. */
+   datosCortosOferta y el país elegido en corto (desde el 27/11/2026). Sin cifras
+   nuevas: con la revisión o el catálogo caducados manda lo mismo que en la ficha.
+   Si la oferta no se contrata desde ese país (noEspana), el dato dice «No
+   disponible». Igual que la web. */
 export function datosTarjetaOferta(oferta, resumen, { noEspana = false, pais = obtenerPais(), ...opciones } = {}) {
   const [minimo] = datosCortosOferta(oferta, resumen, { ...opciones, pais });
   const enPais = noEspana ? 'No disponible' : opciones.catalogoCaducado ? 'Sin confirmar' : textoPaisOferta(oferta, resumen, true, pais);
