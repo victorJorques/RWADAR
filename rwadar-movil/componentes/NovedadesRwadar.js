@@ -185,7 +185,7 @@ function RecordatorioAvisos({ onActivar }) {
         <View style={[s.puntoIcono, s.recordatorioIcono]}><IconoNovedad nombre="notificacion" /></View>
         <Text style={s.recordatorioTit} accessibilityRole="header">Activa los avisos</Text>
       </View>
-      <Text style={s.recordatorioTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
+      <Text style={s.recordatorioTxt}>Recibe cada novedad en el móvil. Es gratis y puedes quitar los avisos cuando quieras.</Text>
       <Pressable testID="novedadesActivarAvisos" onPress={() => onActivar?.()}
         accessibilityRole="button" accessibilityLabel="Activar avisos"
         accessibilityHint="Cierra esta ventana y te lleva a Perfil › Avisos"
@@ -264,7 +264,7 @@ export function VentanaAvisos({ visible, onActivar, onAhoraNo }) {
               </Svg>
             </View>
             <Text style={s.avTit} accessibilityRole="header">Activa los avisos</Text>
-            <Text style={s.avTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
+            <Text style={s.avTxt}>Recibe cada novedad en el móvil. Es gratis y puedes quitar los avisos cuando quieras.</Text>
             <Pressable testID="avisosActivar" onPress={() => { tacto.eleccion(); onActivar?.(); }}
               accessibilityRole="button" accessibilityLabel="Activar avisos" accessibilityHint="Te lleva a Perfil › Avisos"
               style={({ pressed, focused }) => [s.avBoton, focused && s.foco, pressed && pulsado('b1')]}>
