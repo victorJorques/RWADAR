@@ -11,6 +11,13 @@ import { probarTarjetaEnIngles, probarFocoAlCerrarFicha } from './rwadar-app/pro
 import { spawn, spawnSync } from 'node:child_process';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
+// Fechas de alta de las plataformas («Más nuevas primero», 27/11/2026): al día y con todas las del
+// catálogo. Va aquí y no en package.json, que el guardián de OTA trata como cambio nativo.
+{
+  const r = spawnSync(process.execPath, [path.join(raiz, 'rwadar-editorial-source/plataformas/altas.mjs'), '--comprobar'], { cwd: raiz, encoding: 'utf8' });
+  if (r.status !== 0) { console.error(r.stdout + r.stderr); process.exit(1); }
+  console.log(r.stdout.trim());
+}
 const sitio = path.join(raiz, 'rwadar-site');
 const publicado = path.join(raiz, 'rwadar-publicado');
 const lee = nombre => fs.readFileSync(path.join(sitio, nombre), 'utf8');
