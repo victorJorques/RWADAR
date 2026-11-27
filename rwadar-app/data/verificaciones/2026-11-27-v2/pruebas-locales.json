@@ -1,12 +1,12 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-27T09:55:07.083Z",
+  "ejecutadoEl": "2026-11-27T10:11:25.430Z",
   "etiqueta": "2026-11-27",
   "revisionAnterior": "7f745c7d-5a25-2385-9e6c-d855a22c9d02",
-  "revisionNueva": "8f06cb12-c56a-b9fb-a9c0-1867a220a435",
-  "sha256AplicarYAprobar": "db1f05efd6ad793d0160b0425264209e4aea94477181689955252f27775ccabf",
+  "revisionNueva": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "sha256AplicarYAprobar": "decf800b89775bfa59de72f831258a12e51d9e54b5d08eca3fe09848b6fc1b43",
   "pruebas": [
-    "inventario: una transacción serializable; guarda (publicada 7f745c7d con su huella 7f745c7d5a25…, catálogo no retirado, fecha del 27/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 8 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 123 en fuentes, 65 en plataformas, 239 en plataforma_fuentes, 70 en alertas, 81 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
+    "inventario: una transacción serializable; guarda (publicada 7f745c7d con su huella 7f745c7d5a25…, catálogo no retirado, fecha del 27/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 8 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 123 en fuentes, 65 en plataformas, 240 en plataforma_fuentes, 70 en alertas, 81 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
     "cadena de producción (seed antes de ARTEX + 25 lotes, del 2026-10-22 a la 2026-11-26.4): la publicada es la 7f745c7d",
     "antes de aplicar, PGlite enseña la 2026-11-26.4 local (57 plataformas, 32 ofertas 17/13/2, documentación idéntica) y lo leído como visitante en lectura-publica/",
     "idempotente: aplicarla dos veces da lo mismo",
@@ -30,7 +30,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
       "falla": false,
-      "publicada": "8f06cb12-c56a-b9fb-a9c0-1867a220a435"
+      "publicada": "529a54f7-0c13-4b07-0433-3b67273bdd86"
     },
     {
       "caso": "la publicada no es la 2026-11-26.4 (es la 2026-11-26.3, 25b54edc)",
@@ -85,7 +85,7 @@
     "rwadar_catalogo.revisiones": 1,
     "rwadar_catalogo.fuentes": 123,
     "rwadar_catalogo.plataformas": 65,
-    "rwadar_catalogo.plataforma_fuentes": 239,
+    "rwadar_catalogo.plataforma_fuentes": 240,
     "rwadar_catalogo.alertas": 70,
     "rwadar_catalogo.alerta_fuentes": 81,
     "rwadar_catalogo.ofertas": 32,

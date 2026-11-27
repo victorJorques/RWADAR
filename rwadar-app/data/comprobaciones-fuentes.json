@@ -122,9 +122,9 @@
     "m3sixty-mmf": ["MCGXX", "stable \\$1\\.00 net asset value", "investment advisor registered with the Securities and Exchange Commission"],
     "hastra-wylds": ["registered fixed-income security issued by Figure Certificate Company", "Hastra takes a 50 bps fee", "You can lose some or all of your capital"],
     "hastra-prime": ["HELOC"],
-    "backpack-socios": ["Backpack Securities issues tokenized U\\.S\\. stocks and ETFs", "special purpose vehicle \\(SPV\\)"],
+    "backpack-socios": ["Backpack Securities issues tokenized U\\.S\\. stocks and ETFs", "special purpose vehicle \\(SPV\\)", "Who is the issuer\\? Backpack Securities"],
     "backpack-acciones": ["Tokenized stocks and ETFs on Solana", "subject to eligibility and jurisdictional restrictions"],
     "onre-docs": ["ring-fenced structure in Bermuda", "reinsurance contracts"],
-    "onre-app": ["do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd", "Prohibited Jurisdiction", "including the United States"]
+    "onre-app": ["do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd", "Prohibited Jurisdiction", "including the United States", "No onboarding or minimums required", "Regulated by the Bermuda Monetary Authority"]
   }
 }

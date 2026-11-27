@@ -138,7 +138,8 @@
       "sha256": "eb31a674fba65f3662db7cc14b38b4749b8ce73d9c9ed0b3f64abaad45394d77",
       "comprobaciones": [
         "Backpack Securities issues tokenized U\\.S\\. stocks and ETFs",
-        "special purpose vehicle \\(SPV\\)"
+        "special purpose vehicle \\(SPV\\)",
+        "Who is the issuer\\? Backpack Securities"
       ],
       "ok": true
     },
@@ -175,7 +176,9 @@
       "comprobaciones": [
         "do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd",
         "Prohibited Jurisdiction",
-        "including the United States"
+        "including the United States",
+        "No onboarding or minimums required",
+        "Regulated by the Bermuda Monetary Authority"
       ],
       "ok": true
     }

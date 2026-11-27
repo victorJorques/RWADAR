@@ -57,3 +57,18 @@ punto: si CoinGecko falla, el gráfico se queda en la última foto real.
 - Guiones adaptados de la `2026-11-26.4` (misma clase de entrega: solo plataformas): `preparar-entrega.mjs`,
   `comprobar-entrega.mjs` (PGlite: 19 pruebas y 8 casos de fallo que no dejan nada) y `despues-de-aplicar.mjs`.
 - Portadas de las 8 plataformas con RealVisXL (`portadas.json`), revisadas una a una.
+
+## Revisión (una sola, independiente)
+
+- **Catálogo:** un revisor independiente leyó el SQL (guardas, solo 8 inserts en `public.*`, reproducible), el re-fechado
+  del radar (109/109, solo cambian fechas) y cada texto de las 8 plataformas contra su copia. Pidió afinar 6 textos que
+  decían más que su fuente, y se aplicaron tal cual: Backpack (sí nombra al emisor; no dice dónde está registrado),
+  OnRe (por la vía abierta se compra sin verificación ni mínimo, pero sin derechos frente al emisor; la vía institucional
+  dice estar regulada por la Autoridad Monetaria de Bermudas, sin comprobar), M3Sixty y Hastra («dice estar
+  registrado», no comprobado; Hastra pasa a «Emisor» y «Global»), Colb (sin el inciso del voto; mínimo en «$USC», como
+  la fuente) y Libeara (acceso «Empresas», como las demás de tecnología). El SQL cambió solo en esas 6 plataformas (diff
+  normalizado: 31 líneas, mismas sentencias y guardas) y el ensayo en PGlite se repitió entero en verde. Revisión
+  nueva `529a54f7`, SHA-256 del SQL `decf800b…`.
+- **Noticias:** el primer verificador pidió quitar Poloniex porque su descarga simple solo trae el armazón de la web
+  (el anuncio se carga con JavaScript). Por orden de la dirección («intenta leer la noticia, no la descartes»), la
+  edición pasó entera a un verificador nuevo, con la nota de método de abrir con navegador esas webs: conforme.

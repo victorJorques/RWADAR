@@ -3,10 +3,10 @@
   "fecha": "2026-11-27",
   "etiqueta": "2026-11-27",
   "revisionAnterior": "7f745c7d-5a25-2385-9e6c-d855a22c9d02",
-  "revisionNueva": "8f06cb12-c56a-b9fb-a9c0-1867a220a435",
+  "revisionNueva": "529a54f7-0c13-4b07-0433-3b67273bdd86",
   "decision": "Orden de la dirección del 27/11/2026: comprobar el informe de investigación global de ese día, añadir lo nuevo y retirar lo caducado. Entran las plataformas que se verificaron reales y activas en su propia web ese día; ninguna oferta nueva tenía condiciones y cupo comprobables, y ninguna publicada ha caducado.",
   "archivos": {
-    "altas.json": "e0e0f8824a8cfc527346a644c7e4fa449a1247b6eeac5e4d61a8f0d513f1c53a",
+    "altas.json": "8f728af11ae392c369a7f43de4513f18331ba7f9fb49d9637d27ff06d45cc791",
     "fuentes/lecturas-2026-11-27.json": "c90a1c3ff974cd7f4af4457febb65ee248cb7d2c58389072f94cc1e483c47394",
     "radar-contraste-2026-11-27.json": "d3caa4044230d30ad21bed9ea27f6df4eb8a42c4ef38f6c4404e183e475c8ae6",
     "cambios-radar.json": "62842abea33200cf01bcab311fdb359c12b6e3088cfd621383bbcc3ecf945be9"

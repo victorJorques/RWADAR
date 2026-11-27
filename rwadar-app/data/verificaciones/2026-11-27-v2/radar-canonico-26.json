@@ -1218,7 +1218,7 @@
       },
       "licenciaRegistro": {
         "estado": "no_verificable",
-        "detalle": "La web no dice qué licencia tiene la sociedad que emite los tokens ni en qué país está.",
+        "detalle": "La web dice que el emisor es Backpack Securities, pero no qué licencia tiene ni en qué país está registrada.",
         "fuentes": [
           "backpack-socios",
           "backpack-acciones"
@@ -1241,7 +1241,7 @@
         },
         {
           "codigo": "licencia_no_declarada",
-          "detalle": "No identifica al emisor ni a su supervisor. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "detalle": "No dice dónde está registrada Backpack Securities ni quién la supervisa. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
           "fuentes": [
             "backpack-socios"
           ]
@@ -1479,7 +1479,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "Sus certificados se dirigen a inversores cualificados; en CANP, desde 25.000 dólares.",
+        "detalle": "Sus certificados se dirigen a inversores cualificados; en CANP, desde 25.000 $USC.",
         "fuentes": [
           "colb-canp"
         ]
@@ -1487,7 +1487,7 @@
       "alertasCriticas": [
         {
           "codigo": "no_son_acciones",
-          "detalle": "Son certificados que siguen el valor de las acciones, no acciones de la empresa: no dan voto ni derechos de socio, y el precio se estima porque la empresa no cotiza.",
+          "detalle": "Son certificados que siguen el valor de las acciones, no acciones de la empresa, y el precio se estima porque la empresa no cotiza.",
           "fuentes": [
             "colb-canp"
           ]
@@ -1979,7 +1979,7 @@
       },
       "licenciaRegistro": {
         "estado": "sin_registro_declarado",
-        "detalle": "El valor de debajo (YLDS) está registrado, pero Hastra funciona con contratos inteligentes sin permiso y no dice tener licencia propia.",
+        "detalle": "Según su web, el valor de debajo (YLDS) está registrado (no lo hemos comprobado); Hastra funciona con contratos inteligentes sin permiso y no dice tener licencia propia.",
         "fuentes": [
           "hastra-wylds"
         ]
@@ -2530,14 +2530,15 @@
       },
       "licenciaRegistro": {
         "estado": "no_verificable",
-        "detalle": "Habla de una cuenta segregada regulada en Bermudas sin dar el registro; no lo hemos comprobado.",
+        "detalle": "Habla de una cuenta segregada regulada en Bermudas, y su interfaz dice que la vía institucional la regula la Autoridad Monetaria de Bermudas; no lo hemos comprobado.",
         "fuentes": [
-          "onre-docs"
+          "onre-docs",
+          "onre-app"
         ]
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "Emitir y reembolsar exige pasar su verificación; la interfaz no se puede usar desde EE. UU. ni desde otros países que excluye.",
+        "detalle": "Por la vía abierta se compra sin verificación ni mínimo, pero sin derechos frente al emisor; reembolsar al valor liquidativo exige la verificación institucional. La interfaz no se puede usar desde EE. UU. ni desde otros países que excluye.",
         "fuentes": [
           "onre-docs",
           "onre-app"
