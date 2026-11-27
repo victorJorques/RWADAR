@@ -1,0 +1,420 @@
+{
+ "refechadas": [
+  "tohkn-iber1",
+  "tohkn-mmlti1",
+  "tohkn-rncrrev",
+  "finexity-bono-2026-2030-serie-b",
+  "groma-real-estate-trust",
+  "securitize-hinc",
+  "blackrock-hkd-digital-liquidity",
+  "amundi-core-stoxx-europe-600-tokenizada",
+  "spiko-letras-del-tesoro-euro",
+  "spiko-letras-del-tesoro-dolar",
+  "spiko-smart-cash-euro",
+  "robinhood-classic-stock-tokens",
+  "prosegur-digital-gold",
+  "aktionariat",
+  "kraken-xstocks",
+  "boss-info",
+  "switzerlend",
+  "vivienda-pluddemanngasse-101-graz",
+  "vivienda-sonnleithnergasse-2-viena",
+  "local-de-estanco-klagenfurt",
+  "vivienda-stallhofstra-e-28-gratwein",
+  "vivienda-schwarzer-weg-18-graz",
+  "drautalresidenz-paternion",
+  "randhartingergasse-9-viena",
+  "apartamento-vacacional-hinterstoder-50",
+  "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+  "fotovoltaica-greenpoint",
+  "fotovoltaica-cohotel",
+  "franklin-onchain-euro-liquidity"
+ ],
+ "no": [
+  [
+   "liqi-creditos-empresas",
+   "https://tokens.liqi.com.br/tokens",
+   "su página principal no se pudo leer hoy"
+  ],
+  [
+   "mtbill",
+   "https://midas.app/mtbill",
+   "su página principal no se pudo leer hoy"
+  ],
+  [
+   "alterna-bono-digital-mitsui",
+   "https://app.alterna-z.com/offerings",
+   "su página principal no se pudo leer hoy"
+  ]
+ ],
+ "referenciasSinLeer": [
+  [
+   "prosegur-digital-gold",
+   "Estado de la oferta · consulta 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "aktionariat",
+   "Número de accionistas publicado · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "aktionariat",
+   "Acciones tokenizadas · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "aktionariat",
+   "Última compra al emisor · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "aktionariat",
+   "Libro entre accionistas · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "aktionariat",
+   "Comisiones · consulta 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "kraken-xstocks",
+   "Licencia del vendedor",
+   "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/"
+  ],
+  [
+   "boss-info",
+   "Número de accionistas publicado · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "boss-info",
+   "Acciones tokenizadas · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "boss-info",
+   "Salida · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "boss-info",
+   "Última operación · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "switzerlend",
+   "Número de accionistas publicado · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "switzerlend",
+   "Acciones tokenizadas · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "switzerlend",
+   "Última compra al emisor · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ],
+  [
+   "switzerlend",
+   "Última operación entre accionistas · 26/11/2026",
+   "observación en la app del 26/11, no repetida hoy"
+  ]
+ ],
+ "cambiosBrickwise": [
+  [
+   "local-de-estanco-klagenfurt",
+   "Venta más barata",
+   "95,00 € por participación (16 a ese precio, en 3 órdenes)",
+   "95,00 € por participación (16 a ese precio, en 3 órdenes de 5, 10, 1)"
+  ],
+  [
+   "vivienda-stallhofstra-e-28-gratwein",
+   "Venta más barata",
+   "70,00 € por participación (18 a ese precio, en 6 órdenes de 6, 5, 1, 2, 2, 2)",
+   "70,00 € por participación (18 a ese precio, en 6 órdenes de 6, 5, 2, 2, 2, 1)"
+  ],
+  [
+   "vivienda-stallhofstra-e-28-gratwein",
+   "Participaciones en venta",
+   "312",
+   "310"
+  ],
+  [
+   "drautalresidenz-paternion",
+   "Mejor oferta de compra",
+   "50,00 € (1 participación, orden del 29/09/2026)",
+   "60,00 € (1 participación, orden del 27/11/2026)"
+  ]
+ ],
+ "quedan": [
+  [
+   "spiko-letras-del-tesoro-euro",
+   "oferta/rentabilidad/literal",
+   "Rendimiento neto anualizado de los últimos 31 días que publica Spiko con el valor liquidativo del 26/11/2026 (1,063785 €); consultado el 27/11/2026. Variable y "
+  ],
+  [
+   "spiko-letras-del-tesoro-euro",
+   "oferta/metricas/7/etiqueta",
+   "Rentabilidad publicada · 31 días · 26/11/2026"
+  ],
+  [
+   "spiko-letras-del-tesoro-euro",
+   "ficha/referencias/3/alcance",
+   "GECO 27/11/2026: vivo, todo tipo de suscriptores. El último valor liquidativo, del 26/11/2026 (1,063785 €), es el que publica Spiko en su API. No se ha hecho el"
+  ],
+  [
+   "spiko-letras-del-tesoro-euro",
+   "ficha/referencias/10/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "spiko-letras-del-tesoro-euro",
+   "ficha/referencias/10/alcance",
+   "Rendimiento neto anualizado de 31 días que publica Spiko con el valor liquidativo del 26/11/2026 (1,063785 €), consultado el 27/11/2026. Variable y no garantiza"
+  ],
+  [
+   "spiko-smart-cash-euro",
+   "oferta/rentabilidad/literal",
+   "Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 26/11/2026 (consultado el 27/11/2026); la web lo presenta como el tipo que p"
+  ],
+  [
+   "spiko-smart-cash-euro",
+   "oferta/metricas/7/etiqueta",
+   "Rentabilidad publicada · neta y variable · 26/11/2026"
+  ],
+  [
+   "spiko-smart-cash-euro",
+   "ficha/referencias/3/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "spiko-smart-cash-euro",
+   "ficha/referencias/3/alcance",
+   "Tipo neto de comisiones que publica Spiko con el valor liquidativo del 26/11/2026 (consultado el 27/11/2026); la web lo presenta como el tipo que paga cada día "
+  ],
+  [
+   "spiko-smart-cash-euro",
+   "ficha/referencias/7/alcance",
+   "Certificado de la AMF que aloja Spiko: incluye SPIKO AMUNDI OVERNIGHT SWAP FUND (SCV20260075) entre los compartimentos de Spiko SICAV. No da la fecha de autoriz"
+  ],
+  [
+   "prosegur-digital-gold",
+   "ficha/referencias/2/etiqueta",
+   "Estado de la oferta · consulta 26/11/2026"
+  ],
+  [
+   "prosegur-digital-gold",
+   "ficha/referencias/2/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "prosegur-digital-gold",
+   "ficha/referencias/2/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "prosegur-digital-gold",
+   "ficha/referencias/2/alcance",
+   "Venta activa observada en la app y en la web el 26/11/2026; sin alta ni compra por nuestra parte. El precio del gramo cambia con el oro y no va en la tarjeta. L"
+  ],
+  [
+   "aktionariat",
+   "oferta/metricas/0/etiqueta",
+   "Precio del emisor · 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/2/etiqueta",
+   "Número de accionistas publicado · 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/2/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/2/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/3/etiqueta",
+   "Acciones tokenizadas · 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/3/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/3/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/12/etiqueta",
+   "Última compra al emisor · 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/12/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/14/etiqueta",
+   "Libro entre accionistas · 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/14/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/14/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/15/etiqueta",
+   "Comisiones · consulta 26/11/2026"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/15/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "aktionariat",
+   "ficha/referencias/15/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "kraken-xstocks",
+   "ficha/referencias/3/alcance",
+   "Condiciones finales del producto ANTx (CH1588667217, 19/11/2026, emitidas con el folleto vigente), publicadas por el agente de pago del emisor: «The Products wi"
+  ],
+  [
+   "kraken-xstocks",
+   "ficha/referencias/5/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "kraken-xstocks",
+   "ficha/referencias/5/alcance",
+   "Registro de la CySEC consultado el 26/11/2026."
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/0/etiqueta",
+   "Número de accionistas publicado · 26/11/2026"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/0/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/0/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/1/etiqueta",
+   "Acciones tokenizadas · 26/11/2026"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/1/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/1/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/7/etiqueta",
+   "Salida · 26/11/2026"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/7/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/7/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/9/etiqueta",
+   "Última operación · 26/11/2026"
+  ],
+  [
+   "boss-info",
+   "ficha/referencias/9/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/0/etiqueta",
+   "Número de accionistas publicado · 26/11/2026"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/0/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/0/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/1/etiqueta",
+   "Acciones tokenizadas · 26/11/2026"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/1/fechaDato",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/1/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/5/etiqueta",
+   "Última compra al emisor · 26/11/2026"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/5/fechaConsulta",
+   "2026-11-26"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/6/etiqueta",
+   "Última operación entre accionistas · 26/11/2026"
+  ],
+  [
+   "switzerlend",
+   "ficha/referencias/6/fechaConsulta",
+   "2026-11-26"
+  ]
+ ]
+}

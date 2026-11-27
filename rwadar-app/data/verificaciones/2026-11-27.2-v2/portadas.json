@@ -1,0 +1,29 @@
+{
+  "nota": "Portadas de las 3 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
+  "portadas": [
+    {
+      "empresa": "HWK 1365",
+      "maestro": "hwk-1365.webp",
+      "semilla": 931,
+      "descripcionVisual": "Una fundición antigua de ladrillo en un pueblo del sur de Alemania, por la empresa industrial que emite el bono.",
+      "prompt": "old brick foundry building with tall chimney beside a river in a small southern German village, autumn forest, overcast morning",
+      "paginaReferencia": "https://www.hwk1365.de/anleihe/"
+    },
+    {
+      "empresa": "HSBC",
+      "maestro": "hsbc.webp",
+      "semilla": 937,
+      "descripcionVisual": "Rascacielos del distrito Central de Hong Kong al atardecer, por su negocio en Hong Kong; no es la sede del banco.",
+      "prompt": "dense skyscrapers of Hong Kong Central district seen from across the harbour at dusk, calm water, no logos",
+      "paginaReferencia": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+    },
+    {
+      "empresa": "Daiwa Securities",
+      "maestro": "daiwa-securities.webp",
+      "semilla": 941,
+      "descripcionVisual": "Una calle de oficinas de Tokio con árboles en otoño, por la casa de valores japonesa.",
+      "prompt": "quiet street lined with office buildings and ginkgo trees in autumn in central Tokyo, early morning, no signs",
+      "paginaReferencia": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+    }
+  ]
+}

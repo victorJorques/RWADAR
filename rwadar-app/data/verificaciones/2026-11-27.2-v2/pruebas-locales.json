@@ -1,0 +1,141 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-27T11:37:54.351Z",
+  "etiqueta": "2026-11-27.2",
+  "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "revisionNueva": "806c63fe-1400-1b62-c9c3-80e53d971987",
+  "sha256AplicarYAprobar": "ee754959a418f9256953a6ef4ee7c1eb0541368d65b6bdb9df681ba823958e42",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada 529a54f7 con su huella 529a54f70c13…, catálogo no retirado, fecha del 27/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 3 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 127 en fuentes, 68 en plataformas, 250 en plataforma_fuentes, 73 en alertas, 84 en alerta_fuentes, 38 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
+    "cadena de producción (seed antes de ARTEX + 26 lotes, del 2026-10-22 a la 2026-11-27): la publicada es la 529a54f7",
+    "antes de aplicar, PGlite enseña la 2026-11-27 local (65 plataformas, 32 ofertas 17/13/2, documentación idéntica) y lo leído como visitante en lectura-publica/",
+    "idempotente: aplicarla dos veces da lo mismo",
+    "public.plataformas: las 70 de antes, idénticas, y las 3 nuevas exactas (68 en el radar y 5 descartadas); regiones, igual; public.fuentes, cambios de estado, avisos y emisiones, intactos (dar de alta no avisa a nadie); las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: 68 plataformas y 38 ofertas (22 principales, 13 de reventa y 3 en camino); las 3 plataformas y las 6 ofertas nuevas, con sus datos de altas.json; las 32 ofertas y las 65 plataformas de antes, iguales a la 2026-11-27 salvo la revisión, el manifiesto del lote y las fechas de consulta (y el libro de órdenes de Brickwise); las 5 descartadas, iguales",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 68 plataformas y 32 ofertas con 2 en camino; el lote vale del 27/11 al 04/12 y caduca el 05/12; cada tarjeta vale 7 días desde su comprobación (las re-fechadas y las nuevas, hasta el 04/12; Liqi, Mitsui y mTBILL, hasta el 03/12); las de antes solo cambian de fecha",
+    "sincronizador real con estas vistas: 68 plataformas, 38 ofertas y 5 descartadas (CSV de 73 filas); sin añadir las 9 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 111 páginas, las 9 nuevas incluidas y en el sitemap",
+    "worker con la lista nueva: las 9 fichas nuevas (ofertas y plataformas) se sirven",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/f7171566-3961-5739-b021-fe78d4010189/scratchpad/export-272 lo que leería un visitante después de aplicar",
+    "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
+    "falla y no deja nada: la publicada no es la 2026-11-27 (es la 2026-11-26.4, 7f745c7d) → Publicación distinta de la revisión anterior prevista: 7f745c7d-5a25-2385-9e6c-d855a22c9d02. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior",
+    "falla y no deja nada: una plataforma nueva ya existe con otros datos → La plataforma hsbc ya existe con otros datos: no aplicar.",
+    "falla y no deja nada: el radar no tiene las 65 plataformas previstas (hay una más) → El radar no tiene 65 plataformas (ni las 68 de este lote): no aplicar."
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
+      "falla": false,
+      "publicada": "806c63fe-1400-1b62-c9c3-80e53d971987"
+    },
+    {
+      "caso": "la publicada no es la 2026-11-27 (es la 2026-11-26.4, 7f745c7d)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: 7f745c7d-5a25-2385-9e6c-d855a22c9d02. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma nueva ya existe con otros datos",
+      "falla": true,
+      "error": "La plataforma hsbc ya existe con otros datos: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el radar no tiene las 65 plataformas previstas (hay una más)",
+      "falla": true,
+      "error": "El radar no tiene 65 plataformas (ni las 68 de este lote): no aplicar.",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 127,
+    "rwadar_catalogo.plataformas": 68,
+    "rwadar_catalogo.plataforma_fuentes": 250,
+    "rwadar_catalogo.alertas": 73,
+    "rwadar_catalogo.alerta_fuentes": 84,
+    "rwadar_catalogo.ofertas": 38,
+    "public.regiones": 0,
+    "public.plataformas": 3
+  },
+  "lecturaPublica": true,
+  "tarjetasNuevas": {
+    "hwk-1365-zukunftsanleihe": {
+      "minimo": "Desde 1.000 €, sin recargo",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Al vencimiento (31/10/2031); no cotiza ni se puede devolver antes",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "tokinvest-lingote-plata-record": {
+      "minimo": "Desde 1.000 tokens (1 kg de plata); el precio en AED sigue a la plata",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Venta del lingote a los 10 años; antes, mercado entre inversores (aún sin abrir)",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "tokinvest-great-hampton-street": {
+      "minimo": "Desde 100.000 AED (1.000 tokens)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Venta del edificio a los 10 años; antes, venta a otros inversores en Tokinvest",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "mesh-ccs-income-notes": {
+      "minimo": "Desde 5.000 ZAR",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Al vencimiento (5 años); antes, en el mercado de Mesh si hay comprador",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "hsbc-hkd-money-fund-class-sd": {
+      "minimo": "Desde 100 HKD (se paga con 100 RCHKD)",
+      "espana": "No disponible desde España según la fuente",
+      "salida": "Reembolso: Según el folleto del fondo, en la app de HSBC; el anuncio no da plazos",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "mufg-realty-token-kioicho": {
+      "minimo": "Desde 100.000 JPY (1 unidad)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Al venderse el inmueble (unos 5 años y 2 meses); antes, venta limitada",
+      "estado": "Anuncio documentado · apertura sin confirmar",
+      "vencida": false
+    }
+  },
+  "resultado": "correcto"
+}

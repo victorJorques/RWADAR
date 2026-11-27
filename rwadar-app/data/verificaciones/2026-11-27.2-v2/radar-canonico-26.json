@@ -1,0 +1,3500 @@
+{
+  "version": 1,
+  "verificadoEl": "2026-11-27",
+  "publicable": false,
+  "alcance": "Revisión editorial de fuentes primarias del 27/11/2026: las 109 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan (tres por lectura a mano); las entregas 2026-11-27 y 2026-11-27.2 añaden 8 y 3 plataformas de los informes globales de ese día, con sus 18 fuentes leídas el mismo día. No acredita onboarding, oferta abierta ni rentabilidad.",
+  "politicaFechaCanonica": "Las fechas canónicas de julio/agosto de 2026 se conservan. Esta capa no las rejuvenece y solo añade evidencia fechada, matices y alertas.",
+  "fuentes": [
+    {
+      "id": "addx-web",
+      "tipo": "empresa",
+      "titulo": "ADDX",
+      "url": "https://addx.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "addx-acceso",
+      "tipo": "empresa",
+      "titulo": "Inside ADDX",
+      "url": "https://www.addx.co/en/inside-addx/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "addx-mas",
+      "tipo": "regulador",
+      "titulo": "MAS Financial Institutions Directory — ADDX Pte. Ltd.",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "archax-web",
+      "tipo": "empresa",
+      "titulo": "Archax",
+      "url": "https://archax.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "archax-permisos",
+      "tipo": "empresa",
+      "titulo": "Archax UK regulatory permissions",
+      "url": "https://uk.archax.com/regulatory-permissions",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "archax-cnmv",
+      "tipo": "regulador",
+      "titulo": "CNMV — Archax Markets Europe, S.V., S.A.",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "archax-eu",
+      "tipo": "empresa",
+      "titulo": "Archax Markets Europe",
+      "url": "https://eu.archax.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "backed-web",
+      "tipo": "empresa",
+      "titulo": "Backed Finance",
+      "url": "https://backed.fi/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "xstocks-legal",
+      "tipo": "documento_legal",
+      "titulo": "xStocks product legal overview",
+      "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "blocksquare-web",
+      "tipo": "empresa",
+      "titulo": "Blocksquare",
+      "url": "https://blocksquare.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "blocksquare-terms",
+      "tipo": "documento_legal",
+      "titulo": "Blocksquare (su documentación para socios pide iniciar sesión)",
+      "url": "https://blocksquare.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "centrifuge-web",
+      "tipo": "empresa",
+      "titulo": "Centrifuge",
+      "url": "https://centrifuge.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "centrifuge-terms",
+      "tipo": "documento_legal",
+      "titulo": "Centrifuge website terms",
+      "url": "https://centrifuge.io/terms",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "courtyard-web",
+      "tipo": "empresa",
+      "titulo": "Courtyard",
+      "url": "https://courtyard.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "courtyard-terms",
+      "tipo": "documento_legal",
+      "titulo": "Courtyard terms of service",
+      "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "figure-web",
+      "tipo": "empresa",
+      "titulo": "Figure",
+      "url": "https://figure.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "figure-open",
+      "tipo": "empresa",
+      "titulo": "Figure Markets OPEN disclosures",
+      "url": "https://www.figuremarkets.com/disclosures/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "figure-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — Figure Securities, Inc.",
+      "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "fireblocks-web",
+      "tipo": "empresa",
+      "titulo": "Fireblocks",
+      "url": "https://fireblocks.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "fireblocks-trust",
+      "tipo": "empresa",
+      "titulo": "Fireblocks Trust Company",
+      "url": "https://www.fireblocks.com/trustco",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "nydfs-virtual",
+      "tipo": "regulador",
+      "titulo": "NYDFS virtual currency businesses",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "franklin-benji",
+      "tipo": "empresa",
+      "titulo": "Franklin Templeton Benji",
+      "url": "https://digitalassets.franklintempleton.com/benji/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "franklin-prospectus",
+      "tipo": "folleto_regulatorio",
+      "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+      "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "inx-web",
+      "tipo": "empresa",
+      "titulo": "INX One",
+      "url": "https://inx.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "inx-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — INX Securities, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "inx-disclosure",
+      "tipo": "documento_legal",
+      "titulo": "INX funds availability disclosure",
+      "url": "https://inx.co/funds-availability-disclosure",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "lofty-web",
+      "tipo": "empresa",
+      "titulo": "Lofty",
+      "url": "https://lofty.ai/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "lofty-terms",
+      "tipo": "documento_legal",
+      "titulo": "Lofty terms and conditions",
+      "url": "https://www.lofty.ai/terms",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "maple-web",
+      "tipo": "empresa",
+      "titulo": "Maple Finance",
+      "url": "https://maple.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "maple-terms",
+      "tipo": "documento_legal",
+      "titulo": "Maple interface terms — syrupUSDC and syrupUSDT",
+      "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "maple-institutional",
+      "tipo": "empresa",
+      "titulo": "Maple Institutional",
+      "url": "https://maple.finance/earn/maple-institutional",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "midas-web",
+      "tipo": "empresa",
+      "titulo": "Midas · índice oficial de productos (llms.txt)",
+      "url": "https://midas.app/llms.txt",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "midas-mtbill",
+      "tipo": "folleto_regulatorio",
+      "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "midas-old-prospectus",
+      "tipo": "regulador",
+      "titulo": "MFSA copy of 2024 Midas base prospectus",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "ondo-web",
+      "tipo": "empresa",
+      "titulo": "Ondo Finance",
+      "url": "https://ondo.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "ondo-usdy-access",
+      "tipo": "documento_legal",
+      "titulo": "Ondo USDY eligibility",
+      "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "openeden-web",
+      "tipo": "empresa",
+      "titulo": "OpenEden",
+      "url": "https://openeden.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "openeden-intro",
+      "tipo": "documento_legal",
+      "titulo": "OpenEden TBILL introduction",
+      "url": "https://docs.openeden.com/tbill/introduction",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "openeden-onboarding",
+      "tipo": "documento_legal",
+      "titulo": "OpenEden investor onboarding",
+      "url": "https://docs.openeden.com/tbill/investor-onboarding",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "paxg-web",
+      "tipo": "empresa",
+      "titulo": "Pax Gold (web oficial de PAXG)",
+      "url": "https://www.paxg.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "paxg-nydfs",
+      "tipo": "regulador",
+      "titulo": "NYDFS approval of PAX Gold",
+      "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "reental-web",
+      "tipo": "empresa",
+      "titulo": "Reental",
+      "url": "https://reental.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "reental-faq",
+      "tipo": "empresa",
+      "titulo": "Reental FAQ",
+      "url": "https://www.reental.co/en/faqs",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "reental-emision",
+      "tipo": "empresa",
+      "titulo": "Reental — emisión concreta y ERIR",
+      "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "republic-web",
+      "tipo": "empresa",
+      "titulo": "Republic Europe · centro de ayuda",
+      "url": "https://help.republic.com/en/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "republic-entities",
+      "tipo": "regulador",
+      "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+      "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "republic-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — OpenDeal Broker LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "securitize-web",
+      "tipo": "empresa",
+      "titulo": "Securitize",
+      "url": "https://securitize.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "securitize-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-web",
+      "tipo": "empresa",
+      "titulo": "Spiko",
+      "url": "https://spiko.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-access",
+      "tipo": "empresa",
+      "titulo": "Spiko Web3 use case and UCITS access",
+      "url": "https://www.spiko.io/use-cases/web3",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-amf",
+      "tipo": "regulador",
+      "titulo": "AMF GECO — fondo Spiko",
+      "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "superstate-web",
+      "tipo": "empresa",
+      "titulo": "Superstate",
+      "url": "https://superstate.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "superstate-ustb",
+      "tipo": "empresa",
+      "titulo": "Superstate USTB",
+      "url": "https://superstate.com/assets/ustb",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "swarm-web",
+      "tipo": "empresa",
+      "titulo": "Swarm",
+      "url": "https://docs.swarm.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "swarm-terms",
+      "tipo": "documento_legal",
+      "titulo": "Swarm Markets terms",
+      "url": "https://docs.swarm.com/about/terms/tos",
+      "primaria": true,
+      "publicadaEl": "2022-05-18",
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "taurus-web",
+      "tipo": "empresa",
+      "titulo": "Taurus",
+      "url": "https://taurushq.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "taurus-disclosure",
+      "tipo": "documento_legal",
+      "titulo": "Taurus regulatory disclosure",
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "taurus-finma",
+      "tipo": "regulador",
+      "titulo": "FINMA authorised banks and securities firms",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokeny-web",
+      "tipo": "empresa",
+      "titulo": "Tokeny",
+      "url": "https://tokeny.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokeny-terms",
+      "tipo": "documento_legal",
+      "titulo": "Tokeny general terms of service",
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tzero-web",
+      "tipo": "empresa",
+      "titulo": "tZERO",
+      "url": "https://tzero.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tzero-company",
+      "tipo": "empresa",
+      "titulo": "tZERO company and regulatory entities",
+      "url": "https://tzero.com/company",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tzero-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — tZERO Securities, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "paxg-occ",
+      "tipo": "regulador",
+      "titulo": "OCC — active national trust banks",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-regafi",
+      "tipo": "regulador",
+      "titulo": "REGAFI (ACPR) · Spiko Finance, empresa de inversión autorizada",
+      "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-regafi-pasaporte-es",
+      "tipo": "regulador",
+      "titulo": "REGAFI (ACPR) · Pasaporte de Spiko Finance hacia España",
+      "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-cnmv-iic",
+      "tipo": "regulador",
+      "titulo": "CNMV · SPIKO SICAV, vehículo de inversión extranjero (n.º 2380)",
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "spiko-cnmv-lps",
+      "tipo": "regulador",
+      "titulo": "CNMV · Spiko Finance, empresa de servicios de inversión en libre prestación (n.º 5325)",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "alterna-ofertas",
+      "tipo": "empresa",
+      "titulo": "ALTERNA · Lista de ofertas",
+      "url": "https://app.alterna-z.com/offerings",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "amundi-indice",
+      "tipo": "empresa",
+      "titulo": "Amundi · «Amundi extends tokenisation to index investing» (05/11/2026)",
+      "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "blackrock-hkd",
+      "tipo": "empresa",
+      "titulo": "BlackRock Hong Kong · BlackRock HKD Digital Liquidity Fund",
+      "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "finexity-bono",
+      "tipo": "empresa",
+      "titulo": "FINEXITY · Bono 2026/2030 (relación con inversores)",
+      "url": "https://finexity-group.com/investor-relations/bond-2026-2030",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "finexity-terminos",
+      "tipo": "documento_legal",
+      "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+      "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "groma-reit",
+      "tipo": "empresa",
+      "titulo": "Groma Real Estate Trust",
+      "url": "https://www.gromareit.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "groma-invertir",
+      "tipo": "empresa",
+      "titulo": "Groma · Invertir",
+      "url": "https://invest.groma.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "liqi-ofertas",
+      "tipo": "empresa",
+      "titulo": "Liqi · Ofertas de tokens",
+      "url": "https://tokens.liqi.com.br/tokens",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tohkn-emisiones",
+      "tipo": "empresa",
+      "titulo": "TOHKN · Emisiones de activos digitales",
+      "url": "https://www.tohkn.com/en/issuances",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tohkn-condiciones",
+      "tipo": "documento_legal",
+      "titulo": "TOHKN · Términos y condiciones",
+      "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "raiz-web",
+      "tipo": "empresa",
+      "titulo": "Raíz · Invierte en real estate tokenizado",
+      "url": "https://raiz.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokeniza-web",
+      "tipo": "empresa",
+      "titulo": "Tokeniza · Página inicial",
+      "url": "https://tokeniza.com.br/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokeniza-invista",
+      "tipo": "empresa",
+      "titulo": "Tokeniza · Invista (ofertas)",
+      "url": "https://tokeniza.com.br/invista/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "etherfuse-web",
+      "tipo": "empresa",
+      "titulo": "Etherfuse · Activos soberanos tokenizados",
+      "url": "https://etherfuse.com/es",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hator-web",
+      "tipo": "empresa",
+      "titulo": "HATOR Securities · Mercado de capitales digitales de Latinoamérica",
+      "url": "https://hatorsecurities.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "realtokn-inversores",
+      "tipo": "empresa",
+      "titulo": "Real Tokn · Inversores",
+      "url": "https://www.realtokn.com/en/investors.html",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "bloktok-web",
+      "tipo": "empresa",
+      "titulo": "Bloktok · Tokenizar activos, ahora es infraestructura",
+      "url": "https://www.bloktok.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "bit2me-stx-cnmv",
+      "tipo": "empresa",
+      "titulo": "Bit2Me · «Bit2Me STX obtiene la autorización de la CNMV para lanzar su Bolsa de Valores nativa en blockchain»",
+      "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "assetera-web",
+      "tipo": "empresa",
+      "titulo": "Assetera · Your gateway to invest in tokenised securities",
+      "url": "https://www.assetera.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "estating-web",
+      "tipo": "empresa",
+      "titulo": "Estating · Fintech para inmuebles y mercados privados",
+      "url": "https://www.estating.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "estating-alianza",
+      "tipo": "empresa",
+      "titulo": "Estating · Alianza con Reental (26/10/2026)",
+      "url": "https://www.estating.com/press-releases/estating-and-reental-sign-strategic-partnership-connecting-institutional-infrastructure-and-tokenised-investment-rails",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "seturion-web",
+      "tipo": "empresa",
+      "titulo": "Boerse Stuttgart Group · Seturion",
+      "url": "https://group.boerse-stuttgart.com/en/seturion/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "digishares-web",
+      "tipo": "empresa",
+      "titulo": "DigiShares · Asset Tokenization Platform",
+      "url": "https://digishares.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "ctrlalt-web",
+      "tipo": "empresa",
+      "titulo": "Ctrl Alt · Institutional-Grade Tokenization Infrastructure",
+      "url": "https://ctrl-alt.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "digift-web",
+      "tipo": "empresa",
+      "titulo": "DigiFT · Regulated Exchange For On-Chain RWA",
+      "url": "https://www.digift.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "sdax-listados",
+      "tipo": "empresa",
+      "titulo": "SDAX · Listings",
+      "url": "https://www.sdax.co/listings/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "terazo-web",
+      "tipo": "empresa",
+      "titulo": "Terazo · Asset Tokenization Platform",
+      "url": "https://www.terazo.network/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "terazo-oryx",
+      "tipo": "empresa",
+      "titulo": "Terazo · Invest in Oryx",
+      "url": "https://www.terazo.network/invest-in-oryx",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokinvest-vara",
+      "tipo": "regulador",
+      "titulo": "VARA · Registro público: Tokinvest DMCC",
+      "url": "https://www.vara.ae/en/licenses-and-register/public-register/tokinvest-dmcc/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tokinvest-web",
+      "tipo": "empresa",
+      "titulo": "Tokinvest · Tokenise with us",
+      "url": "https://tokinvest.capital/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "prypco-mint",
+      "tipo": "empresa",
+      "titulo": "PRYPCO Mint · Cómo invertir en inmuebles tokenizados",
+      "url": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "mesh-sobre",
+      "tipo": "empresa",
+      "titulo": "Mesh · Sobre nosotros",
+      "url": "https://www.mesh.trade/about-us/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "mesh-bcfs",
+      "tipo": "empresa",
+      "titulo": "Mesh · Acciones preferentes tokenizadas de BCFS",
+      "url": "https://www.mesh.trade/im/bcfs/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "oaksvale-web",
+      "tipo": "empresa",
+      "titulo": "Oaksvale · Tokenized African Real Estate",
+      "url": "https://oaksvale.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "cradle-web",
+      "tipo": "empresa",
+      "titulo": "Cradle · On-chain real-world assets for Africa",
+      "url": "https://cradlemarkets.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "shard-web",
+      "tipo": "empresa",
+      "titulo": "Shard · A new way to own",
+      "url": "https://shard.africa/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "luxivana-web",
+      "tipo": "empresa",
+      "titulo": "Luxivana · Tokenised Assets & Investment Infrastructure",
+      "url": "https://www.luxivana.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "tangiblex-web",
+      "tipo": "empresa",
+      "titulo": "TangibleX · Marketplace",
+      "url": "https://www.tangiblex.com.au/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "caliber-nota",
+      "tipo": "empresa",
+      "titulo": "Caliber · Tokenización de tres ofertas inmobiliarias más",
+      "url": "https://www.caliberco.com/caliber-goes-live-with-tokenization-of-three-more-real-estate-offerings/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "okxice-nota",
+      "tipo": "empresa",
+      "titulo": "OKX · «24/7 Securities Trading Arrives on OKXICE»",
+      "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "libeara-web",
+      "tipo": "empresa",
+      "titulo": "Libeara · Redesigning Capital Markets, On-Chain",
+      "url": "https://libeara.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "libeara-ultra",
+      "tipo": "empresa",
+      "titulo": "Libeara · «FundBridge and Libeara Launch Regulated Tokenised Treasury Fund on Avalanche»",
+      "url": "https://libeara.com/fundbridge-and-libeara-launch-regulated-tokenised-treasury-fund-on-avalanche/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hashkey-htoken",
+      "tipo": "empresa",
+      "titulo": "HashKey · «HashKey RWA Launches First Product Under the HashKey hToken Series» (26/10/2026)",
+      "url": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "obligate-web",
+      "tipo": "empresa",
+      "titulo": "Obligate · Enabling Digital Securities",
+      "url": "https://www.obligate.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "obligate-otfy",
+      "tipo": "empresa",
+      "titulo": "Obligate · oTFY (Trade Finance Yield)",
+      "url": "https://www.obligate.com/otfy",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "colb-web",
+      "tipo": "empresa",
+      "titulo": "Colb · Página inicial",
+      "url": "https://www.colb.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "colb-canp",
+      "tipo": "empresa",
+      "titulo": "Colb · Colb Anthropic Token (CANP)",
+      "url": "https://www.colb.finance/canp",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "m3sixty-mmf",
+      "tipo": "empresa",
+      "titulo": "M3Sixty · M3Sixty OnChain US Government Money Market Fund",
+      "url": "https://m3sixtyfunds.com/u-s-government-mmf/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hastra-wylds",
+      "tipo": "empresa",
+      "titulo": "Hastra · What is wYLDS?",
+      "url": "https://help.hastra.io/wylds/what-is-wylds",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hastra-prime",
+      "tipo": "empresa",
+      "titulo": "Hastra · What is PRIME (Staked wYLDS)?",
+      "url": "https://help.hastra.io/prime/what-is-prime-%28staked-wylds%29",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "backpack-socios",
+      "tipo": "empresa",
+      "titulo": "Backpack · The infrastructure for tokenized equities",
+      "url": "https://wallet.backpack.exchange/tokenized-stocks/partners",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "backpack-acciones",
+      "tipo": "empresa",
+      "titulo": "Backpack · Stocks onchain",
+      "url": "https://wallet.backpack.exchange/tokenized-stocks",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "onre-docs",
+      "tipo": "empresa",
+      "titulo": "OnRe · OnRe Tokenized Reinsurance (ONyc)",
+      "url": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "onre-app",
+      "tipo": "empresa",
+      "titulo": "OnRe · Interfaz pública",
+      "url": "https://app.onre.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hwk-anleihe",
+      "tipo": "empresa",
+      "titulo": "HWK 1365 · Die HWK 1365 Zukunftsanleihe",
+      "url": "https://www.hwk1365.de/anleihe/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hwk-wib",
+      "tipo": "documento",
+      "titulo": "HWK 1365 SE · Wertpapier-Informationsblatt (20/10/2026)",
+      "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "hsbc-classsd",
+      "tipo": "empresa",
+      "titulo": "HSBC Hong Kong · «HSBC RedCoin expands into wealth with tokenised fund access» (19/11/2026)",
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "daiwa-mufg",
+      "tipo": "empresa",
+      "titulo": "Daiwa Securities · MUFG Realty Token (東京ガーデンテラス紀尾井町)",
+      "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    }
+  ],
+  "plataformas": [
+    {
+      "slug": "addx",
+      "nombre": "ADDX",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo el alta y muestra su catálogo de oportunidades.",
+        "fuentes": [
+          "addx-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.",
+        "fuentes": [
+          "addx-mas"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.",
+        "fuentes": [
+          "addx-acceso"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_minorista",
+          "detalle": "No está abierta a cualquier inversor minorista, y no puedes dar por hecho que se pueda contratar desde España.",
+          "fuentes": [
+            "addx-acceso"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "alterna",
+      "nombre": "ALTERNA",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su lista de ofertas muestra dos en pre-solicitud: un bono digital de Mitsui & Co. y cuatro edificios residenciales en Tokio.",
+        "fuentes": [
+          "alterna-ofertas"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La web dice que Mitsui & Co. Digital Asset Management está registrada como intermediario financiero en Japón (n.º 3277 de la Oficina de Finanzas de Kanto). No lo hemos comprobado en el registro del supervisor japonés.",
+        "fuentes": [
+          "alterna-ofertas"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Web y documentos solo en japonés; las ofertas se dirigen a inversores en Japón. No publica qué países admite.",
+        "fuentes": [
+          "alterna-ofertas"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Productos japoneses, sin folleto ni KID europeos; la CNMV no los supervisa.",
+          "fuentes": [
+            "alterna-ofertas"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "amundi",
+      "nombre": "Amundi",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Amundi anuncia el 05/11/2026 la clase tokenizada de uno de sus fondos índice de acciones europeas, emitida en Ethereum con CACEIS.",
+        "fuentes": [
+          "amundi-indice"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Amundi es una gestora europea supervisada; en este anuncio no cita el registro ni el documento de la clase tokenizada, y no lo hemos comprobado.",
+        "fuentes": [
+          "amundi-indice"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "El anuncio habla de clientes institucionales y plataformas digitales; no publica quién puede comprar la clase tokenizada, el mínimo ni cómo se reembolsa.",
+        "fuentes": [
+          "amundi-indice"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "acceso_sin_publicar",
+          "detalle": "Que la clase esté emitida en una blockchain pública no significa que cualquiera pueda comprarla: Amundi no ha publicado sus condiciones de acceso.",
+          "fuentes": [
+            "amundi-indice"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "archax",
+      "nombre": "Archax",
+      "fechaCanonicaConservada": "2026-08-08",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "El grupo dice que opera a través de sociedades en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
+        "fuentes": [
+          "archax-web",
+          "archax-eu"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.",
+        "fuentes": [
+          "archax-cnmv"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La web europea dirige sus servicios solo a clientes profesionales e institucionales del EEE y los presenta como previos al lanzamiento; por ahora solo permite registrar interés. No hay alta abierta para particulares.",
+        "fuentes": [
+          "archax-eu"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidad_y_servicio",
+          "detalle": "Que su sociedad europea esté registrada no confirma que un producto esté abierto ni que tú puedas invertir.",
+          "fuentes": [
+            "archax-cnmv",
+            "archax-eu"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "assetera",
+      "nombre": "Assetera",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web invita a registrarse y anuncia acciones y ETF tokenizados para inversores de 30 países del EEE.",
+        "fuentes": [
+          "assetera-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser una plataforma austriaca regulada bajo MiFID II; no lo hemos comprobado en el registro de la FMA austriaca ni en la CNMV.",
+        "fuentes": [
+          "assetera-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Habla de «inversores elegibles» en 30 países del EEE sin decir qué requisitos pide en España.",
+        "fuentes": [
+          "assetera-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "producto_y_geografia",
+          "detalle": "Que la plataforma opere en el EEE no hace que cada producto esté disponible en España: depende del folleto de cada valor.",
+          "fuentes": [
+            "assetera-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "backed-finance",
+      "nombre": "Backed Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web muestra los xStocks y su documentación de producto en vigor.",
+        "fuentes": [
+          "backed-web",
+          "xstocks-legal"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La documentación de xStocks describe certificados de Backed Assets (JE) Limited emitidos bajo un folleto base aprobado por la FMA de Liechtenstein y pasaportable en el EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.",
+        "fuentes": [
+          "xstocks-legal"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La distribución minorista en el EEE depende de distribuidores autorizados y términos finales; Estados Unidos está excluido.",
+        "fuentes": [
+          "xstocks-legal"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "distribuidor_y_producto",
+          "detalle": "Que el folleto esté aprobado no significa que cualquier inversor minorista pueda comprar ni que el supervisor avale el producto.",
+          "fuentes": [
+            "xstocks-legal"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "backpack-securities",
+      "nombre": "Backpack Securities",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web enseña los valores tokenizados en circulación y sus cifras de negociación desde junio de 2026.",
+        "fuentes": [
+          "backpack-acciones"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La web dice que el emisor es Backpack Securities, pero no qué licencia tiene ni en qué país está registrada.",
+        "fuentes": [
+          "backpack-socios",
+          "backpack-acciones"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Dice que los valores tokenizados tienen restricciones de elegibilidad y de país, sin publicar cuáles.",
+        "fuentes": [
+          "backpack-acciones"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "derecho_sobre_vehiculo",
+          "detalle": "El token no es la acción: es un derecho frente a la sociedad vehículo que la guarda, que se canjea por la acción en Backpack Exchange.",
+          "fuentes": [
+            "backpack-socios"
+          ]
+        },
+        {
+          "codigo": "licencia_no_declarada",
+          "detalle": "No dice dónde está registrada Backpack Securities ni quién la supervisa. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "backpack-socios"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bit2me-stx",
+      "nombre": "Bit2Me STX",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Bit2Me anuncia que la licencia permite lanzar su bolsa de valores en blockchain.",
+        "fuentes": [
+          "bit2me-stx-cnmv"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Lo dice el blog de Bit2Me (agencia de valores y licencia SNL del régimen piloto DLT); no lo hemos comprobado aún en el registro de la CNMV.",
+        "fuentes": [
+          "bit2me-stx-cnmv"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La nota no explica cómo puede negociar un particular ni con qué intermediario.",
+        "fuentes": [
+          "bit2me-stx-cnmv"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "lanzamiento",
+          "detalle": "La autorización permite lanzar la bolsa; no prueba que ya haya valores negociándose ni que un particular pueda comprarlos.",
+          "fuentes": [
+            "bit2me-stx-cnmv"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "blackrock",
+      "nombre": "BlackRock",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web de Hong Kong presenta el BlackRock HKD Digital Liquidity Fund, con acceso por canales tradicionales y digitales.",
+        "fuentes": [
+          "blackrock-hkd"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La web dice que la sociedad tiene licencia de la SFC (CE AFF275) y que sus fondos están autorizados para el público de Hong Kong. No lo hemos comprobado en el registro de la SFC.",
+        "fuentes": [
+          "blackrock-hkd"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Para inversores en Hong Kong, a través de distribuidores; se puede pagar en dólares de Hong Kong o en dinero digital admitido, como stablecoins reguladas en Hong Kong.",
+        "fuentes": [
+          "blackrock-hkd"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Fondo autorizado en Hong Kong, sin KID europeo; la CNMV no lo supervisa.",
+          "fuentes": [
+            "blackrock-hkd"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "blocksquare",
+      "nombre": "Blocksquare",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "Su web se dirige a empresas: ofrece un protocolo de tokenización inmobiliaria y una plataforma de marca blanca, con contacto comercial. Sus noticias no tienen fecha, así que no podemos confirmar que siga activa ni que haya portales en funcionamiento.",
+        "fuentes": [
+          "blocksquare-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Sus condiciones de uso para socios piden ahora iniciar sesión y no se pueden leer como visitante. Su web no muestra entidad ni registro y marca 'Regulation' como 'Available soon'.",
+        "fuentes": [
+          "blocksquare-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Blocksquare vende su tecnología a operadores de portales y no publica condiciones de acceso que un visitante pueda leer. El acceso real debe confirmarse con el operador de cada portal y activo.",
+        "fuentes": [
+          "blocksquare-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "operador_y_activo",
+          "detalle": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién emite el activo, el contrato y su jurisdicción.",
+          "fuentes": [
+            "blocksquare-web",
+            "blocksquare-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bloktok",
+      "nombre": "Bloktok",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece su plataforma en marca blanca y enseña órdenes abiertas de tokens de inmuebles.",
+        "fuentes": [
+          "bloktok-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Dice estar en proceso regulatorio ante la CMF (Ley Fintec 21.521): todavía no declara una autorización.",
+        "fuentes": [
+          "bloktok-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Es infraestructura para empresas; los inversores llegan por la marca de cada cliente.",
+        "fuentes": [
+          "bloktok-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "autorizacion_en_tramite",
+          "detalle": "Su autorización de la CMF está en trámite, no concedida.",
+          "fuentes": [
+            "bloktok-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "caliber",
+      "nombre": "Caliber",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Caliber anuncia que ya tiene tokenizadas tres ofertas más y que ampliará el programa.",
+        "fuentes": [
+          "caliber-nota"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La nota no dice con qué exención o registro se ofrecen los tokens.",
+        "fuentes": [
+          "caliber-nota"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La nota no dice quién puede invertir; las ofertas privadas de este tipo en EE. UU. suelen limitarse a acreditados.",
+        "fuentes": [
+          "caliber-nota"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Ofertas privadas de EE. UU. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "caliber-nota"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "centrifuge",
+      "nombre": "Centrifuge",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo infraestructura para gestionar activos en blockchain.",
+        "fuentes": [
+          "centrifuge-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.",
+        "fuentes": [
+          "centrifuge-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La disponibilidad es por fondo y puede limitarse a inversores sofisticados, acreditados o cualificados.",
+        "fuentes": [
+          "centrifuge-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "protocolo_no_emisor",
+          "detalle": "Centrifuge es el protocolo, no el emisor: la licencia que pueda tener el vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+          "fuentes": [
+            "centrifuge-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "colb",
+      "nombre": "Colb",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web enseña sus tokens de empresas pre-salida a bolsa y de estrategias con monedas estables.",
+        "fuentes": [
+          "colb-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser intermediario financiero registrado en Suiza y miembro de ARIF; no lo hemos comprobado en el registro de ARIF.",
+        "fuentes": [
+          "colb-web"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Sus certificados se dirigen a inversores cualificados; en CANP, desde 25.000 $USC.",
+        "fuentes": [
+          "colb-canp"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_son_acciones",
+          "detalle": "Son certificados que siguen el valor de las acciones, no acciones de la empresa, y el precio se estima porque la empresa no cotiza.",
+          "fuentes": [
+            "colb-canp"
+          ]
+        },
+        {
+          "codigo": "riesgo_alto",
+          "detalle": "El propio emisor califica el riesgo de alto. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "colb-canp"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "courtyard",
+      "nombre": "Courtyard",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web muestra packs y coleccionables tokenizados con custodia física.",
+        "fuentes": [
+          "courtyard-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "La documentación revisada describe un mercado de NFT y coleccionables, no una licencia de mercado de valores.",
+        "fuentes": [
+          "courtyard-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Los términos contienen restricciones de sanciones, pero no se confirmó admisión operativa desde España.",
+        "fuentes": [
+          "courtyard-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "coleccionable_no_valor",
+          "detalle": "Los coleccionables, la recompra y su mercado de reventa no son una inversión regulada ni garantizan que puedas vender.",
+          "fuentes": [
+            "courtyard-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cradle",
+      "nombre": "Cradle",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web enseña su mercado con cotizaciones de acciones africanas tokenizadas.",
+        "fuentes": [
+          "cradle-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser un mercado regulado, pero no identifica la sociedad ni el supervisor.",
+        "fuentes": [
+          "cradle-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No publica qué inversores admite ni desde qué países.",
+        "fuentes": [
+          "cradle-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_no_identificada",
+          "detalle": "Que la web diga «regulado» sin nombrar supervisor ni licencia no permite comprobarlo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "cradle-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ctrl-alt",
+      "nombre": "Ctrl Alt",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta sus servicios de tokenización para gestoras, distribuidores e inversores.",
+        "fuentes": [
+          "ctrlalt-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Su web cita la FCA (FRN 1045023), una empresa de inversión irlandesa bajo MiFID y la licencia VARA VL/25/05/002; no lo hemos comprobado en esos registros.",
+        "fuentes": [
+          "ctrlalt-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Trabaja para gestoras y distribuidores; el inversor llega por ellos.",
+        "fuentes": [
+          "ctrlalt-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "grupo_multi_entidad",
+          "detalle": "Cada licencia es de una sociedad distinta del grupo (Reino Unido, Irlanda, Dubái) y no cubre a las demás.",
+          "fuentes": [
+            "ctrlalt-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "daiwa-securities",
+      "nombre": "Daiwa Securities",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web anuncia el MUFG Realty Token sobre oficinas del Tokyo Garden Terrace Kioicho, con solicitudes del 01/12 al 08/12/2026.",
+        "fuentes": [
+          "daiwa-mufg"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Es una casa de valores japonesa; la página del producto no da su número de registro y no lo hemos comprobado.",
+        "fuentes": [
+          "daiwa-mufg"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Para clientes con cuenta en Daiwa Securities; la información y el folleto están en japonés.",
+        "fuentes": [
+          "daiwa-mufg"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Producto japonés. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "daiwa-mufg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "digift",
+      "nombre": "DigiFT",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece el alta y anuncia productos nuevos, como su estrategia de crédito con SBI para Japón.",
+        "fuentes": [
+          "digift-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice tener licencia CMS de la MAS; no lo hemos comprobado en el directorio de la MAS.",
+        "fuentes": [
+          "digift-web"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Al entrar pregunta si eres inversor acreditado: sus productos son para acreditados e institucionales.",
+        "fuentes": [
+          "digift-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_minorista",
+          "detalle": "No es para particulares: exige ser inversor acreditado.",
+          "fuentes": [
+            "digift-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "digishares",
+      "nombre": "DigiShares",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece su plataforma de tokenización y publica precios para empresas.",
+        "fuentes": [
+          "digishares-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Vende software: la licencia, si hace falta, es de cada cliente que emite.",
+        "fuentes": [
+          "digishares-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Su cliente es la empresa que tokeniza, no el inversor.",
+        "fuentes": [
+          "digishares-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "software_no_mercado",
+          "detalle": "Es software para emisores: lo que se ofrece con él depende de cada cliente y de su licencia.",
+          "fuentes": [
+            "digishares-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "estating",
+      "nombre": "Estating",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web describe su plataforma para profesionales y la nota de octubre detalla operaciones ya hechas con Reental.",
+        "fuentes": [
+          "estating-web",
+          "estating-alianza"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La web no identifica ninguna licencia: emite a través de un vehículo de titulización de Luxemburgo.",
+        "fuentes": [
+          "estating-alianza"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Se dirige a profesionales regulados de la inversión, no a particulares directamente.",
+        "fuentes": [
+          "estating-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_minorista",
+          "detalle": "No es una plataforma para particulares: llega a través de asesores y gestores.",
+          "fuentes": [
+            "estating-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "etherfuse",
+      "nombre": "Etherfuse",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta sus bonos soberanos tokenizados y las formas de usarlos en tesorerías de empresas.",
+        "fuentes": [
+          "etherfuse-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Habla de custodios regulados y auditorías, pero no dice qué licencia tiene la empresa ni en qué país.",
+        "fuentes": [
+          "etherfuse-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Su oferta se dirige a tesorerías corporativas, no a particulares.",
+        "fuentes": [
+          "etherfuse-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_no_declarada",
+          "detalle": "La web no identifica la sociedad emisora ni su supervisor. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "etherfuse-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "figure",
+      "nombre": "Figure",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Figure.com sigue ofreciendo servicios de crédito y enlaces a OPEN y Figure Markets; eso no demuestra que haya una oferta de inversión concreta abierta.",
+        "fuentes": [
+          "figure-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "El informe oficial FINRA de Figure Securities, Inc., CRD 307093, confirma registro SEC y operación de ATS. No se extiende a otras entidades Figure.",
+        "fuentes": [
+          "figure-finra"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "El registro del broker y su actividad ATS no bastan para confirmar condiciones de alta ni elegibilidad desde España.",
+        "fuentes": [
+          "figure-finra",
+          "figure-open"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "marca_multi_entidad",
+          "detalle": "Figure Securities es una empresa distinta de los servicios de crédito y de las demás empresas de la marca. Comprueba el contrato del producto concreto.",
+          "fuentes": [
+            "figure-finra",
+            "figure-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "finexity",
+      "nombre": "FINEXITY",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su página de relación con inversores ofrece suscribir las series A y B del bono 2026/2030, con su hoja de términos y sus KID.",
+        "fuentes": [
+          "finexity-bono"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La hoja de términos identifica al emisor (Finexity AG, Hamburgo, HRB 153232, acciones en Xetra) y dice que no hay folleto; cada serie tiene su KID.",
+        "fuentes": [
+          "finexity-terminos"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Oferta pública solo en Alemania, del 06/11/2026 al 05/11/2027, desde 1.000 €.",
+        "fuentes": [
+          "finexity-terminos"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_alemania",
+          "detalle": "El bono se ofrece al público solo en Alemania y sin folleto.",
+          "fuentes": [
+            "finexity-terminos"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fireblocks",
+      "nombre": "Fireblocks",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece infraestructura de activos digitales y stablecoins.",
+        "fuentes": [
+          "fireblocks-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Fireblocks Trust Company, LLC figura como trust de propósito limitado en NYDFS; la licencia pertenece a esa entidad, no al software completo.",
+        "fuentes": [
+          "fireblocks-trust",
+          "nydfs-virtual"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Su oferta principal se dirige a empresas e instituciones; no es un mercado en el que los minoristas inviertan directamente.",
+        "fuentes": [
+          "fireblocks-web",
+          "fireblocks-trust"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_entidad_especifica",
+          "detalle": "No todos los servicios de Fireblocks son custodia regulada: su Trust Company, su software y los custodios externos son cosas distintas.",
+          "fuentes": [
+            "fireblocks-trust",
+            "nydfs-virtual"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "franklin-templeton",
+      "nombre": "Franklin Templeton",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Las páginas de Benji y del Franklin OnChain U.S. Government Money Fund, y su folleto, siguen publicadas.",
+        "fuentes": [
+          "franklin-benji",
+          "franklin-prospectus"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "El folleto de 1 de agosto de 2026 (9001 P 08/26) identifica Franklin OnChain U.S. Government Money Fund (FOBXX), de Franklin Templeton Trust, y advierte que la SEC no ha aprobado ni desaprobado los valores. No confirma distribución en España.",
+        "fuentes": [
+          "franklin-prospectus"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "El folleto de 1/08/2026 contempla la app Benji para particulares y un portal web institucional, con KYC/AML, un mínimo inicial de 20 USD en Stellar y mínimos mayores en otras redes, sujetos a elegibilidad. Indica que el fondo se dirige a residentes en EE. UU. y que no está registrado ni autorizado para distribución en ningún país de la UE/EEE, España incluida.",
+        "fuentes": [
+          "franklin-prospectus"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "producto_y_geografia",
+          "detalle": "Que un fondo estadounidense se pueda contratar a través de Benji no lo convierte en una oferta abierta a minoristas de cualquier país.",
+          "fuentes": [
+            "franklin-prospectus"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "groma",
+      "nombre": "Groma",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Ofrece invertir por su campaña en Wefunder o comprando GromaCoin directamente; publica precio por acción y repartos del 3T 2026.",
+        "fuentes": [
+          "groma-invertir",
+          "groma-reit"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Se ofrece con exenciones de la SEC (Regulation D 506(c) y Regulation Crowdfunding a través de Wefunder); no es un fondo registrado. No hemos abierto sus presentaciones en la SEC.",
+        "fuentes": [
+          "groma-reit"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Directo solo para inversores acreditados (Reg D 506(c)); los no acreditados, solo por su campaña en Wefunder (Reg CF). No publica si admite inversores de fuera de EE. UU.",
+        "fuentes": [
+          "groma-reit",
+          "groma-invertir"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Oferta de EE. UU. con exenciones de la SEC, sin folleto ni KID europeos.",
+          "fuentes": [
+            "groma-reit"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hashkey-rwa",
+      "nombre": "HashKey RWA",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "HashKey anunció el 26/10/2026 su primer producto tokenizado «hToken», que se suscribe en USDT en el canal Earn de HashKey Exchange.",
+        "fuentes": [
+          "hashkey-htoken"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La nota habla de las licencias de negociación de activos digitales del grupo sin dar el registro; no lo hemos comprobado en el supervisor de Hong Kong.",
+        "fuentes": [
+          "hashkey-htoken"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo para inversores profesionales que cumplan los requisitos; no se puede distribuir donde la oferta esté prohibida.",
+        "fuentes": [
+          "hashkey-htoken"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_profesionales",
+          "detalle": "Producto complejo solo para inversores profesionales: se puede perder todo lo invertido. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "hashkey-htoken"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hastra",
+      "nombre": "Hastra",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su documentación explica cómo cambiar USDC por wYLDS y bloquearlo para recibir PRIME, AUTO o SMB.",
+        "fuentes": [
+          "hastra-wylds",
+          "hastra-prime"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Según su web, el valor de debajo (YLDS) está registrado (no lo hemos comprobado); Hastra funciona con contratos inteligentes sin permiso y no dice tener licencia propia.",
+        "fuentes": [
+          "hastra-wylds"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No publica qué países admite ni qué requisitos pide para cambiar USDC por wYLDS.",
+        "fuentes": [
+          "hastra-wylds"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_licencia_declarada",
+          "detalle": "El rendimiento no está garantizado y se puede perder todo; hay riesgo de los contratos inteligentes y de los préstamos de debajo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "hastra-wylds",
+            "hastra-prime"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hator",
+      "nombre": "HATOR",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece su infraestructura y un registro previo de inversores.",
+        "fuentes": [
+          "hator-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice estar regulada por la CNAD y la Superintendencia del Sistema Financiero de El Salvador; no lo hemos comprobado en el registro de la CNAD.",
+        "fuentes": [
+          "hator-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Es infraestructura para emisores e instituciones; los inversores solo pueden pre-registrarse.",
+        "fuentes": [
+          "hator-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "registro_no_es_aval",
+          "detalle": "La propia web avisa de que estar registrada en la CNAD no es un respaldo del regulador a ninguna inversión. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "hator-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hsbc",
+      "nombre": "HSBC",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "HSBC anunció el 19/11/2026 que sus clientes elegibles ya pueden usar RedCoin en la app para comprar la clase SD tokenizada de su fondo monetario en HKD.",
+        "fuentes": [
+          "hsbc-classsd"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "El anuncio no da el registro del banco ni del fondo; no lo hemos comprobado en el supervisor de Hong Kong.",
+        "fuentes": [
+          "hsbc-classsd"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo clientes elegibles de HSBC en Hong Kong, desde la app del banco y con la cartera de RedCoin activada.",
+        "fuentes": [
+          "hsbc-classsd"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Producto de Hong Kong para clientes de HSBC allí. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "hsbc-classsd"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hwk-1365",
+      "nombre": "HWK 1365",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web ofrece desde el 01/11/2026 un bono tokenizado de hasta 1.365.000 € y enlaza a su plataforma de suscripción.",
+        "fuentes": [
+          "hwk-anleihe"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Es una empresa industrial que emite su propio bono, no una entidad financiera. La BaFin no revisa el contenido de su hoja informativa y no hay folleto aprobado.",
+        "fuentes": [
+          "hwk-anleihe"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Se suscribe solo en línea en su plataforma; excluye a residentes fiscales en EE. UU. y Canadá y a países de la lista del GAFI. No dice si admite inversores de España.",
+        "fuentes": [
+          "hwk-anleihe",
+          "hwk-wib"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "empresa_en_dificultades",
+          "detalle": "El propio emisor dice que tiene pérdidas, falta de liquidez y que su continuidad no está asegurada: puede acabar en insolvencia.",
+          "fuentes": [
+            "hwk-wib"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "inx",
+      "nombre": "INX",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "INX One sigue activo y aparece integrado con el ecosistema Republic.",
+        "fuentes": [
+          "inx-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.",
+        "fuentes": [
+          "inx-finra",
+          "inx-disclosure"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La documentación describe financiación en USD para usuarios estadounidenses y no estadounidenses, pero no acredita admisión desde España ni elegibilidad para cada valor.",
+        "fuentes": [
+          "inx-disclosure"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_nasdaq",
+          "detalle": "Lo que hemos revisado confirma su bróker y su sistema alternativo de negociación (ATS), pero no que INX cotice en Nasdaq.",
+          "fuentes": [
+            "inx-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "libeara",
+      "nombre": "Libeara",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web presenta su tecnología para fondos y bonos tokenizados en cuatro redes y anuncia más de 1.000 millones de dólares tokenizados.",
+        "fuentes": [
+          "libeara-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Libeara da la tecnología; según su nota sobre ULTRA, la gestora FundBridge Capital responde del fondo, de su mandato y de su cumplimiento normativo.",
+        "fuentes": [
+          "libeara-ultra"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "El fondo ULTRA se dirige a inversores acreditados e institucionales; la nota está pensada para inversores acreditados e institucionales de Singapur.",
+        "fuentes": [
+          "libeara-ultra"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_institucional",
+          "detalle": "No es para particulares: los fondos que apoya se dirigen a inversores acreditados e institucionales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "libeara-ultra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "liqi",
+      "nombre": "Liqi",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su lista de ofertas muestra 7 emisiones en captación y otras ya cerradas que están pagando.",
+        "fuentes": [
+          "liqi-ofertas"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Liqi marca sus ofertas con «RCVM 88» (financiación participativa de la CVM brasileña). No hemos comprobado su registro en la CVM.",
+        "fuentes": [
+          "liqi-ofertas"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Web en portugués y en reales; no publica si admite inversores que no residan en Brasil.",
+        "fuentes": [
+          "liqi-ofertas"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Emisiones brasileñas en reales, sin folleto ni KID europeos; la CNMV no las supervisa.",
+          "fuentes": [
+            "liqi-ofertas"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lofty",
+      "nombre": "Lofty",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web y su mercado de participaciones inmobiliarias siguen activos.",
+        "fuentes": [
+          "lofty-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.",
+        "fuentes": [
+          "lofty-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Las páginas revisadas no traen información específica para inversores no estadounidenses: los términos solo advierten que los productos pueden no estar disponibles en cada jurisdicción y excluyen territorios sancionados por la OFAC. No se confirmó base legal, elegibilidad ni comercialización en España.",
+        "fuentes": [
+          "lofty-web",
+          "lofty-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_registro_y_liquidez",
+          "detalle": "Su mercado no es una oferta registrada y no garantiza que puedas vender al momento. Las operaciones se hacen en redes públicas y no se garantiza que se ejecuten en las mejores condiciones.",
+          "fuentes": [
+            "lofty-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "luxivana",
+      "nombre": "Luxivana",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web invita a invertir en activos privados tokenizados desde 25.000 dólares.",
+        "fuentes": [
+          "luxivana-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice operar como representante autorizada de un titular de AFSL (255475); no lo hemos comprobado en el registro de ASIC.",
+        "fuentes": [
+          "luxivana-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No publica qué inversores admite fuera de Australia.",
+        "fuentes": [
+          "luxivana-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_de_tercero",
+          "detalle": "La licencia es de otra empresa (Trend Capital Group); Luxivana actúa como su representante. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "luxivana-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "m3sixty",
+      "nombre": "M3Sixty",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La ficha del fondo publica su valor liquidativo y su rendimiento a siete días con fecha del 27/11/2026.",
+        "fuentes": [
+          "m3sixty-mmf"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice que su asesor está registrado en la SEC; no lo hemos comprobado en el registro de la SEC.",
+        "fuentes": [
+          "m3sixty-mmf"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Las participaciones no cotizan: se compran y se reembolsan a través de intermediarios o plataformas aprobadas por M3Sixty.",
+        "fuentes": [
+          "m3sixty-mmf"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fondo_pequeno",
+          "detalle": "Es un fondo muy pequeño y sus gastos brutos superan con mucho a los netos: hoy los cubre la gestora y podría dejar de hacerlo.",
+          "fuentes": [
+            "m3sixty-mmf"
+          ]
+        },
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Fondo de EE. UU. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "m3sixty-mmf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "maple-finance",
+      "nombre": "Maple Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo productos de crédito para instituciones y syrup.",
+        "fuentes": [
+          "maple-web",
+          "maple-institutional"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Los términos de la interfaz syrup declaran que la operadora no está registrada ante ningún regulador.",
+        "fuentes": [
+          "maple-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. Con la página institucional no hemos podido confirmar, en esta revisión, todos los requisitos de alta; comprueba los del producto concreto.",
+        "fuentes": [
+          "maple-terms",
+          "maple-institutional"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "producto_a_producto",
+          "detalle": "La licencia o los requisitos de un fondo (pool) no valen para todo Maple: el protocolo, la interfaz, el emisor y el vehículo son piezas distintas.",
+          "fuentes": [
+            "maple-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mesh",
+      "nombre": "Mesh",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web publica emisiones abiertas, como las acciones preferentes tokenizadas de BCFS.",
+        "fuentes": [
+          "mesh-bcfs"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser proveedor de servicios financieros autorizado (FSP 53710); no lo hemos comprobado en el registro de la FSCA.",
+        "fuentes": [
+          "mesh-bcfs"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No publica qué inversores admite fuera de Sudáfrica.",
+        "fuentes": [
+          "mesh-sobre"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Productos sudafricanos. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "mesh-bcfs"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "midas",
+      "nombre": "Midas",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no se dejan leer con herramientas automáticas, así que no hemos comprobado cada emisión.",
+        "fuentes": [
+          "midas-mtbill",
+          "midas-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La FMA de Liechtenstein aprobó el 17/07/2026 un nuevo folleto base de Midas Software GmbH, válido hasta el 17/07/2027 y notificado a la CNMV. Incluye mTBILL (ISIN CH1371002986) entre los productos que se siguen ofreciendo. Aprobar el folleto no es una licencia: el propio folleto dice que el emisor no está regulado por la FMA.",
+        "fuentes": [
+          "midas-mtbill",
+          "midas-old-prospectus"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Las condiciones finales de mTBILL (17/07/2026) incluyen España entre los países de la oferta pública y no prohíben la venta a minoristas del EEE. Eso no confirma que la web te deje darte de alta.",
+        "fuentes": [
+          "midas-mtbill"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "terminos_finales_no_confirmados",
+          "detalle": "Que el folleto esté «aprobado por la FMA» no es un aval ni una licencia de Midas: según el folleto base del 17/07/2026, la FMA solo revisa que esté completo, se entienda y sea coherente, y el emisor no queda regulado por ella. Si pueden entrar minoristas del EEE lo deciden las condiciones finales de mTBILL; las del 17/07/2026 no lo prohíben, pero eso no confirma que la web te deje darte de alta.",
+          "fuentes": [
+            "midas-mtbill",
+            "midas-old-prospectus"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "oaksvale",
+      "nombre": "Oaksvale",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web enseña inmuebles tokenizados, como una villa en Zanzíbar.",
+        "fuentes": [
+          "oaksvale-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Solo da su inscripción mercantil en Nigeria y Tanzania; no declara licencia de valores.",
+        "fuentes": [
+          "oaksvale-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Pide verificación de identidad, pero no publica qué países admite.",
+        "fuentes": [
+          "oaksvale-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_licencia_declarada",
+          "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "oaksvale-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "obligate",
+      "nombre": "Obligate",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web enseña sus ofertas de deuda tokenizada (financiación del comercio, deuda inmobiliaria y de mercados emergentes) y su token oTFY en mercados descentralizados.",
+        "fuentes": [
+          "obligate-web",
+          "obligate-otfy"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser intermediario financiero miembro de VQF, autorregulador supervisado por la FINMA; no lo hemos comprobado en el registro de VQF.",
+        "fuentes": [
+          "obligate-otfy"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo inversores institucionales y cualificados; en oTFY, mínimo de 100.000 dólares y contrato aparte con el emisor.",
+        "fuentes": [
+          "obligate-web",
+          "obligate-otfy"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "rentabilidad_sin_fecha",
+          "detalle": "Las rentabilidades que enseña su web son las que anuncia el emisor, sin fecha ni garantía, y oTFY cobra un 1 % de gestión y un 10 % sobre beneficios.",
+          "fuentes": [
+            "obligate-otfy"
+          ]
+        },
+        {
+          "codigo": "solo_cualificados",
+          "detalle": "No es para particulares. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "obligate-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "okxice",
+      "nombre": "OKXICE",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "OKX anuncia el inicio de la negociación en su mercado de valores tokenizados.",
+        "fuentes": [
+          "okxice-nota"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La nota no detalla las licencias que cubren el mercado.",
+        "fuentes": [
+          "okxice-nota"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo para clientes de OKX Inc. en EE. UU. que verifiquen su identidad y cumplan los requisitos geográficos.",
+        "fuentes": [
+          "okxice-nota"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_eeuu",
+          "detalle": "No está abierto desde España: solo clientes de OKX en EE. UU.",
+          "fuentes": [
+            "okxice-nota"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ondo-finance",
+      "nombre": "Ondo Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo USDY, OUSG y Ondo Stocks.",
+        "fuentes": [
+          "ondo-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "No se confirmó una licencia única aplicable a la marca; emisor, producto y jurisdicción deben revisarse por separado.",
+        "fuentes": [
+          "ondo-web",
+          "ondo-usdy-access"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del alta con el emisor.",
+        "fuentes": [
+          "ondo-usdy-access"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_acceso_general",
+          "detalle": "Ondo no está abierta a minoristas de todo el mundo: incluso los productos que llama «de acceso general» tienen restricciones según la jurisdicción.",
+          "fuentes": [
+            "ondo-usdy-access"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "onre",
+      "nombre": "OnRe",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su interfaz enseña el patrimonio y el valor de ONyc, y su documentación explica cómo se emite y se reembolsa.",
+        "fuentes": [
+          "onre-app",
+          "onre-docs"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Habla de una cuenta segregada regulada en Bermudas, y su interfaz dice que la vía institucional la regula la Autoridad Monetaria de Bermudas; no lo hemos comprobado.",
+        "fuentes": [
+          "onre-docs",
+          "onre-app"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Por la vía abierta se compra sin verificación ni mínimo, pero sin derechos frente al emisor; reembolsar al valor liquidativo exige la verificación institucional. La interfaz no se puede usar desde EE. UU. ni desde otros países que excluye.",
+        "fuentes": [
+          "onre-docs",
+          "onre-app"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_derechos_por_interfaz",
+          "detalle": "Los ONyc comprados por la interfaz pública no dan derechos de propiedad, reembolso ni voto frente a On Re SAC Ltd.",
+          "fuentes": [
+            "onre-app"
+          ]
+        },
+        {
+          "codigo": "riesgo_siniestros",
+          "detalle": "Si hay siniestros grandes, el valor baja: no es una moneda estable ni un depósito. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "onre-docs"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "openeden",
+      "nombre": "OpenEden",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y se puede leer la documentación oficial de TBILL y de su proceso de alta.",
+        "fuentes": [
+          "openeden-web",
+          "openeden-intro",
+          "openeden-onboarding"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La documentación identifica al emisor TBILL como fondo profesional BVI; no convierte a toda OpenEden en entidad regulada para cada servicio.",
+        "fuentes": [
+          "openeden-intro"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "TBILL es de acceso restringido y se limita a inversores profesionales BVI o acreditados de EE. UU., tras pasar los controles KYC/KYT.",
+        "fuentes": [
+          "openeden-onboarding"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_profesional",
+          "detalle": "TBILL no está abierto a inversores minoristas, y la calificación (rating) del fondo no garantiza tu capital.",
+          "fuentes": [
+            "openeden-intro",
+            "openeden-onboarding"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pax-gold",
+      "nombre": "Pax Gold",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Paxos sigue publicando la web de PAXG, su custodia y que cada token se puede canjear por oro físico.",
+        "fuentes": [
+          "paxg-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Paxos Trust Company, National Association figura en la lista OCC de trust banks activos a 31/10/2026 (charter 25379). La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.",
+        "fuentes": [
+          "paxg-occ",
+          "paxg-nydfs",
+          "paxg-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La web oficial de PAXG indica que ahora no está disponible para residentes en la Unión Europea ('PAXG is currently not available to residents of the European Union'), así que no consta acceso desde España. Fuera de la UE se dirige a particulares, sobre todo a través de exchanges, y a instituciones mediante contacto comercial directo.",
+        "fuentes": [
+          "paxg-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "oro_tokenizado",
+          "detalle": "Que esté respaldado por oro y se pueda canjear no significa que no tenga riesgo. Comprueba el custodio, las comisiones, el mínimo y cómo se canjea.",
+          "fuentes": [
+            "paxg-web",
+            "paxg-nydfs"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "prypco-mint",
+      "nombre": "PRYPCO Mint",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su ayuda explica cómo invertir en las propiedades tokenizadas abiertas tras verificar la cuenta.",
+        "fuentes": [
+          "prypco-mint"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La ayuda cita el registro de cada inmueble en el DLD; no dice qué licencia tiene la plataforma.",
+        "fuentes": [
+          "prypco-mint"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Hay que verificar la cuenta antes de invertir; el mínimo es de 1.000 AED en todas las propiedades.",
+        "fuentes": [
+          "prypco-mint"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Inmuebles de Dubái en dírhams. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "prypco-mint"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "raiz",
+      "nombre": "Raíz",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web enseña propiedades tokenizadas, alguna ya agotada, y explica cómo invertir desde 50 dólares.",
+        "fuentes": [
+          "raiz-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "La web no dice que la plataforma tenga una licencia de valores en Argentina ni en otro país.",
+        "fuentes": [
+          "raiz-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Habla de «inversores registrados», pero no publica qué países admite ni qué requisitos pide.",
+        "fuentes": [
+          "raiz-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_licencia_declarada",
+          "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "raiz-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "real-tokn",
+      "nombre": "Real Tokn",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web explica cómo registrarse como inversor y cómo custodia los activos digitales.",
+        "fuentes": [
+          "realtokn-inversores"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice estar registrada en la CNAD con el n.º PSAD-0023; no lo hemos comprobado en el registro de la CNAD.",
+        "fuentes": [
+          "realtokn-inversores"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo admite residentes de jurisdicciones permitidas y revisa el perfil del inversor antes de enseñarle una emisión.",
+        "fuentes": [
+          "realtokn-inversores"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "registro_no_es_aval",
+          "detalle": "Su web avisa de que el registro en la CNAD no responde de la solvencia de los emisores ni de lo que paguen sus emisiones. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "realtokn-inversores"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reental",
+      "nombre": "Reental",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y los controles contra el blanqueo (KYC/AML), y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta.",
+        "fuentes": [
+          "reental-faq"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Reental dice que su actividad en España no está sujeta a autorización ni registro previo de la CNMV.",
+        "fuentes": [
+          "reental-web"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Sus preguntas frecuentes dicen que pueden darse de alta los adultos, tras la verificación de identidad y los controles contra el blanqueo (KYC/AML), y que a los residentes fiscales en EE. UU. se les exige ser inversores acreditados. Cada emisión tiene sus propios términos.",
+        "fuentes": [
+          "reental-faq"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "emision_no_licencia_plataforma",
+          "detalle": "Que una emisión esté inscrita (ERIR) no es una licencia para toda la plataforma, y una oportunidad sin ficha actual no hay que darla por abierta.",
+          "fuentes": [
+            "reental-emision"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "republic",
+      "nombre": "Republic",
+      "fechaCanonicaConservada": "2026-08-08",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "republic.com no deja leer su web con herramientas automáticas. El centro de ayuda oficial de Republic Europe sigue explicando cómo darse de alta, ver oportunidades e invertir en campañas.",
+        "fuentes": [
+          "republic-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo.",
+        "fuentes": [
+          "republic-finra",
+          "republic-entities"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Las páginas consultadas no permiten confirmar la elegibilidad vigente para cada oferta ni acceso desde España; debe revisarse la documentación de la emisión.",
+        "fuentes": [
+          "republic-web",
+          "republic-entities"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "grupo_multi_entidad",
+          "detalle": "El registro de una filial no cubre a todo Republic, y cada oferta tiene sus propias reglas.",
+          "fuentes": [
+            "republic-entities",
+            "republic-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sdax",
+      "nombre": "SDAX",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su lista enseña emisiones tokenizadas con su mínimo y su estado.",
+        "fuentes": [
+          "sdax-listados"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice tener licencia CMS (CMS100573) y de operador de mercado reconocido de la MAS; no lo hemos comprobado en el directorio de la MAS.",
+        "fuentes": [
+          "sdax-listados"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Solo para inversores acreditados, según su propia lista.",
+        "fuentes": [
+          "sdax-listados"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_minorista",
+          "detalle": "No es para particulares: solo inversores acreditados.",
+          "fuentes": [
+            "sdax-listados"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "securitize",
+      "nombre": "Securitize",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund), con la opción de darse de alta e invertir. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte.",
+        "fuentes": [
+          "securitize-web",
+          "securitize-finra"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.",
+        "fuentes": [
+          "securitize-finra"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "El informe del broker/ATS no acredita alta disponible ni elegibilidad concreta del inversor para cada activo.",
+        "fuentes": [
+          "securitize-finra",
+          "securitize-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidades_separadas",
+          "detalle": "El permiso es de una filial concreta, Securitize Markets, LLC (bróker registrado ante la SEC y la FINRA, y ATS), y no cubre la tokenización, la administración ni el asesoramiento del resto del grupo.",
+          "fuentes": [
+            "securitize-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seturion",
+      "nombre": "Seturion",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "El grupo Boerse Stuttgart presenta Seturion con sus servicios de emisión, registro y liquidación.",
+        "fuentes": [
+          "seturion-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La página no dice qué licencia cubre la plataforma.",
+        "fuentes": [
+          "seturion-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Es infraestructura para bancos, brókeres y mercados; no se invierte en ella.",
+        "fuentes": [
+          "seturion-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "infraestructura_b2b",
+          "detalle": "Es una infraestructura entre instituciones: no ofrece productos a particulares.",
+          "fuentes": [
+            "seturion-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "shard",
+      "nombre": "Shard",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web enseña inmuebles tokenizados con su mínimo y su avance de financiación.",
+        "fuentes": [
+          "shard-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "No declara licencia de valores; dice que verifica los activos con autoridades y socios independientes.",
+        "fuentes": [
+          "shard-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Dice que la elegibilidad y las restricciones por país dependen de cada inversión.",
+        "fuentes": [
+          "shard-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_licencia_declarada",
+          "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "shard-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spiko",
+      "nombre": "Spiko",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su página oficial Web3 sigue mostrando productos de tesorería, con suscripción y reembolso. No llegamos a darnos de alta.",
+        "fuentes": [
+          "spiko-access"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "La AMF (GECO) registra SPIKO EU T-BILLS MONEY MARKET FUND (ISIN FR001400ODL1), compartimento de SPIKO SICAV: OPCVM vivo, autorizado (agrément) el 05/04/2024 y abierto a todo suscriptor. Su gestora es Twenty First Capital, no Spiko, y el depositario es CACEIS Bank. El registro REGAFI de la ACPR recoge a Spiko Finance como empresa de inversión autorizada (CIB 19183) desde el 15/12/2025. Solo se verificó ese compartimento; los demás fondos Spiko deben comprobarse uno a uno.",
+        "fuentes": [
+          "spiko-amf",
+          "spiko-regafi"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. La CNMV tiene inscritas a SPIKO SICAV como IIC extranjera (n.º 2380, con Aldana Capital como comercializadora) y a Spiko Finance como empresa de inversión en libre prestación (n.º 5325), pero no muestra qué compartimentos de la SICAV están dados de alta en España. No llegamos a darnos de alta.",
+        "fuentes": [
+          "spiko-web",
+          "spiko-amf",
+          "spiko-regafi-pasaporte-es",
+          "spiko-cnmv-iic",
+          "spiko-cnmv-lps"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "distribucion_espana",
+          "detalle": "Ser un fondo UCITS no basta, por sí solo, para poder contratarlo desde España: hay que comprobar el pasaporte, el distribuidor y la clase de participación.",
+          "fuentes": [
+            "spiko-amf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "superstate",
+      "nombre": "Superstate",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo fondos tokenizados y FundOS.",
+        "fuentes": [
+          "superstate-web",
+          "superstate-ustb"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund, con Invesco Advisers como gestor y Superstate Services como agente de transferencias, y dice que el fondo no está registrado como sociedad de inversión. No hay aprobación ni aval de un regulador.",
+        "fuentes": [
+          "superstate-ustb"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "USTB exige acreditado y qualified purchaser; no es oferta minorista general.",
+        "fuentes": [
+          "superstate-ustb"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_cualificados",
+          "detalle": "Para USTB hay que cumplir dos requisitos a la vez: ser inversor acreditado y «qualified purchaser». Presentar documentos o estar inscrito ante un supervisor no es una aprobación ni una garantía.",
+          "fuentes": [
+            "superstate-ustb"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "swarm",
+      "nombre": "Swarm",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "La web lleva a una aplicación de la que no se puede leer el contenido; no hemos confirmado que haya operaciones ni una oferta abierta.",
+        "fuentes": [
+          "swarm-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'.",
+        "fuentes": [
+          "swarm-web",
+          "swarm-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Los términos que se pueden leer en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y sus preguntas frecuentes (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y no se puede leer el contenido de la aplicación.",
+        "fuentes": [
+          "swarm-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "acceso_no_confirmado",
+          "detalle": "No está confirmado que un inversor minorista pueda entrar: no hemos podido comprobar unas condiciones de alta actuales que digan con qué empresa se contrata y desde qué jurisdicciones.",
+          "fuentes": [
+            "swarm-web",
+            "swarm-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tangiblex",
+      "nombre": "TangibleX",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta su mercado de participaciones tokenizadas y el proceso para participar.",
+        "fuentes": [
+          "tangiblex-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La licencia es de las gestoras que originan cada fondo; la web no identifica ninguna.",
+        "fuentes": [
+          "tangiblex-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Solo dice que participan «inversores verificados», sin publicar requisitos ni países.",
+        "fuentes": [
+          "tangiblex-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_de_tercero",
+          "detalle": "Cada producto depende de la licencia de su gestora, no de la plataforma. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "tangiblex-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "taurus",
+      "nombre": "Taurus",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta custodia, tokenización y trading para instituciones. Su pie indica que Taurus SA tiene licencia de securities firm de FINMA, que Taurus Europe tiene licencia MiFID de la CySEC (465/26) y que TDX es una OTF operada por Taurus SA, no una bolsa.",
+        "fuentes": [
+          "taurus-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.",
+        "fuentes": [
+          "taurus-finma",
+          "taurus-disclosure"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La documentación contempla clientes minoristas, profesionales e institucionales, en régimen de solo ejecución, sin asesoramiento; no está confirmado que se pueda dar de alta desde España.",
+        "fuentes": [
+          "taurus-disclosure"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "execution_only",
+          "detalle": "Que Taurus clasifique a sus clientes (minoristas, profesionales o institucionales) no significa que el servicio esté abierto a todos, ni que te asesoren o comprueben si te conviene.",
+          "fuentes": [
+            "taurus-disclosure"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "terazo",
+      "nombre": "Terazo",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta ORYX: el tramo inicial está suscrito y la reventa va por lista de espera.",
+        "fuentes": [
+          "terazo-web",
+          "terazo-oryx"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice operar en el entorno de pruebas regulatorio de la IFSCA (GIFT City); no lo hemos comprobado en la IFSCA.",
+        "fuentes": [
+          "terazo-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No publica qué inversores admite ni desde qué países.",
+        "fuentes": [
+          "terazo-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sandbox",
+          "detalle": "Un entorno de pruebas regulatorio no es una licencia definitiva. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "terazo-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tohkn",
+      "nombre": "TOHKN",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su lista de emisiones marca como abiertas IBER1, MMLTI1, RNCRrev y la familia de acciones y ETF tokenizados; THKN1, cerrada.",
+        "fuentes": [
+          "tohkn-emisiones"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "TOHKN dice que MIO3, S.A. de C.V. está autorizada por la CNAD de El Salvador (PSAD-0016). No hemos podido abrir el registro público de la CNAD para comprobarlo.",
+        "fuentes": [
+          "tohkn-emisiones"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Se invierte solo desde su app, tras verificar la identidad. Sus condiciones excluyen jurisdicciones restringidas sin publicar la lista.",
+        "fuentes": [
+          "tohkn-condiciones"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Emisiones registradas en El Salvador, sin folleto ni KID europeos; la CNMV no las supervisa.",
+          "fuentes": [
+            "tohkn-emisiones"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokeniza",
+      "nombre": "Tokeniza",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su página de ofertas presenta las captaciones disponibles y el proceso de alta.",
+        "fuentes": [
+          "tokeniza-invista"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice estar regulada por la CVM como plataforma de crowdfunding; no lo hemos comprobado en el registro de la CVM.",
+        "fuentes": [
+          "tokeniza-web",
+          "tokeniza-invista"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Analiza los documentos de cada inversor antes de dejarle invertir; no publica si admite residentes fuera de Brasil.",
+        "fuentes": [
+          "tokeniza-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Ofertas brasileñas en reales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "tokeniza-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokeny",
+      "nombre": "Tokeny",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo software para emitir tokens y cumplir la normativa en blockchain.",
+        "fuentes": [
+          "tokeny-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.",
+        "fuentes": [
+          "tokeny-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Los servicios son para clientes profesionales; Tokeny no es el punto de acceso inversor a una oferta única.",
+        "fuentes": [
+          "tokeny-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "proveedor_no_emisor",
+          "detalle": "Tokeny es el proveedor del software: la licencia, la custodia, la solvencia y los requisitos de acceso son del emisor que lo usa, no de Tokeny.",
+          "fuentes": [
+            "tokeny-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokinvest",
+      "nombre": "Tokinvest",
+      "fechaCanonicaConservada": "2026-11-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece tokenizar activos e invertir tras verificar la identidad.",
+        "fuentes": [
+          "tokinvest-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "El registro público de VARA recoge a Tokinvest DMCC con licencia VASP activa (VL/2024/12/004, del 30/12/2024) para intermediación y emisión de categoría 1.",
+        "fuentes": [
+          "tokinvest-vara"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "VARA le permite atender a inversores institucionales, cualificados y minoristas; la web enseña a cada uno lo que puede comprar según su perfil.",
+        "fuentes": [
+          "tokinvest-vara",
+          "tokinvest-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Licencia de Dubái, sin pasaporte europeo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "tokinvest-vara"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tzero",
+      "nombre": "tZERO",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web sigue ofreciendo infraestructura de emisión, negociación y custodia.",
+        "fuentes": [
+          "tzero-web",
+          "tzero-company"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "tZERO Securities, LLC figura en FINRA como broker-dealer y opera ATS; otras funciones pertenecen a entidades separadas.",
+        "fuentes": [
+          "tzero-finra",
+          "tzero-company"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La web contempla negociación y servicios para inversores, pero no se comprobaron las condiciones de alta y admisión desde España para cada activo.",
+        "fuentes": [
+          "tzero-web",
+          "tzero-company"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidad_y_activo",
+          "detalle": "Su registro ante la SEC y la FINRA no cubre a todo el grupo, y no hay que dar por hecho que cada activo de su sistema de negociación (ATS) esté abierto a minoristas.",
+          "fuentes": [
+            "tzero-finra",
+            "tzero-company"
+          ]
+        }
+      ]
+    }
+  ]
+}

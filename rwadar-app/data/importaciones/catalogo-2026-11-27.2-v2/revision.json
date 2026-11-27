@@ -1,0 +1,42 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "806c63fe-1400-1b62-c9c3-80e53d971987",
+  "hash": "806c63fe14001b62c9c380e53d971987a3ad3c35fa0b13b0c78cb60cdc0f0847",
+  "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "hashRevisionAnterior": "529a54f70c134b0704333b67273bdd86413b8cb122192e9889372763b63fb420",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-27.2-v2/lectura-publica/",
+  "etiqueta": "2026-11-27.2",
+  "fechaRadar": "2026-11-27",
+  "revisionDocumental": "2026-11-27",
+  "plataformas": 68,
+  "ofertas": 38,
+  "colecciones": {
+    "principales": 22,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 6,
+  "ofertasAltas": [
+    "hwk-1365-zukunftsanleihe",
+    "tokinvest-lingote-plata-record",
+    "tokinvest-great-hampton-street",
+    "mesh-ccs-income-notes",
+    "hsbc-hkd-money-fund-class-sd",
+    "mufg-realty-token-kioicho"
+  ],
+  "plataformasAltas": [
+    "hwk-1365",
+    "hsbc",
+    "daiwa-securities"
+  ],
+  "retiradas": 0,
+  "tablasPublicas": [
+    "public.plataformas"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

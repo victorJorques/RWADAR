@@ -1,0 +1,127 @@
+How it works
+What you can buy
+Tokenise with us
+Questions
+Log in
+Open app
+All case studies
+A record silver bar, split into tokens
+
+We have tokenised the world’s largest silver bar, a single 1,971kg bar that holds the Guinness World Record, and split it into 1,971,000 tokens, one per gram. The minimum investment is 1,000 tokens, which is one kilogram. It is the first commodity issued under the DMCC-VARA tokenisation framework. The offer opened on 7 September 2026.
+
+WHY TOKENISE WITH US
+First
+Issue under the DMCC-VARA framework
+Whole
+The bar is never cut or recast
+1,971,000
+Tokens, one per gram
+10 years
+Then an independent sale
+Asset
+One silver bar, 1,971kg, Guinness World Record holder.
+Made by
+SAM Precious Metals, UAE
+Tokens
+1,971,000, one per gram, fixed supply
+Structure
+ARVA issued by Tokinvest FZCO, regulated by VARA, under the DMCC-VARA framework
+Minimum investment
+1,000 tokens (1kg); the AED cost moves with the silver price
+Term
+Ten years, then sale of the bar
+Custody and chain
+Brink’s, Dubai (bar); Hex Trust (tokens); BNB Chain
+Status
+Offer open since 7 September 2026
+The owner and the asset
+
+The bar was made in the UAE by SAM Precious Metals, a UAE precious metals refinery, to mark 1971, the year the United Arab Emirates was founded. At 1,971kg it holds the Guinness World Record for the world’s largest silver bar.
+
+It is bar number A1126, with a weight certificate and an assay report, and the register shows no liens or other claims. Title is held through a DMCC Tradeflow warrant. DMCC Tradeflow is the Dubai Multi Commodities Centre’s electronic register of title to commodities held in approved warehouses. The bar is held by Brink’s in Dubai, which checks the inventory weekly.
+
+Why tokenise
+
+The bar is a one of a kind object: cutting or recasting it would destroy the thing that makes it unique. Tokenising lets the bar stay whole, in one vault, under one warrant, while investors buy a share of it from one kilogram.
+
+It also made the bar the first live issue under the DMCC-VARA framework, which DMCC and VARA set up in 2025 to bring physical commodities on chain under VARA’s rules.
+
+What we did
+
+We issued the token as an asset-referenced virtual asset (ARVA) through Tokinvest FZCO, under our VARA licence VL/2024/12/004 and the DMCC-VARA framework. An ARVA is a token whose value refers to a real-world asset, issued under VARA’s rules.
+
+Subscriptions go into a client money account at Zand Bank and are used to acquire the Tradeflow warrant, which is registered before the tokens are minted. The warrant is held on trust under DIFC law, and each token is a proportionate beneficial interest in it.
+
+The issue price is set from the Chainlink XAG/USD silver price feed, a live, independent price source, plus a 15% premium for the bar as a one-of-one piece, converted to a price per gram. Tokens are on BNB Chain with ERC-1404 transfer restrictions, so they move only between verified, eligible wallets. Hex Trust holds the tokens and Brink’s holds the bar.
+
+The term is ten years. At the end, the bar is sold through an independent sale agent, net proceeds are paid to holders pro rata and the tokens are burnt. There is no yield and no redemption before then.
+
+The launch was held at DMCC in Dubai with VARA, DMCC, SAM Precious Metals and Brink’s.
+
+Where it stands
+
+The offer opened on 7 September 2026 and is taking subscriptions now. Secondary trading between eligible investors on the Tokinvest marketplace is due to open after the initial issue.
+
+Investors need confidence that what exists on-chain is supported by a real asset that is securely held and protected. Brink’s is providing that physical foundation for the Silver Bar ARVA, safeguarding this unique 1,971kg silver bar within our secure infrastructure in Dubai.
+[nombre retirado], Regional Sales Director, IMENA, Brink’s Global Services
+Tokenise with us
+
+If you hold physical metal or another warehoused commodity with clear title, we can register it, keep it in a recognised vault and issue tokens investors can buy in small amounts, under our VARA licence.
+
+Apply to tokenise
+More case studies
+The first regulated build-to-rent token
+A global money market fund, on chain
+Private credit, reimagined
+The world’s first tokenised racehorse
+tokinvest
+
+Office 4, Level 12, Uptown Tower, Jumeirah Lakes Towers, Dubai
+
+REGULATED BY
+
+TOKENISE
+
+Tokenise with us
+Case studies
+Apply to tokenise
+
+PRODUCTS
+
+Property
+Bonds
+Racehorses
+Commodities
+Funds
+Great Hampton Street Works
+
+LEARN
+
+Insights and news
+Questions
+Help Center
+
+COMPANY
+
+About us
+Partners
+Contact us
+
+LEGAL
+
+Risk disclosure statement
+Complaints policy
+Security and scam warnings
+Conflict of interest policy
+Brokerage services terms
+Virtual assets standards
+Whistleblowing policy
+Reporting bribery and corruption
+
+Tokinvest FZCO (DMCC-928046) is licensed by the Dubai Virtual Assets Regulatory Authority (VL/2024/12/004) to provide Virtual Asset Broker Dealer Services and Category 1 VA Issuance. CMA Registration Number: CMA-VASP-0100000-0025.
+
+Capital at risk. Virtual assets may lose some or all of their value and may be subject to extreme volatility. You may lose all money invested and do not benefit from any form of financial protection. Past performance is not a guide to future returns. Investments are subject to eligibility and jurisdictional restrictions. Not available to U.S. persons.
+
+Landline: (04) 824 4146
+Website terms of use
+Privacy and cookie policy

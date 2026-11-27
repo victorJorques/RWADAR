@@ -1,0 +1,39 @@
+{
+  "tipo": "altas",
+  "fecha": "2026-11-27",
+  "etiqueta": "2026-11-27.2",
+  "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "revisionNueva": "806c63fe-1400-1b62-c9c3-80e53d971987",
+  "decision": "Órdenes de la dirección del 27/11/2026: «el resto pon que está verificado hasta el día de hoy» y añadir las ofertas del suplemento de ese día. Las fichas se re-fechan solo con lo leído hoy; entran las ofertas con fuente primaria y condiciones comprobadas.",
+  "archivos": {
+    "altas.json": "47c74aa5e2abc4a3bd5df2c2457eddb66c9cf2ea6395507c80e18160738a1e2d",
+    "fuentes/lecturas-2026-11-27.json": "6ed358e86f54869ee39a762e3832f63944ac075968cddba8d7027d24544cc108",
+    "fuentes/releidas-2026-11-27.txt": "468534a87e9ddb470053002e97a6a0c8d24b3960daec541afb5dfd8da80548c8",
+    "refechado.json": "bbad032e75861ad3e0db74c9c6033ebdd2531a42b42da21a763884478ecc5cc3",
+    "base-refechada-escaparate.json": "93c8f9b32b60071681a52fa5872b4c4d2bfdb971699522e79532a54fcca674a1",
+    "base-refechada-documentacion.json": "149d0cf154023b20a30f34a81ad7277be5f220e9ee86b28c72ba9a8b9944230d",
+    "vigia.json": "ae0cd26fad7aad538d65c2739dac7fdc2326245a877ab484a5740ea439f4dd0b"
+  },
+  "altas": {
+    "regiones": [],
+    "plataformas": [
+      "hwk-1365",
+      "hsbc",
+      "daiwa-securities"
+    ],
+    "ofertas": [
+      "hwk-1365-zukunftsanleihe",
+      "tokinvest-lingote-plata-record",
+      "tokinvest-great-hampton-street",
+      "mesh-ccs-income-notes",
+      "hsbc-hkd-money-fund-class-sd",
+      "mufg-realty-token-kioicho"
+    ]
+  },
+  "colecciones": {
+    "principales": 22,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "lecturaPublica": "Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-27T11:35:58Z – 2026-11-27T11:36:01Z"
+}

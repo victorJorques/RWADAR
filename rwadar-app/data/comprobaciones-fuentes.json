@@ -125,6 +125,10 @@
     "backpack-socios": ["Backpack Securities issues tokenized U\\.S\\. stocks and ETFs", "special purpose vehicle \\(SPV\\)", "Who is the issuer\\? Backpack Securities"],
     "backpack-acciones": ["Tokenized stocks and ETFs on Solana", "subject to eligibility and jurisdictional restrictions"],
     "onre-docs": ["ring-fenced structure in Bermuda", "reinsurance contracts"],
-    "onre-app": ["do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd", "Prohibited Jurisdiction", "including the United States", "No onboarding or minimums required", "Regulated by the Bermuda Monetary Authority"]
+    "onre-app": ["do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd", "Prohibited Jurisdiction", "including the United States", "No onboarding or minimums required", "Regulated by the Bermuda Monetary Authority"],
+    "hwk-anleihe": ["Holding der Hüttenwerke Königsbronn", "DE000A5GS3Q2", "Qualifiziert nachrangig, nicht besichert"],
+    "hwk-wib": ["Polygon Blockchain", "Fortführung der Unternehmenstätigkeit ist"],
+    "hsbc-classsd": ["tokenised unit class \\(Class SD\\)", "Minimum subscription of HKD 100", "Eligible customers"],
+    "daiwa-mufg": ["大和証券株式会社", "三菱ＵＦＪ信託銀行株式会社", "2026年12月1日（火）から2026年12月8日（火）まで"]
   }
 }

@@ -431,6 +431,86 @@
     "Cobras al vencimiento"
    ],
    "concepto": "oficinas en Tokio"
+  },
+  {
+   "slug": "hwk-1365-zukunftsanleihe",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Königsbronn · Alemania",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras el interés cada año",
+    "Recuperas el nominal en 2031"
+   ],
+   "concepto": "una fundición alemana"
+  },
+  {
+   "slug": "tokinvest-lingote-plata-record",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Dubái · Emiratos",
+   "pasos": [
+    "Compras gramos del lingote",
+    "Brink’s lo guarda",
+    "Se vende a los 10 años"
+   ],
+   "concepto": "un lingote de plata"
+  },
+  {
+   "slug": "tokinvest-great-hampton-street",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "ladrillo",
+    "semilla": 913
+   },
+   "lugar": "Birmingham · Reino Unido",
+   "pasos": [
+    "Compras tokens del edificio",
+    "Cobras la renta cada mes",
+    "Se vende a los 10 años"
+   ],
+   "concepto": "una antigua fábrica convertida en pisos"
+  },
+  {
+   "slug": "mesh-ccs-income-notes",
+   "escena": "cartera_credito",
+   "lugar": "Sudáfrica",
+   "pasos": [
+    "Compras las notas",
+    "Las pymes pagan sus equipos",
+    "Cobras interés cada mes"
+   ],
+   "concepto": "equipos de pequeñas empresas"
+  },
+  {
+   "slug": "hsbc-hkd-money-fund-class-sd",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Pagas con RedCoin en la app",
+    "El fondo invierte a corto plazo",
+    "Reembolsas en la app"
+   ],
+   "concepto": "el distrito financiero de Hong Kong"
+  },
+  {
+   "slug": "mufg-realty-token-kioicho",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "lugar": "Tokio · Japón",
+   "pasos": [
+    "Pides del 1 al 8 de diciembre",
+    "Cobras el reparto cada semestre",
+    "Se vende el inmueble al final"
+   ],
+   "concepto": "oficinas en Tokio"
   }
  ]
 }

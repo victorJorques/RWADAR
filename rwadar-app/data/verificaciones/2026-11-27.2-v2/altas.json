@@ -1,0 +1,1415 @@
+{
+ "fecha": "2026-11-27",
+ "regiones": [],
+ "plataformas": [
+  {
+   "slug": "hwk-1365",
+   "nombre": "HWK 1365",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "union-europea",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "Polygon",
+    "web": "https://www.hwk1365.de/anleihe/",
+    "aval": "HWK 1365 SE, de Königsbronn (Alemania), es la sociedad de cartera de la fundición Hüttenwerke Königsbronn. Emite ella misma su bono tokenizado; no es una entidad financiera.",
+    "nota": "Empresa industrial alemana que se financia con un bono tokenizado en Polygon, suscrito solo en su propia plataforma."
+   },
+   "fuentes": [
+    {
+     "id": "hwk-anleihe",
+     "tipo": "empresa",
+     "titulo": "HWK 1365 · Die HWK 1365 Zukunftsanleihe",
+     "url": "https://www.hwk1365.de/anleihe/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "hwk-wib",
+     "tipo": "documento",
+     "titulo": "HWK 1365 SE · Wertpapier-Informationsblatt (20/10/2026)",
+     "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "hwk-anleihe": [
+     "Holding der Hüttenwerke Königsbronn",
+     "DE000A5GS3Q2",
+     "Qualifiziert nachrangig, nicht besichert"
+    ],
+    "hwk-wib": [
+     "Polygon Blockchain",
+     "Fortführung der Unternehmenstätigkeit ist"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web ofrece desde el 01/11/2026 un bono tokenizado de hasta 1.365.000 € y enlaza a su plataforma de suscripción.",
+     "fuentes": [
+      "hwk-anleihe"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Es una empresa industrial que emite su propio bono, no una entidad financiera. La BaFin no revisa el contenido de su hoja informativa y no hay folleto aprobado.",
+     "fuentes": [
+      "hwk-anleihe"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Se suscribe solo en línea en su plataforma; excluye a residentes fiscales en EE. UU. y Canadá y a países de la lista del GAFI. No dice si admite inversores de España.",
+     "fuentes": [
+      "hwk-anleihe",
+      "hwk-wib"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "empresa_en_dificultades",
+      "detalle": "El propio emisor dice que tiene pérdidas, falta de liquidez y que su continuidad no está asegurada: puede acabar en insolvencia.",
+      "fuentes": [
+       "hwk-wib"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "hsbc",
+   "nombre": "HSBC",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+    "aval": "Banco internacional; en Hong Kong tokeniza y custodia con sus propios servicios una clase de un fondo de HSBC Asset Management.",
+    "nota": "En Hong Kong, su moneda estable HSBC RedCoin da acceso desde la app del banco a una clase tokenizada de su fondo monetario en dólares de Hong Kong."
+   },
+   "fuentes": [
+    {
+     "id": "hsbc-classsd",
+     "tipo": "empresa",
+     "titulo": "HSBC Hong Kong · «HSBC RedCoin expands into wealth with tokenised fund access» (19/11/2026)",
+     "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "hsbc-classsd": [
+     "tokenised unit class \\(Class SD\\)",
+     "Minimum subscription of HKD 100",
+     "Eligible customers"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "HSBC anunció el 19/11/2026 que sus clientes elegibles ya pueden usar RedCoin en la app para comprar la clase SD tokenizada de su fondo monetario en HKD.",
+     "fuentes": [
+      "hsbc-classsd"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "El anuncio no da el registro del banco ni del fondo; no lo hemos comprobado en el supervisor de Hong Kong.",
+     "fuentes": [
+      "hsbc-classsd"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo clientes elegibles de HSBC en Hong Kong, desde la app del banco y con la cartera de RedCoin activada.",
+     "fuentes": [
+      "hsbc-classsd"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Producto de Hong Kong para clientes de HSBC allí. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "hsbc-classsd"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "daiwa-securities",
+   "nombre": "Daiwa Securities",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+    "aval": "Casa de valores japonesa; es la entidad que coloca el MUFG Realty Token, con Mitsubishi UFJ Trust and Banking como fiduciario.",
+    "nota": "Vende en Japón valores inmobiliarios tokenizados (security tokens) desde 100.000 yenes, con solicitud en línea para sus clientes."
+   },
+   "fuentes": [
+    {
+     "id": "daiwa-mufg",
+     "tipo": "empresa",
+     "titulo": "Daiwa Securities · MUFG Realty Token (東京ガーデンテラス紀尾井町)",
+     "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "daiwa-mufg": [
+     "大和証券株式会社",
+     "三菱ＵＦＪ信託銀行株式会社",
+     "2026年12月1日（火）から2026年12月8日（火）まで"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web anuncia el MUFG Realty Token sobre oficinas del Tokyo Garden Terrace Kioicho, con solicitudes del 01/12 al 08/12/2026.",
+     "fuentes": [
+      "daiwa-mufg"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Es una casa de valores japonesa; la página del producto no da su número de registro y no lo hemos comprobado.",
+     "fuentes": [
+      "daiwa-mufg"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Para clientes con cuenta en Daiwa Securities; la información y el folleto están en japonés.",
+     "fuentes": [
+      "daiwa-mufg"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Producto japonés. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "daiwa-mufg"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "ofertas": [
+  {
+   "oferta": {
+    "slug": "hwk-1365-zukunftsanleihe",
+    "tipo": "rendimiento",
+    "titulo": "HWK 1365: bono tokenizado 2026/2031 al 8 % fijo de un grupo siderúrgico alemán con pérdidas",
+    "plataformaSlug": "hwk-1365",
+    "plataformaNombre": "HWK 1365",
+    "categoria": "Crédito privado",
+    "pais": "DE",
+    "resumen": "Bono subordinado y sin garantía de la sociedad que controla la fundición alemana Hüttenwerke Königsbronn: 8 % fijo anual, pago una vez al año y devolución al 100 % el 31/10/2031. Desde 1.000 €. El propio emisor avisa de que su continuidad no está asegurada.",
+    "url": "https://www.hwk1365.de/anleihe/",
+    "cta": "Ver fuente",
+    "imagenAlt": "HWK 1365: bono tokenizado 2026/2031 al 8 % fijo de un grupo siderúrgico alemán con pérdidas",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": true,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "8,00 %",
+     "literal": "Interés fijo anual pagado una vez al año, según la ficha del emisor (consultada el 27/11/2026). Es deuda subordinada de una empresa con pérdidas: si no puede pagar, puedes perderlo todo."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1.000 EUR, sin recargo"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "HWK 1365 SE (Königsbronn, Alemania)"
+     },
+     {
+      "etiqueta": "ISIN",
+      "valor": "DE000A5GS3Q2 (token en Polygon; no es un criptovalor de la ley eWpG)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "01/11/2026 a 31/10/2031; devolución al 100 %"
+     },
+     {
+      "etiqueta": "Importe",
+      "valor": "Hasta 1.365.000 EUR; oferta hasta el 30/04/2027 como mucho"
+     },
+     {
+      "etiqueta": "Rango",
+      "valor": "Subordinado y sin garantía"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "El propio emisor dice que tiene pérdidas y falta de liquidez y que su continuidad no está asegurada: puede entrar en insolvencia y perderías todo.",
+      "tono": "stop",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Es deuda subordinada y sin garantía: si quiebra, cobran antes todos los demás acreedores.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No hay folleto aprobado y la BaFin no revisa el contenido de la hoja informativa.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No cotiza y no se puede devolver antes: el dinero queda inmovilizado cinco años.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Si en tres meses no se suscriben 100.000 €, la emisión no sigue y te devuelven el dinero sin intereses.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Si pierdes el acceso a tu wallet, te costará ejercer tus derechos.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.hwk1365.de/anleihe/",
+     "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "Bono tokenizado 2026/2031 de HWK 1365 SE, sociedad de cartera de la fundición Hüttenwerke Königsbronn (Alemania). Paga un 8,00 % fijo anual, una vez al año, y devuelve el 100 % el 31/10/2031; desde 1.000 € y hasta 1.365.000 € en total, en oferta del 01/11/2026 al 30/04/2027 como mucho. Es subordinado y sin garantía, no cotiza y se suscribe solo en la plataforma del emisor. El dinero se destina a devolver un préstamo del grupo, a liquidez y a modernizar maquinaria. El emisor reconoce pérdidas en 2025 y 2026, falta de liquidez y que su continuidad no está asegurada.",
+    "fuentes": [
+     "https://www.hwk1365.de/anleihe/",
+     "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "HWK 1365 SE (emisión directa)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "HWK 1365 SE, Königsbronn"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un bono subordinado representado por un token en Polygon; no da propiedad de la empresa ni de sus máquinas"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1.000 €, sin recargo",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.hwk1365.de/anleihe/",
+      "alcance": "Ficha del bono en la web del emisor (Eckdaten)."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: no dice si admite España; excluye EE. UU., Canadá y países del GAFI",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+      "alcance": "Hoja informativa (WIB), condiciones de transmisión."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (31/10/2031); no cotiza ni se puede devolver antes",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.hwk1365.de/anleihe/",
+      "alcance": "Ficha del bono: sin amortización ordinaria ni negociación en bolsa."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "8,00 % fijo anual",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.hwk1365.de/anleihe/",
+      "alcance": "Interés fijo, pagado una vez al año."
+     },
+     {
+      "etiqueta": "Situación del emisor",
+      "valor": "Pérdidas en 2025 y previstas en 2026; continuidad no asegurada",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+      "alcance": "Hoja informativa (WIB), riesgos del emisor."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La emite directamente una empresa industrial, no una entidad financiera; la BaFin no revisa el contenido de su hoja informativa.",
+     "fuente": {
+      "titulo": "HWK 1365 · Die HWK 1365 Zukunftsanleihe",
+      "url": "https://www.hwk1365.de/anleihe/"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Solo hay una hoja informativa en alemán, sin folleto aprobado ni KID en castellano.",
+     "fuente": {
+      "titulo": "HWK 1365 SE · Wertpapier-Informationsblatt",
+      "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (2031)",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "nave"
+    },
+    "lugar": "Königsbronn · Alemania",
+    "pasos": [
+     "Suscribes el bono",
+     "Cobras el interés cada año",
+     "Recuperas el nominal en 2031"
+    ],
+    "concepto": "una fundición alemana",
+    "foto": {
+     "semilla": 901,
+     "encuadre": "70% 55%",
+     "concepto": "una nave de fundición antigua en un pueblo del sur de Alemania, no la de la empresa",
+     "prompt": "old brick iron foundry hall with tall chimney in a small town in southern Germany, wooded hills behind, overcast morning"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "tokinvest-lingote-plata-record",
+    "tipo": "valor",
+    "titulo": "El mayor lingote de plata del mundo, en tokens de un gramo (Tokinvest, Dubái)",
+    "plataformaSlug": "tokinvest",
+    "plataformaNombre": "Tokinvest",
+    "categoria": "Materias primas",
+    "pais": "AE",
+    "resumen": "Un lingote de plata de 1.971 kg, récord Guinness, guardado por Brink’s en Dubái y dividido en 1.971.000 tokens de un gramo. Desde 1.000 tokens (1 kg); el precio sigue a la plata con una prima del 15 %. A los 10 años se vende el lingote.",
+    "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+    "cta": "Ver fuente",
+    "imagenAlt": "El mayor lingote de plata del mundo, en tokens de un gramo (Tokinvest, Dubái)",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "AED",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1.000 tokens (1 kg de plata)"
+     },
+     {
+      "etiqueta": "Activo",
+      "valor": "Un lingote de 1.971 kg (n.º A1126), custodiado por Brink’s en Dubái"
+     },
+     {
+      "etiqueta": "Precio",
+      "valor": "Plata (Chainlink XAG/USD) más una prima del 15 %, en AED"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "10 años; después se vende el lingote"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "ARVA de Tokinvest FZCO, licencia de VARA VL/2024/12/004 (Dubái)"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Pagas un 15 % más que el valor de la plata por ser una pieza única: si la plata no sube, pierdes.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No hay reembolso: se recupera al venderse el lingote a los 10 años o vendiendo a otros inversores cuando abra el mercado de Tokinvest, que aún no está abierto.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "El token es un derecho económico sobre el lingote a través de un certificado de depósito, no plata que puedas recoger.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Regulado en Dubái (VARA), no en la UE. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No es para personas de EE. UU. y depende de tu país: compruébalo en Tokinvest.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "Tokinvest ha tokenizado el mayor lingote de plata del mundo (1.971 kg, récord Guinness, n.º A1126, fabricado por SAM Precious Metals en Emiratos) en 1.971.000 tokens de un gramo. La titularidad se lleva con un certificado de depósito de DMCC Tradeflow mantenido en fideicomiso y el lingote lo guarda Brink’s en Dubái. El precio de emisión sigue a la plata más una prima del 15 %. La oferta está abierta desde el 07/09/2026; a los 10 años se vende el lingote. El token es un ARVA emitido por Tokinvest FZCO con licencia de VARA.",
+    "fuentes": [
+     "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Tokinvest (Tokinvest FZCO)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Tokinvest FZCO (ARVA, licencia de VARA)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un derecho económico sobre el lingote, por gramos; no la entrega de plata"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "AED"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1.000 tokens (1 kg de plata); el precio en AED sigue a la plata",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+      "alcance": "Ficha del lingote en la web de Tokinvest."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: depende de tu país; no es para personas de EE. UU.",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+      "alcance": "Aviso de riesgos de la ficha."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Venta del lingote a los 10 años; antes, mercado entre inversores (aún sin abrir)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+      "alcance": "Ficha: el mercado secundario abrirá después de la emisión inicial."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La emite Tokinvest FZCO con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Tokinvest · ficha del producto",
+      "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay folleto ni KID europeos; los términos están en inglés en la web de Tokinvest.",
+     "fuente": {
+      "titulo": "Tokinvest · ficha del producto",
+      "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1 kg de plata",
+    "salidaCorta": "Venta del lingote (10 años)",
+    "puntos": [
+     {
+      "texto": "Lingote custodiado por Brink’s en Dubái",
+      "fuente": {
+       "titulo": "Tokinvest · lingote de plata récord",
+       "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "nave"
+    },
+    "lugar": "Dubái · Emiratos",
+    "pasos": [
+     "Compras gramos del lingote",
+     "Brink’s lo guarda",
+     "Se vende a los 10 años"
+    ],
+    "concepto": "un lingote de plata",
+    "foto": {
+     "semilla": 911,
+     "encuadre": "70% 55%",
+     "concepto": "lingotes de plata lisos sobre una bandeja, no el lingote del producto",
+     "prompt": "several plain shiny silver bullion bars without any engraving or markings resting on a dark grey tray, soft daylight, close-up"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "tokinvest-great-hampton-street",
+    "tipo": "rendimiento",
+    "titulo": "Great Hampton Street Works: 29 pisos alquilados en Birmingham, en tokens desde 100.000 AED",
+    "plataformaSlug": "tokinvest",
+    "plataformaNombre": "Tokinvest",
+    "categoria": "Inmobiliario",
+    "pais": "GB",
+    "resumen": "Una antigua fábrica de botones protegida en el Jewellery Quarter de Birmingham, convertida en 29 pisos alquilados. Los tokens dan derecho a la renta neta y a la venta del edificio, prevista a los 10 años. Desde 100.000 AED; captación de 6,84 M£ con un mínimo de 5,2 M£ (todo o nada).",
+    "url": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+    "cta": "Ver fuente",
+    "imagenAlt": "Great Hampton Street Works: 29 pisos alquilados en Birmingham, en tokens desde 100.000 AED",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": false,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "AED",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100.000 AED (1.000 tokens)"
+     },
+     {
+      "etiqueta": "Inmueble",
+      "valor": "29 pisos alquilados, 80-82 Great Hampton Street, Birmingham"
+     },
+     {
+      "etiqueta": "Valoración",
+      "valor": "8,55 M£ con muebles (RICS, marzo de 2026)"
+     },
+     {
+      "etiqueta": "Captación",
+      "valor": "6,84 M£; mínimo 5,2 M£ o se devuelve el dinero; el dueño conserva el 20 %"
+     },
+     {
+      "etiqueta": "Cobro",
+      "valor": "Renta mensual en AED, desde que se complete la captación"
+     },
+     {
+      "etiqueta": "Venta prevista",
+      "valor": "10 años después de completarse"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Los tokens dan derecho a la renta neta y a lo que se obtenga al vender, no a la propiedad del edificio.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Si no se llega a 5,2 M£, no se emiten tokens y te devuelven el dinero.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No hay reembolso: hasta la venta solo puedes vender a otros inversores en Tokinvest, si hay comprador.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Cobras en dirhams una renta de pisos en libras: hay riesgo de cambio.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Regulado en Dubái (VARA), no en la UE. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "No es para personas de EE. UU. y depende de tu país: compruébalo en Tokinvest.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://tokinvest.capital/case-studies/great-hampton-street-works"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "Great Hampton Street Works es una antigua fábrica de botones de 1872, protegida, en el Jewellery Quarter de Birmingham, convertida en 29 pisos, todos alquilados. Su dueño conserva el 20 % y ofrece el resto en tokens desde 100.000 AED: capta 6,84 M£ con un mínimo de 5,2 M£ (si no se alcanza, se devuelve el dinero). Por un acuerdo de derechos económicos, los inversores cobran la renta neta cada mes en AED y su parte de la venta, prevista a los 10 años; no son dueños del edificio. Oferta abierta desde agosto de 2026; el token es un ARVA de Tokinvest FZCO con licencia de VARA.",
+    "fuentes": [
+     "https://tokinvest.capital/case-studies/great-hampton-street-works"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Tokinvest (Tokinvest FZCO); distribuye también API Global"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Tokinvest FZCO (ARVA, licencia de VARA)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Derechos económicos sobre la renta neta y la venta; no la propiedad del edificio"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "AED"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100.000 AED (1.000 tokens)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+      "alcance": "Ficha del edificio en la web de Tokinvest."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: depende de tu país; no es para personas de EE. UU.",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+      "alcance": "Aviso de riesgos de la ficha."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Venta del edificio a los 10 años; antes, venta a otros inversores en Tokinvest",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+      "alcance": "Ficha: sin derecho de reembolso."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La emite Tokinvest FZCO con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Tokinvest · ficha del producto",
+      "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay folleto ni KID europeos; los términos están en inglés en la web de Tokinvest.",
+     "fuente": {
+      "titulo": "Tokinvest · ficha del producto",
+      "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100.000 AED",
+    "salidaCorta": "Venta del edificio (10 años)",
+    "puntos": [
+     {
+      "texto": "Edificio terminado y alquilado entero",
+      "fuente": {
+       "titulo": "Tokinvest · Great Hampton Street Works",
+       "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "edificio",
+    "op": {
+     "pisos": 4,
+     "mat": "ladrillo",
+     "semilla": 913
+    },
+    "lugar": "Birmingham · Reino Unido",
+    "pasos": [
+     "Compras tokens del edificio",
+     "Cobras la renta cada mes",
+     "Se vende a los 10 años"
+    ],
+    "concepto": "una antigua fábrica convertida en pisos",
+    "foto": {
+     "semilla": 913,
+     "encuadre": "70% 55%",
+     "concepto": "una antigua fábrica victoriana de ladrillo convertida en pisos en Birmingham, no la del producto",
+     "prompt": "Victorian red-brick former factory converted into apartments on a quiet street in Birmingham, arched windows, overcast morning"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "mesh-ccs-income-notes",
+    "tipo": "rendimiento",
+    "titulo": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
+    "plataformaSlug": "mesh",
+    "plataformaNombre": "Mesh",
+    "categoria": "Crédito privado",
+    "pais": "ZA",
+    "resumen": "Notas a 5 años de Commercial Credit Solutions (CCS), que financia equipos de pymes sudafricanas: interés variable del tipo prime más 3 puntos, pagado cada mes, y capital al final. Oferta pública con folleto registrado, desde 5.000 rand, solo en Mesh.",
+    "url": "https://www.mesh.trade/im/ccs/",
+    "cta": "Ver fuente",
+    "imagenAlt": "CCS: notas de crédito a pymes sudafricanas a tipo prime + 3 %, cupón mensual (Mesh)",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "Prime + 3 %",
+     "literal": "Interés variable: el tipo prime de Sudáfrica más 3 puntos al año, pagado cada mes, según Mesh (consultado el 27/11/2026). No es fijo ni está garantizado."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "ZAR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "5.000 ZAR"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "5 años y 1 día; capital al vencimiento"
+     },
+     {
+      "etiqueta": "Intereses",
+      "valor": "Cada mes; tipo prime de Sudáfrica + 3 puntos"
+     },
+     {
+      "etiqueta": "Respaldo",
+      "valor": "Contratos de financiación de equipos de pymes de CCS"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "Oferta pública con folleto registrado en la CIPC (Sudáfrica)"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Es crédito a pequeñas empresas: si no pagan, puedes perder parte o todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "El interés cambia con el tipo prime sudafricano.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Se invierte en rand: hay riesgo de cambio frente al euro.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Vender antes depende de que haya comprador en el mercado de Mesh; la liquidez no está asegurada.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Oferta sudafricana. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Mesh pide verificar la identidad (FICA) y no publica qué países admite.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.mesh.trade/im/ccs/",
+     "https://www.mesh.trade/ccs-income-notes-investor-faq/"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "Notas a 5 años y 1 día de la plataforma de inversión de Commercial Credit Solutions (CCS), que financia equipos productivos de pymes sudafricanas: las empresas pagan una cuota mensual por el equipo y con ella se paga el interés, variable (tipo prime de Sudáfrica + 3 puntos al año) y mensual. El capital se devuelve al vencimiento. Es una oferta pública con folleto registrado en la CIPC, desde 5.000 rand, disponible solo en Mesh; después se pueden vender en su mercado secundario si hay comprador.",
+    "fuentes": [
+     "https://www.mesh.trade/im/ccs/",
+     "https://www.mesh.trade/ccs-income-notes-investor-faq/"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Mesh"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "CCS Investment Platform (Commercial Credit Solutions)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Notas de deuda respaldadas por contratos de financiación de equipos"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "ZAR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 5.000 ZAR",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.mesh.trade/im/ccs/",
+      "alcance": "Términos clave en la ficha de Mesh."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: Mesh no publica qué países admite",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
+      "alcance": "Preguntas frecuentes: hace falta verificar la identidad (FICA)."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (5 años); antes, en el mercado de Mesh si hay comprador",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
+      "alcance": "Preguntas frecuentes: el mercado secundario no tiene apoyo."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "Prime + 3 % anual, variable",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.mesh.trade/im/ccs/",
+      "alcance": "Términos clave en la ficha de Mesh."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Oferta pública sudafricana con folleto registrado en la CIPC; no la supervisa ningún organismo de la UE ni está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Mesh · CCS Income Notes FAQ",
+      "url": "https://www.mesh.trade/ccs-income-notes-investor-faq/"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Folleto sudafricano en inglés; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "Mesh · CCS Income Notes FAQ",
+      "url": "https://www.mesh.trade/ccs-income-notes-investor-faq/"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "5.000 ZAR",
+    "salidaCorta": "Al vencimiento (5 años)",
+    "puntos": [
+     {
+      "texto": "Cupón mensual y folleto registrado",
+      "fuente": {
+       "titulo": "Mesh · CCS",
+       "url": "https://www.mesh.trade/im/ccs/"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "cartera_credito",
+    "lugar": "Sudáfrica",
+    "pasos": [
+     "Compras las notas",
+     "Las pymes pagan sus equipos",
+     "Cobras interés cada mes"
+    ],
+    "concepto": "equipos de pequeñas empresas",
+    "foto": {
+     "semilla": 917,
+     "encuadre": "70% 55%",
+     "concepto": "un taller con maquinaria de una pequeña empresa sudafricana, no las de CCS",
+     "prompt": "small engineering workshop with lathes and workbenches in Johannesburg, empty, morning daylight through large windows"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "hsbc-hkd-money-fund-class-sd",
+    "tipo": "rendimiento",
+    "titulo": "HSBC: clase tokenizada de su fondo monetario en dólares de Hong Kong, desde 100 HKD",
+    "plataformaSlug": "hsbc",
+    "plataformaNombre": "HSBC",
+    "categoria": "Tesoro y fondos",
+    "pais": "HK",
+    "resumen": "Clase SD, tokenizada, del fondo monetario HSBC Global Money Funds – Hong Kong Dollar. Desde el 19/11/2026, los clientes elegibles de HSBC en Hong Kong la compran desde 100 HKD en la app del banco con su moneda estable HSBC RedCoin.",
+    "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+    "cta": "Ver fuente",
+    "imagenAlt": "HSBC: clase tokenizada de su fondo monetario en dólares de Hong Kong, desde 100 HKD",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": false,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "HKD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100 HKD (se paga con 100 RCHKD)"
+     },
+     {
+      "etiqueta": "Fondo",
+      "valor": "HSBC Global Money Funds – Hong Kong Dollar (desde 1991), de HSBC Asset Management"
+     },
+     {
+      "etiqueta": "Clase",
+      "valor": "SD, tokenizada, en dólares de Hong Kong"
+     },
+     {
+      "etiqueta": "Cómo se compra",
+      "valor": "App de HSBC en Hong Kong, con la moneda estable HSBC RedCoin"
+     },
+     {
+      "etiqueta": "Lanzamiento",
+      "valor": "19/11/2026"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Solo para clientes elegibles de HSBC en Hong Kong con la cartera de RedCoin activada en la app.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Un fondo monetario no es un depósito: su valor y sus dividendos pueden variar y no están garantizados.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "La tokenización añade riesgos técnicos y de custodia; en el peor caso, según HSBC, se puede perder todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Fondo de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "HSBC ha lanzado en Hong Kong una clase tokenizada (SD) de su fondo monetario HSBC Global Money Funds – Hong Kong Dollar, que gestiona HSBC Asset Management desde 1991. Los clientes elegibles la compran desde 100 HKD en la app del banco, pagando con su moneda estable HSBC RedCoin (RCHKD), que no da intereses. HSBC tokeniza la clase y la custodia con sus propios servicios. El fondo reparte dividendos, que pueden variar.",
+    "fuentes": [
+     "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "HSBC (Hong Kong)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "HSBC Global Money Funds – Hong Kong Dollar (HSBC Asset Management)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones tokenizadas de la clase SD del fondo"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "HKD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100 HKD (se paga con 100 RCHKD)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "alcance": "Anuncio de HSBC del 19/11/2026."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "No disponible: solo clientes de HSBC en Hong Kong",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "alcance": "Anuncio: clientes elegibles, desde la app de HSBC en Hong Kong."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "Según el folleto del fondo, en la app de HSBC; el anuncio no da plazos",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "alcance": "Anuncio: los documentos del fondo están en la app y en la web de HSBC."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Fondo y banco de Hong Kong; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.",
+     "fuente": {
+      "titulo": "HSBC · anuncio del 19/11/2026",
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay KID europeo; los documentos del fondo son de Hong Kong.",
+     "fuente": {
+      "titulo": "HSBC · anuncio del 19/11/2026",
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100 HKD",
+    "salidaCorta": "Según el folleto del fondo",
+    "puntos": [
+     {
+      "texto": "Fondo monetario de 1991, ahora con clase tokenizada",
+      "fuente": {
+       "titulo": "HSBC · anuncio del 19/11/2026",
+       "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "tesoro",
+    "lugar": "Hong Kong",
+    "pasos": [
+     "Pagas con RedCoin en la app",
+     "El fondo invierte a corto plazo",
+     "Reembolsas en la app"
+    ],
+    "concepto": "el distrito financiero de Hong Kong",
+    "foto": {
+     "semilla": 919,
+     "encuadre": "70% 50%",
+     "concepto": "rascacielos del distrito Central de Hong Kong vistos desde arriba, no la sede del banco",
+     "prompt": "aerial view over the skyscrapers of Central district in Hong Kong in morning haze, green hills behind"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "mufg-realty-token-kioicho",
+    "tipo": "rendimiento",
+    "titulo": "MUFG Realty Token: oficinas del Tokyo Garden Terrace Kioicho, solicitudes del 1 al 8 de diciembre",
+    "plataformaSlug": "daiwa-securities",
+    "plataformaNombre": "Daiwa Securities",
+    "categoria": "Inmobiliario",
+    "pais": "JP",
+    "resumen": "Valores tokenizados sobre las plantas de oficinas de un rascacielos de 2016 en Kioicho (Tokio). Se solicitan del 01/12 al 08/12/2026 en Daiwa Securities, desde 100.000 yenes, para unos 5 años y 2 meses.",
+    "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+    "cta": "Ver fuente",
+    "imagenAlt": "MUFG Realty Token: oficinas del Tokyo Garden Terrace Kioicho, solicitudes del 1 al 8 de diciembre",
+    "verificadaEl": "2026-11-27",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": false,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "no_verificable",
+    "coleccion": "en_camino",
+    "moneda": "JPY",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Solicitudes",
+      "valor": "Del 01/12 al 08/12/2026 (en línea, del 01/12 a las 6:00 al 03/12 a las 12:00, hora de Japón)"
+     },
+     {
+      "etiqueta": "Mínimo",
+      "valor": "100.000 JPY (1 unidad)"
+     },
+     {
+      "etiqueta": "Unidades",
+      "valor": "341.000"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "Unos 5 años y 2 meses; puede venderse antes o alargarse"
+     },
+     {
+      "etiqueta": "Reparto previsto",
+      "valor": "1,5 % y 3,4 % anual antes de impuestos en los dos primeros periodos, con devolución de capital incluida; no garantizado"
+     },
+     {
+      "etiqueta": "Fiduciario",
+      "valor": "Mitsubishi UFJ Trust and Banking"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Aún no se puede solicitar: las solicitudes abren el 01/12/2026.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Para clientes de Daiwa Securities; la información y el folleto están en japonés.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "El reparto previsto no está garantizado y los dos primeros incluyen devolución de capital.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Puede venderse antes de tiempo o alargarse el plazo; venderlo tú antes no es fácil.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     },
+     {
+      "texto": "Producto japonés. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-27"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "MUFG Realty Token sobre las plantas de oficinas del Tokyo Garden Terrace Kioicho, un complejo de 2016 junto a la estación de Nagatacho (Tokio); la parte en la que se invierte estaba tasada en 105.000 millones de yenes el 30/09/2026. Son derechos de beneficiario de un fideicomiso (fiduciario: Mitsubishi UFJ Trust and Banking) registrados en blockchain. Los vende Daiwa Securities: 341.000 unidades de 100.000 yenes, con solicitudes del 01/12 al 08/12/2026, pago el 09/12 y entrega el 10/12. Plazo de unos 5 años y 2 meses; el reparto previsto de los dos primeros periodos incluye devolución de capital.",
+    "fuentes": [
+     "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Daiwa Securities (colocador)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Fideicomiso con Mitsubishi UFJ Trust and Banking como fiduciario"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Derechos de beneficiario de un fideicomiso inmobiliario, en forma de security token"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "JPY"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 100.000 JPY (1 unidad)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "alcance": "Condiciones de la oferta en la web de Daiwa."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: se contrata con una cuenta de Daiwa Securities, en japonés",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "alcance": "Web del producto: apertura de cuenta y solicitud en línea."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al venderse el inmueble (unos 5 años y 2 meses); antes, venta limitada",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-27",
+      "fuente": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "alcance": "Web del producto: riesgos de liquidez y de venta anticipada o prórroga."
+     }
+    ]
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Lo coloca una casa de valores japonesa; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.",
+     "fuente": {
+      "titulo": "Daiwa Securities · MUFG Realty Token",
+      "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Folleto japonés; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "Daiwa Securities · MUFG Realty Token",
+      "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+     },
+     "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100.000 JPY",
+    "salidaCorta": "Venta del inmueble (~5 años)",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "torre"
+    },
+    "lugar": "Tokio · Japón",
+    "pasos": [
+     "Pides del 1 al 8 de diciembre",
+     "Cobras el reparto cada semestre",
+     "Se vende el inmueble al final"
+    ],
+    "concepto": "oficinas en Tokio",
+    "foto": {
+     "semilla": 923,
+     "encuadre": "70% 55%",
+     "concepto": "torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto",
+     "prompt": "modern office towers beside a tree-lined moat in central Tokyo, autumn leaves, calm water, clear morning"
+    }
+   }
+  }
+ ]
+}

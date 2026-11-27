@@ -1,0 +1,59 @@
+{
+  "fecha": "2026-11-27",
+  "fuentesNuevas": 4,
+  "correctas": 4,
+  "contraste": [
+    {
+      "id": "hwk-anleihe",
+      "url": "https://www.hwk1365.de/anleihe/",
+      "horaUtc": "2026-11-27T11:21:00Z",
+      "copia": "fuentes/hwk-anleihe.txt",
+      "sha256": "a84c94c6164b8dc4087a82c5344e46991477624e8ee570b03755be84be89d07d",
+      "comprobaciones": [
+        "Holding der Hüttenwerke Königsbronn",
+        "DE000A5GS3Q2",
+        "Qualifiziert nachrangig, nicht besichert"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hwk-wib",
+      "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+      "horaUtc": "2026-11-27T11:21:02Z",
+      "copia": "fuentes/hwk-wib.txt",
+      "sha256": "4fdbd7b06ccc7ec9763ae49b96b355208afb7302872150c1ceedf4dae228c7a4",
+      "comprobaciones": [
+        "Polygon Blockchain",
+        "Fortführung der Unternehmenstätigkeit ist"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hsbc-classsd",
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "horaUtc": "2026-11-27T11:22:27Z",
+      "copia": "fuentes/hsbc-classsd.txt",
+      "sha256": "f5361250b465ed307f2abf20a1edd69c440b32ea811cc58a4e54ed9fe3c5dd3b",
+      "comprobaciones": [
+        "tokenised unit class \\(Class SD\\)",
+        "Minimum subscription of HKD 100",
+        "Eligible customers"
+      ],
+      "ok": true
+    },
+    {
+      "id": "daiwa-mufg",
+      "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "horaUtc": "2026-11-27T11:23:09Z",
+      "copia": "fuentes/daiwa-mufg.txt",
+      "sha256": "d94b03f197c7ce0218f31d21882877ed37a5a31adafb0b02cd307468bdcf1f69",
+      "comprobaciones": [
+        "大和証券株式会社",
+        "三菱ＵＦＪ信託銀行株式会社",
+        "2026年12月1日（火）から2026年12月8日（火）まで"
+      ],
+      "ok": true
+    }
+  ],
+  "nota": "Las 123 fuentes de antes se comprobaron hoy en la entrega 2026-11-27 (su radar-contraste-2026-11-27.json)."
+}
