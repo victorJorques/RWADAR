@@ -52,7 +52,7 @@ punto: si CoinGecko falla, el gráfico se queda en la última foto real.
 
 ## Entrega
 
-- Etiqueta `2026-11-27`, sobre la `2026-11-26.4` (revisión `7f745c7d`). Revisión nueva `8f06cb12`. 65 plataformas y 32
+- Etiqueta `2026-11-27`, sobre la `2026-11-26.4` (revisión `7f745c7d`). Revisión nueva `529a54f7`. 65 plataformas y 32
   ofertas (17/13/2). En `public.*` solo se insertan las 8 plataformas nuevas.
 - Guiones adaptados de la `2026-11-26.4` (misma clase de entrega: solo plataformas): `preparar-entrega.mjs`,
   `comprobar-entrega.mjs` (PGlite: 19 pruebas y 8 casos de fallo que no dejan nada) y `despues-de-aplicar.mjs`.
