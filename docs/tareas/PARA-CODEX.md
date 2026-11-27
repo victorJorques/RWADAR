@@ -35,6 +35,19 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   - Lectura después de aplicar: 73 plataformas y 40 ofertas (24/13/3), las 40 con su disponibilidad.
   - Las cifras no cambian (vigía: 77 cifras iguales).
   - Sincronización, fichas y sello: PR #227. Con el catálogo caducado, el país dice «Sin confirmar» (web y app).
+- **Fallo encontrado en vivo y arreglado (PR #228):** al leer Supabase, la web rehacía `documentacion` solo con sus
+  campos de siempre y perdía `disponibilidad`, así que fuera de España todo salía «Sin confirmar». Ahora
+  `ofertaCatalogoRemota` la conserva si el motor la valida, y hay una prueba nueva en `probar-web.mjs` que falla sin el
+  arreglo. La app no tenía el fallo. Lección: las capturas de vista previa inyectaban el dato a mano y lo ocultaban.
+- **Publicado:**
+  - «Publicar web»: revisiones 46029919889 (con el fallo) y 46032089862, y producción 46033107363.
+  - Comprobado en vivo a 390 y 1366 px: 40 de 40 ofertas con su disponibilidad; país detectado; «No disponible desde
+    Hong Kong» en amarillo; ficha fija con su sección; sin errores.
+  - OTA Android 46029925793 (`comprobar-ota-compatible` correcto, 1.4.2(24)).
+  - «Avisar novedad» 46033380051: «🌍 RWAdar: la tokenización no entiende de fronteras», sin correo.
+- **Limpieza (PR #229, sin cambios de comportamiento; sale con la próxima publicación y la próxima OTA):** se quitan
+  `textoEspanaOferta` (web y app), el patrón del diccionario «N ofertas de M países», la regla CSS
+  `.disp-pais-fuentes li` y 19 estilos sin uso de `Ofertas.js`.
 - **Procedimiento:** sección «Disponibilidad por país» en la skill `investigacion-catalogo`, con el tipo de cambio
   `disponibilidad` del motor. Si la base la tiene, el montaje se para cuando una oferta no la lleva o no es válida.
 - **Pendiente:**
