@@ -258,10 +258,10 @@
   },
   "tokinvest-lingote-plata-record": {
    "modelo": "realvisxl",
-   "semilla": 911,
+   "semilla": 977,
    "encuadre": "70% 55%",
-   "concepto": "lingotes de plata lisos sobre una bandeja, no el lingote del producto",
-   "prompt": "several plain shiny silver bullion bars without any engraving or markings resting on a dark grey tray, soft daylight, close-up"
+   "concepto": "granalla de plata en un cuenco, imagen genérica del metal; no el lingote del producto",
+   "prompt": "heap of shiny silver casting grains in a small white ceramic bowl on a wooden table, soft window daylight, close-up"
   },
   "tokinvest-great-hampton-street": {
    "modelo": "realvisxl",
@@ -290,6 +290,27 @@
    "encuadre": "70% 55%",
    "concepto": "torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto",
    "prompt": "modern office towers beside a tree-lined moat in central Tokyo, autumn leaves, calm water, clear morning"
+  },
+  "exio-ustnt-bonos-tesoro-eeuu": {
+   "modelo": "realvisxl",
+   "semilla": 947,
+   "encuadre": "70% 55%",
+   "concepto": "la fachada de un edificio público neoclásico de Washington, imagen genérica de la deuda de EE. UU.",
+   "prompt": "neoclassical stone government building with columns and wide steps in Washington DC, early morning, empty plaza"
+  },
+  "osl-taikang-kaitai-usd-mmf": {
+   "modelo": "realvisxl",
+   "semilla": 953,
+   "encuadre": "70% 50%",
+   "concepto": "el skyline de Kowloon visto desde el agua al atardecer, no la sede de la gestora",
+   "prompt": "Kowloon waterfront skyline in Hong Kong seen from the water at sunset, calm sea, soft natural light"
+  },
+  "conda-devolo-bono-2026": {
+   "modelo": "realvisxl",
+   "semilla": 959,
+   "encuadre": "70% 55%",
+   "concepto": "un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa",
+   "prompt": "plain white unbranded wifi router on a wooden shelf in a bright living room, soft daylight, shallow depth of field"
   }
  }
 }

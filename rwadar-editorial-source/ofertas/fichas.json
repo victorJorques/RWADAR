@@ -511,6 +511,42 @@
     "Se vende el inmueble al final"
    ],
    "concepto": "oficinas en Tokio"
+  },
+  {
+   "slug": "exio-ustnt-bonos-tesoro-eeuu",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Compras el certificado",
+    "Cobras los cupones cada semestre",
+    "Reembolsas al vender los bonos"
+   ],
+   "concepto": "bonos del Tesoro de EE. UU."
+  },
+  {
+   "slug": "osl-taikang-kaitai-usd-mmf",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Suscribes en la app de OSL",
+    "El fondo rinde cada día",
+    "Reembolsas en la app"
+   ],
+   "concepto": "depósitos bancarios en dólares"
+  },
+  {
+   "slug": "conda-devolo-bono-2026",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Aquisgrán · Alemania",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras interés cada año",
+    "Recuperas el nominal en 2029"
+   ],
+   "concepto": "una empresa de equipos de red"
   }
  ]
 }

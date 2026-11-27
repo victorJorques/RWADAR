@@ -3,11 +3,11 @@
   "fecha": "2026-11-27",
   "etiqueta": "2026-11-27.2",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
-  "revisionNueva": "806c63fe-1400-1b62-c9c3-80e53d971987",
+  "revisionNueva": "0ce78939-919f-832e-93d5-3fe16d804267",
   "decision": "Órdenes de la dirección del 27/11/2026: «el resto pon que está verificado hasta el día de hoy» y añadir las ofertas del suplemento de ese día. Las fichas se re-fechan solo con lo leído hoy; entran las ofertas con fuente primaria y condiciones comprobadas.",
   "archivos": {
-    "altas.json": "47c74aa5e2abc4a3bd5df2c2457eddb66c9cf2ea6395507c80e18160738a1e2d",
-    "fuentes/lecturas-2026-11-27.json": "6ed358e86f54869ee39a762e3832f63944ac075968cddba8d7027d24544cc108",
+    "altas.json": "d4752d1bc0efd7ddf6944cdceaefcee7ca6b146561740b71b86b4dce0b560766",
+    "fuentes/lecturas-2026-11-27.json": "5d5d7ba59cb2ebc3f38933b46a45ac5b5bf0227b5908affe2a72da4c0d63c583",
     "fuentes/releidas-2026-11-27.txt": "468534a87e9ddb470053002e97a6a0c8d24b3960daec541afb5dfd8da80548c8",
     "refechado.json": "bbad032e75861ad3e0db74c9c6033ebdd2531a42b42da21a763884478ecc5cc3",
     "base-refechada-escaparate.json": "93c8f9b32b60071681a52fa5872b4c4d2bfdb971699522e79532a54fcca674a1",
@@ -19,7 +19,10 @@
     "plataformas": [
       "hwk-1365",
       "hsbc",
-      "daiwa-securities"
+      "daiwa-securities",
+      "ex-io",
+      "osl",
+      "conda"
     ],
     "ofertas": [
       "hwk-1365-zukunftsanleihe",
@@ -27,11 +30,14 @@
       "tokinvest-great-hampton-street",
       "mesh-ccs-income-notes",
       "hsbc-hkd-money-fund-class-sd",
-      "mufg-realty-token-kioicho"
+      "mufg-realty-token-kioicho",
+      "exio-ustnt-bonos-tesoro-eeuu",
+      "osl-taikang-kaitai-usd-mmf",
+      "conda-devolo-bono-2026"
     ]
   },
   "colecciones": {
-    "principales": 22,
+    "principales": 25,
     "secundario": 13,
     "en_camino": 3
   },

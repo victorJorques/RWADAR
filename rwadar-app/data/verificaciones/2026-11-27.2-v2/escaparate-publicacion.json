@@ -1,20 +1,20 @@
 {
   "versionEsquema": 2,
   "fuente": {
-    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 6 ofertas (5 principales y 1 en camino) y 3 plataformas.",
+    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 9 ofertas (8 principales y 1 en camino) y 6 plataformas.",
     "actualizacionLocal": {
       "verificadoEl": "2026-11-27",
       "archivo": "rwadar-app/data/verificaciones/2026-11-27.2-v2/contraste-2026-11-27.2.json",
       "publicable": false,
       "derechosImagenVerificados": false,
-      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 38 fichas (22 principales, 13 de reventa y 3 en camino) y 68 plataformas."
+      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 41 fichas (25 principales, 13 de reventa y 3 en camino) y 71 plataformas."
     },
     "actualizacionRadarLocal": {
       "verificadoEl": "2026-11-27",
       "archivo": "rwadar-app/data/verificaciones/2026-11-27.2-v2/radar-canonico-26.json",
       "publicable": false,
-      "plataformas": 68,
-      "fuentesPrimarias": 127
+      "plataformas": 71,
+      "fuentesPrimarias": 132
     }
   },
   "plataformas": [
@@ -997,6 +997,71 @@
       }
     },
     {
+      "slug": "conda",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-27",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Su web enseña en captación el bono de devolo solutions, con 13 días restantes el 27/11/2026.",
+          "fuentes": [
+            {
+              "id": "conda-devolo",
+              "tipo": "empresa",
+              "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+              "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "Dice ser proveedor autorizado de financiación participativa (reglamento (UE) 2020/1503); no lo hemos comprobado en el registro de ESMA.",
+          "fuentes": [
+            {
+              "id": "conda-devolo",
+              "tipo": "empresa",
+              "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+              "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "El bono de devolo se ofrece en Austria y Alemania.",
+          "fuentes": [
+            {
+              "id": "conda-devolo",
+              "tipo": "empresa",
+              "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+              "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_algunos_paises",
+            "detalle": "Lo que ofrece depende de cada campaña y de los países en que se ofrece; el bono de devolo no se ofrece en España.",
+            "fuentes": [
+              {
+                "id": "conda-devolo",
+                "tipo": "empresa",
+                "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+                "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+                "primaria": true,
+                "consultadaEl": "2026-11-27"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "slug": "courtyard",
       "verificacionLocal": {
         "verificadoEl": "2026-11-27",
@@ -1516,6 +1581,71 @@
                 "tipo": "empresa",
                 "titulo": "Etherfuse · Activos soberanos tokenizados",
                 "url": "https://etherfuse.com/es",
+                "primaria": true,
+                "consultadaEl": "2026-11-27"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ex-io",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-27",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "EX.IO anunció el 24/11/2026 su producto USTNT, certificados tokenizados sobre dos bonos del Tesoro de EE. UU.",
+          "fuentes": [
+            {
+              "id": "exio-ustnt",
+              "tipo": "empresa",
+              "titulo": "EX.IO · «New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO» (24/11/2026)",
+              "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "Dice estar aprobada por la SFC de Hong Kong desde diciembre de 2024; no lo hemos comprobado en el registro de la SFC.",
+          "fuentes": [
+            {
+              "id": "exio-ustnt",
+              "tipo": "empresa",
+              "titulo": "EX.IO · «New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO» (24/11/2026)",
+              "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "USTNT es solo para inversores profesionales, con KYC; desde EE. UU. la web bloquea el acceso.",
+          "fuentes": [
+            {
+              "id": "exio-ustnt",
+              "tipo": "empresa",
+              "titulo": "EX.IO · «New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO» (24/11/2026)",
+              "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_profesionales",
+            "detalle": "No es para particulares. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+            "fuentes": [
+              {
+                "id": "exio-ustnt",
+                "tipo": "empresa",
+                "titulo": "EX.IO · «New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO» (24/11/2026)",
+                "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
                 "primaria": true,
                 "consultadaEl": "2026-11-27"
               }
@@ -3399,6 +3529,71 @@
                 "tipo": "documento_legal",
                 "titulo": "OpenEden investor onboarding",
                 "url": "https://docs.openeden.com/tbill/investor-onboarding",
+                "primaria": true,
+                "consultadaEl": "2026-11-27"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "osl",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-27",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Su web explica cómo suscribir desde la app el fondo monetario en dólares de Taikang con participaciones tokenizadas.",
+          "fuentes": [
+            {
+              "id": "osl-tkusd-faq",
+              "tipo": "empresa",
+              "titulo": "OSL · Taikang Kaitai USD Money Market Fund: introducción y preguntas",
+              "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "La página no da el número de licencia de OSL; el fondo sí dice estar autorizado por la SFC. No lo hemos comprobado.",
+          "fuentes": [
+            {
+              "id": "osl-tkusd",
+              "tipo": "empresa",
+              "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+              "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Para clientes de su app, con un test de riesgo; no publica qué países admite.",
+          "fuentes": [
+            {
+              "id": "osl-tkusd-faq",
+              "tipo": "empresa",
+              "titulo": "OSL · Taikang Kaitai USD Money Market Fund: introducción y preguntas",
+              "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "fuera_ue",
+            "detalle": "Plataforma y fondo de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+            "fuentes": [
+              {
+                "id": "osl-tkusd",
+                "tipo": "empresa",
+                "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+                "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
                 "primaria": true,
                 "consultadaEl": "2026-11-27"
               }
@@ -5440,6 +5635,282 @@
       ],
       "fuentesActuales": [
         "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+      ]
+    },
+    {
+      "slug": "exio-ustnt-bonos-tesoro-eeuu",
+      "tipo": "rendimiento",
+      "titulo": "USTNT: certificados tokenizados sobre dos bonos del Tesoro de EE. UU. (2044 y 2056), solo profesionales",
+      "plataformaSlug": "ex-io",
+      "plataformaNombre": "EX.IO",
+      "categoria": "Tesoro y fondos",
+      "pais": "HK",
+      "resumen": "Certificados en Ethereum sobre dos bonos del Tesoro de EE. UU.: uno al 5 % que vence en 2056 y otro al 3,625 % que vence en 2044, guardados por un custodio. Desde 1.000 USD, solo para inversores profesionales, en EX.IO (Hong Kong).",
+      "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+      "cta": "Ver fuente",
+      "imagenAlt": "USTNT: certificados tokenizados sobre dos bonos del Tesoro de EE. UU. (2044 y 2056), solo profesionales",
+      "verificadaEl": "2026-11-27",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": false,
+      "eu": false,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "coleccion": "principales",
+      "moneda": "USD",
+      "patrocinada": false,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1.000 USD"
+        },
+        {
+          "etiqueta": "Bonos de debajo",
+          "valor": "US912810UU06 (5 %, vence el 15/05/2056) y US912810RE01 (3,625 %, vence el 15/02/2044)"
+        },
+        {
+          "etiqueta": "Emisor de los certificados",
+          "valor": "Rukhex Technology Limited; custodio: Nakamoto Technology Limited"
+        },
+        {
+          "etiqueta": "Intereses",
+          "valor": "Los cupones de los bonos, cada semestre; se reparten hasta 7 días después de cobrarlos"
+        },
+        {
+          "etiqueta": "Operativa",
+          "valor": "Días hábiles de Hong Kong, corte a las 14:30; red Ethereum"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Solo para inversores profesionales, con KYC.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Es un certificado de derechos sobre bonos que guarda un custodio, no el bono; el registro de titulares lo lleva el emisor fuera de la cadena.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "EX.IO lo clasifica como producto complejo de riesgo muy alto (P5) y no tiene un mercado secundario fiable.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "El token no se puede sacar de EX.IO, y el reembolso depende de vender los bonos: puede retrasarse o rechazarse según las condiciones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Son bonos a muy largo plazo: su precio baja si suben los tipos de interés.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Plataforma de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        }
+      ],
+      "fuentesActuales": [
+        "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+      ]
+    },
+    {
+      "slug": "osl-taikang-kaitai-usd-mmf",
+      "tipo": "rendimiento",
+      "titulo": "Taikang Kaitai: fondo monetario en dólares con participaciones tokenizadas, desde 1 USD (OSL, Hong Kong)",
+      "plataformaSlug": "osl",
+      "plataformaNombre": "OSL",
+      "categoria": "Tesoro y fondos",
+      "pais": "HK",
+      "resumen": "Fondo monetario público en dólares, autorizado por la SFC de Hong Kong y gestionado por Taikang Asset Management, que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se compran en la app de OSL desde 1 USD, sin comisiones de suscripción ni de reembolso.",
+      "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+      "cta": "Ver fuente",
+      "imagenAlt": "Taikang Kaitai: fondo monetario en dólares con participaciones tokenizadas, desde 1 USD (OSL, Hong Kong)",
+      "verificadaEl": "2026-11-27",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": false,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "coleccion": "principales",
+      "moneda": "USD",
+      "patrocinada": false,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "Desde 1 USD"
+        },
+        {
+          "etiqueta": "Gestora",
+          "valor": "Taikang Asset Management (Hong Kong) Limited"
+        },
+        {
+          "etiqueta": "Fondo",
+          "valor": "Público, autorizado por la SFC; invierte solo en depósitos bancarios"
+        },
+        {
+          "etiqueta": "Comisiones",
+          "valor": "Sin comisión de suscripción ni de reembolso, según OSL"
+        },
+        {
+          "etiqueta": "Rendimiento",
+          "valor": "Se acumula cada día en el precio; empieza el día siguiente a la suscripción"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Un fondo monetario no es un depósito: su rendimiento varía y no está garantizado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Para clientes de la app de OSL en Hong Kong, con un test de riesgo; OSL no publica qué países admite.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Fondo y plataforma de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        }
+      ],
+      "fuentesActuales": [
+        "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+        "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs"
+      ]
+    },
+    {
+      "slug": "conda-devolo-bono-2026",
+      "tipo": "rendimiento",
+      "titulo": "devolo: bono tokenizado de la empresa alemana de redes domésticas al 7 % en efectivo (o 10 % en vales), desde 250 €",
+      "plataformaSlug": "conda",
+      "plataformaNombre": "CONDA",
+      "categoria": "Crédito privado",
+      "pais": "DE",
+      "resumen": "Bono de devolo solutions GmbH, marca de equipos de red doméstica de Aquisgrán, registrado como token en el registro de criptovalores de NYALA: 7 % anual en efectivo o 10 % en vales de la marca, pago anual y devolución el 30/11/2029. Desde 250 €, en CONDA; se ofrece en Alemania y Austria.",
+      "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+      "cta": "Ver fuente",
+      "imagenAlt": "devolo: bono tokenizado de la empresa alemana de redes domésticas al 7 % en efectivo (o 10 % en vales), desde 250 €",
+      "verificadaEl": "2026-11-27",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": false,
+      "eu": true,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": {
+        "mostrada": "7,00 %",
+        "literal": "Interés anual en efectivo, según CONDA (consultado el 27/11/2026); el 10 % solo se cobra en vales de devolo. Los intereses dependen de que la empresa pueda pagarlos y no están garantizados."
+      },
+      "precio": null,
+      "estadoRevision": "actual",
+      "coleccion": "principales",
+      "moneda": "EUR",
+      "patrocinada": false,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "250 € (una unidad)"
+        },
+        {
+          "etiqueta": "Emisor",
+          "valor": "devolo solutions GmbH (Aquisgrán, Alemania)"
+        },
+        {
+          "etiqueta": "Intereses",
+          "valor": "7 % anual en efectivo o 10 % en vales; cada 30/11 desde 2027"
+        },
+        {
+          "etiqueta": "Plazo",
+          "valor": "Hasta el 30/11/2029; devolución al final"
+        },
+        {
+          "etiqueta": "Importe",
+          "valor": "Hasta 2.000.000 €; umbral mínimo de 400.000 €"
+        },
+        {
+          "etiqueta": "Registro",
+          "valor": "Token de bono en el registro de criptovalores de NYALA (supervisado por la BaFin); ISIN DE000A5GS1B8 (efectivo) y DE000A5GS1A0 (vales)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "No se ofrece en España: la campaña es para Alemania y Austria.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Los intereses dependen de que la empresa pueda pagarlos y no están garantizados; puedes perder lo invertido.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "El 10 % solo se cobra en vales de productos devolo, no en dinero.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "La empresa se reorganizó en 2022 y 2023; la sociedad actual funciona desde abril de 2024.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Es un bono sin cotización: venderlo antes del vencimiento no es fácil.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        },
+        {
+          "texto": "Financiación participativa: la autorización de CONDA no es una garantía del Estado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-27"
+        }
+      ],
+      "fuentesActuales": [
+        "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+        "https://www.nyala.de/en/products/electronic-securities"
       ]
     },
     {

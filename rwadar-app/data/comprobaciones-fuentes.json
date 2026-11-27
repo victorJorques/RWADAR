@@ -129,6 +129,11 @@
     "hwk-anleihe": ["Holding der Hüttenwerke Königsbronn", "DE000A5GS3Q2", "Qualifiziert nachrangig, nicht besichert"],
     "hwk-wib": ["Polygon Blockchain", "Fortführung der Unternehmenstätigkeit ist"],
     "hsbc-classsd": ["tokenised unit class \\(Class SD\\)", "Minimum subscription of HKD 100", "Eligible customers"],
-    "daiwa-mufg": ["大和証券株式会社", "三菱ＵＦＪ信託銀行株式会社", "2026年12月1日（火）から2026年12月8日（火）まで"]
+    "daiwa-mufg": ["大和証券株式会社", "三菱ＵＦＪ信託銀行株式会社", "2026年12月1日（火）から2026年12月8日（火）まで"],
+    "exio-ustnt": ["Professional Investors \\(PI\\) only", "Rukhex Technology Limited", "approval from Hong Kong’s Securities and Futures Commission"],
+    "osl-tkusd": ["SFC-authorized fund", "as low as \\$1 USD"],
+    "osl-tkusd-faq": ["tokenized shares are initially listed, distributed, and custodied on OSL"],
+    "conda-devolo": ["zugelassener Dienstleister für Schwarmfinanzierung gemäß VO \\(EU\\) 2020/1503", "Angeboten in"],
+    "nyala-registro": ["DEVOLO solutions - Anleihe 2026", "supervised by BaFin"]
   }
 }

@@ -4487,5 +4487,168 @@
         "alcance": "Web del producto: riesgos de liquidez y de venta anticipada o prórroga."
       }
     ]
+  },
+  "exio-ustnt-bonos-tesoro-eeuu": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "USTNT son certificados tokenizados que emite Rukhex Technology Limited sobre dos bonos concretos del Tesoro de EE. UU. (US912810UU06, al 5 % con vencimiento el 15/05/2056, y US912810RE01, al 3,625 % con vencimiento el 15/02/2044) y su efectivo, guardados en fideicomiso simple por Nakamoto Technology Limited. Se suscriben desde 1.000 USD en EX.IO, solo inversores profesionales, en días hábiles de Hong Kong; los cupones se reparten cada semestre. El token vive en Ethereum pero no se puede sacar de EX.IO.",
+    "fuentes": [
+      "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+    ],
+    "caracteristicas": [
+      {
+        "etiqueta": "Proveedor",
+        "valor": "EX.IO (Hong Kong)"
+      },
+      {
+        "etiqueta": "Emisor",
+        "valor": "Rukhex Technology Limited"
+      },
+      {
+        "etiqueta": "Qué se adquiere",
+        "valor": "Un certificado de derechos sobre los bonos y su efectivo en fideicomiso; no el bono directamente"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "USD"
+      }
+    ],
+    "referencias": [
+      {
+        "etiqueta": "Mínimo de inversión",
+        "valor": "Desde 1.000 USD",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+        "alcance": "Anuncio de EX.IO del 24/11/2026."
+      },
+      {
+        "etiqueta": "Acceso desde España",
+        "valor": "No disponible para particulares: solo inversores profesionales",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+        "alcance": "Anuncio: solo inversores profesionales (PI), con KYC."
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Tras vender los bonos; pago unos 3 días hábiles después, salvo retrasos previstos",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+        "alcance": "Anuncio: el reembolso depende de la venta de los bonos y de cobrarla."
+      }
+    ]
+  },
+  "osl-taikang-kaitai-usd-mmf": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "El Taikang Kaitai USD Money Market Fund es un fondo público de Hong Kong, con estructura de fideicomiso autorizada por la SFC, gestionado por Taikang Asset Management (Hong Kong), que invierte solo en depósitos bancarios. Sus participaciones tokenizadas se listan, distribuyen y custodian en OSL: se compran desde 1 USD en la app, tras un test de riesgo, sin comisiones de suscripción ni de reembolso según OSL. El rendimiento se acumula cada día en el precio.",
+    "fuentes": [
+      "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+      "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs"
+    ],
+    "caracteristicas": [
+      {
+        "etiqueta": "Proveedor",
+        "valor": "OSL (Hong Kong)"
+      },
+      {
+        "etiqueta": "Emisor",
+        "valor": "Taikang Kaitai USD Money Market Fund (Taikang Asset Management HK)"
+      },
+      {
+        "etiqueta": "Qué se adquiere",
+        "valor": "Participaciones tokenizadas del fondo"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "USD"
+      }
+    ],
+    "referencias": [
+      {
+        "etiqueta": "Mínimo de inversión",
+        "valor": "Desde 1 USD en OSL",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+        "alcance": "Página del fondo en OSL."
+      },
+      {
+        "etiqueta": "Acceso desde España",
+        "valor": "Sin confirmar: OSL no publica qué países admite",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+        "alcance": "Preguntas de OSL: se suscribe desde la app tras un test de riesgo."
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "En la app de OSL, sin comisión de reembolso según OSL",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+        "alcance": "Página del fondo en OSL."
+      }
+    ]
+  },
+  "conda-devolo-bono-2026": {
+    "revisadaEl": "2026-11-27",
+    "descripcion": "Bono de devolo solutions GmbH (Aquisgrán), marca de equipos de red doméstica y Powerline, colocado por CONDA Capital, proveedor de financiación participativa autorizado en la UE. Paga un 7 % anual en efectivo o un 10 % en vales de la marca, cada 30/11 desde 2027, y devuelve el nominal el 30/11/2029. Unidades de 250 €, hasta 2.000.000 € con un umbral de 400.000 €. Está inscrito como token de bono en el registro de criptovalores de NYALA. Se ofrece en Alemania y Austria; el 27/11/2026 quedaban 13 días de campaña.",
+    "fuentes": [
+      "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+      "https://www.nyala.de/en/products/electronic-securities"
+    ],
+    "caracteristicas": [
+      {
+        "etiqueta": "Proveedor",
+        "valor": "CONDA (CONDA Capital GmbH)"
+      },
+      {
+        "etiqueta": "Emisor",
+        "valor": "devolo solutions GmbH"
+      },
+      {
+        "etiqueta": "Qué se adquiere",
+        "valor": "Un bono de la empresa, registrado como criptovalor; no da parte de la empresa"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "EUR"
+      }
+    ],
+    "referencias": [
+      {
+        "etiqueta": "Mínimo de inversión",
+        "valor": "Desde 250 € (una unidad)",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+        "alcance": "Ficha de la campaña en CONDA."
+      },
+      {
+        "etiqueta": "Acceso desde España",
+        "valor": "No disponible: se ofrece en Alemania y Austria",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+        "alcance": "Ficha de la campaña en CONDA: «Angeboten in AT, DE»."
+      },
+      {
+        "etiqueta": "Salida",
+        "valor": "Al vencimiento (30/11/2029); sin cotización",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+        "alcance": "Ficha de la campaña: devolución al final."
+      },
+      {
+        "etiqueta": "Rentabilidad publicada",
+        "valor": "7 % anual en efectivo (10 % en vales)",
+        "fechaDato": null,
+        "fechaConsulta": "2026-11-27",
+        "fuente": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+        "alcance": "Ficha de la campaña en CONDA."
+      }
+    ]
   }
 }

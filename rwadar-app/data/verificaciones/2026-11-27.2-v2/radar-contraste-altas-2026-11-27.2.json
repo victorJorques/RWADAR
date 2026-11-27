@@ -1,7 +1,7 @@
 {
   "fecha": "2026-11-27",
-  "fuentesNuevas": 4,
-  "correctas": 4,
+  "fuentesNuevas": 9,
+  "correctas": 9,
   "contraste": [
     {
       "id": "hwk-anleihe",
@@ -51,6 +51,66 @@
         "大和証券株式会社",
         "三菱ＵＦＪ信託銀行株式会社",
         "2026年12月1日（火）から2026年12月8日（火）まで"
+      ],
+      "ok": true
+    },
+    {
+      "id": "exio-ustnt",
+      "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+      "horaUtc": "2026-11-27T11:49:23Z",
+      "copia": "fuentes/exio-ustnt.txt",
+      "sha256": "30d699c752758426baf197d58e28252135bc46b1fc33cd01d08dae7ac23f59db",
+      "comprobaciones": [
+        "Professional Investors \\(PI\\) only",
+        "Rukhex Technology Limited",
+        "approval from Hong Kong’s Securities and Futures Commission"
+      ],
+      "ok": true
+    },
+    {
+      "id": "osl-tkusd",
+      "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+      "horaUtc": "2026-11-27T11:50:11Z",
+      "copia": "fuentes/osl-tkusd.txt",
+      "sha256": "abfea96fe59e80cafe76ca47d1b308d18b46af31095ece4f62c3d5fa918c8647",
+      "comprobaciones": [
+        "SFC-authorized fund",
+        "as low as \\$1 USD"
+      ],
+      "ok": true
+    },
+    {
+      "id": "osl-tkusd-faq",
+      "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+      "horaUtc": "2026-11-27T11:50:04Z",
+      "copia": "fuentes/osl-tkusd-faq.txt",
+      "sha256": "a62a35dade4f33c6b4db317907baf559722827f7e0cf3917383d62a01aac6806",
+      "comprobaciones": [
+        "tokenized shares are initially listed, distributed, and custodied on OSL"
+      ],
+      "ok": true
+    },
+    {
+      "id": "conda-devolo",
+      "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+      "horaUtc": "2026-11-27T11:50:31Z",
+      "copia": "fuentes/conda-devolo.txt",
+      "sha256": "7b157dd44b40fd35399ac207971d5a121a843726570582509f54f923ea1e69eb",
+      "comprobaciones": [
+        "zugelassener Dienstleister für Schwarmfinanzierung gemäß VO \\(EU\\) 2020/1503",
+        "Angeboten in"
+      ],
+      "ok": true
+    },
+    {
+      "id": "nyala-registro",
+      "url": "https://www.nyala.de/en/products/electronic-securities",
+      "horaUtc": "2026-11-27T11:51:37Z",
+      "copia": "fuentes/nyala-registro.txt",
+      "sha256": "2c9abac86c9eba3351c75279d715a76b37b09035a9f7b8c4afdace06f42b4073",
+      "comprobaciones": [
+        "DEVOLO solutions - Anleihe 2026",
+        "supervised by BaFin"
       ],
       "ok": true
     }

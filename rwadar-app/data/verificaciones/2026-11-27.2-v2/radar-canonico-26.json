@@ -2,7 +2,7 @@
   "version": 1,
   "verificadoEl": "2026-11-27",
   "publicable": false,
-  "alcance": "Revisión editorial de fuentes primarias del 27/11/2026: las 109 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan (tres por lectura a mano); las entregas 2026-11-27 y 2026-11-27.2 añaden 8 y 3 plataformas de los informes globales de ese día, con sus 18 fuentes leídas el mismo día. No acredita onboarding, oferta abierta ni rentabilidad.",
+  "alcance": "Revisión editorial de fuentes primarias del 27/11/2026: las 109 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan (tres por lectura a mano); las entregas 2026-11-27 y 2026-11-27.2 añaden 8 y 6 plataformas de los informes globales de ese día, con sus 23 fuentes leídas el mismo día. No acredita onboarding, oferta abierta ni rentabilidad.",
   "politicaFechaCanonica": "Las fechas canónicas de julio/agosto de 2026 se conservan. Esta capa no las rejuvenece y solo añade evidencia fechada, matices y alertas.",
   "fuentes": [
     {
@@ -1021,6 +1021,46 @@
       "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
       "primaria": true,
       "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "exio-ustnt",
+      "tipo": "empresa",
+      "titulo": "EX.IO · «New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO» (24/11/2026)",
+      "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "osl-tkusd",
+      "tipo": "empresa",
+      "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+      "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "osl-tkusd-faq",
+      "tipo": "empresa",
+      "titulo": "OSL · Taikang Kaitai USD Money Market Fund: introducción y preguntas",
+      "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "conda-devolo",
+      "tipo": "empresa",
+      "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+      "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "nyala-registro",
+      "tipo": "registro",
+      "titulo": "NYALA · registro de criptovalores (eWpG)",
+      "url": "https://www.nyala.de/en/products/electronic-securities",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
     }
   ],
   "plataformas": [
@@ -1534,6 +1574,41 @@
       ]
     },
     {
+      "slug": "conda",
+      "nombre": "CONDA",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web enseña en captación el bono de devolo solutions, con 13 días restantes el 27/11/2026.",
+        "fuentes": [
+          "conda-devolo"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser proveedor autorizado de financiación participativa (reglamento (UE) 2020/1503); no lo hemos comprobado en el registro de ESMA.",
+        "fuentes": [
+          "conda-devolo"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "El bono de devolo se ofrece en Austria y Alemania.",
+        "fuentes": [
+          "conda-devolo"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_algunos_paises",
+          "detalle": "Lo que ofrece depende de cada campaña y de los países en que se ofrece; el bono de devolo no se ofrece en España.",
+          "fuentes": [
+            "conda-devolo"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "courtyard",
       "nombre": "Courtyard",
       "fechaCanonicaConservada": "2026-07-26",
@@ -1810,6 +1885,41 @@
           "detalle": "La web no identifica la sociedad emisora ni su supervisor. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
           "fuentes": [
             "etherfuse-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ex-io",
+      "nombre": "EX.IO",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "EX.IO anunció el 24/11/2026 su producto USTNT, certificados tokenizados sobre dos bonos del Tesoro de EE. UU.",
+        "fuentes": [
+          "exio-ustnt"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice estar aprobada por la SFC de Hong Kong desde diciembre de 2024; no lo hemos comprobado en el registro de la SFC.",
+        "fuentes": [
+          "exio-ustnt"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "USTNT es solo para inversores profesionales, con KYC; desde EE. UU. la web bloquea el acceso.",
+        "fuentes": [
+          "exio-ustnt"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_profesionales",
+          "detalle": "No es para particulares. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "exio-ustnt"
           ]
         }
       ]
@@ -2733,6 +2843,41 @@
           "fuentes": [
             "openeden-intro",
             "openeden-onboarding"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "osl",
+      "nombre": "OSL",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web explica cómo suscribir desde la app el fondo monetario en dólares de Taikang con participaciones tokenizadas.",
+        "fuentes": [
+          "osl-tkusd-faq"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La página no da el número de licencia de OSL; el fondo sí dice estar autorizado por la SFC. No lo hemos comprobado.",
+        "fuentes": [
+          "osl-tkusd"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Para clientes de su app, con un test de riesgo; no publica qué países admite.",
+        "fuentes": [
+          "osl-tkusd-faq"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Plataforma y fondo de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "osl-tkusd"
           ]
         }
       ]

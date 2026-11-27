@@ -1,5 +1,5 @@
 {
-  "nota": "Portadas de las 3 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
+  "nota": "Portadas de las 6 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
   "portadas": [
     {
       "empresa": "HWK 1365",
@@ -24,6 +24,30 @@
       "descripcionVisual": "Una calle de oficinas de Tokio con árboles en otoño, por la casa de valores japonesa.",
       "prompt": "quiet street lined with office buildings and ginkgo trees in autumn in central Tokyo, early morning, no signs",
       "paginaReferencia": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+    },
+    {
+      "empresa": "EX.IO",
+      "maestro": "ex-io.webp",
+      "semilla": 961,
+      "descripcionVisual": "El puerto Victoria de Hong Kong de día, con un ferry cruzando, por la plataforma de Hong Kong; no es su oficina.",
+      "prompt": "Victoria Harbour in Hong Kong in daylight with a green and white ferry crossing, skyline behind, clear sky, no logos",
+      "paginaReferencia": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+    },
+    {
+      "empresa": "OSL",
+      "maestro": "osl.webp",
+      "semilla": 967,
+      "descripcionVisual": "Torres de oficinas de Hong Kong entre la niebla de la mañana, por la plataforma de activos digitales de Hong Kong; no es su sede.",
+      "prompt": "tall glass office towers in Hong Kong rising through morning mist, seen from a hillside, soft natural light, no logos",
+      "paginaReferencia": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
+    },
+    {
+      "empresa": "CONDA",
+      "maestro": "conda.webp",
+      "semilla": 971,
+      "descripcionVisual": "Una calle de una ciudad centroeuropea con edificios clásicos y tranvía, imagen genérica de la plataforma de financiación participativa; no es su oficina.",
+      "prompt": "classic central European city street with historic facades and a tram, autumn morning, soft natural light, no signs",
+      "paginaReferencia": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
     }
   ]
 }
