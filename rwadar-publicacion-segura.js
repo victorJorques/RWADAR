@@ -233,6 +233,10 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   // «Calcula tus números» en Inicio (11/11/2026): el motor (copia de
   // rwadar-movil/lib/calculadora.js), el bloque y su hoja (también la de los
   // dos campos nuevos del explicador).
+  // Disponibilidad por país (27/11/2026): el motor común con la app (copia de
+  // rwadar-movil/lib/disponibilidad-pais.js con los países) y el país del usuario.
+  'assets/disponibilidad-pais-20261127.js',
+  'assets/pais-usuario-20261127.js',
   'assets/calculadora-modelo-20261111.js',
   'assets/calculadora-20261111.js',
   'assets/calculadora-20261111.css',

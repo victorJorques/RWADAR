@@ -26,7 +26,7 @@ const es = {
       descartadas: 'Descartadas',
       revisado: 'Revisado el',
     },
-    antetitulo: 'Independiente y gratis · Tokenización en España',
+    antetitulo: 'Independiente y gratis · Tokenización en todo el mundo',
     titular: 'La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos.',
     subtitulo: (n) => `Mueven con ella acciones, bonos y dinero. ${n ? `Aquí ves las ${n} ofertas del radar` : 'Aquí ves las ofertas del radar'}, con su fuente y su fecha.`,
     boton: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
