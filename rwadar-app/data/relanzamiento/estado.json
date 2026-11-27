@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ventana para activar los avisos al estilo de iOS en la web y la app: icono de campana, título centrado, botón ancho y Ahora no como texto, con la misma letra pequeña legal",
+  "nota": "Textos de los avisos y de las novedades sin la comparación con WhatsApp, en la web y la app, en castellano y en inglés",
   "revisionAprobada": {
-    "commit": "a14b328669972e34400b20f761e39c21fd796388",
-    "contenidoSha256": "sha256:b59d95aa0cb7fb5c5b13410f9c4c20568d3e9fe33bf8f149110cd51079a61fba",
+    "commit": "74e307aec50cbbcb0aedb498b7049cb326dd65cf",
+    "contenidoSha256": "sha256:a57d6016c4515ca94190e312df4c6563c8bfd1c3a64fb4e23a3597515b248916",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
