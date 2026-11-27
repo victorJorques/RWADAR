@@ -2300,6 +2300,7 @@
   "Esta oferta todavía no tiene la comprobación por país.": "This offer does not have the country check yet.",
   "La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.": "Availability depends on your country of residence, not on where you connect from. Always check it at the source before deciding.",
   "Ofertas por país": "Offers by country",
+  "Todos los demás países": "All other countries",
   "Se contrata hoy desde España (referencia)": "Can be taken out today from Spain (reference)",
   "Lo que no aparece aquí queda sin confirmar: no suponemos que una oferta esté disponible en un país solo porque no esté excluido.": "Anything not listed here is unconfirmed: we do not assume an offer is available in a country just because it is not excluded.",
   "Disponible, según la fuente": "Available, according to the source",

@@ -263,13 +263,13 @@ function transparenciaOferta(o,catalogo) {
    sabe desde dónde la miran). Sin reglas, lo dice. Los nombres de países los traduce el diccionario. */
 function disponibilidadSeccion(o) {
   const d = DISPONIBILIDAD.disponibilidadDe(o);
-  const lista = (titulo, l) => l.length ? '<div><dt>'+titulo+'</dt><dd><ul class="paises">'+DISPONIBILIDAD.nombresLista(l,'es').map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></dd></div>' : '';
+  const lista = (titulo, l, excl = false) => l.length ? '<div><dt>'+titulo+'</dt><dd><ul class="paises">'+DISPONIBILIDAD.nombresLista(l,'es',excl).map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></dd></div>' : '';
   return '<section aria-labelledby="disponibilidad"><h2 id="disponibilidad">Disponibilidad por país</h2>'+
-    (d ? '<p'+ORIGINAL+'>'+esc(d.nota)+'</p><dl>'+lista('Países admitidos',d.admitidos)+lista('Países excluidos',d.excluidos)+
+    (d ? '<p'+ORIGINAL+'>'+esc(d.nota)+'</p><dl>'+lista('Países admitidos',d.admitidos)+lista('Países excluidos',d.excluidos,true)+
       d.conRequisitos.map(r=>lista('Con requisitos',r.paises)+'<div><dt>Requisito</dt><dd'+ORIGINAL+'>'+esc(r.requisito)+'</dd></div>').join('')+'</dl>'+
       '<p class="ui">Lo que no aparece aquí queda sin confirmar: no suponemos que una oferta esté disponible en un país solo porque no esté excluido.</p>'+
-      '<ul class="fuentes">'+d.fuentes.map(f=>'<li><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo||new URL(f.url).hostname)+'</span> ↗</a>'+
-        (fecha(f.consultadaEl)?' <span>· consultada el '+esc(corta(f.consultadaEl))+'</span>':'')+'<blockquote'+ORIGINAL+'>'+esc(f.literal)+'</blockquote></li>').join('')+'</ul>'
+      (d.fuentes.length?'<ul class="fuentes">':'')+d.fuentes.map(f=>'<li><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo||new URL(f.url).hostname)+'</span> ↗</a>'+
+        (fecha(f.consultadaEl)?' <span>· consultada el '+esc(corta(f.consultadaEl))+'</span>':'')+'<blockquote'+ORIGINAL+'>'+esc(f.literal)+'</blockquote></li>').join('')+(d.fuentes.length?'</ul>':'')
       : '<p class="ui">Esta oferta todavía no tiene la comprobación por país.</p>')+
     '<p class="ui">La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</p></section>';
 }

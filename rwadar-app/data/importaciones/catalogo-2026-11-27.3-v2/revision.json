@@ -1,0 +1,29 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "aa79f049-ae03-c031-83f4-e159a90ca05e",
+  "hash": "aa79f049ae03c03183f4e159a90ca05ed3245bd3dec6a12f43b4ad0f00cae7eb",
+  "revisionAnterior": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "hashRevisionAnterior": "38ee1fa9aadd6c0ab1e7d2a4f006b6ca5bcf2eda35a1c7180f8ddad9a690494a",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-27.3-v2/lectura-publica/",
+  "etiqueta": "2026-11-27.3",
+  "fechaRadar": "2026-11-27",
+  "revisionDocumental": "2026-11-27",
+  "plataformas": 73,
+  "ofertas": 40,
+  "colecciones": {
+    "principales": 24,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 0,
+  "ofertasAltas": [],
+  "plataformasAltas": [],
+  "retiradas": 0,
+  "tablasPublicas": [],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

@@ -1,0 +1,16 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "etiqueta": "2026-11-27.3",
+  "revisionAnterior": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "revisionNueva": "aa79f049-ae03-c031-83f4-e159a90ca05e",
+  "sha256AplicarYAprobar": "541cbd53ec42ae8565ec68f3c7f364669936e63ace5c689e4bda173281c612b3",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada 38ee1fa9 con su huella, fecha hasta el 03/12); nada en public.*",
+    "antes de aplicar, PGlite enseña la 2026-11-27.2 (73 plataformas, 40 ofertas) y lo leído como visitante",
+    "publicada la revisión nueva: las 40 ofertas iguales salvo documentacion.disponibilidad, que es la de disponibilidad.json",
+    "public.plataformas intacta e idempotente: aplicarla dos veces da lo mismo",
+    "lector de la web y de la app: aceptan el lote y leen la disponibilidad (España: 13 disponibles; Hong Kong: 4 accesibles)",
+    "falla y no deja nada: otra revisión publicada → Publicación distinta de la revisión anterior prevista: 529a54f7-0c13-4b07-0433-3b67273bdd86. No aplicar este lote.",
+    "falla y no deja nada: catálogo retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo."
+  ]
+}

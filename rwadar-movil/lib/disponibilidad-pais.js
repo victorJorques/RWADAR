@@ -11,9 +11,11 @@
    Cada oferta lleva en documentacion.disponibilidad sus reglas documentadas:
      { verificadaEl, admitidos[], excluidos[], conRequisitos[{paises[], requisito, requisitoEn}],
        fuentes[{url, titulo, literal, consultadaEl}], nota, notaEn }
-   Los países son ISO 3166-1 alfa-2, o los grupos «UE» y «EEE», o «*» (todo el
-   mundo, solo si la fuente lo dice). Para un país: excluido > con requisitos >
-   admitido > sin confirmar. Nunca se da por disponible un país por no estar
+   Los países son ISO 3166-1 alfa-2, o los grupos «UE» y «EEE», o «*»: en
+   admitidos o con requisitos, todo el mundo (solo si la fuente lo dice); en
+   excluidos, «todos los demás» (la fuente dice «solo en …»). Para un país:
+   excluido por nombre > con requisitos > admitido > «*» en excluidos >
+   sin confirmar. Nunca se da por disponible un país por no estar
    excluido: lo que no consta queda «sin confirmar».
    --------------------------------------------------------------------- */
 const DATOS = require('./paises-contenido');
@@ -60,14 +62,15 @@ function erroresDisponibilidad(d) {
   if (!listaValida(d.excluidos)) e.push('excluidos: país o grupo no válido');
   if (!Array.isArray(d.conRequisitos) || d.conRequisitos.some(r => !r || !listaValida(r.paises) || !r.paises.length ||
     typeof r.requisito !== 'string' || !r.requisito.trim() || typeof r.requisitoEn !== 'string' || !r.requisitoEn.trim())) e.push('conRequisitos no válido');
-  if (!Array.isArray(d.fuentes) || !d.fuentes.length || d.fuentes.some(f => !f || !/^https:\/\//.test(String(f.url || '')) ||
+  if (!Array.isArray(d.fuentes) || d.fuentes.some(f => !f || !/^https:\/\//.test(String(f.url || '')) ||
     typeof f.literal !== 'string' || !f.literal.trim() || !dia.test(String(f.consultadaEl || '')))) e.push('fuentes: cada una con url https, literal y fecha');
   for (const k of ['nota', 'notaEn']) if (typeof d[k] !== 'string' || !d[k].trim()) e.push(`falta ${k}`);
   const hayReglas = (d.admitidos || []).length + (d.excluidos || []).length + (d.conRequisitos || []).length;
   if (Array.isArray(d.admitidos) && Array.isArray(d.conRequisitos)) {
     for (const r of d.conRequisitos) for (const p of r.paises || []) if (p !== '*' && d.admitidos.includes(p)) e.push(`${p} está en admitidos y con requisitos`);
   }
-  if (!hayReglas && Array.isArray(d.fuentes) && d.fuentes.length === 0) e.push('sin reglas ni fuentes');
+  // Sin ninguna regla vale (todo «sin confirmar», con su nota); con reglas, al menos una fuente.
+  if (hayReglas && Array.isArray(d.fuentes) && d.fuentes.length === 0) e.push('hay reglas sin fuente');
   return e;
 }
 function valida(d) { return erroresDisponibilidad(d).length === 0; }
@@ -92,10 +95,11 @@ function estadoEnPais(oferta, codigo) {
     if (pais === 'ES' && es === false) return { estado: 'no_disponible', requisito: '', requisitoEn: '', deFuente: true };
     return { estado: 'sin_confirmar', requisito: '', requisitoEn: '', deFuente: false };
   }
-  if (contiene(d.excluidos, pais)) return { estado: 'no_disponible', requisito: '', requisitoEn: '', deFuente: true };
+  if (contiene(d.excluidos.filter(x => x !== '*'), pais)) return { estado: 'no_disponible', requisito: '', requisitoEn: '', deFuente: true };
   const r = d.conRequisitos.find(x => contiene(x.paises, pais));
   if (r) return { estado: 'con_requisitos', requisito: r.requisito, requisitoEn: r.requisitoEn, deFuente: true };
   if (contiene(d.admitidos, pais)) return { estado: 'disponible', requisito: '', requisitoEn: '', deFuente: true };
+  if (d.excluidos.includes('*')) return { estado: 'no_disponible', requisito: '', requisitoEn: '', deFuente: true };
   return { estado: 'sin_confirmar', requisito: '', requisitoEn: '', deFuente: false };
 }
 function etiquetaEstado(estado, idioma) { return TEXTOS[idiomaDe(idioma)][ESTADOS.includes(estado) ? estado : 'sin_confirmar']; }
@@ -111,9 +115,9 @@ function accesibleEnPais(oferta, codigo) {
   return e === 'disponible' || e === 'con_requisitos';
 }
 /* Nombres legibles de una lista de reglas («Unión Europea», «Italia», «Todo el mundo»). */
-function nombresLista(lista, idioma) {
+function nombresLista(lista, idioma, excluidos = false) {
   const i = idiomaDe(idioma);
-  return (lista || []).map(x => x === '*' ? (i === 'en' ? 'Worldwide' : 'Todo el mundo')
+  return (lista || []).map(x => x === '*' ? (excluidos ? (i === 'en' ? 'All other countries' : 'Todos los demás países') : (i === 'en' ? 'Worldwide' : 'Todo el mundo'))
     : tiene(DATOS.grupos, x) ? DATOS.grupos[x][i] : nombrePais(x, i)).filter(Boolean);
 }
 /* Para la ficha ampliada: qué dicen las fuentes, en llano. */
@@ -126,7 +130,7 @@ function detalleDisponibilidad(oferta, codigo, idioma) {
     ...corto,
     requisito: i === 'en' ? r.requisitoEn : r.requisito,
     admitidos: nombresLista(d.admitidos, i),
-    excluidos: nombresLista(d.excluidos, i),
+    excluidos: nombresLista(d.excluidos, i, true),
     conRequisitos: d.conRequisitos.map(x => ({ paises: nombresLista(x.paises, i), requisito: i === 'en' ? x.requisitoEn : x.requisito })),
     fuentes: d.fuentes.map(f => ({ url: f.url, titulo: f.titulo || f.url, literal: f.literal, consultadaEl: f.consultadaEl })),
     nota: i === 'en' ? d.notaEn : d.nota,

@@ -92,10 +92,10 @@
       (reglas ? (es.nota ? '<p class="disp-pais-nota">' + dos(es.nota, en.nota) + '</p>' : '') +
         '<dl class="disp-pais-reglas">' + lista('Países admitidos', es.admitidos) + lista('Países excluidos', es.excluidos) +
         es.conRequisitos.map((r, i) => lista('Con requisitos', r.paises) + '<div><dt>Requisito</dt><dd>' + dos(r.requisito, en.conRequisitos[i].requisito) + '</dd></div>').join('') + '</dl>' +
-        '<h4>Fuentes de la disponibilidad</h4><ul class="disp-pais-fuentes">' + es.fuentes.map(f => https(f.url) ?
+        (es.fuentes.length ? '<h4>Fuentes de la disponibilidad</h4><ul class="disp-pais-fuentes">' : '') + es.fuentes.map(f => https(f.url) ?
           '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener nofollow"><span>' + esc(f.titulo) + '</span> ↗</a>' +
           (fechaES(f.consultadaEl) ? ' · <span>Consultada el</span> ' + fechaES(f.consultadaEl) : '') +
-          '<blockquote lang="und" translate="no">' + esc(f.literal) + '</blockquote></li>' : '').join('') + '</ul>' +
+          '<blockquote lang="und" translate="no">' + esc(f.literal) + '</blockquote></li>' : '').join('') + (es.fuentes.length ? '</ul>' : '') +
         (fechaES(es.verificadaEl) ? '<p class="disp-pais-fecha"><span>Disponibilidad comprobada el</span> ' + fechaES(es.verificadaEl) + '</p>' : '')
         : '<p class="disp-pais-nota">Esta oferta todavía no tiene la comprobación por país.</p>') +
       '<p class="disp-pais-aviso">La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</p>' +
