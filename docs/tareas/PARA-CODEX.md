@@ -6,6 +6,31 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (55) · Claude · Inglés en toda la página, idioma en Inicio y radar nítido · PUBLICADO
+
+- **Petición de Víctor:**
+  - Las noticias no cambiaban a inglés.
+  - Quería que cambiara toda la página, poder elegir el idioma desde Inicio y que no se viera sombra arriba.
+- **Noticias:** titular, resumen y detalle ya cambiaban (comprobado en vivo en Inicio, /mercado/ y /noticias/). Lo que se
+  quedaba en castellano era el nombre de la fuente. `FUENTES_EN` (`rwadar-movil/lib/noticias-sector.js`, copiado a la
+  web con `copiar-modelo-web.cjs`) lleva ahora los organismos del sector. `revisarEdicion` avisa con `fuente-sin-ingles`
+  si sale uno nuevo; la skill `noticias-automaticas` dice que se apunte, porque esa sesión no toca la app.
+- **Radar en inglés:**
+  - 443 textos que escribe RWAdar: aval, nota, acceso, ticket y la verificación local (licencia, actividad, acceso y
+    alertas). Fuente: `rwadar-editorial-source/plataformas/textos-en.json`.
+  - `textos-en.cjs` los escribe en el diccionario común, entre `radar:inicio` y `radar:fin`. `--comprobar` va en
+    `probar-web.mjs`: falla si el diccionario no está al día y solo avisa de los textos nuevos sin inglés.
+  - En cada ciclo del catálogo se añaden los nuevos (skill `investigacion-catalogo`, paso 3.4).
+  - En la app ya no se muestran como «texto original»: se traducen.
+- **Idioma en Inicio:** «Idioma: Español | English» en la tarjeta del país, en la web y en la app (en la app, el
+  `SelectorIdioma` de Perfil con un estilo opcional nuevo).
+- **Radar de Inicio:** sin el relleno verde ni la cuña del barrido (en la app, solo en la portada).
+- **Publicado:** PR #231. «Publicar web»: revisión 46041523270 y producción 46041873153, comprobadas en vivo a 390 y
+  1366 px; en inglés solo queda «El Salvador» y las citas literales de fuentes en la ficha de la oferta. OTA
+  46041527063. «Avisar novedad» 46042134269: «RWAdar ya habla inglés 🇬🇧».
+- **Pendiente:** el contenido de las ofertas (títulos, resúmenes y citas) sigue en castellano y se marca como texto
+  original de la fuente, como hasta ahora.
+
 ## 27 de noviembre de 2026 (54) · Claude · Disponibilidad por país: RWAdar internacional (web, app y catálogo 2026-11-27.3) · PUBLICADO
 
 - **Orden de Víctor:** escaparate internacional. Se detecta el país de conexión (Cloudflare `/cdn-cgi/trace`, sin
