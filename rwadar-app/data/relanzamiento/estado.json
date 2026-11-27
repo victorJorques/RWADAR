@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ventana para activar los avisos al entrar en Inicio, en la web y en la app: mismo recuadro, texto legal y permiso que la ventana de novedades, con Ahora no y tres días de pausa",
+  "nota": "Ventana para activar los avisos al entrar, pulida: sin la equis ni el hueco de arriba y sin el marco de foco en el título; se cierra con Ahora no, tocando fuera o con Esc",
   "revisionAprobada": {
-    "commit": "b65587350a4ef60aa3e8460bbcd5009cc734a425",
-    "contenidoSha256": "sha256:3e2eca7fadd6578d53f48baee4ef573f569483ddb49b6b8e97ab298de8473859",
+    "commit": "a46bc6716f47b1b36dd3517e67c6201ee6d2c358",
+    "contenidoSha256": "sha256:46c2af1e8dfd2a38fa02d667c34786d752fd4cfca8e6cf57bd90da83694a057c",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
