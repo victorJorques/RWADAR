@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Textos de los avisos y de las novedades sin la comparación con WhatsApp, en la web y la app, en castellano y en inglés",
+  "nota": "Ventana para activar los avisos: sale en el móvil cada vez que se abre RWAdar hasta que estén activos, también con el permiso bloqueado, que lleva a Perfil Avisos",
   "revisionAprobada": {
-    "commit": "74e307aec50cbbcb0aedb498b7049cb326dd65cf",
-    "contenidoSha256": "sha256:a57d6016c4515ca94190e312df4c6563c8bfd1c3a64fb4e23a3597515b248916",
+    "commit": "5365e3265d28673c8f659998f1a1f5ac64e2c9fa",
+    "contenidoSha256": "sha256:be1eb1073ee98d2fbbbe8f0bf5d50cf07c2c8ef49f54417dd84d7435ef817266",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
