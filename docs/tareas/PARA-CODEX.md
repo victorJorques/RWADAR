@@ -6,10 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 27 de noviembre de 2026 (52) · Claude · Plataformas: «Más nuevas primero» en la web y la app · RAMA, SIN PUBLICAR
+## 27 de noviembre de 2026 (53) · Claude · Catálogo 2026-11-27.2: todo en una entrega (8 ofertas, 8 plataformas, fichas comprobadas hoy) y noticias b · PUBLICADO
 
-- **Orden de Víctor:** «las más nuevas van primero… en plataformas». Rama `claude/plataformas-mas-nuevas` (sin PR,
-  sin publicar, sin OTA).
+- **Órdenes de Víctor:** «Mételo todo en 1 entrega y acuérdate del gancho de las notis»; «el resto pon que está
+  verificado hasta el día de hoy»; ante las candidatas del consolidado sin revisar, «esperar y meter todo»; y «las más
+  nuevas van primero» (entrada 52).
+- **Catálogo `2026-11-27.2`** (revisión `38ee1fa9`, sobre la `529a54f7`; «Aplicar catálogo» 46001049129; lectura como
+  visitante después de aplicar: 73 plataformas y 40 ofertas 24/13/3). 29 de las 32 ofertas publicadas, comprobadas
+  hoy (`refechar.py`: solo fechas de consulta; Liqi, ALTERNA y mTBILL conservan el 26/11). 8 ofertas nuevas (HWK 1365,
+  Tokinvest plata y Great Hampton Street, HSBC clase SD, MUFG Kioicho en camino, USTNT de EX.IO, Taikang en OSL y
+  devolo en CONDA) y 8 plataformas (HWK 1365, HSBC, Daiwa Securities, EX.IO, OSL, CONDA, 1exchange y Pruv). Fuera, con
+  motivo en `2026-11-27.2-v2/altas.py`: Mesh CCS (oferta cerrada el 03/10), BAGEY, TPLUS/ULTRA, Lofty, Midas mWIN/mGLO,
+  Touchstone, fondos de Pruv y de 1exchange, INANAM, Tidefront y otras.
+- **Una revisión independiente:** 5 bloqueantes y 10 menores, corregidos (detalle en
+  `docs/INVESTIGACION-CATALOGO-2026-11-27.md`). Imágenes rehechas: la plata (letras inventadas) y la portada de CONDA
+  (personas).
+- **Noticias, edición b:** entran Canadá (CSA) y Suiza (BNS); salen SBI Solana y BCE estándares DLT. `titulares.json`
+  lleva las propuestas de la edición a en las tres que heredaba del mismo día (`validar --publicada` no admite
+  «heredado» del mismo día).
+- **Tras aplicar (PR #222):** sincronización, transparencia (comprobaciones al 27/11 solo si su fuente se leyó hoy; 20
+  conservan el 26/11), lectura `lectura-despues-de-aplicar/` y sello. Tres pruebas que suponían una sola fecha de
+  comprobación o menos de 8 ofertas con cifra, generalizadas sin quitar comprobaciones (`probar-fichas.cjs`,
+  `calculadora.test.cjs`, `ofertas-presentacion.test.cjs`).
+- **Publicado:** «Publicar web» revisión 46006593041 y producción 46006919605, comprobadas en vivo a 390 y 1366 px;
+  OTA Android 46006597525 (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» 46007259314: «El lingote de
+  plata más grande del mundo, HSBC y una fundición de 1365: 8 ofertas nuevas». Sin aviso de noticias: ya se avisó hoy.
+- **Pendiente:** la rama de cerrojo `claude/cerrojo-ciclo-2026-11-27` sigue sin borrar (Víctor: GitHub › Branches o
+  «Limpiar ramas»). Las tarjetas re-fechadas valen hasta el 04/12; las tres del 26/11, hasta el 03/12.
+
+## 27 de noviembre de 2026 (52) · Claude · Plataformas: «Más nuevas primero» en la web y la app · PUBLICADO (PR #223)
+
+- **Orden de Víctor:** «las más nuevas van primero… en plataformas». PR #223, publicado con la web y la OTA de la
+  entrada 53. La comprobación `altas.mjs --comprobar` va dentro de `probar-web.mjs` (no en `package.json`, que el
+  guardián de OTA trata como cambio nativo).
 - **Fecha de alta por plataforma, como hecho:** `rwadar-editorial-source/plataformas/altas.json` (slug → `anadidaEl`
   y `lote`), validado y generado por `altas.mjs`. La fecha es la del primer lote del repositorio
   (`rwadar-app/data/verificaciones/<lote>/radar-canonico-26.json`) en que aparece; el script lo comprueba. Catálogo
