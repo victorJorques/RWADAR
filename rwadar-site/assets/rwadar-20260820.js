@@ -2771,7 +2771,7 @@ function paisWeb(){return typeof window!=='undefined'&&window.RWAdarPais||null}
 function nombrePaisUsuario(){const w=paisWeb();return w?w.nombre():'España'}
 function esEspanaUsuario(){const w=paisWeb();return !w||w.codigo()==='ES'}
 function estadoPaisOfertaLocal(o){const w=paisWeb();return w?w.estadoOferta(o):{estado:o&&o.disponibleEs===true?'disponible':o&&o.disponibleEs===false?'no_disponible':'sin_confirmar',requisito:'',requisitoEn:''}}
-function noDisponiblePais(o){return estadoTextoPais(o,null)==='no_disponible'}
+function noDisponiblePais(o){const w=paisWeb();if(!(w&&w.tieneReglas(o))&&esEspanaUsuario())return !!o&&o.disponibleEs===false;return estadoTextoPais(o,null)==='no_disponible'}
 /* Las cuatro etiquetas en todos los países: la lista, corta; la ficha, «…, según la fuente» si la hay.
    Sin reglas por país y con España: de la referencia «Acceso desde España» (y disponibleEs = false). */
 const ETIQUETAS_PAIS={disponible:'Disponible',con_requisitos:'Con requisitos',no_disponible:'No disponible',sin_confirmar:'Sin confirmar'};
@@ -2780,7 +2780,7 @@ function estadoTextoPais(o,resumen){
  if(w&&w.tieneReglas(o))return w.estadoOferta(o).estado;
  if(!esEspanaUsuario())return 'sin_confirmar';
  const a=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
- return a==='si'?'disponible':a==='no'||(o&&o.disponibleEs===false)?'no_disponible':'sin_confirmar';
+ return a==='si'?'disponible':a==='no'?'no_disponible':'sin_confirmar';
 }
 function textoPaisOferta(o,resumen,corto=false){
  const e=estadoTextoPais(o,resumen),t=ETIQUETAS_PAIS[e]||'Sin confirmar';

@@ -7,7 +7,7 @@ import { resumenOferta } from '../lib/ficha-editorial';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { esNueva, fechaTarjeta } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
-import { datosTarjetaOferta, fechaES } from '../lib/transparencia';
+import { datosTarjetaOferta, fechaES, noDisponiblePais } from '../lib/transparencia';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -53,7 +53,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
           const cinco = seleccion.has(o.slug);
           // Todas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y España.
           const resumen = resumenOferta(ofertaParaResumen(o), [], new Date());
-          const datos = datosTarjetaOferta(o, resumen, { noEspana: !!resumen.cifrasVigentes && o.disponibleEs === false });
+          const datos = datosTarjetaOferta(o, resumen, { noEspana: !!resumen.cifrasVigentes && noDisponiblePais(o, resumen) });
           return (
             <Pressable key={o.slug} onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
               style={({ pressed }) => [e.tarjeta, { width: ancho }, pressed && e.tarjetaPulsada]}

@@ -48,6 +48,7 @@ const datos = modulo('lib/datos.js', {
 });
 
 const transparencia = modulo('lib/transparencia.js', {
+  './disponibilidad-pais': require('../lib/disponibilidad-pais'), './pais-usuario': require('../lib/pais-usuario'),
   './transparencia-contenido': modulo('lib/transparencia-contenido.js', {}),
 });
 
@@ -190,7 +191,9 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
   const { ofertas } = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
   assert.equal(ofertas.length, lote.ofertas.length, 'el lector de la app no deja ninguna fuera');
   assert.equal(ofertas.length, lote.plataformas[0].ofertas_esperadas, 'todas las que declara el lote');
-  const corta = { 'Sí, según la fuente': 'Sí', 'No, según la fuente': 'No', 'Sin confirmar': 'Sin confirmar' };
+  // País de residencia (27/11/2026): las cuatro etiquetas; la ficha añade «, según la fuente».
+  const corta = { 'Disponible, según la fuente': 'Disponible', 'No disponible, según la fuente': 'No disponible',
+    'Con requisitos, según la fuente': 'Con requisitos', 'Sin confirmar': 'Sin confirmar' };
   let conPuntos = 0;
   for (const o of ofertas) {
     const tarjeta = ui.FichaOferta({ oferta: o });
@@ -257,7 +260,7 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
       ['robinhood-classic-stock-tokens', 'View details for Classic Stock Tokens: derivados sobre acciones de EE. UU. from Robinhood Europe. ']]) {
       const etiqueta = ui.FichaOferta({ oferta: ofertas.find(o => o.slug === slug) }).props.accessibilityLabel;
       assert.ok(etiqueta.startsWith(nombre), etiqueta);
-      assert.match(etiqueta, /Minimum: .+\. Spain: (Yes|No|Unconfirmed)/);
+      assert.match(etiqueta, /Minimum: .+\. Spain: (Available|Not available|With requirements|Unconfirmed)/);
     }
   } finally { await idioma.cambiarIdioma('es'); }
 });
@@ -541,11 +544,11 @@ test('sin revisión vigente la tarjeta dice el problema sin cifras; reventa y pr
   assert.match(textoVisible(caducado), /Cifras por actualizar/);
   assert.doesNotMatch(textoVisible(caducado), /Nueva|No disponible en España/);
   assert.deepEqual(datosTarjeta(ui, caducado)[1], ['España', 'Sin confirmar']);
-  // En plazo y fuera de España, sí lo dice, y el dato de España dice «No»:
-  // nunca «Sin confirmar» al lado de «No disponible en España» (igual que la web).
+  // En plazo y fuera de España, la fila del país dice «No disponible» (sin línea aparte desde el 27/11/2026),
+  // nunca «Sin confirmar» (igual que la web).
   const fueraDeEspana = ui.FichaOferta({ oferta: dato({ disponibleEs: false }) });
-  assert.match(textoVisible(fueraDeEspana), /No disponible en España/);
-  assert.deepEqual(datosTarjeta(ui, fueraDeEspana)[1], ['España', 'No']);
+  assert.doesNotMatch(textoVisible(fueraDeEspana), /No disponible en España/);
+  assert.deepEqual(datosTarjeta(ui, fueraDeEspana)[1], ['España', 'No disponible']);
   assert.doesNotMatch(textoVisible(fueraDeEspana), /Sin confirmar/);
   for (const [coleccion, supra, estado] of [['secundario', 'Reventa entre inversores', /sin confirmar que se pueda operar/],
     ['en_camino', 'Próxima', /sin confirmar que abra/]]) {

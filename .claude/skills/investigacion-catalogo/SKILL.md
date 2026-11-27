@@ -220,6 +220,28 @@ del radar y el directo del mercado parado desde el 16/11.
    (`rwadar-editorial-source/ofertas/README.md`, `rwadar-fichas-manifiesto.js`):
    si no da tiempo con calidad, **no se admite hoy**, sin cola pendiente.
 
+**Disponibilidad por país (obligatoria desde el 27/11/2026, orden de Víctor: «RWAdar,
+escaparate internacional»).** Cada oferta lleva en `documentacion.disponibilidad` sus
+reglas por país, por producto y no solo por plataforma: `admitidos`, `excluidos` y
+`conRequisitos` (ISO 3166-1 alfa-2, o los grupos `UE` y `EEE`, o `*`), con `fuentes`
+(URL oficial, cita literal o muy cercana a lo que dice la página y fecha de consulta),
+`nota` y `notaEn`. Reglas:
+- Nunca se da un país por disponible solo porque no aparezca excluido: lo que no consta
+  queda «sin confirmar». Si la fuente dice «solo en X», `excluidos: ["*"]` (todos los demás).
+- Requisitos (profesional, acreditado, institucional, cliente del banco, número fiscal…)
+  van en `conRequisitos`, con su texto en castellano y en inglés.
+- El registro o el pasaporte de la entidad no basta: tiene que decirlo la oferta o la
+  plataforma para ese producto. Sin información, sin reglas y una nota llana (p. ej. «X
+  aún no publica desde qué países se puede invertir»).
+- Las ofertas publicadas la conservan solas (el motor copia la documentación y para si
+  alguna falta o no es válida). Para cambiarla: cambio `disponibilidad` en
+  `decisiones.json` (ver `entrega/FORMATO.md`). Una oferta nueva la trae en su ficha.
+- Motor y validador comunes de la web y la app: `rwadar-movil/lib/disponibilidad-pais.js`
+  (los países, en `rwadar-editorial-source/paises/paises.json`; `node
+  rwadar-app/paises/generar.cjs` regenera la copia web y el diccionario).
+- Los criterios de transparencia 2 y 3 (CNMV y folleto o KID) son referencia de España y,
+  fuera de España, no deciden la Selección. El 1 es «se contrata desde tu país».
+
 Trampas conocidas:
 - **Webs y apps que bloquean** (Cloudflare, bloqueo por país, contenido solo
   con cuenta): no se elude nada. Están prohibidos:

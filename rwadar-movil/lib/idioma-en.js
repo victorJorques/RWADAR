@@ -1335,7 +1335,7 @@
   "✓ Sí": "✓ Yes",
   "✗ No": "✗ No",
   "Ej.: Spiko, Suiza…": "E.g. Spiko, Switzerland…",
-  "Independiente y gratis · Tokenización en todo el mundo": "Independent and free · Tokenization worldwide",
+  "Independiente y gratis · Tokenización mundial": "Independent and free · Global tokenization",
   "La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos.": "Blockchain was born to pay without banks. Now the banks themselves use it.",
   "Mueven con ella acciones, bonos y dinero.": "They use it to move shares, bonds and money.",
   "Aquí ves las ofertas del radar, con su fuente y su fecha.": "Here you can see the radar's offers, each with its source and date.",

@@ -27,7 +27,7 @@ function cargar(ruta, mocks = {}) {
 
 const contenido = cargar('lib/inicio-contenido.js');
 const fuentes = cargar('lib/inicio-fuentes.js');
-const transparencia = cargar('lib/transparencia.js', { './transparencia-contenido': cargar('lib/transparencia-contenido.js') });
+const transparencia = cargar('lib/transparencia.js', { './disponibilidad-pais': require('../lib/disponibilidad-pais'), './pais-usuario': require('../lib/pais-usuario'), './transparencia-contenido': cargar('lib/transparencia-contenido.js') });
 const cifras = cargar('lib/inicio-cifras.js', { './ficha-editorial': require('../lib/ficha-editorial'), './transparencia': transparencia });
 
 /* Todas las cadenas de un objeto de textos, llamando a las plantillas con cifras de prueba. */

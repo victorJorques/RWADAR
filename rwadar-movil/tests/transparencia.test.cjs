@@ -25,7 +25,7 @@ function cargar(ruta, mocks = {}) {
 }
 
 const contenido = cargar('lib/transparencia-contenido.js');
-const t = cargar('lib/transparencia.js', { './transparencia-contenido': contenido });
+const t = cargar('lib/transparencia.js', { './disponibilidad-pais': require('../lib/disponibilidad-pais'), './pais-usuario': require('../lib/pais-usuario'), './transparencia-contenido': contenido });
 const { resumenOferta } = require('../lib/ficha-editorial');
 const fuente = 'https://www.example.test/kid.pdf';
 
@@ -58,7 +58,7 @@ test('una oferta documentada pasa las cinco comprobaciones y enseña sus puntos 
   const puntos = contenido.TRANSPARENCIA_POR_SLUG[o.slug].puntos.map((p) => p.texto);
   assert.ok(puntos.length >= 1);
   assert.deepEqual(t.puntosFuertesOferta(o).map((p) => p.texto), puntos);
-  assert.deepEqual(t.datosCortosOferta(o, r(o)), [['Mínimo', '1 €'], ['España', 'Sí, según la fuente'], ['Salida', 'Reembolso diario']]);
+  assert.deepEqual(t.datosCortosOferta(o, r(o)), [['Mínimo', '1 €'], ['España', 'Disponible, según la fuente'], ['Salida', 'Reembolso diario']]);
   const supervisada = lista.find((c) => c.id === 'supervisada');
   assert.equal(supervisada.deFuente, true);
   assert.match(supervisada.fuente.url, /^https:\/\/www\.cnmv\.es\//);

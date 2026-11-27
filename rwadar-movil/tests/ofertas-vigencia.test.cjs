@@ -219,6 +219,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
     '../lib/transparencia': cargarModulo('lib/transparencia.js', {
+      './disponibilidad-pais': require('../lib/disponibilidad-pais'), './pais-usuario': require('../lib/pais-usuario'),
       './transparencia-contenido': cargarModulo('lib/transparencia-contenido.js'),
     }),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo', imagenEditorial: () => null,
