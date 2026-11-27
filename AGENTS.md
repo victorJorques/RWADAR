@@ -42,7 +42,9 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   `aviso-usuarios` es la base de hechos; el titular se reescribe con gancho.
   Modelos (27/11): «Un token de Amazon que no es del todo tuyo. Te lo
   explicamos» y «De Hong Kong a Bermudas: 8 plataformas que no estaban en tu
-  radar». Sin invitar a invertir ni dar a entender lo que no está comprobado.
+  radar» y «Las catástrofes ya tienen token: los reaseguros. Y 7 sorpresas
+  más». Golpes de efecto sí, siempre ciertos; sin invitar a invertir ni dar a
+  entender lo que no está comprobado.
 
 **Investigación del catálogo: se prepara sola y se publica con la orden de
 Víctor.** Aplicar el SQL, publicar la web, enviar la OTA y avisar de la

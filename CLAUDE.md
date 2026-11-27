@@ -42,6 +42,9 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
   reescribe con gancho. Modelos elegidos el 27/11 (en lugar de «3 noticias
   nuevas del sector» o «8 plataformas nuevas en el radar»):
   «Un token de Amazon que no es del todo tuyo. Te lo explicamos» y «De Hong
-  Kong a Bermudas: 8 plataformas que no estaban en tu radar». Curiosidad e
-  ingenio sí; no: dar a entender que el lector ya tiene o puede comprar algo
-  que no hemos comprobado, invitar a invertir («invierte en…») ni sensacionalismo.
+  Kong a Bermudas: 8 plataformas que no estaban en tu radar» y «Las
+  catástrofes ya tienen token: los reaseguros. Y 7 sorpresas más» (Víctor:
+  «las catástrofes también venden»). Curiosidad, ingenio y golpes de efecto
+  sí, siempre ciertos; no: dar a entender que el lector ya tiene o puede
+  comprar algo que no hemos comprobado, ni invitar a invertir («invierte
+  en…», «invertir en…»).
