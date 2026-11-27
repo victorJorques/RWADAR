@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "fecha": "2026-11-27",
+  "generado": "2026-11-27T09:53:47.847Z",
+  "fuentes": [
+    {
+      "url": "https://www.poloniex.com/announcement/45050069368899",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 11883,
+      "sha256": "d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec",
+      "horaUtc": "2026-11-27T09:53:44.187Z",
+      "error": null
+    },
+    {
+      "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 237481,
+      "sha256": "1bf3874fd7011af35a271774fcb6f2630bcdfb893519273dea965dcacfb727e8",
+      "horaUtc": "2026-11-27T09:53:44.223Z",
+      "error": null
+    },
+    {
+      "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 128835,
+      "sha256": "35e2b34d8b6a11c24ec3307e452e018c481b41aeeb44686d51ba0eb1d017d9e2",
+      "horaUtc": "2026-11-27T09:53:44.224Z",
+      "error": null
+    },
+    {
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 82379,
+      "sha256": "1059809fa6eec30d6bbe53c22bc128e81d6812ac44d8d7c9cd62c536b50be698",
+      "horaUtc": "2026-11-27T09:53:44.225Z",
+      "error": null
+    },
+    {
+      "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 9449,
+      "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
+      "horaUtc": "2026-11-27T09:53:44.226Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 177715,
+      "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+      "horaUtc": "2026-11-27T09:53:44.227Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 101601,
+      "sha256": "f2f9428bb954ebdfc8047e5228d4d8c8b7140d539fa4ea32fa01c277283b8ed3",
+      "horaUtc": "2026-11-27T09:53:44.228Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 105540,
+      "sha256": "b3fb784a2ff9510c99291aa75b5c4ee7e79ef53cc65248ec1e067d8e9772348e",
+      "horaUtc": "2026-11-27T09:53:47.252Z",
+      "error": null
+    }
+  ]
+}

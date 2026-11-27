@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "pase": 1,
+  "fecha": "2026-11-27",
+  "edicionSha256": "2fa7d8fb0b8b51843274ff0c59ec7ddbe3d7225620c797dfeb7f899f938a40b3",
+  "veredicto": "conforme",
+  "noticias": [
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.poloniex.com/announcement/45050069368899",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:30Z",
+        "sha256": "d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec",
+        "caida": false
+      },
+      "literal": "Poloniex to Open Trading for 16 Tokenized Stocks and ETFs, Including MRVL, DRAM, SPY, LITE and BABA, from 05:00:00 (UTC) on November 27, 2026",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "La descarga simple solo trae el armazón (la huella es la de esa descarga); el texto se leyó con Chromium a las 09:56:15Z (HTTP 200). 16 pares en USDT a las 05:00 UTC del 27/11 (Apple, Microsoft, Amazon, SPY…), serie bStocks; respaldo 1 a 1 «según el emisor» y aviso de que el token no es la acción ni da voto. El lote de 21 es del anuncio del 25/11 (https://www.poloniex.com/announcement/45049898254247, fechado 2026/11/25)."
+    },
+    {
+      "id": "banco-japon-cinco-retos-tokenizacion",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:31Z",
+        "sha256": "1bf3874fd7011af35a271774fcb6f2630bcdfb893519273dea965dcacfb727e8",
+        "caida": false
+      },
+      "literal": "While these opportunities are significant, tokenization also raises five important challenges.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Discurso del 27/11/2026. Los cinco retos, el proyecto de pruebas (dinero de banco central en token, liquidación de deuda pública japonesa tokenizada) y «mejorar lo existente y explorar lo nuevo en paralelo» constan en el PDF."
+    },
+    {
+      "id": "21x-coinix-monetario-tokenizado",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:32Z",
+        "sha256": "09670cd07d1967fbac852ebb9ce79094d9f900c8659df77f0641350f21ed72b2",
+        "caida": false
+      },
+      "literal": "coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class, which made its secondary market debut on 21X in late September.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Comunicado del 26/11/2026 (ayer). El rendimiento durante el día y los saldos parados en monedas estables constan en la fuente."
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:33Z",
+        "sha256": "2a8c8799ea40fc782ca2733ce79a404fa9305e78892e6f96d47aa5a316646224",
+        "caida": false
+      },
+      "literal": "The Hong Kong Monetary Authority (HKMA) announced today (25 November) the official launch of CMU Digital Asset Platform (CMU DAP).",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Texto igual al publicado. Emisión, liquidación, cupones, amortización, tokenización de deuda existente, liquidación 24 h en varias monedas con tokens de efectivo y hoja de ruta (fondos y otros activos) constan."
+    },
+    {
+      "id": "sbi-solana-global-empieza-operar-japon",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:36Z",
+        "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
+        "caida": false
+      },
+      "literal": "they have completed a series of agreements for the transition to a new joint venture structure among the three parties, and that SBI R3 Japan Co., Ltd. has commenced full-scale operations as “SBI Solana Global Co., Ltd.”",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Comunicado del 25/11/2026; misma huella que el barrido. Texto igual al publicado."
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:55:09Z",
+        "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+        "caida": false
+      },
+      "literal": "La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales sobre las entidades no registradas que se adjuntan en el siguiente listado",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "PDF del 25/11/2026 (el primer intento a las 09:54:37Z lo cortó la conexión; el segundo respondió 200 con la misma huella que el barrido). Todas las entradas son de la FSMA (Bélgica) y una sola va marcada como clon."
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:47Z",
+        "sha256": "0bf76517fc4f5a3baaaff59877d90718907f8af6a91766067e47b86a0715d135",
+        "caida": false
+      },
+      "literal": "the European Central Bank has published a Tokenisation Reference Model (TRM) to support standardisation discussions with market participants.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Nota del 24/11/2026. Cinco capacidades (interoperabilidad, transferibilidad, portabilidad, controlabilidad, componibilidad) y aportación al grupo europeo de estándares de tokenización. Texto igual al publicado; solo cambia la foto (torre del BCE)."
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-27T09:54:48Z",
+        "sha256": "e1b9b5469550d73b1eeb4344aedceb9cd3bbb4232f99d6d5b0eeb21e6c8ee2db",
+        "caida": false
+      },
+      "literal": "The Governing Council of the European Central Bank (ECB) has approved the acceptance of marketable assets issued on DLT platforms licensed under the EU DLT Pilot Regime Regulation as eligible collateral for Eurosystem credit operations, subject to specific Eurosystem requirements.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Comunicado del 23/11/2026. Junio de 2027 y la liquidación en TARGET2-Securities constan. Texto igual al publicado; solo cambia la foto (monedas de euro)."
+    }
+  ],
+  "hoyCorrecto": true,
+  "faltaAlgo": [
+    "No hay en barrido.json nada de hoy o de ayer más importante que lo elegido (las novedades de la CNMV del 25/11 son una OPA y un sistema de negociación ajenos al sector). Observación sin efecto en el veredicto: para salir 8 noticias se retiran de la portada el monetario tokenizado en euros de Franklin Templeton (23/11, que según su comunicado se ofrecerá a minoristas en España), Singapur (26/11) y el oro del World Gold Council (24/11); el primero toca más de cerca al lector español que, por ejemplo, la empresa conjunta japonesa."
+  ],
+  "correcciones": []
+}
