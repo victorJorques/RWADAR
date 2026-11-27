@@ -39,5 +39,9 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
   la app»). Sin engañar: nada que no esté en lo publicado, ni promesas, ni
   «oportunidad», «rentabilidad», «garantiz…» o %. Lo que da
   `noticias-auto.mjs aviso-usuarios` es la base de hechos; el titular se
-  reescribe con gancho. Ejemplo (27/11): «¿Apple o Amazon en un token? Poloniex
-  ya los negocia» en lugar de «3 noticias nuevas del sector».
+  reescribe con gancho. Modelos elegidos el 27/11 (en lugar de «3 noticias
+  nuevas del sector» o «8 plataformas nuevas en el radar»):
+  «Un token de Amazon que no es del todo tuyo. Te lo explicamos» y «De Hong
+  Kong a Bermudas: 8 plataformas que no estaban en tu radar». Curiosidad e
+  ingenio sí; no: dar a entender que el lector ya tiene o puede comprar algo
+  que no hemos comprobado, invitar a invertir («invierte en…») ni sensacionalismo.
