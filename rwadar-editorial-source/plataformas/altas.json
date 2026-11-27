@@ -1,0 +1,306 @@
+{
+  "versionEsquema": 1,
+  "nota": "Fecha de alta de cada plataforma en el radar de RWAdar, para el orden «Más nuevas primero» de la lista de plataformas en la web y la app. Es un hecho del repositorio, no una estimación: el primer lote (rwadar-app/data/verificaciones/LOTE/radar-canonico-26.json) en que aparece la plataforma; las del catálogo inicial llevan la del primer lote guardado. Las entradas con «lote»: null se anotaron a mano y dicen su «origen». No es una recomendación de inversión. Se valida y se genera con node rwadar-editorial-source/plataformas/altas.mjs.",
+  "plataformas": {
+    "1exchange": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "addx": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "alterna": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "amundi": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "archax": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "assetera": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "backed-finance": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "backpack-securities": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "bit2me-stx": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "blackrock": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "blocksquare": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "bloktok": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "caliber": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "centrifuge": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "colb": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "conda": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "courtyard": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "cradle": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "ctrl-alt": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "daiwa-securities": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "digift": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "digishares": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "estating": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "etherfuse": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "ex-io": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "figure": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "finexity": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "fireblocks": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "franklin-templeton": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "groma": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "hashkey-rwa": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "hastra": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "hator": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "hsbc": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "hwk-1365": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "inx": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "libeara": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "liqi": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "lofty": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "luxivana": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "m3sixty": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "maple-finance": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "mesh": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "midas": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "oaksvale": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "obligate": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "okxice": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "ondo-finance": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "onre": {
+      "anadidaEl": "2026-11-27",
+      "lote": "2026-11-27-v2"
+    },
+    "openeden": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "osl": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "pax-gold": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "pruv": {
+      "anadidaEl": "2026-11-27",
+      "lote": null,
+      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+    },
+    "prypco-mint": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "raiz": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "real-tokn": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "reental": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "republic": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "sdax": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "securitize": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "seturion": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "shard": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "spiko": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "superstate": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "swarm": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "tangiblex": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "taurus": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "terazo": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "tohkn": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.3-v2"
+    },
+    "tokeniza": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "tokeny": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    },
+    "tokinvest": {
+      "anadidaEl": "2026-11-26",
+      "lote": "2026-11-26.4-v2"
+    },
+    "tzero": {
+      "anadidaEl": "2026-09-21",
+      "lote": "2026-09-21"
+    }
+  }
+}

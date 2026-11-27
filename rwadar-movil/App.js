@@ -62,6 +62,7 @@ import {
 import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
+import { ordenarPlataformasMasNuevas } from './lib/orden-plataformas';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 import { PantallaNovedades, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
 import { estadoAvisosMovil, textosNovedades } from './lib/novedades-rwadar';
@@ -544,7 +545,8 @@ export default function App() {
 
   const visibles = useMemo(() => {
     const q = busqueda.trim().toLowerCase();
-    return radar.filter((p) => {
+    // Las más nuevas primero (27/11/2026), como la web; sin fecha, al final y por nombre.
+    return ordenarPlataformasMasNuevas(radar.filter((p) => {
       if (categoria && p.categoria !== categoria) return false;
       if (!q) return true;
       const verificacion = p.verificacionLocal;
@@ -559,7 +561,7 @@ export default function App() {
       return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado,
         traducir(p.region, 'en'), traducir(p.categoria, 'en'), traducir(p.actor, 'en')]
         .join(' ').toLowerCase().includes(q);
-    });
+    }));
   }, [radar, busqueda, categoria]);
 
   const todasOfertas = useMemo(() => [...ofertas, ...secundario, ...enCamino], [ofertas, secundario, enCamino]);

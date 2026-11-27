@@ -1582,7 +1582,6 @@ body.detalle-local-abierto{overflow:hidden}
     padding:10px;border:var(--bd);border-radius:var(--r-m);background:var(--sup)}
   #movilPanelRadar .filtros-avanzados.abiertos{display:grid}
   #movilPanelRadar .filtros-avanzados select{min-height:48px}
-  #movilPanelRadar .filtros-avanzados select:nth-of-type(3),
   #movilPanelRadar .filtros-avanzados .limpiar{grid-column:1/-1}
   #movilPanelRadar .filtros-avanzados .limpiar{border-top:var(--bd)}
 

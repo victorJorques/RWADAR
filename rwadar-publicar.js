@@ -435,10 +435,20 @@ if (!capturado.emiLista || capturado.emiLista.length < 100) {
 /* Cada elemento de P genera exactamente una ficha tradicional y una portada
    móvil. La portada es ahora el acceso principal en la PWA: una sincronización
    que renombre o añada una plataforma no puede publicar una ruta rota. */
+/* La rejilla sale en el orden de filtered() («Más nuevas primero» desde el
+   27/11/2026), no en el de P: se comprueba en ese orden y que sea P entera. */
 const nombresPlataformas = Array.from(
-  vm.runInContext('P.map(plataforma => plataforma.n)', contexto, { timeout: 1000 }),
+  vm.runInContext('filtered().map(plataforma => plataforma.n)', contexto, { timeout: 1000 }),
   nombre => String(nombre)
 );
+{
+  const todas = Array.from(vm.runInContext('P.map(plataforma => plataforma.n)', contexto, { timeout: 1000 }), String);
+  if (nombresPlataformas.length !== todas.length ||
+      [...nombresPlataformas].sort().join('\n') !== [...todas].sort().join('\n')) {
+    console.error('ERROR: la rejilla pre-renderizada no contiene exactamente las plataformas de P.');
+    process.exit(1);
+  }
+}
 const slugPortada = nombre => nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 

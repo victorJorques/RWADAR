@@ -1495,14 +1495,29 @@ prueba('las portadas explican qué muestran y conservan el encuadre editorial el
     ['cover', 'contain'].includes(entrada?.encuadre) && /^\d+% \d+%$/.test(entrada?.foco || '') &&
     /(?:no|ni) implica afiliación, patrocinio (?:ni|o) recomendación de inversión/i.test(entrada?.uso || '') &&
     Number(entrada?.revisionPortada) >= 6));
+/* La rejilla pre-renderizada va «Más nuevas primero» (27/11/2026): por fecha de alta
+   de altas.json, de la más nueva a la más antigua; a igual fecha, por nombre; sin
+   fecha, al final. data-abrir sigue siendo el índice en P. */
+const altasPlataformas = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/plataformas/altas.json'), 'utf8')).plataformas;
+const altaFuente = p => altasPlataformas[p.slug]?.anadidaEl || '';
+const ordenRejillaEsperado = plataformasFuente.map((p, i) => i)
+  .sort((a, b) => altaFuente(plataformasFuente[b]).localeCompare(altaFuente(plataformasFuente[a])) ||
+    String(plataformasFuente[a].n).localeCompare(String(plataformasFuente[b].n), 'es'));
+const indicesRejilla = botonesEmpresaVisual.map(b => Number(atributoHTML(b[2], 'data-abrir')));
+prueba('la rejilla estática enseña primero las plataformas más nuevas (fecha de alta y, a igual fecha, nombre)',
+  indicesRejilla.length === N_PLATAFORMAS && indicesRejilla.join() === ordenRejillaEsperado.join() &&
+  plataformasFuente.every(p => altaFuente(p) !== '') &&
+  altaFuente(plataformasFuente[indicesRejilla[0]]) === plataformasFuente.map(altaFuente).sort().at(-1) &&
+  altaFuente(plataformasFuente[indicesRejilla.at(-1)]) === plataformasFuente.map(altaFuente).sort()[0]);
 prueba('cada portada móvil es el botón accesible que abre su ficha y carga la imagen de forma eficiente',
   botonesEmpresaVisual.length === N_PLATAFORMAS && imagenesEmpresaVisual.length === N_PLATAFORMAS &&
-  botonesEmpresaVisual.every((b, i) => atributoHTML(b[2], 'type') === 'button' &&
+  new Set(indicesRejilla).size === N_PLATAFORMAS && indicesRejilla.every(i => Number.isInteger(i) && i >= 0 && i < N_PLATAFORMAS) &&
+  botonesEmpresaVisual.every((b, k) => { const i = indicesRejilla[k]; return atributoHTML(b[2], 'type') === 'button' &&
     atributoHTML(b[2], 'data-abrir') === String(i) &&
     atributoHTML(b[2], 'aria-label') === `Abrir la ficha de ${plataformasFuente[i].n}${
       portadasPorEmpresa.get(plataformasFuente[i].n)?.origenVisual === 'representacion-editorial-generada'
         ? '; portada ilustrativa' : ''}` &&
-    atributoHTML(imagenesEmpresaVisual[i]?.[2] || '', 'src') === rutasPortada[i]) &&
+    atributoHTML(imagenesEmpresaVisual[k]?.[2] || '', 'src') === rutasPortada[i]; }) &&
   imagenesEmpresaVisual.every(img => atributoHTML(img[2], 'alt') === '' &&
     atributoHTML(img[2], 'width') === '720' && atributoHTML(img[2], 'height') === '720' &&
     atributoHTML(img[2], 'decoding') === 'async' &&
@@ -2415,6 +2430,42 @@ probarFocoAlCerrarFicha({ p: pestanaCatalogo(), prueba });
   // El círculo de selección mide9+0.6 de trazo; el halo llega a3.4x3.4.
   prueba(`las ${N_PLATAFORMAS} plataformas quedan dentro del radar con punto, anillo y halo de hover/foco completos`,
     puntos.length===N_PLATAFORMAS&&puntos.every(({x,y})=>Math.hypot(x-200,y-200)+11.56+2<=140.1));
+  // Plataformas «Más nuevas primero» (27/11/2026): orden por defecto, selector «Por nombre» y matriz.
+  {
+    const c=p.contexto;
+    const r=JSON.parse(vm.runInContext(`(()=>{
+      const alta=s=>Object.hasOwn(ALTA_PLATAFORMA_POR_SLUG,s)?ALTA_PLATAFORMA_POR_SLUG[s]:'';
+      const porDefecto=filtered(),ordInicial=S2.ord;
+      const bienOrdenada=porDefecto.every((x,i,l)=>!i||alta(l[i-1].slug)>alta(x.slug)||
+        (alta(l[i-1].slug)===alta(x.slug)&&l[i-1].n.localeCompare(x.n,'es')<=0));
+      const enRejilla=[...document.getElementById('grid').innerHTML.matchAll(/class="empresa-visual__abrir" data-abrir="(\\d+)"/g)].map(m=>P[Number(m[1])].slug);
+      S2.view='matrix';render();
+      const enMatriz=[...document.getElementById('matrix').innerHTML.matchAll(/data-abrir="(\\d+)"/g)].map(m=>P[Number(m[1])].slug).filter((s,i,l)=>l.indexOf(s)===i);
+      S2.view='grid';
+      const sel=document.getElementById('fOrd');sel.value='nombre';sel.onchange({target:sel});
+      const porNombre=filtered().map(x=>x.n);
+      S2.cat=P[0].cat;render();const filtradaNueva=filtered();S2.cat='';
+      sel.value='nuevas';sel.onchange({target:sel});
+      const vuelta=filtered().map(x=>x.slug);
+      /* Una plataforma sin fecha (p. ej. llegada del catálogo remoto antes de publicar la web) va al final, por nombre. */
+      const sinFecha=[{slug:'zz-sin-fecha-b',n:'Bbb'},{slug:'zz-sin-fecha-a',n:'Aaa'},porDefecto[porDefecto.length-1],porDefecto[0]].sort(plataformasMasNuevasPrimero).map(x=>x.slug);
+      return JSON.stringify({ordInicial,n:porDefecto.length,bienOrdenada,primera:alta(porDefecto[0].slug),max:P.map(x=>alta(x.slug)).sort().at(-1),
+        defecto:porDefecto.map(x=>x.slug),enRejilla,enMatriz,porNombre,
+        matrizEsperada:Object.keys(CATMETA).flatMap(k=>[...ACCESOS,''].flatMap(a=>porDefecto.filter(x=>x.cat===k&&accesoClasificado(x)===a))).map(x=>x.slug),nombresP:P.map(x=>x.n).sort((a,b)=>a.localeCompare(b,'es')),
+        filtradaNueva:filtradaNueva.map(x=>x.slug),vuelta,sinFecha,primeraUltima:[porDefecto[0].slug,porDefecto[porDefecto.length-1].slug],
+        todasConFecha:P.every(x=>alta(x.slug)!==''),resetConserva:(()=>{S2.ord='nombre';resetAll();const o=S2.ord;S2.ord='nuevas';render();return o})()})})()`,c));
+    prueba('Plataformas: por defecto «Más nuevas primero» (fecha de alta y, a igual fecha, nombre) y toda P con su fecha',
+      r.ordInicial==='nuevas'&&r.n===N_PLATAFORMAS&&r.bienOrdenada&&r.todasConFecha&&r.primera===r.max&&r.primera>='2026-11-27');
+    prueba('Plataformas: la rejilla sigue el orden de filtered() y la tabla lo conserva dentro de cada casilla, con todas',
+      r.enRejilla.join()===r.defecto.join()&&r.enMatriz.join()===r.matrizEsperada.join()&&r.enMatriz.length===N_PLATAFORMAS);
+    prueba('Plataformas: «Por nombre (A-Z)» vuelve al orden alfabético y «Más nuevas primero» lo deshace; limpiar filtros conserva el orden',
+      r.porNombre.join('|')===r.nombresP.join('|')&&r.vuelta.join()===r.defecto.join()&&r.resetConserva==='nombre'&&
+      r.filtradaNueva.length>0&&r.filtradaNueva.every(s=>r.defecto.includes(s)));
+    prueba('Plataformas: una plataforma sin fecha de alta no rompe nada y va al final, por nombre',
+      r.sinFecha.join()===[r.primeraUltima[0],r.primeraUltima[1],'zz-sin-fecha-a','zz-sin-fecha-b'].join());
+    prueba('Plataformas: el selector de orden está en la barra de filtros con sus dos opciones',
+      /<select id="fOrd" aria-label="Ordenar plataformas"><option value="nuevas" selected>Más nuevas primero<\/option><option value="nombre">Por nombre \(A-Z\)<\/option><\/select>/.test(html));
+  }
   vm.runInContext('renderMatrix(P)',p.contexto);
   prueba('la matriz conserva todas las plataformas y separa el acceso sin comprobar sin asignar permiso histórico',
     (p.obtiene('matrix').innerHTML.match(/data-abrir=/g)||[]).length===N_PLATAFORMAS&&/<th>Sin comprobar<\/th>/.test(p.obtiene('matrix').innerHTML));

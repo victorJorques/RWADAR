@@ -168,6 +168,6 @@ export async function despues(opciones = {}) {
     (puntosViejos.length ? ' Se quedan:\n' + puntosViejos.map(p => `  · ${p.slug}: ${p.titulo}`).join('\n') : ''));
   log('Mínimos cortos: ' + [...CORTOS].map(s => `${s} «${valida.ofertas[s].minimoCorto}»`).join(', '));
   for (const x of TEXTOS) log(`${x.slug} · ${x.campo}: «${valorEn(valida.ofertas[x.slug], x.campo)}»`);
-  log('Siguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-fichas.js && npm test');
+  log('Siguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-editorial-source/plataformas/altas.mjs && node rwadar-fichas.js && npm test');
   return { cambios, destino, fechas, puntos, cortos: [...CORTOS] };
 }

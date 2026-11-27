@@ -273,8 +273,10 @@ Trampas conocidas:
 4. En una rama nueva desde `main`: `node rwadar-app/sincronizar.js`,
    `node rwadar-app/data/verificaciones/<etiqueta>-v2/despues-de-aplicar.mjs`,
    `node rwadar-app/volcar-seed.js`,
-   `node rwadar-editorial-source/ofertas/transparencia.mjs`, otra vez
-   `node rwadar-fichas.js` y `npm test`. Commit. Después el **sello**, con el
+   `node rwadar-editorial-source/ofertas/transparencia.mjs`,
+   `node rwadar-editorial-source/plataformas/altas.mjs` (fecha de alta de las
+   plataformas nuevas, desde el lote, para «Más nuevas primero»; si hay altas,
+   cambia la app y pide OTA), otra vez `node rwadar-fichas.js` y `npm test`. Commit. Después el **sello**, con el
    árbol limpio: `node .claude/skills/investigacion-catalogo/sellar.cjs "nota"`
    (pone en `estado.json` el commit actual y la huella del contenido) y commit
    aparte de `estado.json`. PR y merge.
