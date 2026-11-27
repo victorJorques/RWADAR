@@ -34,6 +34,12 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   también se avisa cuando una edición de noticias publicada trae alguna noticia
   que no estaba (`noticias-auto.mjs aviso-usuarios` da el título, el texto y el
   enlace), una vez al día como mucho y nunca si solo se volvieron a comprobar.
+  **Con gancho (Víctor, 27/11/2026: «escribir con gancho la notificación a la
+  gente para que entren a la app y la web»):** título y texto que den ganas de
+  abrir el aviso (lo más llamativo y concreto primero, una invitación a
+  entrar), sin decir nada que no esté publicado, sin promesas y sin
+  «oportunidad», «rentabilidad», «garantiz…» ni %. El texto de
+  `aviso-usuarios` es la base de hechos; el titular se reescribe con gancho.
 
 **Investigación del catálogo: se prepara sola y se publica con la orden de
 Víctor.** Aplicar el SQL, publicar la web, enviar la OTA y avisar de la
