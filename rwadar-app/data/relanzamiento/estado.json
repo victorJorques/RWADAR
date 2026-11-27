@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Web: el lector conserva la disponibilidad por país",
+  "nota": "Limpieza de código sin uso",
   "revisionAprobada": {
-    "commit": "12e38fa00692d1e58a363b712486cb2ab0ec0c89",
-    "contenidoSha256": "sha256:d007f77d4d24bc380695d3f43eb7df158b145728439e1172c7a695e26f63c582",
+    "commit": "9a71da21cd81eea07eaca9c250fa1c7ffbf96af6",
+    "contenidoSha256": "sha256:55cb1688bb59ad881dd97a6c94c22d23b6184bed19c419cc716b54d60553ae48",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
