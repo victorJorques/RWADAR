@@ -1,0 +1,69 @@
+{
+  "nota": "Portadas de las 8 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
+  "portadas": [
+    {
+      "empresa": "HWK 1365",
+      "maestro": "hwk-1365.webp",
+      "semilla": 931,
+      "descripcionVisual": "Una fundición antigua de ladrillo en un pueblo del sur de Alemania, por la empresa industrial que emite el bono.",
+      "prompt": "old brick foundry building with tall chimney beside a river in a small southern German village, autumn forest, overcast morning",
+      "paginaReferencia": "https://www.hwk1365.de/anleihe/"
+    },
+    {
+      "empresa": "HSBC",
+      "maestro": "hsbc.webp",
+      "semilla": 937,
+      "descripcionVisual": "Rascacielos del distrito Central de Hong Kong al atardecer, por su negocio en Hong Kong; no es la sede del banco.",
+      "prompt": "dense skyscrapers of Hong Kong Central district seen from across the harbour at dusk, calm water, no logos",
+      "paginaReferencia": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+    },
+    {
+      "empresa": "Daiwa Securities",
+      "maestro": "daiwa-securities.webp",
+      "semilla": 941,
+      "descripcionVisual": "Una calle de oficinas de Tokio con árboles en otoño, por la casa de valores japonesa.",
+      "prompt": "quiet street lined with office buildings and ginkgo trees in autumn in central Tokyo, early morning, no signs",
+      "paginaReferencia": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+    },
+    {
+      "empresa": "EX.IO",
+      "maestro": "ex-io.webp",
+      "semilla": 961,
+      "descripcionVisual": "El puerto Victoria de Hong Kong de día, con un ferry cruzando, por la plataforma de Hong Kong; no es su oficina.",
+      "prompt": "Victoria Harbour in Hong Kong in daylight with a green and white ferry crossing, skyline behind, clear sky, no logos",
+      "paginaReferencia": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+    },
+    {
+      "empresa": "OSL",
+      "maestro": "osl.webp",
+      "semilla": 967,
+      "descripcionVisual": "Torres de oficinas de Hong Kong entre la niebla de la mañana, por la plataforma de activos digitales de Hong Kong; no es su sede.",
+      "prompt": "tall glass office towers in Hong Kong rising through morning mist, seen from a hillside, soft natural light, no logos",
+      "paginaReferencia": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
+    },
+    {
+      "empresa": "CONDA",
+      "maestro": "conda.webp",
+      "semilla": 983,
+      "descripcionVisual": "Una calle de una ciudad centroeuropea con edificios clásicos y tranvía, imagen genérica de la plataforma de financiación participativa; no es su oficina.",
+      "prompt": "empty classic central European city street with historic facades and a parked tram at dawn, deserted, soft natural light, no signs",
+      "paginaReferencia": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
+    },
+    {
+      "empresa": "1exchange",
+      "maestro": "1exchange.webp",
+      "semilla": 991,
+      "descripcionVisual": "El paseo junto a la bahía de Marina Bay, en Singapur, por la mañana, por el mercado de Singapur; no es su oficina.",
+      "prompt": "empty waterfront promenade at Marina Bay in Singapore in the early morning, calm water, city towers behind, soft natural light, no logos",
+      "paginaReferencia": "https://www.1x.exchange/investment-opportunities"
+    },
+    {
+      "empresa": "Pruv",
+      "maestro": "pruv.webp",
+      "semilla": 997,
+      "descripcionVisual": "Torres de oficinas de Yakarta al amanecer, por la plataforma de Indonesia; no es su oficina.",
+      "prompt": "skyline of office towers in central Jakarta at sunrise seen from a distance, light haze, soft natural light, no logos",
+      "paginaReferencia": "https://pruv.finance/"
+    }
+  ]
+}

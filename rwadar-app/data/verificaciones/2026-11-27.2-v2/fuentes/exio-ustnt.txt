@@ -1,0 +1,53 @@
+Trading
+RWA+
+Insights
+Custody
+Login
+Register
+Support center
+/
+Announcements
+/
+New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO
+New Product Offering: US Treasury Note Token (USTNT) is Now Available on EX.IO
+Hong Kong
+Posted 2026-11-24
+
+Dear EX.IO Customers,
+
+We are pleased to announce that EX.IO has officially launched US Treasury Note Token (USTNT), a tokenised product linked to specified U.S. Treasury securities. This product is currently available to Professional Investors (PI) only.
+
+About US Treasury Note Token (USTNT)
+
+USTNT comprises beneficiary certificate tokens issued by Rukhex Technology Limited, representing beneficial interests in specified U.S. Treasury securities and related cash held under a bare trust arrangement with Nakamoto Technology Limited as designated custodian / bare trustee. Holder rights are determined by an off-chain register maintained by Rukhex.
+
+Product Information & Feature Summary:
+
+Product Name: US Treasury Note Token (USTNT) ／美国国债代币
+Ticker Symbols: USTNT912810UU06 and USTNT912810RE01 (product family: USTNT)
+Eligible User Type: Professional Investors (PI) only; KYC/AML and sanctions requirements apply
+Underlying Securities: US912810UU06 — 5.000% coupon, maturity 15 May 2056; US912810RE01 — 3.625% coupon, maturity 15 February 2044
+Deployed Network: Ethereum (ETH)
+Base / Settlement Currency: USD
+Minimum Subscription: USD 1,000; subscriptions and redemptions on Hong Kong Business Days, 14:30 HKT cut-off
+Interest: Underlying U.S. Treasury coupons are paid semi-annually; distributions to token holders are scheduled within T+7 after trustee receipt
+
+If you’d like to learn more about this product, please feel free to visit our RWA Market page & contact our team.
+
+Important Notice:
+
+USTNT tokens cannot be withdrawn from EX.IO under the proposed custody arrangement. The product is classified as a complex, very-high-risk [P5] security and is not equivalent to direct ownership of U.S. government bonds. Although the underlying securities have observable market prices, the certificate is not independently rated and no reliable secondary-market liquidity has been established.
+
+Subscriptions are based on the acquisition price of the relevant underlying Treasury security. Redemption depends on sale of the attributable underlying securities and actual receipt of proceeds by the custodian; payment is expected within three business days following such settlement and receipt, subject to the governing terms, including issuer discretion to delay or reject requests in specified circumstances.
+
+For further information, please consult the product documents and EX.IO’s RWA product information.
+
+About EX.IO
+
+EX.IO is a rigorously regulated virtual asset trading platform (VATP). Since receiving approval from Hong Kong’s Securities and Futures Commission (SFC) in December 2024, it has been among the first platforms authorised to operate under Hong Kong’s “deemed-to-be-licensed” regime. It is also the only VATP included in Hong Kong’s Office for Attracting Strategic Enterprises (OASES) programme. EX.IO is committed to building a bridge between traditional finance (Web2) and the Web3 ecosystem, providing clients with compliant trading, payments and settlement, and a broad range of value-added financial services.
+
+Disclaimer
+
+The content herein is for informational purposes only. Virtual asset prices involve significant market risk and volatility. Other investment products also involve risk, and the level of risk varies from product to product. The value of your investment may go down as well as up, and you may not recover the amount invested. Please refer to our Risk Disclosure Statement for further information. You are solely responsible for your investment decisions, and EX.IO accepts no liability for any losses you may incur. You should only invest in products you understand and whose risks you are familiar with. Before making any investment, you should carefully consider your investment experience, financial situation, investment objectives and risk tolerance, and consult an independent financial adviser. Past performance is not a reliable indicator of future results. Content on our platform does not constitute opinions or recommendations and should not be regarded as financial advice.
+
+© 2026 EX.IO | All Rights Reserved

@@ -1,0 +1,129 @@
+How it works
+What you can buy
+Tokenise with us
+Questions
+Log in
+Open app
+All case studies
+The first regulated build-to-rent token
+
+We have tokenised Great Hampton Street Works, a Grade II listed former button factory in Birmingham’s Jewellery Quarter, now 29 tenanted apartments. The owner keeps 20% and is offering the rest to investors as tokens from AED 100,000, with a target raise of £6.84m. The offer is now open.
+
+WHY TOKENISE WITH US
+£6.84m
+Target raise, without selling the building
+20%
+Kept by the owner
+VARA
+Regulated token, issued under our licence
+2 routes
+To investors: our marketplace and API Global’s partner firms
+Asset
+Great Hampton Street Works, 80-82 Great Hampton Street, Birmingham: 29 apartments, all tenanted
+Owner
+Great Hampton Street Button Works
+Valuation
+£8.55m including furniture (independent RICS Red Book valuation, March 2026)
+Raise
+£6.84m target, £5.2m minimum, all-or-nothing; owner retains 20%
+Minimum investment
+AED 100,000 (1,000 tokens)
+Structure
+ARVA issued by Tokinvest FZCO, regulated by VARA
+Custody and chain
+Hex Trust (tokens), Zand Bank (client money), BNB Chain
+Status
+Offer open since August 2026
+The owner and the asset
+
+The building at 80-82 Great Hampton Street was built in 1872 as a button factory. Its Victorian Gothic front is by the architect [nombre retirado]. It is Grade II listed and sits in the Jewellery Quarter Conservation Area.
+
+It has been restored and converted into 29 apartments. The conversion was approved after consultation with Birmingham City Council, Historic England, The Victorian Society and AB Heritage. The refurbishment featured in the 2025 Midlands Structural Awards in the Building Refurbishment category.
+
+The building is owned by Great Hampton Street Button Works, whose director is [nombre retirado]. It is complete and let, with no construction risk, no lease-up period and no ground rent. Nurtured Homes and Martin & Co handle letting and management. API Global sourced and vetted the building for us and is our exclusive distributor for this product.
+
+Why tokenise
+
+The owner wanted to reach international investors who would not normally buy into a single UK building, without selling it.
+
+A finished, fully let block like this is usually sold whole to an institution, or flat by flat. Flats on the open market start at around £290,000 each, which shuts out many buyers who want property income but cannot fund a whole unit or would rather not take a mortgage.
+
+Tokenising lets the owner raise up to £6.84m against the £8.55m valuation while keeping a 20% stake, the building and the existing managers. It also opens the building to investors from AED 100,000, both directly and through property advisers who already sell physical units to their clients.
+
+What we did
+
+We issued the token as an asset-referenced virtual asset (ARVA) through Tokinvest FZCO, under our VARA licence. An ARVA is a token whose value refers to a real-world asset, issued under VARA’s rules.
+
+The building stays in its owning company. Under a Property Rights Agreement, the owner granted Tokinvest the economic rights to the building’s net rent and net sale proceeds, and Tokinvest holds a charge registered at HM Land Registry. Token holders receive a share of the rent and of the proceeds when the building is sold. They do not own the building, hold title or have a landlord’s rights.
+
+The raise is all-or-nothing: if the £5.2m minimum is not reached, no tokens are issued and investors get their money back. Subscriptions go into a client money account at Zand Bank. Investor checks take about five minutes, and tokens are delivered within two working days. Tokens are issued on BNB Chain and held by Hex Trust, with ERC-1404 transfer restrictions so they move only between verified, eligible investors.
+
+Rent is paid monthly in AED, starting once the building is fully funded. A sale of the building is scheduled for ten years after the initial sell-out. Before then, holders can sell to other eligible investors on the Tokinvest marketplace. There is no redemption right.
+
+Where it stands
+
+The offer opened in August 2026 and is taking subscriptions now, directly on the Tokinvest marketplace and through API Global’s partner firms. If the £5.2m minimum is reached, tokens are issued and rent payments follow; if it is not, every investor is refunded in full. We will update this page with the amount raised and the first distributions.
+
+For us, this is not only about one property. It is about participating in a new model for how quality real estate assets can connect with international pools of capital.
+[nombre retirado], Director, Great Hampton Street Button Works
+Tokenise with us
+
+If you own a completed, let residential or commercial building and want to raise against it without selling it whole or flat by flat, we can structure the product, issue the token under our VARA licence and bring it to investors through our marketplace and distribution partners.
+
+Apply to tokenise
+More case studies
+A record silver bar, split into tokens
+A global money market fund, on chain
+Private credit, reimagined
+The world’s first tokenised racehorse
+tokinvest
+
+Office 4, Level 12, Uptown Tower, Jumeirah Lakes Towers, Dubai
+
+REGULATED BY
+
+TOKENISE
+
+Tokenise with us
+Case studies
+Apply to tokenise
+
+PRODUCTS
+
+Property
+Bonds
+Racehorses
+Commodities
+Funds
+Great Hampton Street Works
+
+LEARN
+
+Insights and news
+Questions
+Help Center
+
+COMPANY
+
+About us
+Partners
+Contact us
+
+LEGAL
+
+Risk disclosure statement
+Complaints policy
+Security and scam warnings
+Conflict of interest policy
+Brokerage services terms
+Virtual assets standards
+Whistleblowing policy
+Reporting bribery and corruption
+
+Tokinvest FZCO (DMCC-928046) is licensed by the Dubai Virtual Assets Regulatory Authority (VL/2024/12/004) to provide Virtual Asset Broker Dealer Services and Category 1 VA Issuance. CMA Registration Number: CMA-VASP-0100000-0025.
+
+Capital at risk. Virtual assets may lose some or all of their value and may be subject to extreme volatility. You may lose all money invested and do not benefit from any form of financial protection. Past performance is not a guide to future returns. Investments are subject to eligibility and jurisdictional restrictions. Not available to U.S. persons.
+
+Landline: (04) 824 4146
+Website terms of use
+Privacy and cookie policy

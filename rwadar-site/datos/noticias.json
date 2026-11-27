@@ -10,11 +10,11 @@
       "categoria": "producto",
       "ambito": "Mundo",
       "titulo": "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
-      "resumen": "El mercado de criptoactivos Poloniex abrió el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "resumen": "El mercado de criptoactivos Poloniex abre el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
       "porQueImporta": "El propio anuncio avisa de que tener el token no es tener la acción y no da derecho a voto. Según el emisor, cada token está respaldado 1 a 1 por una acción guardada en un intermediario regulado de EE. UU.",
       "en": {
         "titulo": "Poloniex opens trading in 16 tokenised US stocks and ETFs",
-        "resumen": "Crypto exchange Poloniex opened USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+        "resumen": "Crypto exchange Poloniex opens USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
         "porQueImporta": "The announcement itself warns that holding the token is not owning the share and carries no voting rights. According to the issuer, each token is backed 1:1 by a share held at a regulated US broker-dealer.",
         "tituloInformativo": "Poloniex opens spot trading in 16 bStocks tokenised US stocks and ETFs"
       },
@@ -50,9 +50,32 @@
       "tituloInformativo": "Un director ejecutivo del Banco de Japón expone cinco retos de la tokenización y su proyecto de pruebas"
     },
     {
-      "id": "21x-coinix-monetario-tokenizado",
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
       "fecha": "2026-11-26",
       "seccion": "hoy",
+      "categoria": "regulacion",
+      "ambito": "Mundo",
+      "titulo": "Los supervisores de Canadá buscan proyectos tokenizados",
+      "resumen": "Los supervisores de valores de Canadá (CSA) abren el 26/11 la fase 2 de su proyecto de tokenización: invitan a las empresas a presentar productos, servicios, infraestructuras y modelos de negocio tokenizados hasta el 26/03/2027, para ver con ellas cómo encajan en las normas actuales.",
+      "porQueImporta": "En la fase 1 participaron 233 organizaciones. Ahora los supervisores pasan a trabajar con proyectos concretos y podrían publicar guías o cambios. Presentar una propuesta no es una autorización ni cambia las leyes.",
+      "en": {
+        "titulo": "Canadian regulators seek tokenised projects",
+        "resumen": "Canada’s securities regulators (CSA) launch phase 2 of their tokenisation project on 26/11, inviting firms to submit tokenised products, services, infrastructure and business models by 26/03/2027 to work out how existing rules apply.",
+        "porQueImporta": "Phase 1 involved 233 organisations. Regulators now move to specific projects and may issue guidance or policy changes. Submitting a proposal is not an approval and does not change the law.",
+        "tituloInformativo": "Canadian Securities Administrators launch phase 2 of Project Tokenization and invite proposals"
+      },
+      "fuente": {
+        "nombre": "Comisión de Valores de Alberta, comunicado de los supervisores canadienses (CSA) del 26/11/2026",
+        "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-27",
+      "tituloInformativo": "Los supervisores de valores de Canadá abren la fase 2 de su proyecto de tokenización y piden propuestas"
+    },
+    {
+      "id": "21x-coinix-monetario-tokenizado",
+      "fecha": "2026-11-26",
+      "seccion": "importante",
       "categoria": "mercado",
       "ambito": "UE",
       "titulo": "coinIX ya opera con un monetario tokenizado en 21X",
@@ -96,29 +119,6 @@
       "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada"
     },
     {
-      "id": "sbi-solana-global-empieza-operar-japon",
-      "fecha": "2026-11-25",
-      "seccion": "importante",
-      "categoria": "mercado",
-      "ambito": "Mundo",
-      "titulo": "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
-      "resumen": "SBI Holdings, el grupo bancario Sumitomo Mitsui y la Fundación Solana cierran los acuerdos de su empresa conjunta, SBI Solana Global, que empieza a operar. Quiere trabajar en pagos con monedas estables, tokenización de activos financieros y reales y gestión de activos en cadena.",
-      "porQueImporta": "Es una empresa para desarrollar ese negocio en Japón y Asia, no un producto en el que se pueda invertir. Muestra que grandes bancos japoneses entran en la tokenización.",
-      "en": {
-        "titulo": "SBI and SMBC launch an on-chain finance company in Japan",
-        "resumen": "SBI Holdings, Sumitomo Mitsui Financial Group and the Solana Foundation complete the agreements for their joint venture, SBI Solana Global, which begins operations. It plans to work on stablecoin payments, tokenisation of financial and real-world assets and on-chain asset management.",
-        "porQueImporta": "It is a company to build that business in Japan and Asia, not a product you can invest in. It shows large Japanese banks moving into tokenisation.",
-        "tituloInformativo": "SBI, SMBC Group and the Solana Foundation start operations at their joint venture SBI Solana Global"
-      },
-      "fuente": {
-        "nombre": "SBI Solana Global, comunicado del 25/11/2026 sobre el inicio de operaciones",
-        "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
-        "tipo": "empresa"
-      },
-      "consultadaEl": "2026-11-27",
-      "tituloInformativo": "SBI Holdings, el grupo Sumitomo Mitsui y la Fundación Solana ponen en marcha su empresa conjunta SBI Solana Global"
-    },
-    {
       "id": "cnmv-avisa-entidades-belgica-25-noviembre",
       "fecha": "2026-11-25",
       "seccion": "importante",
@@ -142,27 +142,27 @@
       "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas"
     },
     {
-      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "id": "suiza-snb-registro-financiero-comun",
       "fecha": "2026-11-24",
       "seccion": "importante",
-      "categoria": "regulacion",
-      "ambito": "UE",
-      "titulo": "El BCE propone criterios comunes para la tokenización",
-      "resumen": "El BCE propone un modelo de referencia con cinco criterios para conectar mercados tokenizados. Entre ellos figuran que las redes puedan comunicarse, que los activos se puedan mover y que se mantenga el control sobre sus reglas.",
-      "porQueImporta": "El marco servirá como aportación al trabajo del grupo europeo de estándares de tokenización. Compartir criterios técnicos podría reducir la fragmentación entre plataformas.",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Suiza estudia un registro común de valores y dinero digital",
+      "resumen": "El Banco Nacional Suizo y ocho entidades, entre ellas UBS, SIX y Sygnum, empiezan un proyecto exploratorio: un registro con tecnología de registro distribuido donde convivan el dinero del banco central, el de los bancos y los valores, para operaciones dentro de Suiza y con el extranjero.",
+      "porQueImporta": "Forma parte del proyecto Helvetia y se apoya en Agorá, del BIS. El propio banco central avisa de que no significa que vaya a lanzarse ese registro ni que vaya a emitir dinero de banco central tokenizado.",
       "en": {
-        "titulo": "ECB proposes common criteria for tokenisation",
-        "resumen": "The ECB proposes a reference model with five criteria for connecting tokenised markets. They include allowing networks to communicate, enabling assets to move and keeping their rules enforceable.",
-        "porQueImporta": "The framework will feed into the European Tokenisation Standards Group’s work. Shared technical criteria could reduce fragmentation between platforms.",
-        "tituloInformativo": "The ECB proposes a five-criterion reference model for tokenisation standards discussions"
+        "titulo": "Switzerland explores a shared ledger for assets and money",
+        "resumen": "The Swiss National Bank and eight institutions, including UBS, SIX and Sygnum, start an exploratory project: a distributed ledger where central bank money, commercial bank money and securities interact, for domestic and cross-border transactions.",
+        "porQueImporta": "It is part of Project Helvetia and builds on the BIS Project Agorá. The central bank itself warns that it does not mean the ledger will be launched or that it will issue tokenised central bank money.",
+        "tituloInformativo": "Swiss National Bank and eight institutions start exploratory Swiss Financial Ledger project"
       },
       "fuente": {
-        "nombre": "Banco Central Europeo, propuesta de marco para la estandarización DLT del 24/11/2026",
-        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "nombre": "Banco Nacional Suizo, comunicado del 24/11/2026 sobre el Swiss Financial Ledger",
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2026/pre_20261124_2",
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-27",
-      "tituloInformativo": "El BCE propone un modelo de referencia con cinco criterios para debatir estándares de tokenización"
+      "tituloInformativo": "El Banco Nacional Suizo y ocho entidades estudian un registro financiero común con tecnología DLT"
     },
     {
       "id": "bce-valores-tokenizados-garantia-2027",

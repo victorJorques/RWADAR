@@ -248,6 +248,62 @@
    "encuadre": "70% 55%",
    "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
    "prompt": "Marunouchi business district in Tokyo, modern office towers along a wide avenue with ginkgo trees, clear autumn day"
+  },
+  "hwk-1365-zukunftsanleihe": {
+   "modelo": "realvisxl",
+   "semilla": 901,
+   "encuadre": "70% 55%",
+   "concepto": "una nave de fundición antigua en un pueblo del sur de Alemania, no la de la empresa",
+   "prompt": "old brick iron foundry hall with tall chimney in a small town in southern Germany, wooded hills behind, overcast morning"
+  },
+  "tokinvest-lingote-plata-record": {
+   "modelo": "realvisxl",
+   "semilla": 989,
+   "encuadre": "70% 55%",
+   "concepto": "granalla de plata sobre pizarra, imagen genérica del metal; no el lingote del producto",
+   "prompt": "pile of bright polished metallic silver granules with mirror-like reflections on a dark slate surface, soft window daylight, macro close-up"
+  },
+  "tokinvest-great-hampton-street": {
+   "modelo": "realvisxl",
+   "semilla": 913,
+   "encuadre": "70% 55%",
+   "concepto": "una antigua fábrica victoriana de ladrillo convertida en pisos en Birmingham, no la del producto",
+   "prompt": "Victorian red-brick former factory converted into apartments on a quiet street in Birmingham, arched windows, overcast morning"
+  },
+  "hsbc-hkd-money-fund-class-sd": {
+   "modelo": "realvisxl",
+   "semilla": 919,
+   "encuadre": "70% 50%",
+   "concepto": "rascacielos del distrito Central de Hong Kong vistos desde arriba, no la sede del banco",
+   "prompt": "aerial view over the skyscrapers of Central district in Hong Kong in morning haze, green hills behind"
+  },
+  "mufg-realty-token-kioicho": {
+   "modelo": "realvisxl",
+   "semilla": 923,
+   "encuadre": "70% 55%",
+   "concepto": "torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto",
+   "prompt": "modern office towers beside a tree-lined moat in central Tokyo, autumn leaves, calm water, clear morning"
+  },
+  "exio-ustnt-bonos-tesoro-eeuu": {
+   "modelo": "realvisxl",
+   "semilla": 947,
+   "encuadre": "70% 55%",
+   "concepto": "la fachada de un edificio público neoclásico de Washington, imagen genérica de la deuda de EE. UU.",
+   "prompt": "neoclassical stone government building with columns and wide steps in Washington DC, early morning, empty plaza"
+  },
+  "osl-taikang-kaitai-usd-mmf": {
+   "modelo": "realvisxl",
+   "semilla": 953,
+   "encuadre": "70% 50%",
+   "concepto": "el skyline de Kowloon visto desde el agua al atardecer, no la sede de la gestora",
+   "prompt": "Kowloon waterfront skyline in Hong Kong seen from the water at sunset, calm sea, soft natural light"
+  },
+  "conda-devolo-bono-2026": {
+   "modelo": "realvisxl",
+   "semilla": 959,
+   "encuadre": "70% 55%",
+   "concepto": "un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa",
+   "prompt": "plain white unbranded wifi router on a wooden shelf in a bright living room, soft daylight, shallow depth of field"
   }
  }
 }

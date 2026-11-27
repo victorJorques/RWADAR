@@ -2,16 +2,16 @@
   "version": 1,
   "pase": 1,
   "fecha": "2026-11-27",
-  "edicionSha256": "2fa7d8fb0b8b51843274ff0c59ec7ddbe3d7225620c797dfeb7f899f938a40b3",
-  "veredicto": "conforme",
+  "edicionSha256": "aa95ac87e6b6d6b595264c078bd5472c119815eb93eb3feb5dd6061a395b57ec",
+  "veredicto": "con_cambios",
   "noticias": [
     {
       "id": "poloniex-abre-16-acciones-etf-tokenizados",
-      "veredicto": "confirmada",
+      "veredicto": "corregir",
       "fuente": {
         "url": "https://www.poloniex.com/announcement/45050069368899",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:30Z",
+        "horaUtc": "2026-11-27T11:35:50Z",
         "sha256": "d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec",
         "caida": false
       },
@@ -19,8 +19,7 @@
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "La descarga simple solo trae el armazón (la huella es la de esa descarga); el texto se leyó con Chromium a las 09:56:15Z (HTTP 200). 16 pares en USDT a las 05:00 UTC del 27/11 (Apple, Microsoft, Amazon, SPY…), serie bStocks; respaldo 1 a 1 «según el emisor» y aviso de que el token no es la acción ni da voto. El lote de 21 es del anuncio del 25/11 (https://www.poloniex.com/announcement/45049898254247, fechado 2026/11/25)."
+      "fechaCorrecta": true
     },
     {
       "id": "banco-japon-cinco-retos-tokenizacion",
@@ -28,7 +27,7 @@
       "fuente": {
         "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:31Z",
+        "horaUtc": "2026-11-27T11:35:51Z",
         "sha256": "1bf3874fd7011af35a271774fcb6f2630bcdfb893519273dea965dcacfb727e8",
         "caida": false
       },
@@ -36,8 +35,23 @@
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Discurso del 27/11/2026. Los cinco retos, el proyecto de pruebas (dinero de banco central en token, liquidación de deuda pública japonesa tokenizada) y «mejorar lo existente y explorar lo nuevo en paralelo» constan en el PDF."
+      "fechaCorrecta": true
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "veredicto": "corregir",
+      "fuente": {
+        "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:35:51Z",
+        "sha256": "f01e3fa7049a82e0c75313bcf7939a82b6cd19ca72499293028eba6e5d936a90",
+        "caida": false
+      },
+      "literal": "The Canadian Securities Administrators (CSA) today launched Phase 2 of Project Tokenization, inviting firms to submit proposals for tokenized products, services, infrastructure and business models relevant to Canadian capital markets.",
+      "titularRespaldado": false,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
     },
     {
       "id": "21x-coinix-monetario-tokenizado",
@@ -45,16 +59,15 @@
       "fuente": {
         "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:32Z",
-        "sha256": "09670cd07d1967fbac852ebb9ce79094d9f900c8659df77f0641350f21ed72b2",
+        "horaUtc": "2026-11-27T11:35:52Z",
+        "sha256": "6669de4548f4ad7b64874381645b737bd6e133898013d22cd2e22f228a9a0dc3",
         "caida": false
       },
-      "literal": "coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class, which made its secondary market debut on 21X in late September.",
+      "literal": "coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Comunicado del 26/11/2026 (ayer). El rendimiento durante el día y los saldos parados en monedas estables constan en la fuente."
+      "fechaCorrecta": true
     },
     {
       "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
@@ -62,33 +75,15 @@
       "fuente": {
         "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:33Z",
-        "sha256": "2a8c8799ea40fc782ca2733ce79a404fa9305e78892e6f96d47aa5a316646224",
+        "horaUtc": "2026-11-27T11:35:53Z",
+        "sha256": "4dde4eb55267c8373bf471ae4377b23715a5000ace040f38d4aeaa7273693001",
         "caida": false
       },
       "literal": "The Hong Kong Monetary Authority (HKMA) announced today (25 November) the official launch of CMU Digital Asset Platform (CMU DAP).",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Texto igual al publicado. Emisión, liquidación, cupones, amortización, tokenización de deuda existente, liquidación 24 h en varias monedas con tokens de efectivo y hoja de ruta (fondos y otros activos) constan."
-    },
-    {
-      "id": "sbi-solana-global-empieza-operar-japon",
-      "veredicto": "confirmada",
-      "fuente": {
-        "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
-        "http": 200,
-        "horaUtc": "2026-11-27T09:54:36Z",
-        "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
-        "caida": false
-      },
-      "literal": "they have completed a series of agreements for the transition to a new joint venture structure among the three parties, and that SBI R3 Japan Co., Ltd. has commenced full-scale operations as “SBI Solana Global Co., Ltd.”",
-      "titularRespaldado": true,
-      "fotoAdecuada": true,
-      "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Comunicado del 25/11/2026; misma huella que el barrido. Texto igual al publicado."
+      "fechaCorrecta": true
     },
     {
       "id": "cnmv-avisa-entidades-belgica-25-noviembre",
@@ -96,7 +91,7 @@
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
         "http": 200,
-        "horaUtc": "2026-11-27T09:55:09Z",
+        "horaUtc": "2026-11-27T11:36:37Z",
         "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
         "caida": false
       },
@@ -104,47 +99,81 @@
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "PDF del 25/11/2026 (el primer intento a las 09:54:37Z lo cortó la conexión; el segundo respondió 200 con la misma huella que el barrido). Todas las entradas son de la FSMA (Bélgica) y una sola va marcada como clon."
+      "fechaCorrecta": true
     },
     {
-      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "id": "suiza-snb-registro-financiero-comun",
       "veredicto": "confirmada",
       "fuente": {
-        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2026/pre_20261124_2",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:47Z",
-        "sha256": "0bf76517fc4f5a3baaaff59877d90718907f8af6a91766067e47b86a0715d135",
+        "horaUtc": "2026-11-27T11:36:07Z",
+        "sha256": "8137e8842147eab40e2f97779f60c0a2f325f48135b2a67843a01fcf68537742",
         "caida": false
       },
-      "literal": "the European Central Bank has published a Tokenisation Reference Model (TRM) to support standardisation discussions with market participants.",
+      "literal": "The exploratory project investigates whether a Swiss Financial Ledger can serve both cross-border transactions, as envisaged in Project Agorá, and as a platform for domestic transactions. It will explore the benefits and feasibility of a distributed ledger technology (DLT) platform on which central bank money, commercial bank money and securities can interact seamlessly.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Nota del 24/11/2026. Cinco capacidades (interoperabilidad, transferibilidad, portabilidad, controlabilidad, componibilidad) y aportación al grupo europeo de estándares de tokenización. Texto igual al publicado; solo cambia la foto (torre del BCE)."
+      "fechaCorrecta": true
     },
     {
       "id": "bce-valores-tokenizados-garantia-2027",
-      "veredicto": "confirmada",
+      "veredicto": "corregir",
       "fuente": {
         "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
         "http": 200,
-        "horaUtc": "2026-11-27T09:54:48Z",
-        "sha256": "e1b9b5469550d73b1eeb4344aedceb9cd3bbb4232f99d6d5b0eeb21e6c8ee2db",
+        "horaUtc": "2026-11-27T11:36:08Z",
+        "sha256": "d48871fd7e726256fd3ef13852b06ce874318a0d687f35e63009ecadd3fcca2b",
         "caida": false
       },
       "literal": "The Governing Council of the European Central Bank (ECB) has approved the acceptance of marketable assets issued on DLT platforms licensed under the EU DLT Pilot Regime Regulation as eligible collateral for Eurosystem credit operations, subject to specific Eurosystem requirements.",
       "titularRespaldado": true,
-      "fotoAdecuada": true,
+      "fotoAdecuada": false,
       "personas": false,
-      "fechaCorrecta": true,
-      "nota": "Comunicado del 23/11/2026. Junio de 2027 y la liquidación en TARGET2-Securities constan. Texto igual al publicado; solo cambia la foto (monedas de euro)."
+      "fechaCorrecta": true
     }
   ],
   "hoyCorrecto": true,
   "faltaAlgo": [
-    "No hay en barrido.json nada de hoy o de ayer más importante que lo elegido (las novedades de la CNMV del 25/11 son una OPA y un sistema de negociación ajenos al sector). Observación sin efecto en el veredicto: para salir 8 noticias se retiran de la portada el monetario tokenizado en euros de Franklin Templeton (23/11, que según su comunicado se ofrecerá a minoristas en España), Singapur (26/11) y el oro del World Gold Council (24/11); el primero toca más de cerca al lector español que, por ejemplo, la empresa conjunta japonesa."
+    "suiza-snb-registro-financiero-comun lleva la escena de IA «red-europea» habiendo una foto real libre del tema «Emisiones e infraestructura» (real-servidores-cables, que no usa ninguna otra noticia). No se corrige: la escena no engaña; queda a juicio de la sesión.",
+    "En barrido.json no hay nada de hoy o de ayer más importante que lo elegido (CNMV, ESMA, BCE, Consejo, Comisión y EBA sin novedades del sector de hoy o de ayer; el BOE de hoy no trae nada del sector)."
   ],
-  "correcciones": []
+  "correcciones": [
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "campo": "resumen",
+      "antes": "El mercado de criptoactivos Poloniex abrió el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "despues": "El mercado de criptoactivos Poloniex abre el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "motivo": "El anuncio dice que Poloniex «will open» la negociación a las 05:00 (UTC) del 27/11; no confirma que ya se abriera. Presente, como el titular."
+    },
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "campo": "en.resumen",
+      "antes": "Crypto exchange Poloniex opened USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+      "despues": "Crypto exchange Poloniex opens USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+      "motivo": "Igual que en castellano: la fuente anuncia la apertura («will open»), no la confirma."
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "campo": "titulo",
+      "antes": "Canadá abre la puerta a probar productos tokenizados",
+      "despues": "Los supervisores de Canadá buscan proyectos tokenizados",
+      "motivo": "La fase 2 invita a presentar propuestas para ver cómo se aplican las normas; la fuente solo cita pruebas («testing») como posible acción futura, así que «probar productos» exagera. Sujeto exacto: los supervisores (CSA), no «Canadá». Es una de las propuestas del propio editor (55 caracteres)."
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "campo": "en.titulo",
+      "antes": "Canada invites firms to test tokenised products",
+      "despues": "Canadian regulators seek tokenised projects",
+      "motivo": "Mismo motivo: la fuente invita a presentar propuestas, no a probar productos. Es una de las propuestas del propio editor (43 caracteres)."
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "campo": "imagen",
+      "antes": "real-monedas-euro-bandera",
+      "despues": "real-bce-francfort",
+      "motivo": "La guía (§ 4, regla 1) pide la sede del supervisor si está en la biblioteca. La torre del BCE ya no la usa ninguna otra noticia (la otra del BCE salió de la edición), así que el motivo del editor ya no vale. Crédito comprobado: fotos-noticias.json y fotos.json coinciden (autor, CC BY-SA 4.0, misma página de Commons)."
+    }
+  ]
 }

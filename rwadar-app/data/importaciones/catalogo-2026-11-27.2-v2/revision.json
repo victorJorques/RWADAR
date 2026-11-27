@@ -1,0 +1,49 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "hash": "38ee1fa9aadd6c0ab1e7d2a4f006b6ca5bcf2eda35a1c7180f8ddad9a690494a",
+  "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "hashRevisionAnterior": "529a54f70c134b0704333b67273bdd86413b8cb122192e9889372763b63fb420",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-27.2-v2/lectura-publica/",
+  "etiqueta": "2026-11-27.2",
+  "fechaRadar": "2026-11-27",
+  "revisionDocumental": "2026-11-27",
+  "plataformas": 73,
+  "ofertas": 40,
+  "colecciones": {
+    "principales": 24,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 8,
+  "ofertasAltas": [
+    "hwk-1365-zukunftsanleihe",
+    "tokinvest-lingote-plata-record",
+    "tokinvest-great-hampton-street",
+    "hsbc-hkd-money-fund-class-sd",
+    "mufg-realty-token-kioicho",
+    "exio-ustnt-bonos-tesoro-eeuu",
+    "osl-taikang-kaitai-usd-mmf",
+    "conda-devolo-bono-2026"
+  ],
+  "plataformasAltas": [
+    "hwk-1365",
+    "hsbc",
+    "daiwa-securities",
+    "ex-io",
+    "osl",
+    "conda",
+    "1exchange",
+    "pruv"
+  ],
+  "retiradas": 0,
+  "tablasPublicas": [
+    "public.plataformas"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

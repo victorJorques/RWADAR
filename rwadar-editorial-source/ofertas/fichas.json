@@ -431,6 +431,111 @@
     "Cobras al vencimiento"
    ],
    "concepto": "oficinas en Tokio"
+  },
+  {
+   "slug": "hwk-1365-zukunftsanleihe",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Königsbronn · Alemania",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras el interés cada año",
+    "Recuperas el nominal al final"
+   ],
+   "concepto": "una fundición alemana"
+  },
+  {
+   "slug": "tokinvest-lingote-plata-record",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Dubái · Emiratos",
+   "pasos": [
+    "Compras gramos del lingote",
+    "Brink’s lo guarda",
+    "Al final se vende y cobras"
+   ],
+   "concepto": "un lingote de plata"
+  },
+  {
+   "slug": "tokinvest-great-hampton-street",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "ladrillo",
+    "semilla": 913
+   },
+   "lugar": "Birmingham · Reino Unido",
+   "pasos": [
+    "Compras tokens del edificio",
+    "Cobras la renta cada mes",
+    "Al final se vende y cobras"
+   ],
+   "concepto": "una antigua fábrica convertida en pisos"
+  },
+  {
+   "slug": "hsbc-hkd-money-fund-class-sd",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Pagas con RedCoin en la app",
+    "El fondo invierte a corto plazo",
+    "Lees el folleto en la app"
+   ],
+   "concepto": "el distrito financiero de Hong Kong"
+  },
+  {
+   "slug": "mufg-realty-token-kioicho",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "lugar": "Tokio · Japón",
+   "pasos": [
+    "Lo pides en Daiwa",
+    "Cobras el reparto cada semestre",
+    "Se vende el inmueble al final"
+   ],
+   "concepto": "oficinas en Tokio"
+  },
+  {
+   "slug": "exio-ustnt-bonos-tesoro-eeuu",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Compras el certificado",
+    "Cobras los cupones cada semestre",
+    "Reembolsas al vender los bonos"
+   ],
+   "concepto": "bonos del Tesoro de EE. UU."
+  },
+  {
+   "slug": "osl-taikang-kaitai-usd-mmf",
+   "escena": "tesoro",
+   "lugar": "Hong Kong",
+   "pasos": [
+    "Suscribes en la app de OSL",
+    "El fondo rinde cada día",
+    "Reembolsas en la app"
+   ],
+   "concepto": "depósitos bancarios en dólares"
+  },
+  {
+   "slug": "conda-devolo-bono-2026",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Aquisgrán · Alemania",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras interés cada año",
+    "Recuperas el nominal al final"
+   ],
+   "concepto": "una empresa de equipos de red"
   }
  ]
 }

@@ -1,0 +1,156 @@
+{
+  "fecha": "2026-11-27",
+  "fuentesNuevas": 12,
+  "correctas": 12,
+  "contraste": [
+    {
+      "id": "hwk-anleihe",
+      "url": "https://www.hwk1365.de/anleihe/",
+      "horaUtc": "2026-11-27T11:21:00Z",
+      "copia": "fuentes/hwk-anleihe.txt",
+      "sha256": "e37bbcd3e97c820647382754179a94e1d66a73e2c51edfe1d3b457225b20a7ae",
+      "comprobaciones": [
+        "Holding der Hüttenwerke Königsbronn",
+        "DE000A5GS3Q2",
+        "Qualifiziert nachrangig, nicht besichert"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hwk-wib",
+      "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+      "horaUtc": "2026-11-27T11:21:02Z",
+      "copia": "fuentes/hwk-wib.txt",
+      "sha256": "d1024b1f632a5bd4919f36f7bf80ee851448c2d8ff7c29e330b26bacd2575b53",
+      "comprobaciones": [
+        "Polygon Blockchain",
+        "Fortführung der Unternehmenstätigkeit ist"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hsbc-classsd",
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "horaUtc": "2026-11-27T11:22:27Z",
+      "copia": "fuentes/hsbc-classsd.txt",
+      "sha256": "f5361250b465ed307f2abf20a1edd69c440b32ea811cc58a4e54ed9fe3c5dd3b",
+      "comprobaciones": [
+        "tokenised unit class \\(Class SD\\)",
+        "Minimum subscription of HKD 100",
+        "Eligible customers"
+      ],
+      "ok": true
+    },
+    {
+      "id": "daiwa-mufg",
+      "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+      "horaUtc": "2026-11-27T11:23:09Z",
+      "copia": "fuentes/daiwa-mufg.txt",
+      "sha256": "d94b03f197c7ce0218f31d21882877ed37a5a31adafb0b02cd307468bdcf1f69",
+      "comprobaciones": [
+        "大和証券株式会社",
+        "三菱ＵＦＪ信託銀行株式会社",
+        "2026年12月1日（火）から2026年12月8日（火）まで"
+      ],
+      "ok": true
+    },
+    {
+      "id": "exio-ustnt",
+      "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+      "horaUtc": "2026-11-27T11:49:23Z",
+      "copia": "fuentes/exio-ustnt.txt",
+      "sha256": "30d699c752758426baf197d58e28252135bc46b1fc33cd01d08dae7ac23f59db",
+      "comprobaciones": [
+        "Professional Investors \\(PI\\) only",
+        "Rukhex Technology Limited",
+        "approval from Hong Kong’s Securities and Futures Commission"
+      ],
+      "ok": true
+    },
+    {
+      "id": "osl-tkusd",
+      "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+      "horaUtc": "2026-11-27T11:50:11Z",
+      "copia": "fuentes/osl-tkusd.txt",
+      "sha256": "abfea96fe59e80cafe76ca47d1b308d18b46af31095ece4f62c3d5fa918c8647",
+      "comprobaciones": [
+        "SFC-authorized fund",
+        "as low as \\$1 USD"
+      ],
+      "ok": true
+    },
+    {
+      "id": "osl-tkusd-faq",
+      "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+      "horaUtc": "2026-11-27T11:50:04Z",
+      "copia": "fuentes/osl-tkusd-faq.txt",
+      "sha256": "a62a35dade4f33c6b4db317907baf559722827f7e0cf3917383d62a01aac6806",
+      "comprobaciones": [
+        "tokenized shares are initially listed, distributed, and custodied on OSL"
+      ],
+      "ok": true
+    },
+    {
+      "id": "conda-devolo",
+      "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+      "horaUtc": "2026-11-27T11:50:31Z",
+      "copia": "fuentes/conda-devolo.txt",
+      "sha256": "fc921d8f2fcc20d6493d64b774c5878157dff6c363aadfe4633afe6b4ca0fda9",
+      "comprobaciones": [
+        "zugelassener Dienstleister für Schwarmfinanzierung gemäß VO \\(EU\\) 2020/1503",
+        "Angeboten in"
+      ],
+      "ok": true
+    },
+    {
+      "id": "nyala-registro",
+      "url": "https://www.nyala.de/en/products/electronic-securities",
+      "horaUtc": "2026-11-27T11:51:37Z",
+      "copia": "fuentes/nyala-registro.txt",
+      "sha256": "2c9abac86c9eba3351c75279d715a76b37b09035a9f7b8c4afdace06f42b4073",
+      "comprobaciones": [
+        "DEVOLO solutions - Anleihe 2026",
+        "supervised by BaFin"
+      ],
+      "ok": true
+    },
+    {
+      "id": "onex-oportunidades",
+      "url": "https://www.1x.exchange/investment-opportunities",
+      "horaUtc": "2026-11-27T12:28:03Z",
+      "copia": "fuentes/onex-oportunidades.txt",
+      "sha256": "3d9714af9883b488b90597acd2df65494a6f371471554ab1ce5828a877b94d6d",
+      "comprobaciones": [
+        "Recognised Market Operator",
+        "Accredited Investors or Institutional Investors",
+        "View all 22 tokens"
+      ],
+      "ok": true
+    },
+    {
+      "id": "pruv-web",
+      "url": "https://pruv.finance/",
+      "horaUtc": "2026-11-27T12:29:30Z",
+      "copia": "fuentes/pruv-web.txt",
+      "sha256": "637a950bff6e2523defd98a485998fe74d265cd34166bf852787f241062af97c",
+      "comprobaciones": [
+        "OJK Financial Sector Technology Innovation Sandbox",
+        "S-445/IK\\.01/2025"
+      ],
+      "ok": true
+    },
+    {
+      "id": "pruv-productos",
+      "url": "https://app.pruv.finance/product",
+      "horaUtc": "2026-11-27T12:29:13Z",
+      "copia": "fuentes/pruv-productos.txt",
+      "sha256": "cd4a2e2da94f625934e3ae69d6426bf4d799fd8050938f81a193ee739c75f059",
+      "comprobaciones": [
+        "Minimum Investment",
+        "Time to Redemption"
+      ],
+      "ok": true
+    }
+  ],
+  "nota": "Las 123 fuentes de antes se comprobaron hoy en la entrega 2026-11-27 (su radar-contraste-2026-11-27.json)."
+}

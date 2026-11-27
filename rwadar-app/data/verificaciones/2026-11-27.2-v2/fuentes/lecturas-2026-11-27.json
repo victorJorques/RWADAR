@@ -1,0 +1,130 @@
+{
+ "hwk-anleihe": {
+  "url": "https://www.hwk1365.de/anleihe/",
+  "horaUtc": "2026-11-27T11:21:00Z",
+  "http": 200,
+  "archivo": "fuentes/hwk-anleihe.txt",
+  "sha256": "e37bbcd3e97c820647382754179a94e1d66a73e2c51edfe1d3b457225b20a7ae",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "hwk-wib": {
+  "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+  "horaUtc": "2026-11-27T11:21:02Z",
+  "http": 200,
+  "archivo": "fuentes/hwk-wib.txt",
+  "sha256": "d1024b1f632a5bd4919f36f7bf80ee851448c2d8ff7c29e330b26bacd2575b53",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "tokinvest-silver": {
+  "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+  "horaUtc": "2026-11-27T11:21:20Z",
+  "http": 200,
+  "archivo": "fuentes/tokinvest-silver.txt",
+  "sha256": "1531cd654f4ada7914558c9529fa301ee979fea7521232ad2553716e1e6fd161",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "tokinvest-hampton": {
+  "url": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+  "horaUtc": "2026-11-27T11:21:34Z",
+  "http": 200,
+  "archivo": "fuentes/tokinvest-hampton.txt",
+  "sha256": "d1fddd7465c53b9b400b9a8237e828e1b1f0e325c556c5e43eb0351ce042e6e4",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "mesh-ccs": {
+  "url": "https://www.mesh.trade/im/ccs/",
+  "horaUtc": "2026-11-27T11:21:59Z",
+  "http": 200,
+  "archivo": "fuentes/mesh-ccs.txt",
+  "sha256": "2e4cbd884e8e137952f5109e27fbec9704d5ee6e506bd10af7318b0d393fa503",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "mesh-ccs-faq": {
+  "url": "https://www.mesh.trade/ccs-income-notes-investor-faq/",
+  "horaUtc": "2026-11-27T11:21:52Z",
+  "http": 200,
+  "archivo": "fuentes/mesh-ccs-faq.txt",
+  "sha256": "5eb53b055dce109dc240c284657042e5d6547c265787487b5492fefb26b0f906",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "hsbc-classsd": {
+  "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+  "horaUtc": "2026-11-27T11:22:27Z",
+  "http": 200,
+  "archivo": "fuentes/hsbc-classsd.txt",
+  "sha256": "f5361250b465ed307f2abf20a1edd69c440b32ea811cc58a4e54ed9fe3c5dd3b",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "daiwa-mufg": {
+  "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+  "horaUtc": "2026-11-27T11:23:09Z",
+  "http": 200,
+  "archivo": "fuentes/daiwa-mufg.txt",
+  "sha256": "d94b03f197c7ce0218f31d21882877ed37a5a31adafb0b02cd307468bdcf1f69",
+  "nota": "texto visible con Chromium (PDF: pdftotext); nombres de personas retirados"
+ },
+ "exio-ustnt": {
+  "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+  "horaUtc": "2026-11-27T11:49:23Z",
+  "http": 200,
+  "archivo": "fuentes/exio-ustnt.txt",
+  "sha256": "30d699c752758426baf197d58e28252135bc46b1fc33cd01d08dae7ac23f59db",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "osl-tkusd": {
+  "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+  "horaUtc": "2026-11-27T11:50:11Z",
+  "http": 200,
+  "archivo": "fuentes/osl-tkusd.txt",
+  "sha256": "abfea96fe59e80cafe76ca47d1b308d18b46af31095ece4f62c3d5fa918c8647",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "osl-tkusd-faq": {
+  "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+  "horaUtc": "2026-11-27T11:50:04Z",
+  "http": 200,
+  "archivo": "fuentes/osl-tkusd-faq.txt",
+  "sha256": "a62a35dade4f33c6b4db317907baf559722827f7e0cf3917383d62a01aac6806",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "conda-devolo": {
+  "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+  "horaUtc": "2026-11-27T11:50:31Z",
+  "http": 200,
+  "archivo": "fuentes/conda-devolo.txt",
+  "sha256": "fc921d8f2fcc20d6493d64b774c5878157dff6c363aadfe4633afe6b4ca0fda9",
+  "nota": "texto visible con Chromium; nombres de personas retirados"
+ },
+ "nyala-registro": {
+  "url": "https://www.nyala.de/en/products/electronic-securities",
+  "horaUtc": "2026-11-27T11:51:37Z",
+  "http": 200,
+  "archivo": "fuentes/nyala-registro.txt",
+  "sha256": "2c9abac86c9eba3351c75279d715a76b37b09035a9f7b8c4afdace06f42b4073",
+  "nota": "texto visible con Chromium; nombres de personas retirados"
+ },
+ "onex-oportunidades": {
+  "url": "https://www.1x.exchange/investment-opportunities",
+  "horaUtc": "2026-11-27T12:28:03Z",
+  "http": 200,
+  "archivo": "fuentes/onex-oportunidades.txt",
+  "sha256": "3d9714af9883b488b90597acd2df65494a6f371471554ab1ce5828a877b94d6d",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "pruv-web": {
+  "url": "https://pruv.finance/",
+  "horaUtc": "2026-11-27T12:29:30Z",
+  "http": 200,
+  "archivo": "fuentes/pruv-web.txt",
+  "sha256": "637a950bff6e2523defd98a485998fe74d265cd34166bf852787f241062af97c",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "pruv-productos": {
+  "url": "https://app.pruv.finance/product",
+  "horaUtc": "2026-11-27T12:29:13Z",
+  "http": 200,
+  "archivo": "fuentes/pruv-productos.txt",
+  "sha256": "cd4a2e2da94f625934e3ae69d6426bf4d799fd8050938f81a193ee739c75f059",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ }
+}

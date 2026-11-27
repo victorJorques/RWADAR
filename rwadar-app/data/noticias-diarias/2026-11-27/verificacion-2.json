@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "pase": 2,
+  "fecha": "2026-11-27",
+  "edicionSha256": "fa52d38b4ca341b85820e32a0cb0b4d628307d84f6e76fbd189a8a68ca997531",
+  "veredicto": "conforme",
+  "noticias": [
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.poloniex.com/announcement/45050069368899",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:31Z",
+        "sha256": "d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec",
+        "caida": false
+      },
+      "literal": "Poloniex will open spot trading (AAPL/USDT) for AAPL (Apple) at 05:00:00 (UTC) on November 27, 2026. [...] Holding the token is not the same as owning the share directly and carries no shareholder voting rights.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "banco-japon-cinco-retos-tokenizacion",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:32Z",
+        "sha256": "1bf3874fd7011af35a271774fcb6f2630bcdfb893519273dea965dcacfb727e8",
+        "caida": false
+      },
+      "literal": "While these opportunities are significant, tokenization also raises five important challenges.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:33Z",
+        "sha256": "510a04963e73953f757d11e7800f1ca01ddec49b85fcee2f363723e832534d77",
+        "caida": false
+      },
+      "literal": "The Canadian Securities Administrators (CSA) today launched Phase 2 of Project Tokenization, inviting firms to submit proposals for tokenized products, services, infrastructure and business models relevant to Canadian capital markets.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "21x-coinix-monetario-tokenizado",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:33Z",
+        "sha256": "256e190f93d45f9a70c89b33cd996592f20a9d32c7d5c83ffa183094a4fbe752",
+        "caida": false
+      },
+      "literal": "coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:35Z",
+        "sha256": "6bfdcc2c0268ee4a1c83bec5de06e5c41549ffc69b3d5e4eb97963a6ca6bbda9",
+        "caida": false
+      },
+      "literal": "The Hong Kong Monetary Authority (HKMA) announced today (25 November) the official launch of CMU Digital Asset Platform (CMU DAP).",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:39Z",
+        "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+        "caida": false
+      },
+      "literal": "La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales sobre las entidades no registradas que se adjuntan en el siguiente listado",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "suiza-snb-registro-financiero-comun",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2026/pre_20261124_2",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:41Z",
+        "sha256": "25ecffc9c02eef2404dfe333c5481333499107ea1be91580333f05af219c003b",
+        "caida": false
+      },
+      "literal": "It will explore the benefits and feasibility of a distributed ledger technology (DLT) platform on which central bank money, commercial bank money and securities can interact seamlessly.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-27T11:49:42Z",
+        "sha256": "96cf3cefd24ec47922441f20093c2c5e76bfe2d50c9ddee805de6e5ae4ff1ee1",
+        "caida": false
+      },
+      "literal": "The Governing Council of the European Central Bank (ECB) has approved the acceptance of marketable assets issued on DLT platforms licensed under the EU DLT Pilot Regime Regulation as eligible collateral for Eurosystem credit operations, subject to specific Eurosystem requirements.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    }
+  ],
+  "hoyCorrecto": true,
+  "faltaAlgo": [
+    "suiza-snb-registro-financiero-comun lleva la escena de IA «red-europea» y hay una foto real libre del tema «Emisiones e infraestructura» que no usa ninguna otra noticia (real-servidores-cables). La escena no engaña; no cambia el veredicto.",
+    "En barrido.json no hay nada de hoy o de ayer más importante que lo elegido (CNMV, ESMA, Consejo, BCE, EBA y Comisión sin novedades del sector de hoy o de ayer; el BOE de hoy no trae nada del sector)."
+  ],
+  "correcciones": []
+}

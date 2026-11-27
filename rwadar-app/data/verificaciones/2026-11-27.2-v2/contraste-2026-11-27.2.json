@@ -1,0 +1,46 @@
+{
+  "tipo": "altas",
+  "fecha": "2026-11-27",
+  "etiqueta": "2026-11-27.2",
+  "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
+  "revisionNueva": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "decision": "Órdenes de la dirección del 27/11/2026: «el resto pon que está verificado hasta el día de hoy» y añadir las ofertas del suplemento de ese día. Las fichas se re-fechan solo con lo leído hoy; entran las ofertas con fuente primaria y condiciones comprobadas.",
+  "archivos": {
+    "altas.json": "3d092e2481008b26f9b8745505ae9f69b4d45d8413b63ec3d8b93fb60b47de9e",
+    "fuentes/lecturas-2026-11-27.json": "1e6c754e3f6d9bc336ff17c7619b8e8d606867c3c09f01e7c643bd877d8f2139",
+    "fuentes/releidas-2026-11-27.txt": "468534a87e9ddb470053002e97a6a0c8d24b3960daec541afb5dfd8da80548c8",
+    "refechado.json": "ad14e5ba15ce2e0d8fde28df07fd6d2f7427a20ed904e9b4d40723093ebae2ef",
+    "base-refechada-escaparate.json": "beec73ff6cab281e3f8bae1daa086a9af7400b56384031b31bd6b3f5183998c1",
+    "base-refechada-documentacion.json": "9a246379c34e3a0ed76f6ce7e9eb4d718411e46aed46a52d18432edffdf2483c",
+    "vigia.json": "ae0cd26fad7aad538d65c2739dac7fdc2326245a877ab484a5740ea439f4dd0b"
+  },
+  "altas": {
+    "regiones": [],
+    "plataformas": [
+      "hwk-1365",
+      "hsbc",
+      "daiwa-securities",
+      "ex-io",
+      "osl",
+      "conda",
+      "1exchange",
+      "pruv"
+    ],
+    "ofertas": [
+      "hwk-1365-zukunftsanleihe",
+      "tokinvest-lingote-plata-record",
+      "tokinvest-great-hampton-street",
+      "hsbc-hkd-money-fund-class-sd",
+      "mufg-realty-token-kioicho",
+      "exio-ustnt-bonos-tesoro-eeuu",
+      "osl-taikang-kaitai-usd-mmf",
+      "conda-devolo-bono-2026"
+    ]
+  },
+  "colecciones": {
+    "principales": 24,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "lecturaPublica": "Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-27T11:35:58Z – 2026-11-27T11:36:01Z"
+}

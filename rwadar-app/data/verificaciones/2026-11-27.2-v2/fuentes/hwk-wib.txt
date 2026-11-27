@@ -1,0 +1,784 @@
+                                                                                                                                                      Seite 1 von 4
+
+ WERTPAPIER-INFORMATIONSBLATT NACH § 4 WERTPAPIERPROSPEKTGESETZ (WpPG) – HWK 1365 SE
+ WARNHINWEIS: DER ERWERB DIESES WERTPAPIERS IST MIT ERHEBLICHEN RISIKEN VERBUNDEN UND KANN ZUM VOLLSTÄNDIGEN
+ VERLUST DES EINGESETZTEN VERMÖGENS FÜHREN.
+ Stand: 20. Oktober 2026 / Aktualisierungen: 0
+1. Art, genaue         Art: Wertpapier sui generis in Form unverbriefter tokenbasierter Schuldverschreibung (‚Wertpapier").
+    Bezeichnung        Genaue Bezeichnung: HWK 1365 SE – Tokenbasierte Schuldverschreibung 2026/2031
+    und ISIN des       Internationale Wertpapier-Identifikationsnummer (ISIN): DE000A5GS3Q2
+    Wertpapiers
+2. Funktionsweise      Funktionsweise des Wertpapiers und verbundene Rechte: Das Wertpapier begründet unmittelbare, qualifiziert nachrangige und nicht
+    des                dinglich besicherte Verbindlichkeiten der Emittentin gegenüber den Investoren, die im Verhältnis zueinander gleichrangig sind. Das Wertpapier
+    Wertpapiers        gewährt den Investoren die nachfolgend beschriebenen Zahlungsansprüche; Teilnahme-, Mitwirkungs-, Stimm-, Informations- oder
+    einschließlich     Einsichtsrechte werden nicht gewährt.
+    damit              Feste Verzinsung: Die Investoren haben einen Anspruch auf eine feste Verzinsung in Höhe von 8,0 % p.a. auf den Nennbetrag der von ihnen
+    verbundener        gehaltenen Wertpapiere („Feste Verzinsung“). Eine variable Verzinsung oder Gewinnbeteiligung ist nicht vorgesehen. Die Feste Verzinsung wird
+    Rechte,            nach der Zinsberechnungsmethode act/act (ICMA) ab dem auf die Annahme der Zeichnung durch die Emittentin folgenden Bankarbeitstag
+    Angaben zur        berechnet. Berechnungsgrundlage ist der tatsächlich eingezahlte Ausgabepreis. Die Zinsperiode entspricht jeweils dem Kalenderjahr (1. Januar
+    technischen        bis 31. Dezember). Für das Kalenderjahr 2026 wird die Verzinsung nur anteilig, für den Zeitraum ab dem auf die Annahme der Zeichnung durch
+    Ausgestaltung
+                       die Emittentin folgenden Bankarbeitstag bis zum 31. Dezember 2026, berechnet; die Auszahlung für das anteilige Zinsjahr 2026 erfolgt im
+    des
+                       Folgejahr 2027. Die Zinszahlung erfolgt jährlich. Es werden keine Stückzinsen erhoben. Der Anspruch auf Feste Verzinsung läuft für jeden
+    Wertpapiers,
+    zu den dem         Investor taggenau ab dem Beginn seiner individuellen Verzinsung an und ist für das jeweilige Kalenderjahr spätestens bis zum 31. Januar des
+    Wertpapier         jeweils folgenden Jahres zur Zahlung fällig. Fällt der Zahlungstermin nicht auf einen Bankarbeitstag, so verschiebt sich der Zahlungstermin auf
+    zugrunde           den nächstfolgenden Bankarbeitstag. Die Zinsen für das letzte Zinsjahr werden anteilig für den Zeitraum vom 1. Januar 2031 bis zum
+    liegenden          Laufzeitende berechnet; diese anteiligen Zinsen sind zusammen mit dem Rückzahlungsbetrag am Laufzeitende fällig. Die Berechnung erfolgt
+    Technologien       durch die Emittentin.
+    sowie zur          Rückzahlung und Laufzeit: Die Wertpapiere haben eine feste Laufzeit von fünf Jahren. Die Laufzeit beginnt einheitlich am 1. November 2026
+    Übertragbarke      („Laufzeitbeginn“) und endet einheitlich am 31. Oktober 2031 (‚Laufzeitende“), sofern nicht zuvor insgesamt zurückgezahlt oder eine
+    it und             außerordentliche Kündigung wirksam geworden ist. Die Wertpapiere werden am Laufzeitende zum vollen Nennbetrag zurückgezahlt. Der
+    Handelbarkeit      Rückzahlungsbetrag ist zum Laufzeitende zur Zahlung fällig; fällt das Laufzeitende nicht auf einen Bankarbeitstag, verschiebt sich der
+    des                Zahlungstermin auf den nächstfolgenden Bankarbeitstag. Ein ordentliches Kündigungsrecht der Investoren und der Emittentin während der
+    Wertpapiers        Laufzeit besteht nicht. Das Recht zur außerordentlichen Kündigung bei Vorliegen eines wichtigen Grundes bleibt für beide Seiten unberührt;
+    an den             eine solche Kündigung hat unter Angabe des Grundes schriftlich per eingeschriebenen Brief an die jeweils andere Partei zu erfolgen. Im Falle
+    Finanzmärkten      einer wirksamen außerordentlichen Kündigung durch einen Investor wirkt die Kündigung ausschließlich in Bezug auf die von diesem Investor
+                       gehaltenen Wertpapiere; die Wertpapiere der übrigen Investoren bleiben hiervon unberührt. Im Falle einer wirksamen außerordentlichen
+                       Kündigung durch die Emittentin wirkt die Kündigung in Bezug auf sämtliche ausstehenden Wertpapiere. Der Rückzahlungsbetrag ist zum Tag
+                       des Wirksamwerdens der Kündigung fällig. Fällt der Tag des Wirksamwerdens der Kündigung nicht auf einen Bankarbeitstag, so verschiebt sich
+                       der Zahlungstermin auf den nächstfolgenden Bankarbeitstag. Die Anleger sind nicht an den Verlusten der Emittentin beteiligt. Davon unberührt
+                       bleibt das allgemeine Emittentenrisiko.
+                       Qualifizierter Nachrang und vorinsolvenzliche Durchsetzungssperre: Sämtliche gegenwärtigen und zukünftigen Ansprüche der Investoren
+                       aus den Wertpapieren, einschließlich Rückzahlungs- und Verzinsungsansprüchen (sog. Nachrangforderungen), unterliegen einem qualifizierten
+                       Rangrücktritt gemäß §§ 19 Abs. 2, 39 Abs. 2 InsO. Die Investoren treten mit ihren Nachrangforderungen im Insolvenzverfahren und im Falle der
+                       Liquidation im Rang hinter sämtliche in § 39 Abs. 1 Nr. 1 bis 5 InsO bezeichneten Ansprüche und Forderungen aller bestehenden und zukünftigen
+                       Gläubiger der Emittentin zurück; dies schließt auch Forderungen aus Gesellschafterdarlehen ein, sofern für diese nicht ebenfalls ein Rangrücktritt
+                       vereinbart wurde. Die Investoren verpflichten sich, ihre Nachrangforderungen solange und soweit nicht geltend zu machen, wie die Befriedigung
+                       dieser Forderungen bei der Emittentin einen Grund für die Eröffnung des Insolvenzverfahrens (Zahlungsunfähigkeit gemäß § 17 InsO oder
+                       Überschuldung gemäß § 19 InsO) herbeiführen würde (vorinsolvenzliche Durchsetzungssperre). Die vorinsolvenzliche Durchsetzungssperre gilt
+                       auch dann, wenn bei der Emittentin zum Zeitpunkt der Geltendmachung bereits ein Insolvenzgrund vorliegt, sowie auch für den Fall, dass die
+                       Befriedigung der einzelnen Nachrangforderung eines Investors für sich genommen keinen Insolvenzgrund herbeiführen würde, aber die Zahlung
+                       an sämtliche nachrangigen Gläubiger einen solchen Insolvenzgrund herbeiführen würde. Darüber hinaus sind Zahlungen auf die Wertpapiere
+                       dadurch begrenzt, dass durch sie kein Bilanzverlust entstehen darf und sie aus Eigenkapitalbestandteilen geleistet werden können müssen, die
+                       nicht besonders gegen Ausschüttungen geschützt sind. Eine Bedienung aus sonstigem freien Vermögen ist zulässig.
+                       Tokenisierung und Form: Die Wertpapiere werden als Wertpapiere sui generis in tokenisierter Form begeben; es werden keine Urkunden oder
+                       Zinsscheine ausgegeben. Die Emittentin generiert über einen Smart Contract auf der Polygon Blockchain kryptographische Token, die über den
+                       Smart Contract auf der Blockchain erzeugt und verwaltet werden und die Rechte der Investoren aus den Wertpapieren repräsentieren („Token").
+                       Die Zuordnung der Token wird in einem im Smart Contract geführten Register dokumentiert. Die Eintragung ist maßgeblich für die Inhaberschaft.
+                       Bei den Wertpapieren handelt es sich nicht um Kryptowertpapiere i.S.d. § 4 Abs. 3 eWpG.
+                       Übertragbarkeit: Die Übertragung des Wertpapiers erfordert die Einigung über die Abtretung der Rechte sowie die technische Übertragung der
+                       Token an die Wallet des neuen Investors; eine Übertragung außerhalb der Blockchain ist nicht zulässig. Neue Investoren müssen sich auf der
+                       Plattform der Emittentin registrieren und ein Nutzerkonto eröffnen. Eine Übertragung an Staatsbürger der Vereinigten Staaten oder an Personen,
+                       die in den USA oder Kanada steuerpflichtig sind, sowie an Personen in Ländern, die auf der aktuellen Länderliste der Hochrisiko- und anderen
+                       überwachten Rechtsordnungen der Financial Action Task Force (FATF) geführt werden, ist unzulässig. Die Wertpapiere sind weder an einer
+                       Börse noch auf einem anderen Marktplatz gelistet; eine Listung ist derzeit nicht beabsichtigt.
+                       Mindestplatzierung: Die Zeichnungsverträge stehen unter der aufschiebenden Bedingung, dass Wertpapiere mit einem Gesamtnennbetrag
+                       von mindestens EUR 100.000,00 innerhalb von drei Monaten ab Beginn des Angebots gezeichnet werden. Wird diese Bedingung nicht erfüllt,
+                       werden die Zeichnungsverträge nicht wirksam und die Emittentin zahlt sämtliche geleisteten Zahlungen unverzüglich, spätestens innerhalb von
+                       14 Bankarbeitstagen, ohne Zinsanspruch zurück. Die von Investoren geleisteten Zahlungen werden bis zur Feststellung der Zielerreichung auf
+                       einem gesonderten Konto der Emittentin verwahrt und von der Emittentin erst ab Erreichen des Mindestplatzierungsvolumens verwendet.
+                       Verwahrung: Die Investoren verwahren die Token in einer über die Plattform erstellten Wallet, auf die sie allein Zugriff haben. Der Investor
+                       kann seine Wallet und seine kryptographischen Schlüssel über die Plattform einsehen. Bei Verlust des Zugriffs auf die Wallet bzw. den Private
+                       Key kann der Investor bei der Emittentin nach dokumentierter Identitäts- und Berechtigungsprüfung eine Ersatz-Wallet beantragen, bei dem die
+                       bisherigen Token vernichtet und neue Token einer Ersatz-Wallet zugeordnet werden. Die Emittentin hat keinen Zugriff auf die Wallet und
+                       verwahrt keine Token für Investoren.
+3. Emittentin/         Identität der Emittentin und Anbieterin: Anbieterin und Emittentin ist die HWK 1365 SE, eine Europäische Aktiengesellschaft (Societas
+    Anbieterin/        Europaea) mit Sitz in Königsbronn, Geschäftsanschrift: Heidenheimer Straße 1, 89551 Königsbronn, eingetragen im Handelsregister des
+    Geschäftstätig     Amtsgerichts Ulm unter HRB 748635. Geschäftsführender Direktor: [nombre retirado], [datos personales retirados]. Die
+    keit/ etwaige      Gesellschaft wird durch ihren geschäftsführenden Direktor vertreten. Legal Entity Identifier (LEI): 52990074939JQNKXRD43.
+    Garantiegeber      Aktionärsstruktur: Die Hauptaktionäre der Emittentin sind die C Elf GmbH (Zug/CH), deren alleiniger Gesellschafter [nombre retirado] ist,
+                       mit einer Beteiligung von 33,34 % sowie [nombre retirado] (Versoix/CH) mit einer Beteiligung von 32,99 % am Grundkapital der Emittentin.
+                       Die Aktien an der HWK 1365 SE sind an der Börse Düsseldorf im Marktsegment Freiverkehr notiert. Die HWK 1365 SE-Gruppe besteht aus
+                       dem Mutterunternehmen HWK 1365 SE (nicht operativ tätige Holding), ihrer 100 %-Tochtergesellschaft Hüttenwerke Königsbronn GmbH
+                       (nachfolgend „Operative Gesellschaft') und deren 100 %-Tochtergesellschaft HWK Produktion GmbH, alle mit Sitz in Königsbronn. Gegenstand
+                       des Unternehmens der Emittentin ist der Erwerb, das Halten, die Verwaltung sowie die Führung und Veräußerung von Beteiligungen an
+                       Unternehmen aus dem verarbeitenden Gewerbe und Dienstleistungssektor. Die Firmengruppe geht auf eine Tradition am Standort Königsbronn
+                       seit dem Jahr 1365 zurück. Die HWK 1365 SE-Gruppe betreibt eine Eisengießerei und stellt vor allem Eisengusswalzen für Papiermaschinen,
+                                                                                                                                                  Seite 2 von 4
+                   aber auch für die Lebensmittel- und Beschichtungsindustrie sowie Kolben für den Pressenbau her. Die Operative Gesellschaft nahm zum 1. Mai
+                   2019 ihren operativen Geschäftsbetrieb auf. Die operative HWK-Gruppe entstand zum 1. Januar 2020 durch Ausgliederung des Teilbetriebs
+                   „Produktion" auf die HWK Produktion GmbH. Die Emittentin hat keine Gewinnabführungs- oder Beherrschungsverträge geschlossen.
+                   Garantiegeber: Ansprüche aus dem Wertpapier werden nicht durch eine Garantie besichert. Es existiert kein Garantiegeber.
+                   Bei den nachfolgend dargestellten Risiken handelt es sich um keine abschließende Aufzählung aller in Betracht kommenden Risiken, sondern
+4.   Die mit dem   nur um die mit der Anlage verbundenen wesentlichen Risiken. Im ungünstigsten Fall kann es zum vollständigen Verlust des Anlagebetrags und
+     Wertpapier    sämtlicher Zinsansprüche kommen (Totalverlust).
+     und der
+     Emittentin
+     verbundenen
+     Risiken
+                   Keine Besicherung: Das Wertpapier begründet nicht dinglich besicherte Verbindlichkeiten der Emittentin. Es bestehen keine dinglichen
+Wertpapierbezoge   Sicherheiten oder sonstige Sicherungsrechte zugunsten der Investoren. Im Falle der Insolvenz der Emittentin stehen den Investoren keine
+ne Risiken         vorrangigen Zugriffsrechte auf Vermögenswerte der Emittentin zu. Dies erhöht das Risiko, dass Investoren im Insolvenzfall der Emittentin ihr
+                   eingesetztes Kapital ganz oder teilweise verlieren.
+                   Keine Einlagensicherung: Das Wertpapier ist keine Einlage und unterliegt keiner gesetzlichen oder freiwilligen Einlagensicherung. Im Falle
+                   der Insolvenz der Emittentin besteht kein Anspruch auf Entschädigung durch eine Einlagensicherungseinrichtung. Die Investoren tragen daher
+                   das volle Ausfallrisiko der Emittentin, was zu einem teilweisen oder vollständigen Verlust des eingesetzten Kapitals führen kann.
+                   Qualifizierter Rangrücktritt und vorinsolvenzliche Durchsetzungssperre: Sämtliche Ansprüche der Investoren aus dem Wertpapier,
+                   einschließlich Rückzahlungs- und Verzinsungsansprüchen (sog. Nachrangforderungen), unterliegen einem qualifizierten Rangrücktritt gemäß
+                   §§ 19 Abs. 2, 39 Abs. 2 InsO sowie einer vorinsolvenzlichen Durchsetzungssperre. Der qualifizierte Rangrücktritt und die vorinsolvenzliche
+                   Durchsetzungssperre führen dazu, dass das von den Investoren eingesetzte Kapital den Charakter von Risikokapital erhält; die
+                   Nachrangforderungen können dauerhaft in ihrer Durchsetzung gesperrt sein. Die Investoren tragen ein unternehmerisches Verlustrisiko, das
+                   über das allgemeine Insolvenzausfallrisiko hinausgeht, ohne dass ihnen zugleich Informations- oder Mitwirkungsrechte eingeräumt werden, die
+                   ihnen einen Einfluss auf verlustbringende Geschäftstätigkeiten ermöglichen würden. Die Emittentin könnte das von den Investoren investierte
+                   Kapital vollständig aufbrauchen, solange noch die sonstigen Verbindlichkeiten übersteigende Vermögenswerte vorhanden sind und keine
+                   Zahlungsunfähigkeit droht oder eingetreten ist, ohne dass die Emittentin Insolvenzantrag stellen oder die Investoren von dem Verbrauch des
+                   Geldes in Kenntnis setzen müsste. Die vorinsolvenzliche Durchsetzungssperre gilt auch dann, wenn die Befriedigung der einzelnen
+                   Nachrangforderung eines Investors für sich genommen keinen Insolvenzgrund herbeiführen würde, aber die Zahlung an sämtliche nachrangigen
+                   Gläubiger einen solchen Insolvenzgrund herbeiführen würde. Im Insolvenzfall werden die Investoren erst nach Befriedigung aller nicht
+                   nachrangigen Gläubiger bedient. Es besteht das Risiko, dass laufende Zinszahlungen ausbleiben und Rückzahlungsanspruche nicht
+                   durchsetzbar sind, was zum Totalverlust des eingesetzten Kapitals führen kann.
+                   Risiko des fehlenden Einflusses auf die Geschäftstätigkeit der Emittentin: Die Wertpapiere begründen keine Teilnahme-, Mitwirkungs- und
+                   Stimmrechte an der Hauptversammlung der Emittentin. Die Investoren können keinen Einfluss auf Entscheidungen der Organe der Emittentin
+                   ausüben. Insbesondere sind die Investoren nicht in der Lage, über die Verwendung des Emissionserlöses mitzubestimmen. Dies kann dazu
+                   führen, dass nachteilige Entscheidungen der Emittentin oder ihrer Organe von den Investoren weder verhindert noch korrigiert werden können
+                   und sich unmittelbar auf die Zahlungsfähigkeit der Emittentin auswirken.
+                   Kein liquider Markt / Eingeschränkte Handelbarkeit: Die Wertpapiere sind weder an einer Börse, einem multilateralen Handelssystem noch
+                   auf einem anderen Marktplatz gelistet. Die Emittentin beabsichtigt nicht, die Wertpapiere listen zu lassen. Die Ansprüche der Investoren können
+                   nur gemeinsam mit dem diese repräsentierenden Token übertragen werden. Investoren, die ihre Wertpapiere vor Laufzeitende veräußern
+                   möchten, müssen eigenständig einen Erwerber finden. Es besteht das Risiko, dass kein Erwerber gefunden wird oder ein Erwerber nicht bereit
+                   ist, den vom Investor gewünschten Preis zu zahlen. Investoren sollten daher grundsätzlich nicht davon ausgehen, vor Laufzeitende über das
+                   eingesetzte Kapital verfügen zu können; im schlechtesten Fall kann dies dazu führen, dass Investoren ihre Wertpapiere vor Laufzeitende nicht
+                   oder nur mit erheblichem Abschlag veräußern können.
+                   Zinsänderungsrisiko: Die Wertpapiere sind mit einer festen Verzinsung ausgestattet. Bei steigendem allgemeinem Zinsniveau kann die feste
+                   Verzinsung im Vergleich zu anderen Anlagemöglichkeiten unattraktiv werden. Da die Wertpapiere nicht an einem Marktplatz gehandelt werden
+                   und eine ordentliche Kündigung durch die Investoren während der Laufzeit ausgeschlossen ist, können Investoren nicht ohne Weiteres auf
+                   veränderte Zinsbedingungen reagieren. Es besteht das Risiko, dass die Investoren an eine im Vergleich zum Marktzinsniveau ungünstigere
+                   Verzinsung gebunden bleiben und dadurch einen wirtschaftlichen Nachteil erleiden.
+                   Risiko der Ausgabe weiterer Finanzierungsinstrumente: Die Emittentin ist jederzeit berechtigt, ohne Zustimmung der Investoren weitere
+                   Schuldverschreibungen oder sonstige Finanzierungsinstrumente gleich welcher Art und Ausstattung zu begeben, einschließlich solcher, die den
+                   Wertpapieren im Rang vorgehen oder gleichstehen. Die Investoren haben keinen Anspruch auf Wahrung ihres Rangs gegenüber anderen
+                   Verbindlichkeiten der Emittentin. Dies kann dazu führen, dass sich die Befriedigungsaussichten der Investoren im Insolvenzfall verschlechtern
+                   und das Risiko eines Teil- oder Totalverlusts des eingesetzten Kapitals steigt.
+                   Risiko des Nichterreichens des Mindestplatzierungsbetrags: Die Zeichnungsverträge stehen unter der aufschiebenden Bedingung, dass
+                   der Mindestplatzierungsbetrag innerhalb des Angebotszeitraums erreicht wird. Wird diese Bedingung nicht erfüllt, werden die
+                   Zeichnungsverträge nicht wirksam; die Investoren erhalten für den gesamten Zeitraum zwischen ihrer Zeichnung und der Rückzahlung keinerlei
+                   Zinsen. Gleichwohl tragen Anleger innerhalb dieses Zeitraums das Insolvenzrisiko der Emittentin. Darüber hinaus besteht das Risiko, dass die
+                   Investoren das freigewordene Kapital nicht oder nur zu ungünstigeren Konditionen anderweitig anlegen können (Wiederanlagerisiko).
+                   Digitale Wallet und Private Key Risiken: Bei Verlust oder Diebstahl des Private Keys oder bei Übertragung der Token auf eine nicht kompatible
+                   Wallet ist der betroffene Investor nicht mehr in der Lage, auf die seiner Wallet zugeordneten Token zuzugreifen. Ohne Zugriff auf den Private
+                   Key kann der betroffene Investor keine Transaktionen auf der Blockchain autorisieren und somit keine Änderung im Register veranlassen. Eine
+                   Übertragung des Wertpapiers ohne Zugriff auf die Token ist technisch nicht möglich. Darüber hinaus ist die Durchsetzung der Ansprüche des
+                   Investors aus dem Wertpapier gegenüber der Emittentin ohne Zugriff auf die Token möglicherweise unsicher und mit erhöhten
+                   Nachweisanforderungen verbunden, da die Emissionsbedingungen vorsehen, dass Rechte aus den Wertpapieren ausschließlich von
+                   demjenigen Investor geltend gemacht werden können, dessen Adresse (Public Key) im Register des Smart Contracts als Inhaber der Token
+                   eingetragen ist. Die Emittentin kann auf Antrag des Investors nach dokumentierter Identitäts- und Berechtigungsprüfung die Erstellung einer
+                   Ersatzwallet ermöglichen, bei dem die bisherigen Token vernichtet und neue Token der Ersatz-Wallet zugeordnet werden; ein Anspruch auf
+                   erfolgreiche Wiederherstellung des Zugangs zu der bisherigen Wallet besteht nicht. Im Ergebnis kann der Verlust des Private Keys oder die
+                   Übertragung auf eine nicht kompatible Wallet dazu führen, dass der Investor seine Rechte aus dem Wertpapier vorübergehend oder dauerhaft
+                   nicht oder nur erschwert ausüben und das Wertpapier nicht übertragen kann.
+                   Technologie- und Blockchain-Risiken: Die Emittentin nutzt die Blockchain-Technologie. Es besteht das Risiko, dass diese Technologie
+                   technischen Schwierigkeiten ausgesetzt ist oder ihre Funktionsfähigkeit durch äußere Einflüsse beeinträchtigt ist. Die Emittentin ist berechtigt,
+                   zukünftig einen Wechsel der Blockchain vorzunehmen, wenn hierfür vernünftige Gründe gegeben sind (z.B. geringere Transaktionskosten,
+                   höhere Sicherheit). Mit dem Wechsel werden die ausgegebenen Token gelöscht und durch neue Token auf der gewählten Blockchain ersetzt.
+                   Investoren benötigen nach einem Wechsel eine mit den neuen Token kompatible Wallet, was mit zusätzlichen Kosten für den Investor verbunden
+                   sein kann. Stellen Investoren nicht rechtzeitig auf eine kompatible Wallet um, kann dies zum Verlust des Zugangs zu ihren Token führen. Darüber
+                   hinaus können bei der technischen Migration der Token Fehler auftreten, die einen vorübergehenden oder dauerhaften Verlust von Token zur
+                   Folge haben können. Im Ergebnis kann der Verlust der Token dazu führen, dass der Investor seine Rechte aus dem Wertpapier faktisch nicht
+                   oder nur erschwert ausüben und das Wertpapier nicht übertragen kann.
+                   Geschäfts- und Insolvenzrisiko / Bestandsgefährdung: Die HWK-Gruppe befand bzw. befindet sich in den Geschäftsjahren 2025 und 2026
+                   in einer erheblich negativen Ertrags- und Finanzlage mit wiederkehrenden Liquiditätsengpässen; die Fortführung der Unternehmenstätigkeit ist
+                   nicht gesichert. Sollten die Unternehmensplanungsrechnungen bis Mitte 2027 in wesentlichen Bereichen nicht eintreten und keine ausreichende
+Emittentenbezoge   alternative Finanzierung erschlossen werden können, ist der Fortbestand der Emittentin und der Gruppe unmittelbar gefährdet. In diesem Fall
+ne Risiken         droht die Insolvenz der Emittentin. Im Insolvenzfall werden die Investoren aufgrund des qualifizierten Rangrücktritts erst nach Befriedigung aller
+                   nicht nachrangigen Gläubiger bedient. Es besteht das Risiko eines Totalverlusts des gesamten eingesetzten Kapitals einschließlich sämtlicher
+                   Zinsansprüche.
+                   Abhängigkeit der Emittentin von der Operativen Gesellschaft: Die Emittentin ist eine nicht operativ tätige Holding und erwirtschaftet selbst
+                   keine Mittel. Die Emissionserlöse werden von der Emittentin vorrangig zur Rückführung eines bestehenden konzerninternen Darlehens
+                   gegenüber der Operativen Gesellschaft sowie im Übrigen im Wege eines neuen konzerninternen Darlehens an die Operative Gesellschaft
+                                                                                                                                                        Seite 3 von 4
+                     weitergeleitet. Die Fähigkeit der Emittentin, ihre Zins- und Rückzahlungsverpflichtungen aus den Wertpapieren zu erfüllen, hängt daher
+                     vollständig davon ab, ob und in welchem Umfang die Operative Gesellschaft ausreichende Erträge erwirtschaftet, um das konzerninterne
+                     Darlehen zu bedienen und die erforderlichen Rückflüsse an die Emittentin zu leisten. Die Investoren sind damit mittelbar sämtlichen Risiken der
+                     Geschäftstätigkeit der Operativen Gesellschaft ausgesetzt, ohne auf deren Geschäftsführung Einfluss nehmen zu können. Eine wirtschaftliche
+                     Schieflage der Operativen Gesellschaft führt unmittelbar und zeitgleich zu einer entsprechenden Schieflage der Emittentin. Für die Investoren
+                     besteht das Risiko, dass die Emittentin ihren Zahlungsverpflichtungen aus den Wertpapieren nicht nachkommen kann, bis hin zum Totalverlust
+                     des eingesetzten Kapitals.
+                     Liquiditätsrisiko: Die Liquiditätslage der HWK-Gruppe, insbesondere der Operativen Gesellschaft, ist aktuell angespannt. Da die Emittentin
+                     selbst keine operativen Erträge erwirtschaftet und zur Erfüllung ihrer Zahlungsverpflichtungen aus den Wertpapieren vollständig auf Rückflüsse
+                     aus dem konzerninternen Darlehen an die Operative Gesellschaft angewiesen ist, wirkt sich eine angespannte Liquiditätslage der Operativen
+                     Gesellschaft unmittelbar auf die Zahlungsfähigkeit der Emittentin aus. Es besteht das Risiko, dass der Emittentin nicht jederzeit ausreichend
+                     Liquidität zur Verfügung steht, um ihren Zahlungsverpflichtungen aus den Wertpapieren termingerecht nachzukommen, und dass die Emittentin
+                     Zinszahlungen nicht termingerecht oder nicht vollständig leisten kann. Im schlimmsten Fall kann eine dauerhaft angespannte Liquiditätslage
+                     zum Totalverlust des eingesetzten Kapitals führen.
+                     Zyklizität des Gießereigeschäfts: Das Gießereigeschäft der HWK-Gruppe ist stark zyklisch und in besonderem Maße von der Papier- und
+                     Zellstoffindustrie als Hauptabsatzmarkt abhängig, die sich seit mehreren Jahren in einer besonders negativen Situation befinden. Die deutsche
+                     Papier- und Zellstoffindustrie musste auch 2025 bei Produktionsmenge, Absatz und Umsatz Rückgänge hinnehmen. Eine anhaltend ungünstige
+                     Marktentwicklung wirkt sich unmittelbar auf die Umsatz- und Ertragslage der Operativen Gesellschaft aus. Da die Emittentin zur Erfüllung ihrer
+                     Zahlungsverpflichtungen aus den Wertpapieren vollständig auf Rückflüsse aus dem konzerninternen Darlehen an die Operative Gesellschaft
+                     angewiesen ist, führen rückläufige Erträge der Operativen Gesellschaft dazu, dass die Emittentin ihre Zins- und Rückzahlungsverpflichtungen
+                     gegenüber den Investoren nicht oder nicht vollständig erfüllen kann. Es besteht das Risiko eines Totalverlusts des eingesetzten Kapitals
+                     einschließlich sämtlicher Zinsansprüche.
+                     Risiko der Konzentration auf wenige Hauptkunden: Die starke Ausrichtung der HWK 1365 SE-Gruppe auf die Papierbranche und dort auf
+                     nur wenige Hauptkunden stellt ein erhebliches Klumpenrisiko dar. Der Verlust oder Ausfall auch nur eines Hauptkunden kann zu einem
+                     wesentlichen Einbruch der Umsatz- und Ertragslage der Operativen Gesellschaft führen. Da die Emittentin zur Erfüllung ihrer
+                     Zahlungsverpflichtungen aus den Wertpapieren vollständig auf Rückflüsse aus dem konzerninternen Darlehen an die Operative Gesellschaft
+                     angewiesen ist, führt ein solcher Ertragseinbruch der Operativen Gesellschaft unmittelbar dazu, dass die Emittentin ihre Zins- und
+                     Rückzahlungsverpflichtungen gegenüber den Investoren nicht oder nicht vollständig erfüllen kann. Es besteht das Risiko eines Teil- oder
+                     Totalverlusts des eingesetzten Kapitals einschließlich sämtlicher Zinsansprüche.
+                     Risiko im Zusammenhang mit Schlüsselpersonen: Alleiniger geschäftsführender Direktor der Emittentin ist Herr [nombre retirado]. Der
+                     Erfolg der HWK-Gruppe hängt in hohem Maße von den Fähigkeiten und dem Fachwissen einzelner Schlüsselpersonen ab, insbesondere in den
+                     Bereichen Geschäftsführung, Vertrieb und Produktionstechnik. Sollten Schlüsselpersonen – etwa durch Krankheit, Tod oder Abwanderung –
+                     nicht mehr zur Verfügung stehen und nicht zeitnah gleichwertig ersetzt werden können, kann dies die operative Geschäftstätigkeit und die
+                     Ertragslage der Operativen Gesellschaft erheblich beeinträchtigen. Da die Emittentin zur Erfüllung ihrer Zahlungsverpflichtungen aus den
+                     Wertpapieren vollständig auf Rückflüsse aus dem konzerninternen Darlehen an die Operative Gesellschaft angewiesen ist, führt eine solche
+                     Beeinträchtigung der Operativen Gesellschaft unmittelbar dazu, dass die Emittentin ihre Zins- und Rückzahlungsverpflichtungen gegenüber den
+                     Investoren nicht oder nicht vollständig erfüllen kann. Es besteht das Risiko eines Teil- oder Totalverlusts des eingesetzten Kapitals einschließlich
+                     sämtlicher Zinsansprüche.
+                     Geopolitische und makroökonomische Risiken: Als energieintensives Industrieunternehmen ist die HWK-Gruppe in besonderem Maße von
+                     der Entwicklung der Energiepreise und der Verfügbarkeit von Rohstoffen abhängig. Geopolitische Konflikte, Sanktionen oder sonstige Ereignisse
+                     höherer Gewalt können die Energie- und Beschaffungskosten der Operativen Gesellschaft erheblich erhöhen, Lieferketten beeinträchtigen und
+                     die Ertragslage der Operativen Gesellschaft nachhaltig verschlechtern. Da die Emittentin zur Erfüllung ihrer Zahlungsverpflichtungen aus den
+                     Wertpapieren vollständig auf Rückflüsse aus dem konzerninternen Darlehen an die Operative Gesellschaft angewiesen ist, führt eine solche
+                     Verschlechterung der Ertragslage der Operativen Gesellschaft unmittelbar dazu, dass die Emittentin ihre Zins- und Rückzahlungsverpflichtungen
+                     gegenüber den Investoren nicht oder nicht vollständig erfüllen kann. Es besteht das Risiko eines Teil- oder Totalverlusts des eingesetzten
+                     Kapitals einschließlich sämtlicher Zinsansprüche.
+
+                     Der Verschuldungsgrad bezeichnet das Verhältnis von Fremdkapital zu Eigenkapital. Mit steigendem Verschuldungsgrad erhöht sich das Risiko
+5. Verschuldungs-    einer nicht oder nicht vollständigen vertragsgemäßen Rückzahlung. Ausweislich des letzten aufgestellten Jahresabschlusses der Emittentin zum
+    grad der         Stichtag 31. Dezember 2025 beträgt der Verschuldungsgrad der Emittentin ca. 11,1 %.
+    Emittentin
+6. Aussichten für    Die Aussichten für die vertragsgemäße Zins- und Rückzahlung hängen maßgeblich von der wirtschaftlichen Entwicklung der HWK 1365 SE-
+    die              Gruppe, insbesondere der Operativen Gesellschaft, ab. Für das Geschäftsjahr 2026 geht die Unternehmensleitung von einem negativen EBITDA
+    Kapitalrückzah   auf Vorjahresniveau in der Größenordnung von EUR ca. 1,0 Mio. aus. Die wesentlichen preisbestimmenden Faktoren für die Aussichten auf
+    lung und         Zins- und Rückzahlung sind: (i) die Nachfrageentwicklung in der Papiermaschinenindustrie; (ii) die Entwicklung der Energie- und Rohstoffpreise;
+    Erträge unter    (iii) die Fähigkeit zur Diversifikation in weitere Kundenbranchen (insbesondere Lebensmittelindustrie); (iv) die Umsetzung von
+    verschiedenen    Kostensenkungsmaßnahmen; sowie (v) die allgemeine konjunkturelle Entwicklung in Deutschland und Europa. Prognosen sind kein verlässlicher
+    Marktbedingu     Indikator für eine tatsächliche zukünftige Wertentwicklung. Die nachfolgenden Szenarien dienen lediglich der beispielhaften Veranschaulichung
+    ngen             möglicher Entwicklungen und stellen keine Prognose oder Zusicherung dar. Die tatsächliche Entwicklung kann von den dargestellten Szenarien
+                     erheblich abweichen; insbesondere können sich die zugrunde liegenden Annahmen als unzutreffend erweisen.
+                     Positives Szenario (Markt erholt sich in 2027, Liquidität gesichert, planmäßige Umsetzung): Die Investoren erhalten die feste Verzinsung in
+                     Höhe von 8,0 % p.a. über die gesamte Laufzeit von fünf Jahren. Auf Basis eines Nennbetrags von EUR 1.000 ergibt sich ein Gesamtzinsertrag
+                     von EUR 400 (EUR 80 p.a.). Zum Laufzeitende erfolgt die Rückzahlung des Nennbetrags zu 100 % (EUR 1.000). Der Gesamtrückfluss beträgt
+                     EUR 1.400.
+                     Neutrales Szenario (Markt stagniert, Liquidität dauerhaft angespannt): Die Emittentin kann die feste Verzinsung in Höhe von 8,0 % p.a. nur in
+                     einzelnen Zinsjahren bedienen. Aufgrund der angespannten Liquiditätslage und der vorinsolvenzlichen Durchsetzungssperre erfolgen lediglich
+                     in zwei von fünf Zinsjahren Zinszahlungen; in den übrigen drei Zinsjahren fallen die Zinszahlungen vollständig aus. Die wirtschaftliche Lage der
+                     Operativen Gesellschaft verbessert sich während der Laufzeit nicht in ausreichendem Maße, sodass die Emittentin zum Laufzeitende nicht über
+                     ausreichende Mittel für eine vollständige Rückzahlung des Nennbetrags verfügt. Die Rückzahlung erfolgt lediglich in Höhe von 50 % des
+                     Nennbetrags. Auf Basis eines Nennbetrags von EUR 1.000 ergibt sich ein Gesamtzinsertrag von EUR 160 und eine Kapitalrückzahlung von
+                     EUR 500. Der Gesamtrückfluss beträgt EUR 660. Es entsteht ein Verlust von EUR 340 bezogen auf das eingesetzte Kapital.
+                     Negatives Szenario (Insolvenz der Emittentin, kein Zins, kein Kapital zurück): Die Emittentin wird zahlungsunfähig oder überschuldet. Es
+                     erfolgen keine Zinszahlungen. Die Emittentin ist nicht in der Lage, die Rückzahlung der Wertpapiere vorzunehmen. Der Gesamtrückfluss beträgt
+                     EUR 0. Es kommt zum Totalverlust des eingesetzten Kapitals.
+7.   Die mit dem     Kosten auf Ebene der Investoren: Über den Ausgabepreis (Nennbetrag) hinaus entstehen für den Investor auf Ebene der Emittentin keine
+     Wertpapier      weiteren Kosten. Es wird kein Ausgabeaufschlag (Agio) erhoben. Dem Investor können jedoch weitere Kosten entstehen, insbesondere im
+     verbundenen     Zusammenhang mit dem Erwerb, der Verwahrung und/oder Verwaltung der Wertpapiere (z.B. in einer eigenen Wallet) und der Übertragung des
+     Kosten und      Wertpapiers, etwa für Transaktionen auf der Blockchain. Es ist Sache des Investors, sich hierüber vorab zu informieren. Für die Erstellung einer
+     Provisionen     Wallet über die Plattform entstehen dem Investor keine Kosten.
+                     Kosten auf Ebene der Emittentin: Die geschätzten Gesamtkosten der Emission betragen ungefähr EUR 132.861 (brutto, inkl. gesetzlicher
+                     Umsatzsteuer).
+                     Steuerliche Auswirkungen: Die Emittentin wird auf fällige Zahlungen Kapitalertragsteuern in Höhe der zum jeweiligen Zeitpunkt auf in
+                     Deutschland steuerpflichtige Investoren (natürliche Personen) anwendbaren Steuersätze und Abgaben einbehalten und an das Finanzamt
+                     abführen, soweit sie hierzu verpflichtet ist. Die Emittentin ist nicht verpflichtet, den Investoren zusätzliche Beträge als Ausgleich für einbehaltene
+                     Steuern zu zahlen.
+                                                                                                                                                            Seite 4 von 4
+8.                     Gegenstand des Angebots und Emissionsvolumen: Gegenstand des Angebots sind bis zu 1.365 tokenbasierte Schuldverschreibungen in Form
+     Angebotskond      von Wertpapieren sui generis (Security Token) der HWK 1365 SE im Nennbetrag von je EUR 1.000,00. Das Gesamtemissionsvolumen beträgt EUR
+     itionen und       1.365.000,00 (in Worten: eine Million dreihundertfünfundsechzigtausend Euro). Die Wertpapiere lauten auf Euro. Sämtliche Zahlungen der Emittentin
+     Emissionsvol      an die Investoren erfolgen ausschließlich in Euro. Die Mindestzeichnungssumme pro Investor beträgt EUR 1.000,00 (entspricht einem Wertpapier).
+     umen              Eine Teilstückelung ist nicht möglich. Es werden keine Stückzinsen berechnet.
+                       Angebotszeitraum: Der Angebotszeitraum beginnt am 1. November 2026 und endet spätestens sechs (6) Monate nach Beginn des
+                       Angebotszeitraums (30. April 2027). Eine vorzeitige Beendigung durch die Emittentin ist jederzeit möglich. Eine Verlängerung des
+                       Angebotszeitraums durch die Emittentin ist zulässig. Der Angebotszeitraum darf jedoch insgesamt zwölf (12) Monate ab seinem Beginn nicht
+                       überschreiten.
+                       Zeichnungsverfahren: Die Zeichnung der Wertpapiere erfolgt ausschließlich online über die digitale Plattform der Emittentin, abrufbar unter
+                       https://anleihe.hwk1365.de/. Für die Abgabe eines Zeichnungsangebots registriert sich der Interessent auf der Plattform und gibt die für eine
+                       Zeichnung erforderlichen Angaben zu seiner Person sowie den gewünschten Anlagebetrag ein. Während der Zeichnung richtet der potentielle
+                       Investor über eine in die Plattform integrierte technische Wallet-Infrastruktur eine eigene, ausschließlich nutzerkontrollierte Wallet zur Verwahrung
+                       der Token ein. Mit Betätigung des Buttons „Jetzt zahlungspflichtig Investieren" auf der Plattform gibt der potentielle Investor ein verbindliches Angebot
+                       zum Abschluss eines Zeichnungsvertrags ab (Zeichnungszeitpunkt). Die Emittentin bestätigt dem Investor den Eingang des Zeichnungsangebots
+                       per E-Mail. Der Investor ist verpflichtet, den Ausgabepreis je Wertpapier unverzüglich, spätestens innerhalb von fünf (5) Bankarbeitstagen nach dem
+                       Zeichnungszeitpunkt per Banküberweisung auf das Konto der Emittentin zu entrichten. Mit Eingang der vollständigen Zahlung des Ausgabepreises
+                       bei der Emittentin nimmt diese das Zeichnungsangebot durch Erklärung gegenüber dem Investor an und der Zeichnungsvertrag kommt zustande.
+                       Nimmt die Emittentin das Angebot eines potentiellen Investors nicht an, wird die Emittentin den Anlagebetrag unverzüglich auf das vom Investor für
+                       die Zahlung verwendete Bankkonto zurücküberweisen; ein Zeichnungsvertrag kommt in diesem Fall nicht zustande. Mit Eingang der vollständigen
+                       Zahlung und Annahme der Zeichnung durch die Emittentin werden die entsprechenden Token der Wallet des Investors zugeordnet.
+9.   Geplante          Die Verwendung des Netto-Emissionserlöses in Höhe von EUR 1.232.139,- (Bruttoemissionserlös in Höhe von EUR 1.365.000,- abzügl.
+     Verwendung        EUR 132.861 – bei Erreichen der Vollplatzierung) erfolgt nicht prozentual verteilt, sondern in einer festen kaskadischen Reihenfolge:
+     der voraus-       Stufe 1 – Bis EUR 300.000: Die Emissionserlöse werden vorrangig zur Rückführung eines bestehenden konzerninternen Darlehens der
+     sichtlichen       Emittentin gegenüber der Operativen Gesellschaft verwendet; die Mittel sind unmittelbar liquiditätswirksam in der Operativen Gesellschaft.
+     Nettoemission     Stufe 2 – EUR 300.000 bis EUR 700.000: Liquiditätssicherung der Operativen Gesellschaft, weitergeleitet als konzerninternes Darlehen.
+     serlöse           Stufe 3 – Ab EUR 700.000: Modernisierung von Maschinen und Anlagen der Operativen Gesellschaft nach einer fest definierten Prioritätenliste.
+                       Die genaue Prioritätenliste wird von der Emittentin vor Beginn des Angebotszeitraums festgelegt. Die Verwendung der Emissionserlöse unterliegt
+                       keiner staatlichen Aufsicht. Die Rückzahlung der Wertpapiere soll aus den Erträgen der Operativen Gesellschaft erfolgen, die über das
+                       konzerninterne Darlehen an die Emittentin weitergeleitet werden.
+                     - Daraus
+                            Die ergibt sich Richtigkeit
+                                inhaltliche bei einem Bruttoemissionserlös    in Höhe von– bei
+                                                        dieses Wertpapier-Informationsblatts     vollständiger
+                                                                                               (WIB)  unterliegtPlatzierung  – ein voraussichtlicher
+                                                                                                                 nicht der Prüfung                     Nettoemissionserlös
+                                                                                                                                    durch die Bundesanstalt     für         von
+Gesetzliche            EURFinanzdienstleistungsaufsicht
+                             1.232.139.                      (Bafin).
+Hinweise nach § 4    -      Für das Wertpapier wurde kein von der Bafin gebilligter Wertpapierprospekt hinterlegt. Weitergehende Informationen erhält der Investor
+Abs. 5 WpPG                 unmittelbar von der Emittentin des Wertpapiers.
+                     -      Der letzte aufgestellte Jahresabschluss der Emittentin ist der Jahresabschluss zum Stichtag 31. Dezember 2025; dieser ist als Anlage zu
+                            diesem Wertpapier-Informationsblatt beigefügt.
+                     -      Ansprüche auf der Grundlage einer in diesem Wertpapier-Informationsblatt enthaltenen Angabe können nur dann bestehen, wenn die
+                            Angabe irreführend oder unrichtig ist oder der Warnhinweis des § 4 Abs. 4 WpPG nicht enthalten ist und wenn das Erwerbsgeschäft nach
+                            Veröffentlichung des Wertpapier-Informationsblatts und während der Dauer des öffentlichen Angebots, spätestens jedoch innerhalb von
+                            sechs Monaten nach dem ersten öffentlichen Angebot der Wertpapiere im Inland, abgeschlossen wurde.
+Sonstiges             Der Investor erzielt mit dem Wertpapier Einkünfte aus Kapitalvermögen, sofern er als natürliche Person in Deutschland unbeschränkt steuerpflichtig
+                      ist und das Wertpapier in seinem Privatvermögen hält. Die Einkünfte werden nach derzeit gültigem Steuerrecht mit 25 % Kapitalertragsteuer zzgl.
+                      5,5 % Solidaritätszuschlag und ggf. anfallender Kirchensteuer besteuert. Bei Investoren, die mittels einer Kapitalgesellschaft investieren, unterliegen
+                      die Gewinne der Körperschafts- und Gewerbesteuer. Die Steuerlast trägt der Investor. Im Übrigen hängt die steuerliche Behandlung von den
+                      persönlichen Verhältnissen des einzelnen Investors ab und kann zukünftigen Änderungen unterworfen sein. Es wird empfohlen, sich zu etwaigen
+                      steuerlichen Folgen des Erwerbs, des Haltens und der Veräußerung der Wertpapiere qualifiziert steuerlich beraten zu lassen. Auf Konzernebene
+                      beträgt der Verschuldungsgrad der HWK 1365 SE-Gruppe ausweislich des letzten aufgestellten Konzernabschlusses zum Stichtag 31. Dezember
+                      2025 ca. 165 %.
+Jahresabschluss zum 31. Dezember 2025
+der HWK1365 SE
+
+Aktie (ISIN): DE000A3CMG80
+                                                                                     HWK1365 SE, Königsbronn
+
+                                                                                   Bilanz zum 31. Dezember 2025
+
+Akti vse ite                                                                                                                                                                                         Passivseite
+
+                                                                             Vorjahr                                                                                                                      Vorjahr
+                                                              EUR              EUR                                                                                         EUR              EUR             EUR
+ A. Anlagevermögen                                                                               A. Eigenkapital
+
+       Finanzanlagen                                                                                  I. Gezeichnetes Kapital                                                              275.184,00      275.184,00
+            Anteile an verbundenen Unternehmen              5.500.000,00    10.500.000,00                - Bedingtes Kapital EUR 137.592,00 (i.Vj. EUR 137.592,00)
+
+ B. Umlaufvermögen                                                                                    II. Kapitalrücklage                                                               16.750.033,86    16.750.033,86
+
+      I. Forderungen und sonstige Vermögensgegenstände                                               III. Bilanzverlust                                                                 -12.027.401,74   -6.941.943,16
+            Sonstige Vermögensgegenstände                     32.672,08        32.553,91                 - davon Verlustvortrag EUR -6.941.943,16 (i.Vj. EUR -86.379,00)
+                                                                                                                                                                                         4.997.816,12    10.083.274,70
+     II. Kassenbestand, Guthaben bei Kreditinstituten           6.121,74       21.983,65
+                                                              38.793,82        54.537,56            Rückstellungen
+
+ C. Rechnungsabgrenzunasposten                                 14.042,00        17.906,20               Sonstige Rückstellungen                                                            167.913,28      177.584,79
+
+                                                                                                 C. Verbindlichkeiten
+
+                                                                                                     1. Verbindlichkeiten aus Lieferungen und Leistungen                         0,00                         4.944,21
+                                                                                                     2. Verbindlichkeiten gegenüber verbundenen Unternehmen                386.670,19                      196.125,38
+                                                                                                     3. Sonstige Verbindlichkeiten                                            436,23                        98.733,68
+                                                                                                                                                                                           387.106,42      299.803,27
+
+                                                                                                 D. Rechnunosabcrenzunosposten                                                                                   781
+
+                                                         ^^552^835^82      ^0572^376                                                                                                     5.552.835         572
+                                           HWK 1365 SE, Königsbronn
+
+                                          Gewinn- und Verlustrechnung
+                            für die Zeit vom 1. Januar 2025 bis 31. Dezember 2025
+
+                                                                     Geschäftsjahr                  Vorjahr
+                                                               EUR                   EUR             EUR
+ 1. Umsatzerlöse                                                                 402.000,00         260.081,76
+ 2. Sonstige betriebliche Erträge                                                 17.845,00         191.449,49
+                                                                                 419.845,00         451.531,25
+ 3. Abschreibungen auf immaterielle Vermögens­
+    gegenstände des Anlagevermögens                                                        0,00         999,00
+ 4. Sonstige betriebliche Aufwendungen                                           483.061,91         758.333,86
+                                                                                     -63.216,91    -307.801,61
+ 5. Sonstige Zinsen und ähnliche Erträge                          156,00                                 11,00
+ 6. Abschreibungen auf Finanzanlagen                        5.000.000,00                          6.535.000,00
+ 7. Zinsen und ähnliche Aufwendungen                           21.326,80                             12.773,55
+    - davon an verbundene Unternehmen
+      EUR 20.449,56 (i.Vj. EUR 10.251,57)
+                                                                               -5.021.170,80      -6.547.762,55
+                                                                               -5.084.387,71      -6.855.564,16
+ 8. Steuern vom Einkommen und vom Ertrag                                               1.070,87               0,00
+ 9. Ergebnis nach Steuern                                                      -5.085.458,58      -6.855.564,16
+10. Jahresfehlbetrag                                                           -5.085.458,58      -6.855.564,16
+11. Verlustvortrag aus dem Vorjahr                                             -6.941.943,16        -86.379,00
+12. Bilanzverlust                                                            -12.027.401,74       -6.941.943,16
+                                   HWK1365 SE, Königsbronn
+
+                                Anhang zum 31. Dezember 2025
+
+I. Allgemeine Angaben zum Jahresabschluss und zu Bilanzierungs- und
+  Bewertungsmethoden
+
+  1. Allgemeines
+
+     Die HWK 1365 SE („Gesellschaft“) war bis zum 20. September 2024 im Handelsregister des
+     Amtsgerichts Frankfurt am Main unter der Registernummer HRB 122309 eingetragen. Die Firma
+     lautete TERENTIUS SE. Sitz war Frankfurt am Main; die Geschäftsadresse lautete Lütticher Straße
+     8a, 50674 Köln.
+
+     Zum Verschmelzungsstichtag 1. Januar 2024 wurde die AVIR Walze Holding GmbH, München
+     (Amtsgericht München,     HRB 275029) (übertragender Rechtsträger),          auf die Gesellschaft
+     verschmolzen; die Verschmelzung wurde wirksam am 12. August 2024. Durch die Verschmelzung
+     gingen Vermögensgegenstände in Höhe von TEUR 17.106, darunter die Beteiligung an der
+     Hüttenwerke Königsbronn GmbH in Höhe von TEUR 17.035, sowie Schulden in Höhe von TEUR
+     331 zu. Zum Zwecke der Verschmelzung war das Grundkapital mit Wirkung zum 11. Juli 2024 um
+     EUR 25.184 erhöht worden.           Insgesamt erhöhte sich das Eigenkapital       im Rahmen der
+     Verschmelzung um TEUR 16.775. Seit 12. August 2024 übt die HWK 1365 SE die Holdingfunktion
+     über die Hüttenwerke Königsbronn GmbH, Königsbronn, sowie deren Tochtergesellschaft HWK
+     Produktion GmbH, Königsbronn, aus.
+
+     Im Zusammenhang mit der vorgenannten Verschmelzung wurde die Gesellschaft mit Wirkung zum
+     12. August 2024 in HWK 1365 SE umfirmiert. Mit Wirkung zum 20. September 2024 wurde der Sitz
+     der Gesellschaft nach Königsbronn verlegt. Die neue Geschäftsadresse lautet Heidenheimer Straße
+     1, 89551 Königsbronn. Die Gesellschaft ist seit 20. September 2024 im Handelsregister des
+     Amtsgerichts Ulm unter der Registernummer HRB 748635 eingetragen.
+
+     Die Anteile an der Gesellschaft sind an der Börse Düsseldorf im Marktsegment Freiverkehr unter der
+     Kennnummer ISIN: DE000A3CMG80 bzw. WKN: A3CMG8 notiert.
+
+     Der Jahresabschluss der HWK 1365 SE, Königsbronn („Gesellschaft“), wurde nach den für
+     Kapitalgesellschaften   geltenden    Vorschriften   des   Handelsgesetzbuches    (HGB)    und   des
+     Aktiengesetzes (AktG) in EUR erstellt. Die Gewinn- und Verlustrechnung ist nach dem
+     Gesamtkostenverfahren erstellt worden. Die Gesellschaft ist eine kleine Kapitalgesellschaft im Sinne
+                                                                                                 -1 -
+  von § 267 HGB. Die Erleichterungen bei der Aufstellung des Jahresabschlusses wurden teilweise in
+  Anspruch genommen. Die vorgenannte Verschmelzung mit der AVIR Walze Holding GmbH,
+  München, wurde im Jahresabschluss des Vorjahres aufgrund der Rückwirkung zum 1. Januar 2024
+  berücksichtigt.
+
+  Der Jahresabschluss wurde unter Berücksichtigung des folgenden bestandsgefährdenden Risikos
+  unter der Zugrundelegung des Grundsatzes der Fortführung der Unternehmenstätigkeit aufgestellt.
+  Die HWK1365 SE-Gruppe besteht aus dem Mutterunternehmen HWK 1365 SE (nicht operativ tätige
+  Holding),    deren        100    %-Tochterunternehmen     Hüttenwerke      Königsbronn      GmbH
+  (Vertriebsgesellschaft)    und   deren   100   %-Tochterunternehmen     HWK   Produktion    GmbH
+  (Produktionsgesellschaft), alle mit Sitz in Königsbronn. Aufgrund der engen wirtschaftlichen und
+  finanziellen Verflechtungen kann die Unternehmensfortführung der drei Gesellschaften nur für die
+  HWK 1365 SE-Gruppe beurteilt werden. Dementsprechend wird die Unternehmens- und
+  Liquiditätsplanung für die HWK 1365 SE-Gruppe insgesamt vorgenommen. Im Geschäftsjahr 2025
+  sowie in 2026 bis zum Zeitpunkt der Aufstellung dieses Jahresabschlusses befand sich die HWK-
+  Gruppe in einer negativen Ertrags- und Finanzlage mit zeitweisen Liquiditätsengpässen. Die
+  schwierige, marktbedingt belastete wirtschaftliche Situation wird nach aktueller Einschätzung auch
+  im Jahr 2026 anhalten, worauf mit Kostensenkung in allen Bereichen reagiert wird. Die Themen
+  Kostensenkung und Liquiditätsmanagement stehen insofern im Mittelpunkt der Steuerung. Die
+  aktuelle Unternehmens- und Liquiditätsplanung der HWK 1365 SE-Gruppe, in die die bekannten
+  sowie geplanten Kosten- und Umsatzentwicklungen eingearbeitet sind, sieht einen positiven
+  Liquiditätsbestand für die Geschäftsjahre 2026 und 2027 vor. Auf Basis der derzeit bekannten
+  Annahmen und ergriffenen bzw. geplanten Maßnahmen, wie sie in der aktuellen Unternehmens- und
+  Liquiditätsplanung der HWK 1365 SE-Gruppe für die Geschäftsjahre 2026 und 2027 enthalten sind,
+  sieht der geschäftsführende Direktor die Liquidität der HWK 1365 SE-Gruppe sowie der drei
+  Gesellschaften und damit deren Fortführung der Unternehmenstätigkeit für die Geschäftsjahre 2026
+  und 2027 als gesichert an. Sollten die den Unternehmensplanungsrechnungen bis Juni 2027
+  zugrundeliegenden Annahmen und Maßnahmen, insbesondere der planmäßige Eingang der
+  Kundenzahlungen, die Umsatzprognose sowie die Kostenmaßnahmen, in wesentlichen Bereichen
+  nicht eintreten bzw. sich nicht umsetzen lassen und dann keine ausreichende sonstige Finanzierung
+  erschlossen werden können, sind die HWK 1365 SE-Gruppe sowie die HWK 1365 SE in ihrem
+  Bestand gefährdet.
+
+2. Bilanzierungs- und Bewertungsmethoden
+
+  Im       Jahresabschluss         sind      sämtliche     Vermögensgegenstände,           Schulden,
+  Rechnungsabgrenzungsposten, Sonderposten, Aufwendungen und Erträge enthalten, soweit
+  gesetzlich nichts anderes bestimmt ist. Die Posten der Aktivseite sind nicht mit Posten der
+
+                                                                                             -2-
+Passivseite, Aufwendungen nicht mit Erträgen verrechnet worden, soweit dies nach den Vorschriften
+des § 246 HGB nicht ausdrücklich gefordert wird.
+
+Die Wertansätze der Eröffnungsbilanz des Geschäftsjahres stimmen mit denen der Schlussbilanz
+des vorangegangenen Geschäftsjahres überein. Die Vermögensgegenstände und Schulden wurden
+einzeln bewertet. Bei der Bewertung wurde von der Fortführung des Unternehmens ausgegangen.
+
+Es ist vorsichtig bewertet worden, namentlich sind alle vorhersehbaren Risiken und Verluste, die bis
+zum Abschlussstichtag entstanden sind, berücksichtigt worden, selbst wenn diese erst zwischen
+Abschlussstichtag und der Aufstellung des Jahresabschlusses bekannt geworden sind. Gewinne
+sind, soweit dies gesetzlich nicht ausdrücklich gefordert wird, nur berücksichtigt worden, wenn sie
+bis zum Abschlussstichtag realisiert wurden. Aufwendungen und Erträge des Geschäftsjahres sind
+unabhängig vom Zeitpunkt der Zahlung berücksichtigt worden.
+
+Die Finanzanlagen werden zu Anschaffungskosten unter Beachtung des Niederstwertprinzips
+angesetzt.
+
+Soweit   der    nach     vorstehenden     Grundsätzen    ermittelte   Wert   von   Gegenständen      des
+Anlagevermögens über dem Wert liegt, der ihnen am Abschlussstichtag beizulegen ist, wird dem
+durch außerplanmäßige Abschreibungen Rechnung getragen. Soweit die Gründe für in früheren
+Geschäftsjahren vorgenommene außerplanmäßige Abschreibungen nicht mehr bestehen, wird eine
+Wertaufholung vorgenommen, soweit es sich nicht um einen entgeltlich erworbenen Geschäfts- oder
+Firmenwert handelt.
+
+Forderungen werden zum Nennbetrag beziehungsweise zu Anschaffungskosten oder niedrigeren
+Tageswerten     angesetzt.    Bei   den    Forderungen    werden      erkennbare   Einzelrisiken    durch
+Wertberichtigungen berücksichtigt.
+
+Flüssige Mittel sind zu Anschaffungskosten oder niedrigeren Tageswerten bewertet.
+
+Das Wahlrecht zur Aktivierung latenter Steuern für die sich insgesamt ergebende Steuerentlastung
+wird nicht ausgeübt. In der Bilanz werden die aktiven und passiven latenten Steuern saldiert
+ausgewiesen. Die Berechnung der latenten Steuern erfolgt zu einem Steuersatz in Höhe von 28,4 -
+23,2 % (i.Vj. 28,4 %).
+
+Die sonstigen    Rückstellungen     berücksichtigen alle erkennbaren         Risiken und    ungewissen
+Verpflichtungen und sind in Höhe des nach vernünftiger kaufmännischer Beurteilung notwendigen
+Erfüllungsbetrags unter Berücksichtigung erwarteter künftiger Preis- und Kostenänderungen
+angesetzt. Bei Rückstellungen mit Restlaufzeiten von über einem Jahr erfolgt eine Abzinsung mit
+dem fristkongruenten von der Deutschen Bundesbank vorgegebenen durchschnittlichen Marktzins.
+
+                                                                                                   -3-
+     Erfolge aus der Änderung des Abzinsungssatzes sowie Zinseffekte aus einer geänderten Schätzung
+     der Restlaufzeitwerden einheitlich im operativen Ergebnis ausgewiesen.
+
+     Die   übrigen   Vermögensgegenstände     und   Verbindlichkeiten werden     zum   Nennwert bzw.
+     Erfüllungsbetrag bewertet.
+
+     Forderungen und Verbindlichkeiten in fremder Währung werden im Rahmen der Zugangsbewertung
+     mit dem Kurs am Tage des Geschäftsvorfalls bewertet. Verluste aus Kursänderungen bis zum
+     Abschlussstichtag werden stets, Gewinne aus Kursänderungen nur bei Restlaufzeiten von einem
+     Jahr oder weniger berücksichtigt.
+
+II. Angaben zur Bilanz und Gewinn- und Verlustrechnung
+
+     Anlagevermögen
+
+     Die Entwicklung des Anlagevermögens ist in der Anlage zum Anhang dargestellt.
+
+     Eigenkapital
+
+     Zum 31. Dezember 2025 besteht das Grundkapital in Höhe von EUR 275.184,00 aus 275.184
+     nennbetragslosen Stückaktien mit einem rechnerischen Wert von EUR 1,00 je Aktie; sie lauten auf
+     den Inhaber und gewähren sämtlich gleiche Rechte.
+
+     In Bezug auf das bestehende bedingte Kapital 2024/I (EUR 127.592,00) und bedingte Kapital 2024/II
+     (EUR 10.000,00) sind zum 31. Dezember 2025 keine entsprechenden Wandel- und/oder
+     Optionsschuldverschreibungen und/oder Aktienoptionen ausgegeben.
+
+     Der Verwaltungsrat ist ermächtigt, das Grundkapital der Gesellschaft bis zum 17. Juni 2029 einmalig
+     oder mehrmals um insgesamt bis zu EUR 137.592,00 durch Ausgabe von bis zu Stück 137.592
+     neuen, auf den Inhaber lautenden Stückaktien gegen Bar- und/oder Sacheinlagen zu erhöhen
+     (Genehmigtes Kapital 2024). Den Aktionären ist grundsätzlich ein Bezugsrecht zu gewähren. Der
+     Verwaltungsrat ist jedoch ermächtigt, das gesetzliche Bezugsrecht der Aktionäre bei Ausgabe der
+     neuen Aktien in bestimmten Fällen auszuschließen, u.a. bei Kapitalerhöhungen gegen Sacheinlagen
+     oder soweit es erforderlich ist, um den Inhabern und/oder Gläubigern von Wandlungs- und/oder
+     Optionsrechten ein Bezugsrecht auf neue Aktien zu gewähren. Das genehmigte Kapital 2021/1 in
+     Höhe von EUR 125.000,00 wurde am 18. Juni 2024 aufgehoben.
+
+                                                                                                -4-
+           Verbindlichkeiten
+
+            Die Angaben zu den Verbindlichkeiten ergeben sich aus nachfolgender Tabelle:
+
+                                             Restlaufzeit                          Gesamtbetrag           davon durch     Art u. Form der
+                                                                                                        Pfandrechte und
+                                                                   davon                                ähnliche Rechte     Sicherheit
+                         bis zu 1 Jahr      mehr als 1 Jahr    mehr als 5 Jahre      31.12.2025            gesichert
+                              EUR               EUR                 EUR                 EUR                   EUR
+Verbindlichkeiten aus
+Lieferungen und                     0,00               0,00                                    0,00
+Leistungen                (i.Vj. TEUR 5)      (i.Vj. TEUR-)                          (i.Vj. TEUR 5)
+Verbindlichkeiten               91.498,49         295.171,70                               386.670,19
+gegenüber               (i.Vj. TEUR 135)     (i.Vj. TEUR 61)                        (i.Vj. TEUR 196)
+verbundenen
+Unternehmen
+Sonstige                          436,23               0,00                                  436,23
+Verbindlichkeiten        (i.Vj. TEUR 99)      (i.Vj. TEUR-)                         (i.Vj. TEUR 99)
+- davon aus Steuern                 0,00
+                          (i.Vj. TEUR 1)
+                                91.934,72         295.171,70                0,00          387.106,42
+                        (i.Vj. TEUR 239)     (i.Vj. TEUR 61)      (i.Vj. TEUR -)   (i.Vj. TEUR 300)
+
+            Die Verbindlichkeiten gegenüber verbundenen Unternehmen betreffen in Höhe von TEUR 387
+           sonstige Verbindlichkeiten (i.Vj. TEUR 131) und in Höhe von TEUR - Verbindlichkeiten aus
+            Lieferungen und Leistungen (i.Vj. TEUR 65).
+
+           Abschreibungen
+
+            Die Abschreibungen auf Finanzanlagen enthalten außerplanmäßige Abschreibungen                                   nach
+            § 253 Abs. 3 HGB in Höhe von TEUR 5.000 (i.Vj. TEUR 6.535).
+
+            Erträge / Aufwendungen von außergewöhnlicher Größenordnung oder außergewöhnlicher
+            Bedeutung
+
+            Im Geschäftsjahr 2025 fielen folgende                Erträge / Aufwendungen von außergewöhnlicher
+            Größenordnung oder außergewöhnlicher Bedeutung an:
+            Die Abschreibungen auf Finanzanlagen enthalten außerplanmäßige Abschreibungen auf die Anteile
+           an der Hüttenwerke Königsbronn GmbH, Königsbronn, in Höhe von TEUR 5.000.
+
+                                                                                                                          -5-
+III. Sonstige Angaben
+
+      Angaben gemäß § 160 Abs. 1 Nr. 8 AktG
+
+      Die C Elf GmbH mit Sitz in Zug (Schweiz), die Glück Auf 1365 GbR mit Sitz in Königsbronn sowie
+      [nombre retirado], wohnhaft in Versoix (Schweiz), haben der Gesellschaft im Juni 2024 jeweils
+      gemäß § 20 Abs. 1 AktG mitgeteilt, dass ihnen jeweils unmittelbar mehr als der vierte Teil der Aktien
+      der Gesellschaft gehört.
+
+      Konzernabschluss
+
+      Die HWK 1365 SE, Königsbronn, erstellt als Mutterunternehmen ab dem Bilanzstichtag 31.
+      Dezember 2024 einen Konzernabschluss, in den neben der HWK 1365 SE auch die jeweiligen
+      100%-Beteiligungen Hüttenwerke Königsbronn GmbH, Königsbronn, und HWK Produktion GmbH,
+      Königsbronn, einbezogen werden.
+
+Königsbronn, den 29. April 2026
+
+HWK 1365 SE, Königsbronn
+
+[nombre retirado]
+Geschäftsführender Direktor
+
+                                                                                                   -6-
+                                                                                                                                                                                              Anlage zum Anhang
+
+                                                                                     HWK 1365 SE, Königsbronn
+
+                                                                                Entwicklung des Anlagevermögens
+
+                                                   Anschaffungs- oder Herstellungskosten_______________   ___________________________ Abschreibungen________________________       ___________ Buchwerte
+                                        Stand                                                Stand              Stand      Abschreibungen    Änderungen der       Stand                  Stand           Stand
+                                                                                                                                  des          Abschreibungen i.
+                                        1.1.2025        Zugänge          Abgänge          31.12.2025          1.1.2025       Geschäftsjahres   Zsg. mit Abgängen   31.12.2025         31.12.2025      31.12.2024
+                                          EUR             EUR              EUR               EUR                EUR               EUR                EUR              EUR                EUR             EUR
+Finanzanlagen
+
+  Anteile an verbundenen Unternehmen   17.035.000,00              0,00             0,00   17.035.000,00       6.535.000,00      5.000.000,00                0,00   11.535.000,00       5.500.000,00    10.500.000,00
+
+                                       17.035.000,00              0,00             0,00   17.035.000,00       6.535.000,00      5.000.000,00                0,00   11.535.000,00       5.500.000,00    10.500.000,00
+                                                                                  Q GrantThornton
+
+Bestätigungsvermerk des unabhängigen
+Abschlussprüfers
+
+An die HWK 1365 SE, Königsbronn
+
+Prüfungsurteil
+Wir haben den Jahresabschluss der HWK 1365 SE, Königsbronn, - bestehend aus der Bilanz zum
+31. Dezember 2025 und der Gewinn- und Verlustrechnung für das Geschäftsjahr vom 1. Januar 2025
+bis zum 31. Dezember 2025 sowie dem Anhang, einschließlich der Darstellung der Bilanzierungs- und
+Bewertungsmethoden - geprüft.
+
+Nach unserer Beurteilung aufgrund der bei der Prüfung gewonnenen Erkenntnisse entspricht der
+beigefügte Jahresabschluss in allen wesentlichen Belangen den deutschen, für Kapitalgesellschaften
+geltenden handelsrechtlichen Vorschriften und vermittelt unter Beachtung der deutschen Grundsätze
+ordnungsmäßiger Buchführung ein den tatsächlichen Verhältnissen entsprechendes Bild der
+Vermögens- und Finanzlage der Gesellschaft zum 31. Dezember 2025 sowie ihrer Ertragslage für das
+Geschäftsjahr vom 1. Januar 2025 bis zum 31. Dezember 2025.
+
+Gemäß § 322 Abs. 3 Satz 1 HGB erklären wir, dass unsere Prüfung zu keinen Einwendungen gegen
+die Ordnungsmäßigkeit des Jahresabschlusses geführt hat.
+
+Grundlage für das Prüfungsurteil
+Wir haben unsere Prüfung des Jahresabschlusses in Übereinstimmung mit § 317 HGB unter
+Beachtung der vom Institut der Wirtschaftsprüfer (IDW) festgestellten deutschen Grundsätze
+ordnungsmäßiger Abschlussprüfung durchgeführt. Unsere Verantwortung nach diesen Vorschriften
+und Grundsätzen ist im Abschnitt „Verantwortung des Abschlussprüfers für die Prüfung des
+Jahresabschlusses“ unseres Bestätigungsvermerks weitergehend beschrieben. Wir sind von dem
+Unternehmen unabhängig in Übereinstimmung mit den deutschen handelsrechtlichen und
+berufsrechtlichen Vorschriften und haben unsere sonstigen deutschen Berufspflichten in
+Übereinstimmung mit diesen Anforderungen erfüllt. Wir sind der Auffassung, dass die von uns
+erlangten Prüfungsnachweise ausreichend und geeignet sind, um als Grundlage für unser
+Prüfungsurteil zum Jahresabschluss zu dienen.
+
+Wesentliche Unsicherheit im Zusammenhang mit der Fortführung der
+Unternehmenstätigkeit
+Wir verweisen auf Angabe „1.1 Allgemeines“ im Anhang, in der gesetzliche Vertreter beschreibt, dass,
+sollten die den Unternehmensplanungsrechnungen bis Juni 2027 zugrundeliegenden Annahmen und
+Maßnahmen, insbesondere der planmäßige Eingang der Kundenzahlungen, die Umsatzprognose
+sowie die Kostenmaßnahmen, in wesentlichen Bereichen nicht eintreten bzw. sich nicht umsetzen
+
+                                                                                 HWK 1365 SE - 2025/023668 1
+                                                                                        GrantThornton
+
+lassen und dann keine ausreichende sonstige Finanzierung erschlossen werden können, die HWK
+1365 SE-Gruppe sowie die HWK 1365 SE in ihrem Bestand gefährdet sind. Wie in Angabe „1.1
+Allgemeines“ im Anhang dargelegt, zeigen diese Ereignisse und Gegebenheiten, dass eine
+wesentliche Unsicherheit besteht, die bedeutsame Zweifel an der Fähigkeit der Gesellschaft zur
+Fortführung der Unternehmenstätigkeit aufwerfen kann und die ein bestandsgefährdendes Risiko im
+Sinne des § 322 Abs. 2 Satz 3 HGB darstellt. Unser Prüfungsurteil zum Jahresabschluss ist bezüglich
+dieses Sachverhalts nicht modifiziert.
+
+Verantwortung des gesetzlichen Vertreters und des Verwaltungsrats für
+den Jahresabschluss
+Der gesetzliche Vertreter ist verantwortlich für die Aufstellung des Jahresabschlusses, der den
+deutschen, für Kapitalgesellschaften geltenden handelsrechtlichen Vorschriften in allen wesentlichen
+Belangen entspricht, und dafür, dass der Jahresabschluss unter Beachtung der deutschen
+Grundsätze ordnungsmäßiger Buchführung ein den tatsächlichen Verhältnissen entsprechendes Bild
+der Vermögens-, Finanz- und Ertragslage der Gesellschaft vermittelt. Ferner ist der gesetzliche
+Vertreter verantwortlich für die internen Kontrollen, die er in Übereinstimmung mit den deutschen
+Grundsätzen ordnungsmäßiger Buchführung als notwendig bestimmt hat, um die Aufstellung eines
+Jahresabschlusses zu ermöglichen, der frei von wesentlichen falschen Darstellungen aufgrund von
+dolosen Handlungen (d.h. Manipulationen der Rechnungslegung und Vermögensschädigungen) oder
+Irrtümern ist.
+
+Bei der Aufstellung des Jahresabschlusses ist der gesetzliche Vertreter dafür verantwortlich, die
+Fähigkeit der Gesellschaft zur Fortführung der Unternehmenstätigkeit zu beurteilen. Des Weiteren hat
+er die Verantwortung, Sachverhalte in Zusammenhang mit der Fortführung der Unternehmenstätigkeit,
+sofern einschlägig, anzugeben. Darüber hinaus ist er dafür verantwortlich, auf der Grundlage des
+Rechnungslegungsgrundsatzes der Fortführung der Unternehmenstätigkeit zu bilanzieren, sofern dem
+nicht tatsächliche oder rechtliche Gegebenheiten entgegenstehen.
+
+Der Verwaltungsrat ist verantwortlich für die Überwachung des Rechnungslegungsprozesses der
+Gesellschaft zur Aufstellung des Jahresabschlusses.
+
+Verantwortung des Abschlussprüfers für die Prüfung des
+Jahresabschlusses
+Unsere Zielsetzung ist, hinreichende Sicherheit darüber zu erlangen, ob der Jahresabschluss als
+Ganzes frei von wesentlichen falschen Darstellungen aufgrund von dolosen Handlungen oder
+Irrtümern ist, sowie einen Bestätigungsvermerk zu erteilen, der unser Prüfungsurteil zum
+Jahresabschluss beinhaltet.
+
+Hinreichende Sicherheit ist ein hohes Maß an Sicherheit, aber keine Garantie dafür, dass eine in
+Übereinstimmung mit § 317 HGB unter Beachtung der vom Institut der Wirtschaftsprüfer (IDW)
+festgestellten deutschen Grundsätze ordnungsmäßiger Abschlussprüfung durchgeführte Prüfung eine
+wesentliche falsche Darstellung stets aufdeckt. Falsche Darstellungen können aus dolosen
+Handlungen oder Irrtümern resultieren und werden als wesentlich angesehen, wenn vernünftigerweise
+erwartet werden könnte, dass sie einzeln oder insgesamt die auf der Grundlage dieses
+Jahresabschlusses getroffenen wirtschaftlichen Entscheidungen von Adressaten beeinflussen.
+
+                                                                                 HWK 1365 SE - 2025/023668 2
+                                                                                   4^ GrantThornton
+
+Während der Prüfung üben wir pflichtgemäßes Ermessen aus und bewahren eine kritische
+Grundhaltung. Darüber hinaus
+
+•   identifizieren und beurteilen wir die Risiken wesentlicher falscher Darstellungen im
+    Jahresabschluss aufgrund von dolosen Handlungen oder Irrtümern, planen und führen
+    Prüfungshandlungen als Reaktion auf diese Risiken durch sowie erlangen Prüfungsnachweise, die
+    ausreichend und geeignet sind, um als Grundlage für unser Prüfungsurteil zu dienen. Das Risiko,
+    dass eine aus dolosen Handlungen resultierende wesentliche falsche Darstellung nicht aufgedeckt
+    wird, ist höher als das Risiko, dass eine aus Irrtümern resultierende wesentliche falsche
+    Darstellung nicht aufgedeckt wird, da dolose Handlungen kollusives Zusammenwirken,
+    Fälschungen, beabsichtigte Unvollständigkeiten, irreführende Darstellungen bzw. das
+    Außerkraftsetzen interner Kontrollen beinhalten können.
+
+•   erlangen wir ein Verständnis von den für die Prüfung des Jahresabschlusses relevanten internen
+    Kontrollen, um Prüfungshandlungen zu planen, die unter den Umständen angemessen sind,
+    jedoch nicht mit dem Ziel, ein Prüfungsurteil zur Wirksamkeit der internen Kontrollen der
+    Gesellschaft abzugeben.
+
+•   beurteilen wir die Angemessenheit der von dem gesetzlichen Vertreter angewandten
+    Rechnungslegungsmethoden sowie die Vertretbarkeit der von dem gesetzlichen Vertreter
+    dargestellten geschätzten Werte und damit zusammenhängenden Angaben.
+
+•   ziehen wir Schlussfolgerungen über die Angemessenheit des von dem gesetzlichen Vertreter
+    angewandten Rechnungslegungsgrundsatzes der Fortführung der Unternehmenstätigkeit sowie,
+    auf der Grundlage der erlangten Prüfungsnachweise, ob eine wesentliche Unsicherheit im
+    Zusammenhang mit Ereignissen oder Gegebenheiten besteht, die bedeutsame Zweifel an der
+    Fähigkeit der Gesellschaft zur Fortführung der Unternehmenstätigkeit aufwerfen können. Falls wir
+    zu dem Schluss kommen, dass eine wesentliche Unsicherheit besteht, sind wir verpflichtet, im
+    Bestätigungsvermerk auf die dazugehörigen Angaben im Jahresabschluss aufmerksam zu machen
+    oder, falls diese Angaben unangemessen sind, unser Prüfungsurteil zu modifizieren. Wir ziehen
+    unsere Schlussfolgerungen auf der Grundlage der bis zum Datum unseres Bestätigungsvermerks
+    erlangten Prüfungsnachweise. Zukünftige Ereignisse oder Gegebenheiten können jedoch dazu
+    führen, dass die Gesellschaft ihre Unternehmenstätigkeit nicht mehr fortführen kann.
+
+•   beurteilen wir Darstellung, Aufbau und Inhalt des Jahresabschlusses insgesamt einschließlich der
+    Angaben sowie ob der Jahresabschluss die zugrunde liegenden Geschäftsvorfälle und Ereignisse
+    so darstellt, dass der Jahresabschluss unter Beachtung der deutschen Grundsätze
+    ordnungsmäßiger Buchführung ein den tatsächlichen Verhältnissen entsprechendes Bild der
+    Vermögens-, Finanz- und Ertragslage der Gesellschaft vermittelt.
+Wir erörtern mit den für die Überwachung Verantwortlichen unter anderem den geplanten Umfang und
+die Zeitplanung der Prüfung sowie bedeutsame Prüfungsfeststellungen, einschließlich etwaiger
+bedeutsamer Mängel in internen Kontrollen, die wir während unserer Prüfung feststellen.
+
+                                                                                 HWK 1365 SE - 2025/023668 3
+                                                       * Grant Thornton
+
+Stuttgart, den 29. April 2026
+
+Grant Thornton AG
+Wirtschaftsprüfungsgesellschaft
+
+[nombre retirado]                          [nombre retirado]
+Wirtschaftsprüfer                 Wirtschaftsprüfer
+
+                                                      HWK 1365 SE - 2025/023668 4
+Kontakt
+HWK1365 SE
+Heidenheimer Straße 1
+89551 Königsbronn
+Telefon: +49 7328 83-0
+E-Mail: investorrelation@hwk1365.de
+Aktie (ISIN): DE000A3CMG80
+
+ BHWK
+  1365    HÜTTENWERKE KÖNIGSBRONN
+
