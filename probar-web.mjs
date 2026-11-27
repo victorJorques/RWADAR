@@ -2621,13 +2621,13 @@ for(const [nombre,alterar] of [
     /padding-left:16px/.test(datoLinea)&&/text-indent:-16px/.test(datoLinea)&&
     /padding:0 0 0 16px/.test(datoMovil)&&/text-indent:-16px/.test(datoMovil)&&/text-indent:0/.test(punto));
   // Revisión de la tarjeta sencilla (05/11/2026): lo patrocinado no lleva el verde
-  // de «Nueva» ni de la acción; «No disponible en España», en rojo como en la app;
+  // de «Nueva» ni de la acción; «No disponible desde {país}», en amarillo como en la app (27/11/2026);
   // en escritorio, sin hueco bajo los títulos cortos y con la línea de datos al pie.
   const patrocinada=['.escaparate-patrocinada','.escaparate-oferta .escaparate-marcas>.escaparate-patrocinada'].map(x=>d(css,x)).join(';')+';'+
     d(cssMovil,'#emiLista .escaparate-oferta .escaparate-marcas>.escaparate-patrocinada');
-  prueba('tarjeta: «Patrocinada» en gris neutro, «Nueva» en verde y «No disponible en España» en rojo',
+  prueba('tarjeta: «Patrocinada» en gris neutro, «Nueva» en verde y «No disponible desde…» en amarillo',
     /color:var\(--tx(?:-2)?\)/.test(patrocinada)&&!/senal/.test(patrocinada)&&/color:var\(--senal\)/.test(d(css,'.escaparate-oferta .escaparate-marcas>span'))&&
-    /color:var\(--alarma\)/.test(d(css,'.escaparate-no-disponible')));
+    /color:var\(--aviso\)/.test(d(css,'.escaparate-no-disponible')));
   const cssSinNotas=css.replace(/\/\*[\s\S]*?\*\//g,''),cuerpoEsc=d(cssSinNotas,'.escaparate-oferta .escaparate-cuerpo');
   prueba('escritorio: sin hueco bajo los títulos cortos y la línea Mínimo · España al pie de la tarjeta',
     /min-height:0/.test(d(css,'.escaparate-oferta .escaparate-cuerpo .emi-tit'))&&/grid-template-rows:auto auto 1fr auto auto/.test(cuerpoEsc)&&

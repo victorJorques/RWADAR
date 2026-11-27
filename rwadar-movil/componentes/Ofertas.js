@@ -331,10 +331,12 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
               ))}
             </View>
           </View>
-          {revision ? (
+          {revision || noEspana ? (
             <View style={e.alertas}>
-              <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
-                style={e.alertaRevision}>{traducirEstado(revision)}</Text>
+              {revision ? <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
+                style={e.alertaRevision}>{traducirEstado(revision)}</Text> : null}
+              {/* Se ven todas; si no se ofrece en el país elegido, lo dice (27/11/2026). */}
+              {noEspana ? <Text style={e.noDisponible}>{`No disponible desde ${nombrePaisUsuario()}`}</Text> : null}
             </View>
           ) : null}
         </View>
@@ -937,12 +939,12 @@ const e = StyleSheet.create({
   imagenFallbackTxtPeq: { fontSize: 20 },
   marcas: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 6, marginBottom: 4 },
   etiquetaNueva: { ...T.etiqueta, color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
-  noDisponible: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.alarma },
+  noDisponible: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.aviso },
   dispEstado: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 6 },
   dispEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 18, paddingHorizontal: 10, paddingVertical: 2, borderRadius: R.p, overflow: 'hidden', borderWidth: 1, borderColor: C.linea, color: C.tx },
   disp_disponible: { backgroundColor: C.senalT, borderColor: C.senalT, color: C.senal },
   disp_con_requisitos: { backgroundColor: C.avisoT, borderColor: C.avisoT, color: C.aviso },
-  disp_no_disponible: { backgroundColor: C.alarmaT, borderColor: C.alarmaT, color: C.alarma },
+  disp_no_disponible: { backgroundColor: C.avisoT, borderColor: C.avisoT, color: C.aviso },
   disp_sin_confirmar: {},
   dispBloque: { marginTop: 10 },
   dispTitulo: { ...T.menor, fontSize: 12, lineHeight: 16, color: C.tx2, marginBottom: 2 },

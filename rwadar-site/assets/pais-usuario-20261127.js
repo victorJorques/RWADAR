@@ -67,39 +67,74 @@
     const m = motor();
     if (!caja || !m) return;
     const opciones = m.listaPaises('es').map(p => '<option value="' + p.codigo + '"' + (p.codigo === estado.codigo ? ' selected' : '') + '>' + esc(p.nombre) + '</option>').join('');
-    caja.innerHTML =
-      '<label class="emis-pais-campo"><span>Tu país de residencia</span><select id="emiPais" autocomplete="country">' + opciones + '</select></label>' +
-      '<label class="emis-pais-filtro"><input type="checkbox" id="emiSoloPais"' + (soloAccesibles ? ' checked' : '') + '> <span>Solo las disponibles en tu país</span></label>' +
-      (estado.origen === 'detectado' ? '<p class="emis-pais-nota">Detectado por tu conexión. Si resides en otro país, cámbialo.</p>' : '');
-    const s = caja.querySelector('#emiPais'), f = caja.querySelector('#emiSoloPais');
+    caja.innerHTML = '<div class="emis-pais-fila">' +
+      '<label class="emis-pais-chip" for="emiPais"><span class="emis-pais-globo" aria-hidden="true">◎</span><span class="emis-pais-rotulo">Tu país</span>' +
+      '<select id="emiPais" autocomplete="country" aria-label="Tu país de residencia"' + (estado.origen === 'detectado' ? ' aria-describedby="emiPaisNota"' : '') + '>' + opciones + '</select></label>' +
+      '<button type="button" class="f f-pais' + (soloAccesibles ? ' on' : '') + '" aria-pressed="' + soloAccesibles + '" data-emi-solo-pais><span class="f-switch" aria-hidden="true"></span><span>Solo las disponibles en tu país</span></button>' +
+      '</div>' + (estado.origen === 'detectado' ? '<p class="emis-pais-nota" id="emiPaisNota">Detectado por tu conexión. Si resides en otro país, cámbialo.</p>' : '');
+    const s = caja.querySelector('#emiPais'), f = caja.querySelector('[data-emi-solo-pais]');
     if (s) s.addEventListener('change', () => elegir(s.value));
-    if (f) f.addEventListener('change', () => { soloAccesibles = !!f.checked; avisar(); });
+    if (f) f.addEventListener('click', () => { soloAccesibles = !soloAccesibles; avisar(); });
   }
 
-  /* La ficha ampliada: qué dicen las fuentes del país elegido y de los demás. */
+  /* La ficha ampliada (27/11/2026): arriba, tu país y su estado en una tarjeta; debajo, los países por grupo
+     como chips; las fuentes, plegadas. Los datos con versión inglesa llevan las dos (la hoja enseña la suya). */
   function detalleHtml(o) {
     const m = motor();
     if (!m) return '';
     const es = m.detalleDisponibilidad(o, estado.codigo, 'es'), en = m.detalleDisponibilidad(o, estado.codigo, 'en');
     const dos = (a, b) => a === b ? esc(a) : '<span data-es lang="es">' + esc(a) + '</span><span data-en lang="en">' + esc(b) + '</span>';
-    const lista = (titulo, nombres) => nombres.length ? '<div><dt>' + titulo + '</dt><dd><ul class="disp-pais-lista">' + nombres.map(n => '<li>' + esc(n) + '</li>').join('') + '</ul></dd></div>' : '';
+    const chips = nombres => '<ul class="disp-chips">' + nombres.map(n => '<li>' + esc(n) + '</li>').join('') + '</ul>';
+    const grupo = (clase, titulo, nombres, extra) => nombres.length ? '<div class="disp-grupo ' + clase + '"><h4>' + titulo + '</h4>' + chips(nombres) + (extra || '') + '</div>' : '';
     const reglas = tieneReglas(o);
-    return '<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable disp-pais" open>' +
-      '<summary>Disponibilidad por país</summary>' +
-      '<p class="disp-pais-estado disp-' + es.estado + '"><b>' + esc(es.nombre) + '</b> <span>' + esc(es.texto) + '</span></p>' +
-      (es.requisito ? '<p class="disp-pais-requisito"><span>Requisito:</span> ' + dos(es.requisito, en.requisito) + '</p>' : '') +
-      (es.estado === 'sin_confirmar' ? '<p class="disp-pais-sin">No hay información oficial suficiente para tu país. No suponemos que esté disponible solo porque no aparezca excluido.</p>' : '') +
-      (reglas ? (es.nota ? '<p class="disp-pais-nota">' + dos(es.nota, en.nota) + '</p>' : '') +
-        '<dl class="disp-pais-reglas">' + lista('Países admitidos', es.admitidos) + lista('Países excluidos', es.excluidos) +
-        es.conRequisitos.map((r, i) => lista('Con requisitos', r.paises) + '<div><dt>Requisito</dt><dd>' + dos(r.requisito, en.conRequisitos[i].requisito) + '</dd></div>').join('') + '</dl>' +
-        (es.fuentes.length ? '<h4>Fuentes de la disponibilidad</h4><ul class="disp-pais-fuentes">' : '') + es.fuentes.map(f => https(f.url) ?
-          '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener nofollow"><span>' + esc(f.titulo) + '</span> ↗</a>' +
-          (fechaES(f.consultadaEl) ? ' · <span>Consultada el</span> ' + fechaES(f.consultadaEl) : '') +
-          '<blockquote lang="und" translate="no">' + esc(f.literal) + '</blockquote></li>' : '').join('') + (es.fuentes.length ? '</ul>' : '') +
-        (fechaES(es.verificadaEl) ? '<p class="disp-pais-fecha"><span>Disponibilidad comprobada el</span> ' + fechaES(es.verificadaEl) + '</p>' : '')
-        : '<p class="disp-pais-nota">Esta oferta todavía no tiene la comprobación por país.</p>') +
-      '<p class="disp-pais-aviso">La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</p>' +
-      '</details>';
+    const fuentes = es.fuentes.filter(f => https(f.url));
+    return '<section class="escaparate-dialogo-seccion disp-pais" aria-labelledby="dispPaisTit">' +
+      '<h3 id="dispPaisTit">Disponibilidad por país</h3>' +
+      '<div class="disp-tarjeta disp-' + es.estado + '">' +
+        '<p class="disp-tarjeta-cab"><span class="disp-tarjeta-pais">' + esc(es.nombre) + '</span><span class="disp-pill">' + esc(es.texto) + '</span></p>' +
+        (es.requisito ? '<p class="disp-tarjeta-txt">' + dos(es.requisito, en.requisito) + '</p>' : '') +
+        (es.estado === 'sin_confirmar' ? '<p class="disp-tarjeta-txt">No hay información oficial suficiente para tu país. No suponemos que esté disponible solo porque no aparezca excluido.</p>' : '') +
+      '</div>' +
+      (reglas ? (es.nota ? '<p class="disp-nota">' + dos(es.nota, en.nota) + '</p>' : '') +
+        '<div class="disp-grupos">' + grupo('disp-g-si', 'Países admitidos', es.admitidos) +
+          es.conRequisitos.map((r, i) => grupo('disp-g-req', 'Con requisitos', r.paises, r.requisito === es.requisito ? '' : '<p class="disp-grupo-txt">' + dos(r.requisito, en.conRequisitos[i].requisito) + '</p>')).join('') +
+          grupo('disp-g-no', 'Países excluidos', es.excluidos) + '</div>' +
+        (fuentes.length ? '<details class="disp-fuentes"><summary><span>Ver fuentes</span> <span class="disp-num">' + fuentes.length + '</span></summary><ol>' +
+          fuentes.map(f => '<li><p class="disp-fuente-cab"><a href="' + esc(f.url) + '" target="_blank" rel="noopener nofollow"><span>' + esc(f.titulo) + '</span> ↗</a>' +
+            (fechaES(f.consultadaEl) ? '<span class="disp-fecha">' + fechaES(f.consultadaEl) + '</span>' : '') + '</p>' +
+            '<blockquote lang="und" translate="no">' + esc(f.literal) + '</blockquote></li>').join('') + '</ol></details>' : '')
+        : '<p class="disp-nota">Esta oferta todavía no tiene la comprobación por país.</p>') +
+      '<p class="disp-aviso">La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</p>' +
+      '</section>';
+  }
+
+  /* Inicio, lo primero (27/11/2026): el país de residencia. Sin elegir, la pregunta con el detectado ya marcado y
+     «Confirmar»; elegido, el país, cuántas ofertas están a su alcance y «Cambiar». Se ven todas las ofertas igual. */
+  function inicioPaisHtml(ofertas) {
+    const m = motor();
+    if (!m) return '';
+    const lista = Array.isArray(ofertas) ? ofertas : [];
+    const n = e => lista.filter(o => estadoOferta(o).estado === e).length;
+    const opciones = m.listaPaises('es').map(p => '<option value="' + p.codigo + '"' + (p.codigo === estado.codigo ? ' selected' : '') + '>' + esc(p.nombre) + '</option>').join('');
+    const elegido = estado.origen === 'elegido';
+    return '<section class="ini-pais' + (elegido ? ' ini-pais-elegido' : '') + '" aria-labelledby="iniPaisTit">' +
+      (elegido
+        ? '<div class="ini-pais-cab"><p class="ini-pais-ante">Tu país de residencia</p><h2 id="iniPaisTit" class="ini-pais-nombre">' + esc(nombre()) + '</h2></div>' +
+          '<ul class="ini-pais-cifras"><li><b>' + n('disponible') + '</b><span>Disponibles</span></li><li><b>' + n('con_requisitos') + '</b><span>Con requisitos</span></li>' +
+          '<li><b>' + lista.length + '</b><span>En el radar</span></li></ul>' +
+          '<label class="ini-pais-cambiar"><span>Cambiar país</span><select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select></label>'
+        : '<h2 id="iniPaisTit" class="ini-pais-pregunta">¿Cuál es tu país de residencia?</h2>' +
+          '<p class="ini-pais-sub">Así te decimos qué ofertas están a tu alcance. Verás todas las ofertas del mundo igualmente.</p>' +
+          '<div class="ini-pais-elegir"><label class="emis-pais-chip"><span class="emis-pais-globo" aria-hidden="true">◎</span><select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select></label>' +
+          '<button type="button" class="b1 ini-pais-ok" data-ini-pais-ok>Confirmar</button></div>' +
+          (estado.origen === 'detectado' ? '<p class="emis-pais-nota">Detectado por tu conexión. Si resides en otro país, cámbialo.</p>' : '')) +
+      '</section>';
+  }
+  function montarInicio(caja) {
+    if (!caja) return;
+    const s = caja.querySelector('[data-ini-pais]'), b = caja.querySelector('[data-ini-pais-ok]');
+    if (s) s.addEventListener('change', () => { if (estado.origen === 'elegido') elegir(s.value); });
+    if (b) b.addEventListener('click', () => elegir(s ? s.value : estado.codigo));
   }
 
   /* Inicio: cuántas ofertas hay de cada país (el país de la oferta, no el del usuario). */
@@ -108,11 +143,13 @@
     if (!m || !Array.isArray(ofertas) || !ofertas.length) return '';
     const cuenta = new Map();
     for (const o of ofertas) { const c = m.normalizarCodigo(o && o.pais); if (c) cuenta.set(c, (cuenta.get(c) || 0) + 1); }
-    const filas = [...cuenta.entries()].sort((a, b) => b[1] - a[1] || m.nombrePais(a[0], 'es').localeCompare(m.nombrePais(b[0], 'es'), 'es'));
+    const filas = [...cuenta.keys()].sort((a, b) => m.nombrePais(a, 'es').localeCompare(m.nombrePais(b, 'es'), 'es'));
     if (!filas.length) return '';
-    return '<section class="ini-por-pais wrap" aria-labelledby="iniPorPaisTit"><h2 id="iniPorPaisTit">Ofertas por país</h2>' +
-      '<p class="ini-por-pais-sub"><span>' + ofertas.length + ' ofertas de ' + filas.length + ' países, según dónde se emiten u ofrecen.</span></p>' +
-      '<ul class="ini-por-pais-lista">' + filas.map(([c, n]) => '<li><span class="ini-por-pais-nombre">' + esc(m.nombrePais(c, 'es')) + '</span><b>' + n + '</b></li>').join('') + '</ul></section>';
+    /* Solo la bandera y el nombre (27/11/2026), sin cifras. */
+    const bandera = c => /^[A-Z]{2}$/.test(c) ? String.fromCodePoint(...[...c].map(x => 0x1F1E6 + x.charCodeAt(0) - 65)) : '';
+    return '<section class="ini-por-pais" aria-labelledby="iniPorPaisTit"><h2 id="iniPorPaisTit">Ofertas por país</h2>' +
+      '<p class="ini-por-pais-sub">Países donde se emiten u ofrecen las ofertas del radar.</p>' +
+      '<ul class="ini-por-pais-lista">' + filas.map(c => '<li' + (c === estado.codigo ? ' class="es-tuyo"' : '') + '><span class="ini-por-pais-bandera" aria-hidden="true">' + bandera(c) + '</span><span class="ini-por-pais-nombre">' + esc(m.nombrePais(c, 'es')) + '</span></li>').join('') + '</ul></section>';
   }
 
   leerGuardado();
@@ -122,6 +159,7 @@
   window.RWAdarPais = {
     codigo: () => estado.codigo, origen: () => estado.origen, nombre, elegir, alCambiar: f => { if (typeof f === 'function') oyentes.push(f); },
     estadoOferta, etiqueta, tieneReglas, accesible, pasaFiltro, soloAccesibles: () => soloAccesibles,
-    montarSelector, detalleHtml, porPaisHtml,
+    ponerSoloAccesibles: v => { soloAccesibles = !!v; avisar(); },
+    montarSelector, detalleHtml, porPaisHtml, inicioPaisHtml, montarInicio,
   };
 })();

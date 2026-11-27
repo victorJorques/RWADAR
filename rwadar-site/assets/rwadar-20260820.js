@@ -2194,6 +2194,7 @@ function tarjetaInicioHtml(o,i,seleccion){
   '<h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
   '<p class="rel-tarjeta-datos"><span>Mínimo</span> <b>'+escHtml(dc.minimo)+'</b><span class="rel-tarjeta-sep" aria-hidden="true"> · </span><span>'+escHtml(dc.pais)+'</span> <b>'+escHtml(noEsp?'No disponible':dc.espanaCorta)+'</b></p>'+
+  (noEsp?'<p class="rel-nueva-aviso escaparate-no-disponible">No disponible desde '+escHtml(dc.pais)+'</p>':'')+
   (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
   (f?'<p class="rel-nueva-fecha"><span>'+f.etiqueta+'</span> <time datetime="'+escHtml(f.fecha)+'">'+escHtml(fechaES(f.fecha))+'</time></p>':'')+
@@ -2214,14 +2215,16 @@ function diferirFotosInicio(){
 /* Ofertas por país en Inicio (27/11/2026): del catálogo vigente, al pintar. */
 function pintarInicioPais(){
  const caja=document.getElementById('iniPorPais'),w=paisWeb();if(!caja)return;
- caja.innerHTML=w&&!inicioSinCifras()?w.porPaisHtml(ofertasCatalogoInicio()):'';
+ const ofertas=ofertasCatalogoInicio();
+ caja.innerHTML=w&&!inicioSinCifras()?w.inicioPaisHtml(ofertas)+w.porPaisHtml(ofertas):'';
+ if(w)w.montarInicio(caja);
 }
 function pintarInicio(){
  const panel=document.getElementById('movilPanelInicio');
  if(!panel)return;
  const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en',nuevas=sin?[]:ofertasRecienAnadidas();
  const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,c.revisado,c.hasta,en,c.ofertas,c.minimos,c.usd,
-  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join(),nuevas.map(o=>o.slug).join(),paisWeb()?paisWeb().codigo():'ES'].join('|');
+  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join(),nuevas.map(o=>o.slug).join(),paisWeb()?paisWeb().codigo()+paisWeb().origen():'ES'].join('|');
  if(huella===huellaInicio)return;
  huellaInicio=huella;
  pintarInicioPais();
@@ -2802,7 +2805,7 @@ function datosCortosOferta(o,resumen){
    confirmar» al lado de «No disponible en España»). */
 function datosTarjetaOfertaHtml(o,resumen,noEspana=false){
  const d=datosCortosOferta(o,resumen);
- return '<dl class="escaparate-datos-clave escaparate-datos-linea">'+[['Mínimo',d.minimo],[d.pais,noEspana?'No disponible':d.espanaCorta]]
+ return '<dl class="escaparate-datos-clave escaparate-datos-linea" data-pais-estado="'+(noEspana?'no_disponible':estadoTextoPais(o,resumen))+'">'+[['Mínimo',d.minimo],[d.pais,noEspana?'No disponible':d.espanaCorta]]
   .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
 }
 /* Un problema de la revisión (caducada, no verificable o con fuentes en
@@ -2859,7 +2862,9 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    /* La ciudad es un dato (no se traduce); el país, sí, como en «Recién añadidas». */
    (imagen&&imagen.lugar?'<span class="emi-lugar">'+lugarTarjetaHtml(imagen.lugar)+'</span>':'')+'</p>'+
    datosTarjetaOfertaHtml(o,resumen,noEspana)+
-   (revision?'<p class="escaparate-alertas"><span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span></p>':'')+
+   /* Se ven todas; si no se ofrece en el país elegido, lo dice (27/11/2026). */
+   (revision||noEspana?'<p class="escaparate-alertas">'+(revision?'<span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span>':'')+
+    (noEspana?'<span class="escaparate-no-disponible">No disponible desde '+escHtml(nombrePaisUsuario())+'</span>':'')+'</p>':'')+
    (bloqueo?'<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
    '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"><span aria-hidden="true">›</span></button>'+
   '</div></article>';

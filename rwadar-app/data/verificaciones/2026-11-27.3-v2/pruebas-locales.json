@@ -2,8 +2,8 @@
   "tipo": "ensayo_local_pglite",
   "etiqueta": "2026-11-27.3",
   "revisionAnterior": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
-  "revisionNueva": "aa79f049-ae03-c031-83f4-e159a90ca05e",
-  "sha256AplicarYAprobar": "541cbd53ec42ae8565ec68f3c7f364669936e63ace5c689e4bda173281c612b3",
+  "revisionNueva": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
+  "sha256AplicarYAprobar": "47f56e94360f57cb92bb42a613c2d67687276a40e9416273ab17cb0f90fb0f7d",
   "pruebas": [
     "inventario: una transacción serializable; guarda (publicada 38ee1fa9 con su huella, fecha hasta el 03/12); nada en public.*",
     "antes de aplicar, PGlite enseña la 2026-11-27.2 (73 plataformas, 40 ofertas) y lo leído como visitante",

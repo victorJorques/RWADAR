@@ -3,10 +3,10 @@
   "fecha": "2026-11-27",
   "etiqueta": "2026-11-27.3",
   "revisionAnterior": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
-  "revisionNueva": "aa79f049-ae03-c031-83f4-e159a90ca05e",
+  "revisionNueva": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
   "decision": "Orden de la dirección del 27/11/2026: disponibilidad de cada oferta según el país de residencia, con fuente oficial; lo que no consta, sin confirmar.",
   "archivos": {
-    "disponibilidad.json": "b69f2ed71cdcb387396036ba26c1eea618ed1dee9300a31f0fb486c68ded2095"
+    "disponibilidad.json": "e5ff57145a803d32892fe72865feff0d31e412af3f8af5244747d5971471be8f"
   },
   "colecciones": {
     "principales": 24,
