@@ -2761,12 +2761,6 @@ function textoCortoLocal(v,max=40){
 /* España y Salida se escriben con UNA función para la tarjeta (escritorio y
    móvil) y para «Lo esencial» de la ficha: antes la tarjeta de escritorio
    decía «Disponible» y la ficha «Sí, según la fuente» (QA 04/11/2026, n.º 18). */
-/* La lista dice solo «Sí» o «No» (decisión del 05/11/2026); la
-   ficha, con «según la fuente» y la fuente al lado. */
-function textoEspanaOferta(resumen,corto=false){
- const acceso=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
- return acceso==='si'?(corto?'Sí':'Sí, según la fuente'):acceso==='no'?(corto?'No':'No, según la fuente'):'Sin confirmar';
-}
 /* ---- País de residencia (27/11/2026): lo que decía «España» lo dice ahora el
    país elegido (assets/pais-usuario-20261127.js y el motor común con la app).
    Sin reglas por país en la oferta y con España elegida, lo de siempre. */
