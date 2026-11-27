@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ventana para activar los avisos al entrar en Inicio, en la web y en la app: mismo recuadro, texto legal y permiso que la ventana de novedades, con Ahora no y tres días de pausa",
+  "nota": "Ventana para activar los avisos al estilo de iOS en la web y la app: icono de campana, título centrado, botón ancho y Ahora no como texto, con la misma letra pequeña legal",
   "revisionAprobada": {
-    "commit": "b65587350a4ef60aa3e8460bbcd5009cc734a425",
-    "contenidoSha256": "sha256:3e2eca7fadd6578d53f48baee4ef573f569483ddb49b6b8e97ab298de8473859",
+    "commit": "a14b328669972e34400b20f761e39c21fd796388",
+    "contenidoSha256": "sha256:b59d95aa0cb7fb5c5b13410f9c4c20568d3e9fe33bf8f149110cd51079a61fba",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
