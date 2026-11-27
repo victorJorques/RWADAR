@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ventana para activar los avisos al entrar, pulida: sin la equis ni el hueco de arriba y sin el marco de foco en el título; se cierra con Ahora no, tocando fuera o con Esc",
+  "nota": "Ventana para activar los avisos al estilo de iOS en la web y la app: icono de campana, título centrado, botón ancho y Ahora no como texto, con la misma letra pequeña legal",
   "revisionAprobada": {
-    "commit": "a46bc6716f47b1b36dd3517e67c6201ee6d2c358",
-    "contenidoSha256": "sha256:46c2af1e8dfd2a38fa02d667c34786d752fd4cfca8e6cf57bd90da83694a057c",
+    "commit": "a14b328669972e34400b20f761e39c21fd796388",
+    "contenidoSha256": "sha256:b59d95aa0cb7fb5c5b13410f9c4c20568d3e9fe33bf8f149110cd51079a61fba",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
