@@ -22,7 +22,7 @@ export function cargarIdiomaGuardado(){
   if(!carga)carga=idioma.cargarIdioma(AsyncStorage).catch(()=>idioma.obtenerIdioma());
   return carga;
 }
-export function SelectorIdioma({estilo}={}){
+export function SelectorIdioma(){
   const actual=useIdioma();
   const [error,setError]=useState(false);
   useEffect(()=>{cargarIdiomaGuardado();},[]);
@@ -30,7 +30,7 @@ export function SelectorIdioma({estilo}={}){
     setError(false);
     try{await idioma.cambiarIdioma(valor);}catch{setError(true);}
   }
-  return <Native.View style={[e.contenedor,estilo]}>
+  return <Native.View style={e.contenedor}>
     <Native.View style={e.fila} accessibilityRole="radiogroup"
       accessibilityLabel={idioma.traducir('Elige idioma')}>
       {['es','en'].map(valor=><Native.Pressable key={valor} onPress={()=>elegir(valor)}
