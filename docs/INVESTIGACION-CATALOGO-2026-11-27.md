@@ -72,3 +72,45 @@ punto: si CoinGecko falla, el gráfico se queda en la última foto real.
 - **Noticias:** el primer verificador pidió quitar Poloniex porque su descarga simple solo trae el armazón de la web
   (el anuncio se carga con JavaScript). Por orden de la dirección («intenta leer la noticia, no la descartes»), la
   edición pasó entera a un verificador nuevo, con la nota de método de abrir con navegador esas webs: conforme.
+
+---
+
+# Entrega 2026-11-27.2 · todo en una (orden de Víctor: «Mételo todo en 1 entrega y acuérdate del gancho de las notis»)
+
+Material: el suplemento de ofertas del 27/11, el consolidado de cierre y el informe de noticias ampliado, todo de ese
+día. Cada dato se leyó hoy en su fuente original como visitante (copias en `2026-11-27.2-v2/fuentes/`, sin nombres de
+personas; índice con hora y SHA-256 en `fuentes/lecturas-2026-11-27.json`).
+
+## Qué cambia
+
+- **Ofertas publicadas, comprobadas hoy (orden de Víctor: «que esté verificado hasta el día de hoy»).** 29 de las 32
+  pasan a «comprobada el 27/11»: su página principal se leyó hoy (relectura de las 292 fuentes citadas, 11:08–11:24
+  UTC, y vigía de las 10:19 UTC). Solo cambia la fecha de consulta; las fechas de los datos (p. ej. el valor
+  liquidativo de Spiko) no. Brickwise toma las cifras del libro de órdenes del vigía. Conservan el 26/11: Liqi y
+  ALTERNA (no se dejaron leer) y mTBILL (403), y, dentro de las fichas re-fechadas, las observaciones hechas en la app
+  a una hora concreta, el libro de Switzerlend de las 18:17 UTC y la búsqueda en el registro de FINMA (hoy solo se leyó
+  su portada). Detalle: `refechado.json`.
+- **8 ofertas nuevas:** bono 2026/2031 de HWK 1365 (grupo siderúrgico alemán con pérdidas, aviso de riesgo de
+  insolvencia), lingote de plata récord y Great Hampton Street Works (Birmingham) en Tokinvest, clase SD tokenizada del
+  monetario en HKD de HSBC, MUFG Realty Token Kioicho (en camino; solicitudes del 01/12 al 08/12), USTNT de EX.IO (solo
+  profesionales), el monetario en dólares de Taikang en OSL (desde 1 USD) y el bono de devolo en CONDA (no se ofrece en
+  España).
+- **6 plataformas nuevas:** HWK 1365, HSBC, Daiwa Securities, EX.IO, OSL y CONDA. Radar: 71; ofertas: 40 (24
+  principales, 13 de reventa y 3 en camino).
+- **Fuera, con motivo** (cabecera de `altas.py`): Mesh CCS Income Notes (su FAQ dice que la oferta pública cerraba el
+  03/10/2026 y nada leído hoy prueba que siga abierta), INANAM (Form D con 403 y solo acreditados), Tidefront (el
+  emisor dice que su información no puede distribuirse en público), y las del suplemento sin términos comprobados hoy.
+  EX.IO bloquea sus páginas de producto desde EE. UU.: no se eludió, se usó su anuncio público.
+- **Noticias, edición b:** entran los supervisores de Canadá (fase 2 del proyecto de tokenización) y el Banco Nacional
+  Suizo (registro común de valores y dinero digital); salen SBI Solana Global y BCE y estándares DLT. Dos verificadores
+  independientes; el segundo, conforme. El gráfico no cambia (el informe lo da igual).
+
+## Revisión (una sola, independiente)
+
+5 bloqueantes y 10 menores, todos corregidos salvo uno documentado: Mesh fuera; las dos insolvencias de devolo, dichas
+en el aviso y la descripción; las licencias de CONDA y OSL, «según su web/según OSL» y no como hecho; 7 nombres de
+personas (y una fecha de nacimiento) retirados de las copias; la hora imposible de Switzerlend; EX.IO sin la frase del
+bloqueo; Daiwa da su registro; MUFG, plantas 10 a 16 y aviso válido toda la semana; OSL con la fecha del dato; HSBC sin
+reembolso inventado; la plata sin «si no sube, pierdes». Amundi se re-fecha con la lectura de WebFetch de las 09:52
+UTC (anotada en `2026-11-27-v2/cambios-radar.json`). Imágenes rehechas: la plata (letras inventadas en los lingotes) y
+la portada de CONDA (dos personas al fondo).

@@ -6,7 +6,8 @@
 # tokenización por tramo; cierra el 30/11); WisdomTree (403); Caliber, TYTL, LynxCap, Nexis y GreatX (términos
 # incompletos o sin identificar el activo); Global X 3416, Nomura Landport, Kenedix y ALTERNA residencias (para otro
 # ciclo); Mesh CCS Income Notes (su FAQ dice que la oferta pública cerraba el 03/10/2026 y nada leído hoy prueba que
-# siga abierta); Mesh SLVR y TGLD, STOKR, ODX y Bitfinex (productos sin términos comprobados hoy o solo de vigilancia).
+# siga abierta); INANAM (Form D de la SEC con 403 y solo inversores acreditados); Tidefront (el emisor dice que su
+# información no puede distribuirse en público); Mesh SLVR y TGLD, STOKR, ODX y Bitfinex (productos sin términos comprobados hoy o solo de vigilancia).
 #   python3 rwadar-app/data/verificaciones/2026-11-27.2-v2/altas.py
 import json, os, re
 
