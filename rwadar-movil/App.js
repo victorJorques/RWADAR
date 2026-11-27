@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
-import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma, cargarIdiomaGuardado } from './componentes/Idioma';
+import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, useIdioma, cargarIdiomaGuardado } from './componentes/Idioma';
 import { traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -1733,7 +1733,8 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
               <Text style={[e.verLocalCampoEstado, atencion && e.verLocalCampoEstadoAtencion]}>
                 {etiquetaEstadoVerificacionLocal(campo.estado)}
               </Text>
-              {!compacta ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.verLocalDetalle}>{campo.detalle}</FuenteOriginal> : null}
+              {/* 27/11/2026: lo escribe RWAdar; en inglés, del diccionario (textos-en.json del radar). */}
+              {!compacta ? <Text style={e.verLocalDetalle}>{campo.detalle}</Text> : null}
             </View>
           );
         })}
@@ -2167,7 +2168,6 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
           </View>
           <ScrollView key={p.slug} style={e.detDesplazamiento}
             contentContainerStyle={e.detCuerpo} contentInsetAdjustmentBehavior="never">
-            <FuenteOriginal idiomaOriginal="es-ES" />
             <Text noTraducir idiomaOriginal="es-ES" style={e.detNombre} accessibilityRole="header">{p.nombre}</Text>
             <Text style={e.detCategoria}>{p.categoria}</Text>
             {verificacion ? (
@@ -2175,9 +2175,9 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
             ) : (
               <>
                 <Text style={e.detEtiqueta}>Por qué está en el radar</Text>
-                <View style={e.aval}><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.avalTxt}>{p.aval}</FuenteOriginal></View>
+                <View style={e.aval}><Text style={e.avalTxt}>{p.aval}</Text></View>
                 <Text style={e.detEtiqueta}>Qué hace</Text>
-                <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.detParrafo}>{p.nota}</FuenteOriginal>
+                <Text style={e.detParrafo}>{p.nota}</Text>
               </>
             )}
             <Text style={e.detEtiqueta}>Ficha</Text>

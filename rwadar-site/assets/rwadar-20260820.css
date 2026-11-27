@@ -2453,3 +2453,9 @@ html[lang="en"] .disp-pais [data-es],html:not([lang="en"]) .disp-pais [data-en]{
 .ini-por-pais-lista{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 .ini-por-pais-lista li{justify-content:flex-start;gap:10px}
 .ini-por-pais-bandera{font-size:1.25rem;line-height:1}
+/* Idioma en Inicio (27/11/2026), en la tarjeta del país: Español | English. */
+.ini-idioma{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--linea,rgba(255,255,255,.08))}
+.ini-idioma-tit{font-size:.8rem;color:var(--tx-2);margin-right:4px}
+.ini-idioma-b{min-height:44px;min-width:84px;padding:0 12px;border:0;border-radius:12px;background:none;color:var(--tx-2);font:inherit;font-size:.875rem;cursor:pointer}
+.ini-idioma-b[aria-pressed="true"],.ini-idioma-b:active{background:var(--ton-2,rgba(255,255,255,.1));color:var(--tx);font-weight:600}
+.ini-idioma-b:focus-visible{outline:2px solid var(--senal);outline-offset:2px}

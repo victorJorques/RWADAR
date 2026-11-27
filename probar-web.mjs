@@ -18,6 +18,13 @@ const raiz = path.dirname(fileURLToPath(import.meta.url));
   if (r.status !== 0) { console.error(r.stdout + r.stderr); process.exit(1); }
   console.log(r.stdout.trim());
 }
+// Textos del radar en inglés (27/11/2026): el diccionario lleva los de textos-en.json; los que falten solo avisan.
+{
+  const r = spawnSync(process.execPath, [path.join(raiz, 'rwadar-editorial-source/plataformas/textos-en.cjs'), '--comprobar'], { cwd: raiz, encoding: 'utf8' });
+  if (r.status !== 0) { console.error(r.stdout + r.stderr); process.exit(1); }
+  if (r.stderr.trim()) console.warn(r.stderr.trim());
+  console.log(r.stdout.trim());
+}
 const sitio = path.join(raiz, 'rwadar-site');
 const publicado = path.join(raiz, 'rwadar-publicado');
 const lee = nombre => fs.readFileSync(path.join(sitio, nombre), 'utf8');

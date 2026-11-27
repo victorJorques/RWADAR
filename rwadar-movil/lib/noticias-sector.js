@@ -458,6 +458,8 @@ function revisarEdicion(datos, { fotos = null } = {}) {
       const fuera = cifras(t).filter(c => !contexto.some(x => x.includes(c)));
       if (fuera.length) avisos.push({ id: n.id, campo, codigo: 'cifra', texto: `${fuera.join(', ')} no está tal cual en el resumen: compruébalo` });
     }
+    const sinIngles = fuenteSinIngles(n);
+    if (sinIngles) avisos.push({ id: n.id, campo: 'fuente.nombre', codigo: 'fuente-sin-ingles', texto: `«${sinIngles}» sale en castellano en la versión inglesa: añade su nombre oficial a FUENTES_EN (lib/noticias-sector.js)` });
     if (!n.imagen) errores.push({ id: n.id, campo: 'imagen', codigo: 'sin-foto', texto: 'sin foto' });
     else {
       if (usadas.has(n.imagen)) errores.push({ id: n.id, campo: 'imagen', codigo: 'foto-repetida', texto: `«${n.imagen}» ya la usa ${usadas.get(n.imagen)}` });
@@ -487,7 +489,31 @@ const FUENTES_EN = Object.freeze({
   'Consejo de la UE': 'Council of the EU', 'Comisión Europea': 'European Commission', 'Parlamento Europeo': 'European Parliament',
   'Banco Central Europeo': 'European Central Bank', 'Banco de España': 'Bank of Spain', 'Tesoro Público': 'Spanish Treasury',
   'Ministerio de Economía': 'Spanish Ministry of Economy', 'Bolsa de Madrid': 'Madrid Stock Exchange',
+  // 27/11/2026: los organismos que salen en las noticias del sector, con su nombre oficial en inglés.
+  'Autoridad Bancaria Europea': 'European Banking Authority', 'Autoridad Europea de Valores y Mercados': 'European Securities and Markets Authority',
+  'Junta Europea de Riesgo Sistémico': 'European Systemic Risk Board', 'Banco de Francia': 'Bank of France', 'Banco de Italia': 'Bank of Italy',
+  'Banco de Inglaterra': 'Bank of England', 'Autoridad de Conducta Financiera': 'Financial Conduct Authority', 'Tesoro del Reino Unido': 'HM Treasury',
+  'Banco Nacional Suizo': 'Swiss National Bank', 'Autoridad Federal de Supervisión Financiera': 'BaFin',
+  'Reserva Federal': 'Federal Reserve', 'Comisión de Bolsa y Valores de EE. UU.': 'US Securities and Exchange Commission',
+  'Comisión de Bolsa y Valores': 'Securities and Exchange Commission', 'Comisión de Negociación de Futuros de Materias Primas': 'Commodity Futures Trading Commission',
+  'Tesoro de EE. UU.': 'US Treasury', 'Departamento del Tesoro de EE. UU.': 'US Department of the Treasury',
+  'Administradores Canadienses de Valores': 'Canadian Securities Administrators', 'Comisión de Valores de Alberta': 'Alberta Securities Commission',
+  'Comisión de Valores de Ontario': 'Ontario Securities Commission', 'Banco de Canadá': 'Bank of Canada',
+  'Banco de Japón': 'Bank of Japan', 'Agencia de Servicios Financieros de Japón': 'Japan Financial Services Agency',
+  'Agencia de Servicios Financieros': 'Financial Services Agency', 'Autoridad Monetaria de Hong Kong': 'Hong Kong Monetary Authority',
+  'Comisión de Valores y Futuros de Hong Kong': 'Securities and Futures Commission of Hong Kong', 'Autoridad Monetaria de Singapur': 'Monetary Authority of Singapore',
+  'Banco Popular de China': "People's Bank of China", 'Banco de Corea': 'Bank of Korea', 'Banco de la Reserva de Australia': 'Reserve Bank of Australia',
+  'Comisión Australiana de Valores e Inversiones': 'Australian Securities and Investments Commission',
+  'Autoridad de Servicios Financieros de Dubái': 'Dubai Financial Services Authority', 'Autoridad Reguladora de Activos Virtuales': 'Virtual Assets Regulatory Authority',
+  'Banco Central de Brasil': 'Central Bank of Brazil', 'Comisión de Valores Mobiliarios de Brasil': 'Brazilian Securities and Exchange Commission',
+  'Banco de Pagos Internacionales': 'Bank for International Settlements', 'Fondo Monetario Internacional': 'International Monetary Fund',
+  'Junta de Estabilidad Financiera': 'Financial Stability Board', 'Organización Internacional de Comisiones de Valores': 'International Organization of Securities Commissions',
+  'Banco Mundial': 'World Bank', 'Foro Económico Mundial': 'World Economic Forum',
 });
+/* Un organismo nuevo sin su nombre en inglés (para el aviso del verificador): un nombre en castellano
+   con palabras de institución que no está en FUENTES_EN. Las marcas y siglas (Poloniex, 21X, CNMV) valen igual. */
+const INSTITUCION_ES = /\b(Autoridad|Banco|Comisión|Ministerio|Agencia|Consejo|Junta|Tesoro|Gobierno|Departamento|Oficina|Organización|Fondo|Reserva|Bolsa|Parlamento)\b/;
+const fuenteSinIngles = (noticia) => { const c = fuenteCorta(noticia, 'es'); return INSTITUCION_ES.test(c) && !FUENTES_EN[c] ? c : ''; };
 function fuenteCorta(noticia, idioma = 'es') {
   const corta = String(noticia?.fuente?.nombre || '').split(',')[0].trim();
   return idioma === 'en' && FUENTES_EN[corta] ? FUENTES_EN[corta] : corta;
