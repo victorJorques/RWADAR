@@ -28,7 +28,10 @@ const EMI = (() => {
   return JSON.parse(JSON.stringify(ctx.__EMI));
 })();
 const VERIFICADA = EMI.find(o => o.coleccion === 'principales' && o.estadoRevision === 'actual').verificadaEl;
-const RELOJ = new Date(VERIFICADA + 'T12:00:00Z');
+// El reloj, el día de la última revisión: la de las ofertas o la del lote, si es posterior (el 27/11/2026 solo se
+// comprobó el radar y el lote es un día más nuevo que las ofertas).
+const LOTE = EMI.map(o => o.verificado_lote_el).filter(Boolean).sort().at(-1) || VERIFICADA;
+const RELOJ = new Date((LOTE > VERIFICADA ? LOTE : VERIFICADA) + 'T12:00:00Z');
 const OFERTAS = M.ofertasConRentabilidad(EMI, { ahora: RELOJ });
 
 function cargarPlaywright() {
