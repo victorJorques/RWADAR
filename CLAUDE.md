@@ -30,3 +30,14 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
   texto en llano sin «oportunidad», «rentabilidad», «garantiz…» ni %, enlace a
   la página donde se ve, confirmación `ENVIAR`). Esta orden es el permiso para
   ese aviso; no hace falta pedirlo cada vez.
+- **Avisos con gancho** (orden permanente de Víctor del 27/11/2026: «acuérdate
+  de escribir con gancho la notificación a la gente para que entren a la app y
+  la web»). El título y el texto de cada aviso se escriben para que den ganas de
+  abrirlo: lo más llamativo y concreto primero (un nombre conocido, una cifra
+  de la fuente, una pregunta que el aviso responde de verdad), en pocas
+  palabras, y una invitación a entrar («Míralo en RWAdar», «Te lo contamos en
+  la app»). Sin engañar: nada que no esté en lo publicado, ni promesas, ni
+  «oportunidad», «rentabilidad», «garantiz…» o %. Lo que da
+  `noticias-auto.mjs aviso-usuarios` es la base de hechos; el titular se
+  reescribe con gancho. Ejemplo (27/11): «¿Apple o Amazon en un token? Poloniex
+  ya los negocia» en lugar de «3 noticias nuevas del sector».
