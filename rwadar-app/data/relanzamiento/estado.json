@@ -11,9 +11,9 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Inicio compacto",
+  "nota": "Inicio más compacto en web y app: país de residencia en una fila con Cambiar, ofertas por país en chips deslizables y selector de idioma fino con globo en la cabecera",
   "revisionAprobada": {
-    "commit": "2e05f76240902e79b9ae48e2a878b802410771d5",
+    "commit": "648da97b714de44da317e27b712dff7af775eae3",
     "contenidoSha256": "sha256:c2bd599dae602400fa84aa2e42986d088c9f99570303b562f549b39d91de631f",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
