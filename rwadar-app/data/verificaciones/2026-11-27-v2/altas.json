@@ -1,0 +1,633 @@
+{
+ "fecha": "2026-11-27",
+ "regiones": [],
+ "plataformas": [
+  {
+   "slug": "libeara",
+   "nombre": "Libeara",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Infraestructura",
+    "acceso": "Institucional",
+    "ticket": "No aplica",
+    "cadenas": "Ethereum, Arbitrum, Avalanche y Solana",
+    "web": "https://libeara.com/",
+    "aval": "Plataforma de tokenización de Singapur nacida en SC Ventures, la incubadora de Standard Chartered. Da la tecnología; la gestión y el cumplimiento de cada fondo son de su gestora.",
+    "nota": "Tecnología para emitir y distribuir fondos y bonos tokenizados; entre otros, el fondo de letras de EE. UU. «ULTRA» de FundBridge Capital, subgestionado por Wellington."
+   },
+   "fuentes": [
+    {
+     "id": "libeara-web",
+     "tipo": "empresa",
+     "titulo": "Libeara · Redesigning Capital Markets, On-Chain",
+     "url": "https://libeara.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "libeara-ultra",
+     "tipo": "empresa",
+     "titulo": "Libeara · «FundBridge and Libeara Launch Regulated Tokenised Treasury Fund on Avalanche»",
+     "url": "https://libeara.com/fundbridge-and-libeara-launch-regulated-tokenised-treasury-fund-on-avalanche/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "libeara-web": [
+     "Incubated by SC Ventures",
+     "Tokenised Funds",
+     "Singapore"
+    ],
+    "libeara-ultra": [
+     "accredited and institutional investors",
+     "Delta Master Trust",
+     "FundBridge Capital remains responsible"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web presenta su tecnología para fondos y bonos tokenizados en cuatro redes y anuncia más de 1.000 millones de dólares tokenizados.",
+     "fuentes": [
+      "libeara-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Libeara da la tecnología; según su nota sobre ULTRA, la gestora FundBridge Capital responde del fondo, de su mandato y de su cumplimiento normativo.",
+     "fuentes": [
+      "libeara-ultra"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "El fondo ULTRA se dirige a inversores acreditados e institucionales; la nota está pensada para inversores acreditados e institucionales de Singapur.",
+     "fuentes": [
+      "libeara-ultra"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "solo_institucional",
+      "detalle": "No es para particulares: los fondos que apoya se dirigen a inversores acreditados e institucionales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "libeara-ultra"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "hashkey-rwa",
+   "nombre": "HashKey RWA",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Emisor",
+    "acceso": "Institucional",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/",
+    "aval": "Filial de tokenización de HashKey Holdings, grupo de activos digitales de Hong Kong que cotiza en la bolsa de Hong Kong (código 3887).",
+    "nota": "Valores tokenizados de la serie «hToken»: el primero, ligado a participaciones de un fondo de HashKey, solo para inversores profesionales."
+   },
+   "fuentes": [
+    {
+     "id": "hashkey-htoken",
+     "tipo": "empresa",
+     "titulo": "HashKey · «HashKey RWA Launches First Product Under the HashKey hToken Series» (26/10/2026)",
+     "url": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "hashkey-htoken": [
+     "3887\\.HK",
+     "hToken",
+     "exclusively available to qualified professional investors"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "HashKey anunció el 26/10/2026 su primer producto tokenizado «hToken», que se suscribe en USDT en el canal Earn de HashKey Exchange.",
+     "fuentes": [
+      "hashkey-htoken"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La nota habla de las licencias de negociación de activos digitales del grupo sin dar el registro; no lo hemos comprobado en el supervisor de Hong Kong.",
+     "fuentes": [
+      "hashkey-htoken"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo para inversores profesionales que cumplan los requisitos; no se puede distribuir donde la oferta esté prohibida.",
+     "fuentes": [
+      "hashkey-htoken"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "solo_profesionales",
+      "detalle": "Producto complejo solo para inversores profesionales: se puede perder todo lo invertido. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "hashkey-htoken"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "obligate",
+   "nombre": "Obligate",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "suiza",
+    "actor": "Marketplace",
+    "acceso": "Institucional",
+    "ticket": "Alto",
+    "cadenas": "Ethereum y Solana",
+    "web": "https://www.obligate.com/",
+    "aval": "Obligate AG, de Zúrich, dice ser intermediario financiero según la ley suiza contra el blanqueo y miembro de VQF, un organismo de autorregulación supervisado por la FINMA.",
+    "nota": "Emisión e inversión en deuda privada tokenizada bajo la ley suiza de valores DLT; su producto principal, oTFY, es deuda de financiación del comercio desde 100.000 dólares."
+   },
+   "fuentes": [
+    {
+     "id": "obligate-web",
+     "tipo": "empresa",
+     "titulo": "Obligate · Enabling Digital Securities",
+     "url": "https://www.obligate.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "obligate-otfy",
+     "tipo": "empresa",
+     "titulo": "Obligate · oTFY (Trade Finance Yield)",
+     "url": "https://www.obligate.com/otfy",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "obligate-web": [
+     "Institutional and qualified investors",
+     "Swiss DLT Act"
+    ],
+    "obligate-otfy": [
+     "USD 100,000 minimum investment",
+     "Luxembourg securitization vehicle",
+     "VQF"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web enseña sus ofertas de deuda tokenizada (financiación del comercio, deuda inmobiliaria y de mercados emergentes) y su token oTFY en mercados descentralizados.",
+     "fuentes": [
+      "obligate-web",
+      "obligate-otfy"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser intermediario financiero miembro de VQF, autorregulador supervisado por la FINMA; no lo hemos comprobado en el registro de VQF.",
+     "fuentes": [
+      "obligate-otfy"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo inversores institucionales y cualificados; en oTFY, mínimo de 100.000 dólares y contrato aparte con el emisor.",
+     "fuentes": [
+      "obligate-web",
+      "obligate-otfy"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "rentabilidad_sin_fecha",
+      "detalle": "Las rentabilidades que enseña su web son las que anuncia el emisor, sin fecha ni garantía, y oTFY cobra un 1 % de gestión y un 10 % sobre beneficios.",
+      "fuentes": [
+       "obligate-otfy"
+      ]
+     },
+     {
+      "codigo": "solo_cualificados",
+      "detalle": "No es para particulares. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "obligate-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "colb",
+   "nombre": "Colb",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "suiza",
+    "actor": "Emisor",
+    "acceso": "Acreditado",
+    "ticket": "Alto",
+    "cadenas": "BNB Chain",
+    "web": "https://www.colb.finance/",
+    "aval": "Colb Asset SA, de Ginebra, dice ser intermediario financiero registrado según la ley suiza, distribuir valores conforme a la FinSA y ser miembro de ARIF, autorregulador aprobado por la FINMA.",
+    "nota": "Certificados tokenizados que siguen el valor de acciones de empresas que aún no cotizan (pre-salida a bolsa), y estrategias con monedas estables."
+   },
+   "fuentes": [
+    {
+     "id": "colb-web",
+     "tipo": "empresa",
+     "titulo": "Colb · Página inicial",
+     "url": "https://www.colb.finance/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "colb-canp",
+     "tipo": "empresa",
+     "titulo": "Colb · Colb Anthropic Token (CANP)",
+     "url": "https://www.colb.finance/canp",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "colb-web": [
+     "registered financial intermediary under Swiss law",
+     "member of ARIF",
+     "Pre-IPO opportunities"
+    ],
+    "colb-canp": [
+     "tokenized structured certificate",
+     "qualified investors",
+     "25.000 \\$USC"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web enseña sus tokens de empresas pre-salida a bolsa y de estrategias con monedas estables.",
+     "fuentes": [
+      "colb-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser intermediario financiero registrado en Suiza y miembro de ARIF; no lo hemos comprobado en el registro de ARIF.",
+     "fuentes": [
+      "colb-web"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Sus certificados se dirigen a inversores cualificados; en CANP, desde 25.000 dólares.",
+     "fuentes": [
+      "colb-canp"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "no_son_acciones",
+      "detalle": "Son certificados que siguen el valor de las acciones, no acciones de la empresa: no dan voto ni derechos de socio, y el precio se estima porque la empresa no cotiza.",
+      "fuentes": [
+       "colb-canp"
+      ]
+     },
+     {
+      "codigo": "riesgo_alto",
+      "detalle": "El propio emisor califica el riesgo de alto. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "colb-canp"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "m3sixty",
+   "nombre": "M3Sixty",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "ee-uu",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://m3sixtyfunds.com/u-s-government-mmf/",
+    "aval": "Fondo monetario estadounidense (MCGXX) con folleto registrado; lo asesora M3Sixty Capital, asesor de inversiones registrado en la SEC.",
+    "nota": "Fondo monetario de deuda pública de EE. UU. con registro de participaciones en cadena, que busca mantener 1 dólar por participación."
+   },
+   "fuentes": [
+    {
+     "id": "m3sixty-mmf",
+     "tipo": "empresa",
+     "titulo": "M3Sixty · M3Sixty OnChain US Government Money Market Fund",
+     "url": "https://m3sixtyfunds.com/u-s-government-mmf/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "m3sixty-mmf": [
+     "MCGXX",
+     "stable \\$1\\.00 net asset value",
+     "investment advisor registered with the Securities and Exchange Commission"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La ficha del fondo publica su valor liquidativo y su rendimiento a siete días con fecha del 27/11/2026.",
+     "fuentes": [
+      "m3sixty-mmf"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice que su asesor está registrado en la SEC; no lo hemos comprobado en el registro de la SEC.",
+     "fuentes": [
+      "m3sixty-mmf"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Las participaciones no cotizan: se compran y se reembolsan a través de intermediarios o plataformas aprobadas por M3Sixty.",
+     "fuentes": [
+      "m3sixty-mmf"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fondo_pequeno",
+      "detalle": "Es un fondo muy pequeño y sus gastos brutos superan con mucho a los netos: hoy los cubre la gestora y podría dejar de hacerlo.",
+      "fuentes": [
+       "m3sixty-mmf"
+      ]
+     },
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Fondo de EE. UU. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "m3sixty-mmf"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "hastra",
+   "nombre": "Hastra",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "ee-uu",
+    "actor": "Infraestructura",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Solana y Ethereum",
+    "web": "https://help.hastra.io/wylds/what-is-wylds",
+    "aval": "Protocolo descentralizado: su token wYLDS se respalda con YLDS, un valor de renta fija registrado que emite Figure Certificate Company. Hastra no declara una licencia propia.",
+    "nota": "Tokens con rendimiento de préstamos de EE. UU.: sobre el valor YLDS de Figure y, si se bloquean, de líneas de crédito con garantía de vivienda, de préstamos de coche o a pequeñas empresas."
+   },
+   "fuentes": [
+    {
+     "id": "hastra-wylds",
+     "tipo": "empresa",
+     "titulo": "Hastra · What is wYLDS?",
+     "url": "https://help.hastra.io/wylds/what-is-wylds",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "hastra-prime",
+     "tipo": "empresa",
+     "titulo": "Hastra · What is PRIME (Staked wYLDS)?",
+     "url": "https://help.hastra.io/prime/what-is-prime-%28staked-wylds%29",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "hastra-wylds": [
+     "registered fixed-income security issued by Figure Certificate Company",
+     "Hastra takes a 50 bps fee",
+     "You can lose some or all of your capital"
+    ],
+    "hastra-prime": [
+     "HELOC"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su documentación explica cómo cambiar USDC por wYLDS y bloquearlo para recibir PRIME, AUTO o SMB.",
+     "fuentes": [
+      "hastra-wylds",
+      "hastra-prime"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "sin_registro_declarado",
+     "detalle": "El valor de debajo (YLDS) está registrado, pero Hastra funciona con contratos inteligentes sin permiso y no dice tener licencia propia.",
+     "fuentes": [
+      "hastra-wylds"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "No publica qué países admite ni qué requisitos pide para cambiar USDC por wYLDS.",
+     "fuentes": [
+      "hastra-wylds"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sin_licencia_declarada",
+      "detalle": "El rendimiento no está garantizado y se puede perder todo; hay riesgo de los contratos inteligentes y de los préstamos de debajo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "hastra-wylds",
+       "hastra-prime"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "backpack-securities",
+   "nombre": "Backpack Securities",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "global",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Solana",
+    "web": "https://wallet.backpack.exchange/tokenized-stocks/partners",
+    "aval": "Emite acciones y ETF de EE. UU. tokenizados en Solana: cada token es un derecho frente a una sociedad vehículo que guarda la acción y se puede canjear 1 a 1 en Backpack Exchange.",
+    "nota": "Acciones y ETF de EE. UU. tokenizados que se negocian las 24 horas en Solana y se canjean por la acción en Backpack Exchange."
+   },
+   "fuentes": [
+    {
+     "id": "backpack-socios",
+     "tipo": "empresa",
+     "titulo": "Backpack · The infrastructure for tokenized equities",
+     "url": "https://wallet.backpack.exchange/tokenized-stocks/partners",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "backpack-acciones",
+     "tipo": "empresa",
+     "titulo": "Backpack · Stocks onchain",
+     "url": "https://wallet.backpack.exchange/tokenized-stocks",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "backpack-socios": [
+     "Backpack Securities issues tokenized U\\.S\\. stocks and ETFs",
+     "special purpose vehicle \\(SPV\\)"
+    ],
+    "backpack-acciones": [
+     "Tokenized stocks and ETFs on Solana",
+     "subject to eligibility and jurisdictional restrictions"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web enseña los valores tokenizados en circulación y sus cifras de negociación desde junio de 2026.",
+     "fuentes": [
+      "backpack-acciones"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La web no dice qué licencia tiene la sociedad que emite los tokens ni en qué país está.",
+     "fuentes": [
+      "backpack-socios",
+      "backpack-acciones"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Dice que los valores tokenizados tienen restricciones de elegibilidad y de país, sin publicar cuáles.",
+     "fuentes": [
+      "backpack-acciones"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "derecho_sobre_vehiculo",
+      "detalle": "El token no es la acción: es un derecho frente a la sociedad vehículo que la guarda, que se canjea por la acción en Backpack Exchange.",
+      "fuentes": [
+       "backpack-socios"
+      ]
+     },
+     {
+      "codigo": "licencia_no_declarada",
+      "detalle": "No identifica al emisor ni a su supervisor. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "backpack-socios"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "onre",
+   "nombre": "OnRe",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "global",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Solana",
+    "web": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc",
+    "aval": "Su token ONyc representa una parte de una cuenta segregada de Bermudas que respalda contratos de reaseguro. La interfaz pública avisa de que el token comprado por ella no da derechos frente a On Re SAC Ltd.",
+    "nota": "Reaseguro tokenizado: el valor de ONyc sigue a las primas cobradas menos los siniestros de una cuenta segregada en Bermudas."
+   },
+   "fuentes": [
+    {
+     "id": "onre-docs",
+     "tipo": "empresa",
+     "titulo": "OnRe · OnRe Tokenized Reinsurance (ONyc)",
+     "url": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "onre-app",
+     "tipo": "empresa",
+     "titulo": "OnRe · Interfaz pública",
+     "url": "https://app.onre.finance/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "onre-docs": [
+     "ring-fenced structure in Bermuda",
+     "reinsurance contracts"
+    ],
+    "onre-app": [
+     "do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd",
+     "Prohibited Jurisdiction",
+     "including the United States"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su interfaz enseña el patrimonio y el valor de ONyc, y su documentación explica cómo se emite y se reembolsa.",
+     "fuentes": [
+      "onre-app",
+      "onre-docs"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Habla de una cuenta segregada regulada en Bermudas sin dar el registro; no lo hemos comprobado.",
+     "fuentes": [
+      "onre-docs"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Emitir y reembolsar exige pasar su verificación; la interfaz no se puede usar desde EE. UU. ni desde otros países que excluye.",
+     "fuentes": [
+      "onre-docs",
+      "onre-app"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sin_derechos_por_interfaz",
+      "detalle": "Los ONyc comprados por la interfaz pública no dan derechos de propiedad, reembolso ni voto frente a On Re SAC Ltd.",
+      "fuentes": [
+       "onre-app"
+      ]
+     },
+     {
+      "codigo": "riesgo_siniestros",
+      "detalle": "Si hay siniestros grandes, el valor baja: no es una moneda estable ni un depósito. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "onre-docs"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "ofertas": []
+}

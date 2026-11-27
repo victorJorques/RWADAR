@@ -1,0 +1,319 @@
+Trade
+Perpetuals
+Wallet
+More
+Log in
+Sign up
+The infrastructure for
+tokenized equities.
+
+Backpack Securities issues tokenized U.S. stocks and ETFs, each redeemable 1:1 for the underlying share. Listed companies can bring their shares onchain, and platforms can offer them to their users through a single integration.
+
+Contact our team
+Developer documentation
+↗
+(opens in a new tab)
+For listed companies↓
+For platforms↓
+
+WHY BACKPACK SECURITIES
+
+Not just a token. Redeemable 1:1.
+
+Tokenized stocks are not all structured alike. The three main models differ in what a token redeems for, where the position can move, and how its liquidity connects to the stock.
+
+Model
+Share redemption
+Brokerage portability
+Liquidity connected to the stock
+Backpack Securities
+SPCX
+Yes, 1:1
+Tokens redeem for the underlying shares, held on Backpack Exchange, in seconds, at zero cost.
+Built in
+Shares can be transferred to and from other brokerages via DTC.
+Direct path
+1:1 conversion supports arbitrage, inventory management, and professional market making.
+Cash-settled models
+No
+Tokens redeem for cash or stablecoins.
+None
+There is no stock position to move through brokerage rails.
+No direct path
+Liquidity is confined to the token.
+Tracker / certificate models
+Limited
+Share conversion is restricted or program-dependent.
+Restricted
+Portability depends on the issuer, the broker, and the conversion program.
+Restricted path
+Connectivity depends on the available conversion infrastructure.
+
+Product structures and conversion terms vary by issuer, eligibility, and jurisdiction.
+
+FOR LISTED COMPANIES
+
+Bring your shares onchain.
+
+Onchain trading gives listed companies a new market for their shares, open around the clock and connected 1:1 to the underlying stock.
+
+Contact our team
+
+Why list with Backpack Securities
+
+Your shares join an active market from the first day of trading.
+
+430K+
+
+token holders across Backpack-issued tokenized securities
+
+$5.3B+
+
+in onchain trading volume since the June launch
+
+95
+
+tokenized securities live
+
+SPCX
+SpaceX Launched Jun 12
+
+91.7%
+
+of all tokenized SpaceX trading volume in IPO week, and 87.5% of the liquidity.
+
+PUSA
+Powerus Launched Oct 2
+
+1.5×
+
+its U.S. market volume, traded onchain on listing day.
+
+RACE
+Ferrari Launched Oct 6
+
+$30M+
+
+traded onchain between its launch at the U.S. close and the next market open.
+
+Data from Jun 12 to Oct 18, 2026.
+
+View the Blockworks dashboard↗
+(opens in a new tab)
+What onchain trading offers a listed company.
+01
+
+Expand the market for your shares
+
+Reach new investors through onchain distribution channels and markets, supporting broader participation and capital formation.
+
+02
+
+Widen investor access
+
+Make your shares available across wallets, exchanges, trading apps, and onchain venues.
+
+03
+
+Preserve market connectivity
+
+Onchain liquidity and price discovery remain tied to the underlying shares through 1:1 convertibility and brokerage infrastructure.
+
+04
+
+Create new financial utility
+
+Enable your shares to serve as collateral and to be used in lending markets, liquidity pools, and other financial applications.
+
+05
+
+Engage the onchain ecosystem
+
+Coordinate launches, earnings, and company milestones with wallets, exchanges, protocols, and onchain communities.
+
+FOR PLATFORMS & PROTOCOLS
+
+Bring U.S. equities to your users.
+
+Tokenized equities can be integrated across a range of platforms and business models.
+
+Exchanges
+
+Launch equity markets
+
+List tokenized stocks alongside crypto and derivatives, backed by inventory that moves between onchain venues and the brokerage market.
+
+Wallets & trading apps
+
+Offer equities in-app
+
+Let users hold, transfer, and trade tokenized stocks directly in their wallet or trading app.
+
+DEXs & aggregators
+
+Aggregate equity liquidity
+
+Build markets and route orders across proprietary AMMs, LP-based AMMs, and other onchain venues.
+
+Lending protocols
+
+Accept equities as collateral
+
+Create lending and borrowing markets for each listed security.
+
+Market makers
+
+Provide liquidity across markets
+
+Quote and rebalance inventory across traditional and onchain venues, with 1:1 conversion between the two.
+
+Fintechs & neobanks
+
+Expand your investment offering
+
+Offer equities alongside cash and crypto in investing and wealth products.
+
+INTEGRATION
+
+One integration.
+Everything we bring onchain.
+
+Every use case above runs on the same securities infrastructure. A single integration covers every listing today, and everything that follows as we bring the full brokerage onchain.
+
+What you integrate
+
+01
+
+Verified token addresses
+
+Canonical addresses and asset metadata for every Backpack-issued tokenized security.
+
+SPCX
+SPCXxc…5BimGb
+SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb
+SpaceX
+02
+
+Market data
+
+Pricing, market status, and reference data.
+
+Price
+Market status
+Asset info
+03
+
+Minting and redemption
+
+Each token converts 1:1 to the corresponding share held on Backpack Exchange.
+
+Share
+⇄
+Token
+1:1
+Integrate once
+
+What it enables
+
+Broader asset coverage
+
+Expand your investable universe as new assets come onchain, without building securities infrastructure for each one.
+
+Additional trading activity
+
+Add equity markets alongside your crypto and derivatives products.
+
+New revenue opportunities
+
+Trading, liquidity provision, lending, and derivatives can each become a new product line.
+
+Greater capital efficiency
+
+Existing balances can participate in more markets without moving users to a separate investing product.
+
+Recurring engagement
+
+Earnings, corporate announcements, and macro events drive market activity throughout the year.
+
+Documentation, API endpoints, and the token registry
+
+Developer documentation
+↗
+(opens in a new tab)
+
+FAQ
+
+Common questions.
+
+How integration and issuance work with Backpack Securities.
+
+Who is the issuer?
+Backpack Securities. Each token represents a claim on a special purpose vehicle (SPV) that holds the underlying security, and is redeemable 1:1 for the share through Backpack Exchange.
+Do partners need their own brokerage or custody arrangements?
+Which blockchain are the tokens issued on?
+How do new listings become available?
+How are dividends, splits, and other corporate actions handled?
+How can a listed company bring its shares onchain?
+Work with Backpack Securities.
+Contact our team
+Developer documentation
+↗
+(opens in a new tab)
+tokenization@backpack.exchange
+Legal↗
+(opens in a new tab)
+
+Tokenized securities involve risk and are subject to eligibility and jurisdictional restrictions. Data shown is historical and is not indicative of future results.
+
+Company
+
+About
+Brand Assets
+Careers
+Contact
+
+Help & Support
+
+Learn
+Guide
+Support
+API
+
+Products
+
+BP Token
+VIP Program
+Vault
+Backpack Wallet
+Solana Wallet
+Sui Wallet
+Monad Wallet
+
+Crypto Markets
+
+BTC to USD
+ETH to USD
+SOL to USD
+BP to USD
+HYPE to USD
+BNB to USD
+All Crypto Markets
+
+Token Prices
+
+Solana Price
+Bitcoin Price
+Ethereum Price
+Sui Price
+Monad Price
+Backpack Price
+All Crypto Prices
+
+Backpack Exchange © 2026
+
+Legal
+Privacy
+
+Backpack is a financial services platform, not a bank. Banking services are provided by Backpack's bank partners.
+
+Cryptocurrency services are offered through an account with Trek Labs, Inc. (NMLS ID: 2665675). Review a list of Trek Labs, Inc.'s licenses for more information. Cryptocurrency held through Trek Labs, Inc. is not FDIC insured or SIPC protected.

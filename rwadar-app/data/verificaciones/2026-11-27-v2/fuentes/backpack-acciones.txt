@@ -1,0 +1,353 @@
+Trade
+Perpetuals
+Wallet
+More
+Log in
+Sign up
+Stocks onchain,
+as they should be.
+
+Tokenized stocks and ETFs on Solana. Trade them around the clock, put them to work across DeFi, and redeem them for the underlying shares at any time.
+
+Explore tokenized stocks
+Explore partnerships
+Real shares.
+Redeemable 1:1.
+
+Redeem for real shares and transfer them to your favorite brokerage at any time, in seconds, at zero cost.
+
+See how it works→
+Share
+1:1
+Token
+Trusted leader.
+From day one.
+
+$5.3B+ in onchain volume and 430K+ token holders since the June 2026 launch.
+
+See the track record→
+Best‑in‑class liquidity.
+Lower execution costs.
+
+Orders route to the best price. Backpack had the better price on 98% of head‑to‑head quotes.
+
+Learn more→
+Nasdaq · NYSE
+Onchain
+
+REAL SHARES
+
+One security. Two markets.
+
+Withdraw a share from Backpack Exchange and get a tokenized security on Solana. Deposit the token and the share returns to your account. Both take seconds, at zero cost.
+
+Seconds
+to mint or redeem
+Zero
+conversion cost
+24/7
+onchain trading
+SPCX
+SpaceX
+
+Share
+On Backpack Exchange
+
+Held as
+Security entitlement (NY UCC Article 8)
+Transfer rails
+DTC
+Market liquidity
+Nasdaq NYSE
+SPCX
+SpaceX
+
+Token
+On Solana
+
+Token address
+SPCXxc…5BimGb
+SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb
+Verify
+the SPCX token address on Solscan
+↗
+(opens in a new tab)
+Moves across
+Wallets Exchanges DeFi
+Network
+Solana
+1:1
+One share converts to one token.
+←
+Redeem: deposit to Backpack Exchange
+←
+Redeem: deposit to Backpack Exchange
+Mint: withdraw to Solana
+→
+Mint: withdraw to Solana
+→1
+Withdraw from Backpack Exchange
+2
+SPCX token minted 1:1 on Solana
+3
+Token delivered to your wallet
+
+TRUSTED LEADER
+
+Leading from day one.
+
+The fastest-growing token issuer.
+
+Cumulative onchain volume
+
+$5.3B+
+
+$5B
+Jun
+Jul
+Aug
+Sep
+Oct
+
+Token holders
+
+430K+
+
+Tokenized securities live
+
+95
+
+Data from Jun 12 to Oct 18, 2026. Sources: Blockworks↗
+(opens in a new tab)
+ and Birdeye Data↗
+(opens in a new tab)
+. Figures are rounded.
+
+Successful launches
+SPCX
+
+SpaceX IPO
+
+The SpaceX token the market chose.
+
+IPO DAY
+
+Jun 12
+
+SPCX went live on Solana as SpaceX began trading.
+
+IPO WEEK
+
+91.7%
+
+of all tokenized SpaceX trading volume and 87.5% of the liquidity.
+
+FIRST NINE WEEKS
+
+89%
+
+of all tokenized SpaceX trading volume.
+
+WEEKEND, OCT 10–11
+
+$80M+
+
+traded while U.S. markets were closed, the most of any tokenized stock on Solana that weekend.
+
+Source: Birdeye Data↗
+(opens in a new tab)
+
+PUSA
+Powerus Launched Oct 2
+
+1.5×
+
+its U.S. market volume, traded onchain on listing day.
+
+Onchain, Backpack Securities
+~$12M
+U.S. markets
+~$8M
+37.5% of U.S. market volume
+handled by Backpack Exchange
+
+In its first 12 hours onchain, PUSA traded about 3× its average daily U.S. volume.
+
+RACE
+Ferrari Launched Oct 6
+
+$30M+
+
+traded onchain between its launch at the U.S. close and the next market open.
+
+4:00 PM ET, Oct 6
+Launched at the close
+9:30 AM ET, Oct 7
+Next market open
+
+The U.S. regular session runs 6.5 hours each weekday. Onchain markets price in earnings and overnight news during the other 17.5 hours.
+
+BEST‑IN‑CLASS LIQUIDITY
+
+Traditional market liquidity, onchain.
+
+With 1:1 convertibility, market makers can rebalance inventory across onchain venues and U.S. equity markets, helping onchain orders benefit from deeper liquidity, tighter spreads, and lower execution costs.
+
+Traditional markets
+
+NYSE Nasdaq
+
+Shares
+
+1:1
+convertibility
+Tokens
+Onchain markets
+
+DEXs AMMs
+
+Lower execution costs, independently measured.
+Where SpaceX orders fill
+
+81%
+
+of $1K SpaceX orders were routed to Backpack’s SPCX.
+
+$500
+73%
+$1K
+81%
+$5K
+68%
+$10K
+72%
+0%
+50%
+100%
+Buying the competing token: routed via SPCX
+Buying SPCX: routed via the competing token
+
+Source: Blockworks Research↗
+(opens in a new tab)
+ · Jupiter routes by order size, Jun–Aug 2026
+
+Against a competing issuer
+
+98% of quotes cheaper
+
+Backpack had the better price on every day measured.
+
+Per round trip
+
+0.33–0.39% saved
+
+at every order size from $500 to $10K
+
+Backpack cheaper
+Competing issuer cheaper
+
+Source: Blockworks Research↗
+(opens in a new tab)
+ · Hourly quotes on stocks both issuers offer, Jun–Aug 2026
+
+Against Robinhood Chain
+
+0.12% vs. 5.42%
+
+All-in cost of Micron (MU) trades under $100 on Backpack. The same trades cost 45 times as much on Robinhood Chain.
+
+0.12%
+Backpack
+5.42%
+Robinhood Chain
+
+On $100–$1K trades
+
+0.016% vs. 0.437%
+
+27 times as much on Robinhood Chain
+
+Source: Blockworks Research↗
+(opens in a new tab)
+ · All-in costs including fees, Sep 2026
+
+FAQ
+
+Common questions.
+How long do minting and redemption take, and what do they cost?
+Both complete in seconds, at zero cost.
+What do I receive when I redeem?
+Can I transfer shares to or from another brokerage?
+How are dividends, splits, and other corporate actions handled?
+Which stocks and ETFs are available?
+
+Independent research
+
+Delphi Digital
+The Emerging Onchain Equity Market
+↗
+(opens in a new tab)
+Blockworks Research
+Tokenized Equities on Solana: From Issuance to Execution
+↗
+(opens in a new tab)
+Start with one share. Trade it around the clock.
+Explore tokenized stocks
+Explore partnerships
+Legal↗
+(opens in a new tab)
+
+Tokenized securities involve risk and are subject to eligibility and jurisdictional restrictions. Data shown is historical and is not indicative of future results.
+
+Company
+
+About
+Brand Assets
+Careers
+Contact
+
+Help & Support
+
+Learn
+Guide
+Support
+API
+
+Products
+
+BP Token
+VIP Program
+Vault
+Backpack Wallet
+Solana Wallet
+Sui Wallet
+Monad Wallet
+
+Crypto Markets
+
+BTC to USD
+ETH to USD
+SOL to USD
+BP to USD
+HYPE to USD
+BNB to USD
+All Crypto Markets
+
+Token Prices
+
+Solana Price
+Bitcoin Price
+Ethereum Price
+Sui Price
+Monad Price
+Backpack Price
+All Crypto Prices
+
+Backpack Exchange © 2026
+
+Legal
+Privacy
+
+Backpack is a financial services platform, not a bank. Banking services are provided by Backpack's bank partners.
+
+Cryptocurrency services are offered through an account with Trek Labs, Inc. (NMLS ID: 2665675). Review a list of Trek Labs, Inc.'s licenses for more information. Cryptocurrency held through Trek Labs, Inc. is not FDIC insured or SIPC protected.

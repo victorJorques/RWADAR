@@ -1,0 +1,114 @@
+{
+ "libeara-web": {
+  "url": "https://libeara.com/",
+  "horaUtc": "2026-11-27T09:33:47Z",
+  "http": 200,
+  "archivo": "fuentes/libeara-web.txt",
+  "sha256": "35f13febd1afde12d2d909498217afcbd164c85bfb5cced9893ff3036ba03388",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "libeara-ultra": {
+  "url": "https://libeara.com/fundbridge-and-libeara-launch-regulated-tokenised-treasury-fund-on-avalanche/",
+  "horaUtc": "2026-11-27T09:33:54Z",
+  "http": 200,
+  "archivo": "fuentes/libeara-ultra.txt",
+  "sha256": "0442542ebea904af92769ee2b84281137af8a1aaa137b976df97f89781b73b50",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "backpack-acciones": {
+  "url": "https://wallet.backpack.exchange/tokenized-stocks",
+  "horaUtc": "2026-11-27T09:34:03Z",
+  "http": 200,
+  "archivo": "fuentes/backpack-acciones.txt",
+  "sha256": "a3c803d43a0521c18bb1eb7fb65935919b7b068d960244e7f26bab60f379277a",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "backpack-socios": {
+  "url": "https://wallet.backpack.exchange/tokenized-stocks/partners",
+  "horaUtc": "2026-11-27T09:34:10Z",
+  "http": 200,
+  "archivo": "fuentes/backpack-socios.txt",
+  "sha256": "eb31a674fba65f3662db7cc14b38b4749b8ce73d9c9ed0b3f64abaad45394d77",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "obligate-web": {
+  "url": "https://www.obligate.com/",
+  "horaUtc": "2026-11-27T09:34:31Z",
+  "http": 200,
+  "archivo": "fuentes/obligate-web.txt",
+  "sha256": "2f845c7dffa636c1b649f0615584f5f872303b50565baccbe252a1bb0ede55a7",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "obligate-otfy": {
+  "url": "https://www.obligate.com/otfy",
+  "horaUtc": "2026-11-27T09:34:38Z",
+  "http": 200,
+  "archivo": "fuentes/obligate-otfy.txt",
+  "sha256": "f989567574cc583687929df6340d6205cca5a66b091af64ee2ccb4c19f594fe2",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "hastra-prime": {
+  "url": "https://help.hastra.io/prime/what-is-prime-%28staked-wylds%29",
+  "horaUtc": "2026-11-27T09:34:46Z",
+  "http": 200,
+  "archivo": "fuentes/hastra-prime.txt",
+  "sha256": "1e12e531668311ba4062f74ac3a6cb9898fa744a61dc4b4ff7146ed7e09c976d",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "hastra-wylds": {
+  "url": "https://help.hastra.io/wylds/what-is-wylds",
+  "horaUtc": "2026-11-27T09:34:52Z",
+  "http": 200,
+  "archivo": "fuentes/hastra-wylds.txt",
+  "sha256": "1bc2cc6f413b9e57257b20cc2bd372b911ed83d9c742b61b9bccb627191c47fd",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "colb-web": {
+  "url": "https://www.colb.finance/",
+  "horaUtc": "2026-11-27T09:34:59Z",
+  "http": 200,
+  "archivo": "fuentes/colb-web.txt",
+  "sha256": "7a5361da15029333f5706338c961f8f769df78a220d29a195f962d898d077b91",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "colb-canp": {
+  "url": "https://www.colb.finance/canp",
+  "horaUtc": "2026-11-27T09:35:06Z",
+  "http": 200,
+  "archivo": "fuentes/colb-canp.txt",
+  "sha256": "b6e35c0af677f57a6c316bfeddfad0657ae771d1e4190595962ca680efc60b43",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "hashkey-htoken": {
+  "url": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/",
+  "horaUtc": "2026-11-27T09:35:14Z",
+  "http": 200,
+  "archivo": "fuentes/hashkey-htoken.txt",
+  "sha256": "18390534d56bf79a12240b43b0341979819657ca617a55c3154308a40d900f91",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "onre-docs": {
+  "url": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc",
+  "horaUtc": "2026-11-27T09:35:30Z",
+  "http": 200,
+  "archivo": "fuentes/onre-docs.txt",
+  "sha256": "8526e2f10910811be5fc261a39729851ee15ef56b9921676c59be0b05fc28a25",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "onre-app": {
+  "url": "https://app.onre.finance/",
+  "horaUtc": "2026-11-27T09:35:37Z",
+  "http": 200,
+  "archivo": "fuentes/onre-app.txt",
+  "sha256": "8407badc9a525d68cf9f0999775d7471e0c759f0eb800400e8a5c6b888648e6c",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ },
+ "m3sixty-mmf": {
+  "url": "https://m3sixtyfunds.com/u-s-government-mmf/",
+  "horaUtc": "2026-11-27T09:35:47Z",
+  "http": 200,
+  "archivo": "fuentes/m3sixty-mmf.txt",
+  "sha256": "cbc8a1ae576bcd7a81cd1d29a4122e35edace5c14c8bb7b3abfa7e207accea21",
+  "nota": "texto visible de la página con Chromium (aviso de cookies o de entrada aceptado si lo había); nombres de personas retirados"
+ }
+}

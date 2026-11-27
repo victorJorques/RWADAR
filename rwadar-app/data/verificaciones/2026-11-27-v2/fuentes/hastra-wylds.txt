@@ -1,0 +1,89 @@
+Search
+Ctrl
+K
+Learn About Hastra
+📘
+About Us
+Contributions to Provenance Blockchain
+⚖️
+Understanding wYLDS and PRIME: Hastra’s Ecosystem
+🆘
+Support
+wYLDS
+❓
+What is wYLDS?
+🔁
+Buying wYLDS
+📩
+Sending wYLDS
+💹
+Claim Your Yields
+PRIME
+❔
+What is PRIME (Staked wYLDS)?
+🔣
+How Is the PRIME Rate Determined?
+AUTO
+❓
+What is AUTO?
+🛠️
+Integration Guides
+💻
+API Documents
+📚
+DeFi Guides
+📜
+Understanding DeFi Lending
+🪙
+How to get USDC for Hastra
+📃
+Risks Article
+➿
+How to Bridge PRIME from Solana to Tempo
+Learn About Hastra
+/
+WYLDS
+What is wYLDS?
+What is wYLDS?
+wYLDS is a yield-bearing token from Hastra. It gives you a proportionate ownership interest in a pool of reserves backing it, so you can hold, transfer, and use YLDS-backed yield onchain.
+Core Concept
+Each wYLDS represents a share of a reserve pool made up of YLDS, a registered fixed-income security issued by Figure Certificate Company. The reserves may be held as YLDS directly or deployed into Figure's Prime (formerly Democratized Prime) lending pools. Hastra's protocol is operated through permissionless smart contracts.
+How It Works
+Mint: Swap USDC for wYLDS through Hastra.
+Reserve: The protocol acquires and holds the backing assets for all outstanding wYLDS.
+Yield: The reserves earn yield from YLDS, currently SOFR minus 35 bps, and from any Prime (formerly Democratized Prime) pool lending. Hastra takes a 50 bps fee.
+Accrual: Yield accrues to wYLDS holders over time.
+Claim: If holding wYLDS in your wallet, connect your wallet on the Hastra dashboard to claim. Interest is made available to claim monthly. Network gas and protocol fees may apply.
+Key Features
+Real-World Backing: Reserves are YLDS, and YLDS is backed by FCC's assets, which are mostly debt securities.
+Variable Yield: The displayed APY is an estimate based on SOFR, net of fees, not guaranteed, and updates every 5 minutes.
+Multi-Chain: Available on Solana and Ethereum.
+Liquid Staking: Stake wYLDS to receive PRIME (HELOC lending), AUTO (consumer auto loans), or SMB (small business loans).
+Transferable: wYLDS can be sent peer-to-peer.
+Use Cases
+Hold wYLDS to earn variable yield.
+Stake it for PRIME, AUTO, or SMB.
+Use it in DeFi, such as collateral or liquidity pools, where available.
+Send it peer-to-peer.
+Getting Started
+Get wYLDS: Swap USDC on Hastra.
+Hold: Keep it in a compatible Solana or Ethereum wallet.
+Track: Follow your yield at hastra.io.
+Claim: Claim accrued yield on the dashboard.
+Use or redeem: Stake, use in DeFi, or redeem.
+Risks: You can lose some or all of your capital. Yield isn't guaranteed, and wYLDS depends on the performance of YLDS and any pools it's deployed in. See the Terms of Use.
+FAQ
+How does wYLDS accrue interest? Yield is distributed to holders based on the performance of the YLDS and YLDS-denominated assets backing wYLDS. The amount, timing, and consistency aren't guaranteed.
+When can I claim? You can claim your yield in the Hastra dashboard at the beginning of each month.
+FAQS
+How does wYLDS accrue interest for me?
+When can I claim my yield?
+wYLDS
+Buying wYLDS
+Powered by Notaku
+Helpful?
+SHARE
+CONTENT
+What is wYLDS?
+What is wYLDS?
+FAQS

@@ -1,0 +1,40 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "8f06cb12-c56a-b9fb-a9c0-1867a220a435",
+  "hash": "8f06cb12c56ab9fba9c01867a220a4352146cecd0bd49bcb98b8d062884442ab",
+  "revisionAnterior": "7f745c7d-5a25-2385-9e6c-d855a22c9d02",
+  "hashRevisionAnterior": "7f745c7d5a2523859e6cd855a22c9d021fc413bd0c948b990ae2837bf3c4e104",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-27-v2/lectura-publica/",
+  "etiqueta": "2026-11-27",
+  "fechaRadar": "2026-11-27",
+  "revisionDocumental": "2026-11-27",
+  "plataformas": 65,
+  "ofertas": 32,
+  "colecciones": {
+    "principales": 17,
+    "secundario": 13,
+    "en_camino": 2
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 0,
+  "ofertasAltas": [],
+  "plataformasAltas": [
+    "libeara",
+    "hashkey-rwa",
+    "obligate",
+    "colb",
+    "m3sixty",
+    "hastra",
+    "backpack-securities",
+    "onre"
+  ],
+  "retiradas": 0,
+  "tablasPublicas": [
+    "public.plataformas"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

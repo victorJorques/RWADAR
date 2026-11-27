@@ -1,0 +1,112 @@
+Skip to content
+About
+Business
+HSK
+Media
+Careers
+Investors
+Contact
+English
+
+← Go Back
+
+HashKey RWA Launches First Product Under the HashKey “hToken” Series, Advancing Traditional Financial Asset Tokenisation Through a One-Stop Issuance Solution
+By: [nombre retirado]
+Published: 26 October, 2026
+
+Hong Kong, Oct. 26, 2026 — HashKey RWA, the tokenisation arm of HashKey Holdings Limited (“HashKey”, or “the Group”, Stock Code: 3887.HK), a leading digital asset financial services group in Asia with a global footprint, today announced the launch of the first tokenised securities product under its HashKey “hToken” series, leveraging its RWA One-Stop Issuance Solution.
+
+As global financial institutions continue to explore the convergence of digital assets and traditional financial markets, the tokenisation of traditional financial assets, including funds, bonds and structured products, is attracting increasing attention. Tokenised securities are gradually moving beyond proof-of-concept initiatives and technical exploration towards real-world business applications spanning issuance, distribution and asset servicing. However, complex compliance frameworks, the high cost of adapting existing products, and the lack of standardised approaches to lifecycle management continue to constrain the large-scale adoption of tokenised issuance. In response to these needs, HashKey RWA draws on HashKey Group’s capabilities in tokenisation solution design, asset management, licensed digital asset trading, blockchain technology and institutional financial services, together with its network of banking, custody, legal and other external professional partners. Building on its One-Stop Issuance Solution, HashKey RWA has introduced the hToken series, translating tokenised issuance into a reusable, standardised product framework and moving the tokenisation of products linked to traditional financial assets beyond one-off bespoke projects towards a standardised and replicable issuance model.
+
+As the first product launched under the “hToken” series, HashKey RWA has selected the fund units of HashKey Fintech Opportunities Limited Class A (“HFOL Class A”), managed by HashKey Capital Management (BVI) Limited, as the underlying asset. Core consideration factors of the selection process include the fund’s rigorous underlying asset quality and targeted exposure to returns in specific markets. Built on the foundations of an existing fund product, this product explores the integration of traditional financial products with digital issuance and distribution channels, offering eligible professional investors more diversified investment options while providing practical experience to support the future tokenisation of a broader range of financial assets.
+
+Notably, the “hToken” series adopts an innovative issuance model that leverages a standardised tokenisation solution to create new digital issuance and distribution channels for traditional financial assets, without requiring extensive modifications to existing underlying fund structures. By holding tokenised securities products, investors can gain economic exposure linked to the performance of the corresponding underlying assets.
+
+The first product is now available through the Earn Channel on HashKey Exchange, where eligible professional investors can subscribe using USDT. This further connects traditional financial assets with the digital asset ecosystem while providing financial institutions with more flexible and efficient asset tokenisation solutions.
+
+Building on the launch of its first fund product, HashKey RWA will further develop the capabilities of the “hToken” series. Going forward, HashKey RWA will continue to enhance its one-stop issuance solution and explore its application to a broader range of financial assets, including funds, bonds, equities and structured products, offering institutional clients more flexible and efficient solutions.
+
+*For reference of eligible Professional Investors only
+
+About HashKey RWA
+
+HashKey RWA is the tokenisation arm of HashKey (3887.HK). It’s an institutional grade one-stop tokenization service that transforms real world assets into programmable, accessible and globally connected financial products, driving capital markets into a new era.
+It supports the full tokenization lifecycle to enable efficient end-to-end deployment from concept design to distribution. Supported by HashKey’s core infrastructure and innovative capabilities, it enables the on-chain issuance of multiple tokenized assets globally, building a compliant bridge between traditional assets and on-chain liquidity.
+As a cornerstone of open finance, HashKey RWA sets a new paradigm for institutional asset issuance, management and distribution.
+
+Disclaimer
+
+This press release is provided for general information purposes only and does not constitute an offer, solicitation, recommendation, or investment advice in respect of any securities or financial products. The aforementioned products are exclusively available to qualified professional investors, and constitute complex financial products that involve investment risks, including the possible loss of the entire principal amount invested.
+
+Trust certificates held by investors do not represent direct ownership of the underlying fund units. The economic interests, risks, transfer restrictions, and recourse arrangements pertaining to the relevant products shall be governed by the applicable formal product documents.
+
+The products have not been registered under the U.S. Securities Act of 1933 and may not be offered or sold within the United States or to U.S. persons, nor may it be distributed in any jurisdiction where such offering is prohibited. Potential investors should carefully read the relevant offering documents and seek independent professional advice as necessary.
+
+Related Posts
+Business Lines
+HashKey Exchange
+HashKey Capital
+HashKey RWA
+HSK Chain
+HashKey Cloud
+HashKey Japan
+HashKey Custody
+HashKey Group
+About Us
+Our Journey
+Management Team
+News
+Reports
+Insights
+Careers
+Contact
+Investor Relations
+Information Disclosure
+Corporate Governance
+Stock Information
+IR Calendar
+
+© 2026 HashKey Group All Rights Reserved.
+
+Privacy Policy
+Disclaimer
+
+Offices
+
+Hong Kong
+Office
+
+14th Floor, Three Exchange Square, 8 Connaught Place, Central,
+Hong Kong
+
+Japan
+Office
+
+2 Chome-3-2 Marunouchi, Chiyoda City, Tokyo 100-0005,
+Japan
+
+Singapore
+Office
+
+3 Church Street, #28-06, Samsung Hub,
+Singapore
+
+Dubai
+Office
+
+14/F, Boulevard Plaza Tower 1, Sheikh Mohammed bin Rashid Boulevard, Downtown Dubai,
+United Arab Emirates
+
+Contact
+
+Telephone
+
+(852) 3755 2388
+(81) 3 6259 1570
+(65) 6989 7996
+
+Email
+
+support@customer.hashkey.com
+
+ 

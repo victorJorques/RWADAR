@@ -1,0 +1,78 @@
+For the complete documentation index, see llms.txt. Markdown versions of documentation pages are available by appending .md to page URLs.
+Skip to content
+Ctrl
+K
+Welcome to OnRe
+INTRODUCTION
+Getting Started
+OnRe Tokenized Reinsurance (ONyc)
+Understanding Reinsurance
+Yield Mechanisms
+Transparency Dashboard
+FOR CAPITAL PROVIDERS
+Introduction
+Minting ONyc
+Open Access vs Institutional Access
+Collateral Composition
+ONYC IN DEFI
+Introduction
+DeFi Opportunities
+OnRe Points Program
+Monthly Growth Updates
+Ecosystem Partnerships
+ONyc Buybacks
+Referral and Ambassador Program
+FOR INSURERS
+Introduction
+Underwriting
+Underwriting Commentary
+Capacity Access
+Reporting
+Regulatory Framework
+REINSURANCE FRAMEWORK
+Portfolio Makeup
+Reinsurance Deals Overview
+Collateralised Reinsurance Structure
+Collateral Security and Segregation
+Claims and Risk Management
+SECURITY AND VERIFICATION
+System Integrity Overview
+Independent Risk Analysis
+Independent Attestations
+Independent Audits
+Bug Bounty Program
+TECHNICAL RESOURCES
+Frequently Asked Questions
+Token Configuration and Reference
+OnRe Smart Contract Integration
+Onchain Market Data
+Redemptions and Onchain Liquidity
+Fees and Commissions
+Appendices
+Media Assets
+LEGAL
+Compliance
+KYC and AML Policy
+ONyc Excluded Jurisdictions
+Platform Terms of Use
+Open Access Interface Terms of Use
+Privacy Policy
+Powered by GitBook
+Copy
+Introduction
+OnRe Tokenized Reinsurance (ONyc)
+
+ONyc is an onchain yield-bearing asset that represents a proportional share of a regulated segregated account used for underwriting short-duration insurance and reinsurance contracts. When capital enters this account, it is held in a legally ring-fenced structure in Bermuda and used exclusively to collateralize reinsurance exposures. The account earns contractual premium income and adjusts for any claims, and ONyc’s net asset value updates to reflect that performance.
+
+The token is designed to function as an appreciating asset driven by real-world cash flows rather than crypto-native volatility or incentive mechanics. ONyc does not rely on staking rewards, funding-rate dynamics, leverage, liquidity incentives, delta-neutral strategies, or anything dependent on market cycles. It is not a stablecoin, is not intended to behave like one, and is not corporate credit or a tokenized hedge fund. Its returns come from underwriting risk through a regulatory structure and actuarial process that has existed for decades in reinsurance markets.
+
+ONyc’s value is maintained through onchain updates of the pool’s NAV. Each token corresponds to a fractional claim on the segregated account, and as premiums are earned and the account grows or contracts, ONyc adjusts accordingly. This structure allows users to hold or transfer ONyc across Solana and use it throughout DeFi while capturing real-world yield through appreciation rather than distributions or emissions.
+
+The smart contracts that manage issuance and redemption are audited and operate transparently onchain. NAV inputs, token supply, and relevant fund movements are visible and verifiable. Minting and redemption occur through the app and follow the platform’s verification and eligibility requirements, but once minted, ONyc is fully transferable and can be used in liquidity pools, lending markets, structured products, and other DeFi applications.
+
+Previous
+Getting Started
+Next
+Understanding Reinsurance
+
+Last updated 11 months ago

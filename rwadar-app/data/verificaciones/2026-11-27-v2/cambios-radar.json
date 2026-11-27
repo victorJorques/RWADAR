@@ -1,0 +1,36 @@
+{
+  "fecha": "2026-11-27",
+  "nota": "Cambios del radar comprobados el 27/11/2026. Parte de la publicada 2026-11-26.4 (109 fuentes). Hoy se contrastan de nuevo todas con las capturas de las 09:3x–09:4x UTC.",
+  "fuentes": {},
+  "comprobacionesCambiadas": {},
+  "plataformas": {},
+  "verificacionesManuales": {
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "La página de REGAFI no carga sus datos en la captura (se pintan con JavaScript). Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 27/11/2026 a las 09:49:55 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6, igual que el 26/11)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\""
+      ]
+    },
+    "paxg-occ": {
+      "motivo": "La captura y curl reciben una redirección de seguridad a la portada; con un navegador normal (Chromium, sin sesión) el servidor entrega el PDF.",
+      "metodo": "PDF descargado con Chromium el 27/11/2026 a las 09:50:16 UTC (SHA-256 b8cbc850db1698718fbe2d6bfe95659ed6db530ae614a5537f6cb66c6497a274, el mismo que el 26/11); texto en radar-manual/occ-trust-by-name.txt (SHA-256 f21564dc5e73abee56adab8afd8d374932ae3b8e696d4326ff350dcea1d68239)",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "literales": [
+        "Trust Banks Active As of 10/31/2026",
+        "25379 Paxos Trust Company, National Association"
+      ]
+    },
+    "amundi-indice": {
+      "motivo": "Desde este entorno la conexión con about.amundi.com se corta (502 y conexión reiniciada en el túnel de salida, no un bloqueo de la web). Se leyó la misma página con WebFetch.",
+      "metodo": "Página leída con WebFetch el 27/11/2026 hacia las 09:52 UTC (HTTP 200, sin redirecciones; nota fechada el 05/11/2026)",
+      "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing",
+      "literales": [
+        "Amundi announces the launch of a tokenised share class of a flagship European equity index fund",
+        "The new share class has been issued on the public Ethereum blockchain."
+      ]
+    }
+  }
+}
