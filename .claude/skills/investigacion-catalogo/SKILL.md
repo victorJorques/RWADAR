@@ -298,7 +298,12 @@ Trampas conocidas:
    `node rwadar-editorial-source/ofertas/transparencia.mjs`,
    `node rwadar-editorial-source/plataformas/altas.mjs` (fecha de alta de las
    plataformas nuevas, desde el lote, para «Más nuevas primero»; si hay altas,
-   cambia la app y pide OTA), otra vez `node rwadar-fichas.js` y `npm test`. Commit. Después el **sello**, con el
+   cambia la app y pide OTA), los **textos del radar en inglés** (desde el 27/11/2026: si
+   `npm test` avisa «AVISO: N textos del radar sin inglés», añade su traducción a
+   `rwadar-editorial-source/plataformas/textos-en.json`, mismo estilo que las que hay, y ejecuta
+   `node rwadar-editorial-source/plataformas/textos-en.cjs` y
+   `node rwadar-movil/scripts/copiar-idiomas-web.cjs`; cambia la app y pide OTA),
+   otra vez `node rwadar-fichas.js` y `npm test`. Commit. Después el **sello**, con el
    árbol limpio: `node .claude/skills/investigacion-catalogo/sellar.cjs "nota"`
    (pone en `estado.json` el commit actual y la huella del contenido) y commit
    aparte de `estado.json`. PR y merge.

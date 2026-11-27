@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Limpieza de código sin uso",
+  "nota": "Idioma en Inicio, radar en inglés y radar nítido",
   "revisionAprobada": {
-    "commit": "9a71da21cd81eea07eaca9c250fa1c7ffbf96af6",
-    "contenidoSha256": "sha256:55cb1688bb59ad881dd97a6c94c22d23b6184bed19c419cc716b54d60553ae48",
+    "commit": "9f56b52836d72227b9e21f22ed8d188223077bb4",
+    "contenidoSha256": "sha256:36aca4e0a393860a0f18ab4e37a786b1de1b43597288c4aa3a300e2becc5c2c6",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

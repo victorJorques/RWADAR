@@ -31,7 +31,7 @@ function contenidoWeb(datos) {
 const DICCIONARIO = path.join(raiz, 'rwadar-movil/lib/idioma-en.js');
 const INI = '  // paises:inicio (GENERADO por rwadar-app/paises/generar.cjs)\n', FIN = '  // paises:fin\n';
 const TEXTOS_EN = {
-  'Disponible': 'Available', 'Con requisitos': 'With requirements', 'No disponible': 'Not available',
+  'Disponible': 'Available', 'Con requisitos': 'With requirements', 'No disponible': 'Not available', 'Tu país': 'Your country',
   'Tu país de residencia': 'Your country of residence', 'Solo las disponibles en tu país': 'Only those available in your country',
   'Detectado por tu conexión. Si resides en otro país, cámbialo.': 'Detected from your connection. If you live in another country, change it.',
   'Disponibilidad por país': 'Availability by country', 'Requisito:': 'Requirement:', 'Requisito': 'Requirement',

@@ -2054,11 +2054,9 @@ function radarInicioSvg(sin,rotulos){
  const CX=200,CY=200,R=136,quieto=movimientoReducido(),cats=Object.keys(CATMETA);
  const pol=(a,r)=>[CX+Math.cos(a*Math.PI/180)*r,CY+Math.sin(a*Math.PI/180)*r];
  const n1=v=>v.toFixed(1);
- let s='<defs><radialGradient id="gBarridoInicio" cx="0" cy="0.5" r="1"><stop offset="0" stop-color="#25E39A" stop-opacity=".36"/>'+
-  '<stop offset=".6" stop-color="#25E39A" stop-opacity=".08"/><stop offset="1" stop-color="#25E39A" stop-opacity="0"/></radialGradient>'+
-  '<radialGradient id="gFondoInicio"><stop offset="0" stop-color="#25E39A" stop-opacity=".13"/><stop offset=".7" stop-color="#25E39A" stop-opacity=".03"/>'+
-  '<stop offset="1" stop-color="#25E39A" stop-opacity="0"/></radialGradient></defs>'+
-  '<circle cx="200" cy="200" r="'+R+'" fill="url(#gFondoInicio)"/>';
+ /* 27/11/2026: nítido, sin el relleno verde del círculo ni la cuña del barrido, que
+    sombreaban la parte de arriba de Inicio (Víctor). Queda la línea del barrido. */
+ let s='';
  [0.40,0.60,0.76,0.90].forEach(f=>{s+='<circle class="radar-anillo" cx="200" cy="200" r="'+n1(R*f)+'"/>'});
  s+='<circle class="radar-borde" cx="200" cy="200" r="'+R+'"/>';
  for(let g=0;g<72;g++){
@@ -2087,8 +2085,7 @@ function radarInicioSvg(sin,rotulos){
   s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
    lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="'+claseN+'"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
  });
- const fin=pol(-88,R);
- s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'><path d="M200 200 L'+(CX+R)+' 200 A'+R+' '+R+' 0 0 0 '+n1(fin[0])+' '+n1(fin[1])+' Z" fill="url(#gBarridoInicio)"/>'+
+ s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'>'+
   '<line x1="200" y1="200" x2="'+(CX+R)+'" y2="200" stroke="#25E39A" stroke-width="1.6" opacity=".85"/>'+
   (quieto?'':'<animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="'+VUELTA+'s" repeatCount="indefinite"/>')+'</g>';
  puntosRadar(CX,CY,R).forEach(({x,y,ang,col})=>{

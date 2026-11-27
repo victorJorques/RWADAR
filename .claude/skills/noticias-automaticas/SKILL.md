@@ -137,6 +137,12 @@ otro día; las fotos reales las importa una persona con
 edición; V-12 se juzga con esto, no con lo que dice el editor) y
 `NA validar --fase editor --fecha <fecha>`. 4 → FRENO «validador».
 
+Si sale el aviso `fuente-sin-ingles` (un organismo nuevo cuyo nombre se vería en
+castellano en la versión inglesa), no frena: apúntalo en el PR y en la
+notificación a la dirección («añadir a FUENTES_EN: …»). Esta sesión no toca la
+app; lo añade la siguiente sesión manual en `rwadar-movil/lib/noticias-sector.js`
+y `node rwadar-app/noticias/copiar-modelo-web.cjs`.
+
 ## Paso 5 · Verificador, pase 1 (8-15 min)
 
 `NA encargo --rol verificador --fecha <fecha>` y su salida, **tal cual**, a

@@ -394,11 +394,14 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva, port
                 <Stop offset="1" stopColor={C.senal} stopOpacity="0" />
               </RadialGradient>
             </Defs>
-            <Path
-              d={`M${CX} ${CY} L${CX + RMAX} ${CY} A${RMAX} ${RMAX} 0 0 0 ${
-                (CX + RMAX * Math.cos((-88 * Math.PI) / 180)).toFixed(1)} ${
-                (CY + RMAX * Math.sin((-88 * Math.PI) / 180)).toFixed(1)} Z`}
-              fill="url(#barrido)" />
+            {/* En la portada de Inicio, sin la cola (27/11/2026): sombreaba la parte de arriba. */}
+            {portada ? null : (
+              <Path
+                d={`M${CX} ${CY} L${CX + RMAX} ${CY} A${RMAX} ${RMAX} 0 0 0 ${
+                  (CX + RMAX * Math.cos((-88 * Math.PI) / 180)).toFixed(1)} ${
+                  (CY + RMAX * Math.sin((-88 * Math.PI) / 180)).toFixed(1)} Z`}
+                fill="url(#barrido)" />
+            )}
             <Line x1={CX} y1={CY} x2={CX + RMAX} y2={CY}
               stroke={C.senal} strokeWidth={1.3} opacity={0.75} />
           </Svg>
