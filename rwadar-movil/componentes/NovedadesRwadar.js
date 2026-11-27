@@ -50,13 +50,16 @@ export const ESPERA_AVISOS_MS = 3000;
 /* avisos: lo que dice estadoAvisosMovil ('activos', 'inactivos',
    'comprobando' o 'desconocido') o 'apagados' sin los avisos en la app. */
 export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, cargar = cargarNovedadesProducto, esperaMs = ESPERA_MS,
-  avisos = 'desconocido', esperaAvisosMs = ESPERA_AVISOS_MS } = {}) {
+  avisos = 'desconocido', esperaAvisosMs = ESPERA_AVISOS_MS, avisosEnPausa, pausarAvisos } = {}) {
   const [datos, setDatos] = useState(RESPALDO);
   const [descargadas, setDescargadas] = useState(false);
   const [vista, setVista] = useState(null); // null: leyendo; { ok, version }
   const [ventana, setVentana] = useState(false);
   const [detalle, setDetalle] = useState(false);
   const ensenada = useRef(false);
+  // La ventana «Activa los avisos» al entrar (27/11/2026): como mucho una vez por arranque.
+  const [ventanaAvisos, setVentanaAvisos] = useState(false);
+  const avisosMirados = useRef(false);
   useEffect(() => {
     let vivo = true;
     Promise.resolve().then(() => cargar())
@@ -80,6 +83,22 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
     return () => clearTimeout(reloj);
   }, [listo, pendiente, ventana, detalle, comprobando]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  /* Sale sola si en ESTE móvil no están activos, cuando ya se sabe que la de
+     novedades no va a salir (vista) y no salió esta vez (lleva el mismo
+     recuadro), sin nada encima y sin estar en pausa (3 días tras cerrarla). */
+  const sinNovedadesPendientes = descargadas && vista?.ok === true && !pendiente;
+  useEffect(() => {
+    if (typeof avisosEnPausa !== 'function' || !listo || !sinNovedadesPendientes || ensenada.current || avisosMirados.current
+      || ventana || detalle || ventanaAvisos || comprobando || !conRecordatorioAvisos(avisos)) return undefined;
+    let vivo = true;
+    const reloj = setTimeout(() => {
+      avisosMirados.current = true;
+      Promise.resolve().then(() => avisosEnPausa()).then((pausa) => { if (vivo && !pausa) setVentanaAvisos(true); }, () => {});
+    }, esperaAvisosMs);
+    return () => { vivo = false; clearTimeout(reloj); };
+  }, [listo, sinNovedadesPendientes, ventana, detalle, ventanaAvisos, comprobando, avisos]); // eslint-disable-line react-hooks/exhaustive-deps
+  const cerrarAvisos = () => { setVentanaAvisos(false); Promise.resolve().then(() => pausarAvisos?.()).catch(() => {}); };
+
   const guardarVista = () => {
     const version = datos.version;
     ensenada.current = true;
@@ -95,6 +114,9 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
     // «Activar avisos» del recuadro: la cierra y cuenta como vista, como «Entendido»; App lleva a Perfil › Avisos.
     activarAvisos() { setVentana(false); guardarVista(); },
     cerrarDetalle() { setDetalle(false); },
+    ventanaAvisos,
+    // «Activar avisos» (App lleva a Perfil › Avisos) y «Ahora no»: se cierra y queda en pausa 3 días.
+    cerrarAvisos,
   };
 }
 
@@ -215,6 +237,34 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido, recor
                 accessibilityHint="Cierra esta ventana. Puedes volver a verla en Perfil."
                 style={({ pressed, focused }) => [s.boton, s.botonVerde, focused && s.foco, pressed && pulsado('b1')]}>
                 <Text style={s.botonVerdeTxt}>Entendido</Text>
+              </Pressable>
+            </View>
+          </View>
+        </FondoSeguro>
+        </SafeAreaProvider>
+      ) : null}
+    </Modal>
+  );
+}
+
+/* 1 bis · La ventana «Activa los avisos» al entrar (27/11/2026): el mismo recuadro, solo, y «Ahora no». */
+export function VentanaAvisos({ visible, onActivar, onAhoraNo }) {
+  return (
+    <Modal visible={!!visible} transparent animationType="fade" onRequestClose={onAhoraNo}
+      statusBarTranslucent navigationBarTranslucent>
+      {visible ? (
+        <SafeAreaProvider>
+        <FondoSeguro>
+          <View style={s.tarjeta} testID="avisosVentana" role="dialog" aria-modal accessibilityViewIsModal accessibilityLabel="Activa los avisos">
+            <View style={s.ventanaCuerpo}>
+              <RecordatorioAvisos onActivar={onActivar} />
+            </View>
+            <View style={s.botones}>
+              <Pressable testID="avisosAhoraNo" onPress={() => { tacto.eleccion(); onAhoraNo?.(); }}
+                accessibilityRole="button" accessibilityLabel="Ahora no"
+                accessibilityHint="Cierra esta ventana. Puedes activar los avisos en Perfil › Avisos."
+                style={({ pressed, focused }) => [s.boton, s.botonTonal, focused && s.foco, pressed && pulsado('b2')]}>
+                <Text style={s.botonTonalTxt}>Ahora no</Text>
               </Pressable>
             </View>
           </View>

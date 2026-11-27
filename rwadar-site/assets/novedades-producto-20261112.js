@@ -70,6 +70,7 @@
       recBoton: 'Activar avisos', recInfo: 'Información básica sobre tus datos', recEspera: 'Un momento…',
       recHecho: 'Notificaciones activadas en este móvil. Así te llegarán las novedades.',
       recNo: 'No se han activado. En Perfil › Avisos te explicamos cómo permitirlas.', recIrPerfil: 'Ir a Perfil › Avisos',
+      avAhoraNo: 'Ahora no', avCerrar: 'Cerrar',
     }),
     en: Object.freeze({
       cerrar: 'Close the news', detalle: 'See details', entendido: 'Got it',
@@ -83,6 +84,7 @@
       recBoton: 'Turn on alerts', recInfo: 'Basic information about your data', recEspera: 'One moment…',
       recHecho: 'Notifications turned on for this phone. This is how the news will reach you.',
       recNo: 'They were not turned on. In Profile › Alerts we explain how to allow them.', recIrPerfil: 'Go to Profile › Alerts',
+      avAhoraNo: 'Not now', avCerrar: 'Close',
     }),
   });
   const RUTA_AVISOS = '/#perfil-avisos';
@@ -321,8 +323,10 @@
     if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
   }
 
+  let novedadesMostrada = false;
   function mostrar(datos, almacen, avisos, rec = { modo: 'perfil' }) {
     if (document.getElementById('novedadesDialogo')) return;
+    novedadesMostrada = true;
     const d = el('dialog', 'escaparate-dialogo nov-dialogo');
     d.id = 'novedadesDialogo';
     d.setAttribute('aria-labelledby', 'novedadesTit');
@@ -381,6 +385,125 @@
     if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
     // El foco, en el título: el lector de pantalla lee la ventana desde arriba; Tab va a los botones.
     d.querySelector('#novedadesTit')?.focus({ preventScroll: true });
+  }
+
+
+  /* ---- La ventana «Activa los avisos» al entrar (27/11/2026) ----
+     Encargo: «en Inicio, al entrar, que salte una ventana» para activar las
+     notificaciones del móvil. Es el mismo recuadro de la ventana de novedades
+     (mismo texto versionado, mismo permiso en el mismo toque), solo, con
+     «Ahora no». Sale si en ESTE móvil no están activas y se pueden activar
+     aquí (modo «directo») o tras añadir la web a la pantalla de inicio del
+     iPhone («instalar»). No sale: con las mismas excepciones que la de
+     novedades (app, robots, otra dirección), si esta vez ya salió la de
+     novedades (lleva el recuadro), con otra ventana abierta (espera) ni
+     durante 3 días tras cerrarla. */
+  const CLAVE_AVISOS = 'rwadar.recordatorio-avisos', PAUSA_AVISOS_MS = 3 * 864e5, ESPERA_AVISOS_MS = 2600;
+  function avisosEnPausa(almacen) {
+    try {
+      const v = Number(almacen && almacen.getItem(CLAVE_AVISOS));
+      return Number.isFinite(v) && v > 0 && v <= Date.now() + 6e4 && Date.now() - v < PAUSA_AVISOS_MS;
+    } catch { return true; }
+  }
+  function pausarAvisos(almacen) { try { if (almacen) almacen.setItem(CLAVE_AVISOS, String(Date.now())); } catch { /* sin guardar: vuelve a salir */ } }
+  function iniciarAvisos() {
+    if (!llegada) return;
+    const almacen = almacenLocal();
+    if (modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,
+      automatizado: globalThis.navigator?.webdriver === true, almacen })) return;
+    if (avisosEnPausa(almacen)) return;
+    const limite = Date.now() + ESPERA_MAXIMA_MS;
+    const mirar = async () => {
+      if (novedadesMostrada || Date.now() > limite) return;
+      const ocupado = () => document.visibilityState === 'hidden' || !!document.querySelector('dialog[open]');
+      if (ocupado()) { setTimeout(mirar, REVISION_MS); return; }
+      const avisos = await avisosDelNavegador();
+      if (!modelo.conRecordatorioAvisos(avisos)) return;
+      const rec = await modoRecordatorio();
+      if (!['directo', 'instalar'].includes(rec.modo)) return;
+      if (novedadesMostrada) return;
+      if (ocupado()) { setTimeout(mirar, REVISION_MS); return; }
+      mostrarAvisos(almacen, rec);
+    };
+    const empezar = () => setTimeout(mirar, ESPERA_AVISOS_MS);
+    if (document.readyState === 'complete') empezar();
+    else addEventListener('load', empezar, { once: true });
+  }
+  function pintarAvisos(d, rec) {
+    const t = ui();
+    const enfocado = document.activeElement && d.contains(document.activeElement) ? document.activeElement.dataset.novFoco : '';
+    propio(d);
+    const marco = el('div', 'escaparate-dialogo-marco nov-marco nov-marco-avisos');
+    const cerrar = el('button', 'bi nov-cerrar nov-avisos-cerrar');
+    cerrar.type = 'button'; cerrar.dataset.novCerrar = ''; cerrar.dataset.novFoco = 'cerrar';
+    cerrar.setAttribute('aria-label', t.avCerrar);
+    const aspa = el('span', '', '×');
+    aspa.setAttribute('aria-hidden', 'true');
+    cerrar.append(aspa);
+    const cuerpo = el('div', 'nov-cuerpo');
+    cuerpo.append(recordatorio(t, rec));
+    const acciones = el('div', 'nov-acciones');
+    if (rec.paso === 'hecho') {
+      const vale = el('button', 'b1 nov-entendido', t.entendido);
+      vale.type = 'button'; vale.dataset.novEntendido = ''; vale.dataset.novFoco = 'entendido';
+      acciones.append(vale);
+    } else {
+      const luego = el('button', 'b2 nov-ahora-no', t.avAhoraNo);
+      luego.type = 'button'; luego.dataset.novEntendido = ''; luego.dataset.novFoco = 'luego';
+      acciones.append(luego);
+    }
+    marco.append(cerrar, cuerpo, acciones);
+    d.replaceChildren(marco);
+    if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
+  }
+  function mostrarAvisos(almacen, rec) {
+    if (document.getElementById('avisosDialogo')) return;
+    const d = el('dialog', 'escaparate-dialogo nov-dialogo nov-dialogo-avisos');
+    d.id = 'avisosDialogo';
+    d.setAttribute('aria-labelledby', 'novedadesRecTit');
+    const origen = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
+    pintarAvisos(d, rec);
+    d.addEventListener('click', e => {
+      if (e.target === d || e.target.closest?.('[data-nov-cerrar],[data-nov-entendido]')) { d.close(); return; }
+      if (!e.target.closest?.('[data-nov-avisos]')) return;
+      // Aquí mismo: el permiso se pide en este mismo toque (antes de cualquier espera).
+      if (rec.modo === 'directo' && rec.paso !== 'espera' && rec.paso !== 'hecho' && globalThis.RWAdarAvisosSinCuenta?.activar) {
+        const promesa = globalThis.RWAdarAvisosSinCuenta.activar('novedades');
+        rec.paso = 'espera'; rec.mensaje = '';
+        pintarAvisos(d, rec);
+        Promise.resolve(promesa).then(r => {
+          if (r && r.ok) { rec.paso = 'hecho'; rec.mensaje = ''; }
+          else if (r && r.mensaje) { rec.paso = 'fallo'; rec.mensaje = r.mensaje; }
+          else { rec.modo = 'perfil'; rec.paso = 'fallo'; }
+        }, () => { rec.modo = 'perfil'; rec.paso = 'fallo'; }).finally(() => {
+          if (!d.open) return;
+          pintarAvisos(d, rec);
+          (d.querySelector('[data-nov-foco="avisos"]') || d.querySelector('[data-nov-foco="entendido"]'))?.focus({ preventScroll: true });
+        });
+        return;
+      }
+      // iPhone sin la web en la pantalla de inicio: se cierra y salen los pasos para añadirla.
+      if (rec.modo === 'instalar' && typeof globalThis.rwadarInstalarIphone === 'function') {
+        d.close();
+        globalThis.rwadarInstalarIphone(null);
+        return;
+      }
+      d.close();
+    });
+    d.addEventListener('close', () => {
+      pausarAvisos(almacen);
+      document.documentElement.classList.remove('nov-abierta');
+      d.remove();
+      if (origen && document.contains(origen)) origen.focus({ preventScroll: true });
+    });
+    let suscrito = null;
+    if (globalThis.RWAdarIdioma?.suscribirIdioma) suscrito = globalThis.RWAdarIdioma.suscribirIdioma(() => { if (d.open) pintarAvisos(d, rec); });
+    d.addEventListener('close', () => { if (typeof suscrito === 'function') suscrito(); }, { once: true });
+    document.body.append(d);
+    document.documentElement.classList.add('nov-abierta');
+    if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
+    d.querySelector('#novedadesRecTit')?.setAttribute('tabindex', '-1');
+    d.querySelector('#novedadesRecTit')?.focus({ preventScroll: true });
   }
 
   /* ---- La página /novedades-rwadar/ ---- */
@@ -481,5 +604,5 @@
     // idioma-web carga después (defer, en orden): se pinta con el idioma ya leído.
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => iniciarPagina(raizPagina), { once: true });
     else iniciarPagina(raizPagina);
-  } else if (document.querySelector('[data-novedades-producto="ventana"]')) iniciarVentana();
+  } else if (document.querySelector('[data-novedades-producto="ventana"]')) { iniciarVentana(); iniciarAvisos(); }
 })();
