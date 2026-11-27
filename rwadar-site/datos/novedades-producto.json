@@ -29,10 +29,10 @@
       "id": "avisos-movil",
       "icono": "notificacion",
       "titulo": "Avisos en tu móvil",
-      "texto": "Como un WhatsApp, también sin cuenta. Actívalos en Perfil › Avisos.",
+      "texto": "También sin cuenta. Actívalos en Perfil › Avisos.",
       "en": {
         "titulo": "Alerts on your phone",
-        "texto": "Like WhatsApp, no account needed. Turn them on in Profile › Alerts."
+        "texto": "No account needed. Turn them on in Profile › Alerts."
       }
     },
     {
@@ -101,9 +101,9 @@
     },
     {
       "id": "avisos-movil",
-      "titulo": "Avisos en tu móvil, como un WhatsApp",
+      "titulo": "Avisos en tu móvil",
       "parrafos": [
-        "Cuando haya algo nuevo en RWAdar, te puede llegar un aviso al móvil, igual que te llega un mensaje de WhatsApp.",
+        "Cuando haya algo nuevo en RWAdar, te puede llegar un aviso al móvil.",
         "Es gratis y lo eliges tú: solo te llegan si los activas, y no hace falta cuenta. Los puedes quitar cuando quieras en Perfil › Avisos o en los ajustes del móvil.",
         "En iPhone, primero añade la web a la pantalla de inicio: en Safari, pulsa el botón Compartir y después «Añadir a pantalla de inicio». Luego abre RWAdar desde ese icono.",
         "En Android, puedes hacerlo en la app de RWAdar o en la web, desde el navegador del móvil."
@@ -114,9 +114,9 @@
         "Si has entrado en tu cuenta (en la web o en la app), activa «Avisos de novedades» y después «Notificaciones en este móvil»."
       ],
       "en": {
-        "titulo": "Alerts on your phone, like WhatsApp",
+        "titulo": "Alerts on your phone",
         "parrafos": [
-          "When there is something new on RWAdar, you can get an alert on your phone, just like a WhatsApp message.",
+          "When there is something new on RWAdar, you can get an alert on your phone.",
           "It is free and your choice: you only get them if you turn them on, and you don't need an account. You can turn them off whenever you like in Profile › Alerts or in your phone settings.",
           "On iPhone, first add the website to your home screen: in Safari, tap the Share button and then «Add to Home Screen». Then open RWAdar from that icon.",
           "On Android, you can do it in the RWAdar app or on the website, from your phone's browser."

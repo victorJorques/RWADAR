@@ -43,7 +43,7 @@ test('novedades · la copia incluida es válida, igual al archivo de ejemplo y c
   }
   // Lo nuevo del 14/11, dicho en el resumen: el mercado en directo y las noticias con foto; y siguen los avisos y la calculadora.
   const todo = JSON.stringify(datos.resumen);
-  for (const x of ['cada 5 minutos', 'con su foto', 'WhatsApp', 'Perfil › Avisos', 'Calcula tus números', 'Mercado y noticias']) {
+  for (const x of ['cada 5 minutos', 'con su foto', 'sin cuenta', 'Perfil › Avisos', 'Calcula tus números', 'Mercado y noticias']) {
     assert.ok(todo.includes(x), `falta en el resumen: ${x}`);
   }
   // Sin promesas de rentabilidad.
@@ -675,7 +675,7 @@ test('novedades · el recuadro «Activa los avisos»: arriba, antes de los punto
   assert.ok(rec, 'sale el recuadro');
   const [tit] = nodos(rec).filter((x) => x?.props?.accessibilityRole === 'header');
   assert.deepEqual(textos(tit), ['Activa los avisos']);
-  assert.ok(textos(rec).includes('Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.'));
+  assert.ok(textos(rec).includes('Recibe cada novedad en el móvil. Es gratis y puedes quitar los avisos cuando quieras.'));
   assert.equal(deTipo(rec, 'Svg').length, 1, 'con el icono de los avisos');
   const boton = porId(rec, 'novedadesActivarAvisos');
   assert.equal(boton.props.accessibilityRole, 'button');
@@ -758,7 +758,7 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
     assert.ok(!v.some((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t)), `queda castellano: ${v.filter((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t))}`);
     const conRec = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO, recordarAvisos: true }).arbol;
     const r = textos(porId(conRec, 'novedadesRecordatorio'));
-    assert.deepEqual(r, ['Turn on alerts', 'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.', 'Turn on alerts']);
+    assert.deepEqual(r, ['Turn on alerts', 'Get RWAdar news on your phone. It is free and you can turn alerts off whenever you like.', 'Turn on alerts']);
     assert.equal(porId(conRec, 'novedadesActivarAvisos').props.accessibilityLabel, 'Turn on alerts');
     assert.equal(porId(conRec, 'novedadesActivarAvisos').props.accessibilityHint, 'Closes this window and takes you to Profile › Alerts');
 
@@ -777,7 +777,7 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
   const fuente = leer('componentes', 'NovedadesRwadar.js');
   const fijas = ['Ver en detalle', 'Entendido', 'Abre las novedades explicadas paso a paso', 'Cierra esta ventana. Puedes volver a verla en Perfil.',
     'Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.', 'Ir a Perfil › Avisos', 'Todas las novedades anteriores, en la web', 'Volver',
-    'Activa los avisos', 'Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.', 'Activar avisos',
+    'Activa los avisos', 'Recibe cada novedad en el móvil. Es gratis y puedes quitar los avisos cuando quieras.', 'Activar avisos',
     'Cierra esta ventana y te lleva a Perfil › Avisos'];
   for (const t of fijas) { assert.ok(fuente.includes(t), `ya no está: ${t}`); assert.ok(Object.hasOwn(en, t), `sin traducción: ${t}`); }
   assert.equal(leer('lib', 'idioma-en.js'), fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/idioma-en-20261022.js'), 'utf8'));
