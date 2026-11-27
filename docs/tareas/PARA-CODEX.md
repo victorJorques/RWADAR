@@ -6,6 +6,48 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (51) · Claude · Informe de investigación global del 27/11: 8 plataformas nuevas, radar comprobado, noticias y gráfico · PUBLICADO
+
+- **Orden de Víctor:** «Nueva actualización de la app y web… Compruébala y haz la actualización pertinente. Añade lo
+  nuevo y retira lo caducado. Actualiza gráfico y noticias también». Sobre Poloniex: «intenta leer la noticia, no la
+  descartes directamente».
+- **Catálogo `2026-11-27`** (revisión `529a54f7`, sobre la `7f745c7d`; «Aplicar catálogo» 45981185468; lectura como
+  visitante después de aplicar: 65 plataformas y 32 ofertas 17/13/2). Altas (8, solo radar): Libeara, HashKey RWA,
+  Obligate, Colb, M3Sixty, Hastra, Backpack Securities y OnRe. Fuera, con motivo en `plataformas.py`: Sygnum y
+  Matrixdock (403), Estate Protocol, Kapital DX y Pitch, Goldfinch (ya descartada) y los fondos de gestoras sin
+  plataforma propia. Ninguna oferta nueva ni retirada: vigía (solo dos cifras de reventa de Brickwise que no tocan
+  tarjetas) y relectura con navegador de las 11 internacionales (Liqi, ALTERNA y Amundi no se dejaron leer: conservan
+  el 26/11).
+- **Radar entero comprobado hoy:** el contrato exige la misma fecha en todas las fuentes, así que se capturaron y
+  contrastaron las 109 de antes (`comprobar-radar.mjs`: 106 + 3 a mano en `cambios-radar.json`: REGAFI por API,
+  OCC con navegador, Amundi con WebFetch). Por eso el lote vale hasta el 04/12, mientras que las ofertas conservan
+  su fecha (26/11) y sus tarjetas caducan el 03/12. La transparencia conserva `revisadoEl` 26/11. Dos pruebas que
+  suponían la misma fecha para lote y ofertas cuentan ahora desde la más reciente (`rwadar-acceso/calculadora.test.mjs`
+  y `rwadar-movil/tests/ofertas-presentacion.test.cjs`), sin quitar comprobaciones.
+- **Cómo:** `2026-11-27-v2/plataformas.py` → `altas.json`; `preparar-entrega.mjs`, `comprobar-entrega.mjs` (PGlite:
+  19 pruebas, 8 casos de fallo) y `despues-de-aplicar.mjs` adaptados de la `.4`. Una revisión independiente (orden
+  «una sola revisión»): SQL y re-fechado bien; 6 textos de plataformas afinados (decían más que su fuente); SQL rehecho
+  y diff normalizado comprobado (solo esas 6). Portadas con RealVisXL (se rehicieron 3: billetes con letras y retrato,
+  un casco con letras y un cielo teatral).
+- **Noticias del 27/11** (`noticias-diarias/2026-11-27/`): Poloniex abre 16 acciones y ETF tokenizados, el Banco de
+  Japón y los cinco retos de la tokenización, coinIX en 21X; vuelve la del BCE sobre garantías; salen Singapur (web en
+  mantenimiento, no se pudo confirmar), World Gold Council y Franklin. El primer verificador quitó Poloniex (su descarga
+  simple solo trae el armazón; el anuncio se carga con JavaScript); por la orden de Víctor, la edición pasó entera a un
+  verificador nuevo con la nota de abrir con navegador esas webs: conforme. La primera verificación queda fuera de Git.
+  Freedom/Binance no entra (Binance pide un control anti-bots).
+- **Gráfico:** «Tokenización diaria» lanzado a mano a las 09:31 UTC (45974420090): foto real del 27/11 (CoinGecko,
+  09:24 UTC; su cambio de 24 h salió anómalo y quedó en blanco por la regla de integridad). Si ya hay foto del día, el
+  de la tarde no hace nada.
+- **Publicado:** PR #216 (entrega y noticias) y #217 (sincronización y sello); `npm test` en verde y CI en verde.
+  «Publicar web» revisión 45984479776 y producción 45984945192, comprobadas en vivo con Chromium a 390 y 1366 px
+  (32/65, «Revisado el 27/11», las 8 fichas y portadas en 200, noticias y serie del 27/11, sin errores salvo el 401
+  normal de «sin sesión»). **Sin OTA:** no cambia nada que la app lleve dentro. «Avisar novedad»: plataformas nuevas y
+  noticias nuevas del día.
+- **Pendiente:** Brickwise (Stallhofstraße y Drautalresidenz) en el próximo ciclo de ofertas; la rama de cerrojo
+  `claude/cerrojo-ciclo-2026-11-27` no se pudo borrar desde la sesión: que Víctor la borre en GitHub › Branches o lance
+  «Limpiar ramas» con `confirmar: BORRAR` e `incluir_cerrojos: si` (las noticias automáticas están apagadas, así que hoy
+  no frena nada).
+
 ## 26 de noviembre de 2026 (50) · Claude · 25 plataformas del radar del informe de Codex (sección 09), con portada propia · PUBLICADO
 
 - **Orden de Víctor:** «añade las 30 plataformas del radar de Codex», «las que verifiques que son reales; si pide
