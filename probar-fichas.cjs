@@ -339,6 +339,9 @@ verificar('la característica «Qué se adquiere» sale una vez: en su fila con 
     assert((intro.match(/Qué se adquiere:/g)||[]).length+fila.length<=1,o.slug);
     if(fila.length){filas++;assert(/[.!?…]$/.test(fila[0]),o.slug);assert(intro.trim(),o.slug);}
   }
-  assert(filas>=catalogo.ofertas.length/2);
+  // La fila sale de la frase «Qué se adquiere:» de la descripción (separarAdquiere): se cuenta
+  // sobre las fichas que la llevan (27/11/2026: las 8 altas de la .2 no la llevan en la descripción).
+  const conFrase=catalogo.ofertas.filter(o=>String((o.documentacion||{}).descripcion||'').includes('Qué se adquiere:')).length;
+  assert(conFrase>0&&filas>=conFrase/2,`${filas} filas de ${conFrase} fichas con la frase`);
 });
 console.log(pruebas+' verificaciones de páginas y RSS correctas');

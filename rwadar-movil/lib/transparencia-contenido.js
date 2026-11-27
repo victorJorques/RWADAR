@@ -4,7 +4,7 @@
    Es una comprobación de la documentación, no una recomendación de inversión.
    Una oferta sin entrada, o cuya verificadaEl no coincida con la del catálogo, no
    enseña puntos fuertes ni entra en la Selección. */
-export const TRANSPARENCIA_REVISADA_EL = "2026-11-26";
+export const TRANSPARENCIA_REVISADA_EL = "2026-11-27";
 
 export const CRITERIOS_TRANSPARENCIA = [
   {
@@ -31,7 +31,7 @@ export const CRITERIOS_TRANSPARENCIA = [
 
 export const TRANSPARENCIA_POR_SLUG = {
   "aktionariat": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -40,7 +40,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "FINMA · Registro de entidades autorizadas (búsqueda «Aktionariat»: 0 resultados)",
         "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -49,7 +49,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Aktionariat · Aviso legal (oferta en el EEE limitada a 100.000 € en total, sin folleto)",
         "url": "https://www.aktionariat.com/disclaimer"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "500 CHF",
     "salidaCorta": "Venta a otros accionistas",
@@ -89,7 +89,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "puntos": []
   },
   "amundi-core-stoxx-europe-600-tokenizada": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -98,7 +98,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
         "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -107,14 +107,14 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Amundi · «Amundi extends tokenisation to index investing»",
         "url": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Sin publicar",
     "salidaCorta": "Sin publicar",
     "puntos": []
   },
   "apartamento-vacacional-hinterstoder-50": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -132,7 +132,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A31KP7)",
         "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 77 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -147,7 +147,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "blackrock-hkd-digital-liquidity": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -156,7 +156,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
         "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -165,14 +165,14 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "BlackRock Hong Kong · HKD Digital Liquidity Fund",
         "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Sin mínimo publicado",
     "salidaCorta": "Por el distribuidor",
     "puntos": []
   },
   "boss-info": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -181,7 +181,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Portal de acciones de Boss Info · aviso legal («not subject to prudential supervision»)",
         "url": "https://shares.bossinfo.com/"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -190,7 +190,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Portal de acciones de Boss Info · compra directa al emisor (sin folleto ni KID publicados)",
         "url": "https://shares.bossinfo.com/invest"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "100 CHF",
     "salidaCorta": "Venta a otros accionistas",
@@ -204,8 +204,33 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "conda-devolo-bono-2026": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Según su web, CONDA está autorizada en la UE como plataforma de financiación participativa (no lo hemos comprobado); el bono no se ofrece en España ni está inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+        "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "La documentación de la campaña está en alemán y no se ofrece en España.",
+      "fuente": {
+        "titulo": "CONDA · devolo solutions GmbH – Anleihe",
+        "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "250 €",
+    "salidaCorta": "Al vencimiento (2029)",
+    "puntos": []
+  },
   "drautalresidenz-paternion": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -223,7 +248,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2YPQ0)",
         "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 70 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -237,8 +262,33 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "exio-ustnt-bonos-tesoro-eeuu": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Lo emite una sociedad de Hong Kong y lo vende una plataforma de Hong Kong; no está autorizado en la UE ni inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "EX.IO · anuncio de USTNT",
+        "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "EX.IO · anuncio de USTNT",
+        "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1.000 USD",
+    "salidaCorta": "Reembolso tras vender los bonos",
+    "puntos": []
+  },
   "finexity-bono-2026-2030-serie-b": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -247,7 +297,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
         "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -256,7 +306,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "FINEXITY · Hoja de términos («Public offer in Germany only»)",
         "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1.000 €",
     "salidaCorta": "Al vencimiento (2030)",
@@ -271,7 +321,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "fotovoltaica-cohotel": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -289,7 +339,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J40)",
         "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 110 € la participación (26/11)",
     "salidaCorta": "Nominal en 2038; antes, reventa",
@@ -304,7 +354,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "fotovoltaica-greenpoint": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -322,7 +372,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J32)",
         "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 102 € la participación (26/11)",
     "salidaCorta": "Nominal en 2038; antes, reventa",
@@ -337,7 +387,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "franklin-onchain-euro-liquidity": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -346,7 +396,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
         "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -355,14 +405,14 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Franklin Templeton · Comunicado del 23/11/2026",
         "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Sin publicar",
     "salidaCorta": "Sin publicar",
     "puntos": []
   },
   "groma-real-estate-trust": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -371,7 +421,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Groma Real Estate Trust (Reg D 506(c) y Reg CF)",
         "url": "https://www.gromareit.com/"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -380,14 +430,72 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Groma Real Estate Trust",
         "url": "https://www.gromareit.com/"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Sin mínimo publicado",
     "salidaCorta": "Sin salida publicada",
     "puntos": []
   },
+  "hsbc-hkd-money-fund-class-sd": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Fondo y banco de Hong Kong; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "HSBC · anuncio del 19/11/2026",
+        "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay KID europeo; los documentos del fondo son de Hong Kong.",
+      "fuente": {
+        "titulo": "HSBC · anuncio del 19/11/2026",
+        "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100 HKD",
+    "salidaCorta": "Según el folleto del fondo",
+    "puntos": [
+      {
+        "texto": "Fondo de 1991 con clase tokenizada",
+        "fuente": {
+          "titulo": "HSBC · anuncio del 19/11/2026",
+          "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access"
+        }
+      }
+    ]
+  },
+  "hwk-1365-zukunftsanleihe": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La emite directamente una empresa industrial, no una entidad financiera; la BaFin no revisa el contenido de su hoja informativa.",
+      "fuente": {
+        "titulo": "HWK 1365 · Die HWK 1365 Zukunftsanleihe",
+        "url": "https://www.hwk1365.de/anleihe/"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Solo hay una hoja informativa en alemán, sin folleto aprobado ni KID en castellano.",
+      "fuente": {
+        "titulo": "HWK 1365 SE · Wertpapier-Informationsblatt",
+        "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (2031)",
+    "puntos": []
+  },
   "kraken-xstocks": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-03",
     "supervisada": {
       "cumple": true,
@@ -405,7 +513,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Backed Assets (JE) · Condiciones finales n.º 159 (LITEx), apartado «Country(ies) of offer(s)»",
         "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Venta a Kraken, 24/5",
@@ -445,7 +553,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "puntos": []
   },
   "local-de-estanco-klagenfurt": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -463,7 +571,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2U5V3)",
         "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 95 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -517,8 +625,66 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "mufg-realty-token-kioicho": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Lo coloca una casa de valores japonesa; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "Daiwa Securities · MUFG Realty Token",
+        "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Folleto japonés; no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "Daiwa Securities · MUFG Realty Token",
+        "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100.000 JPY",
+    "salidaCorta": "Venta del inmueble (~5 años)",
+    "puntos": []
+  },
+  "osl-taikang-kaitai-usd-mmf": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Según OSL, el fondo lo autorizó la SFC de Hong Kong (no lo hemos comprobado), no un supervisor de la UE; no está inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+        "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay KID europeo; los documentos del fondo son de Hong Kong.",
+      "fuente": {
+        "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+        "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1 USD",
+    "salidaCorta": "Reembolso en la app",
+    "puntos": [
+      {
+        "texto": "Sin comisión de entrada ni de salida",
+        "fuente": {
+          "titulo": "OSL · Taikang Kaitai USD Money Market Fund",
+          "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund"
+        }
+      }
+    ]
+  },
   "prosegur-digital-gold": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -527,7 +693,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)",
         "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -536,7 +702,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Prosegur Gold · Términos y condiciones generales (08/07/2026)",
         "url": "https://app.prosegurdigitalgold.com/#/terms-service"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 gramo de oro",
     "salidaCorta": "Recompra por Prosegur",
@@ -558,7 +724,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "randhartingergasse-9-viena": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -576,7 +742,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2ZT84)",
         "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 78 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -591,7 +757,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "robinhood-classic-stock-tokens": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-02",
     "supervisada": {
       "cumple": true,
@@ -609,7 +775,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)",
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Cierre con Robinhood, 24/5",
@@ -631,7 +797,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "securitize-hinc": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -640,7 +806,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Securitize · HINC",
         "url": "https://securitize.io/hinc"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -649,7 +815,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Securitize · HINC",
         "url": "https://securitize.io/hinc"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "100.000 USD",
     "salidaCorta": "Reembolso diario",
@@ -664,7 +830,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-letras-del-tesoro-dolar": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-02",
     "supervisada": {
       "cumple": true,
@@ -673,7 +839,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": true,
@@ -682,7 +848,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
         "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 USD",
     "salidaCorta": "Reembolso diario",
@@ -704,7 +870,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-letras-del-tesoro-euro": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": true,
@@ -713,7 +879,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": true,
@@ -722,7 +888,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
         "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Reembolso diario",
@@ -744,7 +910,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-smart-cash-euro": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-03",
     "supervisada": {
       "cumple": true,
@@ -753,7 +919,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -762,7 +928,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko SICAV, IIC extranjera n.º 2380 (no muestra sus fondos uno a uno)",
         "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Reembolso diario, con límites",
@@ -777,7 +943,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "switzerlend": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -810,7 +976,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "tohkn-iber1": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -819,7 +985,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -828,7 +994,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "100 USD",
     "salidaCorta": "Al vencimiento (24 meses)",
@@ -843,7 +1009,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "tohkn-mmlti1": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -852,7 +1018,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -861,7 +1027,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "100 USD",
     "salidaCorta": "Al vencimiento (24 meses)",
@@ -876,7 +1042,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "tohkn-rncrrev": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
     "supervisada": {
       "cumple": false,
@@ -885,7 +1051,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales (MIO3, PSAD-0016, CNAD)",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "documentoEspana": {
       "cumple": false,
@@ -894,14 +1060,80 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "TOHKN · Emisiones de activos digitales",
         "url": "https://www.tohkn.com/en/issuances"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "100 USD",
     "salidaCorta": "Venta de las viviendas",
     "puntos": []
   },
+  "tokinvest-great-hampton-street": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La emite Tokinvest FZCO con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Tokinvest · ficha del producto",
+        "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay folleto ni KID europeos; los términos están en inglés en la web de Tokinvest.",
+      "fuente": {
+        "titulo": "Tokinvest · ficha del producto",
+        "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "100.000 AED",
+    "salidaCorta": "Venta del edificio (10 años)",
+    "puntos": [
+      {
+        "texto": "Edificio terminado y alquilado entero",
+        "fuente": {
+          "titulo": "Tokinvest · Great Hampton Street Works",
+          "url": "https://tokinvest.capital/case-studies/great-hampton-street-works"
+        }
+      }
+    ]
+  },
+  "tokinvest-lingote-plata-record": {
+    "verificadaEl": "2026-11-27",
+    "anadidaEl": "2026-11-27",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La emite Tokinvest FZCO con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Tokinvest · ficha del producto",
+        "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay folleto ni KID europeos; los términos están en inglés en la web de Tokinvest.",
+      "fuente": {
+        "titulo": "Tokinvest · ficha del producto",
+        "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+      },
+      "consultadaEl": "2026-11-27"
+    },
+    "minimoCorto": "1 kg de plata",
+    "salidaCorta": "Venta del lingote (10 años)",
+    "puntos": [
+      {
+        "texto": "Lingote custodiado por Brink’s en Dubái",
+        "fuente": {
+          "titulo": "Tokinvest · lingote de plata récord",
+          "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+        }
+      }
+    ]
+  },
   "vivienda-pluddemanngasse-101-graz": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -919,7 +1151,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2RAH5)",
         "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 75 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -934,7 +1166,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -952,7 +1184,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A324B4)",
         "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 81 € la participación (26/11)",
     "salidaCorta": "Primera cancelación a 15 años; reventa",
@@ -967,7 +1199,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "vivienda-schwarzer-weg-18-graz": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -985,7 +1217,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCE8)",
         "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 71 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -1000,7 +1232,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "vivienda-sonnleithnergasse-2-viena": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -1018,7 +1250,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2T4D7)",
         "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 75 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
@@ -1033,7 +1265,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "vivienda-stallhofstra-e-28-gratwein": {
-    "verificadaEl": "2026-11-26",
+    "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -1051,7 +1283,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCD0)",
         "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
       },
-      "consultadaEl": "2026-11-26"
+      "consultadaEl": "2026-11-27"
     },
     "minimoCorto": "Desde 70 € la participación (26/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
