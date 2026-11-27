@@ -156,7 +156,7 @@ OFERTAS = [
     {'supervisada': crit(False, 'La emite directamente una empresa industrial, no una entidad financiera; la BaFin no revisa el contenido de su hoja informativa.', 'hwk-anleihe', 'HWK 1365 · Die HWK 1365 Zukunftsanleihe'),
      'documentoEspana': crit(False, 'Solo hay una hoja informativa en alemán, sin folleto aprobado ni KID en castellano.', 'hwk-wib', 'HWK 1365 SE · Wertpapier-Informationsblatt'),
      'minimoCorto': '1.000 €', 'salidaCorta': 'Al vencimiento (2031)', 'puntos': []},
-    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Königsbronn · Alemania', 'pasos': ['Suscribes el bono', 'Cobras el interés cada año', 'Recuperas el nominal en 2031'], 'concepto': 'una fundición alemana',
+    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Königsbronn · Alemania', 'pasos': ['Suscribes el bono', 'Cobras el interés cada año', 'Recuperas el nominal al final'], 'concepto': 'una fundición alemana',
      'foto': {'semilla': 901, 'encuadre': '70% 55%', 'concepto': 'una nave de fundición antigua en un pueblo del sur de Alemania, no la de la empresa', 'prompt': 'old brick iron foundry hall with tall chimney in a small town in southern Germany, wooded hills behind, overcast morning'}}),
 
   oferta('tokinvest-lingote-plata-record', 'tokinvest', 'Tokinvest', 'El mayor lingote de plata del mundo, en tokens de un gramo (Tokinvest, Dubái)',
@@ -182,7 +182,7 @@ OFERTAS = [
      ref('Salida', 'Venta del lingote a los 10 años; antes, mercado entre inversores (aún sin abrir)', 'tokinvest-silver', None, 'Ficha: el mercado secundario abrirá después de la emisión inicial.')],
     {'supervisada': TOKINVEST_SUP('tokinvest-silver'), 'documentoEspana': TOKINVEST_DOC('tokinvest-silver'),
      'minimoCorto': '1 kg de plata', 'salidaCorta': 'Venta del lingote (10 años)', 'puntos': [{'texto': 'Lingote custodiado por Brink’s en Dubái', 'fuente': tr('tokinvest-silver', 'Tokinvest · lingote de plata récord')}]},
-    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Dubái · Emiratos', 'pasos': ['Compras gramos del lingote', 'Brink’s lo guarda', 'Se vende a los 10 años'], 'concepto': 'un lingote de plata',
+    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Dubái · Emiratos', 'pasos': ['Compras gramos del lingote', 'Brink’s lo guarda', 'Al final se vende y cobras'], 'concepto': 'un lingote de plata',
      'foto': {'semilla': 989, 'encuadre': '70% 55%', 'concepto': 'granalla de plata sobre pizarra, imagen genérica del metal; no el lingote del producto', 'prompt': 'pile of bright polished metallic silver granules with mirror-like reflections on a dark slate surface, soft window daylight, macro close-up'}}),
 
   oferta('tokinvest-great-hampton-street', 'tokinvest', 'Tokinvest', 'Great Hampton Street Works: 29 pisos alquilados en Birmingham, en tokens desde 100.000 AED',
@@ -210,7 +210,7 @@ OFERTAS = [
      ref('Salida', 'Venta del edificio a los 10 años; antes, venta a otros inversores en Tokinvest', 'tokinvest-hampton', None, 'Ficha: sin derecho de reembolso.')],
     {'supervisada': TOKINVEST_SUP('tokinvest-hampton'), 'documentoEspana': TOKINVEST_DOC('tokinvest-hampton'),
      'minimoCorto': '100.000 AED', 'salidaCorta': 'Venta del edificio (10 años)', 'puntos': [{'texto': 'Edificio terminado y alquilado entero', 'fuente': tr('tokinvest-hampton', 'Tokinvest · Great Hampton Street Works')}]},
-    {'escena': 'edificio', 'op': {'pisos': 4, 'mat': 'ladrillo', 'semilla': 913}, 'lugar': 'Birmingham · Reino Unido', 'pasos': ['Compras tokens del edificio', 'Cobras la renta cada mes', 'Se vende a los 10 años'], 'concepto': 'una antigua fábrica convertida en pisos',
+    {'escena': 'edificio', 'op': {'pisos': 4, 'mat': 'ladrillo', 'semilla': 913}, 'lugar': 'Birmingham · Reino Unido', 'pasos': ['Compras tokens del edificio', 'Cobras la renta cada mes', 'Al final se vende y cobras'], 'concepto': 'una antigua fábrica convertida en pisos',
      'foto': {'semilla': 913, 'encuadre': '70% 55%', 'concepto': 'una antigua fábrica victoriana de ladrillo convertida en pisos en Birmingham, no la del producto', 'prompt': 'Victorian red-brick former factory converted into apartments on a quiet street in Birmingham, arched windows, overcast morning'}}),
 
   oferta('hsbc-hkd-money-fund-class-sd', 'hsbc', 'HSBC', 'HSBC: clase tokenizada de su fondo monetario en dólares de Hong Kong, desde 100 HKD',
@@ -264,7 +264,7 @@ OFERTAS = [
     {'supervisada': crit(False, 'Lo coloca una casa de valores japonesa; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.', 'daiwa-mufg', 'Daiwa Securities · MUFG Realty Token'),
      'documentoEspana': crit(False, 'Folleto japonés; no hay folleto ni KID europeos.', 'daiwa-mufg', 'Daiwa Securities · MUFG Realty Token'),
      'minimoCorto': '100.000 JPY', 'salidaCorta': 'Venta del inmueble (~5 años)', 'puntos': []},
-    {'escena': 'empresa', 'op': {'forma': 'torre'}, 'lugar': 'Tokio · Japón', 'pasos': ['Pides del 1 al 8 de diciembre', 'Cobras el reparto cada semestre', 'Se vende el inmueble al final'], 'concepto': 'oficinas en Tokio',
+    {'escena': 'empresa', 'op': {'forma': 'torre'}, 'lugar': 'Tokio · Japón', 'pasos': ['Lo pides en Daiwa', 'Cobras el reparto cada semestre', 'Se vende el inmueble al final'], 'concepto': 'oficinas en Tokio',
      'foto': {'semilla': 923, 'encuadre': '70% 55%', 'concepto': 'torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto', 'prompt': 'modern office towers beside a tree-lined moat in central Tokyo, autumn leaves, calm water, clear morning'}}),
 
   oferta('exio-ustnt-bonos-tesoro-eeuu', 'ex-io', 'EX.IO', 'USTNT: certificados tokenizados sobre dos bonos del Tesoro de EE. UU. (2044 y 2056), solo profesionales',
@@ -346,7 +346,7 @@ OFERTAS = [
     {'supervisada': crit(False, 'Según su web, CONDA está autorizada en la UE como plataforma de financiación participativa (no lo hemos comprobado); el bono no se ofrece en España ni está inscrito en la CNMV.', 'conda-devolo', 'CONDA · devolo solutions GmbH – Anleihe'),
      'documentoEspana': crit(False, 'La documentación de la campaña está en alemán y no se ofrece en España.', 'conda-devolo', 'CONDA · devolo solutions GmbH – Anleihe'),
      'minimoCorto': '250 €', 'salidaCorta': 'Al vencimiento (2029)', 'puntos': []},
-    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Aquisgrán · Alemania', 'pasos': ['Suscribes el bono', 'Cobras interés cada año', 'Recuperas el nominal en 2029'], 'concepto': 'una empresa de equipos de red',
+    {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Aquisgrán · Alemania', 'pasos': ['Suscribes el bono', 'Cobras interés cada año', 'Recuperas el nominal al final'], 'concepto': 'una empresa de equipos de red',
      'foto': {'semilla': 959, 'encuadre': '70% 55%', 'concepto': 'un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa', 'prompt': 'plain white unbranded wifi router on a wooden shelf in a bright living room, soft daylight, shallow depth of field'}}),
 ]
 

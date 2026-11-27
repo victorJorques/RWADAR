@@ -187,6 +187,26 @@
       "revisadoEl": "2026-11-26"
     },
     {
+      "slug": "conda-devolo-bono-2026",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-conda-devolo-bono-2026.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 19354,
+      "hashSha256": "d3120acaac3f77df49b61de81b362c0d9d8bf95df245de3ea2eb3928d2b9f98c",
+      "alt": "Ilustración editorial de un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa, imagen generada con IA. Pasos: suscribes el bono; cobras interés cada año; recuperas el nominal al final. No es una foto del activo real.",
+      "concepto": "un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa",
+      "pasos": [
+        "Suscribes el bono",
+        "Cobras interés cada año",
+        "Recuperas el nominal al final"
+      ],
+      "lugar": "Aquisgrán · Alemania",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
       "slug": "drautalresidenz-paternion",
       "categoria": "Inmobiliario",
       "archivo": "oferta-drautalresidenz-paternion.webp",
@@ -202,6 +222,26 @@
         "Reparto o venta en la app"
       ],
       "lugar": "Paternion · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "exio-ustnt-bonos-tesoro-eeuu",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-exio-ustnt-bonos-tesoro-eeuu.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 61448,
+      "hashSha256": "f344b6e1f8c04886f144041273f711f51bdf4e8960e83d3f2f6f5d1870f851c7",
+      "alt": "Ilustración editorial de la fachada de un edificio público neoclásico de Washington, imagen genérica de la deuda de EE. UU., imagen generada con IA. Pasos: compras el certificado; cobras los cupones cada semestre; reembolsas al vender los bonos. No es una foto del activo real.",
+      "concepto": "la fachada de un edificio público neoclásico de Washington, imagen genérica de la deuda de EE. UU.",
+      "pasos": [
+        "Compras el certificado",
+        "Cobras los cupones cada semestre",
+        "Reembolsas al vender los bonos"
+      ],
+      "lugar": "Hong Kong",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-26"
@@ -307,6 +347,46 @@
       "revisadoEl": "2026-11-26"
     },
     {
+      "slug": "hsbc-hkd-money-fund-class-sd",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-hsbc-hkd-money-fund-class-sd.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 32058,
+      "hashSha256": "2856a51df2ed6cc03331b83d441303a472fcb140c667681394ad5e60e996986c",
+      "alt": "Ilustración editorial de rascacielos del distrito Central de Hong Kong vistos desde arriba, no la sede del banco, imagen generada con IA. Pasos: pagas con RedCoin en la app; el fondo invierte a corto plazo; lees el folleto en la app. No es una foto del activo real.",
+      "concepto": "rascacielos del distrito Central de Hong Kong vistos desde arriba, no la sede del banco",
+      "pasos": [
+        "Pagas con RedCoin en la app",
+        "El fondo invierte a corto plazo",
+        "Lees el folleto en la app"
+      ],
+      "lugar": "Hong Kong",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "hwk-1365-zukunftsanleihe",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-hwk-1365-zukunftsanleihe.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 69978,
+      "hashSha256": "00d623e43f5e1a79c77085728eed518e6aa667fe526ec3c7e150a20118929d5a",
+      "alt": "Ilustración editorial de una nave de fundición antigua en un pueblo del sur de Alemania, no la de la empresa, imagen generada con IA. Pasos: suscribes el bono; cobras el interés cada año; recuperas el nominal al final. No es una foto del activo real.",
+      "concepto": "una nave de fundición antigua en un pueblo del sur de Alemania, no la de la empresa",
+      "pasos": [
+        "Suscribes el bono",
+        "Cobras el interés cada año",
+        "Recuperas el nominal al final"
+      ],
+      "lugar": "Königsbronn · Alemania",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
       "slug": "kraken-xstocks",
       "categoria": "Acciones y capital privado",
       "archivo": "oferta-kraken-xstocks.webp",
@@ -382,6 +462,46 @@
         "Pides el reembolso"
       ],
       "lugar": "Estados Unidos",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "mufg-realty-token-kioicho",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-mufg-realty-token-kioicho.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 84070,
+      "hashSha256": "2e81e03659ef9186768969ea5e8a2a73f811525cb3de96227c0ddaecd8897ffe",
+      "alt": "Ilustración editorial de torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto, imagen generada con IA. Pasos: lo pides en Daiwa; cobras el reparto cada semestre; se vende el inmueble al final. No es una foto del activo real.",
+      "concepto": "torres de oficinas junto a un foso arbolado de Tokio, no el edificio del producto",
+      "pasos": [
+        "Lo pides en Daiwa",
+        "Cobras el reparto cada semestre",
+        "Se vende el inmueble al final"
+      ],
+      "lugar": "Tokio · Japón",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "osl-taikang-kaitai-usd-mmf",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-osl-taikang-kaitai-usd-mmf.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 44414,
+      "hashSha256": "f1074773c7a0c26d3f546fddcaff11b04b5a0e4b06ccccb4e4f5672ee724692c",
+      "alt": "Ilustración editorial de el skyline de Kowloon visto desde el agua al atardecer, no la sede de la gestora, imagen generada con IA. Pasos: suscribes en la app de OSL; el fondo rinde cada día; reembolsas en la app. No es una foto del activo real.",
+      "concepto": "el skyline de Kowloon visto desde el agua al atardecer, no la sede de la gestora",
+      "pasos": [
+        "Suscribes en la app de OSL",
+        "El fondo rinde cada día",
+        "Reembolsas en la app"
+      ],
+      "lugar": "Hong Kong",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-26"
@@ -602,6 +722,46 @@
         "Cobras tu parte de las ventas"
       ],
       "lugar": "San Salvador · El Salvador",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tokinvest-great-hampton-street",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-tokinvest-great-hampton-street.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 88940,
+      "hashSha256": "898dce0fb8b1917b937b1f197d2bfcef54f94a68990bc8fbea7b5c6b70e32a54",
+      "alt": "Ilustración editorial de una antigua fábrica victoriana de ladrillo convertida en pisos en Birmingham, no la del producto, imagen generada con IA. Pasos: compras tokens del edificio; cobras la renta cada mes; al final se vende y cobras. No es una foto del activo real.",
+      "concepto": "una antigua fábrica victoriana de ladrillo convertida en pisos en Birmingham, no la del producto",
+      "pasos": [
+        "Compras tokens del edificio",
+        "Cobras la renta cada mes",
+        "Al final se vende y cobras"
+      ],
+      "lugar": "Birmingham · Reino Unido",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tokinvest-lingote-plata-record",
+      "categoria": "Materias primas",
+      "archivo": "oferta-tokinvest-lingote-plata-record.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 86538,
+      "hashSha256": "f2edd88e14da8efc4892896e8bbb2febdef72dc86110011b177a0f9edf6271fc",
+      "alt": "Ilustración editorial de granalla de plata sobre pizarra, imagen genérica del metal; no el lingote del producto, imagen generada con IA. Pasos: compras gramos del lingote; brink’s lo guarda; al final se vende y cobras. No es una foto del activo real.",
+      "concepto": "granalla de plata sobre pizarra, imagen genérica del metal; no el lingote del producto",
+      "pasos": [
+        "Compras gramos del lingote",
+        "Brink’s lo guarda",
+        "Al final se vende y cobras"
+      ],
+      "lugar": "Dubái · Emiratos",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-26"

@@ -442,7 +442,7 @@
    "pasos": [
     "Suscribes el bono",
     "Cobras el interés cada año",
-    "Recuperas el nominal en 2031"
+    "Recuperas el nominal al final"
    ],
    "concepto": "una fundición alemana"
   },
@@ -456,7 +456,7 @@
    "pasos": [
     "Compras gramos del lingote",
     "Brink’s lo guarda",
-    "Se vende a los 10 años"
+    "Al final se vende y cobras"
    ],
    "concepto": "un lingote de plata"
   },
@@ -472,7 +472,7 @@
    "pasos": [
     "Compras tokens del edificio",
     "Cobras la renta cada mes",
-    "Se vende a los 10 años"
+    "Al final se vende y cobras"
    ],
    "concepto": "una antigua fábrica convertida en pisos"
   },
@@ -495,7 +495,7 @@
    },
    "lugar": "Tokio · Japón",
    "pasos": [
-    "Pides del 1 al 8 de diciembre",
+    "Lo pides en Daiwa",
     "Cobras el reparto cada semestre",
     "Se vende el inmueble al final"
    ],
@@ -533,7 +533,7 @@
    "pasos": [
     "Suscribes el bono",
     "Cobras interés cada año",
-    "Recuperas el nominal en 2029"
+    "Recuperas el nominal al final"
    ],
    "concepto": "una empresa de equipos de red"
   }
