@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Idioma en la cabecera de Inicio",
+  "nota": "Idioma en la cabecera, pulido",
   "revisionAprobada": {
-    "commit": "9cfc2b597927abed62cc8fad61f2e33f4930f8a1",
-    "contenidoSha256": "sha256:7fe442100b5b81a97035942249b84b9349b4908c0f9a00513439738fc3af4aba",
+    "commit": "3d8d6dddc50315bb4343e6e19f30ec6ff52abcec",
+    "contenidoSha256": "sha256:fa26267c86fdde3e4ed5b018a4b5c0724e090739fbac7d587ea7d49d97a18615",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
