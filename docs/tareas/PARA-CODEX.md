@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (56) · Claude · «ES | EN» en la cabecera de Inicio · PUBLICADO
+
+- **Petición de Víctor:** no veía dónde cambiar el idioma en Inicio, y después pidió que quedara bien integrado, limpio
+  y bonito.
+- **Qué hay ahora:** en Inicio, en la web móvil y en la app, «ES | EN» ocupa el sitio del título de la cabecera. El
+  título queda para el lector de pantalla, porque la barra de abajo ya marca Inicio. En las demás pestañas, la cabecera
+  de siempre.
+  - Va en una cápsula redonda, como los iconos, y a 3 px de ellos. En la web, `grid-column:3` con el mismo sistema de
+    `margin-right` que la campana y la descarga.
+  - Medido a 320, 360, 390 y 430 px, con y sin campana: sin desbordar.
+- **Web:** un único manejador para todos los botones `[data-elegir-idioma]`, en `idioma-web`.
+- **Quitado:** la fila «Idioma» de la tarjeta del país (#231), que quedaba repetida. `SelectorIdioma` vuelve a ser el de
+  antes.
+- **Pruebas:** la de la campana a 320 y 360 px exige en Inicio que «ES | EN» quepa entero, en lugar del título.
+- **Publicado:** PR #233 y #234. «Publicar web» en revisión y en producción 46047332511. OTA 46045217918 y 46047011203.
+
 ## 27 de noviembre de 2026 (55) · Claude · Inglés en toda la página, idioma en Inicio y radar nítido · PUBLICADO
 
 - **Petición de Víctor:**
