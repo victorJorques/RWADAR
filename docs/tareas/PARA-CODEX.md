@@ -22,6 +22,9 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   - En la app, `VentanaAvisos` (lleva a Perfil › Avisos) con la misma pausa (`recordatorioAvisosEnPausa`).
 - **Publicado:** web en revisión y en producción 46059549636; OTA 46059224646. Comprobado en vivo con iPhone sin
   instalar y Android con permiso sin contestar: sale, «Ahora no» la aparca y al volver no sale.
+- **Después (PR #242):** fuera «como un WhatsApp» de la ventana y el recuadro de avisos y de las novedades (punto del
+  resumen, título y párrafo de la sección de avisos), en castellano e inglés, por petición de Víctor. Publicado en
+  producción (46061216726) y en OTA (46060829464).
 
 ## 27 de noviembre de 2026 (57) · Claude · Inicio compacto: país en una fila, chips por país y selector de idioma fino · PUBLICADO
 
