@@ -15,7 +15,7 @@ import {
   cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades, configurarAccesoCatalogo,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   proveedoresDeOfertas, textoBusquedaOferta,
-  ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas,
+  ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas, recordatorioAvisosEnPausa, pausarRecordatorioAvisos,
   leerCambiosVistos, marcarCambiosVistos,
 } from './lib/datos';
 import {
@@ -66,7 +66,7 @@ import { accesibleEnPais } from './lib/disponibilidad-pais';
 import { SelectorPais, usePais } from './componentes/Pais';
 import { ordenarPlataformasMasNuevas } from './lib/orden-plataformas';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
-import { PantallaNovedades, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
+import { PantallaNovedades, VentanaAvisos, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
 import { estadoAvisosMovil, textosNovedades } from './lib/novedades-rwadar';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
@@ -517,6 +517,7 @@ export default function App() {
     listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
       && !pantallaInicio && !slugAvisoPendiente && !destinoAvisoPendiente,
     leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
+    avisosEnPausa: recordatorioAvisosEnPausa, pausarAvisos: pausarRecordatorioAvisos,
     avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta, { sinCuenta: sinCuentaActiva }) : 'apagados',
   });
 
@@ -1301,6 +1302,9 @@ export default function App() {
           onDetalle={novedadesRwadar.verDetalle} onEntendido={novedadesRwadar.entendido}
           recordarAvisos={novedadesRwadar.recordarAvisos}
           onActivarAvisos={() => { novedadesRwadar.activarAvisos(); irAAvisosPerfil(); }} />
+        <VentanaAvisos visible={novedadesRwadar.ventanaAvisos}
+          onActivar={() => { novedadesRwadar.cerrarAvisos(); irAAvisosPerfil(); }}
+          onAhoraNo={novedadesRwadar.cerrarAvisos} />
         <PantallaNovedades visible={novedadesRwadar.detalle} datos={novedadesRwadar.datos}
           onCerrar={novedadesRwadar.cerrarDetalle}
           onIrAvisos={() => { novedadesRwadar.cerrarDetalle(); irAAvisosPerfil(); }}

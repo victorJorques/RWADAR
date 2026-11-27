@@ -504,6 +504,22 @@ export async function leerNovedadesVistas() {
   }
 }
 
+/* La ventana «Activa los avisos» al entrar (27/11/2026): cuándo se cerró por última vez.
+   Tras cerrarla, 3 días sin salir. Si no se puede leer, no sale (para no repetirla). Nunca lanza. */
+const RECORDATORIO_AVISOS = 'rwadar.recordatorio-avisos';
+export const PAUSA_RECORDATORIO_AVISOS_MS = 3 * 864e5;
+export async function recordatorioAvisosEnPausa(ahora = Date.now()) {
+  try {
+    const v = Number(await AsyncStorage.getItem(RECORDATORIO_AVISOS));
+    return Number.isFinite(v) && v > 0 && v <= ahora + 6e4 && ahora - v < PAUSA_RECORDATORIO_AVISOS_MS;
+  } catch {
+    return true;
+  }
+}
+export async function pausarRecordatorioAvisos(ahora = Date.now()) {
+  try { await AsyncStorage.setItem(RECORDATORIO_AVISOS, String(ahora)); return true; } catch { return false; }
+}
+
 /* Guarda la versión vista, sin bajar nunca a una anterior (la copia incluida
    en la app puede ser más vieja que la descargada). Nunca lanza. */
 export async function marcarNovedadesVistas(version) {
