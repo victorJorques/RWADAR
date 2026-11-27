@@ -153,6 +153,11 @@
     const lugar=document.querySelector('[data-selector-idioma]');
     if(lugar)lugar.appendChild(barra);else document.body.insertBefore(barra,document.body.firstChild);
     idioma.suscribirIdioma(actualizar);
+    // Botones de idioma de la página (cabecera e Inicio, 27/11/2026): los de la barra ya llevan el suyo.
+    document.addEventListener('click',ev=>{
+      const b=ev.target&&ev.target.closest&&ev.target.closest('[data-elegir-idioma]');
+      if(b&&!b.closest('[data-idioma-control]'))cambiar(b.dataset.elegirIdioma);
+    });
     const observado=new MutationObserver(cambios=>{
       for(const c of cambios){
         if(c.type==='characterData')texto(c.target);
