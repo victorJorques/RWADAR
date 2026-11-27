@@ -42,9 +42,8 @@
           [/^Fuente de (.+)$/,(m,x)=>{const y=t(x);return y===x?m:'Source for '+y;}],
           [/^Ninguna oferta coincide con «(.+)»$/,(m,q)=>'No offer matches «'+q+'»'],
           [/^Ver (\d+) más$/,(m,n)=>'Show '+n+' more'],
-          // Ofertas por país en Inicio (27/11/2026) y el aviso de la tarjeta.
+          // El aviso de la tarjeta cuando la oferta no se puede desde el país elegido (27/11/2026).
           [/^No disponible desde (.+)$/,(m,p)=>'Not available from '+t(p)],
-          [/^(\d+) ofertas de (\d+) países, según dónde se emiten u ofrecen\.$/,(m,n,p)=>n+' offers from '+p+' countries, by where they are issued or offered.'],
           // Título fijo del aviso de ofertas nuevas (contrato del 05/11/2026).
           [/^(\d+) fichas? nuevas? en el radar de RWAdar$/,(m,n)=>n+(n==='1'?' new entry':' new entries')+' on the RWAdar radar'],
           // Tarjeta «Avisos» de Inicio: desplegar todos los cargados y cuántos quedan sin leer.

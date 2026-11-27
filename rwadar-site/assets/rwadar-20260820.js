@@ -2761,12 +2761,6 @@ function textoCortoLocal(v,max=40){
 /* España y Salida se escriben con UNA función para la tarjeta (escritorio y
    móvil) y para «Lo esencial» de la ficha: antes la tarjeta de escritorio
    decía «Disponible» y la ficha «Sí, según la fuente» (QA 04/11/2026, n.º 18). */
-/* La lista dice solo «Sí» o «No» (decisión del 05/11/2026); la
-   ficha, con «según la fuente» y la fuente al lado. */
-function textoEspanaOferta(resumen,corto=false){
- const acceso=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
- return acceso==='si'?(corto?'Sí':'Sí, según la fuente'):acceso==='no'?(corto?'No':'No, según la fuente'):'Sin confirmar';
-}
 /* ---- País de residencia (27/11/2026): lo que decía «España» lo dice ahora el
    país elegido (assets/pais-usuario-20261127.js y el motor común con la app).
    Sin reglas por país en la oferta y con España elegida, lo de siempre. */
@@ -2779,6 +2773,8 @@ function noDisponiblePais(o){const w=paisWeb();if(!(w&&w.tieneReglas(o))&&esEspa
    Sin reglas por país y con España: de la referencia «Acceso desde España» (y disponibleEs = false). */
 const ETIQUETAS_PAIS={disponible:'Disponible',con_requisitos:'Con requisitos',no_disponible:'No disponible',sin_confirmar:'Sin confirmar'};
 function estadoTextoPais(o,resumen){
+ /* Con el catálogo caducado o sin comprobar no se afirma nada del país (como Mínimo y Salida). */
+ if(catalogoSinCifrasLocal())return 'sin_confirmar';
  const w=paisWeb();
  if(w&&w.tieneReglas(o))return w.estadoOferta(o).estado;
  if(!esEspanaUsuario())return 'sin_confirmar';
@@ -3626,6 +3622,9 @@ function ofertaCatalogoRemota(e,fecha){
   caracteristicas:documentacion.caracteristicas.map(({etiqueta,valor})=>({etiqueta,valor})),
   referencias:documentacion.referencias.map(({etiqueta,valor,fechaDato,fechaConsulta,fuente,alcance})=>
    ({etiqueta,valor,fechaDato,fechaConsulta,fuente,alcance}))}:null;
+ /* Disponibilidad por país (27/11/2026): se conserva solo si el motor común la da por válida (copia, no referencia). */
+ const disp=e.documentacion&&e.documentacion.disponibilidad,motor=typeof window!=='undefined'&&window.RWAdarDisponibilidad;
+ if(x.documentacion&&disp&&motor&&motor.valida(disp))x.documentacion.disponibilidad=JSON.parse(JSON.stringify(disp));
  if(e.version_esquema===2){
   Object.assign(x,metadatosCatalogoV2(e));x.coleccion=e.coleccion;
   if(!['principales','secundario','en_camino'].includes(x.coleccion)||!['rendimiento','valor'].includes(x.tipo)||!x.documentacion||
