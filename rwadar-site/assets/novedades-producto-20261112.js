@@ -394,24 +394,30 @@
      (mismo texto versionado, mismo permiso en el mismo toque), solo, con
      «Ahora no». Sale si en ESTE móvil no están activas y se pueden activar
      aquí (modo «directo») o tras añadir la web a la pantalla de inicio del
-     iPhone («instalar»). No sale: con las mismas excepciones que la de
-     novedades (app, robots, otra dirección), si esta vez ya salió la de
-     novedades (lleva el recuadro), con otra ventana abierta (espera) ni
-     durante 3 días tras cerrarla. */
-  const CLAVE_AVISOS = 'rwadar.recordatorio-avisos', PAUSA_AVISOS_MS = 3 * 864e5, ESPERA_AVISOS_MS = 2600;
-  function avisosEnPausa(almacen) {
-    try {
-      const v = Number(almacen && almacen.getItem(CLAVE_AVISOS));
-      return Number.isFinite(v) && v > 0 && v <= Date.now() + 6e4 && Date.now() - v < PAUSA_AVISOS_MS;
-    } catch { return true; }
+     iPhone («instalar»); con el permiso bloqueado, lleva a Perfil › Avisos.
+     No sale: con las mismas excepciones que la de novedades (app, robots,
+     otra dirección), en el ordenador, si esta vez ya salió la de novedades
+     (lleva el recuadro), con otra ventana abierta (espera) ni, tras «Ahora
+     no», hasta la próxima vez que se abra RWAdar. */
+  /* Sale al entrar cada vez que se abre RWAdar (27/11/2026, Víctor: «al entrar que salte»), hasta que en ESTE
+     móvil estén activos: «Ahora no» la quita solo hasta la próxima vez (sessionStorage, la pestaña o la app
+     de la pantalla de inicio abierta). */
+  const CLAVE_AVISOS = 'rwadar.recordatorio-avisos.sesion', ESPERA_AVISOS_MS = 2600;
+  function sesion() { try { return globalThis.sessionStorage || null; } catch { return null; } }
+  function avisosEnPausa() { try { const a = sesion(); return !!(a && a.getItem(CLAVE_AVISOS)); } catch { return false; } }
+  function pausarAvisos() { try { const a = sesion(); if (a) a.setItem(CLAVE_AVISOS, '1'); } catch { /* sin guardar: vuelve a salir */ } }
+  /* En el móvil o la tableta (el ordenador tiene los avisos en Perfil › Avisos). */
+  function esMovil() {
+    const api = globalThis.RWAdarAvisosSinCuenta;
+    if (api && typeof api.estado === 'function') return api.estado() !== 'escritorio';
+    try { return globalThis.matchMedia('(max-width: 1024px) and (pointer: coarse)').matches; } catch { return false; }
   }
-  function pausarAvisos(almacen) { try { if (almacen) almacen.setItem(CLAVE_AVISOS, String(Date.now())); } catch { /* sin guardar: vuelve a salir */ } }
   function iniciarAvisos() {
     if (!llegada) return;
     const almacen = almacenLocal();
     if (modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,
       automatizado: globalThis.navigator?.webdriver === true, almacen })) return;
-    if (avisosEnPausa(almacen)) return;
+    if (avisosEnPausa()) return;
     const limite = Date.now() + ESPERA_MAXIMA_MS;
     const mirar = async () => {
       if (novedadesMostrada || Date.now() > limite) return;
@@ -419,11 +425,13 @@
       if (ocupado()) { setTimeout(mirar, REVISION_MS); return; }
       const avisos = await avisosDelNavegador();
       if (!modelo.conRecordatorioAvisos(avisos)) return;
+      if (!esMovil()) return;
+      // También con el permiso bloqueado o sin saberlo («perfil»): el botón lleva a Perfil › Avisos, que explica cómo.
       const rec = await modoRecordatorio();
-      if (!['directo', 'instalar'].includes(rec.modo)) return;
+      if (!['directo', 'instalar', 'perfil'].includes(rec.modo)) return;
       if (novedadesMostrada) return;
       if (ocupado()) { setTimeout(mirar, REVISION_MS); return; }
-      mostrarAvisos(almacen, rec);
+      mostrarAvisos(rec);
     };
     const empezar = () => setTimeout(mirar, ESPERA_AVISOS_MS);
     if (document.readyState === 'complete') empezar();
@@ -500,7 +508,7 @@
     d.replaceChildren(marco);
     if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
   }
-  function mostrarAvisos(almacen, rec) {
+  function mostrarAvisos(rec) {
     if (document.getElementById('avisosDialogo')) return;
     const d = el('dialog', 'escaparate-dialogo nov-dialogo av-dialogo');
     d.id = 'avisosDialogo';
@@ -535,7 +543,7 @@
       d.close();
     });
     d.addEventListener('close', () => {
-      pausarAvisos(almacen);
+      pausarAvisos();
       document.documentElement.classList.remove('nov-abierta');
       d.remove();
       if (origen && document.contains(origen)) origen.focus({ preventScroll: true });
