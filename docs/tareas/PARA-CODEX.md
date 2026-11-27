@@ -6,6 +6,30 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (52) · Claude · Plataformas: «Más nuevas primero» en la web y la app · RAMA, SIN PUBLICAR
+
+- **Orden de Víctor:** «las más nuevas van primero… en plataformas». Rama `claude/plataformas-mas-nuevas` (sin PR,
+  sin publicar, sin OTA).
+- **Fecha de alta por plataforma, como hecho:** `rwadar-editorial-source/plataformas/altas.json` (slug → `anadidaEl`
+  y `lote`), validado y generado por `altas.mjs`. La fecha es la del primer lote del repositorio
+  (`rwadar-app/data/verificaciones/<lote>/radar-canonico-26.json`) en que aparece; el script lo comprueba. Catálogo
+  inicial: 2026-09-21 (25); altas del 26/11 (.3 y .4): 32; del 27/11: 8. Más 8 anotadas a mano con `lote: null` y su
+  `origen` (la entrega del 27/11 aún fuera de main): 1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y
+  pruv. Genera el bloque `altas-plataformas` de `rwadar-20260820.js` y `rwadar-movil/lib/altas-plataformas-contenido.js`.
+  `npm test` ejecuta `altas.mjs --comprobar`: falla si una plataforma del catálogo no tiene fecha o si las salidas no
+  están al día. **En cada ciclo con altas**: `node rwadar-editorial-source/plataformas/altas.mjs` (las toma del lote;
+  añadido al paso 4 de la skill `investigacion-catalogo` y a `entrega/despues.mjs`). Cambia la app, así que pide OTA;
+  sin OTA, las altas nuevas salen en la app al final de la lista hasta la siguiente.
+- **Web:** `filtered()` ordena por fecha de alta (más nueva primero; empate por nombre; sin fecha, al final por
+  nombre) y hay un selector «Más nuevas primero / Por nombre (A-Z)» (`#fOrd`) en la barra de filtros; «Limpiar
+  filtros» conserva el orden. La rejilla pre-renderizada sale en ese orden (`rwadar-publicar.js` comprueba la rejilla
+  en el orden de `filtered()` y que sea P entera). Matriz y radar, igual.
+- **App:** `lib/orden-plataformas.js` (copia de la web); `App.js` ordena `visibles` con él. Diccionario EN: «Ordenar
+  plataformas» y «Por nombre (A-Z)».
+- **Pruebas:** 5 nuevas en `probar-web.mjs` y la de portadas ajustada al nuevo orden (sin quitar comprobaciones);
+  `rwadar-movil/tests/orden-plataformas.test.cjs` (3). `npm test` en verde.
+- **Pendiente:** revisar, PR y publicar web + OTA cuando Víctor lo diga.
+
 ## 27 de noviembre de 2026 (51) · Claude · Informe de investigación global del 27/11: 8 plataformas nuevas, radar comprobado, noticias y gráfico · PUBLICADO
 
 - **Orden de Víctor:** «Nueva actualización de la app y web… Compruébala y haz la actualización pertinente. Añade lo

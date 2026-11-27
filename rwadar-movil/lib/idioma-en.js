@@ -980,6 +980,8 @@
   "Filtrar por tipo de inversor": "Filter by investor type",
   "Todo acceso": "All access types",
   "Filtrar por mínimo de inversión": "Filter by minimum investment",
+  "Ordenar plataformas": "Sort platforms",
+  "Por nombre (A-Z)": "By name (A-Z)",
   "Toda entrada": "All entry amounts",
   "Limpiar filtros": "Clear filters",
   "Plataformas contrastadas": "Reviewed platforms",

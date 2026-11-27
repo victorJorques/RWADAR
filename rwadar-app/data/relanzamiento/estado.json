@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-27.2 aplicado (revisión 38ee1fa9): 73 plataformas, 40 ofertas",
+  "nota": "Catálogo 2026-11-27.2 (revisión 38ee1fa9) y plataformas más nuevas primero",
   "revisionAprobada": {
-    "commit": "9051ccf2458db27da4a65ce14a6f31c4631d4584",
-    "contenidoSha256": "sha256:4f93b06cfda96b0485cbae64ab0d9ea64b5d74cb1a9e839aad3b74da2f2dac68",
+    "commit": "e6ce25584f8ee686634ff98bb487a6bc4d7bd183",
+    "contenidoSha256": "sha256:05b4b59a5d22bee076a3f6d447da5f0a11ad5b14d6841de218183b5b98731472",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
