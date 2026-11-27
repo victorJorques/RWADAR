@@ -2736,6 +2736,7 @@
   "Zimbabue": "Zimbabwe",
   "Espacio Económico Europeo": "European Economic Area",
   "Tu país": "Your country",
+  "Cambiar": "Change",
   "Tu país de residencia": "Your country of residence",
   "Solo las disponibles en tu país": "Only those available in your country",
   "Detectado por tu conexión. Si resides en otro país, cámbialo.": "Detected from your connection. If you live in another country, change it.",
