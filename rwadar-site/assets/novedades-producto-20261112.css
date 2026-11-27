@@ -91,10 +91,10 @@ html.nov-abierta,html.nov-abierta body{overflow:hidden}
   .nov-sec-tit{font-size:1.625rem}
   .nov-pagina .nov-puntos{padding:22px 24px}
 }
-/* La ventana «Activa los avisos» al entrar (27/11/2026): el recuadro solo, × en la esquina y «Ahora no». */
-.nov-marco-avisos{position:relative}
-.nov-avisos-cerrar{position:absolute;top:8px;right:8px;z-index:1}
-.nov-dialogo-avisos .nov-cuerpo{padding-top:52px}
+/* La ventana «Activa los avisos» al entrar (27/11/2026): el recuadro solo y «Ahora no». */
+.nov-dialogo-avisos .nov-cuerpo{padding-top:18px}
+/* El foco empieza en el título (para el lector de pantalla); no se llega a él con Tab, así que sin marco. */
+.nov-dialogo-avisos #novedadesRecTit:focus{outline:none}
 .nov-dialogo-avisos .nov-rec{margin:0}
 .nov-dialogo-avisos .nov-acciones{justify-content:flex-end}
 .nov-dialogo-avisos .nov-acciones>*{flex:1 1 auto}

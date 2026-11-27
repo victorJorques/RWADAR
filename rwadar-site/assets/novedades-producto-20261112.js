@@ -70,7 +70,7 @@
       recBoton: 'Activar avisos', recInfo: 'Información básica sobre tus datos', recEspera: 'Un momento…',
       recHecho: 'Notificaciones activadas en este móvil. Así te llegarán las novedades.',
       recNo: 'No se han activado. En Perfil › Avisos te explicamos cómo permitirlas.', recIrPerfil: 'Ir a Perfil › Avisos',
-      avAhoraNo: 'Ahora no', avCerrar: 'Cerrar',
+      avAhoraNo: 'Ahora no',
     }),
     en: Object.freeze({
       cerrar: 'Close the news', detalle: 'See details', entendido: 'Got it',
@@ -84,7 +84,7 @@
       recBoton: 'Turn on alerts', recInfo: 'Basic information about your data', recEspera: 'One moment…',
       recHecho: 'Notifications turned on for this phone. This is how the news will reach you.',
       recNo: 'They were not turned on. In Profile › Alerts we explain how to allow them.', recIrPerfil: 'Go to Profile › Alerts',
-      avAhoraNo: 'Not now', avCerrar: 'Close',
+      avAhoraNo: 'Not now',
     }),
   });
   const RUTA_AVISOS = '/#perfil-avisos';
@@ -433,13 +433,8 @@
     const t = ui();
     const enfocado = document.activeElement && d.contains(document.activeElement) ? document.activeElement.dataset.novFoco : '';
     propio(d);
+    // Sin ×: «Ahora no», tocar fuera o Esc la cierran.
     const marco = el('div', 'escaparate-dialogo-marco nov-marco nov-marco-avisos');
-    const cerrar = el('button', 'bi nov-cerrar nov-avisos-cerrar');
-    cerrar.type = 'button'; cerrar.dataset.novCerrar = ''; cerrar.dataset.novFoco = 'cerrar';
-    cerrar.setAttribute('aria-label', t.avCerrar);
-    const aspa = el('span', '', '×');
-    aspa.setAttribute('aria-hidden', 'true');
-    cerrar.append(aspa);
     const cuerpo = el('div', 'nov-cuerpo');
     cuerpo.append(recordatorio(t, rec));
     const acciones = el('div', 'nov-acciones');
@@ -452,7 +447,7 @@
       luego.type = 'button'; luego.dataset.novEntendido = ''; luego.dataset.novFoco = 'luego';
       acciones.append(luego);
     }
-    marco.append(cerrar, cuerpo, acciones);
+    marco.append(cuerpo, acciones);
     d.replaceChildren(marco);
     if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
   }
