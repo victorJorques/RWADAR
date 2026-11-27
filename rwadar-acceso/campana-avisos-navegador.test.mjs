@@ -159,11 +159,14 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo q
       const barra = await pagina.evaluate(() => {
         const dentro = sel => { const n = document.querySelector(sel); if (!n || getComputedStyle(n).display === 'none') return null; const r = n.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth + 0.5; };
         const t = document.getElementById('movilCabeceraTitulo').getBoundingClientRect();
-        return { campana: dentro('#movilAvisos'), marca: dentro('.movil-marca'), ayuda: dentro('[data-movil-action="ayuda"]'), titulo: t.width, anchoDoc: document.documentElement.scrollWidth, ventana: innerWidth };
+        const i = document.querySelector('.movil-cabecera-idioma'), ri = i && getComputedStyle(i).display !== 'none' ? i.getBoundingClientRect() : null;
+        return { campana: dentro('#movilAvisos'), marca: dentro('.movil-marca'), ayuda: dentro('[data-movil-action="ayuda"]'), titulo: t.width,
+          idioma: ri ? (ri.left >= 0 && ri.right <= innerWidth + 0.5 ? Math.round(ri.width) : -1) : 0, anchoDoc: document.documentElement.scrollWidth, ventana: innerWidth };
       });
       assert.ok(barra.campana && barra.marca && barra.ayuda, ancho + ' px: ' + JSON.stringify(barra));
       // A 320 px el título ya cedía con «…» antes de la campana (la campana ocupa el sitio de la descarga).
-      assert.ok(barra.titulo >= 30 && barra.anchoDoc <= barra.ventana, ancho + ' px: ' + JSON.stringify(barra));
+      // En Inicio (27/11/2026) el sitio del título es el del idioma, «ES | EN», que debe caber entero.
+      assert.ok((barra.titulo >= 30 || barra.idioma >= 88) && barra.anchoDoc <= barra.ventana, ancho + ' px: ' + JSON.stringify(barra));
     }
     await pagina.setViewportSize({ width: 390, height: 844 });
 

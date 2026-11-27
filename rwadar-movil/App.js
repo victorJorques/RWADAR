@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, useIdioma, cargarIdiomaGuardado } from './componentes/Idioma';
-import { traducir } from './lib/idioma';
+import { cambiarIdioma, traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
@@ -1313,6 +1313,22 @@ export default function App() {
 /* Cabecera opaca de una sola línea, como la web (GUIA-ACABADOS §6 y ESPEC
    §4): la marca, el título de la pestaña y la ayuda. Debajo, solo si dice
    algo, una línea con el recuento. */
+/* ES | EN en la cabecera de Inicio (27/11/2026). */
+function IdiomaCabecera() {
+  const actual = useIdioma();
+  return (
+    <View style={e.idiomaCab} accessibilityRole="radiogroup" accessibilityLabel="Idioma">
+      {[['es', 'ES', 'Español'], ['en', 'EN', 'English']].map(([valor, corto, nombre]) => (
+        <Pressable key={valor} onPress={() => { Promise.resolve(cambiarIdioma(valor)).catch(() => {}); }}
+          accessibilityRole="radio" accessibilityState={{ checked: actual === valor }} accessibilityLabel={nombre}
+          style={({ pressed }) => [e.idiomaCabBoton, actual === valor && e.idiomaCabActivo, pressed && e.accionCabeceraPulsada]}>
+          <Text noTraducir style={[e.idiomaCabTxt, actual === valor && e.idiomaCabTxtActivo]}>{corto}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
 function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda, campana = null }) {
   const textos = {
     inicio: { titulo: 'Inicio', subtitulo: '' },
@@ -1341,7 +1357,10 @@ function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda, campa
           <Marca tamano={26} />
           <Text style={e.marca}>RWA<Text style={{ color: C.senal }}>dar</Text></Text>
         </View>
-        <Text style={e.cabeceraTitulo} accessibilityRole="header" numberOfLines={1}>{actual.titulo}</Text>
+        {/* En Inicio, el idioma a la vista nada más entrar (27/11/2026): ocupa el sitio del título, que ya marca la barra de abajo. */}
+        {clave === 'inicio'
+          ? <IdiomaCabecera />
+          : <Text style={e.cabeceraTitulo} accessibilityRole="header" numberOfLines={1}>{actual.titulo}</Text>}
         {/* La campana de avisos, al lado del «?» (21/11/2026). */}
         {campana ? <BotonCampana noLeidos={campana.noLeidos} onPress={campana.onPress} /> : null}
         <Pressable
@@ -2241,6 +2260,11 @@ const e = StyleSheet.create({
   cabeceraSuperior: { minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 0 },
   marca: { fontFamily: F.extra, fontSize: 19, letterSpacing: -0.4, color: C.tx },
+  idiomaCab: { flex: 1, flexDirection: 'row', justifyContent: 'center', gap: 2 },
+  idiomaCabBoton: { minWidth: 44, minHeight: 40, paddingHorizontal: 10, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  idiomaCabActivo: { backgroundColor: C.ton2 },
+  idiomaCabTxt: { fontSize: 14, lineHeight: 18, fontWeight: '600', color: C.tx2 },
+  idiomaCabTxtActivo: { color: C.tx },
   accionCabecera: {
     width: 44, height: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center',
     backgroundColor: C.ton,

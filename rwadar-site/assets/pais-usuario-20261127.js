@@ -143,10 +143,6 @@
     const s = caja.querySelector('[data-ini-pais]'), b = caja.querySelector('[data-ini-pais-ok]');
     if (s) s.addEventListener('change', () => { if (estado.origen === 'elegido') elegir(s.value); });
     if (b) b.addEventListener('click', () => elegir(s ? s.value : estado.codigo));
-    for (const x of caja.querySelectorAll('.ini-idioma [data-elegir-idioma]')) x.addEventListener('click', () => {
-      const i = globalThis.RWAdarIdioma;
-      if (i && i.cambiarIdioma) Promise.resolve(i.cambiarIdioma(x.dataset.elegirIdioma)).catch(() => {});
-    });
   }
 
   /* Inicio: cuántas ofertas hay de cada país (el país de la oferta, no el del usuario). */
