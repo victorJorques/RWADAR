@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-27.2 (revisión 38ee1fa9) y plataformas más nuevas primero",
+  "nota": "Catálogo 2026-11-27.3: disponibilidad por país en las 40 ofertas",
   "revisionAprobada": {
-    "commit": "e6ce25584f8ee686634ff98bb487a6bc4d7bd183",
-    "contenidoSha256": "sha256:05b4b59a5d22bee076a3f6d447da5f0a11ad5b14d6841de218183b5b98731472",
+    "commit": "6bd8dcbaa4a2819a776b81080578bf85f7a7d944",
+    "contenidoSha256": "sha256:6e8b1354532f8db807d6accfa4d0b07205f7c174303395f411bc6442435055c3",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
