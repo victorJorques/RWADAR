@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "verificacionSha256": "237472eefe50ab9b4812ef1d7110e73a7bec5d83770371e3cb7e89a231142d46",
+  "aplicadas": [
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "campo": "resumen",
+      "antes": "El mercado de criptoactivos Poloniex abrió el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "despues": "El mercado de criptoactivos Poloniex abre el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "motivo": "El anuncio dice que Poloniex «will open» la negociación a las 05:00 (UTC) del 27/11; no confirma que ya se abriera. Presente, como el titular."
+    },
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "campo": "en.resumen",
+      "antes": "Crypto exchange Poloniex opened USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+      "despues": "Crypto exchange Poloniex opens USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+      "motivo": "Igual que en castellano: la fuente anuncia la apertura («will open»), no la confirma."
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "campo": "titulo",
+      "antes": "Canadá abre la puerta a probar productos tokenizados",
+      "despues": "Los supervisores de Canadá buscan proyectos tokenizados",
+      "motivo": "La fase 2 invita a presentar propuestas para ver cómo se aplican las normas; la fuente solo cita pruebas («testing») como posible acción futura, así que «probar productos» exagera. Sujeto exacto: los supervisores (CSA), no «Canadá». Es una de las propuestas del propio editor (55 caracteres)."
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "campo": "en.titulo",
+      "antes": "Canada invites firms to test tokenised products",
+      "despues": "Canadian regulators seek tokenised projects",
+      "motivo": "Mismo motivo: la fuente invita a presentar propuestas, no a probar productos. Es una de las propuestas del propio editor (43 caracteres)."
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "campo": "imagen",
+      "antes": "real-monedas-euro-bandera",
+      "despues": "real-bce-francfort",
+      "motivo": "La guía (§ 4, regla 1) pide la sede del supervisor si está en la biblioteca. La torre del BCE ya no la usa ninguna otra noticia (la otra del BCE salió de la edición), así que el motivo del editor ya no vale. Crédito comprobado: fotos-noticias.json y fotos.json coinciden (autor, CC BY-SA 4.0, misma página de Commons)."
+    }
+  ]
+}

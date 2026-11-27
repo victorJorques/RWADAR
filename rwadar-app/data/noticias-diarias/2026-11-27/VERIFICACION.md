@@ -1,97 +1,91 @@
-# Verificación de las noticias del 27/11/2026 (pase 1)
+# Verificación de las noticias del 27/11/2026 · pase 1
 
-Edición verificada: `noticias-2026-11-27.json`, SHA-256 `2fa7d8fb0b8b51843274ff0c59ec7ddbe3d7225620c797dfeb7f899f938a40b3`.
+**Veredicto: con cambios.** Cinco noticias están bien tal cual; tres necesitan un cambio pequeño (un verbo, un titular y una foto). Ninguna fuente está caída. Sin personas en ningún texto.
 
-**Veredicto: conforme.** Las ocho noticias dicen lo que dicen sus fuentes, con la fecha del documento, sin personas, titulares de 60 caracteres o menos en las dos lenguas y ocho fotos distintas cuyo crédito coincide con la biblioteca. No hay correcciones.
+Edición verificada: `noticias-2026-11-27.json`, SHA-256 `aa95ac87e6b6d6b595264c078bd5472c119815eb93eb3feb5dd6061a395b57ec`.
 
-| Noticia | Fecha | Sección | Foto | Veredicto |
+| Noticia | Veredicto | Titular | Foto | Fecha |
 | --- | --- | --- | --- | --- |
-| Poloniex abre 16 acciones y ETF tokenizados de EE. UU. | 2026-11-27 | hoy | `real-bolsa-nueva-york-fachada` | confirmada |
-| El Banco de Japón señala cinco retos de la tokenización | 2026-11-27 | hoy | `banco-sala` | confirmada |
-| coinIX ya opera con un monetario tokenizado en 21X | 2026-11-26 | hoy | `real-tesoro-eeuu-fachada` | confirmada |
-| Hong Kong estrena una plataforma de bonos tokenizados | 2026-11-25 | importante | `real-sala-servidores-bastidores` | confirmada |
-| SBI y SMBC lanzan en Japón una empresa de finanzas en cadena | 2026-11-25 | importante | `moneda-digital` | confirmada |
-| La CNMV difunde alertas del supervisor belga | 2026-11-25 | importante | `real-cnmv-sede-madrid` | confirmada |
-| El BCE propone criterios comunes para la tokenización | 2026-11-24 | importante | `real-bce-francfort` | confirmada |
-| El BCE aceptará ciertos valores tokenizados en garantía | 2026-11-23 | importante | `real-monedas-euro-bandera` | confirmada |
+| poloniex-abre-16-acciones-etf-tokenizados | corregir | bien | bien | bien |
+| banco-japon-cinco-retos-tokenizacion | confirmada | bien | bien | bien |
+| canada-csa-proyecto-tokenizacion-fase-2 | corregir | cambiar | bien | bien |
+| 21x-coinix-monetario-tokenizado | confirmada | bien | bien | bien |
+| hong-kong-hkma-plataforma-bonos-tokenizados | confirmada | bien | bien | bien |
+| cnmv-avisa-entidades-belgica-25-noviembre | confirmada | bien | bien | bien |
+| suiza-snb-registro-financiero-comun | confirmada | bien | bien | bien |
+| bce-valores-tokenizados-garantia-2027 | corregir | bien | cambiar | bien |
 
-## Fuentes, una a una
+## Fuentes abiertas
 
-### Poloniex abre 16 acciones y ETF tokenizados de EE. UU.
+### poloniex-abre-16-acciones-etf-tokenizados
 
 - URL: https://www.poloniex.com/announcement/45050069368899
-- Hora (UTC): 2026-11-27T09:54:30Z
-- HTTP: 200
+- Hora (UTC): 2026-11-27T11:35:50Z · HTTP 200
 - SHA-256: `d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec`
 - Cita: «Poloniex to Open Trading for 16 Tokenized Stocks and ETFs, Including MRVL, DRAM, SPY, LITE and BABA, from 05:00:00 (UTC) on November 27, 2026»
-- Comprobado: La descarga simple solo trae el armazón (la huella es la de esa descarga); el texto se leyó con Chromium a las 09:56:15Z (HTTP 200). 16 pares en USDT a las 05:00 UTC del 27/11 (Apple, Microsoft, Amazon, SPY…), serie bStocks; respaldo 1 a 1 «según el emisor» y aviso de que el token no es la acción ni da voto. El lote de 21 es del anuncio del 25/11 (https://www.poloniex.com/announcement/45049898254247, fechado 2026/11/25).
 
-### El Banco de Japón señala cinco retos de la tokenización
+### banco-japon-cinco-retos-tokenizacion
 
 - URL: https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf
-- Hora (UTC): 2026-11-27T09:54:31Z
-- HTTP: 200
+- Hora (UTC): 2026-11-27T11:35:51Z · HTTP 200
 - SHA-256: `1bf3874fd7011af35a271774fcb6f2630bcdfb893519273dea965dcacfb727e8`
 - Cita: «While these opportunities are significant, tokenization also raises five important challenges.»
-- Comprobado: Discurso del 27/11/2026. Los cinco retos, el proyecto de pruebas (dinero de banco central en token, liquidación de deuda pública japonesa tokenizada) y «mejorar lo existente y explorar lo nuevo en paralelo» constan en el PDF.
 
-### coinIX ya opera con un monetario tokenizado en 21X
+### canada-csa-proyecto-tokenizacion-fase-2
+
+- URL: https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants
+- Hora (UTC): 2026-11-27T11:35:51Z · HTTP 200
+- SHA-256: `f01e3fa7049a82e0c75313bcf7939a82b6cd19ca72499293028eba6e5d936a90`
+- Cita: «The Canadian Securities Administrators (CSA) today launched Phase 2 of Project Tokenization, inviting firms to submit proposals for tokenized products, services, infrastructure and business models relevant to Canadian capital markets.»
+
+### 21x-coinix-monetario-tokenizado
 
 - URL: https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/
-- Hora (UTC): 2026-11-27T09:54:32Z
-- HTTP: 200
-- SHA-256: `09670cd07d1967fbac852ebb9ce79094d9f900c8659df77f0641350f21ed72b2`
-- Cita: «coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class, which made its secondary market debut on 21X in late September.»
-- Comprobado: Comunicado del 26/11/2026 (ayer). El rendimiento durante el día y los saldos parados en monedas estables constan en la fuente.
+- Hora (UTC): 2026-11-27T11:35:52Z · HTTP 200
+- SHA-256: `6669de4548f4ad7b64874381645b737bd6e133898013d22cd2e22f228a9a0dc3`
+- Cita: «coinIX GmbH & Co. KGaA, a leading German investment company specialized in cryptocurrencies and blockchain-based business models, has joined 21X as a trading participant. coinIX’s first trades were in grBenji, Franklin Templeton’s tokenized money market fund share class»
 
-### Hong Kong estrena una plataforma de bonos tokenizados
+### hong-kong-hkma-plataforma-bonos-tokenizados
 
 - URL: https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/
-- Hora (UTC): 2026-11-27T09:54:33Z
-- HTTP: 200
-- SHA-256: `2a8c8799ea40fc782ca2733ce79a404fa9305e78892e6f96d47aa5a316646224`
+- Hora (UTC): 2026-11-27T11:35:53Z · HTTP 200
+- SHA-256: `4dde4eb55267c8373bf471ae4377b23715a5000ace040f38d4aeaa7273693001`
 - Cita: «The Hong Kong Monetary Authority (HKMA) announced today (25 November) the official launch of CMU Digital Asset Platform (CMU DAP).»
-- Comprobado: Texto igual al publicado. Emisión, liquidación, cupones, amortización, tokenización de deuda existente, liquidación 24 h en varias monedas con tokens de efectivo y hoja de ruta (fondos y otros activos) constan.
 
-### SBI y SMBC lanzan en Japón una empresa de finanzas en cadena
-
-- URL: https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/
-- Hora (UTC): 2026-11-27T09:54:36Z
-- HTTP: 200
-- SHA-256: `f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7`
-- Cita: «they have completed a series of agreements for the transition to a new joint venture structure among the three parties, and that SBI R3 Japan Co., Ltd. has commenced full-scale operations as “SBI Solana Global Co., Ltd.”»
-- Comprobado: Comunicado del 25/11/2026; misma huella que el barrido. Texto igual al publicado.
-
-### La CNMV difunde alertas del supervisor belga
+### cnmv-avisa-entidades-belgica-25-noviembre
 
 - URL: https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d
-- Hora (UTC): 2026-11-27T09:55:09Z
-- HTTP: 200
+- Hora (UTC): 2026-11-27T11:36:37Z · HTTP 200
 - SHA-256: `e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a`
 - Cita: «La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales sobre las entidades no registradas que se adjuntan en el siguiente listado»
-- Comprobado: PDF del 25/11/2026 (el primer intento a las 09:54:37Z lo cortó la conexión; el segundo respondió 200 con la misma huella que el barrido). Todas las entradas son de la FSMA (Bélgica) y una sola va marcada como clon.
 
-### El BCE propone criterios comunes para la tokenización
+### suiza-snb-registro-financiero-comun
 
-- URL: https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html
-- Hora (UTC): 2026-11-27T09:54:47Z
-- HTTP: 200
-- SHA-256: `0bf76517fc4f5a3baaaff59877d90718907f8af6a91766067e47b86a0715d135`
-- Cita: «the European Central Bank has published a Tokenisation Reference Model (TRM) to support standardisation discussions with market participants.»
-- Comprobado: Nota del 24/11/2026. Cinco capacidades (interoperabilidad, transferibilidad, portabilidad, controlabilidad, componibilidad) y aportación al grupo europeo de estándares de tokenización. Texto igual al publicado; solo cambia la foto (torre del BCE).
+- URL: https://www.snb.ch/en/publications/communication/press-releases/2026/pre_20261124_2
+- Hora (UTC): 2026-11-27T11:36:07Z · HTTP 200
+- SHA-256: `8137e8842147eab40e2f97779f60c0a2f325f48135b2a67843a01fcf68537742`
+- Cita: «The exploratory project investigates whether a Swiss Financial Ledger can serve both cross-border transactions, as envisaged in Project Agorá, and as a platform for domestic transactions. It will explore the benefits and feasibility of a distributed ledger technology (DLT) platform on which central bank money, commercial bank money and securities can interact seamlessly.»
 
-### El BCE aceptará ciertos valores tokenizados en garantía
+### bce-valores-tokenizados-garantia-2027
 
 - URL: https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html
-- Hora (UTC): 2026-11-27T09:54:48Z
-- HTTP: 200
-- SHA-256: `e1b9b5469550d73b1eeb4344aedceb9cd3bbb4232f99d6d5b0eeb21e6c8ee2db`
+- Hora (UTC): 2026-11-27T11:36:08Z · HTTP 200
+- SHA-256: `d48871fd7e726256fd3ef13852b06ce874318a0d687f35e63009ecadd3fcca2b`
 - Cita: «The Governing Council of the European Central Bank (ECB) has approved the acceptance of marketable assets issued on DLT platforms licensed under the EU DLT Pilot Regime Regulation as eligible collateral for Eurosystem credit operations, subject to specific Eurosystem requirements.»
-- Comprobado: Comunicado del 23/11/2026. Junio de 2027 y la liquidación en TARGET2-Securities constan. Texto igual al publicado; solo cambia la foto (monedas de euro).
+
+Notas de método: la página de Poloniex solo trae el armazón con una descarga simple; se leyó con un navegador sin cuenta (Chromium), y el anuncio del lote de 21 (25/11) se abrió también para comprobar esa fecha. El PDF de la CNMV cortó la conexión en algunos intentos; respondió 200 con el mismo SHA-256 que el barrido.
+
+## Cambios que hay que aplicar
+
+- **poloniex-abre-16-acciones-etf-tokenizados**, campo `resumen`: «El mercado de criptoactivos Poloniex abrió el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.» → «El mercado de criptoactivos Poloniex abre el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.». El anuncio dice que Poloniex «will open» la negociación a las 05:00 (UTC) del 27/11; no confirma que ya se abriera. Presente, como el titular.
+- **poloniex-abre-16-acciones-etf-tokenizados**, campo `en.resumen`: «Crypto exchange Poloniex opened USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.» → «Crypto exchange Poloniex opens USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.». Igual que en castellano: la fuente anuncia la apertura («will open»), no la confirma.
+- **canada-csa-proyecto-tokenizacion-fase-2**, campo `titulo`: «Canadá abre la puerta a probar productos tokenizados» → «Los supervisores de Canadá buscan proyectos tokenizados». La fase 2 invita a presentar propuestas para ver cómo se aplican las normas; la fuente solo cita pruebas («testing») como posible acción futura, así que «probar productos» exagera. Sujeto exacto: los supervisores (CSA), no «Canadá». Es una de las propuestas del propio editor (55 caracteres).
+- **canada-csa-proyecto-tokenizacion-fase-2**, campo `en.titulo`: «Canada invites firms to test tokenised products» → «Canadian regulators seek tokenised projects». Mismo motivo: la fuente invita a presentar propuestas, no a probar productos. Es una de las propuestas del propio editor (43 caracteres).
+- **bce-valores-tokenizados-garantia-2027**, campo `imagen`: «real-monedas-euro-bandera» → «real-bce-francfort». La guía (§ 4, regla 1) pide la sede del supervisor si está en la biblioteca. La torre del BCE ya no la usa ninguna otra noticia (la otra del BCE salió de la edición), así que el motivo del editor ya no vale. Crédito comprobado: fotos-noticias.json y fotos.json coinciden (autor, CC BY-SA 4.0, misma página de Commons).
 
 ## Lo demás
 
-- «Hoy» lleva tres noticias, del 27/11 (dos) y del 26/11 (una): correcto. Las del 25/11 y anteriores pasan a «importante».
-- Sin personas: leídos enteros titular, resumen, «por qué importa» y título informativo en castellano e inglés de las ocho; solo hay empresas, organismos y un cargo sin nombre («un director ejecutivo del Banco de Japón»).
-- Fotos: las seis reales (Bolsa de Nueva York, Tesoro de EE. UU., sala de servidores, sede de la CNMV, torre del BCE, monedas de euro) tienen en la web el mismo autor, licencia y página de Commons que en la biblioteca, y ninguna se presenta como foto del hecho. Las dos escenas de IA (vestíbulo bancario para el Banco de Japón, disco digital para la empresa conjunta japonesa) se usan porque no hay en la biblioteca una foto real que encaje sin engañar (no está la sede del Banco de Japón y la de otro supervisor no vale).
-- Lo que falta: No hay en barrido.json nada de hoy o de ayer más importante que lo elegido (las novedades de la CNMV del 25/11 son una OPA y un sistema de negociación ajenos al sector). Observación sin efecto en el veredicto: para salir 8 noticias se retiran de la portada el monetario tokenizado en euros de Franklin Templeton (23/11, que según su comunicado se ofrecerá a minoristas en España), Singapur (26/11) y el oro del World Gold Council (24/11); el primero toca más de cerca al lector español que, por ejemplo, la empresa conjunta japonesa.
+- Sección «Hoy»: Poloniex y el Banco de Japón son de hoy; Canadá, de ayer. Correcto.
+- Ninguna foto se repite. Los créditos de las fotos reales (Bolsa de Nueva York, Tesoro de EE. UU., sala de servidores, sede de la CNMV, monedas de euro y, tras el cambio, torre del BCE) coinciden entre la biblioteca y los datos de la web.
+- suiza-snb-registro-financiero-comun lleva la escena de IA «red-europea» habiendo una foto real libre del tema «Emisiones e infraestructura» (real-servidores-cables, que no usa ninguna otra noticia). No se corrige: la escena no engaña; queda a juicio de la sesión.
+- En barrido.json no hay nada de hoy o de ayer más importante que lo elegido (CNMV, ESMA, BCE, Consejo, Comisión y EBA sin novedades del sector de hoy o de ayer; el BOE de hoy no trae nada del sector).

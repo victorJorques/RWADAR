@@ -66,6 +66,33 @@
       }
     },
     {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "propuestas": {
+        "es": [
+          "Canadá abre la puerta a probar productos tokenizados",
+          "Canadá abre la fase 2 de su proyecto de tokenización",
+          "Los supervisores de Canadá buscan proyectos tokenizados"
+        ],
+        "en": [
+          "Canada invites firms to test tokenised products",
+          "Canada opens phase 2 of its tokenisation project",
+          "Canadian regulators seek tokenised projects"
+        ]
+      },
+      "elegido": {
+        "es": "Los supervisores de Canadá buscan proyectos tokenizados",
+        "en": "Canadian regulators seek tokenised projects"
+      },
+      "motivo": "Dice qué pueden hacer las empresas (presentar proyectos) sin dar a entender que es una autorización. No hay foto de los supervisores canadienses en la biblioteca: escena de IA de documentos de una con (titular corregido por el verificador)",
+      "heredado": null,
+      "foto": {
+        "clave": "documentos-consulta",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
       "id": "21x-coinix-monetario-tokenizado",
       "propuestas": {
         "es": [
@@ -122,35 +149,6 @@
       }
     },
     {
-      "id": "sbi-solana-global-empieza-operar-japon",
-      "propuestas": {
-        "es": [
-          "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
-          "Bancos japoneses y Solana ponen en marcha SBI Solana Global",
-          "Arranca SBI Solana Global, empresa conjunta de tokenización"
-        ],
-        "en": [
-          "SBI and SMBC launch an on-chain finance company in Japan",
-          "Japanese banks and Solana start SBI Solana Global",
-          "SBI Solana Global, a tokenisation joint venture, goes live"
-        ]
-      },
-      "elegido": {
-        "es": "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
-        "en": "SBI and SMBC launch an on-chain finance company in Japan"
-      },
-      "motivo": "Dice qué grupos la crean y aclara que es una empresa, no un producto. La foto de un disco digital ilustra monedas estables sin marcas.",
-      "heredado": "2026-11-26",
-      "foto": {
-        "clave": "moneda-digital",
-        "encaje": "propia",
-        "alternativas": [
-          "red-europea"
-        ],
-        "faltaria": null
-      }
-    },
-    {
       "id": "cnmv-avisa-entidades-belgica-25-noviembre",
       "propuestas": {
         "es": [
@@ -178,31 +176,29 @@
       }
     },
     {
-      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "id": "suiza-snb-registro-financiero-comun",
       "propuestas": {
         "es": [
-          "El BCE propone criterios comunes para la tokenización",
-          "El BCE plantea cómo conectar los mercados de tokens",
-          "Cinco criterios del BCE para conectar redes de tokens"
+          "Suiza estudia un registro común de valores y dinero digital",
+          "El banco central suizo explora un registro para valores",
+          "UBS, SIX y el banco central suizo exploran un registro DLT"
         ],
         "en": [
-          "ECB proposes common criteria for tokenisation",
-          "ECB sets out how tokenised markets can connect",
-          "Five ECB criteria for connecting token networks"
+          "Switzerland explores a shared ledger for assets and money",
+          "Swiss central bank explores a ledger for securities",
+          "UBS, SIX and the SNB explore a DLT financial ledger"
         ]
       },
       "elegido": {
-        "es": "El BCE propone criterios comunes para la tokenización",
-        "en": "ECB proposes common criteria for tokenisation"
+        "es": "Suiza estudia un registro común de valores y dinero digital",
+        "en": "Switzerland explores a shared ledger for assets and money"
       },
-      "motivo": "Indica que es una propuesta. La foto de cableado ilustra la conexión entre sistemas. Foto: la torre del BCE, sede del supervisor (guía § 4.1).",
-      "heredado": "2026-11-25",
+      "motivo": "«Estudia» deja claro que es exploratorio, como avisa el propio banco central. Sin foto del banco central suizo en la biblioteca: escena de IA de una red sobre una ciudad europea.",
+      "heredado": null,
       "foto": {
-        "clave": "real-bce-francfort",
+        "clave": "red-europea",
         "encaje": "propia",
-        "alternativas": [
-          "real-servidores-cables"
-        ],
+        "alternativas": [],
         "faltaria": null
       }
     },
@@ -227,11 +223,9 @@
       "motivo": "El titular explica el nuevo uso de los valores. «Ciertos» conserva la condición de elegibilidad y el resumen recoge la fecha prevista. Foto: monedas de euro, porque la torre del BCE la lleva la otra noticia del BCE.",
       "heredado": "2026-11-25",
       "foto": {
-        "clave": "real-monedas-euro-bandera",
+        "clave": "real-bce-francfort",
         "encaje": "propia",
-        "alternativas": [
-          "real-bce-francfort"
-        ],
+        "alternativas": [],
         "faltaria": null
       }
     }
