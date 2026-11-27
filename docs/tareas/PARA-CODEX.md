@@ -6,6 +6,42 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (54) · Claude · Disponibilidad por país: RWAdar internacional (web, app y catálogo 2026-11-27.3) · PUBLICADO
+
+- **Orden de Víctor:** escaparate internacional. Se detecta el país de conexión (Cloudflare `/cdn-cgi/trace`, sin
+  permiso de ubicación); el usuario elige su país de residencia y el elegido manda. Hay cuatro estados: Disponible,
+  Con requisitos, No disponible y Sin confirmar. Nunca se da un país por disponible solo porque no aparezca excluido.
+  Todas las ofertas siguen a la vista; si una no se puede desde el país elegido, la tarjeta avisa «No disponible desde
+  {país}» en amarillo. Filtro opcional «Solo las disponibles en tu país».
+- **Inicio:** justo bajo la portada, «¿Cuál es tu país de residencia?» con Confirmar; después, el país con sus cifras
+  y «Cambiar país». Debajo, «Ofertas por país» con bandera y nombre, sin recuentos (Víctor). Portada con fondo liso.
+- **Ficha:** sección «Disponibilidad por país», con el estado en tu país, la nota, los países admitidos, excluidos y
+  con requisitos, y las fuentes plegadas, con cita y fecha.
+- **Criterios:**
+  - El 1 es «Se contrata hoy desde tu país de residencia».
+  - El 2 y el 3 son «Referencia España»: fuera de España no deciden la Selección.
+- **Motor común:**
+  - `rwadar-movil/lib/disponibilidad-pais.js` y `paises-contenido.js`, con 251 países ES/EN.
+  - La web lleva una copia generada (`rwadar-site/assets/disponibilidad-pais-20261127.js`) que hace
+    `rwadar-app/paises/generar.cjs`; `--comprobar` va en `npm test`.
+  - País del usuario: `pais-usuario-20261127.js` en la web y `lib/pais-usuario.js` en la app.
+- **Datos:**
+  - Van en `documentacion.disponibilidad` de cada oferta: `admitidos`, `excluidos` (`*` = todos los demás),
+    `conRequisitos`, `fuentes` con literal y fecha, y `nota`/`notaEn`. Grupos `UE` y `EEE`.
+  - Sin migración de esquema.
+  - Liqi y Amundi no publican a quién admiten: llevan solo una nota, sin reglas, y quedan «Sin confirmar».
+- **Catálogo `2026-11-27.3`:**
+  - Revisión `cf150c1e` sobre la `38ee1fa9`. PR #226; «Aplicar catálogo» 46027507390.
+  - Lectura después de aplicar: 73 plataformas y 40 ofertas (24/13/3), las 40 con su disponibilidad.
+  - Las cifras no cambian (vigía: 77 cifras iguales).
+  - Sincronización, fichas y sello: PR #227. Con el catálogo caducado, el país dice «Sin confirmar» (web y app).
+- **Procedimiento:** sección «Disponibilidad por país» en la skill `investigacion-catalogo`, con el tipo de cambio
+  `disponibilidad` del motor. Si la base la tiene, el montaje se para cuando una oferta no la lleva o no es válida.
+- **Pendiente:**
+  - El correo de novedades sigue apagado (dominio, Lettermint y la casilla del alta oculta): el aviso de hoy salió sin
+    correo, por decisión de Víctor.
+  - La disponibilidad se comprueba en cada ciclo, como el resto de la ficha.
+
 ## 27 de noviembre de 2026 (53) · Claude · Catálogo 2026-11-27.2: todo en una entrega (8 ofertas, 8 plataformas, fichas comprobadas hoy) y noticias b · PUBLICADO
 
 - **Órdenes de Víctor:** «Mételo todo en 1 entrega y acuérdate del gancho de las notis»; «el resto pon que está
