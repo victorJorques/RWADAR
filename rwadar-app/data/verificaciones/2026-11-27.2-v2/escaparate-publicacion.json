@@ -1,23 +1,88 @@
 {
   "versionEsquema": 2,
   "fuente": {
-    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 8 ofertas (7 principales y 1 en camino) y 6 plataformas.",
+    "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha. Entrega 2026-11-26.2 (26/11/2026): sale «Hausera · próximas ofertas»: Alicante 3 ya figura como financiada y Hausera no anuncia ninguna otra operación; las otras 21 fichas, iguales. Entrega 2026-11-26.3 (26/11/2026): altas del informe global del 26/11/2026, comprobadas en su fuente ese día: 11 ofertas (9 principales y 2 en camino) y 7 plataformas; las de antes, iguales. Entrega 2026-11-26.4 (26/11/2026): 25 plataformas del radar del informe global del 26/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27 (27/11/2026): 8 plataformas del radar del informe global del 27/11/2026, comprobadas en su propia web ese día; las ofertas y las plataformas de antes, iguales. Entrega 2026-11-27.2 (27/11/2026): fichas re-comprobadas ese día con su fuente (las que no se pudieron leer conservan su fecha) y altas del suplemento de ofertas: 8 ofertas (7 principales y 1 en camino) y 8 plataformas.",
     "actualizacionLocal": {
       "verificadoEl": "2026-11-27",
       "archivo": "rwadar-app/data/verificaciones/2026-11-27.2-v2/contraste-2026-11-27.2.json",
       "publicable": false,
       "derechosImagenVerificados": false,
-      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 40 fichas (24 principales, 13 de reventa y 3 en camino) y 71 plataformas."
+      "nota": "Lote del 27/11/2026 (entrega 2026-11-27.2): 40 fichas (24 principales, 13 de reventa y 3 en camino) y 73 plataformas."
     },
     "actualizacionRadarLocal": {
       "verificadoEl": "2026-11-27",
       "archivo": "rwadar-app/data/verificaciones/2026-11-27.2-v2/radar-canonico-26.json",
       "publicable": false,
-      "plataformas": 71,
-      "fuentesPrimarias": 132
+      "plataformas": 73,
+      "fuentesPrimarias": 135
     }
   },
   "plataformas": [
+    {
+      "slug": "1exchange",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-27",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Su web lista hoy 22 valores tokenizados en su mercado secundario, que funciona cuando casan órdenes de compra y de venta.",
+          "fuentes": [
+            {
+              "id": "onex-oportunidades",
+              "tipo": "empresa",
+              "titulo": "1exchange · Explore Investment Opportunities",
+              "url": "https://www.1x.exchange/investment-opportunities",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "Dice ser un mercado reconocido por la MAS de Singapur (n.º de sociedad 201720273R); no lo hemos comprobado en el registro de la MAS.",
+          "fuentes": [
+            {
+              "id": "onex-oportunidades",
+              "tipo": "empresa",
+              "titulo": "1exchange · Explore Investment Opportunities",
+              "url": "https://www.1x.exchange/investment-opportunities",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "En Singapur, solo inversores acreditados o institucionales; los de otros países, según su ley local y la admisión de 1X.",
+          "fuentes": [
+            {
+              "id": "onex-oportunidades",
+              "tipo": "empresa",
+              "titulo": "1exchange · Explore Investment Opportunities",
+              "url": "https://www.1x.exchange/investment-opportunities",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_profesionales",
+            "detalle": "No es para particulares: inversores acreditados o institucionales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+            "fuentes": [
+              {
+                "id": "onex-oportunidades",
+                "tipo": "empresa",
+                "titulo": "1exchange · Explore Investment Opportunities",
+                "url": "https://www.1x.exchange/investment-opportunities",
+                "primaria": true,
+                "consultadaEl": "2026-11-27"
+              }
+            ]
+          }
+        ]
+      }
+    },
     {
       "slug": "addx",
       "verificacionLocal": {
@@ -3683,6 +3748,71 @@
                 "tipo": "regulador",
                 "titulo": "NYDFS approval of PAX Gold",
                 "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+                "primaria": true,
+                "consultadaEl": "2026-11-27"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "pruv",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-27",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Su app enseña hoy fondos tokenizados con mínimo, plazo de reembolso y suscripción en curso.",
+          "fuentes": [
+            {
+              "id": "pruv-productos",
+              "tipo": "empresa",
+              "titulo": "Pruv · productos",
+              "url": "https://app.pruv.finance/product",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "Dice participar en el sandbox de la OJK de Indonesia, que no es una licencia; no lo hemos comprobado en la OJK.",
+          "fuentes": [
+            {
+              "id": "pruv-web",
+              "tipo": "empresa",
+              "titulo": "Pruv · web",
+              "url": "https://pruv.finance/",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Se entra con registro en su app; no publica qué países admite.",
+          "fuentes": [
+            {
+              "id": "pruv-productos",
+              "tipo": "empresa",
+              "titulo": "Pruv · productos",
+              "url": "https://app.pruv.finance/product",
+              "primaria": true,
+              "consultadaEl": "2026-11-27"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "fuera_ue",
+            "detalle": "Plataforma de Indonesia en un sandbox, sin licencia comprobada. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+            "fuentes": [
+              {
+                "id": "pruv-web",
+                "tipo": "empresa",
+                "titulo": "Pruv · web",
+                "url": "https://pruv.finance/",
                 "primaria": true,
                 "consultadaEl": "2026-11-27"
               }

@@ -2,7 +2,7 @@
   "version": 1,
   "verificadoEl": "2026-11-27",
   "publicable": false,
-  "alcance": "Revisión editorial de fuentes primarias del 27/11/2026: las 109 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan (tres por lectura a mano); las entregas 2026-11-27 y 2026-11-27.2 añaden 8 y 6 plataformas de los informes globales de ese día, con sus 23 fuentes leídas el mismo día. No acredita onboarding, oferta abierta ni rentabilidad.",
+  "alcance": "Revisión editorial de fuentes primarias del 27/11/2026: las 109 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan (tres por lectura a mano); las entregas 2026-11-27 y 2026-11-27.2 añaden 8 y 8 plataformas de los informes globales de ese día, con sus 26 fuentes leídas el mismo día. No acredita onboarding, oferta abierta ni rentabilidad.",
   "politicaFechaCanonica": "Las fechas canónicas de julio/agosto de 2026 se conservan. Esta capa no las rejuvenece y solo añade evidencia fechada, matices y alertas.",
   "fuentes": [
     {
@@ -1061,9 +1061,68 @@
       "url": "https://www.nyala.de/en/products/electronic-securities",
       "primaria": true,
       "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "onex-oportunidades",
+      "tipo": "empresa",
+      "titulo": "1exchange · Explore Investment Opportunities",
+      "url": "https://www.1x.exchange/investment-opportunities",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "pruv-web",
+      "tipo": "empresa",
+      "titulo": "Pruv · web",
+      "url": "https://pruv.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
+    },
+    {
+      "id": "pruv-productos",
+      "tipo": "empresa",
+      "titulo": "Pruv · productos",
+      "url": "https://app.pruv.finance/product",
+      "primaria": true,
+      "consultadaEl": "2026-11-27"
     }
   ],
   "plataformas": [
+    {
+      "slug": "1exchange",
+      "nombre": "1exchange",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su web lista hoy 22 valores tokenizados en su mercado secundario, que funciona cuando casan órdenes de compra y de venta.",
+        "fuentes": [
+          "onex-oportunidades"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice ser un mercado reconocido por la MAS de Singapur (n.º de sociedad 201720273R); no lo hemos comprobado en el registro de la MAS.",
+        "fuentes": [
+          "onex-oportunidades"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "En Singapur, solo inversores acreditados o institucionales; los de otros países, según su ley local y la admisión de 1X.",
+        "fuentes": [
+          "onex-oportunidades"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_profesionales",
+          "detalle": "No es para particulares: inversores acreditados o institucionales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "onex-oportunidades"
+          ]
+        }
+      ]
+    },
     {
       "slug": "addx",
       "nombre": "ADDX",
@@ -2916,6 +2975,41 @@
           "fuentes": [
             "paxg-web",
             "paxg-nydfs"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pruv",
+      "nombre": "Pruv",
+      "fechaCanonicaConservada": "2026-11-27",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Su app enseña hoy fondos tokenizados con mínimo, plazo de reembolso y suscripción en curso.",
+        "fuentes": [
+          "pruv-productos"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Dice participar en el sandbox de la OJK de Indonesia, que no es una licencia; no lo hemos comprobado en la OJK.",
+        "fuentes": [
+          "pruv-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Se entra con registro en su app; no publica qué países admite.",
+        "fuentes": [
+          "pruv-productos"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "fuera_ue",
+          "detalle": "Plataforma de Indonesia en un sandbox, sin licencia comprobada. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+          "fuentes": [
+            "pruv-web"
           ]
         }
       ]

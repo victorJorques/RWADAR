@@ -3,11 +3,11 @@
   "fecha": "2026-11-27",
   "etiqueta": "2026-11-27.2",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
-  "revisionNueva": "bfb446d0-66e3-2039-5b90-b099c7ff566e",
+  "revisionNueva": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
   "decision": "Órdenes de la dirección del 27/11/2026: «el resto pon que está verificado hasta el día de hoy» y añadir las ofertas del suplemento de ese día. Las fichas se re-fechan solo con lo leído hoy; entran las ofertas con fuente primaria y condiciones comprobadas.",
   "archivos": {
-    "altas.json": "a061d4e4c7120e95e466a94a6e12acb59ac78c6b27ee05b29176c18a6f91783b",
-    "fuentes/lecturas-2026-11-27.json": "f26af8a275470e18b35d1a8bf4a616f646b56df56f5b71cbfb2e15b98b7d662e",
+    "altas.json": "3d092e2481008b26f9b8745505ae9f69b4d45d8413b63ec3d8b93fb60b47de9e",
+    "fuentes/lecturas-2026-11-27.json": "1e6c754e3f6d9bc336ff17c7619b8e8d606867c3c09f01e7c643bd877d8f2139",
     "fuentes/releidas-2026-11-27.txt": "468534a87e9ddb470053002e97a6a0c8d24b3960daec541afb5dfd8da80548c8",
     "refechado.json": "ad14e5ba15ce2e0d8fde28df07fd6d2f7427a20ed904e9b4d40723093ebae2ef",
     "base-refechada-escaparate.json": "beec73ff6cab281e3f8bae1daa086a9af7400b56384031b31bd6b3f5183998c1",
@@ -22,7 +22,9 @@
       "daiwa-securities",
       "ex-io",
       "osl",
-      "conda"
+      "conda",
+      "1exchange",
+      "pruv"
     ],
     "ofertas": [
       "hwk-1365-zukunftsanleihe",

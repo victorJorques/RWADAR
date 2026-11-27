@@ -1,7 +1,7 @@
 {
   "fecha": "2026-11-27",
-  "fuentesNuevas": 9,
-  "correctas": 9,
+  "fuentesNuevas": 12,
+  "correctas": 12,
   "contraste": [
     {
       "id": "hwk-anleihe",
@@ -111,6 +111,43 @@
       "comprobaciones": [
         "DEVOLO solutions - Anleihe 2026",
         "supervised by BaFin"
+      ],
+      "ok": true
+    },
+    {
+      "id": "onex-oportunidades",
+      "url": "https://www.1x.exchange/investment-opportunities",
+      "horaUtc": "2026-11-27T12:28:03Z",
+      "copia": "fuentes/onex-oportunidades.txt",
+      "sha256": "3d9714af9883b488b90597acd2df65494a6f371471554ab1ce5828a877b94d6d",
+      "comprobaciones": [
+        "Recognised Market Operator",
+        "Accredited Investors or Institutional Investors",
+        "View all 22 tokens"
+      ],
+      "ok": true
+    },
+    {
+      "id": "pruv-web",
+      "url": "https://pruv.finance/",
+      "horaUtc": "2026-11-27T12:29:30Z",
+      "copia": "fuentes/pruv-web.txt",
+      "sha256": "637a950bff6e2523defd98a485998fe74d265cd34166bf852787f241062af97c",
+      "comprobaciones": [
+        "OJK Financial Sector Technology Innovation Sandbox",
+        "S-445/IK\\.01/2025"
+      ],
+      "ok": true
+    },
+    {
+      "id": "pruv-productos",
+      "url": "https://app.pruv.finance/product",
+      "horaUtc": "2026-11-27T12:29:13Z",
+      "copia": "fuentes/pruv-productos.txt",
+      "sha256": "cd4a2e2da94f625934e3ae69d6426bf4d799fd8050938f81a193ee739c75f059",
+      "comprobaciones": [
+        "Minimum Investment",
+        "Time to Redemption"
       ],
       "ok": true
     }

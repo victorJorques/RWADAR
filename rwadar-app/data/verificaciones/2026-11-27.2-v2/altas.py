@@ -1,5 +1,5 @@
 # Entrega 2026-11-27.2 · altas del suplemento de ofertas del 27/11/2026 (informe de investigación global), verificadas a
-# mano el 27/11/2026: 8 ofertas y 6 plataformas nuevas, cada dato con la fuente primaria leída ese día como visitante
+# mano el 27/11/2026: 8 ofertas y 8 plataformas nuevas, cada dato con la fuente primaria leída ese día como visitante
 # (fuentes/lecturas-2026-11-27.json y sus copias, con los nombres de personas retirados).
 #
 # No entran (y por qué): renga n.º 4 (sorteo hasta el 01/12, antes de que caduque la ficha); KLDX/Synergy (sin prueba de
@@ -7,7 +7,12 @@
 # incompletos o sin identificar el activo); Global X 3416, Nomura Landport, Kenedix y ALTERNA residencias (para otro
 # ciclo); Mesh CCS Income Notes (su FAQ dice que la oferta pública cerraba el 03/10/2026 y nada leído hoy prueba que
 # siga abierta); INANAM (Form D de la SEC con 403 y solo inversores acreditados); Tidefront (el emisor dice que su
-# información no puede distribuirse en público); Mesh SLVR y TGLD, STOKR, ODX y Bitfinex (productos sin términos comprobados hoy o solo de vigilancia).
+# información no puede distribuirse en público); del consolidado de cierre: Baillie Gifford BAGEY (sus PDF dan 403 y es una
+# gestora sin plataforma propia), TPLUS y ULTRA de EX.IO (sus páginas bloquean el acceso desde aquí), los listados de 1exchange
+# (mercado secundario sin órdenes legibles: entra solo la plataforma), los inmuebles de Lofty (precio de su mercado, sin
+# libro de órdenes leído), Midas mWIN, mGLO y mGLOeuro (sin mínimo ni países publicados; la web de Midas da 403), Touchstone
+# D-Square Shin-Sapporo (el folleto de EDINET no se puede extraer y las solicitudes empiezan el 14/12) y los fondos de Pruv
+# (sin documentos de los fondos: entra solo la plataforma); Mesh SLVR y TGLD, STOKR, ODX y Bitfinex (productos sin términos comprobados hoy o solo de vigilancia).
 #   python3 rwadar-app/data/verificaciones/2026-11-27.2-v2/altas.py
 import json, os, re
 
@@ -99,6 +104,30 @@ PLATAFORMAS = [
      'licenciaRegistro': campo('no_verificable', 'Dice ser proveedor autorizado de financiación participativa (reglamento (UE) 2020/1503); no lo hemos comprobado en el registro de ESMA.', 'conda-devolo'),
      'acceso': campo('confirmado_condicionado', 'El bono de devolo se ofrece en Austria y Alemania.', 'conda-devolo'),
      'alertasCriticas': [alerta('solo_algunos_paises', 'Lo que ofrece depende de cada campaña y de los países en que se ofrece; el bono de devolo no se ofrece en España.', 'conda-devolo')]}},
+  {'slug': '1exchange', 'nombre': '1exchange',
+   'publica': {'categoria_slug': 'tesoro-y-fondos', 'region_slug': 'asia-pacifico', 'actor': 'Marketplace', 'acceso': 'Institucional', 'ticket': 'Medio',
+               'cadenas': 'No la publica', 'web': U['onex-oportunidades'],
+               'aval': 'Según su web, 1X Exchange Pte. Ltd. es un mercado reconocido (Recognised Market Operator) por la Autoridad Monetaria de Singapur (MAS); no lo hemos comprobado en el registro de la MAS.',
+               'nota': 'Mercado secundario de Singapur para valores tokenizados: lista 22 (fondos monetarios y de oro, acciones de EE. UU. referenciadas y participaciones privadas de Malasia), que se compran y venden entre inversores.'},
+   'fuentes': [fuente('onex-oportunidades', 'empresa', '1exchange · Explore Investment Opportunities')],
+   'comprobaciones': {'onex-oportunidades': ['Recognised Market Operator', 'Accredited Investors or Institutional Investors', 'View all 22 tokens']},
+   'radar': {
+     'estadoOperativo': campo('observada', 'Su web lista hoy 22 valores tokenizados en su mercado secundario, que funciona cuando casan órdenes de compra y de venta.', 'onex-oportunidades'),
+     'licenciaRegistro': campo('no_verificable', 'Dice ser un mercado reconocido por la MAS de Singapur (n.º de sociedad 201720273R); no lo hemos comprobado en el registro de la MAS.', 'onex-oportunidades'),
+     'acceso': campo('confirmado_condicionado', 'En Singapur, solo inversores acreditados o institucionales; los de otros países, según su ley local y la admisión de 1X.', 'onex-oportunidades'),
+     'alertasCriticas': [alerta('solo_profesionales', 'No es para particulares: inversores acreditados o institucionales. ' + FUERA_UE, 'onex-oportunidades')]}},
+  {'slug': 'pruv', 'nombre': 'Pruv',
+   'publica': {'categoria_slug': 'tesoro-y-fondos', 'region_slug': 'asia-pacifico', 'actor': 'Marketplace', 'acceso': 'Minorista', 'ticket': 'Bajo',
+               'cadenas': 'No la publica', 'web': U['pruv-web'],
+               'aval': 'Según su web, PT Desentra Teknologi Indonesia participa en el sandbox de innovación financiera de la OJK (carta S-445/IK.01/2025); un sandbox no es una licencia y no lo hemos comprobado en la OJK.',
+               'nota': 'Plataforma de tokenización de Indonesia que ofrece en su app fondos tokenizados (monetarios y de crédito privado) que se suscriben con USDT.'},
+   'fuentes': [fuente('pruv-web', 'empresa', 'Pruv · web'), fuente('pruv-productos', 'empresa', 'Pruv · productos')],
+   'comprobaciones': {'pruv-web': ['OJK Financial Sector Technology Innovation Sandbox', 'S-445/IK\\.01/2025'], 'pruv-productos': ['Minimum Investment', 'Time to Redemption']},
+   'radar': {
+     'estadoOperativo': campo('observada', 'Su app enseña hoy fondos tokenizados con mínimo, plazo de reembolso y suscripción en curso.', 'pruv-productos'),
+     'licenciaRegistro': campo('no_verificable', 'Dice participar en el sandbox de la OJK de Indonesia, que no es una licencia; no lo hemos comprobado en la OJK.', 'pruv-web'),
+     'acceso': campo('no_verificable', 'Se entra con registro en su app; no publica qué países admite.', 'pruv-productos'),
+     'alertasCriticas': [alerta('fuera_ue', 'Plataforma de Indonesia en un sandbox, sin licencia comprobada. ' + FUERA_UE, 'pruv-web')]}},
 ]
 
 # ------------------------------------------------------------------ ofertas

@@ -134,6 +134,9 @@
     "osl-tkusd": ["SFC-authorized fund", "as low as \\$1 USD"],
     "osl-tkusd-faq": ["tokenized shares are initially listed, distributed, and custodied on OSL"],
     "conda-devolo": ["zugelassener Dienstleister für Schwarmfinanzierung gemäß VO \\(EU\\) 2020/1503", "Angeboten in"],
-    "nyala-registro": ["DEVOLO solutions - Anleihe 2026", "supervised by BaFin"]
+    "nyala-registro": ["DEVOLO solutions - Anleihe 2026", "supervised by BaFin"],
+    "onex-oportunidades": ["Recognised Market Operator", "Accredited Investors or Institutional Investors", "View all 22 tokens"],
+    "pruv-web": ["OJK Financial Sector Technology Innovation Sandbox", "S-445/IK\\.01/2025"],
+    "pruv-productos": ["Minimum Investment", "Time to Redemption"]
   }
 }

@@ -95,11 +95,18 @@ personas; índice con hora y SHA-256 en `fuentes/lecturas-2026-11-27.json`).
   monetario en HKD de HSBC, MUFG Realty Token Kioicho (en camino; solicitudes del 01/12 al 08/12), USTNT de EX.IO (solo
   profesionales), el monetario en dólares de Taikang en OSL (desde 1 USD) y el bono de devolo en CONDA (no se ofrece en
   España).
-- **6 plataformas nuevas:** HWK 1365, HSBC, Daiwa Securities, EX.IO, OSL y CONDA. Radar: 71; ofertas: 40 (24
+- **8 plataformas nuevas:** HWK 1365, HSBC, Daiwa Securities, EX.IO, OSL, CONDA, 1exchange (mercado secundario de
+  Singapur, solo acreditados o institucionales) y Pruv (Indonesia, sandbox de la OJK). Radar: 73; ofertas: 40 (24
   principales, 13 de reventa y 3 en camino).
 - **Fuera, con motivo** (cabecera de `altas.py`): Mesh CCS Income Notes (su FAQ dice que la oferta pública cerraba el
   03/10/2026 y nada leído hoy prueba que siga abierta), INANAM (Form D con 403 y solo acreditados), Tidefront (el
   emisor dice que su información no puede distribuirse en público), y las del suplemento sin términos comprobados hoy.
+  Del consolidado, revisadas una a una a petición de Víctor (lectura con navegador a las 12:27–12:30 UTC): Baillie
+  Gifford BAGEY (sus PDF dan 403 y es una gestora sin plataforma propia), TPLUS y ULTRA de EX.IO (bloqueo por país), los
+  22 listados de 1exchange (sin órdenes legibles: entra la plataforma), los inmuebles de Lofty (precio de su mercado sin
+  libro de órdenes leído), Midas mWIN, mGLO y mGLOeuro (sin mínimo ni países; la web de Midas da 403), Touchstone
+  D-Square Shin-Sapporo (el folleto de EDINET no se puede extraer; solicitudes desde el 14/12) y los fondos de Pruv (sin
+  documentos de los fondos: entra la plataforma).
   EX.IO bloquea sus páginas de producto desde EE. UU.: no se eludió, se usó su anuncio público.
 - **Noticias, edición b:** entran los supervisores de Canadá (fase 2 del proyecto de tokenización) y el Banco Nacional
   Suizo (registro común de valores y dinero digital); salen SBI Solana Global y BCE y estándares DLT. Dos verificadores

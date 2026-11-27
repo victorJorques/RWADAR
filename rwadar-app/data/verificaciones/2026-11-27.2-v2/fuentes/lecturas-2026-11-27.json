@@ -102,5 +102,29 @@
   "archivo": "fuentes/nyala-registro.txt",
   "sha256": "2c9abac86c9eba3351c75279d715a76b37b09035a9f7b8c4afdace06f42b4073",
   "nota": "texto visible con Chromium; nombres de personas retirados"
+ },
+ "onex-oportunidades": {
+  "url": "https://www.1x.exchange/investment-opportunities",
+  "horaUtc": "2026-11-27T12:28:03Z",
+  "http": 200,
+  "archivo": "fuentes/onex-oportunidades.txt",
+  "sha256": "3d9714af9883b488b90597acd2df65494a6f371471554ab1ce5828a877b94d6d",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "pruv-web": {
+  "url": "https://pruv.finance/",
+  "horaUtc": "2026-11-27T12:29:30Z",
+  "http": 200,
+  "archivo": "fuentes/pruv-web.txt",
+  "sha256": "637a950bff6e2523defd98a485998fe74d265cd34166bf852787f241062af97c",
+  "nota": "texto visible con Chromium; sin nombres de personas"
+ },
+ "pruv-productos": {
+  "url": "https://app.pruv.finance/product",
+  "horaUtc": "2026-11-27T12:29:13Z",
+  "http": 200,
+  "archivo": "fuentes/pruv-productos.txt",
+  "sha256": "cd4a2e2da94f625934e3ae69d6426bf4d799fd8050938f81a193ee739c75f059",
+  "nota": "texto visible con Chromium; sin nombres de personas"
  }
 }

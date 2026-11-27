@@ -419,6 +419,145 @@
      }
     ]
    }
+  },
+  {
+   "slug": "1exchange",
+   "nombre": "1exchange",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Institucional",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://www.1x.exchange/investment-opportunities",
+    "aval": "Según su web, 1X Exchange Pte. Ltd. es un mercado reconocido (Recognised Market Operator) por la Autoridad Monetaria de Singapur (MAS); no lo hemos comprobado en el registro de la MAS.",
+    "nota": "Mercado secundario de Singapur para valores tokenizados: lista 22 (fondos monetarios y de oro, acciones de EE. UU. referenciadas y participaciones privadas de Malasia), que se compran y venden entre inversores."
+   },
+   "fuentes": [
+    {
+     "id": "onex-oportunidades",
+     "tipo": "empresa",
+     "titulo": "1exchange · Explore Investment Opportunities",
+     "url": "https://www.1x.exchange/investment-opportunities",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "onex-oportunidades": [
+     "Recognised Market Operator",
+     "Accredited Investors or Institutional Investors",
+     "View all 22 tokens"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web lista hoy 22 valores tokenizados en su mercado secundario, que funciona cuando casan órdenes de compra y de venta.",
+     "fuentes": [
+      "onex-oportunidades"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser un mercado reconocido por la MAS de Singapur (n.º de sociedad 201720273R); no lo hemos comprobado en el registro de la MAS.",
+     "fuentes": [
+      "onex-oportunidades"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "En Singapur, solo inversores acreditados o institucionales; los de otros países, según su ley local y la admisión de 1X.",
+     "fuentes": [
+      "onex-oportunidades"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "solo_profesionales",
+      "detalle": "No es para particulares: inversores acreditados o institucionales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "onex-oportunidades"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "pruv",
+   "nombre": "Pruv",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://pruv.finance/",
+    "aval": "Según su web, PT Desentra Teknologi Indonesia participa en el sandbox de innovación financiera de la OJK (carta S-445/IK.01/2025); un sandbox no es una licencia y no lo hemos comprobado en la OJK.",
+    "nota": "Plataforma de tokenización de Indonesia que ofrece en su app fondos tokenizados (monetarios y de crédito privado) que se suscriben con USDT."
+   },
+   "fuentes": [
+    {
+     "id": "pruv-web",
+     "tipo": "empresa",
+     "titulo": "Pruv · web",
+     "url": "https://pruv.finance/",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "id": "pruv-productos",
+     "tipo": "empresa",
+     "titulo": "Pruv · productos",
+     "url": "https://app.pruv.finance/product",
+     "primaria": true,
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "comprobaciones": {
+    "pruv-web": [
+     "OJK Financial Sector Technology Innovation Sandbox",
+     "S-445/IK\\.01/2025"
+    ],
+    "pruv-productos": [
+     "Minimum Investment",
+     "Time to Redemption"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su app enseña hoy fondos tokenizados con mínimo, plazo de reembolso y suscripción en curso.",
+     "fuentes": [
+      "pruv-productos"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice participar en el sandbox de la OJK de Indonesia, que no es una licencia; no lo hemos comprobado en la OJK.",
+     "fuentes": [
+      "pruv-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Se entra con registro en su app; no publica qué países admite.",
+     "fuentes": [
+      "pruv-productos"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Plataforma de Indonesia en un sandbox, sin licencia comprobada. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "pruv-web"
+      ]
+     }
+    ]
+   }
   }
  ],
  "ofertas": [

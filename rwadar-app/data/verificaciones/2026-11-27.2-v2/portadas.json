@@ -1,5 +1,5 @@
 {
-  "nota": "Portadas de las 6 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
+  "nota": "Portadas de las 8 plataformas nuevas de la entrega 2026-11-27.2: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
   "portadas": [
     {
       "empresa": "HWK 1365",
@@ -48,6 +48,22 @@
       "descripcionVisual": "Una calle de una ciudad centroeuropea con edificios clásicos y tranvía, imagen genérica de la plataforma de financiación participativa; no es su oficina.",
       "prompt": "empty classic central European city street with historic facades and a parked tram at dawn, deserted, soft natural light, no signs",
       "paginaReferencia": "https://conda-capital.com/campaign/devolo-solutions-anleihe/"
+    },
+    {
+      "empresa": "1exchange",
+      "maestro": "1exchange.webp",
+      "semilla": 991,
+      "descripcionVisual": "El paseo junto a la bahía de Marina Bay, en Singapur, por la mañana, por el mercado de Singapur; no es su oficina.",
+      "prompt": "empty waterfront promenade at Marina Bay in Singapore in the early morning, calm water, city towers behind, soft natural light, no logos",
+      "paginaReferencia": "https://www.1x.exchange/investment-opportunities"
+    },
+    {
+      "empresa": "Pruv",
+      "maestro": "pruv.webp",
+      "semilla": 997,
+      "descripcionVisual": "Torres de oficinas de Yakarta al amanecer, por la plataforma de Indonesia; no es su oficina.",
+      "prompt": "skyline of office towers in central Jakarta at sunrise seen from a distance, light haze, soft natural light, no logos",
+      "paginaReferencia": "https://pruv.finance/"
     }
   ]
 }

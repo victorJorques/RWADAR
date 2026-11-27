@@ -1,8 +1,8 @@
-// Ensayo local de la entrega «2026-11-27.2» (las 32 ofertas re-fechadas al 27/11 con lo leído hoy, 8 ofertas y 6
+// Ensayo local de la entrega «2026-11-27.2» (las 32 ofertas re-fechadas al 27/11 con lo leído hoy, 8 ofertas y 8
 // plataformas nuevas del suplemento de ofertas del 27/11) en PGlite, sin red, sobre la misma cadena que producción (el
 // seed de antes de ARTEX y los lotes del 22/10 a la 2026-11-27, con la migración 38 tras el 2026-11-20). Adaptado de la
 // 2026-11-27. Comprueba el inventario del SQL, que antes de aplicar PGlite enseña lo publicado, que después queda la
-// revisión nueva (71 plataformas, 40 ofertas 24/13/3) con las de antes iguales salvo fechas de consulta y el libro de
+// revisión nueva (73 plataformas, 40 ofertas 24/13/3) con las de antes iguales salvo fechas de consulta y el libro de
 // Brickwise, el lector de la web y de la app, el sincronizador y las fichas, y que con producción distinta falla sin dejar nada.
 //
 //   node rwadar-app/data/verificaciones/2026-11-27.2-v2/comprobar-entrega.mjs [--exportar=DIR]
@@ -81,7 +81,7 @@ const cuenta = Object.fromEntries([...new Set(escrituras)].map(e => [e, escritur
 assert.deepEqual(Object.keys(cuenta).sort(), ['rwadar_catalogo.alerta_fuentes', 'rwadar_catalogo.alertas', 'rwadar_catalogo.fuentes',
   'rwadar_catalogo.ofertas', 'rwadar_catalogo.plataforma_fuentes', 'rwadar_catalogo.plataformas', 'rwadar_catalogo.revisiones']);
 assert.equal(cuenta['rwadar_catalogo.revisiones'], 1); assert.equal(cuenta['rwadar_catalogo.plataformas'], NP);
-assert.equal(cuenta['rwadar_catalogo.ofertas'], NO); assert.equal(cuenta['rwadar_catalogo.fuentes'], 132);
+assert.equal(cuenta['rwadar_catalogo.ofertas'], NO); assert.equal(cuenta['rwadar_catalogo.fuentes'], 135);
 assert.ok(catalogo.every(l => / on conflict \((?:id|revision_id,id|revision_id,plataforma_id|revision_id,slug)\) do nothing;$| on conflict do nothing;$/.test(l)), 'todos los inserts son idempotentes');
 assert.ok(catalogo.every(l => l.includes(`'${NUEVA}'::uuid`)), 'todos los inserts del catálogo son de la revisión nueva');
 for (const s of ALTAS) assert.equal(catalogo.filter(l => l.startsWith('insert into rwadar_catalogo.ofertas') && l.includes(`'${s}'`)).length, 1, `${s}: entra en el lote`);

@@ -1,7 +1,7 @@
 {
   "versionEsquema": 2,
-  "revisionId": "bfb446d0-66e3-2039-5b90-b099c7ff566e",
-  "hash": "bfb446d066e320395b90b099c7ff566eb89963f91431f21619e1a619b5cac401",
+  "revisionId": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "hash": "38ee1fa9aadd6c0ab1e7d2a4f006b6ca5bcf2eda35a1c7180f8ddad9a690494a",
   "revisionAnterior": "529a54f7-0c13-4b07-0433-3b67273bdd86",
   "hashRevisionAnterior": "529a54f70c134b0704333b67273bdd86413b8cb122192e9889372763b63fb420",
   "revisionAnteriorComprobadaEnRemoto": true,
@@ -9,7 +9,7 @@
   "etiqueta": "2026-11-27.2",
   "fechaRadar": "2026-11-27",
   "revisionDocumental": "2026-11-27",
-  "plataformas": 71,
+  "plataformas": 73,
   "ofertas": 40,
   "colecciones": {
     "principales": 24,
@@ -35,7 +35,9 @@
     "daiwa-securities",
     "ex-io",
     "osl",
-    "conda"
+    "conda",
+    "1exchange",
+    "pruv"
   ],
   "retiradas": 0,
   "tablasPublicas": [

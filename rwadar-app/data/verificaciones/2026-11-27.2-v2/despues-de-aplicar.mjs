@@ -1,8 +1,8 @@
 // Entrega «2026-11-27.2» · lo que cambia (adaptado de la 2026-11-27 y de la 2026-11-26.3) en el repositorio DESPUÉS de aplicar el SQL en Supabase y de sincronizar
-// (`node rwadar-app/sincronizar.js`). Sin red: solo lee y escribe archivos del repositorio. Aquí se dan de alta 6
+// (`node rwadar-app/sincronizar.js`). Sin red: solo lee y escribe archivos del repositorio. Aquí se dan de alta 8
 // plataformas del radar y 8 ofertas, y se re-fechan las ofertas comprobadas hoy.
 //
-//   1. Comprueba que el catálogo sincronizado es la revisión nueva: 71 plataformas y 40 ofertas (24/13/3), con las
+//   1. Comprueba que el catálogo sincronizado es la revisión nueva: 73 plataformas y 40 ofertas (24/13/3), con las
 //      altas de altas.json. Si no, no toca nada.
 //   2. Lista cerrada de fichas (rwadar-fichas-manifiesto.js): entran las páginas de las plataformas y ofertas nuevas,
 //      en su orden alfabético. Sin eso, rwadar-fichas.js no las genera y el worker no las sirve.
