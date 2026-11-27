@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-27: 8 plataformas del radar, radar comprobado y noticias del 27/11",
+  "nota": "Catálogo 2026-11-27.2 aplicado (revisión 38ee1fa9): 73 plataformas, 40 ofertas",
   "revisionAprobada": {
-    "commit": "680ebdf192ce44529d1afe15a76428d12e4e13a6",
-    "contenidoSha256": "sha256:1ce2846d5ff1f228e1e31f1ca0f61a8f3a315d10b714fa5760a12ce8588548c9",
+    "commit": "9051ccf2458db27da4a65ce14a6f31c4631d4584",
+    "contenidoSha256": "sha256:4f93b06cfda96b0485cbae64ab0d9ea64b5d74cb1a9e839aad3b74da2f2dac68",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

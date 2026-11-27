@@ -264,7 +264,7 @@ OFERTAS = [
      ref('Reembolso', 'El anuncio no lo explica: lo dicen los documentos del fondo, en la app y la web de HSBC', 'hsbc-classsd', None, 'Anuncio: los documentos del fondo están en la app y en la web de HSBC.')],
     {'supervisada': crit(False, 'Fondo y banco de Hong Kong; no está autorizado por un supervisor de la UE ni inscrito en la CNMV.', 'hsbc-classsd', 'HSBC · anuncio del 19/11/2026'),
      'documentoEspana': crit(False, 'No hay KID europeo; los documentos del fondo son de Hong Kong.', 'hsbc-classsd', 'HSBC · anuncio del 19/11/2026'),
-     'minimoCorto': '100 HKD', 'salidaCorta': 'Según el folleto del fondo', 'puntos': [{'texto': 'Fondo monetario de 1991, ahora con clase tokenizada', 'fuente': tr('hsbc-classsd', 'HSBC · anuncio del 19/11/2026')}]},
+     'minimoCorto': '100 HKD', 'salidaCorta': 'Según el folleto del fondo', 'puntos': [{'texto': 'Fondo de 1991 con clase tokenizada', 'fuente': tr('hsbc-classsd', 'HSBC · anuncio del 19/11/2026')}]},
     {'escena': 'tesoro', 'lugar': 'Hong Kong', 'pasos': ['Pagas con RedCoin en la app', 'El fondo invierte a corto plazo', 'Lees el folleto en la app'], 'concepto': 'el distrito financiero de Hong Kong',
      'foto': {'semilla': 919, 'encuadre': '70% 50%', 'concepto': 'rascacielos del distrito Central de Hong Kong vistos desde arriba, no la sede del banco', 'prompt': 'aerial view over the skyscrapers of Central district in Hong Kong in morning haze, green hills behind'}}),
 
@@ -344,7 +344,7 @@ OFERTAS = [
      ref('Reembolso', 'En la app de OSL, sin comisión de reembolso según OSL', 'osl-tkusd', '2025-12-17', 'Página del fondo en OSL, fechada el 17/12/2025.')],
     {'supervisada': crit(False, 'Según OSL, el fondo lo autorizó la SFC de Hong Kong (no lo hemos comprobado), no un supervisor de la UE; no está inscrito en la CNMV.', 'osl-tkusd', 'OSL · Taikang Kaitai USD Money Market Fund'),
      'documentoEspana': crit(False, 'No hay KID europeo; los documentos del fondo son de Hong Kong.', 'osl-tkusd', 'OSL · Taikang Kaitai USD Money Market Fund'),
-     'minimoCorto': '1 USD', 'salidaCorta': 'Reembolso en la app', 'puntos': [{'texto': 'Sin comisiones de suscripción ni de reembolso', 'fuente': tr('osl-tkusd', 'OSL · Taikang Kaitai USD Money Market Fund')}]},
+     'minimoCorto': '1 USD', 'salidaCorta': 'Reembolso en la app', 'puntos': [{'texto': 'Sin comisión de entrada ni de salida', 'fuente': tr('osl-tkusd', 'OSL · Taikang Kaitai USD Money Market Fund')}]},
     {'escena': 'tesoro', 'lugar': 'Hong Kong', 'pasos': ['Suscribes en la app de OSL', 'El fondo rinde cada día', 'Reembolsas en la app'], 'concepto': 'depósitos bancarios en dólares',
      'foto': {'semilla': 953, 'encuadre': '70% 50%', 'concepto': 'el skyline de Kowloon visto desde el agua al atardecer, no la sede de la gestora', 'prompt': 'Kowloon waterfront skyline in Hong Kong seen from the water at sunset, calm sea, soft natural light'}}),
 

@@ -78,6 +78,16 @@ if (escribirLista(nuevas) !== antes) {
   }
   // Las re-fechadas hoy: su entrada pasa a la fecha de comprobación del catálogo (si no, transparencia.mjs no las enseña).
   for (const o of snap.ofertas) if (t.ofertas[o.slug].verificadaEl !== o.verificadaEl) t.ofertas[o.slug].verificadaEl = o.verificadaEl;
+  // Sus comprobaciones (supervisada, documentoEspana): al 27/11 solo si su fuente se leyó hoy, con el mismo
+  // criterio que refechar.py (relectura de las 11:08–11:24 UTC, vigía de las 10:19 y la nota de Amundi de las 09:52).
+  const leidasHoy = new Set(['https://about.amundi.com/article/amundi-extends-tokenisation-index-investing']);
+  for (const l of fs.readFileSync(path.join(DIR, 'fuentes/releidas-2026-11-27.txt'), 'utf8').split('\n').slice(1).filter(Boolean)) {
+    const [, , http, , , tam, url] = l.split(' '); if (http === '200' && Number(tam) > 40) leidasHoy.add(url);
+  }
+  for (const f of JSON.parse(fs.readFileSync(path.join(DIR, 'vigia.json'), 'utf8')).fuentes) if (f.http === 200) leidasHoy.add(f.url);
+  for (const o of snap.ofertas) if (o.verificadaEl === FECHA) for (const k of ['supervisada', 'documentoEspana']) {
+    const c = t.ofertas[o.slug][k]; if (c.consultadaEl < FECHA && leidasHoy.has(c.fuente.url)) c.consultadaEl = FECHA;
+  }
   t.lote = ETIQUETA; t.revisionCatalogo = revision.revisionId; t.revisadoEl = FECHA;
   assert.deepEqual(Object.keys(t.ofertas).sort(), snap.ofertas.map(o => o.slug).sort(), 'transparencia.json no casa con las ofertas');
   const valida = cargarTransparencia({ raiz: ROOT, datos: t });

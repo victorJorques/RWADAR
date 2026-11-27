@@ -396,7 +396,9 @@ test('26 · con el catálogo publicado de hoy salen las de Spiko con su cifra y 
   const ahora = new Date(verificada + 'T12:00:00Z');
   const r = c.ofertasConRentabilidad(emi, { ahora });
   const conCifra = emi.filter((o) => o.coleccion === 'principales' && o.estadoRevision === 'actual' && o.rentabilidad && /^\d+(,\d+)?\s%$/.test(o.rentabilidad.mostrada));
-  eq(r.map((o) => o.slug), conCifra.map((o) => o.slug), 'todas las principales vigentes con una cifra publicada, y solo esas');
+  // Como mucho MAX_OFERTAS (27/11/2026: ya hay más principales con cifra que el tope).
+  eq(r.map((o) => o.slug), conCifra.slice(0, c.MAX_OFERTAS).map((o) => o.slug), 'las principales vigentes con una cifra publicada, hasta el tope, y solo esas');
+  assert.ok(r.length === Math.min(conCifra.length, c.MAX_OFERTAS));
   for (const o of r) {
     const original = emi.find((x) => x.slug === o.slug);
     assert.equal(o.texto, original.rentabilidad.mostrada.trim());
