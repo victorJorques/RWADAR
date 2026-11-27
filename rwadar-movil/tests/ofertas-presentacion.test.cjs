@@ -227,8 +227,12 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
       assert.ok(textoDetalle.includes(aviso.texto), `${o.slug}: ${aviso.texto}`);
     }
     assert.match(textoDetalle, /Lo esencial/);
+    // Cada oferta con su propia fecha de comprobación (27/11/2026: las que no se pudieron releer conservan
+    // la anterior y caducan antes): válidas 7 días desde esa fecha.
+    const suya = String(o.verificadaEl || revisadas).slice(0, 10);
+    const restan = 5 - Math.round((Date.parse(revisadas + 'T00:00:00Z') - Date.parse(suya + 'T00:00:00Z')) / 86400000);
     assert.match(esencial(detalle, 'Cifras'), o.coleccion === 'principales' && o.estadoRevision === 'actual'
-      ? new RegExp(`^Revisadas el ${revisadasES.replace(/\//g, '\\/')} · válidas 5 días más$`) : /sin confirmar|conflicto/, o.slug);
+      ? new RegExp(`^Revisadas el ${suya.split('-').reverse().join('\\/')} · válidas ${restan} días? más$`) : /sin confirmar|conflicto/, o.slug);
     assert.match(textoDetalle, /Revisión del catálogo:\s*\d{2}\/\d{2}\/2026/, o.slug);
   }
   assert.ok(conPuntos >= 8, `solo ${conPuntos} ofertas con puntos fuertes`);

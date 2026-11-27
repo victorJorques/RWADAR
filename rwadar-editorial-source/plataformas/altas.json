@@ -4,8 +4,7 @@
   "plataformas": {
     "1exchange": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "addx": {
       "anadidaEl": "2026-09-21",
@@ -65,8 +64,7 @@
     },
     "conda": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "courtyard": {
       "anadidaEl": "2026-09-21",
@@ -82,8 +80,7 @@
     },
     "daiwa-securities": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "digift": {
       "anadidaEl": "2026-11-26",
@@ -103,8 +100,7 @@
     },
     "ex-io": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "figure": {
       "anadidaEl": "2026-09-21",
@@ -140,13 +136,11 @@
     },
     "hsbc": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "hwk-1365": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "inx": {
       "anadidaEl": "2026-09-21",
@@ -210,8 +204,7 @@
     },
     "osl": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "pax-gold": {
       "anadidaEl": "2026-09-21",
@@ -219,8 +212,7 @@
     },
     "pruv": {
       "anadidaEl": "2026-11-27",
-      "lote": null,
-      "origen": "Entrega del 27/11/2026 con 8 plataformas nuevas (1exchange, conda, daiwa-securities, ex-io, hsbc, hwk-1365, osl y pruv), aún sin unir a main cuando se anotó; su lote no está todavía en el repositorio."
+      "lote": "2026-11-27.2-v2"
     },
     "prypco-mint": {
       "anadidaEl": "2026-11-26",
