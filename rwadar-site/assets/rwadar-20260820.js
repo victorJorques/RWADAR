@@ -2779,6 +2779,8 @@ function noDisponiblePais(o){const w=paisWeb();if(!(w&&w.tieneReglas(o))&&esEspa
    Sin reglas por país y con España: de la referencia «Acceso desde España» (y disponibleEs = false). */
 const ETIQUETAS_PAIS={disponible:'Disponible',con_requisitos:'Con requisitos',no_disponible:'No disponible',sin_confirmar:'Sin confirmar'};
 function estadoTextoPais(o,resumen){
+ /* Con el catálogo caducado o sin comprobar no se afirma nada del país (como Mínimo y Salida). */
+ if(catalogoSinCifrasLocal())return 'sin_confirmar';
  const w=paisWeb();
  if(w&&w.tieneReglas(o))return w.estadoOferta(o).estado;
  if(!esEspanaUsuario())return 'sin_confirmar';
