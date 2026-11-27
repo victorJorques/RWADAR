@@ -2567,6 +2567,21 @@ for(const [nombre,alterar] of [
     /data-coleccion="secundario" open/.test(p.obtiene('emiLista').innerHTML)&&
     /en reventa$/.test(p.obtiene('movilOfertasEstado').textContent));
 }
+// ---- Disponibilidad por país (27/11/2026): el lector del catálogo en línea la conserva ----
+// El 27/11 la web publicada la perdía al leer Supabase (rehacía `documentacion` solo con sus campos de siempre) y
+// todas las ofertas salían «Sin confirmar» fuera de España. Se pasa la última lectura pública por el mismo lector.
+{
+  const p=pestanaCatalogo(),c=p.contexto;
+  vm.runInContext(lee('./assets/disponibilidad-pais-20261127.js'),c);
+  const lectura=fs.readdirSync(path.join(raiz,'rwadar-app/data/verificaciones')).sort().reverse()
+    .map(d=>path.join(raiz,'rwadar-app/data/verificaciones',d,'lectura-despues-de-aplicar','ofertas-v2.json')).find(f=>fs.existsSync(f));
+  const filas=JSON.parse(fs.readFileSync(lectura,'utf8')),conDisp=filas.filter(o=>o.documentacion&&o.documentacion.disponibilidad);
+  c.filasDisp=filas;
+  const r=JSON.parse(vm.runInContext(`JSON.stringify(filasDisp.map(e=>{const o=ofertaCatalogoRemota(e,e.verificada_el.slice(0,10));
+    return [e.slug,JSON.stringify(o.documentacion.disponibilidad||null)===JSON.stringify(e.documentacion.disponibilidad||null)]}))`,c));
+  prueba('el lector del catálogo en línea conserva la disponibilidad por país de cada oferta que la trae',
+    conDisp.length>0&&r.length===filas.length&&r.every(x=>x[1]));
+}
 // ---- Corrección de la versión final (03/11, ESPEC-FINAL §4 y §6) ----
 {
   const d=(c,s)=>declaracionesCSS(c,s).join(';'),iw=fs.readFileSync(path.join(raiz,'rwadar-site/assets/idioma-web-20261022.js'),'utf8');

@@ -3628,6 +3628,9 @@ function ofertaCatalogoRemota(e,fecha){
   caracteristicas:documentacion.caracteristicas.map(({etiqueta,valor})=>({etiqueta,valor})),
   referencias:documentacion.referencias.map(({etiqueta,valor,fechaDato,fechaConsulta,fuente,alcance})=>
    ({etiqueta,valor,fechaDato,fechaConsulta,fuente,alcance}))}:null;
+ /* Disponibilidad por país (27/11/2026): se conserva solo si el motor común la da por válida (copia, no referencia). */
+ const disp=e.documentacion&&e.documentacion.disponibilidad,motor=typeof window!=='undefined'&&window.RWAdarDisponibilidad;
+ if(x.documentacion&&disp&&motor&&motor.valida(disp))x.documentacion.disponibilidad=JSON.parse(JSON.stringify(disp));
  if(e.version_esquema===2){
   Object.assign(x,metadatosCatalogoV2(e));x.coleccion=e.coleccion;
   if(!['principales','secundario','en_camino'].includes(x.coleccion)||!['rendimiento','valor'].includes(x.tipo)||!x.documentacion||
