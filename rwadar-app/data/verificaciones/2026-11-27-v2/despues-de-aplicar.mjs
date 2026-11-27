@@ -71,7 +71,8 @@ if (escribirLista(nuevas) !== antes) {
   const texto = fs.readFileSync(TRANSPARENCIA, 'utf8');
   const t = JSON.parse(texto);
   assert.equal(JSON.stringify(t, null, 2) + '\n', texto, 'formato de transparencia.json inesperado');
-  t.lote = ETIQUETA; t.revisionCatalogo = revision.revisionId; t.revisadoEl = FECHA;
+  // Las ofertas no se re-comprobaron enteras hoy: la transparencia conserva su revisión del 26/11 (la de las ofertas).
+  t.lote = ETIQUETA; t.revisionCatalogo = revision.revisionId; t.revisadoEl = '2026-11-26';
   assert.deepEqual(Object.keys(t.ofertas).sort(), snap.ofertas.map(o => o.slug).sort(), 'transparencia.json no casa con las 32 ofertas');
   const valida = cargarTransparencia({ raiz: ROOT, datos: t });
   assert.deepEqual(valida.sinEntrada, []); assert.equal(valida.avisoRevision, '');

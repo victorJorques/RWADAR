@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-26",
+  "actualizadoEl": "2026-11-27",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-26.4: 25 plataformas nuevas del radar (57), con portada propia; ofertas iguales",
+  "nota": "Catálogo 2026-11-27: 8 plataformas del radar, radar comprobado y noticias del 27/11",
   "revisionAprobada": {
-    "commit": "5dab640346466a7a726956a93cf2b52e2424842f",
-    "contenidoSha256": "sha256:45261cb485bfdb038bc625779dc4aac4b44c32f7fccf8a888096556d3c939165",
+    "commit": "680ebdf192ce44529d1afe15a76428d12e4e13a6",
+    "contenidoSha256": "sha256:1ce2846d5ff1f228e1e31f1ca0f61a8f3a315d10b714fa5760a12ce8588548c9",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

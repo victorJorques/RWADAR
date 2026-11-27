@@ -234,7 +234,10 @@ test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de
   assert.ok(conPuntos >= 8, `solo ${conPuntos} ofertas con puntos fuertes`);
   // Con el catálogo caducado (8 días después de la revisión) manda resumenOferta: ninguna cifra
   // vencida, «Mínimo No verificado · España Sin confirmar», el problema de la revisión y sin «Nueva».
-  const tarde = dia(8), uiTarde = componentes(tarde);
+  // El catálogo caduca por la fecha del lote (la última revisión del catálogo), que puede ser posterior a la de las
+  // ofertas si ese día solo se comprobó el radar (27/11/2026): se cuentan los 8 días desde la más reciente.
+  const fechaLote = lote.plataformas[0].verificado_lote_el.slice(0, 10);
+  const tarde = new Date(Date.parse((fechaLote > revisadas ? fechaLote : revisadas) + 'T12:00:00Z') + 8 * 86400000), uiTarde = componentes(tarde);
   const caducado = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, tarde);
   assert.equal(caducado.caducado, true);
   for (const o of caducado.ofertas) {
