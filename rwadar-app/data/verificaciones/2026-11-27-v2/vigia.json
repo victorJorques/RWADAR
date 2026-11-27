@@ -1,0 +1,2433 @@
+{
+ "version": 1,
+ "generadoUtc": "2026-11-27T09:27:37Z",
+ "inicioUtc": "2026-11-27T09:27:30Z",
+ "duracionS": 6.9,
+ "tiemposPorGrupoS": {
+  "midas": 0.6,
+  "brickwise": 1.3,
+  "spiko": 1.5,
+  "suiza": 2.1,
+  "cnmv": 3.6,
+  "documentos": 6.9
+ },
+ "base": "rwadar-app/data/verificaciones/2026-11-26.4-v2",
+ "ciclo": "rwadar-app/data/verificaciones/2026-11-27-v2",
+ "grupos": [
+  "spiko",
+  "midas",
+  "brickwise",
+  "suiza",
+  "documentos",
+  "cnmv"
+ ],
+ "reglas": "Petición normal (agente por defecto de Node, sin cookies ni sesión), TLS verificado, sin eludir bloqueos: un 403, un desafío o un error quedan como «no se pudo leer» y no se reintentan. Detecta, no decide: lo que cambia lo confirma el investigador en la fuente y lo reabre el revisor.",
+ "resumen": {
+  "fichas": 32,
+  "fichasConCifras": 18,
+  "cifras": {
+   "no cambia": 73,
+   "cambia": 4
+  },
+  "documentos": {
+   "cambia": 53
+  },
+  "advertenciasCnmv": {},
+  "controlCnmv": {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "4c1905c0b2150b8116ea059888660520401847dfc6649ec9a1540ad9e60f54ff",
+   "ok": true
+  },
+  "peticiones": 73
+ },
+ "fichas": {
+  "tohkn-iber1": {
+   "plataforma": "tohkn",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "tohkn-mmlti1": {
+   "plataforma": "tohkn",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "tohkn-rncrrev": {
+   "plataforma": "tohkn",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "liqi-creditos-empresas": {
+   "plataforma": "liqi",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "finexity-bono-2026-2030-serie-b": {
+   "plataforma": "finexity",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [
+    {
+     "url": "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "70e5306f1297de86e806f208b3cf956aa5dd312fb89cfd634770e0372b27264a",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 187360,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "c86132127d201e4e7b82199ad3d396f650d0121600d60e750cd38774b6bec4ca",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 138489,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 2,
+    "cambia": 2,
+    "ilegibles": 0
+   }
+  },
+  "groma-real-estate-trust": {
+   "plataforma": "groma",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "securitize-hinc": {
+   "plataforma": "securitize",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "blackrock-hkd-digital-liquidity": {
+   "plataforma": "blackrock",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "amundi-core-stoxx-europe-600-tokenizada": {
+   "plataforma": "amundi",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "spiko-letras-del-tesoro-euro": {
+   "plataforma": "spiko",
+   "coleccion": "principales",
+   "cifras": [
+    {
+     "campo": "Fecha del valor liquidativo (EUTBL)",
+     "publicada": "26/11/2026",
+     "hoy": "26/11/2026 (1.063785 EUR)",
+     "fuente": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "31703c12f88af9a20c2d64a119a896ab6fb9b36fb6023957e11902234ea34c4c",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Rentabilidad de la tarjeta (monthlyYield de EUTBL)",
+     "publicada": "2,44 %",
+     "hoy": "2,44 %",
+     "fuente": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "a6a82f59278a921e3a3d348d9fa13e5b1c82b273a88bcd08730dfc0afb584649",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 1734485,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 282841,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 130290,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 5,
+    "cambia": 3,
+    "ilegibles": 0
+   }
+  },
+  "spiko-letras-del-tesoro-dolar": {
+   "plataforma": "spiko",
+   "coleccion": "principales",
+   "cifras": [
+    {
+     "campo": "Fecha del valor liquidativo (USTBL)",
+     "publicada": "25/11/2026",
+     "hoy": "25/11/2026 (1.10413 USD)",
+     "fuente": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "f0d225b48b08a20c12598ebde5a71a022a476f1570272762f9eb822fdbd64e7e",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Rentabilidad de la tarjeta (monthlyYield de USTBL)",
+     "publicada": "3,90 %",
+     "hoy": "3,90 %",
+     "fuente": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "52b20f2a968b2330d5f6d32755d48b863a66e5147190b22c1bd01e768ab7932f",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 1734485,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "c1ce5400bf18617ef34925eed121335ca4bcd9b3d4a11f265f80ffce5a7e92f6",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 146264,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 4,
+    "cambia": 2,
+    "ilegibles": 0
+   }
+  },
+  "spiko-smart-cash-euro": {
+   "plataforma": "spiko",
+   "coleccion": "principales",
+   "cifras": [
+    {
+     "campo": "Fecha del valor liquidativo (eurSAFO)",
+     "publicada": "26/11/2026",
+     "hoy": "26/11/2026 (1.018198 EUR)",
+     "fuente": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO/latest",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "bca352fa6ede80e2cf8ca179708521d6bc65cf9192f3131f70b6248db1f8517c",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Rentabilidad de la tarjeta (dailyYield de eurSAFO)",
+     "publicada": "2,84 %",
+     "hoy": "2,84 %",
+     "fuente": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "bf30c2d54cf9f29ea86b76d8e8642a5b69164972ddcb561564841d5313d8fd1b",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "709e0585259a5e461710633ae97475c2273c985aa99ae96d7c8fda746cd96c77",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 82462,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "53effea21c5fd26ddc78cb7e1e877c3f9f74d965013bd4e1b051fbf46907a322",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 135012,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://geco.amf-france.org/back-office/document/download/438274",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 2150362,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 5,
+    "cambia": 3,
+    "ilegibles": 0
+   }
+  },
+  "robinhood-classic-stock-tokens": {
+   "plataforma": "robinhood",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [
+    {
+     "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "4e3ab0a266bbbaa2ab9e013acc75e515445ca2356a921699a4f4e73821cbf4f4",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 280879,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 77204,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "d744e3ac63962771cb3ea745e2b8e72b3ccf9d0cd0fc3972b6e59733eecaee96",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 177536,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 3,
+    "cambia": 3,
+    "ilegibles": 0
+   }
+  },
+  "mtbill": {
+   "plataforma": "midas",
+   "coleccion": "principales",
+   "cifras": [
+    {
+     "campo": "Rentabilidad pasada de 5 semanas (en USD)",
+     "publicada": "3,42 % anual hasta el 24/11/2026",
+     "hoy": "3,42 % anual hasta el 24/11/2026",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "03d1e3a350df377c3a48137796dec4a270c938e4e3fc5d799bed10e0ac2bfe64",
+     "estado": "no cambia",
+     "nota": "Orientativa: ronda 477 (2026-10-20T12:21:35Z, 1.07555721 USD) → ronda 500, 35,09 días exactos × 365. Si cambia, el investigador aplica la regla publicada (ventana de semanas completas sin festivo en los extremos) y la confirma en cadena."
+    },
+    {
+     "campo": "Valor por token (oráculo del emisor)",
+     "publicada": "1,0791 USD (24/11/2026)",
+     "hoy": "1,0791 USD (24/11/2026)",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "f9bd7bf03a58c40f3bc964372516f49dea929eb069fe8f6032b3623cde1f4782",
+     "estado": "no cambia",
+     "nota": "Ronda 500 del 2026-11-24T14:27:23Z (bloque 26505640 de las 2026-11-27T09:27:23Z). La fecha del dato es la de la ronda."
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 1248073,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 3,
+    "cambia": 1,
+    "ilegibles": 0
+   }
+  },
+  "prosegur-digital-gold": {
+   "plataforma": "prosegur-crypto",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "aktionariat": {
+   "plataforma": "aktionariat",
+   "coleccion": "principales",
+   "cifras": [
+    {
+     "campo": "Mínimo por transferencia bancaria",
+     "publicada": "500 CHF",
+     "hoy": "500 CHF",
+     "fuente": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "6042173dcacf533b925edc4ae96c8294f1fb8c4d900eb1be5d5f6c18092f6066",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Precio del emisor (Brokerbot en cadena)",
+     "publicada": "7,25 CHF",
+     "hoy": "7,25 CHF",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "getPrice() = 7.25 en el bloque 26505640"
+    },
+    {
+     "campo": "Recompra del emisor (Brokerbot en cadena)",
+     "publicada": "desactivada",
+     "hoy": "desactivada",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "settings() = 1 en el bloque 26505640"
+    },
+    {
+     "campo": "Venta más barata entre accionistas",
+     "publicada": "6,20 ZCHF",
+     "hoy": "6,20 ZCHF × 356 acciones",
+     "fuente": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "e59ba2e1540786dcd2510a06fcd6915a86b39e9f354209242971748c12b6e180",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 317532,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 5,
+    "cambia": 1,
+    "ilegibles": 0
+   }
+  },
+  "kraken-xstocks": {
+   "plataforma": "kraken",
+   "coleccion": "principales",
+   "cifras": [],
+   "documentos": [
+    {
+     "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 1365826,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "47be92729ffec7b9bae6c6b6141b1d16b571c787170b570a8f59a03459f008b3",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 1428039,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "acb0376b2b87f62de152d94130b4613badb17e64a06194c25ae27840f11a0a71",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 290018,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 3,
+    "cambia": 3,
+    "ilegibles": 0
+   }
+  },
+  "boss-info": {
+   "plataforma": "aktionariat",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mínimo en cripto (2 acciones al precio del emisor)",
+     "publicada": "unos 17 ZCHF",
+     "hoy": "unos 17 ZCHF",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo por transferencia bancaria",
+     "publicada": "100 CHF",
+     "hoy": "100 CHF",
+     "fuente": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "sha256": "33d0b92129ab517b7efc7147fc0ba9af5eeb089225f5501b6f853896722a345f",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Precio del emisor (Brokerbot en cadena)",
+     "publicada": "8,50 CHF",
+     "hoy": "8,50 CHF",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "getPrice() = 8.50197 en el bloque 26505640"
+    },
+    {
+     "campo": "Recompra del emisor (Brokerbot en cadena)",
+     "publicada": "desactivada",
+     "hoy": "desactivada",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "settings() = 1 en el bloque 26505640"
+    },
+    {
+     "campo": "Última operación",
+     "publicada": "8,40 ZCHF (1 acción, 05/11/2026)",
+     "hoy": "8,40 ZCHF (1 acción, 05/11/2026)",
+     "fuente": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "sha256": "2c23fd6b2a380e927cdd73acc564404171af583442ae8c18c13822493fd840be",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata entre accionistas",
+     "publicada": "8,40 ZCHF",
+     "hoy": "8,40 ZCHF × 1103 acciones",
+     "fuente": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "c0b474ea8e779f30a527f10e9a74fd9c9a0f8b3b5b6b87f394ddc1abf0e761b4",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 246294,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 7,
+    "cambia": 1,
+    "ilegibles": 0
+   }
+  },
+  "switzerlend": {
+   "plataforma": "aktionariat",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Fondos del emisor para recomprar",
+     "publicada": "0,03 ZCHF",
+     "hoy": "0,03 ZCHF",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Precio del emisor (Brokerbot en cadena)",
+     "publicada": "68,01 CHF",
+     "hoy": "68,01 CHF",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "getPrice() = 68.0105 en el bloque 26505640"
+    },
+    {
+     "campo": "Recompra del emisor (Brokerbot en cadena)",
+     "publicada": "desactivada",
+     "hoy": "desactivada",
+     "fuente": "https://ethereum-rpc.publicnode.com",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+     "estado": "no cambia",
+     "nota": "settings() = 5 en el bloque 26505640"
+    },
+    {
+     "campo": "Venta más barata entre accionistas",
+     "publicada": "67,00 ZCHF",
+     "hoy": "67,00 ZCHF × 15 acciones",
+     "fuente": "https://shares.lend.ch/api/secondarymarkets/getOrderBook",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "1e0c226b44385034e9497647b98722fee2da0364f4ba74384e2ffd4dae47d6a6",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 455843,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 5,
+    "cambia": 1,
+    "ilegibles": 0
+   }
+  },
+  "vivienda-pluddemanngasse-101-graz": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "20,00 € (1 participación, orden del 23/04/2026)",
+     "hoy": "20,00 € (1 participación, orden del 23/04/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "75,00 €",
+     "hoy": "75,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 99,00 € (100,49 € con el 1,5 %)",
+     "hoy": "1 participación a 99,00 € (100,49 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "335 (26/11/2026)",
+     "hoy": "335",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+     "hoy": "75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 181670,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "bytes": 138297,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 64476,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "vivienda-sonnleithnergasse-2-viena": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)",
+     "hoy": "65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "75,00 €",
+     "hoy": "75,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 100,00 € (101,50 € con el 1,5 %)",
+     "hoy": "1 participación a 100,00 € (101,50 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "96 (26/11/2026)",
+     "hoy": "96",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+     "hoy": "75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 138157,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 180825,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 64426,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "local-de-estanco-klagenfurt": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "15,00 € (1 participación, orden del 21/09/2026)",
+     "hoy": "15,00 € (1 participación, orden del 21/09/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "95,00 €",
+     "hoy": "95,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 95,00 € (96,43 € con el 1,5 %)",
+     "hoy": "1 participación a 95,00 € (96,43 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "299 (26/11/2026)",
+     "hoy": "299",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "95,00 € por participación (16 a ese precio, en 3 órdenes)",
+     "hoy": "95,00 € por participación (16 a ese precio, en 3 órdenes de 5, 10, 1)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 223374,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 138294,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 64514,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "vivienda-stallhofstra-e-28-gratwein": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "30,00 € (1 participación, orden del 01/07/2026)",
+     "hoy": "30,00 € (1 participación, orden del 01/07/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "70,00 €",
+     "hoy": "70,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 70,00 € (71,05 € con el 1,5 %)",
+     "hoy": "1 participación a 71,90 € (72,98 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "312 (26/11/2026)",
+     "hoy": "311",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "70,00 € por participación (18 a ese precio, en 6 órdenes de 6, 5, 1, 2, 2, 2)",
+     "hoy": "70,00 € por participación (17 a ese precio, en 5 órdenes de 6, 5, 2, 2, 2)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 138935,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 190996,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 64521,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 7,
+    "ilegibles": 0
+   }
+  },
+  "vivienda-schwarzer-weg-18-graz": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "62,00 € (1 participación, orden del 17/11/2026)",
+     "hoy": "62,00 € (1 participación, orden del 17/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "71,00 €",
+     "hoy": "71,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 71,00 € (72,07 € con el 1,5 %)",
+     "hoy": "1 participación a 71,00 € (72,07 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "298 (26/11/2026)",
+     "hoy": "298",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "71,00 € por participación (1 a ese precio, orden del 21/11/2026)",
+     "hoy": "71,00 € por participación (1 a ese precio, orden del 21/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 190968,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 139764,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a",
+     "horaUtc": "2026-11-27T09:27:35Z",
+     "bytes": 64710,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "drautalresidenz-paternion": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "50,00 € (1 participación, orden del 29/09/2026)",
+     "hoy": "60,00 € (1 participación, orden del 27/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "70,00 €",
+     "hoy": "70,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 70,00 € (71,05 € con el 1,5 %)",
+     "hoy": "1 participación a 70,00 € (71,05 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "147 (26/11/2026)",
+     "hoy": "147",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "70,00 € por participación (1 a ese precio, orden del 17/11/2026)",
+     "hoy": "70,00 € por participación (1 a ese precio, orden del 17/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 138356,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8",
+     "horaUtc": "2026-11-27T09:27:32Z",
+     "bytes": 192682,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093",
+     "horaUtc": "2026-11-27T09:27:35Z",
+     "bytes": 64873,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 5,
+    "ilegibles": 0
+   }
+  },
+  "randhartingergasse-9-viena": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "65,00 € (1 participación, orden del 23/11/2026)",
+     "hoy": "65,00 € (1 participación, orden del 23/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "78,00 €",
+     "hoy": "78,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 85,00 € (86,28 € con el 1,5 %)",
+     "hoy": "1 participación a 85,00 € (86,28 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "188 (26/11/2026)",
+     "hoy": "188",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "78,00 € por participación (20 a ese precio, orden del 29/06/2026)",
+     "hoy": "78,00 € por participación (20 a ese precio, orden del 29/06/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 191910,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 128786,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+     "horaUtc": "2026-11-27T09:27:35Z",
+     "bytes": 64605,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "apartamento-vacacional-hinterstoder-50": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "75,00 € (1 participación, orden del 24/11/2026)",
+     "hoy": "75,00 € (1 participación, orden del 24/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "77,00 €",
+     "hoy": "77,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 82,00 € (83,23 € con el 1,5 %)",
+     "hoy": "1 participación a 82,00 € (83,23 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "247 (26/11/2026)",
+     "hoy": "247",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "77,00 € por participación (5 a ese precio, orden del 03/10/2026)",
+     "hoy": "77,00 € por participación (5 a ese precio, orden del 03/10/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 139587,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 247203,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+     "horaUtc": "2026-11-27T09:27:36Z",
+     "bytes": 64520,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "64,00 € (1 participación, orden del 17/11/2026)",
+     "hoy": "64,00 € (1 participación, orden del 17/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "81,00 €",
+     "hoy": "81,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 81,00 € (82,22 € con el 1,5 %)",
+     "hoy": "1 participación a 81,00 € (82,22 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "96 (26/11/2026)",
+     "hoy": "96",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "81,00 € por participación (1 a ese precio, orden del 15/11/2026)",
+     "hoy": "81,00 € por participación (1 a ese precio, orden del 15/11/2026)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 146611,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+     "horaUtc": "2026-11-27T09:27:33Z",
+     "bytes": 259949,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+     "horaUtc": "2026-11-27T09:27:36Z",
+     "bytes": 63599,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "fotovoltaica-greenpoint": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "29,00 € (1 participación, orden del 10/08/2024)",
+     "hoy": "29,00 € (1 participación, orden del 10/08/2024)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "102,00 €",
+     "hoy": "102,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+     "hoy": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "345 (26/11/2026)",
+     "hoy": "345",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "102,00 € por participación (6 a ese precio, en 2 órdenes de 5, 1)",
+     "hoy": "102,00 € por participación (6 a ese precio, en 2 órdenes de 5, 1)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 550355,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 360088,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+     "horaUtc": "2026-11-27T09:27:36Z",
+     "bytes": 64702,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "fotovoltaica-cohotel": {
+   "plataforma": "brickwise",
+   "coleccion": "secundario",
+   "cifras": [
+    {
+     "campo": "Mejor oferta de compra",
+     "publicada": "3,00 € (1 participación, orden del 23/11/2024)",
+     "hoy": "3,00 € (1 participación, orden del 23/11/2024)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Mínimo de la tarjeta (venta más barata)",
+     "publicada": "110,00 €",
+     "hoy": "110,00 €",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Orden de venta de menor importe",
+     "publicada": "1 participación a 120,00 € (121,80 € con el 1,5 %)",
+     "hoy": "1 participación a 120,00 € (121,80 € con el 1,5 %)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Participaciones en venta",
+     "publicada": "59 (26/11/2026)",
+     "hoy": "59",
+     "fuente": "https://api.app.brickwise.at/api/v2/assets",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+     "estado": "no cambia"
+    },
+    {
+     "campo": "Venta más barata",
+     "publicada": "110,00 € por participación (35 a ese precio, en 2 órdenes de 31, 4)",
+     "hoy": "110,00 € por participación (35 a ese precio, en 2 órdenes de 31, 4)",
+     "fuente": "https://api.app.brickwise.at/api/v1/assets",
+     "horaUtc": "2026-11-27T09:27:30Z",
+     "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+     "estado": "no cambia"
+    }
+   ],
+   "documentos": [
+    {
+     "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 557605,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+     "horaUtc": "2026-11-27T09:27:34Z",
+     "bytes": 396631,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+     "horaUtc": "2026-11-27T09:27:31Z",
+     "bytes": 30692,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    },
+    {
+     "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+     "sha256Publicada": null,
+     "origenHuella": null,
+     "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+     "horaUtc": "2026-11-27T09:27:37Z",
+     "bytes": 64712,
+     "estado": "cambia",
+     "motivo": "sin huella publicada con la que comparar: tratar como documento nuevo y leerlo"
+    }
+   ],
+   "advertenciasCnmv": [],
+   "noCubre": "Todo lo que no esté en «cifras», «documentos» o «advertenciasCnmv» (textos de la web, registros, acceso desde España, salida, avisos sin cifra) se abre a mano.",
+   "resumen": {
+    "leidas": 9,
+    "cambia": 4,
+    "ilegibles": 0
+   }
+  },
+  "franklin-onchain-euro-liquidity": {
+   "plataforma": "franklin-templeton",
+   "coleccion": "en_camino",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  },
+  "alterna-bono-digital-mitsui": {
+   "plataforma": "alterna",
+   "coleccion": "en_camino",
+   "cifras": [],
+   "documentos": [],
+   "advertenciasCnmv": [],
+   "noCubre": "El vigía no lee ninguna cifra de esta ficha: sus datos de la tarjeta y sus avisos se abren a mano en su fuente primaria.",
+   "resumen": {
+    "leidas": 0,
+    "cambia": 0,
+    "ilegibles": 0
+   }
+  }
+ },
+ "fuentes": [
+  {
+   "metodo": "GET",
+   "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a",
+   "bytes": 1365826
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "d744e3ac63962771cb3ea745e2b8e72b3ccf9d0cd0fc3972b6e59733eecaee96",
+   "bytes": 177536
+  },
+  {
+   "metodo": "POST",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "352770e0c717b4af0cd16efb2a1d73a8fe6de40b2fc7573fd4f4c654f39de65f",
+   "bytes": 21817
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101",
+   "bytes": 181670
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228",
+   "bytes": 77204
+  },
+  {
+   "metodo": "POST",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "f9bd7bf03a58c40f3bc964372516f49dea929eb069fe8f6032b3623cde1f4782",
+   "bytes": 368
+  },
+  {
+   "metodo": "GET",
+   "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a",
+   "bytes": 1248073
+  },
+  {
+   "metodo": "GET",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "47be92729ffec7b9bae6c6b6141b1d16b571c787170b570a8f59a03459f008b3",
+   "bytes": 1428039
+  },
+  {
+   "metodo": "POST",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "68139cfb9651f0980fb621c3910614f0b02614af9b45d291a9cb01e7f9e2845a",
+   "bytes": 1090
+  },
+  {
+   "metodo": "GET",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "acb0376b2b87f62de152d94130b4613badb17e64a06194c25ae27840f11a0a71",
+   "bytes": 290018
+  },
+  {
+   "metodo": "POST",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "03d1e3a350df377c3a48137796dec4a270c938e4e3fc5d799bed10e0ac2bfe64",
+   "bytes": 4733
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "4e3ab0a266bbbaa2ab9e013acc75e515445ca2356a921699a4f4e73821cbf4f4",
+   "bytes": 280879
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "a6a82f59278a921e3a3d348d9fa13e5b1c82b273a88bcd08730dfc0afb584649",
+   "bytes": 259
+  },
+  {
+   "metodo": "GET",
+   "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "c86132127d201e4e7b82199ad3d396f650d0121600d60e750cd38774b6bec4ca",
+   "bytes": 138489
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325",
+   "bytes": 130290
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "52b20f2a968b2330d5f6d32755d48b863a66e5147190b22c1bd01e768ab7932f",
+   "bytes": 257
+  },
+  {
+   "metodo": "GET",
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "307b17e29fdc5bf5133e135dc3bc6382e8c0b25997ddba99800fbe5df5e6dc24",
+   "bytes": 233663
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8",
+   "bytes": 138297
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "bf30c2d54cf9f29ea86b76d8e8642a5b69164972ddcb561564841d5313d8fd1b",
+   "bytes": 259
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "bytes": 30692
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "31703c12f88af9a20c2d64a119a896ab6fb9b36fb6023957e11902234ea34c4c",
+   "bytes": 218
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b",
+   "bytes": 180825
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+   "bytes": 1734485
+  },
+  {
+   "metodo": "POST",
+   "url": "https://shares.lend.ch/api/secondarymarkets/getOrderBook",
+   "cuerpo": "{\"company\":40880}",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "1e0c226b44385034e9497647b98722fee2da0364f4ba74384e2ffd4dae47d6a6",
+   "bytes": 460
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883",
+   "bytes": 282841
+  },
+  {
+   "metodo": "GET",
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "0dbc110f09b22e75f6f47374a36af6e740347e611435022d702b3be1f7750425",
+   "bytes": 53968
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "f0d225b48b08a20c12598ebde5a71a022a476f1570272762f9eb822fdbd64e7e",
+   "bytes": 217
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae",
+   "bytes": 138157
+  },
+  {
+   "metodo": "POST",
+   "url": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+   "cuerpo": "{\"company\":77}",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "e59ba2e1540786dcd2510a06fcd6915a86b39e9f354209242971748c12b6e180",
+   "bytes": 1145
+  },
+  {
+   "metodo": "GET",
+   "url": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO/latest",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "bca352fa6ede80e2cf8ca179708521d6bc65cf9192f3131f70b6248db1f8517c",
+   "bytes": 218
+  },
+  {
+   "metodo": "GET",
+   "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "c6616beab4f052490d102d274f79c95615a81a44d4ef3f0b757d12a4d6a2b721",
+   "bytes": 1358
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b",
+   "bytes": 317532
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095",
+   "bytes": 223374
+  },
+  {
+   "metodo": "GET",
+   "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "6042173dcacf533b925edc4ae96c8294f1fb8c4d900eb1be5d5f6c18092f6066",
+   "bytes": 1543
+  },
+  {
+   "metodo": "GET",
+   "url": "https://geco.amf-france.org/back-office/document/download/438274",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe",
+   "bytes": 2150362
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "c1ce5400bf18617ef34925eed121335ca4bcd9b3d4a11f265f80ffce5a7e92f6",
+   "bytes": 146264
+  },
+  {
+   "metodo": "POST",
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+   "cuerpo": "{\"company\":1664}",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "c0b474ea8e779f30a527f10e9a74fd9c9a0f8b3b5b6b87f394ddc1abf0e761b4",
+   "bytes": 453
+  },
+  {
+   "metodo": "GET",
+   "url": "https://content.finexity.com/hubfs/documents/finexity-group/Bond-2026-2030/FINEXITY_BIB_Anleihe26_30_ISIN_B.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:31Z",
+   "sha256": "70e5306f1297de86e806f208b3cf956aa5dd312fb89cfd634770e0372b27264a",
+   "bytes": 187360
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d",
+   "bytes": 138294
+  },
+  {
+   "metodo": "GET",
+   "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f",
+   "bytes": 246294
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431",
+   "bytes": 190996
+  },
+  {
+   "metodo": "GET",
+   "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "33d0b92129ab517b7efc7147fc0ba9af5eeb089225f5501b6f853896722a345f",
+   "bytes": 1682
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "53effea21c5fd26ddc78cb7e1e877c3f9f74d965013bd4e1b051fbf46907a322",
+   "bytes": 135012
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283",
+   "bytes": 138935
+  },
+  {
+   "metodo": "POST",
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+   "cuerpo": "{\"company\":1664,\"limit\":5}",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "2c23fd6b2a380e927cdd73acc564404171af583442ae8c18c13822493fd840be",
+   "bytes": 1538
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+   "bytes": 190968
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "709e0585259a5e461710633ae97475c2273c985aa99ae96d7c8fda746cd96c77",
+   "bytes": 82462
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+   "bytes": 139764
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8",
+   "bytes": 192682
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd",
+   "bytes": 138356
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+   "bytes": 191910
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+   "bytes": 128786
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:32Z",
+   "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18",
+   "bytes": 455843
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+   "bytes": 247203
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+   "bytes": 139587
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd",
+   "bytes": 64476
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:33Z",
+   "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+   "bytes": 259949
+  },
+  {
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:30Z",
+   "sha256": "4c1905c0b2150b8116ea059888660520401847dfc6649ec9a1540ad9e60f54ff",
+   "bytes": 236466
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+   "bytes": 146611
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d",
+   "bytes": 64426
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "bytes": 550355
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "bytes": 360088
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+   "bytes": 557605
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b",
+   "bytes": 64514
+  },
+  {
+   "metodo": "GET",
+   "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+   "bytes": 396631
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:34Z",
+   "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7",
+   "bytes": 64521
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:35Z",
+   "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a",
+   "bytes": 64710
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:35Z",
+   "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093",
+   "bytes": 64873
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:35Z",
+   "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+   "bytes": 64605
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:36Z",
+   "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+   "bytes": 64520
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:36Z",
+   "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+   "bytes": 63599
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:36Z",
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "bytes": 64702
+  },
+  {
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "horaUtc": "2026-11-27T09:27:37Z",
+   "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+   "bytes": 64712
+  }
+ ],
+ "crudo": "rwadar-app/data/verificaciones/2026-11-27-v2/vigia-crudo"
+}

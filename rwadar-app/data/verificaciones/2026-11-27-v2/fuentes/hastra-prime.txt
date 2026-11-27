@@ -1,0 +1,162 @@
+Search
+Ctrl
+K
+Learn About Hastra
+📘
+About Us
+Contributions to Provenance Blockchain
+⚖️
+Understanding wYLDS and PRIME: Hastra’s Ecosystem
+🆘
+Support
+wYLDS
+❓
+What is wYLDS?
+🔁
+Buying wYLDS
+📩
+Sending wYLDS
+💹
+Claim Your Yields
+PRIME
+❔
+What is PRIME (Staked wYLDS)?
+🔣
+How Is the PRIME Rate Determined?
+AUTO
+❓
+What is AUTO?
+🛠️
+Integration Guides
+💻
+API Documents
+📚
+DeFi Guides
+📜
+Understanding DeFi Lending
+🪙
+How to get USDC for Hastra
+📃
+Risks Article
+➿
+How to Bridge PRIME from Solana to Tempo
+Learn About Hastra
+/
+PRIME
+What is PRIME (Staked wYLDS)?
+How do I get PRIME?
+Get wYLDS first: You need wYLDS to stake for PRIME 
+You can read on how to acquire wYLDS here
+Visit Hastra's Dashboard: Connect your wallet
+Head over to the Stake tab: Deposit your wYLDS to receive PRIME
+Start earning: Begin earning higher yield from Demo Prime operations
+Unstake anytime: You aren’t locked in forever, you’re able to unstake your funds at any given time
+What can I do with PRIME?
+Earn Passive Income
+Hold PRIME to earn higher annual yield
+Yield comes from real HELOC lending operations
+No rebasing - your token count stays stable
+Use as DeFi Collateral
+Supply to lending protocols on Solana
+Continue earning yield while borrowing against it
+Create leverage strategies for enhanced returns
+Leverage Looping
+Use it to create leveraged positions
+Target yields can vary up to 12%* at 47% LTV
+Multiply your exposure to real-world asset yields
+Where does the yield come from?
+The PRIME yield originates from real-world lending operations:
+Demo Prime (DP): Lends to real estate borrowers using HELOC products
+Real Assets: Backed by actual home equity lines of credit
+Regulated Process: Operating within established financial frameworks
+Sustainable Yield: Based on actual lending spreads, not speculative trading
+What are the risks?
+Smart Contract Risk
+Depends on Hastra's smart contract security
+Bridge and staking contract functionality
+Market Risk
+PRIME value can fluctuate relative to other assets
+Impact on DeFi positions using PRIME as collateral
+Counterparty Risk
+Reliance on Demo Prime's lending operations
+Hastra's management of the ecosystem
+Regulatory Risk
+Changes in regulations affecting the ecosystem
+Impact on cross-chain operations
+How is this different from other yield tokens?
+Feature
+	
+PRIME
+	
+Traditional DeFi Yield
+	
+Rebasing Tokens
+
+Yield Source
+	
+Real-world HELOC lending
+	
+Trading fees, liquidity mining
+	
+Token supply inflation
+
+Stability
+	
+Stable token count
+	
+Variable, often unsustainable
+	
+Balance changes daily
+
+Regulation
+	
+Built on SEC-registered foundation
+	
+Usually unregulated
+	
+Usually unregulated
+
+Sustainability
+	
+Based on lending spreads
+	
+Often temporary incentives
+	
+Mathematical, but complex
+Frequently Asked Questions
+Can I transfer PRIME to other wallets?
+What happens if I lose access to my wallet?
+How often are yields distributed?
+Can I use PRIME on other blockchains?
+Is there a minimum staking or unstaking amount?
+Are there any fees to mint or redeem PRIME?
+How often can I mint and redeem?
+This article is for educational purposes only and does not constitute financial advice. Always do your own research and consider consulting with financial professionals before making investment decisions.
+*The Effective APY displayed is an estimate based on the trailing 24-hour change of each displayed Hastra token's Net Asset Value (NAV). It reflects the actual yield distributed to holders, including both the Prime (formerly Democratized Prime) pool rate (a market rate based on supply and demand within the protocol) and wYLDS interest on unutilized pool liquidity, net of the 50 bps Hastra fee. The rate is updated in the Hastra UI every 5 minutes. Prior rates do not guarantee future rates.
+PRIME
+How Is the PRIME Rate Determined?
+Powered by Notaku
+Helpful?
+SHARE
+CONTENT
+What is PRIME (Staked wYLDS)?
+How do I get PRIME?
+What can I do with PRIME?
+Earn Passive Income
+Use as DeFi Collateral
+Leverage Looping
+Where does the yield come from?
+What are the risks?
+Smart Contract Risk
+Market Risk
+Counterparty Risk
+Regulatory Risk
+How is this different from other yield tokens?
+Frequently Asked Questions
+Can I transfer PRIME to other wallets?
+What happens if I lose access to my wallet?
+How often are yields distributed?
+Can I use PRIME on other blockchains?
+Is there a minimum staking or unstaking amount?
+Are there any fees to mint or redeem PRIME?
+How often can I mint and redeem?

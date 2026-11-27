@@ -1,36 +1,84 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-26",
+  "actualizadoEl": "2026-11-27",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
-      "id": "singapur-mas-fondos-minoristas-no-tradicionales",
-      "fecha": "2026-11-26",
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "producto",
+      "ambito": "Mundo",
+      "titulo": "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
+      "resumen": "El mercado de criptoactivos Poloniex abrió el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "porQueImporta": "El propio anuncio avisa de que tener el token no es tener la acción y no da derecho a voto. Según el emisor, cada token está respaldado 1 a 1 por una acción guardada en un intermediario regulado de EE. UU.",
+      "en": {
+        "titulo": "Poloniex opens trading in 16 tokenised US stocks and ETFs",
+        "resumen": "Crypto exchange Poloniex opened USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+        "porQueImporta": "The announcement itself warns that holding the token is not owning the share and carries no voting rights. According to the issuer, each token is backed 1:1 by a share held at a regulated US broker-dealer.",
+        "tituloInformativo": "Poloniex opens spot trading in 16 bStocks tokenised US stocks and ETFs"
+      },
+      "fuente": {
+        "nombre": "Poloniex, anuncio del 27/11/2026 sobre la apertura de 16 acciones y ETF tokenizados",
+        "url": "https://www.poloniex.com/announcement/45050069368899",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-27",
+      "tituloInformativo": "Poloniex abre la negociación de 16 acciones y ETF tokenizados de la serie bStocks",
+      "imagen": "real-bolsa-nueva-york-fachada"
+    },
+    {
+      "id": "banco-japon-cinco-retos-tokenizacion",
+      "fecha": "2026-11-27",
       "seccion": "hoy",
       "categoria": "regulacion",
       "ambito": "Mundo",
-      "titulo": "Singapur acorta la aprobación de fondos no tradicionales",
-      "resumen": "La autoridad monetaria de Singapur crea un anexo para autorizar fondos minoristas con características nuevas que no encajan en las normas actuales de inversión. El primer fondo de cada tipo tardará unos tres meses, en lugar de seis a doce, y los siguientes del mismo tipo, tres semanas.",
-      "porQueImporta": "Se mantienen las salvaguardas de custodia y liquidez, y cada tipo nuevo tendrá protecciones propias, como más información. Aprobar antes un fondo no lo hace adecuado para todos ni lo abre a inversores de fuera de Singapur.",
+      "titulo": "El Banco de Japón señala cinco retos de la tokenización",
+      "resumen": "En un discurso del 27/11, un director ejecutivo del Banco de Japón enumera cinco retos de la tokenización: estabilidad financiera, liquidez repartida entre plataformas, coste de migrar y conectarlas, ciberseguridad y seguridad jurídica (si pasar un token transmite de verdad el derecho sobre el activo).",
+      "porQueImporta": "Su proyecto de pruebas estudia ofrecer dinero de banco central en forma de token y liquidar deuda pública japonesa tokenizada. Es un discurso, no una decisión: el banco prefiere mejorar lo que ya funciona y probar lo nuevo en paralelo.",
       "en": {
-        "titulo": "Singapore speeds up approval of non-traditional funds",
-        "resumen": "Singapore’s monetary authority creates an appendix to authorise retail funds with new features that fall outside existing investment guidelines. The first fund of each type will take about three months instead of six to twelve, and later funds of the same type three weeks.",
-        "porQueImporta": "Custody and liquidity safeguards remain, and each new type gets its own protections, such as enhanced disclosures. Faster approval does not make a fund suitable for everyone or open it to investors outside Singapore.",
-        "tituloInformativo": "Singapore’s monetary authority streamlines approval of non-traditional retail funds"
+        "titulo": "Bank of Japan flags five challenges of tokenisation",
+        "resumen": "In a speech on 27/11, an executive director of the Bank of Japan lists five challenges of tokenisation: financial stability, liquidity split across platforms, the cost of migrating and connecting them, cybersecurity and legal certainty (whether transferring a token really transfers the right to the asset).",
+        "porQueImporta": "Its sandbox project examines tokenised central bank money and the settlement of tokenised Japanese government bonds. It is a speech, not a decision: the bank prefers to improve what already works and test new systems in parallel.",
+        "tituloInformativo": "Bank of Japan speech sets out five challenges of tokenisation and its DLT sandbox work"
       },
       "fuente": {
-        "nombre": "Autoridad Monetaria de Singapur, comunicado del 26/11/2026 sobre fondos minoristas no tradicionales",
-        "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-streamlines-approval-of-non-traditional-retail-funds",
+        "nombre": "Banco de Japón, discurso del 27/11/2026 «Digital Money and Payments: Transitioning Toward a New Paradigm» (PDF)",
+        "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-26",
-      "tituloInformativo": "La autoridad monetaria de Singapur agiliza la aprobación de fondos minoristas no tradicionales",
-      "imagen": "fondos-liquidez"
+      "consultadaEl": "2026-11-27",
+      "tituloInformativo": "Un director ejecutivo del Banco de Japón expone cinco retos de la tokenización y su proyecto de pruebas",
+      "imagen": "banco-sala"
+    },
+    {
+      "id": "21x-coinix-monetario-tokenizado",
+      "fecha": "2026-11-26",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "UE",
+      "titulo": "coinIX ya opera con un monetario tokenizado en 21X",
+      "resumen": "21X, mercado en blockchain autorizado en la UE, anuncia el 26/11 que la sociedad de inversión alemana coinIX se une como participante. Sus primeras operaciones fueron en grBenji, clase tokenizada de un fondo monetario de Franklin Templeton que se negocia en 21X desde finales de septiembre.",
+      "porQueImporta": "Según 21X, coinIX puede tener sus dólares en un fondo monetario regulado que rinde durante el día, en vez de dejar parados sus saldos en monedas estables. Que coinIX opere no significa que un particular pueda comprar ese fondo.",
+      "en": {
+        "titulo": "Germany’s coinIX now trades a tokenised money fund on 21X",
+        "resumen": "21X, a blockchain trading and settlement system authorised in the EU, announces on 26/11 that German investment company coinIX has joined as a participant. Its first trades were in grBenji, a tokenised share class of a Franklin Templeton money market fund traded on 21X since late September.",
+        "porQueImporta": "According to 21X, coinIX can hold its dollars in a regulated money market fund that accrues yield during the day instead of leaving stablecoin balances idle. That does not mean a retail investor can buy that fund.",
+        "tituloInformativo": "coinIX joins 21X as a trading participant and trades Franklin Templeton’s grBenji"
+      },
+      "fuente": {
+        "nombre": "21X, comunicado del 26/11/2026 sobre coinIX y grBenji",
+        "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-27",
+      "tituloInformativo": "coinIX se une a 21X como participante y opera con el fondo monetario tokenizado grBenji de Franklin Templeton",
+      "imagen": "real-tesoro-eeuu-fachada"
     },
     {
       "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
       "fecha": "2026-11-25",
-      "seccion": "hoy",
+      "seccion": "importante",
       "categoria": "mercado",
       "ambito": "Mundo",
       "titulo": "Hong Kong estrena una plataforma de bonos tokenizados",
@@ -47,14 +95,14 @@
         "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-26",
+      "consultadaEl": "2026-11-27",
       "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada",
       "imagen": "real-sala-servidores-bastidores"
     },
     {
       "id": "sbi-solana-global-empieza-operar-japon",
       "fecha": "2026-11-25",
-      "seccion": "hoy",
+      "seccion": "importante",
       "categoria": "mercado",
       "ambito": "Mundo",
       "titulo": "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
@@ -71,7 +119,7 @@
         "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-26",
+      "consultadaEl": "2026-11-27",
       "tituloInformativo": "SBI Holdings, el grupo Sumitomo Mitsui y la Fundación Solana ponen en marcha su empresa conjunta SBI Solana Global",
       "imagen": "moneda-digital"
     },
@@ -95,7 +143,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-26",
+      "consultadaEl": "2026-11-27",
       "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas",
       "imagen": "real-cnmv-sede-madrid"
     },
@@ -119,33 +167,9 @@
         "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-26",
+      "consultadaEl": "2026-11-27",
       "tituloInformativo": "El BCE propone un modelo de referencia con cinco criterios para debatir estándares de tokenización",
-      "imagen": "real-servidores-cables"
-    },
-    {
-      "id": "world-gold-council-primeras-operaciones-oro-digital",
-      "fecha": "2026-11-24",
-      "seccion": "importante",
-      "categoria": "mercado",
-      "ambito": "Mundo",
-      "titulo": "Primeras operaciones reales con oro digital mayorista",
-      "resumen": "HSBC, JPMorgan y StoneX han negociado, liquidado y usado como garantía participaciones en oro agrupado (Pooled Gold Interests) en operaciones reales del mercado mayorista. Lingotes físicos de Londres entraron en el sistema y salieron al terminar el ciclo.",
-      "porQueImporta": "Es una prueba piloto entre grandes entidades, no un producto para particulares. Busca que el oro físico se pueda transferir y usar como garantía en formato electrónico sin perder la propiedad del lingote.",
-      "en": {
-        "titulo": "First live trades with wholesale digital gold in London",
-        "resumen": "HSBC, JPMorgan and StoneX have traded, settled and used Pooled Gold Interests as collateral in live wholesale-market transactions. Physical London gold bars entered the system and were withdrawn once the cycle was complete.",
-        "porQueImporta": "It is a pilot between large institutions, not a product for individuals. It aims to let physical gold be transferred and used as collateral electronically while keeping ownership of the bars.",
-        "tituloInformativo": "The World Gold Council facilitates the first live transactions using Pooled Gold Interests"
-      },
-      "fuente": {
-        "nombre": "World Gold Council, comunicado del 24/11/2026 sobre Pooled Gold Interests",
-        "url": "https://www.gold.org/news-and-events/press-releases/world-gold-council-facilitates-first-live-transactions-using-pooled",
-        "tipo": "empresa"
-      },
-      "consultadaEl": "2026-11-26",
-      "tituloInformativo": "El World Gold Council anuncia las primeras operaciones reales con participaciones en oro agrupado",
-      "imagen": "real-lingotes-oro-400oz"
+      "imagen": "real-bce-francfort"
     },
     {
       "id": "bce-valores-tokenizados-garantia-2027",
@@ -167,32 +191,8 @@
         "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-26",
+      "consultadaEl": "2026-11-27",
       "tituloInformativo": "El BCE amplía las garantías admisibles del Eurosistema a ciertos valores negociables emitidos en plataformas DLT autorizadas",
-      "imagen": "real-bce-francfort"
-    },
-    {
-      "id": "franklin-templeton-monetario-euros-tokenizado",
-      "fecha": "2026-11-23",
-      "seccion": "importante",
-      "categoria": "producto",
-      "ambito": "UE",
-      "titulo": "Franklin Templeton lanza un monetario tokenizado en euros",
-      "resumen": "Franklin Templeton anuncia un fondo monetario en euros domiciliado en Luxemburgo que registra las participaciones en una infraestructura con blockchain. La gestora prevé ofrecerlo a minoristas de siete países, incluido España.",
-      "porQueImporta": "La gestora prevé transferencias de participaciones entre carteras digitales aprobadas las 24 horas. Esa función está sujeta a la elegibilidad de los participantes. El comunicado remite al folleto y al documento de datos fundamentales.",
-      "en": {
-        "titulo": "Franklin Templeton launches a tokenised euro money fund",
-        "resumen": "Franklin Templeton announces a Luxembourg-domiciled euro money market fund that records ownership using blockchain infrastructure. The manager plans to make it available to retail investors in seven countries, including Spain.",
-        "porQueImporta": "The manager plans round-the-clock transfers of fund shares between approved digital wallets. This feature is subject to participant eligibility. The announcement refers readers to the prospectus and key information document.",
-        "tituloInformativo": "Franklin Templeton launches a tokenised euro money market fund with planned retail availability in Spain"
-      },
-      "fuente": {
-        "nombre": "Franklin Templeton, comunicado del 23/11/2026 sobre Franklin OnChain Euro Liquidity Fund",
-        "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
-        "tipo": "empresa"
-      },
-      "consultadaEl": "2026-11-26",
-      "tituloInformativo": "Franklin Templeton lanza un fondo monetario tokenizado en euros y prevé ofrecerlo a minoristas en España",
       "imagen": "real-monedas-euro-bandera"
     }
   ]

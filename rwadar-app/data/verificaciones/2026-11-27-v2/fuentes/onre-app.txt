@@ -1,0 +1,83 @@
+It appears you are attempting to access this interface from a prohibited location. Access is not permitted. For the full list of prohibited jurisdictions, please refer to the Interface Terms of Use.
+Deposit
+DeFi
+Transparency
+Leaderboard
+AUM$261.01M
+Connect
+APY
+
+11.02%
+
+AUM
+
+$261.01M
+
+Price NAV
+
+$1.1702
+
+Powered by
+Slippage
+0.5%
+Sell
+
+USDC
+
+≈ $0.00
+Balance: -
+Buy
+
+ONyc
+
+≈ $0.00
+Balance: -
+1 ONyc ≈ … USDC
+Enter an amount
+Terms of Use
+Important Information
+
+By clicking “I accept” and accessing this Interface, you confirm that you have read and agree to be bound by the Interface Terms of Use (available via the “Terms of Use” link in the footer of the Interface website), which govern your use of the Interface. You further confirm that you understand and accept the following important terms, which apply in addition to and form part of those Terms of Use:
+
+This website-hosted user interface (this Interface) provides a visual display of publicly available blockchain data and tools to simplify user interaction with permissionless smart contracts that facilitate access to ONyc tokens. This interface is not essential for interacting with the underlying protocol and does not host or control user transactions.
+This Interface is made available by Latitude Technologies Corporation, however all transactions conducted via the Interface are run by permissionless smart contracts.
+THIS INTERFACE IS PROVIDED "AS IS", AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+By using or accessing this Interface and related smart contracts, you agree that no developer or entity involved in creating, deploying or maintaining this Interface will be liable for any claims or damages whatsoever associated with your use of, or inability to use, this Interface, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, digital assets, tokens, or anything else of value.
+This Interface does not act as an exchange, intermediary, or custodian, and does not broker, match, or settle transactions. All transactions occur directly on permissionless smart contracts, outside the control of the Interface provider.
+ONyc tokens accessed through this Interface do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd. or its affiliates.
+Digital assets are inherently risky and you may lose some or all of your funds. Such risks include, without limitation, smart contract vulnerabilities, hacking or cyber-attacks, market volatility, and evolving or uncertain regulatory treatment.
+You are not a person or entity who is a resident of, or located in, a ‘Prohibited Jurisdiction’ (a full list of which is available in the Interface Terms of Use accessible via the link in the footer of the Interface website), including the United States or any country subject to applicable sanctions, or who is otherwise designated on any list of prohibited or restricted parties or excluded or denied persons, including but not limited to the lists maintained by the United States' Department of Treasury's Office of Foreign Assets Control, the United Nations Security Council, the European Union or its Member States, or any other government authority.
+You are solely responsible for complying with all laws and regulations applicable to your use of this interface and any associated technologies, including but not limited to your local laws regarding the use, ownership, transfer, or interaction with digital assets.
+I accept
+Welcome to OnRe
+
+Please select your access mode to start earning with ONyc:
+
+Open Access
+
+For individuals, DeFi, and non-US users looking for permissionless yield.
+
+Global access (restricted jurisdictions excluded)
+
+Direct minting to access institutional-grade yield
+
+No onboarding or minimums required
+
+Earn points and rewards
+
+Earn Now  →
+Institutional
+
+For entities requiring regulated access and direct redemption capabilities.
+
+Requires KYC/KYB onboarding
+
+Direct mint at NAV
+
+Token redemption at NAV
+
+Dedicated client support
+
+Regulated by the Bermuda Monetary Authority
+
+Start Onboarding  →

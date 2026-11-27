@@ -1,0 +1,443 @@
+{
+  "version": 1,
+  "fecha": "2026-11-27",
+  "inicioUtc": "2026-11-27T09:43:11.386Z",
+  "finUtc": "2026-11-27T09:43:16.603Z",
+  "desde": "2026-11-26",
+  "fuentes": [
+    {
+      "id": "cnmv-notas",
+      "nombre": "CNMV, notas de prensa",
+      "url": "https://www.cnmv.es/portal/aldia/notasprensa",
+      "critica": true,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 242311,
+      "sha256": "89984b1264b6f569ea1d1ba296eacb800773e7eee4979e1cfa2d0e8aa111e573",
+      "horaUtc": "2026-11-27T09:43:11.387Z",
+      "error": null,
+      "cambia": false,
+      "leidos": 10,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-25",
+          "hora": "18:23",
+          "titulo": "Nuevo sistema organizado de contratación en España: Braemar OTF",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b21ccb4f1-bd97-483c-9b8e-8e3d099cce21%7d"
+        },
+        {
+          "fecha": "2026-11-25",
+          "hora": "18:05",
+          "titulo": "La CNMV autoriza la oferta pública voluntaria de adquisición de acciones de Azkoyen presentada por Ohmnia",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b806f32fc-34c0-4b0f-b401-31b2d7cf64f4%7d"
+        },
+        {
+          "fecha": "2026-11-25",
+          "hora": "14:15",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d"
+        },
+        {
+          "fecha": "2026-11-23",
+          "hora": "12:05",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b65e67674-78a5-4888-a025-ad85ecc74493%7d"
+        },
+        {
+          "fecha": "2026-11-18",
+          "hora": "13:30",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d"
+        },
+        {
+          "fecha": "2026-11-16",
+          "hora": "11:50",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d"
+        },
+        {
+          "fecha": "2026-11-11",
+          "hora": "13:00",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d"
+        },
+        {
+          "fecha": "2026-11-10",
+          "hora": "12:20",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d"
+        },
+        {
+          "fecha": "2026-11-06",
+          "hora": "11:40",
+          "titulo": "La CNMV destaca la fortaleza de los mercados financieros en un entorno de incertidumbre y subidas de tipos de interés",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0c4d3fda-18b5-4d32-995e-2638faec6d24%7d"
+        },
+        {
+          "fecha": "2026-11-03",
+          "hora": "14:00",
+          "titulo": "La CNMV inicia la consulta pública del proyecto de actualización del Código de gobierno de las sociedades cotizadas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0444aa7b-6689-4475-8a68-d2d2d6bfbadb%7d"
+        }
+      ],
+      "nuevos": []
+    },
+    {
+      "id": "esma-rss",
+      "nombre": "ESMA, noticias (RSS)",
+      "url": "https://www.esma.europa.eu/rss.xml",
+      "critica": true,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 55240,
+      "sha256": "dd34df8a6b4a2e82064d2fa70dddc4bb65773bda77da0450888e96338f5c7343",
+      "horaUtc": "2026-11-27T09:43:11.420Z",
+      "error": null,
+      "cambia": false,
+      "leidos": 10,
+      "fueraDelSector": 2,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-18",
+          "hora": "09:51",
+          "titulo": "DRSP supervisory responsibilities remain unchanged following ESMA assessment",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/drsp-supervisory-responsibilities-remain-unchanged-following-esma-assessment"
+        },
+        {
+          "fecha": "2026-11-09",
+          "hora": "09:54",
+          "titulo": "EU seeks nominations for stakeholder group on tokenisation standards in finance",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/eu-seeks-nominations-stakeholder-group-tokenisation-standards-finance"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "14:26",
+          "titulo": "ESMA publishes latest edition of its newsletter",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-publishes-latest-edition-its-newsletter-45"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "10:05",
+          "titulo": "ESMA proposes simpler EU Taxonomy reporting",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-proposes-simpler-eu-taxonomy-reporting"
+        },
+        {
+          "fecha": "2026-10-22",
+          "hora": "16:51",
+          "titulo": "ESMA streamlines several Q&As as part of simplification efforts",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-streamlines-several-qas-part-simplification-efforts"
+        },
+        {
+          "fecha": "2026-10-20",
+          "hora": "14:34",
+          "titulo": "ESMA specifies requirements to facilitate safe use of post-trade risk reduction services",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-specifies-requirements-facilitate-safe-use-post-trade-risk-reduction"
+        },
+        {
+          "fecha": "2026-10-16",
+          "hora": "12:21",
+          "titulo": "ESMA finalises the review of guidelines on the delay in disclosure of inside information",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-finalises-review-guidelines-delay-disclosure-inside-information"
+        },
+        {
+          "fecha": "2026-10-15",
+          "hora": "15:17",
+          "titulo": "ESMA updates its manual on transparency with new guidance for OTC derivatives and tick-size regime",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-manual-transparency-new-guidance-otc-derivatives-and-tick"
+        }
+      ],
+      "nuevos": []
+    },
+    {
+      "id": "boe-sumario",
+      "nombre": "BOE, sumario del día (API de datos abiertos)",
+      "url": "https://www.boe.es/datosabiertos/api/boe/sumario/20261127",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/xml",
+      "bytes": 188070,
+      "sha256": "65cb8121cce1c37c86af80c8be641dfbd4ceeb8a19f94ed41c19ade4717c02be",
+      "horaUtc": "2026-11-27T09:43:11.421Z",
+      "error": null,
+      "sinEdicion": false,
+      "cambia": true,
+      "leidos": 227,
+      "fueraDelSector": 219,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 17 de noviembre de 2026, de ICEX España Exportación e Inversiones, E.P.E., por la que se publica el Convenio con la Organización Interprofesional Agroalimentaria del Porcino de Capa Blanca, para la organización de extensiones ",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24992"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 30 de octubre de 2026, de la Universidad Politécnica de Cartagena, por la que se publica el plan de estudios de Máster Universitario en Gestión Económica-Administrativa del Ejército del Aire y del Espacio.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-25013"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 16 de noviembre de 2026, de la Universidad de Córdoba, por la que se publica la modificación del plan de estudios de Máster Universitario en Ingeniería Agronómica.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-25017"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de munición de calibre .338. Expediente: 2026/AR40U/00001691E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39104"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de granadas de mortero de 81 y 60 MM. Expediente: 2026/AR40U/00001374E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39115"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Adquisición de un mínimo de 10 herramientas combinadas de apertura para la DGP. Expediente: Z26AR008/M20.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39121"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Planificación y Gestión Económica. Objeto: Servicio de disciplina preventiva de vigilancia de la salud de los empleados públicos penitenciarios dependientes de la Secretaría ",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39122"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de licitación de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Prestación del servicio de asistencia en carretera de toda clase de vehículos de Policía Nacional. Expediente: Z27AU001/050.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39123"
+        }
+      ],
+      "nuevos": [
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 17 de noviembre de 2026, de ICEX España Exportación e Inversiones, E.P.E., por la que se publica el Convenio con la Organización Interprofesional Agroalimentaria del Porcino de Capa Blanca, para la organización de extensiones ",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24992"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 30 de octubre de 2026, de la Universidad Politécnica de Cartagena, por la que se publica el plan de estudios de Máster Universitario en Gestión Económica-Administrativa del Ejército del Aire y del Espacio.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-25013"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Resolución de 16 de noviembre de 2026, de la Universidad de Córdoba, por la que se publica la modificación del plan de estudios de Máster Universitario en Ingeniería Agronómica.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-25017"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de munición de calibre .338. Expediente: 2026/AR40U/00001691E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39104"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de granadas de mortero de 81 y 60 MM. Expediente: 2026/AR40U/00001374E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39115"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Adquisición de un mínimo de 10 herramientas combinadas de apertura para la DGP. Expediente: Z26AR008/M20.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39121"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Planificación y Gestión Económica. Objeto: Servicio de disciplina preventiva de vigilancia de la salud de los empleados públicos penitenciarios dependientes de la Secretaría ",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39122"
+        },
+        {
+          "fecha": "2026-11-27",
+          "hora": null,
+          "titulo": "Anuncio de licitación de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Prestación del servicio de asistencia en carretera de toda clase de vehículos de Policía Nacional. Expediente: Z27AU001/050.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-39123"
+        }
+      ]
+    },
+    {
+      "id": "consejo-rss",
+      "nombre": "Consejo de la UE, comunicados (RSS)",
+      "url": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/xml; charset=utf-8",
+      "bytes": 12875,
+      "sha256": "67d2912bdc50f7d323096a976ff03de1ebf7512e664c26e461beba8c4640e63a",
+      "horaUtc": "2026-11-27T09:43:11.422Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 20,
+      "fueraDelSector": 20,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "bce-rss",
+      "nombre": "BCE, prensa (RSS)",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml",
+      "bytes": 5699,
+      "sha256": "9b2e3ee13f9f4b4823ab620cd1e1002ab59c32525e364ca27dccb1f3159b33c3",
+      "horaUtc": "2026-11-27T09:43:11.423Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 15,
+      "fueraDelSector": 14,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-23",
+          "hora": "11:00",
+          "titulo": "ECB expands acceptance of DLT-based assets as eligible Eurosystem collateral",
+          "enlace": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html"
+        }
+      ],
+      "nuevos": []
+    },
+    {
+      "id": "eba-rss",
+      "nombre": "EBA, noticias (RSS)",
+      "url": "https://www.eba.europa.eu/rss.xml",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 21433,
+      "sha256": "f152652d311a33cfb071041713bc2b2afa99afc85866d870fb0b4df1cae9ad03",
+      "horaUtc": "2026-11-27T09:43:11.425Z",
+      "error": null,
+      "cambia": false,
+      "leidos": 10,
+      "fueraDelSector": 10,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "comision-fisma",
+      "nombre": "Comisión Europea, noticias de finanzas (DG FISMA)",
+      "url": "https://finance.ec.europa.eu/finance-news_en",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 174304,
+      "sha256": "72bcc4b6fc17d6df78142323d0e001ac9e074ebedc30b770c1ea71194e38da08",
+      "horaUtc": "2026-11-27T09:43:11.425Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 0,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    }
+  ],
+  "deNoticias": [
+    {
+      "id": "singapur-mas-fondos-minoristas-no-tradicionales",
+      "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-streamlines-approval-of-non-traditional-retail-funds",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 853817,
+      "sha256": "0cec9733c2aef1b34171524da3d9ba684070587b7eb1772960d7fe6fc4048515",
+      "horaUtc": "2026-11-27T09:43:11.426Z",
+      "error": null,
+      "igualQuePublicada": false
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 82379,
+      "sha256": "90e9195b5d56a6a7687bbde20427ec2bb047e8b34b5b6f75f16fd9a3caae7213",
+      "horaUtc": "2026-11-27T09:43:11.427Z",
+      "error": null,
+      "igualQuePublicada": false
+    },
+    {
+      "id": "sbi-solana-global-empieza-operar-japon",
+      "url": "https://sbisolana.co.jp/en/news/2026-11-sbi-solana-global-launch/",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 9449,
+      "sha256": "f91bf7ef7a59c8d052e99c782b5cbfcbe29f2facbf050a88168a669f55e818b7",
+      "horaUtc": "2026-11-27T09:43:11.429Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 177715,
+      "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+      "horaUtc": "2026-11-27T09:43:14.872Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 101601,
+      "sha256": "47567832f43eaef414a0c44ddc31544c92505cfaa7a90b38da4b59692eacac09",
+      "horaUtc": "2026-11-27T09:43:14.225Z",
+      "error": null,
+      "igualQuePublicada": false
+    },
+    {
+      "id": "world-gold-council-primeras-operaciones-oro-digital",
+      "url": "https://www.gold.org/news-and-events/press-releases/world-gold-council-facilitates-first-live-transactions-using-pooled",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 71752,
+      "sha256": "9828133b2c945dac8ed8f184a1a48242c6b42344f92da50232194e58ea56ddbd",
+      "horaUtc": "2026-11-27T09:43:11.430Z",
+      "error": null,
+      "igualQuePublicada": false
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 105540,
+      "sha256": "38dda822826bd6d1fac84f3c257f1eaae6ae8e447b9b39693e6e00bb788402a7",
+      "horaUtc": "2026-11-27T09:43:16.470Z",
+      "error": null,
+      "igualQuePublicada": false
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 2357,
+      "sha256": "ae112d1aeb327651ae4f54f04afbef06947cdc6821efc4bea4140b555006e585",
+      "horaUtc": "2026-11-27T09:43:11.431Z",
+      "error": null,
+      "igualQuePublicada": true
+    }
+  ],
+  "caidas": [],
+  "criticasCaidas": []
+}

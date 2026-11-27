@@ -1,0 +1,102 @@
+Solutions About Us Resources Careers Funds
+Contact Us
+Press release
+FundBridge and Libeara Launch Regulated Tokenised Treasury Fund on Avalanche
+
+Singapore – 28 August 2025 – FundBridge Capital and Libeara announced today the launch of infrastructure support for a fully tokenised U.S. Treasury strategy (“ULTRA”) on the Avalanche blockchain, marking a significant milestone in the institutional adoption of tokenised U.S. Treasuries. 
+
+ 
+
+ULTRA is managed by FundBridge Capital and sub-managed by Wellington Management. FundBridge Capital is one of Singapore’s leading independent fund managers, and Wellington Management is one of the world’s largest asset managers, with over USD 1.2 trillion in AUM. Designed to preserve capital and maintain liquidity, ULTRA offers accredited and institutional investors secure, short-duration U.S. Treasury exposure in an on-chain format, subject to institutional-grade governance standards. 
+
+ 
+
+At the heart of ULTRA’s tokenisation technology infrastructure is Libeara, a next-generation tokenisation platform incubated by SC Ventures by Standard Chartered. Libeara powers the technology lifecycle of tokenised fund operations – from investor onboarding and subscription to redemption and transfer – supported by FundBridge’s partners. 
+
+ 
+
+The fund enabling the ULTRA strategy has been established under the Delta Master Trust, an umbrella unit trust constituted under Singapore law. The fund is accessible through fiat or USDC channels, supported by regulated on-/off-ramp partners. The solution offers operational efficiency, compliance, and transparency through a single institutional-grade platform. 
+
+ 
+
+The integration with Avalanche provides the performance layer, leveraging deterministic finality, sub-second settlement, and configurable blockchain environments tailored to governance and risk control needs. This deployment marks a significant step forward in the institutional adoption of real-world assets (RWAs), demonstrating that tokenised funds can be built and operated on public infrastructure without compromising compliance, control, or scale. 
+
+ 
+
+“Avalanche is purpose-built to support the compliance, performance, and flexibility required by today’s regulated financial products,” said [nombre retirado], VP of On-Chain Finance at Ava Labs. “The deployment of ULTRA demonstrates how tokenised funds can operate on public blockchain infrastructure while meeting the operational and governance standards expected by institutional asset managers and allocators.” 
+
+ 
+
+“The integration with Avalanche supports our broader objective of working with public blockchain networks that meet the technical and compliance expectations of institutional stakeholders,” said [nombre retirado], Founder and CEO of Libeara. “We see this as an important step in extending infrastructure optionality for tokenised strategies that require both regulatory rigour and operational scalability.” 
+
+ 
+
+“The integration of ULTRA with Avalanche reflects our continued efforts to build institutional infrastructure for regulated digital asset strategies,” said [nombre retirado], CEO of FundBridge Capital. “As a licenced fund manager, we remain focused on aligning compliant fund structures expected by institutional allocators.” 
+
+ 
+
+Libeara supports this deployment by providing and maintaining the infrastructure for token creation, smart contract functionality, and institutional wallet integrations. 
+
+ 
+
+FundBridge Capital remains responsible for the fund’s governance and oversight, including its investment mandate and regulatory compliance, with Wellington Management supporting FundBridge’s overall initiative as sub-manager. 
+
+ 
+
+ This deployment marks a pivotal advance in institutional finance, where regulatory discipline meets digital agility – accelerating the shift toward blockchain-based infrastructure purpose-built for compliant, high-efficiency financial products. 
+
+ 
+
+About Libeara
+
+Libeara is an SC Ventures-incubated tokenisation platform built to create more accessible, transparent, and secure markets. A portmanteau of Liberty and Aerarium (the first retail U.S. Treasuries and the Roman Treasury, respectively), Libeara is a proven asset tokenisation platform that introduces a new approach to investing through technology and innovation. As finalists in the Monetary Authority of Singapore’s (MAS) Global Retail CBDC Challenge, and as the team behind digital platform prototypes used by the governments of Hong Kong, Ghana, and the Philippines, Libeara is ready to help organisations create, issue, and manage real-world assets on-chain. 
+
+ 
+
+For more information, visit https://libeara.com. 
+
+SC Ventures
+
+SC Ventures builds and invests in breakthrough ventures in and beyond banking. SC Ventures by Standard Chartered provides a platform for organisations to collaborate and co-create fintech ecosystems to reimagine the future of finance. 
+
+ 
+
+For more information, please visit www.scventures.io and follow SC Ventures on LinkedIn. 
+
+Standard Chartered
+
+We are a leading international banking group, with a presence in 54 of the world’s most dynamic markets. Our purpose is to drive commerce and prosperity through our unique diversity, and our heritage and values are expressed in our brand promise, here for good. Standard Chartered PLC is listed on the London and Hong Kong stock exchanges. 
+
+ 
+
+For more stories and expert opinions please visit Insights at sc.com. Follow Standard Chartered on X, LinkedIn, Instagram and Facebook. 
+
+About FundBridge Capital
+
+FundBridge Capital connects capital sources with investment opportunities, acting as a trusted partner in the financial landscape. Established in 2017 and regulated by the Monetary Authority individuals and institutions. FundBridge Capital’s expertise spans Investment Banking, Wealth Management, and Private Wealth, with a focus on delivering robust fund management solutions and compliance support. The firm empowers fund managers with efficient, cost-effective platforms, leveraging its deep network across the Asia-Pacific region. 
+
+ 
+
+For more information, visit https://fundbridge.sg/. 
+
+About Avalanche Blockchain Network
+
+Avalanche is a high-performance blockchain platform designed for builders who need to scale. Engineered with a revolutionary three-part Layer 1 (L1) architecture, Avalanche is anchored by its Avalanche Consensus Mechanism, ensuring near-instant finality for transactions. The platform also features an open-source Layer 0 (L0) framework, enabling the seamless creation of interoperable Layer 1 blockchains with high throughput on both public and private networks. 
+
+ 
+
+Supported by a global community of developers and validators, Avalanche offers a fast, low- cost environment for building the next generation of decentralised applications (dApps). With its unique blend of speed, flexibility, and scalability, Avalanche is the preferred choice for innovators pushing the boundaries of blockchain technology. 
+
+Disclaimer 
+
+This is not an advertisement making an offer or calling attention to an offer or intended offer. Before making any investment decision, please seek independent legal and financial advice. The information and materials presented are intended solely for Accredited Investors and Institutional Investors in Singapore, and for Qualified Purchasers under applicable securities laws in the United States. They are not intended for, and should not be relied upon by, persons who are not such investors.  
+
+ 
+
+28 Stanley Street, #04-01, Singapore 068737
+
+Solutions
+About Us
+Resources
+Careers
+Funds

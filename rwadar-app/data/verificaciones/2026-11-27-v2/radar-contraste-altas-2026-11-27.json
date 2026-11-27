@@ -1,0 +1,187 @@
+{
+  "fecha": "2026-11-27",
+  "fuentesNuevas": 14,
+  "correctas": 14,
+  "contraste": [
+    {
+      "id": "libeara-web",
+      "url": "https://libeara.com/",
+      "horaUtc": "2026-11-27T09:33:47Z",
+      "copia": "fuentes/libeara-web.txt",
+      "sha256": "35f13febd1afde12d2d909498217afcbd164c85bfb5cced9893ff3036ba03388",
+      "comprobaciones": [
+        "Incubated by SC Ventures",
+        "Tokenised Funds",
+        "Singapore"
+      ],
+      "ok": true
+    },
+    {
+      "id": "libeara-ultra",
+      "url": "https://libeara.com/fundbridge-and-libeara-launch-regulated-tokenised-treasury-fund-on-avalanche/",
+      "horaUtc": "2026-11-27T09:33:54Z",
+      "copia": "fuentes/libeara-ultra.txt",
+      "sha256": "0442542ebea904af92769ee2b84281137af8a1aaa137b976df97f89781b73b50",
+      "comprobaciones": [
+        "accredited and institutional investors",
+        "Delta Master Trust",
+        "FundBridge Capital remains responsible"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hashkey-htoken",
+      "url": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/",
+      "horaUtc": "2026-11-27T09:35:14Z",
+      "copia": "fuentes/hashkey-htoken.txt",
+      "sha256": "18390534d56bf79a12240b43b0341979819657ca617a55c3154308a40d900f91",
+      "comprobaciones": [
+        "3887\\.HK",
+        "hToken",
+        "exclusively available to qualified professional investors"
+      ],
+      "ok": true
+    },
+    {
+      "id": "obligate-web",
+      "url": "https://www.obligate.com/",
+      "horaUtc": "2026-11-27T09:34:31Z",
+      "copia": "fuentes/obligate-web.txt",
+      "sha256": "2f845c7dffa636c1b649f0615584f5f872303b50565baccbe252a1bb0ede55a7",
+      "comprobaciones": [
+        "Institutional and qualified investors",
+        "Swiss DLT Act"
+      ],
+      "ok": true
+    },
+    {
+      "id": "obligate-otfy",
+      "url": "https://www.obligate.com/otfy",
+      "horaUtc": "2026-11-27T09:34:38Z",
+      "copia": "fuentes/obligate-otfy.txt",
+      "sha256": "f989567574cc583687929df6340d6205cca5a66b091af64ee2ccb4c19f594fe2",
+      "comprobaciones": [
+        "USD 100,000 minimum investment",
+        "Luxembourg securitization vehicle",
+        "VQF"
+      ],
+      "ok": true
+    },
+    {
+      "id": "colb-web",
+      "url": "https://www.colb.finance/",
+      "horaUtc": "2026-11-27T09:34:59Z",
+      "copia": "fuentes/colb-web.txt",
+      "sha256": "7a5361da15029333f5706338c961f8f769df78a220d29a195f962d898d077b91",
+      "comprobaciones": [
+        "registered financial intermediary under Swiss law",
+        "member of ARIF",
+        "Pre-IPO opportunities"
+      ],
+      "ok": true
+    },
+    {
+      "id": "colb-canp",
+      "url": "https://www.colb.finance/canp",
+      "horaUtc": "2026-11-27T09:35:06Z",
+      "copia": "fuentes/colb-canp.txt",
+      "sha256": "b6e35c0af677f57a6c316bfeddfad0657ae771d1e4190595962ca680efc60b43",
+      "comprobaciones": [
+        "tokenized structured certificate",
+        "qualified investors",
+        "25.000 \\$USC"
+      ],
+      "ok": true
+    },
+    {
+      "id": "m3sixty-mmf",
+      "url": "https://m3sixtyfunds.com/u-s-government-mmf/",
+      "horaUtc": "2026-11-27T09:35:47Z",
+      "copia": "fuentes/m3sixty-mmf.txt",
+      "sha256": "cbc8a1ae576bcd7a81cd1d29a4122e35edace5c14c8bb7b3abfa7e207accea21",
+      "comprobaciones": [
+        "MCGXX",
+        "stable \\$1\\.00 net asset value",
+        "investment advisor registered with the Securities and Exchange Commission"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hastra-wylds",
+      "url": "https://help.hastra.io/wylds/what-is-wylds",
+      "horaUtc": "2026-11-27T09:34:52Z",
+      "copia": "fuentes/hastra-wylds.txt",
+      "sha256": "1bc2cc6f413b9e57257b20cc2bd372b911ed83d9c742b61b9bccb627191c47fd",
+      "comprobaciones": [
+        "registered fixed-income security issued by Figure Certificate Company",
+        "Hastra takes a 50 bps fee",
+        "You can lose some or all of your capital"
+      ],
+      "ok": true
+    },
+    {
+      "id": "hastra-prime",
+      "url": "https://help.hastra.io/prime/what-is-prime-%28staked-wylds%29",
+      "horaUtc": "2026-11-27T09:34:46Z",
+      "copia": "fuentes/hastra-prime.txt",
+      "sha256": "1e12e531668311ba4062f74ac3a6cb9898fa744a61dc4b4ff7146ed7e09c976d",
+      "comprobaciones": [
+        "HELOC"
+      ],
+      "ok": true
+    },
+    {
+      "id": "backpack-socios",
+      "url": "https://wallet.backpack.exchange/tokenized-stocks/partners",
+      "horaUtc": "2026-11-27T09:34:10Z",
+      "copia": "fuentes/backpack-socios.txt",
+      "sha256": "eb31a674fba65f3662db7cc14b38b4749b8ce73d9c9ed0b3f64abaad45394d77",
+      "comprobaciones": [
+        "Backpack Securities issues tokenized U\\.S\\. stocks and ETFs",
+        "special purpose vehicle \\(SPV\\)",
+        "Who is the issuer\\? Backpack Securities"
+      ],
+      "ok": true
+    },
+    {
+      "id": "backpack-acciones",
+      "url": "https://wallet.backpack.exchange/tokenized-stocks",
+      "horaUtc": "2026-11-27T09:34:03Z",
+      "copia": "fuentes/backpack-acciones.txt",
+      "sha256": "a3c803d43a0521c18bb1eb7fb65935919b7b068d960244e7f26bab60f379277a",
+      "comprobaciones": [
+        "Tokenized stocks and ETFs on Solana",
+        "subject to eligibility and jurisdictional restrictions"
+      ],
+      "ok": true
+    },
+    {
+      "id": "onre-docs",
+      "url": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc",
+      "horaUtc": "2026-11-27T09:35:30Z",
+      "copia": "fuentes/onre-docs.txt",
+      "sha256": "8526e2f10910811be5fc261a39729851ee15ef56b9921676c59be0b05fc28a25",
+      "comprobaciones": [
+        "ring-fenced structure in Bermuda",
+        "reinsurance contracts"
+      ],
+      "ok": true
+    },
+    {
+      "id": "onre-app",
+      "url": "https://app.onre.finance/",
+      "horaUtc": "2026-11-27T09:35:37Z",
+      "copia": "fuentes/onre-app.txt",
+      "sha256": "8407badc9a525d68cf9f0999775d7471e0c759f0eb800400e8a5c6b888648e6c",
+      "comprobaciones": [
+        "do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd",
+        "Prohibited Jurisdiction",
+        "including the United States",
+        "No onboarding or minimums required",
+        "Regulated by the Bermuda Monetary Authority"
+      ],
+      "ok": true
+    }
+  ],
+  "nota": "Las 109 fuentes de antes se comprobaron hoy: radar-contraste-2026-11-27.json (comprobar-radar.mjs y cambios-radar.json)."
+}

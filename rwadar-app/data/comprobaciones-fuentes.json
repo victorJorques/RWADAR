@@ -111,6 +111,20 @@
     "luxivana-web": ["AFSL #255475", "from \\$25,000"],
     "tangiblex-web": ["licensed AFSL fund managers", "tokenised real-world-assets"],
     "caliber-nota": ["Caliber Goes Live with Tokenization of Three More Real Estate Offerings", "CaliberCos Inc\\."],
-    "okxice-nota": ["Tokenized Securities Venue", "eligible U\\.S\\.-based OKX Inc\\. customers"]
+    "okxice-nota": ["Tokenized Securities Venue", "eligible U\\.S\\.-based OKX Inc\\. customers"],
+    "libeara-web": ["Incubated by SC Ventures", "Tokenised Funds", "Singapore"],
+    "libeara-ultra": ["accredited and institutional investors", "Delta Master Trust", "FundBridge Capital remains responsible"],
+    "hashkey-htoken": ["3887\\.HK", "hToken", "exclusively available to qualified professional investors"],
+    "obligate-web": ["Institutional and qualified investors", "Swiss DLT Act"],
+    "obligate-otfy": ["USD 100,000 minimum investment", "Luxembourg securitization vehicle", "VQF"],
+    "colb-web": ["registered financial intermediary under Swiss law", "member of ARIF", "Pre-IPO opportunities"],
+    "colb-canp": ["tokenized structured certificate", "qualified investors", "25.000 \\$USC"],
+    "m3sixty-mmf": ["MCGXX", "stable \\$1\\.00 net asset value", "investment advisor registered with the Securities and Exchange Commission"],
+    "hastra-wylds": ["registered fixed-income security issued by Figure Certificate Company", "Hastra takes a 50 bps fee", "You can lose some or all of your capital"],
+    "hastra-prime": ["HELOC"],
+    "backpack-socios": ["Backpack Securities issues tokenized U\\.S\\. stocks and ETFs", "special purpose vehicle \\(SPV\\)", "Who is the issuer\\? Backpack Securities"],
+    "backpack-acciones": ["Tokenized stocks and ETFs on Solana", "subject to eligibility and jurisdictional restrictions"],
+    "onre-docs": ["ring-fenced structure in Bermuda", "reinsurance contracts"],
+    "onre-app": ["do not confer any ownership, redemption, governance, or other legal or contractual rights against On Re SAC Ltd", "Prohibited Jurisdiction", "including the United States", "No onboarding or minimums required", "Regulated by the Bermuda Monetary Authority"]
   }
 }

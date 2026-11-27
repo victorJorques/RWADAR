@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "fecha": "2026-11-27",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "728b4c59aa61ee47b0e3eaabc1a30e826866c9859f3c40e4777a675b4a57de6f"
+  },
+  "noticias": [
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "propuestas": {
+        "es": [
+          "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
+          "Poloniex lista Apple o Amazon tokenizadas, sin voto",
+          "Ya se negocian en Poloniex 16 acciones tokenizadas"
+        ],
+        "en": [
+          "Poloniex opens trading in 16 tokenised US stocks and ETFs",
+          "Poloniex lists tokenised Apple and Amazon, without votes",
+          "16 tokenised US stocks now trade on Poloniex"
+        ]
+      },
+      "elegido": {
+        "es": "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
+        "en": "Poloniex opens trading in 16 tokenised US stocks and ETFs"
+      },
+      "motivo": "Dice qué abre, cuántos y de dónde, sin dar a entender que el token sea la acción (el resumen y «Por qué te importa» lo aclaran). La fachada de la Bolsa de Nueva York ilustra acciones de EE. UU. sin atribuir el hecho a esa bolsa.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-bolsa-nueva-york-fachada",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-movil",
+          "real-pantalla-cotizaciones-grafico"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "banco-japon-cinco-retos-tokenizacion",
+      "propuestas": {
+        "es": [
+          "El Banco de Japón señala cinco retos de la tokenización",
+          "El Banco de Japón estudia tokenizar su dinero",
+          "Japón pide seguridad jurídica antes de tokenizar más"
+        ],
+        "en": [
+          "Bank of Japan flags five challenges of tokenisation",
+          "Bank of Japan studies tokenised central bank money",
+          "Japan’s central bank wants legal certainty on tokens"
+        ]
+      },
+      "elegido": {
+        "es": "El Banco de Japón señala cinco retos de la tokenización",
+        "en": "Bank of Japan flags five challenges of tokenisation"
+      },
+      "motivo": "La cifra (cinco retos) sale del discurso y el verbo «señala» deja claro que no es una norma. No hay sede del Banco de Japón en la biblioteca y la regla 3 impide usar la de otro supervisor: escena de IA de un vestíbulo bancario genérico.",
+      "heredado": null,
+      "foto": {
+        "clave": "banco-sala",
+        "encaje": "propia",
+        "alternativas": [
+          "planeta-noche"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "21x-coinix-monetario-tokenizado",
+      "propuestas": {
+        "es": [
+          "coinIX ya opera con un monetario tokenizado en 21X",
+          "Un fondo cripto usa un monetario tokenizado en 21X",
+          "21X suma a coinIX y su primer fondo monetario en token"
+        ],
+        "en": [
+          "Germany’s coinIX now trades a tokenised money fund on 21X",
+          "A crypto fund parks cash in a tokenised money fund",
+          "21X adds coinIX, trading a tokenised money fund"
+        ]
+      },
+      "elegido": {
+        "es": "coinIX ya opera con un monetario tokenizado en 21X",
+        "en": "Germany’s coinIX now trades a tokenised money fund on 21X"
+      },
+      "motivo": "Sujeto exacto (coinIX) y hecho del comunicado (ya opera). La fachada del Tesoro de EE. UU. ilustra un fondo monetario en dólares sin atribuirle nada.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-tesoro-eeuu-fachada",
+        "encaje": "propia",
+        "alternativas": [
+          "fondos-liquidez"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "propuestas": {
+        "es": [
+          "Hong Kong estrena una plataforma de bonos tokenizados",
+          "Hong Kong lanza su sistema digital para emitir bonos",
+          "Hong Kong incorpora liquidación 24 h para deuda digital"
+        ],
+        "en": [
+          "Hong Kong launches a platform for tokenised bonds",
+          "Hong Kong rolls out digital debt issuance platform",
+          "Hong Kong brings 24-hour settlement to digital debt"
+        ]
+      },
+      "elegido": {
+        "es": "Hong Kong estrena una plataforma de bonos tokenizados",
+        "en": "Hong Kong launches a platform for tokenised bonds"
+      },
+      "motivo": "Identifica el lanzamiento y el activo cubierto. La foto de servidores ilustra infraestructura digital sin atribuirla a la autoridad monetaria.",
+      "heredado": "2026-11-25",
+      "foto": {
+        "clave": "real-sala-servidores-bastidores",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "sbi-solana-global-empieza-operar-japon",
+      "propuestas": {
+        "es": [
+          "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
+          "Bancos japoneses y Solana ponen en marcha SBI Solana Global",
+          "Arranca SBI Solana Global, empresa conjunta de tokenización"
+        ],
+        "en": [
+          "SBI and SMBC launch an on-chain finance company in Japan",
+          "Japanese banks and Solana start SBI Solana Global",
+          "SBI Solana Global, a tokenisation joint venture, goes live"
+        ]
+      },
+      "elegido": {
+        "es": "SBI y SMBC lanzan en Japón una empresa de finanzas en cadena",
+        "en": "SBI and SMBC launch an on-chain finance company in Japan"
+      },
+      "motivo": "Dice qué grupos la crean y aclara que es una empresa, no un producto. La foto de un disco digital ilustra monedas estables sin marcas.",
+      "heredado": "2026-11-26",
+      "foto": {
+        "clave": "moneda-digital",
+        "encaje": "propia",
+        "alternativas": [
+          "red-europea"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "propuestas": {
+        "es": [
+          "La CNMV difunde alertas del supervisor belga",
+          "La CNMV publica avisos de Bélgica sobre un clon",
+          "La CNMV recoge avisos belgas de entidades sin registro"
+        ],
+        "en": [
+          "Spain’s CNMV shares warnings from the Belgian regulator",
+          "CNMV relays Belgian warnings that include a clone",
+          "Spanish regulator lists warnings about unregistered firms"
+        ]
+      },
+      "elegido": {
+        "es": "La CNMV difunde alertas del supervisor belga",
+        "en": "Spain’s CNMV shares warnings from the Belgian regulator"
+      },
+      "motivo": "La fecha corresponde a la difusión de la CNMV. El titular atribuye los avisos al supervisor belga.",
+      "heredado": "2026-11-25",
+      "foto": {
+        "clave": "real-cnmv-sede-madrid",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "propuestas": {
+        "es": [
+          "El BCE propone criterios comunes para la tokenización",
+          "El BCE plantea cómo conectar los mercados de tokens",
+          "Cinco criterios del BCE para conectar redes de tokens"
+        ],
+        "en": [
+          "ECB proposes common criteria for tokenisation",
+          "ECB sets out how tokenised markets can connect",
+          "Five ECB criteria for connecting token networks"
+        ]
+      },
+      "elegido": {
+        "es": "El BCE propone criterios comunes para la tokenización",
+        "en": "ECB proposes common criteria for tokenisation"
+      },
+      "motivo": "Indica que es una propuesta. La foto de cableado ilustra la conexión entre sistemas. Foto: la torre del BCE, sede del supervisor (guía § 4.1).",
+      "heredado": "2026-11-25",
+      "foto": {
+        "clave": "real-bce-francfort",
+        "encaje": "propia",
+        "alternativas": [
+          "real-servidores-cables"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "propuestas": {
+        "es": [
+          "El BCE aceptará ciertos valores tokenizados en garantía",
+          "La deuda tokenizada gana sitio como garantía ante el BCE",
+          "El BCE prevé admitir valores tokenizados desde junio de 2027"
+        ],
+        "en": [
+          "ECB to accept some tokenised securities as collateral",
+          "ECB widens collateral eligibility to select DLT securities",
+          "ECB plans new DLT collateral eligibility for June 2027"
+        ]
+      },
+      "elegido": {
+        "es": "El BCE aceptará ciertos valores tokenizados en garantía",
+        "en": "ECB to accept some tokenised securities as collateral"
+      },
+      "motivo": "El titular explica el nuevo uso de los valores. «Ciertos» conserva la condición de elegibilidad y el resumen recoge la fecha prevista. Foto: monedas de euro, porque la torre del BCE la lleva la otra noticia del BCE.",
+      "heredado": "2026-11-25",
+      "foto": {
+        "clave": "real-monedas-euro-bandera",
+        "encaje": "propia",
+        "alternativas": [
+          "real-bce-francfort"
+        ],
+        "faltaria": null
+      }
+    }
+  ]
+}

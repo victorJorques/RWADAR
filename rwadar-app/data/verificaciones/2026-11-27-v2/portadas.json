@@ -1,0 +1,69 @@
+{
+  "nota": "Portadas de las 8 plataformas nuevas: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto). portadas.py dibuja los maestros en rwadar-editorial-source/<maestro>; despues-de-aplicar.mjs los convierte a 720×720 sin metadatos y los apunta en rwadar-site/plataformas/fuentes.json.",
+  "portadas": [
+    {
+      "empresa": "Libeara",
+      "maestro": "libeara.webp",
+      "semilla": 812,
+      "descripcionVisual": "Muelle de contenedores del puerto de Singapur al amanecer, por su sede en Singapur y su papel de infraestructura.",
+      "prompt": "container terminal cranes at the port of Singapore on an overcast morning, grey calm water in the foreground, flat natural light",
+      "paginaReferencia": "https://libeara.com/"
+    },
+    {
+      "empresa": "HashKey RWA",
+      "maestro": "hashkey-rwa.webp",
+      "semilla": 823,
+      "descripcionVisual": "Bahía Victoria de Hong Kong con rascacielos un día nublado, por su sede en Hong Kong.",
+      "prompt": "Victoria Harbour in Hong Kong on an overcast day, dense skyscrapers along the waterfront, a ferry crossing",
+      "paginaReferencia": "https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/"
+    },
+    {
+      "empresa": "Obligate",
+      "maestro": "obligate.webp",
+      "semilla": 831,
+      "descripcionVisual": "Silos y cintas de carga de grano en un muelle, como las operaciones de financiación del comercio que respaldan sus bonos.",
+      "prompt": "grain silos and conveyor belts on an empty commercial port quay, piles of bulk grain, overcast daylight, no ships",
+      "paginaReferencia": "https://www.obligate.com/otfy"
+    },
+    {
+      "empresa": "Colb",
+      "maestro": "colb.webp",
+      "semilla": 839,
+      "descripcionVisual": "El lago Lemán y la orilla de Ginebra en un día gris, por su sede en Ginebra.",
+      "prompt": "Lake Geneva waterfront in Geneva Switzerland on a grey autumn day, stone quay, moored boats, old buildings across the water",
+      "paginaReferencia": "https://www.colb.finance/"
+    },
+    {
+      "empresa": "M3Sixty",
+      "maestro": "m3sixty.webp",
+      "semilla": 855,
+      "descripcionVisual": "Columnas de un edificio público neoclásico de Washington, por un fondo monetario de deuda pública de EE. UU.",
+      "prompt": "neoclassical government building colonnade with tall stone columns in Washington DC, overcast morning, empty steps",
+      "paginaReferencia": "https://m3sixtyfunds.com/u-s-government-mmf/"
+    },
+    {
+      "empresa": "Hastra",
+      "maestro": "hastra.webp",
+      "semilla": 857,
+      "descripcionVisual": "Casas unifamiliares de un barrio residencial de EE. UU., por los préstamos con garantía de vivienda de debajo de sus tokens.",
+      "prompt": "quiet suburban street in the United States with single-family houses and front lawns, autumn trees, overcast afternoon",
+      "paginaReferencia": "https://help.hastra.io/wylds/what-is-wylds"
+    },
+    {
+      "empresa": "Backpack Securities",
+      "maestro": "backpack-securities.webp",
+      "semilla": 863,
+      "descripcionVisual": "Calle de un distrito financiero de EE. UU. vista a ras de suelo, por las acciones estadounidenses que tokeniza.",
+      "prompt": "narrow street in a financial district of an American city at morning, tall stone office buildings, empty sidewalk",
+      "paginaReferencia": "https://wallet.backpack.exchange/tokenized-stocks/partners"
+    },
+    {
+      "empresa": "OnRe",
+      "maestro": "onre.webp",
+      "semilla": 877,
+      "descripcionVisual": "Costa de Bermudas con casas de colores y mar tranquilo, por la cuenta segregada de reaseguro que tiene allí.",
+      "prompt": "colorful pastel houses on a hillside above a calm turquoise bay in Bermuda, small boats, overcast daylight",
+      "paginaReferencia": "https://docs.onre.finance/introduction/onre-tokenized-reinsurance-onyc"
+    }
+  ]
+}
