@@ -225,7 +225,9 @@ export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, t
   const salida = salidaDocumentada(r) && !catalogoCaducado
     ? (e && texto(e.salidaCorta)) || textoCorto(datoBreve(r.salida).replace(/^Salida:\s*/, ''))
     : pendienteRevalidar(r, catalogoCaducado) ? 'Pendiente de volver a comprobar' : 'Sin documentar';
-  return [['Mínimo', minimo], [nombrePaisUsuario(pais), textoPaisOferta(oferta, r, false, pais)], ['Salida', salida]];
+  // Con el catálogo caducado no se afirma nada del país (como Mínimo y Salida), igual que la web.
+  const enPais = catalogoCaducado ? 'Sin confirmar' : textoPaisOferta(oferta, r, false, pais);
+  return [['Mínimo', minimo], [nombrePaisUsuario(pais), enPais], ['Salida', salida]];
 }
 
 /* España con UNA función para la tarjeta y la ficha, como la web
@@ -244,7 +246,8 @@ export function textoEspanaOferta(resumen, corto = false) {
    al lado de «No disponible en España». Igual que la web. */
 export function datosTarjetaOferta(oferta, resumen, { noEspana = false, pais = obtenerPais(), ...opciones } = {}) {
   const [minimo] = datosCortosOferta(oferta, resumen, { ...opciones, pais });
-  return [minimo, [nombrePaisUsuario(pais), noEspana ? 'No disponible' : textoPaisOferta(oferta, resumen, true, pais)]];
+  const enPais = noEspana ? 'No disponible' : opciones.catalogoCaducado ? 'Sin confirmar' : textoPaisOferta(oferta, resumen, true, pais);
+  return [minimo, [nombrePaisUsuario(pais), enPais]];
 }
 /* Si la oferta no se ofrece en el país elegido (la tarjeta lo dice en su fila). */
 export function noDisponiblePais(oferta, resumen, pais = obtenerPais()) {
