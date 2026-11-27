@@ -66,6 +66,12 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
           <Circle cx="12" cy="12" r="9" {...comun} opacity="0.48" />
         </>
       ) : null}
+      {nombre === 'globo' ? (
+        <>
+          <Circle cx="12" cy="12" r="9" {...comun} />
+          <Path d="M3 12h18M12 3c2.6 2.5 3.9 5.5 3.9 9s-1.3 6.5-3.9 9c-2.6-2.5-3.9-5.5-3.9-9S9.4 5.5 12 3z" {...comun} />
+        </>
+      ) : null}
       {nombre === 'ayuda' ? (
         <>
           <Circle cx="12" cy="12" r="9" {...comun} />

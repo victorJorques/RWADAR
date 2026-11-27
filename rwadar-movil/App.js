@@ -1319,8 +1319,9 @@ function IdiomaCabecera() {
   return (
     <View style={e.idiomaCab}>
       <View style={e.idiomaCabCapsula} accessibilityRole="radiogroup" accessibilityLabel="Idioma">
+      <View style={e.idiomaCabGlobo} accessible={false}><Icono nombre="globo" color={C.tx3} tamano={14} /></View>
       {[['es', 'ES', 'Español'], ['en', 'EN', 'English']].map(([valor, corto, nombre]) => (
-        <Pressable key={valor} onPress={() => { Promise.resolve(cambiarIdioma(valor)).catch(() => {}); }}
+        <Pressable key={valor} hitSlop={{ top: 8, bottom: 8 }} onPress={() => { Promise.resolve(cambiarIdioma(valor)).catch(() => {}); }}
           accessibilityRole="radio" accessibilityState={{ checked: actual === valor }} accessibilityLabel={nombre}
           style={({ pressed }) => [e.idiomaCabBoton, actual === valor && e.idiomaCabActivo, pressed && e.accionCabeceraPulsada]}>
           <Text noTraducir style={[e.idiomaCabTxt, actual === valor && e.idiomaCabTxtActivo]}>{corto}</Text>
@@ -2262,12 +2263,13 @@ const e = StyleSheet.create({
   cabeceraSuperior: { minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 0 },
   marca: { fontFamily: F.extra, fontSize: 19, letterSpacing: -0.4, color: C.tx },
-  idiomaCab: { flex: 1, alignItems: 'center' },
-  // Cápsula como los botones redondos de la cabecera.
-  idiomaCabCapsula: { flexDirection: 'row', gap: 2, padding: 2, borderRadius: 22, backgroundColor: C.ton },
-  idiomaCabBoton: { minWidth: 44, minHeight: 40, paddingHorizontal: 10, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  idiomaCabActivo: { backgroundColor: C.ton2 },
-  idiomaCabTxt: { fontSize: 14, lineHeight: 18, fontWeight: '600', color: C.tx2 },
+  idiomaCab: { flex: 1, alignItems: 'flex-end', paddingRight: 3 },
+  // Selector fino (27/11/2026), como la web: globo, ES · EN y la opción elegida en relieve.
+  idiomaCabCapsula: { flexDirection: 'row', alignItems: 'center', height: 36, paddingLeft: 10, paddingRight: 3, gap: 1, borderRadius: 18, borderWidth: 1, borderColor: C.linea },
+  idiomaCabGlobo: { marginRight: 5 },
+  idiomaCabBoton: { minWidth: 34, height: 28, paddingHorizontal: 8, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
+  idiomaCabActivo: { backgroundColor: C.s3 || '#2A2927' },
+  idiomaCabTxt: { fontSize: 12, lineHeight: 15, fontWeight: '600', letterSpacing: 0.7, color: C.tx3 },
   idiomaCabTxtActivo: { color: C.tx },
   accionCabecera: {
     width: 44, height: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center',

@@ -110,22 +110,27 @@
 
   /* Inicio, lo primero (27/11/2026): el país de residencia. Sin elegir, la pregunta con el detectado ya marcado y
      «Confirmar»; elegido, el país, cuántas ofertas están a su alcance y «Cambiar». Se ven todas las ofertas igual. */
+  const bandera = c => /^[A-Z]{2}$/.test(c || '') ? String.fromCodePoint(...[...c].map(x => 0x1F1E6 + x.charCodeAt(0) - 65)) : '';
+  /* Inicio (27/11/2026, versión compacta): una fila con la bandera, el país y «Cambiar ▾», y las cifras en una línea. */
   function inicioPaisHtml(ofertas) {
     const m = motor();
     if (!m) return '';
     const lista = Array.isArray(ofertas) ? ofertas : [];
     const n = e => lista.filter(o => estadoOferta(o).estado === e).length;
     const opciones = m.listaPaises('es').map(p => '<option value="' + p.codigo + '"' + (p.codigo === estado.codigo ? ' selected' : '') + '>' + esc(p.nombre) + '</option>').join('');
+    const select = '<select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select>';
     const elegido = estado.origen === 'elegido';
     return '<section class="ini-pais' + (elegido ? ' ini-pais-elegido' : '') + '" aria-labelledby="iniPaisTit">' +
       (elegido
-        ? '<div class="ini-pais-cab"><p class="ini-pais-ante">Tu país de residencia</p><h2 id="iniPaisTit" class="ini-pais-nombre">' + esc(nombre()) + '</h2></div>' +
-          '<ul class="ini-pais-cifras"><li><b>' + n('disponible') + '</b><span>Disponibles</span></li><li><b>' + n('con_requisitos') + '</b><span>Con requisitos</span></li>' +
-          '<li><b>' + lista.length + '</b><span>En el radar</span></li></ul>' +
-          '<label class="ini-pais-cambiar"><span>Cambiar país</span><select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select></label>'
+        ? '<div class="ini-pais-fila"><span class="ini-pais-bandera" aria-hidden="true">' + bandera(estado.codigo) + '</span>' +
+          '<div class="ini-pais-cab"><p class="ini-pais-ante">Tu país de residencia</p><h2 id="iniPaisTit" class="ini-pais-nombre">' + esc(nombre()) + '</h2></div>' +
+          '<label class="ini-pais-cambiar"><span>Cambiar</span>' + select + '</label></div>' +
+          '<ul class="ini-pais-cifras"><li class="ini-cifra-ok"><b>' + n('disponible') + '</b> <span>Disponibles</span></li>' +
+          '<li class="ini-cifra-req"><b>' + n('con_requisitos') + '</b> <span>Con requisitos</span></li>' +
+          '<li><b>' + lista.length + '</b> <span>En el radar</span></li></ul>'
         : '<h2 id="iniPaisTit" class="ini-pais-pregunta">¿Cuál es tu país de residencia?</h2>' +
           '<p class="ini-pais-sub">Así te decimos qué ofertas están a tu alcance. Verás todas las ofertas del mundo igualmente.</p>' +
-          '<div class="ini-pais-elegir"><label class="emis-pais-chip"><span class="emis-pais-globo" aria-hidden="true">◎</span><select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select></label>' +
+          '<div class="ini-pais-elegir"><label class="emis-pais-chip"><span class="emis-pais-globo" aria-hidden="true">◎</span>' + select + '</label>' +
           '<button type="button" class="b1 ini-pais-ok" data-ini-pais-ok>Confirmar</button></div>' +
           (estado.origen === 'detectado' ? '<p class="emis-pais-nota">Detectado por tu conexión. Si resides en otro país, cámbialo.</p>' : '')) +
       '</section>';
@@ -145,11 +150,11 @@
     for (const o of ofertas) { const c = m.normalizarCodigo(o && o.pais); if (c) cuenta.set(c, (cuenta.get(c) || 0) + 1); }
     const filas = [...cuenta.keys()].sort((a, b) => m.nombrePais(a, 'es').localeCompare(m.nombrePais(b, 'es'), 'es'));
     if (!filas.length) return '';
-    /* Solo la bandera y el nombre (27/11/2026), sin cifras. */
-    const bandera = c => /^[A-Z]{2}$/.test(c) ? String.fromCodePoint(...[...c].map(x => 0x1F1E6 + x.charCodeAt(0) - 65)) : '';
+    /* Bandera y nombre en chips que se deslizan de lado (27/11/2026, compacto); el país del usuario, el primero. */
+    const orden = [...filas.filter(c => c === estado.codigo), ...filas.filter(c => c !== estado.codigo)];
     return '<section class="ini-por-pais" aria-labelledby="iniPorPaisTit"><h2 id="iniPorPaisTit">Ofertas por país</h2>' +
       '<p class="ini-por-pais-sub">Países donde se emiten u ofrecen las ofertas del radar.</p>' +
-      '<ul class="ini-por-pais-lista">' + filas.map(c => '<li' + (c === estado.codigo ? ' class="es-tuyo"' : '') + '><span class="ini-por-pais-bandera" aria-hidden="true">' + bandera(c) + '</span><span class="ini-por-pais-nombre">' + esc(m.nombrePais(c, 'es')) + '</span></li>').join('') + '</ul></section>';
+      '<ul class="ini-por-pais-lista">' + orden.map(c => '<li' + (c === estado.codigo ? ' class="es-tuyo"' : '') + '><span class="ini-por-pais-bandera" aria-hidden="true">' + bandera(c) + '</span><span class="ini-por-pais-nombre">' + esc(m.nombrePais(c, 'es')) + '</span></li>').join('') + '</ul></section>';
   }
 
   leerGuardado();
