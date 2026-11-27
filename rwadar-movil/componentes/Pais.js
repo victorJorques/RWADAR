@@ -6,7 +6,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Modal, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Pressable, ScrollView, SelectorIdioma, Text, TextInput, View, useIdioma } from './Idioma';
+import { Pressable, ScrollView, Text, TextInput, View, useIdioma } from './Idioma';
 import { C, R, T, UI } from '../lib/tema';
 import { estadoEnPais, listaPaises, nombrePais } from '../lib/disponibilidad-pais';
 import { cargarPais, elegirPais, obtenerPais, origenPais, ponerSoloAccesibles, soloAccesibles, suscribirPais } from '../lib/pais-usuario';
@@ -87,7 +87,6 @@ export function PaisInicio({ ofertas = [] }) {
         <SelectorPais pais={pais} sinFiltro />
         <Pressable onPress={() => elegirPais(pais.codigo, AsyncStorage)} style={({ pressed }) => [e.iniOk, pressed && e.pulsado]}
           accessibilityRole="button" accessibilityLabel="Confirmar"><Text style={e.iniOkTxt}>Confirmar</Text></Pressable>
-        <IdiomaInicio />
       </View>
     );
   }
@@ -101,17 +100,6 @@ export function PaisInicio({ ofertas = [] }) {
         ))}
       </View>
       <SelectorPais pais={pais} sinFiltro textoBoton="Cambiar país" />
-      <IdiomaInicio />
-    </View>
-  );
-}
-
-/* Idioma en Inicio (27/11/2026), junto al país: el mismo selector de Perfil. */
-function IdiomaInicio() {
-  return (
-    <View style={e.iniIdioma}>
-      <Text style={e.iniIdiomaTit}>Idioma</Text>
-      <SelectorIdioma estilo={e.iniIdiomaSel} />
     </View>
   );
 }
@@ -141,9 +129,6 @@ export function OfertasPorPais({ ofertas = [] }) {
 }
 
 const e = StyleSheet.create({
-  iniIdioma: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 14, paddingTop: 10, borderTopWidth: 1, borderTopColor: C.linea },
-  iniIdiomaTit: { ...T.menor, fontSize: 13, color: C.tx2 },
-  iniIdiomaSel: { paddingHorizontal: 0, paddingVertical: 0, backgroundColor: 'transparent' },
   iniCaja: { marginTop: 20, marginHorizontal: UI.margen || 16, padding: 16, borderRadius: R.l, backgroundColor: C.sup, borderWidth: 1, borderColor: C.senalT },
   iniPregunta: { ...T.seccion, color: C.tx },
   iniSub: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx2, marginTop: 4 },

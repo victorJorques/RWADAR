@@ -2453,21 +2453,21 @@ html[lang="en"] .disp-pais [data-es],html:not([lang="en"]) .disp-pais [data-en]{
 .ini-por-pais-lista{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 .ini-por-pais-lista li{justify-content:flex-start;gap:10px}
 .ini-por-pais-bandera{font-size:1.25rem;line-height:1}
-/* Idioma en Inicio (27/11/2026), en la tarjeta del país: Español | English. */
-.ini-idioma{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--linea,rgba(255,255,255,.08))}
-.ini-idioma-tit{font-size:.8rem;color:var(--tx-2);margin-right:4px}
-.ini-idioma-b{min-height:44px;min-width:84px;padding:0 12px;border:0;border-radius:12px;background:none;color:var(--tx-2);font:inherit;font-size:.875rem;cursor:pointer}
-.ini-idioma-b[aria-pressed="true"],.ini-idioma-b:active{background:var(--ton-2,rgba(255,255,255,.1));color:var(--tx);font-weight:600}
-.ini-idioma-b:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 /* Idioma en la cabecera del móvil (27/11/2026): solo en Inicio, en el sitio del título (que queda para el lector). */
 .movil-cabecera-idioma{display:none}
 @media (max-width:767px),(max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
   body[data-movil-pestana="inicio"] .movil-cabecera-titulo{position:absolute!important;width:1px!important;height:1px!important;
     padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
-  body[data-movil-pestana="inicio"] .movil-cabecera-idioma{display:inline-flex;grid-column:2;grid-row:1;justify-self:center;gap:2px;
-    padding:2px;border-radius:12px;background:var(--ton,rgba(255,255,255,.06))}
-  .movil-cabecera-idioma button{min-width:44px;min-height:40px;padding:0 10px;border:0;border-radius:10px;background:none;
+  /* Cápsula como los iconos redondos de al lado y con su misma separación (3 px): una sola barra. */
+  body[data-movil-pestana="inicio"] .movil-cabecera-idioma{display:inline-flex;grid-column:3;grid-row:1;justify-self:end;gap:2px;
+    margin-right:94px;padding:2px;border-radius:22px;background:var(--ton,rgba(255,255,255,.06))}
+  body[data-movil-pestana="inicio"] .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:141px}
+  .movil-cabecera-idioma button{min-width:44px;min-height:40px;padding:0 10px;border:0;border-radius:20px;background:none;
     color:var(--tx-2);font-family:inherit;font-size:.875rem;font-weight:600;line-height:1;letter-spacing:.02em;cursor:pointer}
   .movil-cabecera-idioma button[aria-pressed="true"]{background:var(--ton-2,rgba(255,255,255,.14));color:var(--tx)}
   .movil-cabecera-idioma button:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+}
+/* Con la campana en teléfonos estrechos la descarga se oculta: la cápsula ocupa su sitio. */
+@media (max-width:374px){
+  body[data-movil-pestana="inicio"] .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:94px}
 }

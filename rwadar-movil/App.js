@@ -1317,7 +1317,8 @@ export default function App() {
 function IdiomaCabecera() {
   const actual = useIdioma();
   return (
-    <View style={e.idiomaCab} accessibilityRole="radiogroup" accessibilityLabel="Idioma">
+    <View style={e.idiomaCab}>
+      <View style={e.idiomaCabCapsula} accessibilityRole="radiogroup" accessibilityLabel="Idioma">
       {[['es', 'ES', 'Español'], ['en', 'EN', 'English']].map(([valor, corto, nombre]) => (
         <Pressable key={valor} onPress={() => { Promise.resolve(cambiarIdioma(valor)).catch(() => {}); }}
           accessibilityRole="radio" accessibilityState={{ checked: actual === valor }} accessibilityLabel={nombre}
@@ -1325,6 +1326,7 @@ function IdiomaCabecera() {
           <Text noTraducir style={[e.idiomaCabTxt, actual === valor && e.idiomaCabTxtActivo]}>{corto}</Text>
         </Pressable>
       ))}
+      </View>
     </View>
   );
 }
@@ -2260,8 +2262,10 @@ const e = StyleSheet.create({
   cabeceraSuperior: { minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 0 },
   marca: { fontFamily: F.extra, fontSize: 19, letterSpacing: -0.4, color: C.tx },
-  idiomaCab: { flex: 1, flexDirection: 'row', justifyContent: 'center', gap: 2 },
-  idiomaCabBoton: { minWidth: 44, minHeight: 40, paddingHorizontal: 10, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  idiomaCab: { flex: 1, alignItems: 'center' },
+  // Cápsula como los botones redondos de la cabecera.
+  idiomaCabCapsula: { flexDirection: 'row', gap: 2, padding: 2, borderRadius: 22, backgroundColor: C.ton },
+  idiomaCabBoton: { minWidth: 44, minHeight: 40, paddingHorizontal: 10, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   idiomaCabActivo: { backgroundColor: C.ton2 },
   idiomaCabTxt: { fontSize: 14, lineHeight: 18, fontWeight: '600', color: C.tx2 },
   idiomaCabTxtActivo: { color: C.tx },

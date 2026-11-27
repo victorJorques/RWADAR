@@ -110,14 +110,6 @@
 
   /* Inicio, lo primero (27/11/2026): el país de residencia. Sin elegir, la pregunta con el detectado ya marcado y
      «Confirmar»; elegido, el país, cuántas ofertas están a su alcance y «Cambiar». Se ven todas las ofertas igual. */
-  /* Idioma en Inicio (27/11/2026): Español | English junto al país, lo primero que se elige.
-     Los botones llevan data-elegir-idioma: idioma-web les pone aria-pressed al cambiar. */
-  function idiomaInicioHtml() {
-    const actual = globalThis.RWAdarIdioma && globalThis.RWAdarIdioma.obtenerIdioma ? globalThis.RWAdarIdioma.obtenerIdioma() : 'es';
-    const boton = (id, texto) => '<button type="button" class="ini-idioma-b" data-elegir-idioma="' + id + '" lang="' + id + '" translate="no" aria-pressed="' + (actual === id) + '">' + texto + '</button>';
-    return '<div class="ini-idioma" role="group" aria-labelledby="iniIdiomaTit"><span class="ini-idioma-tit" id="iniIdiomaTit">Idioma</span>' +
-      boton('es', 'Español') + boton('en', 'English') + '</div>';
-  }
   function inicioPaisHtml(ofertas) {
     const m = motor();
     if (!m) return '';
@@ -136,7 +128,7 @@
           '<div class="ini-pais-elegir"><label class="emis-pais-chip"><span class="emis-pais-globo" aria-hidden="true">◎</span><select data-ini-pais aria-label="Tu país de residencia">' + opciones + '</select></label>' +
           '<button type="button" class="b1 ini-pais-ok" data-ini-pais-ok>Confirmar</button></div>' +
           (estado.origen === 'detectado' ? '<p class="emis-pais-nota">Detectado por tu conexión. Si resides en otro país, cámbialo.</p>' : '')) +
-      idiomaInicioHtml() + '</section>';
+      '</section>';
   }
   function montarInicio(caja) {
     if (!caja) return;
