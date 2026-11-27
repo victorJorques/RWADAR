@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (57) · Claude · Inicio compacto: país en una fila, chips por país y selector de idioma fino · PUBLICADO
+
+- **Petición de Víctor (captura del iPhone):** «se ve muy grande y ocupa mucho», y el selector de idioma, «muy cutre».
+- **País de residencia (web y app):**
+  - Bandera, país y «Cambiar ▾» en una fila; en la web, el select nativo va transparente encima.
+  - Cifras en una línea.
+  - De ~1.000 a ~220 px.
+- **Ofertas por país:** chips de bandera y nombre en una fila deslizable (en escritorio, en varias filas); el país del
+  usuario va el primero.
+- **Idioma en la cabecera de Inicio:**
+  - Cápsula fina de 36 px con globo y «ES · EN», a 3 px de los iconos; área táctil de 44 px.
+  - En la app, icono nuevo `globo` en `Navegacion.js` y `SelectorPais` con `compacto`.
+- **Publicado:** PR #236 y #237. La primera «Publicar web» (46050714132) paró con `NOTA_INVALIDA`: nota del sello
+  demasiado corta; se renovó el sello con una nota completa. Revisión 46051221220, producción 46051492845, OTA 46050717598.
+- **Lección:** la nota de `sellar.cjs` tiene que explicar el alcance, no basta un título de dos palabras.
+
 ## 27 de noviembre de 2026 (56) · Claude · «ES | EN» en la cabecera de Inicio · PUBLICADO
 
 - **Petición de Víctor:** no veía dónde cambiar el idioma en Inicio, y después pidió que quedara bien integrado, limpio
