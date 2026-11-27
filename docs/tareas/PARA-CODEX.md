@@ -29,7 +29,8 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   comprobación o menos de 8 ofertas con cifra, generalizadas sin quitar comprobaciones (`probar-fichas.cjs`,
   `calculadora.test.cjs`, `ofertas-presentacion.test.cjs`).
 - **Publicado:** «Publicar web» revisión 46006593041 y producción 46006919605, comprobadas en vivo a 390 y 1366 px;
-  OTA Android 46006597525 (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» con gancho.
+  OTA Android 46006597525 (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» 46007259314: «El lingote de
+  plata más grande del mundo, HSBC y una fundición de 1365: 8 ofertas nuevas». Sin aviso de noticias: ya se avisó hoy.
 - **Pendiente:** la rama de cerrojo `claude/cerrojo-ciclo-2026-11-27` sigue sin borrar (Víctor: GitHub › Branches o
   «Limpiar ramas»). Las tarjetas re-fechadas valen hasta el 04/12; las tres del 26/11, hasta el 03/12.
 
