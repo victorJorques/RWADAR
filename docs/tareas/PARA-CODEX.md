@@ -6,6 +6,23 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de noviembre de 2026 (58) · Claude · Avisos: diagnóstico y ventana «Activa los avisos» al entrar · PUBLICADO
+
+- **Petición de Víctor:** «que salten las notificaciones al centro de notificaciones de los móviles».
+- **Diagnóstico (solo lectura y prueba a administración):** el envío funciona.
+  - `verificar-*`: push encendido, reloj cada 5 min y 33 notificaciones web en 24 h sin fallos.
+  - `prueba-webpush`: 1 suscripción de administración, aceptada con 201.
+  - El problema es que casi no hay móviles apuntados: 2 suscripciones con cuenta y 4 navegadores sin cuenta.
+- **Ventana al entrar (PR #239 y #240):**
+  - En la web (`novedades-producto-20261112.js`), si en ese móvil no están activos y se pueden activar (`directo`, o
+    `instalar` en el iPhone), sale una tarjeta al estilo de iOS. Lleva el mismo texto versionado, el mismo permiso
+    en el mismo toque, «quién interviene» y la información básica que el recuadro de la ventana de novedades.
+  - No sale en la app, con robots, si ya salió la de novedades, con el permiso bloqueado ni durante 3 días tras
+    cerrarla (`rwadar.recordatorio-avisos`).
+  - En la app, `VentanaAvisos` (lleva a Perfil › Avisos) con la misma pausa (`recordatorioAvisosEnPausa`).
+- **Publicado:** web en revisión y en producción 46059549636; OTA 46059224646. Comprobado en vivo con iPhone sin
+  instalar y Android con permiso sin contestar: sale, «Ahora no» la aparca y al volver no sale.
+
 ## 27 de noviembre de 2026 (57) · Claude · Inicio compacto: país en una fila, chips por país y selector de idioma fino · PUBLICADO
 
 - **Petición de Víctor (captura del iPhone):** «se ve muy grande y ocupa mucho», y el selector de idioma, «muy cutre».
