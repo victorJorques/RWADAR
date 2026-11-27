@@ -13,6 +13,31 @@
    crítico (tono stop) nunca entra en la Selección.
    --------------------------------------------------------------------- */
 import { CRITERIOS_TRANSPARENCIA, TRANSPARENCIA_POR_SLUG } from './transparencia-contenido';
+import { detalleDisponibilidad, disponibilidadDe, estadoEnPais, nombrePais } from './disponibilidad-pais';
+import { obtenerPais } from './pais-usuario';
+
+/* País de residencia (27/11/2026), como la web: lo que decía «España» lo dice el país
+   elegido. Sin reglas por país y con España: la referencia «Acceso desde España». */
+const ETIQUETAS_PAIS = { disponible: 'Disponible', con_requisitos: 'Con requisitos', no_disponible: 'No disponible', sin_confirmar: 'Sin confirmar' };
+export function estadoTextoPais(oferta, resumen, pais = obtenerPais()) {
+  if (disponibilidadDe(oferta)) return estadoEnPais(oferta, pais).estado;
+  if (pais !== 'ES') return 'sin_confirmar';
+  const a = resumen && resumen.accesoEspana && resumen.accesoEspana.estado;
+  return a === 'si' ? 'disponible' : a === 'no' ? 'no_disponible' : 'sin_confirmar';
+}
+export function textoPaisOferta(oferta, resumen, corto = false, pais = obtenerPais()) {
+  const e = estadoTextoPais(oferta, resumen, pais), t = ETIQUETAS_PAIS[e] || 'Sin confirmar';
+  return corto || e === 'sin_confirmar' ? t : `${t}, según la fuente`;
+}
+export const nombrePaisUsuario = (pais = obtenerPais()) => nombrePais(pais, 'es') || 'España';
+/* La sección «Disponibilidad por país» de la ficha: los nombres y estados en castellano (los traduce el
+   diccionario); nota y requisito en el idioma de la app (son datos con su versión inglesa). */
+export function detallePaisOferta(oferta, idioma = 'es', pais = obtenerPais()) {
+  const es = detalleDisponibilidad(oferta, pais, 'es'), en = detalleDisponibilidad(oferta, pais, 'en');
+  const de = idioma === 'en' ? en : es;
+  return { ...es, texto: ETIQUETAS_PAIS[es.estado] || 'Sin confirmar', conReglas: !!disponibilidadDe(oferta),
+    requisito: de.requisito, nota: de.nota, conRequisitos: es.conRequisitos.map((r, i) => ({ paises: r.paises, requisito: de.conRequisitos[i].requisito })) };
+}
 
 const texto = (v) => (typeof v === 'string' ? v.trim() : '');
 const dia = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,9 +66,9 @@ export function nombreFuente(url) {
 }
 
 const TEXTOS = [
-  ['contratable', 'Se contrata hoy desde España'],
-  ['supervisada', 'La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV'],
-  ['documentoEspana', 'Hay un documento oficial (KID o folleto) que cubre su venta en España'],
+  ['contratable', 'Se contrata hoy desde tu país de residencia'],
+  ['supervisada', 'Referencia España: autorizada por un supervisor de la UE e inscrita en la CNMV'],
+  ['documentoEspana', 'Referencia España: hay folleto o KID oficial para su venta en España'],
   ['minimoSalida', 'El mínimo y la forma de salir están documentados'],
   ['vigente', 'Revisada esta semana y sin fuentes en conflicto'],
 ];
@@ -118,7 +143,7 @@ export function textoCorto(v, max = 40) {
 }
 
 export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), catalogoCaducado = false,
-  tabla = TRANSPARENCIA_POR_SLUG, criterios = CRITERIOS_TRANSPARENCIA } = {}) {
+  tabla = TRANSPARENCIA_POR_SLUG, criterios = CRITERIOS_TRANSPARENCIA, pais = obtenerPais() } = {}) {
   const o = oferta || {};
   const r = resumen || {};
   const e = transparenciaOferta(o, tabla), estado = estadoVigencia(o, ahora), textos = criteriosTransparencia(criterios);
@@ -133,8 +158,13 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
   } : { cumple: false, motivo: 'Todavía no hemos comprobado este punto en la revisión actual.', fuente: null });
   const caducado = catalogoCaducado || estado.caducado;
   const acceso = r.accesoEspana;
-  const contratable = o.coleccion === 'principales' && o.disponibleEs === true && !caducado &&
-    !!(acceso && acceso.estado === 'si' && cita(acceso));
+  /* Se contrata desde el país elegido: con reglas por país, su estado y su primera fuente;
+     sin ellas y con España, lo de siempre (disponibleEs y «Acceso desde España»). */
+  const dispo = disponibilidadDe(o), ep = estadoTextoPais(o, r, pais);
+  const f0 = dispo && dispo.fuentes[0];
+  const citaPais = f0 && urlHttps(f0.url) ? { url: urlHttps(f0.url), titulo: texto(f0.titulo) || nombreFuente(f0.url), fecha: fechaValida(f0.consultadaEl) ? f0.consultadaEl : '' } : null;
+  const contratable = o.coleccion === 'principales' && !caducado && (dispo ? ep === 'disponible' && !!citaPais
+    : pais === 'ES' && o.disponibleEs === true && !!(acceso && acceso.estado === 'si' && cita(acceso)));
   const pendiente = caducado || pendienteRevalidar(r, catalogoCaducado);
   const minimo = !pendiente && minimoDocumentado(r), salida = !pendiente && salidaDocumentada(r);
   const vigente = o.estadoRevision === 'actual' && !caducado;
@@ -146,12 +176,14 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
       : [pendiente ? 'Salida por volver a comprobar.' : 'Salida sin documentar.'],
   ];
   const lista = {
-    contratable: { cumple: contratable, fuente: cita(acceso), motivo: contratable
-      ? 'Es una oferta principal y la fuente dice que se contrata desde España.'
+    contratable: { cumple: contratable, fuente: dispo ? citaPais : cita(acceso), motivo: contratable
+      ? 'Es una oferta principal y la fuente dice que se contrata desde tu país de residencia.'
       : o.coleccion === 'secundario' ? 'Está en Reventa: RWAdar no confirma que se pueda contratar hoy; compruébalo en la fuente.'
         : o.coleccion === 'en_camino' ? 'Es un anuncio: todavía no se puede contratar.'
-          : o.disponibleEs === false ? 'La fuente dice que no se contrata desde España.'
-            : caducado ? vencida : 'No consta en la fuente que se contrate desde España.' },
+          : caducado ? vencida
+            : ep === 'no_disponible' ? 'La fuente dice que no se ofrece en tu país de residencia.'
+              : ep === 'con_requisitos' ? 'Desde tu país, solo si cumples sus requisitos (los tienes en «Disponibilidad por país»).'
+                : 'No consta en la fuente que se contrate desde tu país de residencia.' },
     supervisada: editorial('supervisada'),
     documentoEspana: editorial('documentoEspana'),
     minimoSalida: { cumple: minimo && salida, fuente: minimo ? cita(r.minimo) : cita(r.salida), partes,
@@ -169,9 +201,13 @@ export function avisoBloqueo(oferta) {
 }
 
 /* Una oferta con aviso crítico nunca entra en la Selección (falla cerrado). */
+/* Fuera de España, los dos criterios de referencia española (CNMV y folleto o KID para España)
+   se enseñan, pero no deciden la Selección ni se trasladan a la regulación de otro país. */
 export function enSeleccionOferta(oferta, resumen, opciones = {}) {
+  const pais = opciones.pais || obtenerPais();
   return !!transparenciaOferta(oferta, opciones.tabla) && !avisoBloqueo(oferta) &&
-    comprobacionesOferta(oferta, resumen, opciones).every((c) => c.cumple);
+    comprobacionesOferta(oferta, resumen, { ...opciones, pais })
+      .every((c) => c.cumple || (pais !== 'ES' && (c.id === 'supervisada' || c.id === 'documentoEspana')));
 }
 
 export function puntosFuertesOferta(oferta, tabla = TRANSPARENCIA_POR_SLUG) {
@@ -181,7 +217,7 @@ export function puntosFuertesOferta(oferta, tabla = TRANSPARENCIA_POR_SLUG) {
 
 /* Mínimo · España · Salida en forma corta (decisión de Víctor del 03/11).
    Sin revisión vigente no hay cifras: manda lo que calcula resumenOferta. */
-export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, tabla = TRANSPARENCIA_POR_SLUG } = {}) {
+export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, tabla = TRANSPARENCIA_POR_SLUG, pais = obtenerPais() } = {}) {
   const r = resumen || {};
   const e = transparenciaOferta(oferta, tabla), acceso = r.accesoEspana && r.accesoEspana.estado;
   const minimo = minimoDocumentado(r) && !catalogoCaducado
@@ -189,7 +225,7 @@ export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, t
   const salida = salidaDocumentada(r) && !catalogoCaducado
     ? (e && texto(e.salidaCorta)) || textoCorto(datoBreve(r.salida).replace(/^Salida:\s*/, ''))
     : pendienteRevalidar(r, catalogoCaducado) ? 'Pendiente de volver a comprobar' : 'Sin documentar';
-  return [['Mínimo', minimo], ['España', textoEspanaOferta(r)], ['Salida', salida]];
+  return [['Mínimo', minimo], [nombrePaisUsuario(pais), textoPaisOferta(oferta, r, false, pais)], ['Salida', salida]];
 }
 
 /* España con UNA función para la tarjeta y la ficha, como la web
@@ -206,7 +242,12 @@ export function textoEspanaOferta(resumen, corto = false) {
    el catálogo caducados manda lo mismo que en la ficha. Si la oferta no se
    contrata desde España (noEspana), el dato dice «No»: nunca «Sin confirmar»
    al lado de «No disponible en España». Igual que la web. */
-export function datosTarjetaOferta(oferta, resumen, { noEspana = false, ...opciones } = {}) {
-  const [minimo] = datosCortosOferta(oferta, resumen, opciones);
-  return [minimo, ['España', noEspana ? 'No' : textoEspanaOferta(resumen, true)]];
+export function datosTarjetaOferta(oferta, resumen, { noEspana = false, pais = obtenerPais(), ...opciones } = {}) {
+  const [minimo] = datosCortosOferta(oferta, resumen, { ...opciones, pais });
+  return [minimo, [nombrePaisUsuario(pais), noEspana ? 'No disponible' : textoPaisOferta(oferta, resumen, true, pais)]];
+}
+/* Si la oferta no se ofrece en el país elegido (la tarjeta lo dice en su fila). */
+export function noDisponiblePais(oferta, resumen, pais = obtenerPais()) {
+  if (!disponibilidadDe(oferta) && pais === 'ES') return !!oferta && oferta.disponibleEs === false;
+  return estadoTextoPais(oferta, resumen, pais) === 'no_disponible';
 }

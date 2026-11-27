@@ -8,7 +8,7 @@ import { proveedoresDeOfertas } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
-  comprobacionesOferta, datosCortosOferta, datosTarjetaOferta, estadoVigencia, fechaES, puntosFuertesOferta,
+  comprobacionesOferta, datosCortosOferta, datosTarjetaOferta, detallePaisOferta, estadoVigencia, fechaES, nombrePaisUsuario, noDisponiblePais, puntosFuertesOferta,
 } from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
@@ -273,7 +273,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
   const primerCritico = avisosCriticos(oferta)[0];
   const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
-  const noEspana = !catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false;
+  const noEspana = !catalogoCaducado && resumen.cifrasVigentes && noDisponiblePais(ofertaOriginal, resumen);
   const datos = datosTarjetaOferta(ofertaOriginal, resumen, { catalogoCaducado, noEspana });
   const revision = problemaRevisionOferta(ofertaOriginal, ahora, catalogoCaducado);
   const marcaNueva = nueva && !catalogoCaducado;
@@ -289,7 +289,6 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
     marcaNueva ? traducir('Nueva') : null,
     ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
     revision ? traducirEstado(revision) : null,
-    noEspana ? traducir('No disponible en España') : null,
     bloqueo ? `${traducir('Aviso bloqueante')}: ${bloqueo.texto}` : null,
   ].filter(Boolean).join('. ');
   return (
@@ -336,7 +335,8 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
             <View style={e.alertas}>
               {revision ? <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
                 style={e.alertaRevision}>{traducirEstado(revision)}</Text> : null}
-              {noEspana ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
+              {/* Se ven todas; si no se ofrece en el país elegido, lo dice (27/11/2026). */}
+              {noEspana ? <Text style={e.noDisponible}>{`No disponible desde ${nombrePaisUsuario()}`}</Text> : null}
             </View>
           ) : null}
         </View>
@@ -457,6 +457,7 @@ export function DetalleOferta({
      («supervisada» en «Sí»); si no, el botón dice que sales de RWAdar (como la web). */
   const verOferta = comprobaciones.some((c) => c.id === 'contratable' && c.cumple === true) && supervisada?.cumple === true;
   const cortos = Object.fromEntries(datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado }));
+  const paisNombre = nombrePaisUsuario();
   // «válidas 6 días más» tras «Revisadas el …», como la web; en inglés, el patrón común.
   const validez = idiomaActual === 'en'
     ? traducir(estadoCifras.texto).replace(/^figures /, '') : estadoCifras.texto.replace(/^cifras /, '');
@@ -566,7 +567,7 @@ export function DetalleOferta({
                 {cifra.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.esencialNota}>{cifra.referencia}</Text> : null}
               </View>) : sinCifra ? fila(sinCifra[0], <Text style={e.esencialValor}>{sinCifra[1]}</Text>) : null}
               {fila('Mínimo', <Text style={e.esencialValor}>{cortos['Mínimo']}</Text>)}
-              {fila('España', <Text style={e.esencialValor}>{cortos['España']}</Text>)}
+              {fila(paisNombre, <Text style={e.esencialValor}>{cortos[paisNombre]}</Text>)}
               {fila('Salida', <Text style={e.esencialValor}>{cortos['Salida']}</Text>)}
               {fila('Cifras', vigente ? (
                 <Text style={e.esencialValor}>
@@ -655,6 +656,9 @@ export function DetalleOferta({
             </View>
 
             <View style={e.plegables}>
+              <Plegable titulo="Disponibilidad por país">
+                <DisponibilidadPais oferta={ofertaOriginal} idioma={idiomaActual} onAbrirEnlace={onAbrirEnlace} />
+              </Plegable>
               <Plegable titulo="Lo que hemos comprobado">
                 <Transparencia oferta={ofertaOriginal} resumen={resumen} ahora={ahora}
                   catalogoCaducado={catalogoCaducado} onAbrirEnlace={onAbrirEnlace} />
@@ -764,6 +768,51 @@ export function DetalleOferta({
         </Animated.View>
       </SafeAreaProvider>
     </Modal>
+  );
+}
+
+/* «Disponibilidad por país» (27/11/2026), como la ficha de la web: el estado en el país elegido y
+   lo que documentan las fuentes para todos los países. Lo que no consta, sin confirmar. */
+function DisponibilidadPais({ oferta, idioma, onAbrirEnlace }) {
+  const d = detallePaisOferta(oferta, idioma);
+  const lista = (titulo, nombres) => nombres.length ? (
+    <View style={e.dispBloque}>
+      <Text style={e.dispTitulo}>{titulo}</Text>
+      <Text style={e.esencialValor}>{nombres.map((n, i) => <Text key={n}>{i ? ' · ' : ''}<Text>{n}</Text></Text>)}</Text>
+    </View>) : null;
+  return (
+    <View style={e.transparencia}>
+      <View style={e.dispEstado}>
+        <Text style={e.esencialValor}>{d.nombre}</Text>
+        <Text style={[e.dispEtiqueta, e[`disp_${d.estado}`]]}>{d.texto}</Text>
+      </View>
+      {d.requisito ? <Text style={e.referencia}>Requisito: <Text noTraducir>{d.requisito}</Text></Text> : null}
+      {d.estado === 'sin_confirmar' ? <Text style={e.referencia}>No hay información oficial suficiente para tu país. No suponemos que esté disponible solo porque no aparezca excluido.</Text> : null}
+      {d.conReglas ? (
+        <View>
+          {d.nota ? <Text noTraducir style={[e.esencialValor, e.dispNota]}>{d.nota}</Text> : null}
+          {lista('Países admitidos', d.admitidos)}
+          {lista('Países excluidos', d.excluidos)}
+          {d.conRequisitos.map((r, i) => (
+            <View key={i}>
+              {lista('Con requisitos', r.paises)}
+              <Text noTraducir style={e.referencia}>{r.requisito}</Text>
+            </View>
+          ))}
+          {d.fuentes.map((f, i) => (
+            <View key={`${f.url}-${i}`} style={e.comprobacionFuente}>
+              <Pressable onPress={() => onAbrirEnlace(f.url)} style={({ pressed }) => [e.enlaceFuente, pressed && e.enlaceFuentePulsado]}
+                accessibilityRole="link" noTraducir accessibilityLabel={`${f.titulo} · ${traducir('Fuentes de la disponibilidad')}`}>
+                <Text noTraducir idiomaOriginal="es-ES" style={e.enlaceFuenteTxt}>{f.titulo} ↗</Text>
+              </Pressable>
+              <Text noTraducir style={[e.referencia, e.dispCita]}>«{f.literal}»</Text>
+              {f.consultadaEl ? <Text style={[e.referencia, e.referenciaFila]}>Consultada el {fechaES(f.consultadaEl)}</Text> : null}
+            </View>
+          ))}
+        </View>
+      ) : <Text style={e.referencia}>Esta oferta todavía no tiene la comprobación por país.</Text>}
+      <Text style={e.referencia}>La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</Text>
+    </View>
   );
 }
 
@@ -890,7 +939,17 @@ const e = StyleSheet.create({
   imagenFallbackTxtPeq: { fontSize: 20 },
   marcas: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 6, marginBottom: 4 },
   etiquetaNueva: { ...T.etiqueta, color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
-  noDisponible: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.alarma },
+  noDisponible: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.aviso },
+  dispEstado: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 6 },
+  dispEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 18, paddingHorizontal: 10, paddingVertical: 2, borderRadius: R.p, overflow: 'hidden', borderWidth: 1, borderColor: C.linea, color: C.tx },
+  disp_disponible: { backgroundColor: C.senalT, borderColor: C.senalT, color: C.senal },
+  disp_con_requisitos: { backgroundColor: C.avisoT, borderColor: C.avisoT, color: C.aviso },
+  disp_no_disponible: { backgroundColor: C.avisoT, borderColor: C.avisoT, color: C.aviso },
+  disp_sin_confirmar: {},
+  dispBloque: { marginTop: 10 },
+  dispTitulo: { ...T.menor, fontSize: 12, lineHeight: 16, color: C.tx2, marginBottom: 2 },
+  dispNota: { marginTop: 4 },
+  dispCita: { fontStyle: 'italic' },
   // Solo si la revisión tiene un problema; en ámbar, como la web (.caducado).
   alertas: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 10, rowGap: 2, marginTop: 6 },
   alertaRevision: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.aviso },

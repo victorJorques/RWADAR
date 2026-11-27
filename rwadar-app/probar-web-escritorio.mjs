@@ -18,7 +18,7 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
   prueba('idioma previo y candado en head sin defer; analítica, acceso, mapa, tokenización, noticias, calculadora, novedades, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
     JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaIdiomaPrevio, rutaCandado, '/assets/analitica-20260927.js', '/assets/acceso-privado.js',
       '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js','/assets/tokenizacion-modelo-20261110.js','/assets/mercado-20261111.js','/assets/noticias-sector-modelo-20261110.js','/assets/noticias-sector-20261110.js','/assets/calculadora-modelo-20261111.js','/assets/calculadora-20261111.js','/assets/novedades-producto-modelo-20261112.js','/assets/novedades-producto-20261112.js','/assets/catalogo-publico-20261022.js',
-      '/assets/ficha-editorial-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js','/assets/rwadar-20260820.js']) &&
+      '/assets/ficha-editorial-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js','/assets/disponibilidad-pais-20261127.js','/assets/pais-usuario-20261127.js','/assets/rwadar-20260820.js']) &&
     html.indexOf(rutaIdiomaPrevio) < html.indexOf('</head>') && html.indexOf(rutaCandado) < html.indexOf('</head>') &&
     // El diccionario inglés (común y el de la campana) va en data-idioma-en de idioma-previo: se carga solo en inglés (13/11/2026).
     scripts[0][0].includes('data-idioma-en="/assets/idioma-en-20261022.js /assets/idioma-en-avisos-20261112.js"') &&
@@ -240,18 +240,20 @@ export function probarTarjetaYComparador({ c, prueba }) {
     const puntos = puntosFuertesOferta(o).map(x => escHtml(textoLocal(x.texto)));
     const fuera = [...puntos, ...ordinarios, ...fechas];
     return { datos: [...t.matchAll(/<dt>([^<]+)<\/dt><dd>([^<]+)<\/dd>/g)].map(m => m[1] + '=' + m[2]).join('|'),
-      esperado: 'Mínimo=' + escHtml(d.minimo) + '|España=' + escHtml(d.espanaCorta), corta: d.espanaCorta, larga: d.espana,
+      esperado: 'Mínimo=' + escHtml(d.minimo) + '|' + escHtml(d.pais) + '=' + escHtml(d.espanaCorta), corta: d.espanaCorta, larga: d.espana,
       botones: (t.match(/<button\b/g) || []).length, anidado: /<button\b[^>]*>(?:(?!<\/button>)[\s\S])*<button\b/.test(t),
       ver: t.includes('<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="' + escHtml(o.slug) + '" aria-label="Ver ficha de ' +
         escHtml(o.titulo) + ' en ' + escHtml(o.plataformaNombre) + '"><span aria-hidden="true">›</span></button>'),
       sobra: [...fuera, '<time', '<dt>Salida</dt>', 'cifras válidas', 'Liquidez no confirmada', 'Apertura no confirmada', 'en la ficha'].filter(x => t.includes(x)),
-      ficha: [['Mínimo', d.minimo], ['España', d.espana], ['Salida', d.salida]].every(([k, v]) => esencial.includes('<dt>' + k + '</dt>') && esencial.includes(escHtml(v))) &&
+      ficha: [['Mínimo', d.minimo], [d.pais, d.espana], ['Salida', d.salida]].every(([k, v]) => esencial.includes('<dt>' + k + '</dt>') && esencial.includes(escHtml(v))) &&
         fuera.every(x => f.includes(x)) && f.includes(escHtml(e.clase === 'caducado' ? e.texto : e.texto.replace(/^cifras /, ''))) };
   });
   const filas = vm.runInContext('(' + revisar + ')()', c);
-  prueba('cada tarjeta: Mínimo y España en corto (misma función que la ficha) y un único «›» con nombre accesible, sin botones anidados',
+  // País de residencia (27/11/2026): la fila lleva el país elegido (España por defecto) y una de las cuatro etiquetas.
+  prueba('cada tarjeta: Mínimo y país en corto (misma función que la ficha) y un único «›» con nombre accesible, sin botones anidados',
     filas.length > 0 && filas.every(f => f.datos === f.esperado && f.botones === 2 && !f.anidado && f.ver &&
-      ({ 'Sí': 'Sí, según la fuente', 'No': 'No, según la fuente', 'Sin confirmar': 'Sin confirmar' })[f.corta] === f.larga));
+      ({ 'Disponible': 'Disponible, según la fuente', 'No disponible': 'No disponible, según la fuente',
+        'Con requisitos': 'Con requisitos, según la fuente', 'Sin confirmar': 'Sin confirmar' })[f.corta] === f.larga));
   prueba('lo que sale de la tarjeta (puntos fuertes, vigencia, Salida, avisos ordinarios y fechas) sigue en la ficha de cada oferta',
     filas.every(f => f.sobra.length === 0 && f.ficha));
   // Los textos nuevos de la tarjeta tienen su inglés (diccionario compartido con la app).

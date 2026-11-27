@@ -9,15 +9,15 @@ export const TRANSPARENCIA_REVISADA_EL = "2026-11-27";
 export const CRITERIOS_TRANSPARENCIA = [
   {
     "id": "contratable",
-    "texto": "Se contrata hoy desde España"
+    "texto": "Se contrata hoy desde tu país de residencia"
   },
   {
     "id": "supervisada",
-    "texto": "La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV"
+    "texto": "Referencia España: autorizada por un supervisor de la UE e inscrita en la CNMV"
   },
   {
     "id": "documentoEspana",
-    "texto": "Hay un documento oficial (KID o folleto) que cubre su venta en España"
+    "texto": "Referencia España: hay folleto o KID oficial para su venta en España"
   },
   {
     "id": "minimoSalida",

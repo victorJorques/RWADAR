@@ -1,0 +1,1336 @@
+{
+ "fecha": "2026-11-27",
+ "nota": "Disponibilidad por país de cada oferta (27/11/2026): países admitidos, excluidos y con requisitos, con la cita de su fuente oficial. Investigación con las fuentes de cada oferta y su revisión; lo que no consta, sin confirmar. Se guarda en documentacion.disponibilidad.",
+ "ofertas": {
+  "spiko-letras-del-tesoro-euro": {
+   "admitidos": [
+    "AT",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE"
+   ],
+   "excluidos": [
+    "US",
+    "BG",
+    "GB",
+    "CH",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "CA",
+    "AU"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability (docs.spiko.io)",
+     "literal": "They can be distributed in France and, through the UCITS marketing passport, in every other country of the European Economic Area (EEA) where the share class has been registered. Outside the EEA, they can be distributed only where they are recognized under the local regime: in the United Kingdom, Smart Cash is recognized by the Financial Conduct Authority (FCA) under the Overseas Funds Regime (OFR).",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · tabla por país",
+     "literal": "🇪🇸 Spain ✅ ✅ ✅ ❌ … 🇮🇹 Italy ✅ ✅ ✅ ❌ … 🇩🇪 Germany ✅ ✅ ✅ ❌ … 🇬🇧 United Kingdom ✅ ❌ ❌ ❌",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · Bulgaria",
+     "literal": "The funds are registered for distribution in Bulgaria, but we do not currently onboard clients from Bulgaria, for AML reasons.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+     "titulo": "Spiko · Onboarding Restrictions",
+     "literal": "For regulatory reasons, we can onboard clients from all countries except the following ones: … North America: United States … Europe: Belarus, Bulgaria, Monaco, Russia, Ukraine",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+     "titulo": "KID en español del compartimento",
+     "literal": "El Producto no se comercializa entre inversores estadounidenses que entren en la definición de « U.S. Persons », tal y como se resume en el folleto del Producto.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Spiko publica una tabla de los países donde puede venderse cada fondo: este fondo (T-Bills) está en los 28 países del Espacio Económico Europeo de la tabla; Bulgaria está registrada pero Spiko no admite clientes de allí, no se vende a personas de EE. UU. y fuera de esa lista no puede distribuirse. España, confirmada.",
+   "notaEn": "Spiko publishes a per-country table: this fund (T-Bills) can be distributed in the 28 EEA countries listed; Bulgaria is registered but Spiko does not onboard clients from there, it is not sold to US persons, and outside that list it cannot be distributed. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "spiko-letras-del-tesoro-dolar": {
+   "admitidos": [
+    "AT",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE"
+   ],
+   "excluidos": [
+    "US",
+    "BG",
+    "GB",
+    "CH",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "CA",
+    "AU"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability (docs.spiko.io)",
+     "literal": "They can be distributed in France and, through the UCITS marketing passport, in every other country of the European Economic Area (EEA) where the share class has been registered. Outside the EEA, they can be distributed only where they are recognized under the local regime: in the United Kingdom, Smart Cash is recognized by the Financial Conduct Authority (FCA) under the Overseas Funds Regime (OFR).",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · tabla por país",
+     "literal": "🇪🇸 Spain ✅ ✅ ✅ ❌ … 🇮🇹 Italy ✅ ✅ ✅ ❌ … 🇩🇪 Germany ✅ ✅ ✅ ❌ … 🇬🇧 United Kingdom ✅ ❌ ❌ ❌",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · Bulgaria",
+     "literal": "The funds are registered for distribution in Bulgaria, but we do not currently onboard clients from Bulgaria, for AML reasons.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+     "titulo": "Spiko · Onboarding Restrictions",
+     "literal": "For regulatory reasons, we can onboard clients from all countries except the following ones: … North America: United States … Europe: Belarus, Bulgaria, Monaco, Russia, Ukraine",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+     "titulo": "KID en español del compartimento",
+     "literal": "El Producto no se comercializa entre inversores estadounidenses que entren en la definición de « U.S. Persons », tal y como se resume en el folleto del Producto.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Spiko publica una tabla de los países donde puede venderse cada fondo: este fondo (T-Bills) está en los 28 países del Espacio Económico Europeo de la tabla; Bulgaria está registrada pero Spiko no admite clientes de allí, no se vende a personas de EE. UU. y fuera de esa lista no puede distribuirse. España, confirmada.",
+   "notaEn": "Spiko publishes a per-country table: this fund (T-Bills) can be distributed in the 28 EEA countries listed; Bulgaria is registered but Spiko does not onboard clients from there, it is not sold to US persons, and outside that list it cannot be distributed. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "spiko-smart-cash-euro": {
+   "admitidos": [
+    "AT",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "GB"
+   ],
+   "excluidos": [
+    "US",
+    "BG",
+    "CH",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "CA",
+    "AU"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability (docs.spiko.io)",
+     "literal": "They can be distributed in France and, through the UCITS marketing passport, in every other country of the European Economic Area (EEA) where the share class has been registered. Outside the EEA, they can be distributed only where they are recognized under the local regime: in the United Kingdom, Smart Cash is recognized by the Financial Conduct Authority (FCA) under the Overseas Funds Regime (OFR).",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · tabla por país",
+     "literal": "🇪🇸 Spain ✅ ✅ ✅ ❌ … 🇮🇹 Italy ✅ ✅ ✅ ❌ … 🇩🇪 Germany ✅ ✅ ✅ ❌ … 🇬🇧 United Kingdom ✅ ❌ ❌ ❌",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+     "titulo": "Spiko · Fund Availability · Bulgaria",
+     "literal": "The funds are registered for distribution in Bulgaria, but we do not currently onboard clients from Bulgaria, for AML reasons.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+     "titulo": "Spiko · Onboarding Restrictions",
+     "literal": "For regulatory reasons, we can onboard clients from all countries except the following ones: … North America: United States … Europe: Belarus, Bulgaria, Monaco, Russia, Ukraine",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+     "titulo": "KID en español del compartimento",
+     "literal": "El Producto no se comercializa entre inversores estadounidenses que entren en la definición de « U.S. Persons » tal como se resume en el folleto del Producto.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Spiko publica una tabla de los países donde puede venderse cada fondo: este fondo (Smart Cash) está en los 28 países del Espacio Económico Europeo de la tabla y en el Reino Unido; Bulgaria está registrada pero Spiko no admite clientes de allí, no se vende a personas de EE. UU. y fuera de esa lista no puede distribuirse. España, confirmada.",
+   "notaEn": "Spiko publishes a per-country table: this fund (Smart Cash) can be distributed in the 28 EEA countries listed and in the United Kingdom; Bulgaria is registered but Spiko does not onboard clients from there, it is not sold to US persons, and outside that list it cannot be distributed. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "robinhood-classic-stock-tokens": {
+   "admitidos": [
+    "EEE"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://robinhood.com/newsroom/europe-investment-gap-why-investors-are-turning-to-new-technologies-to-access-markets/",
+     "titulo": "Robinhood Newsroom · 22/06/2026",
+     "literal": "Today, eligible customers in every country in the EU and EEA* can access more than 2,000 Classic Stock Tokens linked to U.S.-listed stocks and ETPs",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://robinhood.com/newsroom/europe-investment-gap-why-investors-are-turning-to-new-technologies-to-access-markets/",
+     "titulo": "Robinhood Newsroom · nota al pie",
+     "literal": "*Some product restrictions in certain countries, including Belgium (crypto perpetual futures) and Hungary (crypto trading), as of September 2025",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Robinhood Europe dice que los Classic Stock Tokens están al alcance de los clientes que cumplan sus requisitos en todos los países de la UE y del EEE (las excepciones que cita, Bélgica y Hungría, son de otros productos cripto). Fuera del EEE no hay información oficial para este producto. España, confirmada.",
+   "notaEn": "Robinhood Europe says Classic Stock Tokens are available to eligible customers in every EU and EEA country (the exceptions it cites, Belgium and Hungary, concern other crypto products). Outside the EEA there is no official information for this product. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "mtbill": {
+   "admitidos": [
+    "IE",
+    "MT",
+    "AT",
+    "BE",
+    "LU",
+    "FR",
+    "IT",
+    "ES",
+    "PL",
+    "RO",
+    "NL",
+    "SE",
+    "PT",
+    "DE"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+     "titulo": "mTBILL · Condiciones Finales (17/07/2026)",
+     "literal": "Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+     "titulo": "mTBILL · Condiciones Finales · público objetivo",
+     "literal": "Prohibition of Sales to EEA Retail Investors: not applicable … Target market under MiFID II: eligible counterparties, professional clients and retail clients",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Las Condiciones Finales de mTBILL ofrecen el producto al público, también a particulares, en 14 países de la UE (entre ellos España, Italia y Alemania). Para el resto no hay fuente oficial legible: la web y la documentación de Midas devolvieron un bloqueo (403) y no se eludió.",
+   "notaEn": "The mTBILL Final Terms offer the product to the public, retail investors included, in 14 EU countries (Spain, Italy and Germany among them). For the rest there is no readable official source: Midas' website and docs returned a block (403) and it was not bypassed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "prosegur-digital-gold": {
+   "admitidos": [
+    "ES"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+     "titulo": "Prosegur Digital Gold · Términos y condiciones (08/07/2026)",
+     "literal": "La comercialización de los Tokens de Oro podrá realizarse en cualquier jurisdicción donde Prosegur Crypto esté facultada para ello, por sí misma o a través de colaboradores locales, según corresponda, y cumpla la normativa aplicable, sin limitarse al territorio español.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+     "titulo": "Prosegur Digital Gold · Términos · moneda",
+     "literal": "todas las transacciones económicas se realizarán en EUROS para los Clientes residentes en el Espacio Económico Europeo. En el caso de Clientes situados fuera del Espacio Económico Europeo, las liquidaciones podrán realizarse en la moneda de curso legal utilizada por el Cliente",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "El contrato lo rige la ley española y Prosegur Crypto está autorizada en España; dice que puede venderlo «en cualquier jurisdicción donde esté facultada», pero no publica en qué países lo está. Solo España queda confirmada.",
+   "notaEn": "The contract is governed by Spanish law and Prosegur Crypto is authorised in Spain; it says it may sell «in any jurisdiction where it is authorised» but does not publish which countries those are. Only Spain is confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "aktionariat": {
+   "admitidos": [
+    "CH",
+    "EEE"
+   ],
+   "excluidos": [
+    "GB",
+    "US",
+    "CA",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "AU",
+    "CN",
+    "IN",
+    "KR",
+    "SA",
+    "AR",
+    "CL",
+    "CO",
+    "ZA",
+    "TR"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.aktionariat.com/disclaimer",
+     "titulo": "Aktionariat · Disclaimer",
+     "literal": "The public offer to purchase the shares is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries. The offer for persons from the EEA is limited to a total of €100,000.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://shares.aktionariat.com/investor-page-terms",
+     "titulo": "Aktionariat · Investor Page Terms (v1.0, 30/10/2026) · §9.1",
+     "literal": "The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries. The offer for persons from the EEA is limited to a total of €100,000.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://shares.aktionariat.com/investor-page-terms",
+     "titulo": "Aktionariat · Investor Page Terms (v1.0, 30/10/2026) · §6 (personas de EE. UU.)",
+     "literal": "has offered or sold, or will offer or sell, indirectly or directly, any Share Tokens and/or distributed these Terms or any materials to any US citizen (whether or not he/she lives in the United States of America)",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "La compra directa al emisor solo se ofrece a residentes en Suiza o el Espacio Económico Europeo (con un tope total de 100.000 € para todo el EEE, sin publicar cuánto queda); las personas de otros países quedan excluidas expresamente. España, confirmada.",
+   "notaEn": "Direct purchase from the issuer is offered only to residents of Switzerland or the European Economic Area (with an overall cap of €100,000 for the whole EEA, remaining amount not published); persons from other countries are expressly excluded. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "kraken-xstocks": {
+   "admitidos": [],
+   "excluidos": [
+    "US",
+    "CA",
+    "GB",
+    "AU"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Superar el cuestionario de Kraken antes de operar; desde el EEE solo con euros u otra moneda fiat",
+     "requisitoEn": "Pass Kraken's questionnaire before trading; from the EEA only with fiat currency"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://support.kraken.com/articles/xstocks-availability",
+     "titulo": "Kraken · ¿Qué acciones y ETF están disponibles como xStocks? (11/11/2026)",
+     "literal": "Los xStocks no están disponibles en: Estados Unidos, Australia, Canadá, el Reino Unido y las regiones prohibidas.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://support.kraken.com/articles/xstocks-availability",
+     "titulo": "Kraken · Requisitos para los clientes del EEE",
+     "literal": "Si resides en el EEE, debes completar y superar un cuestionario antes de acceder al trading de xStocks. Una vez aprobados, los clientes del EEE pueden comprar, vender y convertir xStocks usando solo fiat a través de kraken.com.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.kraken.com/legal/xstocks",
+     "titulo": "Kraken · xStocks legal / FAQ",
+     "literal": "xStocks are only available to retail clients in select countries. They are not accessible in the US, Canada, UK, or Australia.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+     "titulo": "Backed Assets · Condiciones finales ANTx (19/11/2026)",
+     "literal": "The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Kraken UE lo ofrece a residentes del EEE que superen su cuestionario; no está en EE. UU., Canadá, Reino Unido ni Australia. Además, las condiciones finales del emisor solo citan Liechtenstein y Suiza (profesionales), sin España. Fuera del EEE lo vende otra sociedad de Kraken (Bermudas) y no hay lista de países: sin confirmar. España: se mantiene la publicada, con el requisito del cuestionario.",
+   "notaEn": "Kraken EU offers it to EEA residents who pass its questionnaire; not available in the US, Canada, UK or Australia. Also, the issuer's final terms only name Liechtenstein and Switzerland (professionals), not Spain. Outside the EEA another Kraken company (Bermuda) sells it with no country list: unconfirmed. Spain: published status kept, subject to the questionnaire.",
+   "verificadaEl": "2026-11-27"
+  },
+  "boss-info": {
+   "admitidos": [
+    "CH",
+    "EEE"
+   ],
+   "excluidos": [
+    "GB",
+    "US",
+    "CA",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "AU",
+    "CN",
+    "IN",
+    "KR",
+    "SA",
+    "AR",
+    "CL",
+    "CO",
+    "ZA",
+    "TR"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://shares.bossinfo.com/investor-page-terms",
+     "titulo": "Boss Info · Investor Page Terms (v1.0, 30/10/2026) · §9.1",
+     "literal": "The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries. The offer for persons from the EEA is limited to a total of €100,000.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://shares.bossinfo.com/investor-page-terms",
+     "titulo": "Boss Info · Investor Page Terms (v1.0, 30/10/2026) · §6 (personas de EE. UU.)",
+     "literal": "has offered or sold, or will offer or sell, indirectly or directly, any Share Tokens and/or distributed these Terms or any materials to any US citizen (whether or not he/she lives in the United States of America)",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "La compra directa al emisor solo se ofrece a residentes en Suiza o el Espacio Económico Europeo (con un tope total de 100.000 € para todo el EEE, sin publicar cuánto queda); las personas de otros países quedan excluidas expresamente. España, confirmada.",
+   "notaEn": "Direct purchase from the issuer is offered only to residents of Switzerland or the European Economic Area (with an overall cap of €100,000 for the whole EEA, remaining amount not published); persons from other countries are expressly excluded. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "switzerlend": {
+   "admitidos": [
+    "CH",
+    "EEE"
+   ],
+   "excluidos": [
+    "GB",
+    "US",
+    "CA",
+    "HK",
+    "SG",
+    "AE",
+    "JP",
+    "BR",
+    "MX",
+    "AU",
+    "CN",
+    "IN",
+    "KR",
+    "SA",
+    "AR",
+    "CL",
+    "CO",
+    "ZA",
+    "TR"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://shares.lend.ch/investor-page-terms",
+     "titulo": "Switzerlend · Investor Page Terms (v1.0, 30/10/2026) · §9.1",
+     "literal": "The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries. The offer for persons from the EEA is limited to a total of €100,000.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://shares.lend.ch/investor-page-terms",
+     "titulo": "Switzerlend · Investor Page Terms (v1.0, 30/10/2026) · §6 (personas de EE. UU.)",
+     "literal": "has offered or sold, or will offer or sell, indirectly or directly, any Share Tokens and/or distributed these Terms or any materials to any US citizen (whether or not he/she lives in the United States of America)",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "La compra directa al emisor solo se ofrece a residentes en Suiza o el Espacio Económico Europeo (con un tope total de 100.000 € para todo el EEE, sin publicar cuánto queda); las personas de otros países quedan excluidas expresamente. España, confirmada.",
+   "notaEn": "Direct purchase from the issuer is offered only to residents of Switzerland or the European Economic Area (with an overall cap of €100,000 for the whole EEA, remaining amount not published); persons from other countries are expressly excluded. Spain confirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "vivienda-pluddemanngasse-101-graz": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "vivienda-sonnleithnergasse-2-viena": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "local-de-estanco-klagenfurt": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "vivienda-stallhofstra-e-28-gratwein": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "vivienda-schwarzer-weg-18-graz": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "drautalresidenz-paternion": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "randhartingergasse-9-viena": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "apartamento-vacacional-hinterstoder-50": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "EEE"
+     ],
+     "requisito": "Residir en el EEE y, si no tributas en Austria, dar antes un número fiscal austriaco",
+     "requisitoEn": "Live in the EEA and, if you are not tax resident in Austria, first provide an Austrian tax number"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+     "titulo": "Brickwise · ¿Cómo tributan los rendimientos?",
+     "literal": "Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo; para esta emisión, quien no tribute en Austria necesita antes un número fiscal austriaco. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area; for this issue, anyone not tax resident in Austria first needs an Austrian tax number. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+   "admitidos": [
+    "EEE"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo y compra y vende en su mercado entre inversores. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area, who can buy and sell on its investor market. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "fotovoltaica-greenpoint": {
+   "admitidos": [
+    "EEE"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo y compra y vende en su mercado entre inversores. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area, who can buy and sell on its investor market. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "fotovoltaica-cohotel": {
+   "admitidos": [
+    "EEE"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+     "titulo": "Brickwise · ¿Puedo abrir una cuenta desde cualquier país?",
+     "literal": "Kann ich einen Account von jedem Land aus eröffnen? Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Brickwise abre cuenta a cualquier residente del Espacio Económico Europeo y compra y vende en su mercado entre inversores. Fuera del EEE, no.",
+   "notaEn": "Brickwise opens accounts for any resident of the European Economic Area, who can buy and sell on its investor market. Outside the EEA, no.",
+   "verificadaEl": "2026-11-27"
+  },
+  "tohkn-iber1": {
+   "admitidos": [
+    "SV"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.tohkn.com/en/issuances/iber1",
+     "titulo": "TOHKN · ficha de la emisión",
+     "literal": "Invest in Iberplastic's recycling expansion through IBER1, a public digital debt offering in El Salvador with a $100 minimum investment.",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones",
+     "literal": "They are not included on any international sanctions lists and are not a resident of restricted jurisdictions under MIO3's policies or those of international bodies (OFAC, UN, EU, FATF, or others).",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones §10.8",
+     "literal": "MIO3 will maintain a prohibited persons and restricted jurisdictions policy at tohkn.com/legal/restricted. This list may be updated without prior notice for compliance or risk reasons.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Es una oferta pública registrada en El Salvador; TOHKN excluye «jurisdicciones restringidas» pero la página de su lista (tohkn.com/legal/restricted) no existe (error 404 el 27/11/2026), así que el resto de países queda sin confirmar.",
+   "notaEn": "It is a public offering registered in El Salvador; TOHKN excludes «restricted jurisdictions» but its list page (tohkn.com/legal/restricted) does not exist (404 on 27/11/2026), so all other countries remain unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "tohkn-mmlti1": {
+   "admitidos": [
+    "SV"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.tohkn.com/en/issuances/mmlti1",
+     "titulo": "TOHKN · ficha de la emisión",
+     "literal": "Invest in the growth of MultiMoney's credit portfolio through MMLTI1, the first tranche of the MMY issuance programme, a public digital debt offering in El Salvador with a $100 minimum investment.",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones",
+     "literal": "They are not included on any international sanctions lists and are not a resident of restricted jurisdictions under MIO3's policies or those of international bodies (OFAC, UN, EU, FATF, or others).",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones §10.8",
+     "literal": "MIO3 will maintain a prohibited persons and restricted jurisdictions policy at tohkn.com/legal/restricted. This list may be updated without prior notice for compliance or risk reasons.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Es una oferta pública registrada en El Salvador; TOHKN excluye «jurisdicciones restringidas» pero la página de su lista (tohkn.com/legal/restricted) no existe (error 404 el 27/11/2026), así que el resto de países queda sin confirmar.",
+   "notaEn": "It is a public offering registered in El Salvador; TOHKN excludes «restricted jurisdictions» but its list page (tohkn.com/legal/restricted) does not exist (404 on 27/11/2026), so all other countries remain unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "tohkn-rncrrev": {
+   "admitidos": [
+    "SV"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.tohkn.com/en/issuances/rncrrev",
+     "titulo": "TOHKN · ficha de la emisión",
+     "literal": "This offering is structured and registered in accordance with El Salvador's Digital Assets Issuance Law (LEAD) and complies with the regulatory framework for public offerings overseen by the National Commission of Digital Assets (CNAD).",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones",
+     "literal": "They are not included on any international sanctions lists and are not a resident of restricted jurisdictions under MIO3's policies or those of international bodies (OFAC, UN, EU, FATF, or others).",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.tohkn.com/en/legal/terms-and-conditions",
+     "titulo": "TOHKN · Términos y condiciones §10.8",
+     "literal": "MIO3 will maintain a prohibited persons and restricted jurisdictions policy at tohkn.com/legal/restricted. This list may be updated without prior notice for compliance or risk reasons.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Es una oferta pública registrada en El Salvador; TOHKN excluye «jurisdicciones restringidas» pero la página de su lista (tohkn.com/legal/restricted) no existe (error 404 el 27/11/2026), así que el resto de países queda sin confirmar.",
+   "notaEn": "It is a public offering registered in El Salvador; TOHKN excludes «restricted jurisdictions» but its list page (tohkn.com/legal/restricted) does not exist (404 on 27/11/2026), so all other countries remain unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "liqi-creditos-empresas": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [],
+   "nota": "Liqi aún no publica desde qué países se puede invertir. Si te interesa, pregúntaselo antes de abrir cuenta.",
+   "notaEn": "Liqi does not yet say which countries you can invest from. If you are interested, ask them before opening an account.",
+   "verificadaEl": "2026-11-27"
+  },
+  "finexity-bono-2026-2030-serie-b": {
+   "admitidos": [
+    "DE"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "titulo": "FINEXITY · Hoja de términos del bono 2026/2030",
+     "literal": "Public offer in Germany only, 06.11.2026 to 05.11.2027",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://content.finexity.com/hubfs/documents/finexity-group/FINEXITY-Group_Bond-2026-2030_Term-Sheet_EN.pdf",
+     "titulo": "FINEXITY · Hoja de términos · aviso",
+     "literal": "The information in this document is addressed exclusively to persons resident or habitually resident in the Federal Republic of Germany.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "La oferta pública es solo en Alemania y la información se dirige exclusivamente a residentes en Alemania; el resto de países queda fuera.",
+   "notaEn": "The public offer is in Germany only and the information is addressed exclusively to German residents; all other countries are out.",
+   "verificadaEl": "2026-11-27"
+  },
+  "groma-real-estate-trust": {
+   "admitidos": [
+    "US"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.gromareit.com/",
+     "titulo": "Groma Real Estate Trust · materiales de la oferta",
+     "literal": "The Groma Real Estate Trust is currently available to accredited investors under the Regulation D 506(c) exemption as further described in the Securities and Exchange Act of 1933. The Groma Real Estate Trust is currently available to accredited and non-accredited investors under Regulation Crowdfunding through our partner registered crowdfunding platform WeFunder, which is the sole venue through which non-accredited investors may currently invest.",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://invest.groma.com/",
+     "titulo": "Groma · Invest",
+     "literal": "Everyone can invest through Wefunder. If you’re an accredited investor, you can also buy direct with Groma.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Oferta de EE. UU. con exenciones de la SEC: cualquiera puede entrar por la campaña de Wefunder y, si es inversor acreditado, comprar directamente. Groma no dice si admite residentes fuera de EE. UU.: el resto, sin confirmar.",
+   "notaEn": "US offering under SEC exemptions: anyone may invest through the Wefunder campaign and accredited investors may also buy direct. Groma does not say whether non-US residents are accepted: the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "securitize-hinc": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [
+    {
+     "paises": [
+      "US"
+     ],
+     "requisito": "Solo inversores acreditados y compradores cualificados (AI y QP) de EE. UU.",
+     "requisitoEn": "US accredited investors and qualified purchasers (AI and QP) only"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://securitize.io/hinc",
+     "titulo": "Securitize · ficha de HINC",
+     "literal": "Investor Qualification: AI and QP",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://securitize.io/hinc",
+     "titulo": "Securitize · ficha de HINC · aviso",
+     "literal": "Securities are offered through Securitize Markets, LLC, (\"Securitize Markets\") a registered broker-dealer and member FINRA/SIPC.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Fondo colocado en privado en EE. UU. por Securitize Markets solo a inversores acreditados y compradores cualificados (categorías de la ley de EE. UU.). No hay fuente para otros países.",
+   "notaEn": "Private placement in the US through Securitize Markets for accredited investors and qualified purchasers only (US-law categories). No source for other countries.",
+   "verificadaEl": "2026-11-27"
+  },
+  "blackrock-hkd-digital-liquidity": {
+   "admitidos": [
+    "HK"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+     "titulo": "BlackRock Hong Kong · términos de la web",
+     "literal": "The funds referred to in this Website are authorized by the SFC for sale to the public in Hong Kong (the “Funds”).",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund",
+     "titulo": "BlackRock Hong Kong · términos de la web",
+     "literal": "Each investment product and service referred to on this Website is intended to be made available only to residents in Hong Kong.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Fondo autorizado por el supervisor de Hong Kong para venderse al público allí y, según BlackRock, solo para residentes en Hong Kong; el resto de países queda fuera.",
+   "notaEn": "Fund authorised by the Hong Kong regulator for sale to the public there and, per BlackRock, only for Hong Kong residents; all other countries are out.",
+   "verificadaEl": "2026-11-27"
+  },
+  "amundi-core-stoxx-europe-600-tokenizada": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [],
+   "nota": "Amundi aún no ha dicho quién podrá comprar esta clase tokenizada ni desde qué países. Lo miramos de nuevo en cada revisión.",
+   "notaEn": "Amundi has not yet said who will be able to buy this tokenised class or from which countries. We check again at every review.",
+   "verificadaEl": "2026-11-27"
+  },
+  "franklin-onchain-euro-liquidity": {
+   "admitidos": [
+    "AT",
+    "FR",
+    "DE",
+    "LU",
+    "NL",
+    "PT",
+    "ES"
+   ],
+   "excluidos": [
+    "US"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "IT",
+      "CH"
+     ],
+     "requisito": "Solo inversores institucionales",
+     "requisitoEn": "Institutional investors only"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+     "titulo": "Franklin Templeton · comunicado del 23/11/2026",
+     "literal": "The new Fund will be available to retail investors in Austria, France, Germany, Luxembourg, the Netherlands, Portugal and Spain, and to institutional investors in Italy and Switzerland.",
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "url": "https://www.ftinstitutionalemea.com/press-releases/franklin-templeton-launches-tokenised-euro-money-market-fund",
+     "titulo": "Franklin Templeton · comunicado · aviso legal",
+     "literal": "No shares of the Fund may be directly or indirectly offered or sold to residents of the United States of America.",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Según el comunicado de lanzamiento, el fondo se dirige a particulares de Austria, Francia, Alemania, Luxemburgo, Países Bajos, Portugal y España, y solo a institucionales en Italia y Suiza; no a residentes en EE. UU. Aún no se ha publicado por qué canal se contrata.",
+   "notaEn": "Per the launch release, the fund is for retail investors in Austria, France, Germany, Luxembourg, the Netherlands, Portugal and Spain, and institutional investors only in Italy and Switzerland; not for US residents. The subscription channel is not yet published.",
+   "verificadaEl": "2026-11-27"
+  },
+  "alterna-bono-digital-mitsui": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://app.alterna-z.com/offerings",
+     "titulo": "ALTERNA · lista de ofertas",
+     "literal": "三井物産が初めて個人向けに発行する、無担保デジタル社債 · 三井物産株式会社 第1回個人向け無担保セキュリティトークン社債",
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "nota": "Bono de Mitsui & Co. para particulares en una plataforma japonesa, solo en japonés y en yenes. No dice si admite residentes fuera de Japón (hoy la lista devolvió un bloqueo 403): el resto, sin confirmar.",
+   "notaEn": "Mitsui & Co. bond for individual investors on a Japanese platform, Japanese-only and in yen. It does not say whether residents outside Japan are accepted (the listing returned a 403 block today): the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "hwk-1365-zukunftsanleihe": {
+   "admitidos": [
+    "DE"
+   ],
+   "excluidos": [
+    "US",
+    "CA"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+     "titulo": "HWK 1365 · Hoja informativa del valor (WIB)",
+     "literal": "WERTPAPIER-INFORMATIONSBLATT NACH § 4 WERTPAPIERPROSPEKTGESETZ (WpPG) – HWK 1365 SE",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.hwk1365.de/wp-content/uploads/2026/11/HWK1365SE_Wertpapier-Informationsblatt.pdf",
+     "titulo": "HWK 1365 · WIB · transmisión",
+     "literal": "Eine Übertragung an Staatsbürger der Vereinigten Staaten oder an Personen, die in den USA oder Kanada steuerpflichtig sind, sowie an Personen in Ländern, die auf der aktuellen Länderliste der Hochrisiko- und anderen überwachten Rechtsordnungen der Financial Action Task Force (FATF) geführt werden, ist unzulässig.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.hwk1365.de/anleihe/",
+     "titulo": "HWK 1365 · página del bono",
+     "literal": "Die Wertpapiere werden nicht in den USA oder an US-Personen angeboten.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Oferta pública alemana sin folleto, con la hoja informativa que exige la ley alemana (WpPG) para ofrecerla en Alemania. Excluye a EE. UU., a quien tribute en EE. UU. o Canadá y a los países de la lista de alto riesgo del GAFI. No dice si admite otros países de la UE: España y el resto, sin confirmar.",
+   "notaEn": "German public offer without a prospectus, using the information sheet German law (WpPG) requires to offer it in Germany. Excludes the US, anyone tax-liable in the US or Canada and countries on the FATF high-risk list. It does not say whether other EU countries are accepted: Spain and the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "tokinvest-lingote-plata-record": {
+   "admitidos": [],
+   "excluidos": [
+    "US"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar",
+     "titulo": "Tokinvest · ficha · aviso de riesgos",
+     "literal": "Investments are subject to eligibility and jurisdictional restrictions. Not available to U.S. persons.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://tokinvest.capital/brokerage-terms",
+     "titulo": "Tokinvest · condiciones de intermediación",
+     "literal": "Tokinvest is licensed and regulated by the Dubai Virtual Assets Regulatory Authority (VARA) under VASP Licence No. VL/2024/12/004. Tokinvest is licensed to provide Broker-Dealer Services and Category 1 VA Issuance and is permitted to serve Institutional Investors, Qualified Investors and Retail Investors.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Tokinvest tiene licencia del regulador de Dubái para atender también a particulares, y no lo ofrece a personas de EE. UU. Dice que hay restricciones por país pero no publica la lista: fuera de Emiratos, sin confirmar.",
+   "notaEn": "Tokinvest is licensed by Dubai's regulator to serve retail investors too, and it is not offered to US persons. It says country restrictions apply but publishes no list: outside the UAE, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "tokinvest-great-hampton-street": {
+   "admitidos": [],
+   "excluidos": [
+    "US"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://tokinvest.capital/case-studies/great-hampton-street-works",
+     "titulo": "Tokinvest · ficha · aviso de riesgos",
+     "literal": "Investments are subject to eligibility and jurisdictional restrictions. Not available to U.S. persons.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://tokinvest.capital/brokerage-terms",
+     "titulo": "Tokinvest · condiciones de intermediación",
+     "literal": "Tokinvest is licensed and regulated by the Dubai Virtual Assets Regulatory Authority (VARA) under VASP Licence No. VL/2024/12/004. Tokinvest is licensed to provide Broker-Dealer Services and Category 1 VA Issuance and is permitted to serve Institutional Investors, Qualified Investors and Retail Investors.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Tokinvest tiene licencia del regulador de Dubái para atender también a particulares, y no lo ofrece a personas de EE. UU. Dice que hay restricciones por país pero no publica la lista: fuera de Emiratos, sin confirmar.",
+   "notaEn": "Tokinvest is licensed by Dubai's regulator to serve retail investors too, and it is not offered to US persons. It says country restrictions apply but publishes no list: outside the UAE, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "hsbc-hkd-money-fund-class-sd": {
+   "admitidos": [],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [
+    {
+     "paises": [
+      "HK"
+     ],
+     "requisito": "Ser cliente elegible de HSBC en Hong Kong y activar la cartera de RedCoin en su app",
+     "requisitoEn": "Be an eligible HSBC Hong Kong customer and activate the RedCoin wallet in its app"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+     "titulo": "HSBC Hong Kong · nota de prensa del 19/11/2026",
+     "literal": "Eligible customers will now be able to activate their stablecoin wallet in the App and use RCHKD to access a new tokenised unit class (Class SD) of the HSBC Global Money Funds – Hong Kong Dollar (the Fund).",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.hsbc.com.hk/investments/products/mutual-funds/guide-to-tokenised-funds/",
+     "titulo": "HSBC Hong Kong · guía de fondos tokenizados",
+     "literal": "The information contained on this website is intended for Hong Kong residents only and should not be construed as a distribution, an offer to sell, or a solicitation to buy any securities in any jurisdiction where such activities would be unlawful under the laws of such jurisdiction, in particular the United States of America.",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Solo para clientes elegibles de HSBC en Hong Kong desde su app, y HSBC dirige esta información solo a residentes en Hong Kong; el resto de países queda fuera.",
+   "notaEn": "Only for eligible HSBC Hong Kong customers through its app, and HSBC addresses this information to Hong Kong residents only; all other countries are out.",
+   "verificadaEl": "2026-11-27"
+  },
+  "exio-ustnt-bonos-tesoro-eeuu": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [
+    {
+     "paises": [
+      "HK"
+     ],
+     "requisito": "Solo inversores profesionales (PI), con verificación de identidad",
+     "requisitoEn": "Professional Investors (PI) only, with KYC"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+     "titulo": "EX.IO · anuncio de USTNT",
+     "literal": "This product is currently available to Professional Investors (PI) only.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.ex.io/en/support/announcements/new-offering-us-treasury-note-token-ustnt-is-now-available-on-ex-io",
+     "titulo": "EX.IO · anuncio de USTNT",
+     "literal": "Eligible User Type: Professional Investors (PI) only; KYC/AML and sanctions requirements apply",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Plataforma autorizada en Hong Kong; el producto es solo para inversores profesionales. No publica qué otros países admite: el resto, sin confirmar.",
+   "notaEn": "Platform authorised in Hong Kong; the product is for professional investors only. It does not publish which other countries it accepts: the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "osl-taikang-kaitai-usd-mmf": {
+   "admitidos": [
+    "HK"
+   ],
+   "excluidos": [],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://www.osl.com/hk-en/bits/article/osl-taikang-kaitai-usd-money-market-fund",
+     "titulo": "OSL · artículo del fondo",
+     "literal": "As a public fund authorized for distribution to the Hong Kong market, it adheres to stringent regulatory requirements, ensuring a high level of investor protection.",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+     "titulo": "OSL · preguntas del fondo",
+     "literal": "The fund is ideal for retail and institutional investors holding idle USD funds who seek stable returns with low risk",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.osl.com/hk-en/support/taikang-kaitai-usd-money-market-fund---introduction-faqs",
+     "titulo": "OSL · preguntas del fondo",
+     "literal": "Step 3: Complete a risk assessment (required for first-time subscriptions).",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Fondo público autorizado para venderse en Hong Kong, también a particulares, a través de la app de OSL tras un test de riesgo. OSL no publica qué otros países admite: el resto, sin confirmar.",
+   "notaEn": "Public fund authorised for distribution in Hong Kong, retail included, through the OSL app after a risk assessment. OSL does not publish which other countries it accepts: the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  },
+  "conda-devolo-bono-2026": {
+   "admitidos": [
+    "AT",
+    "DE"
+   ],
+   "excluidos": [
+    "*"
+   ],
+   "conRequisitos": [],
+   "fuentes": [
+    {
+     "url": "https://conda-capital.com/campaign/devolo-solutions-anleihe/",
+     "titulo": "CONDA · ficha de la campaña devolo",
+     "literal": "Angeboten in AT, DE",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "La campaña se ofrece solo en Austria y Alemania; el resto de países queda fuera.",
+   "notaEn": "The campaign is offered only in Austria and Germany; all other countries are out.",
+   "verificadaEl": "2026-11-27"
+  },
+  "mufg-realty-token-kioicho": {
+   "admitidos": [],
+   "excluidos": [],
+   "conRequisitos": [
+    {
+     "paises": [
+      "JP"
+     ],
+     "requisito": "Tener cuenta en Daiwa Securities",
+     "requisitoEn": "Hold an account with Daiwa Securities"
+    }
+   ],
+   "fuentes": [
+    {
+     "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+     "titulo": "Daiwa Securities · condiciones de la oferta",
+     "literal": "当初取扱金融商品取引業者 大和証券株式会社 · 募集有価証券の種類 受益証券発行信託の受益権を表象するセキュリティ・トークン（トークン化有価証券）",
+     "consultadaEl": "2026-11-27"
+    },
+    {
+     "url": "https://www.daiwa.jp/products/securitytoken/info/mufg_kioicho/",
+     "titulo": "Daiwa Securities · condiciones de la oferta",
+     "literal": "「受益権発行届出目論見書」は大和証券株式会社の本支店・営業所の窓口でご請求下さい。",
+     "consultadaEl": "2026-11-27"
+    }
+   ],
+   "nota": "Oferta pública japonesa (con folleto registrado en Japón) que se contrata con una cuenta de Daiwa Securities, todo en japonés. No dice si admite residentes fuera de Japón: el resto, sin confirmar.",
+   "notaEn": "Japanese public offering (with a prospectus filed in Japan) subscribed through a Daiwa Securities account, all in Japanese. It does not say whether non-residents of Japan are accepted: the rest, unconfirmed.",
+   "verificadaEl": "2026-11-27"
+  }
+ }
+}

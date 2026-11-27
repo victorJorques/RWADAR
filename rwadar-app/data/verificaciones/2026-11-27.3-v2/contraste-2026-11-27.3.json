@@ -1,0 +1,607 @@
+{
+  "tipo": "disponibilidad",
+  "fecha": "2026-11-27",
+  "etiqueta": "2026-11-27.3",
+  "revisionAnterior": "38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca",
+  "revisionNueva": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
+  "decision": "Orden de la dirección del 27/11/2026: disponibilidad de cada oferta según el país de residencia, con fuente oficial; lo que no consta, sin confirmar.",
+  "archivos": {
+    "disponibilidad.json": "e5ff57145a803d32892fe72865feff0d31e412af3f8af5244747d5971471be8f"
+  },
+  "colecciones": {
+    "principales": 24,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "lecturaPublica": "Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-27T12:56:02Z – 2026-11-27T12:56:05Z",
+  "resumen": {
+    "spiko-letras-del-tesoro-euro": {
+      "admitidos": [
+        "AT",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LI",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "excluidos": [
+        "US",
+        "BG",
+        "GB",
+        "CH",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "CA",
+        "AU"
+      ],
+      "conRequisitos": [],
+      "fuentes": 5
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "admitidos": [
+        "AT",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LI",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "excluidos": [
+        "US",
+        "BG",
+        "GB",
+        "CH",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "CA",
+        "AU"
+      ],
+      "conRequisitos": [],
+      "fuentes": 5
+    },
+    "spiko-smart-cash-euro": {
+      "admitidos": [
+        "AT",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IS",
+        "IE",
+        "IT",
+        "LV",
+        "LI",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "GB"
+      ],
+      "excluidos": [
+        "US",
+        "BG",
+        "CH",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "CA",
+        "AU"
+      ],
+      "conRequisitos": [],
+      "fuentes": 5
+    },
+    "robinhood-classic-stock-tokens": {
+      "admitidos": [
+        "EEE"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "mtbill": {
+      "admitidos": [
+        "IE",
+        "MT",
+        "AT",
+        "BE",
+        "LU",
+        "FR",
+        "IT",
+        "ES",
+        "PL",
+        "RO",
+        "NL",
+        "SE",
+        "PT",
+        "DE"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "prosegur-digital-gold": {
+      "admitidos": [
+        "ES"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "aktionariat": {
+      "admitidos": [
+        "CH",
+        "EEE"
+      ],
+      "excluidos": [
+        "GB",
+        "US",
+        "CA",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "AU",
+        "CN",
+        "IN",
+        "KR",
+        "SA",
+        "AR",
+        "CL",
+        "CO",
+        "ZA",
+        "TR"
+      ],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "kraken-xstocks": {
+      "admitidos": [],
+      "excluidos": [
+        "US",
+        "CA",
+        "GB",
+        "AU"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 4
+    },
+    "boss-info": {
+      "admitidos": [
+        "CH",
+        "EEE"
+      ],
+      "excluidos": [
+        "GB",
+        "US",
+        "CA",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "AU",
+        "CN",
+        "IN",
+        "KR",
+        "SA",
+        "AR",
+        "CL",
+        "CO",
+        "ZA",
+        "TR"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "switzerlend": {
+      "admitidos": [
+        "CH",
+        "EEE"
+      ],
+      "excluidos": [
+        "GB",
+        "US",
+        "CA",
+        "HK",
+        "SG",
+        "AE",
+        "JP",
+        "BR",
+        "MX",
+        "AU",
+        "CN",
+        "IN",
+        "KR",
+        "SA",
+        "AR",
+        "CL",
+        "CO",
+        "ZA",
+        "TR"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "local-de-estanco-klagenfurt": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "drautalresidenz-paternion": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "randhartingergasse-9-viena": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "EEE"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "admitidos": [
+        "EEE"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 1
+    },
+    "fotovoltaica-greenpoint": {
+      "admitidos": [
+        "EEE"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 1
+    },
+    "fotovoltaica-cohotel": {
+      "admitidos": [
+        "EEE"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 1
+    },
+    "tohkn-iber1": {
+      "admitidos": [
+        "SV"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "tohkn-mmlti1": {
+      "admitidos": [
+        "SV"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "tohkn-rncrrev": {
+      "admitidos": [
+        "SV"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "liqi-creditos-empresas": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 0
+    },
+    "finexity-bono-2026-2030-serie-b": {
+      "admitidos": [
+        "DE"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "groma-real-estate-trust": {
+      "admitidos": [
+        "US"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "securitize-hinc": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [
+        [
+          "US"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "blackrock-hkd-digital-liquidity": {
+      "admitidos": [
+        "HK"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "amundi-core-stoxx-europe-600-tokenizada": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 0
+    },
+    "franklin-onchain-euro-liquidity": {
+      "admitidos": [
+        "AT",
+        "FR",
+        "DE",
+        "LU",
+        "NL",
+        "PT",
+        "ES"
+      ],
+      "excluidos": [
+        "US"
+      ],
+      "conRequisitos": [
+        [
+          "IT",
+          "CH"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "alterna-bono-digital-mitsui": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 1
+    },
+    "hwk-1365-zukunftsanleihe": {
+      "admitidos": [
+        "DE"
+      ],
+      "excluidos": [
+        "US",
+        "CA"
+      ],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "tokinvest-lingote-plata-record": {
+      "admitidos": [],
+      "excluidos": [
+        "US"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "tokinvest-great-hampton-street": {
+      "admitidos": [],
+      "excluidos": [
+        "US"
+      ],
+      "conRequisitos": [],
+      "fuentes": 2
+    },
+    "hsbc-hkd-money-fund-class-sd": {
+      "admitidos": [],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [
+        [
+          "HK"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "exio-ustnt-bonos-tesoro-eeuu": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [
+        [
+          "HK"
+        ]
+      ],
+      "fuentes": 2
+    },
+    "osl-taikang-kaitai-usd-mmf": {
+      "admitidos": [
+        "HK"
+      ],
+      "excluidos": [],
+      "conRequisitos": [],
+      "fuentes": 3
+    },
+    "conda-devolo-bono-2026": {
+      "admitidos": [
+        "AT",
+        "DE"
+      ],
+      "excluidos": [
+        "*"
+      ],
+      "conRequisitos": [],
+      "fuentes": 1
+    },
+    "mufg-realty-token-kioicho": {
+      "admitidos": [],
+      "excluidos": [],
+      "conRequisitos": [
+        [
+          "JP"
+        ]
+      ],
+      "fuentes": 2
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { Icono } from './Navegacion';
 import Radar from './Radar';
 import RecienAnadidas from './RecienAnadidas';
+import { OfertasPorPais, PaisInicio } from './Pais';
 import { MercadoCotizacion, MercadoPantalla } from './MercadoBolsa';
 import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
@@ -177,6 +178,10 @@ export default function Inicio({
           {avisoPrimero ? null : <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text>}
         </View>
       </View>
+
+      {/* Ofertas por país (27/11/2026): arriba, con el radar y las ofertas. Solo con el catálogo vigente. */}
+      {cifras.vigente ? <PaisInicio ofertas={ofertas} /> : null}
+      {cifras.vigente ? <OfertasPorPais ofertas={ofertas} /> : null}
 
       {/* Cambios en lo que sigues: solo si los hay. Los avisos de la cuenta
           están en la campana de la cabecera (21/11/2026). */}

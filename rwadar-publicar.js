@@ -289,7 +289,9 @@ if (scriptsPropios.filter(s => s[1] === rutaCatalogo).length !== 1 ||
     scriptsPropios.slice(indiceCatalogo).some(s => !/\bdefer\b/i.test(s[0]) || /\basync\b|\btype\s*=/i.test(s[0])) ||
     JSON.stringify(scriptsPropios.slice(indiceHelper+1,-1).map(s=>s[1]))!==JSON.stringify([
       '/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',
-      '/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js'])) {
+      '/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js',
+      // Disponibilidad por país (27/11/2026): el motor y el país del usuario, antes del comportamiento.
+      '/assets/disponibilidad-pais-20261127.js','/assets/pais-usuario-20261127.js'])) {
   console.error('ERROR: el snapshot único del catálogo debe cargar con defer antes del comportamiento.');
   process.exit(1);
 }

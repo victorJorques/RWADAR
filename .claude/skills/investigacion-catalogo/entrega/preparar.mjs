@@ -394,6 +394,15 @@ export function preparar(opciones = {}) {
       anota(slug, 'descripción', c.antes, c.despues);
       d.descripcion = d.descripcion.replace(c.antes, () => c.despues);
     },
+    /* Disponibilidad por país (27/11/2026): sustituye entera la de la oferta; «antes» = la publicada. */
+    disponibilidad(slug, c) {
+      const d = documentos[slug];
+      const { erroresDisponibilidad } = require(path.join(raiz, 'rwadar-movil/lib/disponibilidad-pais.js'));
+      assert.deepEqual(d.disponibilidad ?? null, c.antes ?? null, `${slug}: disponibilidad «antes»`);
+      assert.deepEqual(erroresDisponibilidad(c.despues), [], `${slug}: disponibilidad nueva no válida`);
+      anota(slug, 'disponibilidad por país', JSON.stringify(c.antes ?? null).slice(0, 200), JSON.stringify(c.despues).slice(0, 200));
+      d.disponibilidad = structuredClone(c.despues);
+    },
     caracteristica(slug, c) {
       const d = documentos[slug], i = unico(d.caracteristicas, x => x.etiqueta === c.etiqueta, `${slug}: característica «${c.etiqueta}»`);
       assert.equal(d.caracteristicas[i].valor, c.antes, `${slug}: característica «${c.etiqueta}» «antes»`);
@@ -623,6 +632,15 @@ export function preparar(opciones = {}) {
 
   escribir(path.join(DIR_SALIDA, 'radar-canonico-26.json'), radar);
   escribir(path.join(DIR_SALIDA, 'escaparate-publicacion.json'), escaparate);
+  /* Disponibilidad por país (desde la entrega 2026-11-27.3): se conserva de la publicada y cada oferta la lleva,
+     válida (países admitidos, excluidos y con requisitos con su fuente; lo que no consta, sin confirmar). */
+  if (Object.values(docBase).some(d => d && d.disponibilidad)) {
+    const { erroresDisponibilidad } = require(path.join(raiz, 'rwadar-movil/lib/disponibilidad-pais.js'));
+    for (const [slug, d] of Object.entries(documentos)) {
+      assert.ok(d.disponibilidad, `${slug}: falta documentacion.disponibilidad (disponibilidad por país)`);
+      assert.deepEqual(erroresDisponibilidad(d.disponibilidad), [], `${slug}: disponibilidad por país no válida`);
+    }
+  }
   escribir(path.join(DIR_SALIDA, 'documentacion-ofertas.json'), documentos);
   escribir(path.join(DIR_SALIDA, 'manifiesto-catalogo.json'), manifiesto);
 

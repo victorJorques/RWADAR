@@ -12,6 +12,7 @@ const permitidas = require('./rwadar-fichas-manifiesto');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { paginasAcademy } = require('./rwadar-academy');
 const { resumenOferta, rotuloReferencia } = require('./rwadar-movil/lib/ficha-editorial');
+const DISPONIBILIDAD = require('./rwadar-movil/lib/disponibilidad-pais');
 // Transparencia de cada oferta (validada por rwadar-editorial-source/ofertas/transparencia.mjs).
 const TRANSPARENCIA = JSON.parse(fs.readFileSync(path.join(__dirname,'rwadar-editorial-source/ofertas/transparencia.json'),'utf8'));
 const RAIZ = __dirname;
@@ -225,6 +226,9 @@ function transparenciaOferta(o,catalogo) {
   const t = TRANSPARENCIA.ofertas[o.slug], e = t && t.verificadaEl === o.verificadaEl ? t : null;
   const r = resumenDeLaRevision(o,catalogo);
   const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
+  /* La página fija no sabe desde qué país la miran: el criterio 1 toma España como referencia, y lo dice
+     (27/11/2026). La disponibilidad de cada país está en su sección «Disponibilidad por país». */
+  texto.contratable = 'Se contrata hoy desde España (referencia)';
   const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
   const salida = !['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto);
   const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo || new URL(f.url).hostname.replace(/^www\./,''))+'</span> ↗</a>'+
@@ -253,6 +257,21 @@ function transparenciaOferta(o,catalogo) {
     /* «Datos comprobados a favor» (antes «Puntos fuertes»): revisión legal del 06/11/2026, punto 5.3. */
     (puntos.length ? '<h3>Datos comprobados a favor, con su fuente</h3><ul class="fuentes puntos">'+puntos.map(x=>'<li><strong>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
     '</section>';
+}
+
+/* «Disponibilidad por país» (27/11/2026): todo lo documentado, para cualquier país (la página fija no
+   sabe desde dónde la miran). Sin reglas, lo dice. Los nombres de países los traduce el diccionario. */
+function disponibilidadSeccion(o) {
+  const d = DISPONIBILIDAD.disponibilidadDe(o);
+  const lista = (titulo, l, excl = false) => l.length ? '<div><dt>'+titulo+'</dt><dd><ul class="paises">'+DISPONIBILIDAD.nombresLista(l,'es',excl).map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></dd></div>' : '';
+  return '<section aria-labelledby="disponibilidad"><h2 id="disponibilidad">Disponibilidad por país</h2>'+
+    (d ? '<p'+ORIGINAL+'>'+esc(d.nota)+'</p><dl>'+lista('Países admitidos',d.admitidos)+lista('Países excluidos',d.excluidos,true)+
+      d.conRequisitos.map(r=>lista('Con requisitos',r.paises)+'<div><dt>Requisito</dt><dd'+ORIGINAL+'>'+esc(r.requisito)+'</dd></div>').join('')+'</dl>'+
+      '<p class="ui">Lo que no aparece aquí queda sin confirmar: no suponemos que una oferta esté disponible en un país solo porque no esté excluido.</p>'+
+      (d.fuentes.length?'<ul class="fuentes">':'')+d.fuentes.map(f=>'<li><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo||new URL(f.url).hostname)+'</span> ↗</a>'+
+        (fecha(f.consultadaEl)?' <span>· consultada el '+esc(corta(f.consultadaEl))+'</span>':'')+'<blockquote'+ORIGINAL+'>'+esc(f.literal)+'</blockquote></li>').join('')+(d.fuentes.length?'</ul>':'')
+      : '<p class="ui">Esta oferta todavía no tiene la comprobación por país.</p>')+
+    '<p class="ui">La disponibilidad depende de tu país de residencia, no de dónde te conectes. Compruébala siempre en la fuente antes de decidir.</p></section>';
 }
 
 /* «Qué se adquiere: …» va en su fila de «Qué es y quién lo ofrece» y no también
@@ -295,7 +314,7 @@ function paginaOferta(o,catalogo,imagen) {
     /* El botón, con su línea, justo después de los avisos y los riesgos (como en la ficha de la web). */
     '<p class="aviso">No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p>'+
     '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer" data-campo="botonProveedor">'+
-    (verOfertaEnProveedor(o,catalogo) ? 'Ver oferta en '+esc(o.plataformaNombre) : SALIR_AL_PROVEEDOR)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
+    (verOfertaEnProveedor(o,catalogo) ? 'Ver oferta en '+esc(o.plataformaNombre) : SALIR_AL_PROVEEDOR)+' ↗</a></p>'+disponibilidadSeccion(o)+transparenciaOferta(o,catalogo)+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
     (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(rotuloReferencia(r.etiqueta))+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+

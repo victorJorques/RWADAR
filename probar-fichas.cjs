@@ -216,7 +216,7 @@ verificar('revisión legal 5.3: sin «Puntos fuertes» y el botón al proveedor 
     const boton=[...html.matchAll(/<a class="boton"[^>]*data-campo="botonProveedor">([^<]*)<\/a>/g)].map(m=>m[1]);
     assert.equal(boton.length,1,o.slug);
     const si=/<li data-cumple="si"><strong><span class="comprobacion-marca">✓ Sí<\/span> Se contrata hoy desde España/.test(html)&&
-      /<li data-cumple="si"><strong><span class="comprobacion-marca">✓ Sí<\/span> La entidad que la ofrece está autorizada/.test(html);
+      /<li data-cumple="si"><strong><span class="comprobacion-marca">✓ Sí<\/span> Referencia España: autorizada/.test(html);
     assert.equal(boton[0],si?'Ver oferta en '+esc(o.plataformaNombre)+' ↗':'Ir a la web del proveedor (sales de RWAdar) ↗',o.slug);
     if(o.disponibleEs!==true)assert(!si&&!html.includes('Ver oferta en'),o.slug+': no consta que se contrate desde España');
     // Después de los avisos y de «Antes de invertir».

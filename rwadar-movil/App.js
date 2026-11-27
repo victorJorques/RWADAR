@@ -62,6 +62,8 @@ import {
 import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
+import { accesibleEnPais } from './lib/disponibilidad-pais';
+import { SelectorPais, usePais } from './componentes/Pais';
 import { ordenarPlataformasMasNuevas } from './lib/orden-plataformas';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 import { PantallaNovedades, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
@@ -564,6 +566,8 @@ export default function App() {
     }));
   }, [radar, busqueda, categoria]);
 
+  // País de residencia (27/11/2026): la disponibilidad de cada oferta y el filtro «Solo las disponibles en tu país».
+  const pais = usePais();
   const todasOfertas = useMemo(() => [...ofertas, ...secundario, ...enCamino], [ofertas, secundario, enCamino]);
   const ofertasDelGrupo = useMemo(() => grupoOfertas === 'principales' ? ofertas
     : grupoOfertas === 'secundario' ? secundario
@@ -577,13 +581,14 @@ export default function App() {
     const lista = ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
+      if (pais.solo && !accesibleEnPais(oferta, pais.codigo)) return false;
       // El ejemplo del buscador en inglés es «Switzerland»: se busca también
       // por el país y la categoría en inglés (prueba en móvil, 04/11/2026).
       return !q || textoBusquedaOferta(oferta).includes(q) ||
         [paisInglesOferta(oferta), traducir(oferta.categoria, 'en')].join(' ').toLocaleLowerCase('es').includes(q);
     }));
     return ordenOfertas === 'nuevas' ? ordenarMasNuevas(lista) : lista;
-  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas]);
+  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas, pais.version]);
   const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
   const separacionOfertas = 12;
   const anchoCeldaOferta = (anchoPantalla - (UI.margen * 2)
@@ -606,7 +611,7 @@ export default function App() {
     const resto = filas.filter((fila) => !elegidas.includes(fila));
     return [{ tipo: 'cabecera', slug: 'cabecera:seleccion', seleccion: true }, ...elegidas,
       ...(resto.length ? [{ tipo: 'cabecera', slug: 'cabecera:resto' }, ...resto] : [])];
-  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado, ordenOfertas]);
+  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado, ordenOfertas, pais.version]);
 
   const seleccionarGrupoOfertas = (grupo) => {
     tacto.eleccion();
@@ -1004,6 +1009,7 @@ export default function App() {
             <FlatList
               key={`ofertas-${columnasOfertas}-${grupoOfertas}-${grupoProveedorAbierto || 'lista'}`}
               data={filasOfertas}
+              extraData={pais.version}
               keyExtractor={(fila) => fila.slug}
               numColumns={columnasOfertas}
               columnWrapperStyle={columnasOfertas > 1 ? e.filaOfertas : null}
@@ -1093,6 +1099,7 @@ export default function App() {
                         ))}
                       </ScrollView>
                     </View>
+                    <SelectorPais pais={pais} />
                     {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
                     {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{ordenOfertas === 'nuevas'
                       ? 'Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.'
