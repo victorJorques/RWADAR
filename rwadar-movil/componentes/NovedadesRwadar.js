@@ -50,7 +50,7 @@ export const ESPERA_AVISOS_MS = 3000;
 /* avisos: lo que dice estadoAvisosMovil ('activos', 'inactivos',
    'comprobando' o 'desconocido') o 'apagados' sin los avisos en la app. */
 export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, cargar = cargarNovedadesProducto, esperaMs = ESPERA_MS,
-  avisos = 'desconocido', esperaAvisosMs = ESPERA_AVISOS_MS, avisosEnPausa, pausarAvisos } = {}) {
+  avisos = 'desconocido', esperaAvisosMs = ESPERA_AVISOS_MS, ventanaAvisosActiva = false } = {}) {
   const [datos, setDatos] = useState(RESPALDO);
   const [descargadas, setDescargadas] = useState(false);
   const [vista, setVista] = useState(null); // null: leyendo; { ok, version }
@@ -83,21 +83,17 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
     return () => clearTimeout(reloj);
   }, [listo, pendiente, ventana, detalle, comprobando]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  /* Sale sola si en ESTE móvil no están activos, cuando ya se sabe que la de
-     novedades no va a salir (vista) y no salió esta vez (lleva el mismo
-     recuadro), sin nada encima y sin estar en pausa (3 días tras cerrarla). */
+  /* Sale sola al abrir la app (una vez por apertura; Víctor: «al entrar que salte») si en ESTE móvil no
+     están activos, cuando ya se sabe que la de novedades no va a salir (vista) y no salió esta vez (lleva
+     el mismo recuadro) y sin nada encima. «Ahora no» la quita hasta la próxima vez que se abra la app. */
   const sinNovedadesPendientes = descargadas && vista?.ok === true && !pendiente;
   useEffect(() => {
-    if (typeof avisosEnPausa !== 'function' || !listo || !sinNovedadesPendientes || ensenada.current || avisosMirados.current
+    if (!ventanaAvisosActiva || !listo || !sinNovedadesPendientes || ensenada.current || avisosMirados.current
       || ventana || detalle || ventanaAvisos || comprobando || !conRecordatorioAvisos(avisos)) return undefined;
-    let vivo = true;
-    const reloj = setTimeout(() => {
-      avisosMirados.current = true;
-      Promise.resolve().then(() => avisosEnPausa()).then((pausa) => { if (vivo && !pausa) setVentanaAvisos(true); }, () => {});
-    }, esperaAvisosMs);
-    return () => { vivo = false; clearTimeout(reloj); };
+    const reloj = setTimeout(() => { avisosMirados.current = true; setVentanaAvisos(true); }, esperaAvisosMs);
+    return () => clearTimeout(reloj);
   }, [listo, sinNovedadesPendientes, ventana, detalle, ventanaAvisos, comprobando, avisos]); // eslint-disable-line react-hooks/exhaustive-deps
-  const cerrarAvisos = () => { setVentanaAvisos(false); Promise.resolve().then(() => pausarAvisos?.()).catch(() => {}); };
+  const cerrarAvisos = () => setVentanaAvisos(false);
 
   const guardarVista = () => {
     const version = datos.version;
@@ -115,7 +111,7 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
     activarAvisos() { setVentana(false); guardarVista(); },
     cerrarDetalle() { setDetalle(false); },
     ventanaAvisos,
-    // «Activar avisos» (App lleva a Perfil › Avisos) y «Ahora no»: se cierra y queda en pausa 3 días.
+    // «Activar avisos» (App lleva a Perfil › Avisos) y «Ahora no»: se cierra hasta la próxima vez que se abra la app.
     cerrarAvisos,
   };
 }

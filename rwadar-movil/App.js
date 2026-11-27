@@ -15,7 +15,7 @@ import {
   cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades, configurarAccesoCatalogo,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   proveedoresDeOfertas, textoBusquedaOferta,
-  ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas, recordatorioAvisosEnPausa, pausarRecordatorioAvisos,
+  ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas,
   leerCambiosVistos, marcarCambiosVistos,
 } from './lib/datos';
 import {
@@ -517,7 +517,7 @@ export default function App() {
     listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
       && !pantallaInicio && !slugAvisoPendiente && !destinoAvisoPendiente,
     leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
-    avisosEnPausa: recordatorioAvisosEnPausa, pausarAvisos: pausarRecordatorioAvisos,
+    ventanaAvisosActiva: true,
     avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta, { sinCuenta: sinCuentaActiva }) : 'apagados',
   });
 
