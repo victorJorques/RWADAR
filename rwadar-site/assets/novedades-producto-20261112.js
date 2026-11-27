@@ -70,7 +70,7 @@
       recBoton: 'Activar avisos', recInfo: 'Información básica sobre tus datos', recEspera: 'Un momento…',
       recHecho: 'Notificaciones activadas en este móvil. Así te llegarán las novedades.',
       recNo: 'No se han activado. En Perfil › Avisos te explicamos cómo permitirlas.', recIrPerfil: 'Ir a Perfil › Avisos',
-      avAhoraNo: 'Ahora no',
+      avAhoraNo: 'Ahora no', avHecho: 'Avisos activados',
     }),
     en: Object.freeze({
       cerrar: 'Close the news', detalle: 'See details', entendido: 'Got it',
@@ -84,7 +84,7 @@
       recBoton: 'Turn on alerts', recInfo: 'Basic information about your data', recEspera: 'One moment…',
       recHecho: 'Notifications turned on for this phone. This is how the news will reach you.',
       recNo: 'They were not turned on. In Profile › Alerts we explain how to allow them.', recIrPerfil: 'Go to Profile › Alerts',
-      avAhoraNo: 'Not now',
+      avAhoraNo: 'Not now', avHecho: 'Alerts turned on',
     }),
   });
   const RUTA_AVISOS = '/#perfil-avisos';
@@ -429,31 +429,80 @@
     if (document.readyState === 'complete') empezar();
     else addEventListener('load', empezar, { once: true });
   }
+  /* La campana del icono (24 × 24, como los demás iconos). */
+  function campana() {
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('width', '30'); svg.setAttribute('height', '30');
+    svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('focusable', 'false');
+    for (const d of ['M6 9.5a6 6 0 0 1 12 0c0 6.2 2.5 6.8 2.5 8.5h-17C3.5 16.3 6 15.7 6 9.5z', 'M10 20.5a2.1 2.1 0 0 0 4 0']) {
+      const path = document.createElementNS(SVG, 'path');
+      path.setAttribute('d', d); path.setAttribute('fill', 'none'); path.setAttribute('stroke', 'currentColor');
+      path.setAttribute('stroke-width', '1.9'); path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round');
+      svg.append(path);
+    }
+    return svg;
+  }
+  /* Tarjeta al estilo de iOS (27/11/2026): icono, título y una frase centrados; el botón ancho y «Ahora no»
+     como texto. Lleva lo mismo que el recuadro de la ventana de novedades: el texto versionado del permiso
+     junto al botón, quién interviene a la vista y la información básica plegada. */
   function pintarAvisos(d, rec) {
-    const t = ui();
+    const t = ui(), lengua = idioma();
     const enfocado = document.activeElement && d.contains(document.activeElement) ? document.activeElement.dataset.novFoco : '';
     propio(d);
-    // Sin ×: «Ahora no», tocar fuera o Esc la cierran.
-    const marco = el('div', 'escaparate-dialogo-marco nov-marco nov-marco-avisos');
-    const cuerpo = el('div', 'nov-cuerpo');
-    cuerpo.append(recordatorio(t, rec));
-    const acciones = el('div', 'nov-acciones');
-    if (rec.paso === 'hecho') {
-      const vale = el('button', 'b1 nov-entendido', t.entendido);
+    const conPrivacidad = (clase, texto, href) => {
+      const p = propio(el('p', clase));
+      const m = /^(.*\s)(Privacidad|Privacy)\.$/.exec(texto);
+      if (m) { const a = el('a', '', m[2]); a.href = href; p.append(m[1], a, '.'); } else p.textContent = texto;
+      return p;
+    };
+    const marco = el('div', 'escaparate-dialogo-marco av-marco');
+    const cab = el('div', 'av-cab');
+    const icono = el('div', 'av-icono'); icono.append(campana());
+    const tit = propio(el('h2', 'av-tit', rec.paso === 'hecho' ? t.avHecho : t.recTit));
+    tit.id = 'novedadesRecTit'; tit.tabIndex = -1;
+    cab.append(icono, tit);
+    const hecho = rec.paso === 'hecho', fallo = rec.paso === 'fallo';
+    cab.append(propio(el('p', 'av-txt', hecho ? t.recHecho : fallo && rec.modo !== 'directo' ? t.recNo : t.recTexto)));
+    const directo = rec.modo === 'directo' && !hecho;
+    if (directo) cab.append(conPrivacidad('av-legal av-permiso', (rec.texto && rec.texto[lengua]) || '', rec.privacidad || '/privacidad'));
+    const estado = propio(el('p', 'av-estado'));
+    estado.setAttribute('role', fallo ? 'alert' : 'status');
+    estado.textContent = rec.paso === 'espera' ? t.recEspera : fallo && rec.modo === 'directo' ? enSuIdioma(rec.mensaje || '') : '';
+    estado.hidden = !estado.textContent;
+    cab.append(estado);
+    const acciones = el('div', 'av-acciones');
+    if (hecho) {
+      const vale = el('button', 'b1 av-boton nov-entendido', t.entendido);
       vale.type = 'button'; vale.dataset.novEntendido = ''; vale.dataset.novFoco = 'entendido';
       acciones.append(vale);
     } else {
-      const luego = el('button', 'b2 nov-ahora-no', t.avAhoraNo);
+      const perfil = rec.modo === 'perfil';
+      const boton = propio(el(perfil ? 'a' : 'button', 'b1 av-boton', perfil ? t.recIrPerfil : t.recBoton));
+      if (perfil) boton.href = RUTA_AVISOS; else boton.type = 'button';
+      boton.dataset.novAvisos = ''; boton.dataset.novFoco = 'avisos';
+      if (rec.paso === 'espera') boton.disabled = true;
+      const luego = el('button', 'av-luego nov-ahora-no', t.avAhoraNo);
       luego.type = 'button'; luego.dataset.novEntendido = ''; luego.dataset.novFoco = 'luego';
-      acciones.append(luego);
+      acciones.append(boton, luego);
     }
-    marco.append(cuerpo, acciones);
+    marco.append(cab, acciones);
+    if (directo) {
+      const pie = el('div', 'av-pie');
+      const quien = (rec.quien && rec.quien[lengua]) || '';
+      if (quien) pie.append(conPrivacidad('av-legal', quien, rec.garantias || '/privacidad#garantias-push'));
+      const info = propio(el('details', 'av-info'));
+      const resumen = el('summary', '', t.recInfo);
+      resumen.dataset.novFoco = 'info';
+      info.append(resumen, el('p', '', (rec.info && rec.info[lengua]) || ''));
+      pie.append(info);
+      marco.append(pie);
+    }
     d.replaceChildren(marco);
     if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
   }
   function mostrarAvisos(almacen, rec) {
     if (document.getElementById('avisosDialogo')) return;
-    const d = el('dialog', 'escaparate-dialogo nov-dialogo nov-dialogo-avisos');
+    const d = el('dialog', 'escaparate-dialogo nov-dialogo av-dialogo');
     d.id = 'avisosDialogo';
     d.setAttribute('aria-labelledby', 'novedadesRecTit');
     const origen = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;

@@ -247,7 +247,8 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido, recor
   );
 }
 
-/* 1 bis · La ventana «Activa los avisos» al entrar (27/11/2026): el mismo recuadro, solo, y «Ahora no». */
+/* 1 bis · La ventana «Activa los avisos» al entrar (27/11/2026), al estilo de iOS: icono, título y frase
+   centrados, el botón ancho (lleva a Perfil › Avisos, donde se da el permiso) y «Ahora no» como texto. */
 export function VentanaAvisos({ visible, onActivar, onAhoraNo }) {
   return (
     <Modal visible={!!visible} transparent animationType="fade" onRequestClose={onAhoraNo}
@@ -255,18 +256,26 @@ export function VentanaAvisos({ visible, onActivar, onAhoraNo }) {
       {visible ? (
         <SafeAreaProvider>
         <FondoSeguro>
-          <View style={s.tarjeta} testID="avisosVentana" role="dialog" aria-modal accessibilityViewIsModal accessibilityLabel="Activa los avisos">
-            <View style={s.ventanaCuerpo}>
-              <RecordatorioAvisos onActivar={onActivar} />
+          <View style={s.avTarjeta} testID="avisosVentana" role="dialog" aria-modal accessibilityViewIsModal accessibilityLabel="Activa los avisos">
+            <View style={s.avIcono}>
+              <Svg width={30} height={30} viewBox="0 0 24 24" accessible={false}>
+                <Path d="M6 9.5a6 6 0 0 1 12 0c0 6.2 2.5 6.8 2.5 8.5h-17C3.5 16.3 6 15.7 6 9.5z" fill="none" stroke={C.enSenal} strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round" />
+                <Path d="M10 20.5a2.1 2.1 0 0 0 4 0" fill="none" stroke={C.enSenal} strokeWidth={1.9} strokeLinecap="round" />
+              </Svg>
             </View>
-            <View style={s.botones}>
-              <Pressable testID="avisosAhoraNo" onPress={() => { tacto.eleccion(); onAhoraNo?.(); }}
-                accessibilityRole="button" accessibilityLabel="Ahora no"
-                accessibilityHint="Cierra esta ventana. Puedes activar los avisos en Perfil › Avisos."
-                style={({ pressed, focused }) => [s.boton, s.botonTonal, focused && s.foco, pressed && pulsado('b2')]}>
-                <Text style={s.botonTonalTxt}>Ahora no</Text>
-              </Pressable>
-            </View>
+            <Text style={s.avTit} accessibilityRole="header">Activa los avisos</Text>
+            <Text style={s.avTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
+            <Pressable testID="avisosActivar" onPress={() => { tacto.eleccion(); onActivar?.(); }}
+              accessibilityRole="button" accessibilityLabel="Activar avisos" accessibilityHint="Te lleva a Perfil › Avisos"
+              style={({ pressed, focused }) => [s.avBoton, focused && s.foco, pressed && pulsado('b1')]}>
+              <Text style={s.botonVerdeTxt}>Activar avisos</Text>
+            </Pressable>
+            <Pressable testID="avisosAhoraNo" onPress={() => { tacto.eleccion(); onAhoraNo?.(); }}
+              accessibilityRole="button" accessibilityLabel="Ahora no"
+              accessibilityHint="Cierra esta ventana. Puedes activar los avisos en Perfil › Avisos."
+              style={({ pressed, focused }) => [s.avLuego, focused && s.foco, pressed && { opacity: 0.6 }]}>
+              <Text style={s.avLuegoTxt}>Ahora no</Text>
+            </Pressable>
           </View>
         </FondoSeguro>
         </SafeAreaProvider>
@@ -354,6 +363,15 @@ const s = StyleSheet.create({
      320 px en adelante (con letra grande, el texto se desplaza y los botones
      siguen a la vista). Los márgenes del fondo, en FondoSeguro. */
   fondo: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.72)' },
+  // La ventana de los avisos (27/11/2026), al estilo de iOS.
+  avTarjeta: { width: '100%', maxWidth: 340, backgroundColor: C.s2, borderRadius: 22, borderWidth: 1, borderColor: C.bd,
+    paddingTop: 28, paddingBottom: 12, paddingHorizontal: 22, alignItems: 'center', ...E.e2 },
+  avIcono: { width: 64, height: 64, borderRadius: 16, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center' },
+  avTit: { fontFamily: F.negrita, fontSize: 22, lineHeight: 27, color: C.tx, textAlign: 'center', marginTop: 16 },
+  avTxt: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx2, textAlign: 'center', marginTop: 8 },
+  avBoton: { alignSelf: 'stretch', minHeight: 50, borderRadius: 14, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', marginTop: 22 },
+  avLuego: { alignSelf: 'stretch', minHeight: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginTop: 2 },
+  avLuegoTxt: { fontFamily: F.media, fontSize: 15, lineHeight: 20, color: C.tx2 },
   tarjeta: { width: '100%', maxWidth: 440, maxHeight: '100%', backgroundColor: C.s2, borderRadius: R.xl,
     borderWidth: 1, borderColor: C.bd, paddingTop: 22, paddingBottom: 18, ...E.e2 },
   desplazable: { flexGrow: 0, flexShrink: 1 },

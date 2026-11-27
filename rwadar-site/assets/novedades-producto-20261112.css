@@ -91,10 +91,27 @@ html.nov-abierta,html.nov-abierta body{overflow:hidden}
   .nov-sec-tit{font-size:1.625rem}
   .nov-pagina .nov-puntos{padding:22px 24px}
 }
-/* La ventana «Activa los avisos» al entrar (27/11/2026): el recuadro solo y «Ahora no». */
-.nov-dialogo-avisos .nov-cuerpo{padding-top:18px}
-/* El foco empieza en el título (para el lector de pantalla); no se llega a él con Tab, así que sin marco. */
-.nov-dialogo-avisos #novedadesRecTit:focus{outline:none}
-.nov-dialogo-avisos .nov-rec{margin:0}
-.nov-dialogo-avisos .nov-acciones{justify-content:flex-end}
-.nov-dialogo-avisos .nov-acciones>*{flex:1 1 auto}
+/* La ventana «Activa los avisos» al entrar (27/11/2026), al estilo de iOS: icono, título y frase centrados,
+   el botón ancho y «Ahora no» como texto; la letra pequeña, suave. */
+.av-dialogo{width:min(340px,calc(100vw - 40px))}
+.av-marco{border-radius:22px;overflow:hidden}
+.av-cab{display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 24px 0}
+.av-icono{display:grid;place-items:center;width:64px;height:64px;border-radius:16px;color:var(--noche,#0B0A0A);
+  background:linear-gradient(160deg,#3BF2B0 0%,#1FCB8A 100%);box-shadow:0 10px 28px rgba(37,227,154,.22),inset 0 1px 0 rgba(255,255,255,.35)}
+.av-tit{margin:16px 0 0;font:700 1.375rem/1.2 var(--display);letter-spacing:-.015em;color:var(--tx)}
+.av-tit:focus{outline:none}
+.av-txt{margin:8px 0 0;font-size:.9375rem;line-height:1.45;color:var(--tx-2)}
+.av-legal{margin:14px 0 0;font-size:.75rem;line-height:1.5;color:var(--tx-3)}
+.av-legal a{color:var(--tx-2)}
+.av-estado{margin:12px 0 0;font-size:.875rem;line-height:1.4;color:var(--tx)}
+.av-estado[role="alert"]{color:var(--aviso)}
+.av-acciones{display:grid;gap:2px;padding:20px 20px 10px}
+.av-boton{width:100%;min-height:50px;border-radius:14px;font-size:1.0625rem;font-weight:600;justify-content:center;text-decoration:none}
+.av-luego{min-height:44px;border:0;border-radius:12px;background:none;color:var(--tx-2);font:inherit;font-size:.9375rem;font-weight:500;cursor:pointer}
+.av-luego:hover{color:var(--tx)}
+.av-luego:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+.av-pie{padding:0 24px 20px;text-align:center}
+.av-pie .av-legal{margin-top:4px}
+.av-info{margin-top:8px;font-size:.75rem;color:var(--tx-3)}
+.av-info summary{cursor:pointer;min-height:32px;display:inline-flex;align-items:center}
+.av-info p{margin:6px 0 0;text-align:left;line-height:1.5}

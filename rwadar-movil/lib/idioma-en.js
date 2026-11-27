@@ -2134,6 +2134,7 @@
   "También puedes activar las notificaciones sin cuenta, en la primera pantalla de la app, sin entrar. Entonces se guarda solo un identificador de entrega de este móvil, con la versión del texto que aceptaste, el idioma, dónde las activaste y las fechas; sin nombre ni correo. Se borra al desactivarlas, al quitar el permiso en los ajustes del móvil o tras 180 días sin abrir la app. Al cerrar sesión siguen; al desactivar aquí «Notificaciones en este móvil» se quitan también. Más en la privacidad de la web, apartado 6.": "You can also turn on notifications without an account, on the first screen of the app, without signing in. In that case only a delivery identifier for this phone is stored, with the version of the text you accepted, the language, where you turned them on and the dates; no name or email. It is deleted when you turn them off, when you remove the permission in your phone settings or after 180 days without opening the app. They stay when you sign out; turning off «Notifications on this phone» here removes them too. More in the website's privacy policy, section 6.",
   // La ventana «Activa los avisos» al entrar (27/11/2026).
   "Ahora no": "Not now",
+  "Te lleva a Perfil › Avisos": "Takes you to Profile › Alerts",
   "Cierra esta ventana. Puedes activar los avisos en Perfil › Avisos.": "Closes this window. You can turn on alerts in Profile › Alerts.",
   // Mínimos cortos de la tarjeta (transparencia.json) que se quedaban en castellano (27/11/2026).
   "Sin publicar": "Not published",
