@@ -7477,7 +7477,8 @@ document.addEventListener('click',e=>{
  const enlaces=()=>[...document.querySelectorAll('a[href="/android"]')];
  const instalada=navigator.standalone===true||
   (typeof matchMedia==='function'&&matchMedia('(display-mode: standalone)').matches);
- if(instalada){enlaces().forEach(a=>{a.style.display='none';});return;}
+ // «hidden» además del estilo: la cabecera del móvil lo mira (:has) para no dejar el hueco de la descarga.
+ if(instalada){enlaces().forEach(a=>{a.style.display='none';a.hidden=true;});return;}
  const textos=()=>document.documentElement.lang==='en'?{
   enlace:'RWAdar on your iPhone',icono:'Add RWAdar to your home screen',etiqueta:'RWAdar on iPhone',
   titulo:'Keep it like an app, with nothing to download',cerrar:'Close',

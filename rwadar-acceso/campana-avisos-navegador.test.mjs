@@ -169,6 +169,21 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo q
       assert.ok((barra.titulo >= 30 || barra.idioma >= 88) && barra.anchoDoc <= barra.ventana, ancho + ' px: ' + JSON.stringify(barra));
     }
     await pagina.setViewportSize({ width: 390, height: 844 });
+    await pagina.waitForTimeout(200);
+    // La cápsula del idioma va a 3 px del primer icono que se ve, también sin la descarga (iPhone con RWAdar en la
+    // pantalla de inicio, 28/11/2026: dejaba el hueco de la descarga, unos 50 px).
+    for (const sinDescarga of [false, true]) {
+      const hueco = await pagina.evaluate(sin => {
+        const d = document.querySelector('.movil-descarga');
+        if (sin) { d.style.display = 'none'; d.hidden = true; }
+        const visibles = ['.movil-descarga', '#movilAvisos', '[data-movil-action="ayuda"]'].map(x => document.querySelector(x))
+          .filter(n => n && getComputedStyle(n).display !== 'none').map(n => n.getBoundingClientRect().left);
+        const h = Math.round(Math.min(...visibles) - document.querySelector('.movil-cabecera-idioma').getBoundingClientRect().right);
+        if (sin) { d.style.display = ''; d.hidden = false; }
+        return h;
+      }, sinDescarga);
+      assert.equal(hueco, 3, `cápsula del idioma a 3 px de los iconos${sinDescarga ? ' sin la descarga' : ''}`);
+    }
 
     // Al tocarla se abre la bandeja con los nuevos marcados y la baja a la vista.
     // Abrirla ya es verlos (como un chat de WhatsApp): el número baja a 0.

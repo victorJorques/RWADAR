@@ -6,6 +6,18 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de noviembre de 2026 (60) · Claude · Cabecera del móvil: la cápsula del idioma pegada a los iconos sin la descarga · PUBLICADO
+
+- **Petición de Víctor (captura del iPhone):** «Arregla esta parte de aquí»: la cápsula «ES · EN» quedaba suelta, a unos
+  50 px de la campana.
+- **Causa:** en iPhone con RWAdar en la pantalla de inicio, `instalarEnIphone` oculta el botón de descarga con un estilo en
+  línea, pero el CSS de la cápsula (`margin-right` de 94/141 px) seguía contando con su hueco.
+- **Arreglo:** el JS marca además la descarga con `hidden`, y dos reglas con `:has(.movil-descarga[hidden])` dejan la
+  cápsula a 47 px (sin campana) o a 94 px (con campana): a 3 px del primer icono, como los iconos entre sí. Medido con
+  Chromium emulando iPhone a 320 y 390 px, instalada y no, con y sin campana: 3 px en los 8 casos (antes, 50 px).
+- **Prueba nueva** en `rwadar-acceso/campana-avisos-navegador.test.mjs`: hueco de 3 px con y sin la descarga; falla sin
+  el arreglo. `npm test` en verde. Solo web (la app no tiene descarga): sin OTA.
+
 ## 28 de noviembre de 2026 (59) · Claude · Catálogo 2026-11-28: informe de Codex del 28/11, 4 ofertas y 6 plataformas, noticias y gráfico · PUBLICADO
 
 - **Órdenes de Víctor:** «revísala y haz la actualización pertinente… quitando lo caducado poniendo lo nuevo y enviando

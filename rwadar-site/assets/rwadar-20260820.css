@@ -2481,3 +2481,9 @@ html[lang="en"] .disp-pais [data-es],html:not([lang="en"]) .disp-pais [data-en]{
 @media (max-width:374px){
   body[data-movil-pestana="inicio"] .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:94px}
 }
+/* Sin descarga (iPhone con RWAdar en la pantalla de inicio, 28/11/2026): la cápsula se pega a los iconos que se ven,
+   a 3 px, en lugar de dejar el hueco de la descarga. */
+@media (max-width:767px),(max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
+  body[data-movil-pestana="inicio"] .movil-cabecera:has(.movil-descarga[hidden]) .movil-cabecera-idioma{margin-right:47px}
+  body[data-movil-pestana="inicio"] .movil-cabecera:has(.movil-descarga[hidden]):has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:94px}
+}
