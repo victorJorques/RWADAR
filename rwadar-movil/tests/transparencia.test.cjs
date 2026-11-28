@@ -62,7 +62,9 @@ test('una oferta documentada pasa las cinco comprobaciones y enseña sus puntos 
   const supervisada = lista.find((c) => c.id === 'supervisada');
   assert.equal(supervisada.deFuente, true);
   assert.match(supervisada.fuente.url, /^https:\/\/www\.cnmv\.es\//);
-  assert.equal(supervisada.fuente.fecha, contenido.TRANSPARENCIA_REVISADA_EL);
+  // La fecha de su consulta (28/11/2026: no todas las comprobaciones son del día de la revisión), nunca posterior.
+  assert.equal(supervisada.fuente.fecha, contenido.TRANSPARENCIA_POR_SLUG[o.slug].supervisada.consultadaEl);
+  assert.ok(supervisada.fuente.fecha <= contenido.TRANSPARENCIA_REVISADA_EL);
 });
 
 test('falla cerrado: sin entrada o con otra revisión no hay puntos fuertes ni Selección', () => {

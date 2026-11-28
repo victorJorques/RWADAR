@@ -167,6 +167,26 @@
       "revisadoEl": "2026-11-26"
     },
     {
+      "slug": "bondea-vph-riga-vi",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-bondea-vph-riga-vi.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 72310,
+      "hashSha256": "8ec62ad0ff31800ab0a2c81674515b2970cc31f87fcd9ef9030506dec7e16827",
+      "alt": "Ilustración editorial de un parque comercial de una planta con aparcamiento en las afueras de una ciudad báltica, imagen genérica; no el del proyecto, imagen generada con IA. Pasos: suscribes el bono; cobras el interés cada semestre; recuperas el nominal al final. No es una foto del activo real.",
+      "concepto": "un parque comercial de una planta con aparcamiento en las afueras de una ciudad báltica, imagen genérica; no el del proyecto",
+      "pasos": [
+        "Suscribes el bono",
+        "Cobras el interés cada semestre",
+        "Recuperas el nominal al final"
+      ],
+      "lugar": "Riga · Letonia",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
       "slug": "boss-info",
       "categoria": "Acciones y capital privado",
       "archivo": "oferta-boss-info.webp",
@@ -567,6 +587,26 @@
       "revisadoEl": "2026-11-26"
     },
     {
+      "slug": "schindlersx-silverbits-slvr",
+      "categoria": "Materias primas",
+      "archivo": "oferta-schindlersx-silverbits-slvr.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 43634,
+      "hashSha256": "8fecdb2f9a2bf235002645336456d29896a4467e6c26d04ad66d64163e52d615",
+      "alt": "Ilustración editorial de plata fundida vertiéndose en un molde de lingote en una fundición, imagen genérica; no la del producto, imagen generada con IA. Pasos: compras onzas en tokens; union Vault guarda la plata; vendes o canjeas un lingote. No es una foto del activo real.",
+      "concepto": "plata fundida vertiéndose en un molde de lingote en una fundición, imagen genérica; no la del producto",
+      "pasos": [
+        "Compras onzas en tokens",
+        "Union Vault guarda la plata",
+        "Vendes o canjeas un lingote"
+      ],
+      "lugar": "Johannesburgo · Sudáfrica",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
       "slug": "securitize-hinc",
       "categoria": "Crédito privado",
       "archivo": "oferta-securitize-hinc.webp",
@@ -642,6 +682,26 @@
         "Pides el reembolso"
       ],
       "lugar": "París · Francia",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "superstate-invesco-iroxx",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-superstate-invesco-iroxx.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 68304,
+      "hashSha256": "20fe295625f03a265aa0970c61d9be411d45450b0a60f714f14d98f797074f2f",
+      "alt": "Ilustración editorial de fachadas de piedra de bancos del sur de Manhattan, imagen genérica; no la sede de la gestora, imagen generada con IA. Pasos: abres cuenta en Superstate; el fondo invierte a corto plazo; reembolsas el mismo día. No es una foto del activo real.",
+      "concepto": "fachadas de piedra de bancos del sur de Manhattan, imagen genérica; no la sede de la gestora",
+      "pasos": [
+        "Abres cuenta en Superstate",
+        "El fondo invierte a corto plazo",
+        "Reembolsas el mismo día"
+      ],
+      "lugar": "Nueva York · EE. UU.",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-26"
@@ -762,6 +822,26 @@
         "Al final se vende y cobras"
       ],
       "lugar": "Dubái · Emiratos",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-26"
+    },
+    {
+      "slug": "tokinvest-lynxcap-bono",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-tokinvest-lynxcap-bono.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 59570,
+      "hashSha256": "65f5ae3d875b36202f6d4ed5a6570f97af7331720dd36bd079292473c58497a4",
+      "alt": "Ilustración editorial de un bloque de pisos antiguo y vacío en una ciudad del sur de Europa, imagen genérica de inmuebles recuperados; no un activo del bono, imagen generada con IA. Pasos: compras el token del bono; cobras el cupón cada trimestre; recuperas el nominal al final. No es una foto del activo real.",
+      "concepto": "un bloque de pisos antiguo y vacío en una ciudad del sur de Europa, imagen genérica de inmuebles recuperados; no un activo del bono",
+      "pasos": [
+        "Compras el token del bono",
+        "Cobras el cupón cada trimestre",
+        "Recuperas el nominal al final"
+      ],
+      "lugar": "Zug · Suiza",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-26"

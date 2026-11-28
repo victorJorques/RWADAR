@@ -4,7 +4,7 @@
    Es una comprobación de la documentación, no una recomendación de inversión.
    Una oferta sin entrada, o cuya verificadaEl no coincida con la del catálogo, no
    enseña puntos fuertes ni entra en la Selección. */
-export const TRANSPARENCIA_REVISADA_EL = "2026-11-27";
+export const TRANSPARENCIA_REVISADA_EL = "2026-11-28";
 
 export const CRITERIOS_TRANSPARENCIA = [
   {
@@ -169,6 +169,31 @@ export const TRANSPARENCIA_POR_SLUG = {
     },
     "minimoCorto": "Sin mínimo publicado",
     "salidaCorta": "Por el distribuidor",
+    "puntos": []
+  },
+  "bondea-vph-riga-vi": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Bondea dice tener licencia de financiación participativa del Banco de Lituania; no lo hemos podido comprobar el 28/11/2026 en el registro, y no está inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Bondea · preguntas frecuentes",
+        "url": "https://bondea.lt/lt/duk"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay documento en castellano a la vista: la ficha está en lituano y la información completa pide cuenta.",
+      "fuente": {
+        "titulo": "Bondea · ficha del proyecto",
+        "url": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (16 meses)",
     "puntos": []
   },
   "boss-info": {
@@ -796,6 +821,39 @@ export const TRANSPARENCIA_POR_SLUG = {
       }
     ]
   },
+  "schindlersx-silverbits-slvr": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La plataforma dice ser proveedor de servicios financieros autorizado en Sudáfrica (FSCA); no es un supervisor de la UE y no está inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "SchindlersX · SilverBits SLVR",
+        "url": "https://schindlersx.io/silverbits"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Hay memorando y términos en inglés; no hay folleto ni KID europeos.",
+      "fuente": {
+        "titulo": "SchindlersX · SilverBits SLVR",
+        "url": "https://schindlersx.io/silverbits"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1 onza de plata",
+    "salidaCorta": "Venta o canje por lingote",
+    "puntos": [
+      {
+        "texto": "Plata en Union Vault, con seguro",
+        "fuente": {
+          "titulo": "SchindlersX · SilverBits SLVR",
+          "url": "https://schindlersx.io/silverbits"
+        }
+      }
+    ]
+  },
   "securitize-hinc": {
     "verificadaEl": "2026-11-27",
     "anadidaEl": "2026-11-26",
@@ -938,6 +996,39 @@ export const TRANSPARENCIA_POR_SLUG = {
         "fuente": {
           "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
           "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+        }
+      }
+    ]
+  },
+  "superstate-invesco-iroxx": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "Fondo monetario registrado en EE. UU. y supervisado por la SEC, no por un supervisor de la UE; no está inscrito en la CNMV.",
+      "fuente": {
+        "titulo": "Superstate · IROXX",
+        "url": "https://superstate.com/assets/iroxx"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "Hay folleto en inglés para EE. UU.; no hay KID europeo ni documento en castellano.",
+      "fuente": {
+        "titulo": "Superstate · IROXX",
+        "url": "https://superstate.com/assets/iroxx"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1.000.000 USD",
+    "salidaCorta": "Reembolso el mismo día",
+    "puntos": [
+      {
+        "texto": "Custodio: The Bank of New York",
+        "fuente": {
+          "titulo": "Superstate · IROXX",
+          "url": "https://superstate.com/assets/iroxx"
         }
       }
     ]
@@ -1128,6 +1219,39 @@ export const TRANSPARENCIA_POR_SLUG = {
         "fuente": {
           "titulo": "Tokinvest · lingote de plata récord",
           "url": "https://tokinvest.capital/case-studies/worlds-largest-silver-bar"
+        }
+      }
+    ]
+  },
+  "tokinvest-lynxcap-bono": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+      "cumple": false,
+      "motivo": "La distribuye Tokinvest con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+      "fuente": {
+        "titulo": "Tokinvest · LynxCap",
+        "url": "https://tokinvest.capital/case-studies/lynxcap"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+      "cumple": false,
+      "motivo": "No hay folleto ni KID europeos para este token; la ficha y el whitepaper están en inglés.",
+      "fuente": {
+        "titulo": "Tokinvest · LynxCap",
+        "url": "https://tokinvest.capital/case-studies/lynxcap"
+      },
+      "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "10.000 €",
+    "salidaCorta": "Al vencimiento (4 años)",
+    "puntos": [
+      {
+        "texto": "Tokens custodiados por Hex Trust MENA",
+        "fuente": {
+          "titulo": "Tokinvest · LynxCap",
+          "url": "https://tokinvest.capital/case-studies/lynxcap"
         }
       }
     ]

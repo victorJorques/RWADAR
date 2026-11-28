@@ -26,6 +26,10 @@
       "anadidaEl": "2026-11-26",
       "lote": "2026-11-26.4-v2"
     },
+    "axiology": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
+    },
     "backed-finance": {
       "anadidaEl": "2026-09-21",
       "lote": "2026-09-21"
@@ -33,6 +37,10 @@
     "backpack-securities": {
       "anadidaEl": "2026-11-27",
       "lote": "2026-11-27-v2"
+    },
+    "banco-atlantida": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
     },
     "bit2me-stx": {
       "anadidaEl": "2026-11-26",
@@ -49,6 +57,10 @@
     "bloktok": {
       "anadidaEl": "2026-11-26",
       "lote": "2026-11-26.4-v2"
+    },
+    "bondea": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
     },
     "caliber": {
       "anadidaEl": "2026-11-26",
@@ -170,6 +182,10 @@
       "anadidaEl": "2026-09-21",
       "lote": "2026-09-21"
     },
+    "marketnode": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
+    },
     "mesh": {
       "anadidaEl": "2026-11-26",
       "lote": "2026-11-26.4-v2"
@@ -234,6 +250,10 @@
       "anadidaEl": "2026-09-21",
       "lote": "2026-09-21"
     },
+    "schindlersx": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
+    },
     "sdax": {
       "anadidaEl": "2026-11-26",
       "lote": "2026-11-26.4-v2"
@@ -293,6 +313,10 @@
     "tzero": {
       "anadidaEl": "2026-09-21",
       "lote": "2026-09-21"
+    },
+    "winvesta": {
+      "anadidaEl": "2026-11-28",
+      "lote": "2026-11-28-v2"
     }
   }
 }
