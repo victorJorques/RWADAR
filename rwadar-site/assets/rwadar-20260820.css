@@ -2487,3 +2487,14 @@ html[lang="en"] .disp-pais [data-es],html:not([lang="en"]) .disp-pais [data-en]{
   body[data-movil-pestana="inicio"] .movil-cabecera:has(.movil-descarga[hidden]) .movil-cabecera-idioma{margin-right:47px}
   body[data-movil-pestana="inicio"] .movil-cabecera:has(.movil-descarga[hidden]):has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:94px}
 }
+/* La misma regla solo con CSS, sin esperar al JS (28/11/2026: en el iPhone de la dirección seguía el hueco): en iOS
+   (-webkit-touch-callout solo existe en Safari de iOS) con RWAdar en la pantalla de inicio no hay descarga. */
+@supports (-webkit-touch-callout:none){
+  @media (display-mode:standalone) and (max-width:767px),
+         (display-mode:standalone) and (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
+    .movil-cabecera .movil-cabecera-accion.movil-descarga{display:none!important}
+    body[data-movil-pestana="inicio"] .movil-cabecera.movil-cabecera .movil-cabecera-idioma{margin-right:47px}
+    body[data-movil-pestana="inicio"] .movil-cabecera.movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-idioma{margin-right:94px}
+    body[data-movil-pestana="inicio"] .movil-cabecera.movil-cabecera .movil-cabecera-accion.movil-campana{margin-right:47px}
+  }
+}

@@ -17,6 +17,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   Chromium emulando iPhone a 320 y 390 px, instalada y no, con y sin campana: 3 px en los 8 casos (antes, 50 px).
 - **Prueba nueva** en `rwadar-acceso/campana-avisos-navegador.test.mjs`: hueco de 3 px con y sin la descarga; falla sin
   el arreglo. `npm test` en verde. Solo web (la app no tiene descarga): sin OTA.
+- **Segunda vía, solo CSS (Víctor seguía viéndolo mal en su iPhone):** `@supports (-webkit-touch-callout:none)` (solo
+  Safari de iOS) + `@media (display-mode:standalone)`: oculta la descarga y coloca la cápsula a 47/94 px sin esperar al
+  JS ni depender de `:has(.movil-descarga[hidden])`. Probada en Chromium cambiando esas dos condiciones por otras que se
+  cumplen y sin el JS: 3 px a 390 y 430 px, con y sin campana. Chromium no admite `-webkit-touch-callout`, así que Android
+  y escritorio no cambian (3 px en los 8 casos de antes). Si aun así se ve mal, el iPhone conserva la página vieja en
+  memoria: cerrar RWAdar del todo (deslizar hacia arriba en el selector de apps) y volver a abrirla.
 
 ## 28 de noviembre de 2026 (59) · Claude · Catálogo 2026-11-28: informe de Codex del 28/11, 4 ofertas y 6 plataformas, noticias y gráfico · PUBLICADO
 
