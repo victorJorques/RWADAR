@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-27",
+  "actualizadoEl": "2026-11-28",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ventana para activar los avisos: sale en el móvil cada vez que se abre RWAdar hasta que estén activos, también con el permiso bloqueado, que lleva a Perfil Avisos",
+  "nota": "Catálogo 2026-11-28 publicado en Supabase (revisión 4f87fe7f, 79 plataformas y 44 ofertas) con las 4 ofertas y 6 plataformas nuevas del informe de Codex del 28/11, el radar comprobado ese día, las noticias del 28/11 y la foto del gráfico; revisado por la sesión principal.",
   "revisionAprobada": {
-    "commit": "5365e3265d28673c8f659998f1a1f5ac64e2c9fa",
-    "contenidoSha256": "sha256:be1eb1073ee98d2fbbbe8f0bf5d50cf07c2c8ef49f54417dd84d7435ef817266",
+    "commit": "ee435feb05f2a360fbc898b5f4e3f9c6f14fd7f4",
+    "contenidoSha256": "sha256:b7254944e9bd5a1e77b9b095da9a99a3cfd861fcd84b6746919945ee19749d82",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
