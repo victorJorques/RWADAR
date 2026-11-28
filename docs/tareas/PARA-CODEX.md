@@ -23,6 +23,10 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   cumplen y sin el JS: 3 px a 390 y 430 px, con y sin campana. Chromium no admite `-webkit-touch-callout`, así que Android
   y escritorio no cambian (3 px en los 8 casos de antes). Si aun así se ve mal, el iPhone conserva la página vieja en
   memoria: cerrar RWAdar del todo (deslizar hacia arriba en el selector de apps) y volver a abrirla.
+- **Más aire arriba (Víctor: «está como muy hacia arriba, dale algo más de margen»):** la barra del móvil pasa de
+  7/7 px a 12/9 px (arriba/abajo, más la zona segura) y, con RWAdar en la pantalla de inicio, a 16 px bajo el reloj.
+  `scroll-padding-top` cuenta ahora la zona segura (78 px + `env(safe-area-inset-top)`). Medido con zona segura de 59 px
+  simulada: la fila de iconos empieza a 20 px bajo el reloj (antes, 11).
 
 ## 28 de noviembre de 2026 (59) · Claude · Catálogo 2026-11-28: informe de Codex del 28/11, 4 ofertas y 6 plataformas, noticias y gráfico · PUBLICADO
 
