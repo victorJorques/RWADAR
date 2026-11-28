@@ -392,10 +392,12 @@ test('26 · con el catálogo publicado de hoy salen las de Spiko con su cifra y 
   const src = fs.readFileSync(path.join(RAIZ, 'rwadar-site/assets/catalogo-publico-20261022.js'), 'utf8');
   const ctx = {}; vm.createContext(ctx); vm.runInContext(src + ';globalThis.__EMI=EMI;', ctx);
   const emi = JSON.parse(JSON.stringify(ctx.__EMI));   // del contexto de vm a este (mismos prototipos)
-  const verificada = emi.find((o) => o.coleccion === 'principales' && o.estadoRevision === 'actual').verificadaEl;
+  // La fecha más reciente de las principales (28/11/2026: conviven ofertas comprobadas en días distintos).
+  const verificada = emi.filter((o) => o.coleccion === 'principales' && o.estadoRevision === 'actual').map((o) => o.verificadaEl).sort().at(-1);
   const ahora = new Date(verificada + 'T12:00:00Z');
   const r = c.ofertasConRentabilidad(emi, { ahora });
-  const conCifra = emi.filter((o) => o.coleccion === 'principales' && o.estadoRevision === 'actual' && o.rentabilidad && /^\d+(,\d+)?\s%$/.test(o.rentabilidad.mostrada));
+  const vigenteHoy = (o) => o.verificadaEl <= verificada && Date.parse(o.verificadaEl + 'T00:00:00Z') + o.vigenciaDias * 864e5 >= Date.parse(verificada + 'T00:00:00Z');
+  const conCifra = emi.filter((o) => o.coleccion === 'principales' && o.estadoRevision === 'actual' && vigenteHoy(o) && o.rentabilidad && /^\d+(,\d+)?\s%$/.test(o.rentabilidad.mostrada));
   // Como mucho MAX_OFERTAS (27/11/2026: ya hay más principales con cifra que el tope).
   eq(r.map((o) => o.slug), conCifra.slice(0, c.MAX_OFERTAS).map((o) => o.slug), 'las principales vigentes con una cifra publicada, hasta el tope, y solo esas');
   assert.ok(r.length === Math.min(conCifra.length, c.MAX_OFERTAS));

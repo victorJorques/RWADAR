@@ -282,7 +282,7 @@ OFERTAS = [
          'Open to South African and international investors, but with restrictions the page does not detail: outside South Africa, unconfirmed.'),
     {'supervisada': crit(False, 'La plataforma dice ser proveedor de servicios financieros autorizado en Sudáfrica (FSCA); no es un supervisor de la UE y no está inscrita en la CNMV.', 'schindlersx-silverbits', 'SchindlersX · SilverBits SLVR'),
      'documentoEspana': crit(False, 'Hay memorando y términos en inglés; no hay folleto ni KID europeos.', 'schindlersx-silverbits', 'SchindlersX · SilverBits SLVR'),
-     'minimoCorto': '1 onza de plata', 'salidaCorta': 'Venta o canje por lingote', 'puntos': [{'texto': 'Plata guardada en Union Vault y asegurada', 'fuente': tr('schindlersx-silverbits', 'SchindlersX · SilverBits SLVR')}]},
+     'minimoCorto': '1 onza de plata', 'salidaCorta': 'Venta o canje por lingote', 'puntos': [{'texto': 'Plata en Union Vault, con seguro', 'fuente': tr('schindlersx-silverbits', 'SchindlersX · SilverBits SLVR')}]},
     {'escena': 'empresa', 'op': {'forma': 'nave'}, 'lugar': 'Johannesburgo · Sudáfrica', 'pasos': ['Compras onzas en tokens', 'Union Vault guarda la plata', 'Vendes o canjeas un lingote'], 'concepto': 'lingotes de plata',
      'foto': {'semilla': 1151, 'encuadre': '70% 55%', 'concepto': 'plata fundida vertiéndose en un molde de lingote en una fundición, imagen genérica; no la del producto', 'prompt': 'close-up of glowing molten silver being poured from a crucible into a plain steel ingot mold in a small foundry, sparks, dark background, no text, no people'}}),
 ]

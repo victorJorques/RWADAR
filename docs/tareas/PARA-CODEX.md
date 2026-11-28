@@ -6,6 +6,30 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de noviembre de 2026 (59) · Claude · Catálogo 2026-11-28: informe de Codex del 28/11, 4 ofertas y 6 plataformas, noticias y gráfico · PUBLICADO
+
+- **Órdenes de Víctor:** «revísala y haz la actualización pertinente… quitando lo caducado poniendo lo nuevo y enviando
+  las notificaciones»; «solo quita las caducadas y añade las nuevas ofertas plataformas noticias y gráfico y las
+  notificaciones»; «no uses agentes, solo tú» (el editor de noticias ya había trabajado como subagente; el verificador
+  se paró y la verificación la hizo la sesión principal, como dice `noticias-diarias/2026-11-28/VERIFICACION.md`).
+- **Catálogo `2026-11-28`** (revisión `4f87fe7f`, sobre la `cf150c1e`): 79 plataformas y 44 ofertas (28/13/3).
+  - Caducadas: ninguna (las 40, releídas hoy; no se tocan y conservan su fecha). El vigía vio cifras movidas en Spiko
+    y mTBILL: quedan para el próximo ciclo de ofertas.
+  - Ofertas nuevas: Invesco IROXX (Superstate), bono de LynxCap (Tokinvest), VPH Riga fase VI (Bondea) y SilverBits
+    SLVR (SchindlersX), con disponibilidad por país.
+  - Plataformas nuevas: Banco Atlántida El Salvador, Bondea, Axiology, Marketnode, winvesta y SchindlersX.
+  - Radar comprobado entero el 28/11 (`comprobar-radar.mjs` con «sustituciones» y «retiradas» nuevas en
+    `cambios-radar.json`): EX.IO bloquea por país desde el entorno → su ficha del radar usa la lista de la SFC;
+    Centrifuge bloquea sus términos → fuente fuera y licencia/acceso «no verificable».
+  - Fuera, con motivo en `2026-11-28-v2/altas.py`: NORVAULT/CanTra y Metals.io (Cloudflare), Ondo (geobloqueo),
+    Atlántida ALDT001-T40 y winvesta (solo plataforma), RealUnit, Orbitum y el resto del informe.
+- **Noticias del 28/11:** Emiratos, AMF/Euroclear France y Austria (DELPHI); salen Banco de Japón, coinIX y Suiza.
+- **Gráfico:** «Foto diaria de la tokenización» del 28/11 (13:04 UTC, lanzada por Víctor): 48.942 M USD.
+- **Pendiente:** corregir el `aval` público de EX.IO (aún dice «licencia provisional; no lo hemos comprobado»; la SFC
+  la da como licencia formal desde el 18/12/2024). La rama `claude/catalogo-2026-11-28` sobra (el PR salió de
+  `claude/happy-cannon-aqu5o8`) y el cerrojo `claude/cerrojo-ciclo-2026-11-28`, si no se pudo borrar: «Limpiar ramas».
+- Detalle: `docs/INVESTIGACION-CATALOGO-2026-11-28.md`.
+
 ## 27 de noviembre de 2026 (58) · Claude · Avisos: diagnóstico y ventana «Activa los avisos» al entrar · PUBLICADO
 
 - **Petición de Víctor:** «que salten las notificaciones al centro de notificaciones de los móviles».
