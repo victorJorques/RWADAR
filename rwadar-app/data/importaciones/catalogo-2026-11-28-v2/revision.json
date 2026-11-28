@@ -1,0 +1,43 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "4f87fe7f-c952-18a5-2e11-e08bf37103d7",
+  "hash": "4f87fe7fc95218a52e11e08bf37103d791d001ea3cbacbc6d56ac84c2a7d3d46",
+  "revisionAnterior": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
+  "hashRevisionAnterior": "cf150c1e16ba85072779cbd2057dad3f169da4c8593d27eb6c73fe613937895c",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-28-v2/lectura-publica/",
+  "etiqueta": "2026-11-28",
+  "fechaRadar": "2026-11-28",
+  "revisionDocumental": "2026-11-28",
+  "plataformas": 79,
+  "ofertas": 44,
+  "colecciones": {
+    "principales": 28,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-12-03",
+  "nuevasAltas": 4,
+  "ofertasAltas": [
+    "superstate-invesco-iroxx",
+    "tokinvest-lynxcap-bono",
+    "bondea-vph-riga-vi",
+    "schindlersx-silverbits-slvr"
+  ],
+  "plataformasAltas": [
+    "banco-atlantida",
+    "bondea",
+    "axiology",
+    "marketnode",
+    "winvesta",
+    "schindlersx"
+  ],
+  "retiradas": 0,
+  "tablasPublicas": [
+    "public.plataformas"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

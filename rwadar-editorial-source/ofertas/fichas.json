@@ -536,6 +536,59 @@
     "Recuperas el nominal al final"
    ],
    "concepto": "una empresa de equipos de red"
+  },
+  {
+   "slug": "superstate-invesco-iroxx",
+   "escena": "tesoro",
+   "lugar": "Nueva York · EE. UU.",
+   "pasos": [
+    "Abres cuenta en Superstate",
+    "El fondo invierte a corto plazo",
+    "Reembolsas el mismo día"
+   ],
+   "concepto": "deuda pública de EE. UU. a corto plazo"
+  },
+  {
+   "slug": "tokinvest-lynxcap-bono",
+   "escena": "empresa",
+   "op": {
+    "forma": "oficina"
+   },
+   "lugar": "Zug · Suiza",
+   "pasos": [
+    "Compras el token del bono",
+    "Cobras el cupón cada trimestre",
+    "Recuperas el nominal al final"
+   ],
+   "concepto": "préstamos con garantía inmobiliaria en Europa"
+  },
+  {
+   "slug": "bondea-vph-riga-vi",
+   "escena": "empresa",
+   "op": {
+    "forma": "tienda"
+   },
+   "lugar": "Riga · Letonia",
+   "pasos": [
+    "Suscribes el bono",
+    "Cobras el interés cada semestre",
+    "Recuperas el nominal al final"
+   ],
+   "concepto": "un parque comercial en Riga"
+  },
+  {
+   "slug": "schindlersx-silverbits-slvr",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "lugar": "Johannesburgo · Sudáfrica",
+   "pasos": [
+    "Compras onzas en tokens",
+    "Union Vault guarda la plata",
+    "Vendes o canjeas un lingote"
+   ],
+   "concepto": "lingotes de plata"
   }
  ]
 }

@@ -1,8 +1,56 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-27",
+  "actualizadoEl": "2026-11-28",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
+    {
+      "id": "emiratos-bonos-soberanos-digitales-dirhams",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Emiratos coloca 180 millones de dírhams en bonos digitales",
+      "resumen": "El Ministerio de Finanzas de Emiratos Árabes Unidos anuncia el 27/11 su primera emisión de bonos del Tesoro digitales en dírhams: 180 millones (unos 50 millones de dólares) a dos años. Se emiten y liquidan en la infraestructura digital D-FMI de Euroclear.",
+      "porQueImporta": "Se repartieron a partes iguales entre los seis creadores de mercado de la deuda del país, no entre particulares. Se admitirán a negociación en Nasdaq Dubai y el ministerio evaluará el resultado para próximas emisiones.",
+      "en": {
+        "titulo": "UAE issues AED 180m in its first digital treasury bonds",
+        "resumen": "The UAE Ministry of Finance announces on 27/11 its first issue of dirham-denominated digital treasury bonds: AED 180 million (about USD 50 million) with a two-year tenor. They are issued and settled on Euroclear’s Digital Financial Market Infrastructure (D-FMI).",
+        "porQueImporta": "They were allocated equally among the country’s six primary dealers, not to retail investors. They will be admitted to trading on Nasdaq Dubai, and the ministry will assess the results for future issues.",
+        "tituloInformativo": "UAE Ministry of Finance issues its first dirham-denominated digital treasury bonds through Euroclear"
+      },
+      "fuente": {
+        "nombre": "Ministerio de Finanzas de Emiratos Árabes Unidos, comunicado del 27/11/2026 sobre sus primeros bonos del Tesoro digitales",
+        "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-first-aed-denominated-digital-sovereign-treasury-bonds/",
+        "tipo": "organismo"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "El Ministerio de Finanzas de Emiratos emite sus primeros bonos del Tesoro digitales en dírhams con Euroclear",
+      "imagen": "bonos-emision"
+    },
+    {
+      "id": "amf-euroclear-france-liquidacion-tokenizada",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "Euroclear France podrá liquidar valores tokenizados",
+      "resumen": "El supervisor de los mercados de Francia (AMF) publica el 27/11 su decisión, firmada el 26/11, que aprueba los cambios en las reglas de Euroclear France para integrar D-FMI+, un sistema de liquidación con tecnología de registro distribuido, en su sistema ESES France, al amparo del régimen piloto DLT de la UE.",
+      "porQueImporta": "Según las reglas aprobadas, D-FMI+ se ocupa de la parte de los valores y otra plataforma de la del efectivo, en tokens. Los cambios entran en vigor en la fecha que fije Euroclear France.",
+      "en": {
+        "titulo": "Euroclear France to be able to settle tokenised securities",
+        "resumen": "France’s markets regulator (AMF) publishes on 27/11 its decision, signed on 26/11, approving changes to Euroclear France’s rules to integrate D-FMI+, a settlement system based on distributed ledger technology, into its ESES France system under the EU DLT Pilot Regime.",
+        "porQueImporta": "Under the approved rules, D-FMI+ handles the securities leg while another platform handles the cash leg in tokens. The changes take effect on a date to be set by Euroclear France.",
+        "tituloInformativo": "France’s AMF approves Euroclear France rule changes to integrate the D-FMI+ DLT settlement system into ESES France"
+      },
+      "fuente": {
+        "nombre": "Autoridad de los Mercados Financieros de Francia (AMF), decisión publicada el 27/11/2026 sobre las reglas de Euroclear France",
+        "url": "https://www.amf-france.org/fr/reglementation/regles-professionnelles-approuvees/decision-dapprobation-des-modifications-de-regles-de-fonctionnement-du-depositaire-central-euroclear",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "La AMF aprueba que Euroclear France integre el sistema de liquidación DLT D-FMI+ en ESES France",
+      "imagen": "real-servidores-cables"
+    },
     {
       "id": "poloniex-abre-16-acciones-etf-tokenizados",
       "fecha": "2026-11-27",
@@ -23,38 +71,14 @@
         "url": "https://www.poloniex.com/announcement/45050069368899",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-27",
+      "consultadaEl": "2026-11-28",
       "tituloInformativo": "Poloniex abre la negociación de 16 acciones y ETF tokenizados de la serie bStocks",
       "imagen": "real-bolsa-nueva-york-fachada"
     },
     {
-      "id": "banco-japon-cinco-retos-tokenizacion",
-      "fecha": "2026-11-27",
-      "seccion": "hoy",
-      "categoria": "regulacion",
-      "ambito": "Mundo",
-      "titulo": "El Banco de Japón señala cinco retos de la tokenización",
-      "resumen": "En un discurso del 27/11, un director ejecutivo del Banco de Japón enumera cinco retos de la tokenización: estabilidad financiera, liquidez repartida entre plataformas, coste de migrar y conectarlas, ciberseguridad y seguridad jurídica (si pasar un token transmite de verdad el derecho sobre el activo).",
-      "porQueImporta": "Su proyecto de pruebas estudia ofrecer dinero de banco central en forma de token y liquidar deuda pública japonesa tokenizada. Es un discurso, no una decisión: el banco prefiere mejorar lo que ya funciona y probar lo nuevo en paralelo.",
-      "en": {
-        "titulo": "Bank of Japan flags five challenges of tokenisation",
-        "resumen": "In a speech on 27/11, an executive director of the Bank of Japan lists five challenges of tokenisation: financial stability, liquidity split across platforms, the cost of migrating and connecting them, cybersecurity and legal certainty (whether transferring a token really transfers the right to the asset).",
-        "porQueImporta": "Its sandbox project examines tokenised central bank money and the settlement of tokenised Japanese government bonds. It is a speech, not a decision: the bank prefers to improve what already works and test new systems in parallel.",
-        "tituloInformativo": "Bank of Japan speech sets out five challenges of tokenisation and its DLT sandbox work"
-      },
-      "fuente": {
-        "nombre": "Banco de Japón, discurso del 27/11/2026 «Digital Money and Payments: Transitioning Toward a New Paradigm» (PDF)",
-        "url": "https://www.boj.or.jp/en/about/press/koen_2026/data/ko261127a.pdf",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-27",
-      "tituloInformativo": "Un director ejecutivo del Banco de Japón expone cinco retos de la tokenización y su proyecto de pruebas",
-      "imagen": "banco-sala"
-    },
-    {
       "id": "canada-csa-proyecto-tokenizacion-fase-2",
       "fecha": "2026-11-26",
-      "seccion": "hoy",
+      "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "Mundo",
       "titulo": "Los supervisores de Canadá buscan proyectos tokenizados",
@@ -71,33 +95,9 @@
         "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-27",
+      "consultadaEl": "2026-11-28",
       "tituloInformativo": "Los supervisores de valores de Canadá abren la fase 2 de su proyecto de tokenización y piden propuestas",
       "imagen": "documentos-consulta"
-    },
-    {
-      "id": "21x-coinix-monetario-tokenizado",
-      "fecha": "2026-11-26",
-      "seccion": "importante",
-      "categoria": "mercado",
-      "ambito": "UE",
-      "titulo": "coinIX ya opera con un monetario tokenizado en 21X",
-      "resumen": "21X, mercado en blockchain autorizado en la UE, anuncia el 26/11 que la sociedad de inversión alemana coinIX se une como participante. Sus primeras operaciones fueron en grBenji, clase tokenizada de un fondo monetario de Franklin Templeton que se negocia en 21X desde finales de septiembre.",
-      "porQueImporta": "Según 21X, coinIX puede tener sus dólares en un fondo monetario regulado que rinde durante el día, en vez de dejar parados sus saldos en monedas estables. Que coinIX opere no significa que un particular pueda comprar ese fondo.",
-      "en": {
-        "titulo": "Germany’s coinIX now trades a tokenised money fund on 21X",
-        "resumen": "21X, a blockchain trading and settlement system authorised in the EU, announces on 26/11 that German investment company coinIX has joined as a participant. Its first trades were in grBenji, a tokenised share class of a Franklin Templeton money market fund traded on 21X since late September.",
-        "porQueImporta": "According to 21X, coinIX can hold its dollars in a regulated money market fund that accrues yield during the day instead of leaving stablecoin balances idle. That does not mean a retail investor can buy that fund.",
-        "tituloInformativo": "coinIX joins 21X as a trading participant and trades Franklin Templeton’s grBenji"
-      },
-      "fuente": {
-        "nombre": "21X, comunicado del 26/11/2026 sobre coinIX y grBenji",
-        "url": "https://21x.eu/21x-enables-coinix-to-end-idle-stablecoin-balances-using-franklin-templetons-grbenji/",
-        "tipo": "empresa"
-      },
-      "consultadaEl": "2026-11-27",
-      "tituloInformativo": "coinIX se une a 21X como participante y opera con el fondo monetario tokenizado grBenji de Franklin Templeton",
-      "imagen": "real-tesoro-eeuu-fachada"
     },
     {
       "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
@@ -119,7 +119,7 @@
         "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-27",
+      "consultadaEl": "2026-11-28",
       "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada",
       "imagen": "real-sala-servidores-bastidores"
     },
@@ -143,33 +143,9 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-27",
+      "consultadaEl": "2026-11-28",
       "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas",
       "imagen": "real-cnmv-sede-madrid"
-    },
-    {
-      "id": "suiza-snb-registro-financiero-comun",
-      "fecha": "2026-11-24",
-      "seccion": "importante",
-      "categoria": "mercado",
-      "ambito": "Mundo",
-      "titulo": "Suiza estudia un registro común de valores y dinero digital",
-      "resumen": "El Banco Nacional Suizo y ocho entidades, entre ellas UBS, SIX y Sygnum, empiezan un proyecto exploratorio: un registro con tecnología de registro distribuido donde convivan el dinero del banco central, el de los bancos y los valores, para operaciones dentro de Suiza y con el extranjero.",
-      "porQueImporta": "Forma parte del proyecto Helvetia y se apoya en Agorá, del BIS. El propio banco central avisa de que no significa que vaya a lanzarse ese registro ni que vaya a emitir dinero de banco central tokenizado.",
-      "en": {
-        "titulo": "Switzerland explores a shared ledger for assets and money",
-        "resumen": "The Swiss National Bank and eight institutions, including UBS, SIX and Sygnum, start an exploratory project: a distributed ledger where central bank money, commercial bank money and securities interact, for domestic and cross-border transactions.",
-        "porQueImporta": "It is part of Project Helvetia and builds on the BIS Project Agorá. The central bank itself warns that it does not mean the ledger will be launched or that it will issue tokenised central bank money.",
-        "tituloInformativo": "Swiss National Bank and eight institutions start exploratory Swiss Financial Ledger project"
-      },
-      "fuente": {
-        "nombre": "Banco Nacional Suizo, comunicado del 24/11/2026 sobre el Swiss Financial Ledger",
-        "url": "https://www.snb.ch/en/publications/communication/press-releases/2026/pre_20261124_2",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-27",
-      "tituloInformativo": "El Banco Nacional Suizo y ocho entidades estudian un registro financiero común con tecnología DLT",
-      "imagen": "red-europea"
     },
     {
       "id": "bce-valores-tokenizados-garantia-2027",
@@ -191,9 +167,33 @@
         "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-27",
+      "consultadaEl": "2026-11-28",
       "tituloInformativo": "El BCE amplía las garantías admisibles del Eurosistema a ciertos valores negociables emitidos en plataformas DLT autorizadas",
       "imagen": "real-bce-francfort"
+    },
+    {
+      "id": "austria-delphi-liquidacion-dinero-banco-central",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "mercado",
+      "ambito": "UE",
+      "titulo": "Austria liquida bonos tokenizados en dinero de banco central",
+      "resumen": "El depositario central austriaco OeKB CSD, Erste Group, Raiffeisen Bank International y el socio tecnológico SWIAT anuncian el 23/11 que liquidaron por primera vez operaciones con valores entre la infraestructura tradicional y una basada en DLT, con el pago en dinero de banco central mediante Pontes, del Eurosistema.",
+      "porQueImporta": "Los bonos se emitieron en la plataforma digital de OeKB CSD y las operaciones se cerraron en minutos y en firme; después, los valores volvieron a la infraestructura habitual. Es una prueba en real, no un servicio abierto al público.",
+      "en": {
+        "titulo": "Austria settles tokenised bonds in central bank money",
+        "resumen": "Austrian central securities depository OeKB CSD, Erste Group, Raiffeisen Bank International and technology partner SWIAT announce on 23/11 the first settlement of securities transactions between traditional and DLT-based infrastructure, paid in central bank money via the Eurosystem’s Pontes.",
+        "porQueImporta": "The bonds were issued on OeKB CSD’s digital issuer platform and the trades settled within minutes with immediate finality; the securities then returned to the existing infrastructure. It is a live test, not a service open to the public.",
+        "tituloInformativo": "OeKB CSD, Erste Group, RBI and SWIAT settle DLT securities trades in central bank money via Pontes (DELPHI)"
+      },
+      "fuente": {
+        "nombre": "OeKB CSD, noticia del 23/11/2026 sobre la iniciativa DELPHI (en alemán)",
+        "url": "https://www.oekb-csd.at/news/news/2026/delphi-erfolgreicher-praxistest.html",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "OeKB CSD, Erste Group, RBI y SWIAT liquidan operaciones con valores en DLT y dinero de banco central vía Pontes (DELPHI)",
+      "imagen": "red-europea"
     }
   ]
 }

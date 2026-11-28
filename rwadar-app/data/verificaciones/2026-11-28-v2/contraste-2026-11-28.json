@@ -1,0 +1,38 @@
+{
+  "tipo": "altas",
+  "fecha": "2026-11-28",
+  "etiqueta": "2026-11-28",
+  "revisionAnterior": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
+  "revisionNueva": "4f87fe7f-c952-18a5-2e11-e08bf37103d7",
+  "decision": "Orden de la dirección del 28/11/2026: revisar la investigación de Codex de ese día, quitar lo caducado y añadir lo nuevo («solo quita las caducadas y añade las nuevas ofertas, plataformas, noticias y gráfico»). Ninguna oferta publicada había caducado (releídas hoy); entran las ofertas con fuente primaria y condiciones leídas hoy y las plataformas con su web leída hoy; el radar entero se comprobó hoy.",
+  "archivos": {
+    "altas.json": "f36ab09d9109ca06f96a20d291a3d3894d82428ea22b1cf0e0190c97d1c59efc",
+    "fuentes/lecturas-2026-11-28.json": "538d073d6e47a2f61d4e2bfa917b7141a2209e6f8188665a5ccf8d5ba8bf7535",
+    "radar-contraste-2026-11-28.json": "539467f7615d46680b58d47e0c8f0413172debe8e8260d57fb660e0ee3b0fb9e",
+    "cambios-radar.json": "cc759078549a90282e91159e4994de742df437fb206235cb063399879acb54c2",
+    "vigia.json": "146ab174fa2f8ab3ba99303d7c1d82d6e817baefd491993028deeff638baac54"
+  },
+  "altas": {
+    "regiones": [],
+    "plataformas": [
+      "banco-atlantida",
+      "bondea",
+      "axiology",
+      "marketnode",
+      "winvesta",
+      "schindlersx"
+    ],
+    "ofertas": [
+      "superstate-invesco-iroxx",
+      "tokinvest-lynxcap-bono",
+      "bondea-vph-riga-vi",
+      "schindlersx-silverbits-slvr"
+    ]
+  },
+  "colecciones": {
+    "principales": 28,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "lecturaPublica": "Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-28T13:05:51Z – 2026-11-28T13:05:55Z"
+}

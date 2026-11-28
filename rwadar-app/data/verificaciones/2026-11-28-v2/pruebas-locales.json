@@ -1,0 +1,126 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-28T13:55:27.245Z",
+  "etiqueta": "2026-11-28",
+  "revisionAnterior": "cf150c1e-16ba-8507-2779-cbd2057dad3f",
+  "revisionNueva": "4f87fe7f-c952-18a5-2e11-e08bf37103d7",
+  "sha256AplicarYAprobar": "c05459b89fc05e578cc185c7f56e1c5fe9192d61cbd560664190da625084dfb8",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada cf150c1e con su huella cf150c1e16ba…, catálogo no retirado, fecha del 28/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (las 6 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 147 en fuentes, 79 en plataformas, 285 en plataforma_fuentes, 86 en alertas, 97 en alerta_fuentes, 44 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
+    "cadena de producción (seed antes de ARTEX + 28 lotes, del 2026-10-22 a la 2026-11-27.3): la publicada es la cf150c1e",
+    "antes de aplicar, PGlite enseña la 2026-11-27.3 local (73 plataformas, 40 ofertas 24/13/3, documentación idéntica) y lo leído como visitante en lectura-publica/",
+    "idempotente: aplicarla dos veces da lo mismo",
+    "public.plataformas: las 78 de antes, idénticas, y las 6 nuevas exactas (79 en el radar y 5 descartadas); regiones, igual; public.fuentes, cambios de estado, avisos y emisiones, intactos (dar de alta no avisa a nadie); las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: 79 plataformas y 44 ofertas (28 principales, 13 de reventa y 3 en camino); las 6 plataformas y las 4 ofertas nuevas, con sus datos de altas.json; las 40 ofertas y las 73 plataformas de antes, iguales a la 2026-11-27.3 salvo la revisión, el manifiesto del lote y las fechas de consulta del radar (y los textos del radar de centrifuge y ex-io); las 5 descartadas, iguales",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 79 plataformas y 44 ofertas con 3 en camino; el lote vale del 28/11 al 05/12 y caduca el 06/12; cada tarjeta vale 7 días desde su comprobación (las nuevas, hasta el 05/12; las del 27/11, hasta el 04/12; Liqi, Mitsui y mTBILL, hasta el 03/12); las tarjetas de antes no cambian",
+    "sincronizador real con estas vistas: 79 plataformas, 44 ofertas y 5 descartadas (CSV de 84 filas); sin añadir las 10 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 128 páginas, las 10 nuevas incluidas y en el sitemap",
+    "worker con la lista nueva: las 10 fichas nuevas (ofertas y plataformas) se sirven",
+    "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
+    "falla y no deja nada: la publicada no es la 2026-11-27.3 (es la 2026-11-27.2, 38ee1fa9) → Publicación distinta de la revisión anterior prevista: 38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior",
+    "falla y no deja nada: una plataforma nueva ya existe con otros datos → La plataforma bondea ya existe con otros datos: no aplicar.",
+    "falla y no deja nada: el radar no tiene las 73 plataformas previstas (hay una más) → El radar no tiene 73 plataformas (ni las 79 de este lote): no aplicar."
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
+      "falla": false,
+      "publicada": "4f87fe7f-c952-18a5-2e11-e08bf37103d7"
+    },
+    {
+      "caso": "la publicada no es la 2026-11-27.3 (es la 2026-11-27.2, 38ee1fa9)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: 38ee1fa9-aadd-6c0a-b1e7-d2a4f006b6ca. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma nueva ya existe con otros datos",
+      "falla": true,
+      "error": "La plataforma bondea ya existe con otros datos: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el radar no tiene las 73 plataformas previstas (hay una más)",
+      "falla": true,
+      "error": "El radar no tiene 73 plataformas (ni las 79 de este lote): no aplicar.",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 147,
+    "rwadar_catalogo.plataformas": 79,
+    "rwadar_catalogo.plataforma_fuentes": 285,
+    "rwadar_catalogo.alertas": 86,
+    "rwadar_catalogo.alerta_fuentes": 97,
+    "rwadar_catalogo.ofertas": 44,
+    "public.regiones": 0,
+    "public.plataformas": 6
+  },
+  "lecturaPublica": true,
+  "tarjetasNuevas": {
+    "superstate-invesco-iroxx": {
+      "minimo": "Desde 1.000.000 USD",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Reembolso: El mismo día, hasta las 17:00 de Nueva York, en USD o USDC",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "tokinvest-lynxcap-bono": {
+      "minimo": "Desde 10.000 € o su equivalente en USD",
+      "espana": "No disponible desde España según la fuente",
+      "salida": "Salida: Al vencimiento (4 años) o en las salidas anticipadas de 2028 y 2029",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "bondea-vph-riga-vi": {
+      "minimo": "Desde 1.000 € (una obligación)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Al vencimiento (16 meses); la ficha no menciona venta antes",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    },
+    "schindlersx-silverbits-slvr": {
+      "minimo": "Desde 1 token (1 onza de plata): 1.021,36 ZAR (28/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Venta en SchindlersX a cualquier hora, o canje por lingotes de 1 kg en Sudáfrica",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "vencida": false
+    }
+  },
+  "resultado": "correcto"
+}

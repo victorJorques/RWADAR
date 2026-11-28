@@ -1,0 +1,121 @@
+{
+ "fecha": "2026-11-28",
+ "nota": "Cambios del radar comprobados el 28/11/2026. Parte de la publicada 2026-11-27.3 (135 fuentes). Hoy se contrastan de nuevo todas con las capturas de las 13:1x–13:2x UTC; cinco se leyeron a mano o se sustituyen (abajo).",
+ "fuentes": {},
+ "comprobacionesCambiadas": {},
+ "plataformas": {
+  "centrifuge": {
+   "licenciaRegistro": {
+    "estado": "no_verificable",
+    "detalle": "Centrifuge es un protocolo de infraestructura; sus términos legales no se dejaron leer el 28/11/2026 (bloqueo anti-bots), así que no hemos podido volver a comprobar lo que dicen sobre licencias.",
+    "fuentes": [
+     "centrifuge-web"
+    ]
+   },
+   "acceso": {
+    "estado": "no_verificable",
+    "detalle": "La disponibilidad depende de cada fondo; el 28/11/2026 no pudimos volver a leer sus términos.",
+    "fuentes": [
+     "centrifuge-web"
+    ]
+   },
+   "alertasCriticas": [
+    {
+     "codigo": "protocolo_no_emisor",
+     "detalle": "Centrifuge es el protocolo, no el emisor: la licencia que pueda tener el vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+     "fuentes": [
+      "centrifuge-web"
+     ]
+    }
+   ]
+  },
+  "ex-io": {
+   "estadoOperativo": {
+    "estado": "observada",
+    "detalle": "La SFC de Hong Kong la incluye en su lista de plataformas de activos virtuales con licencia.",
+    "fuentes": [
+     "sfc-vatp-licenciadas"
+    ]
+   },
+   "licenciaRegistro": {
+    "estado": "confirmada_regulador",
+    "detalle": "La SFC da a EXIO Limited (plataforma EX.IO, referencia BUT670) como plataforma de activos virtuales con licencia desde el 18/12/2024.",
+    "fuentes": [
+     "sfc-vatp-licenciadas"
+    ]
+   },
+   "acceso": {
+    "estado": "no_verificable",
+    "detalle": "Su web bloqueó por país el acceso desde donde se hizo la comprobación (28/11/2026); no pudimos ver a quién admite.",
+    "fuentes": [
+     "sfc-vatp-licenciadas"
+    ]
+   },
+   "alertasCriticas": [
+    {
+     "codigo": "fuera_ue",
+     "detalle": "Plataforma de Hong Kong. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+     "fuentes": [
+      "sfc-vatp-licenciadas"
+     ]
+    }
+   ]
+  }
+ },
+ "verificacionesManuales": {
+  "spiko-regafi-pasaporte-es": {
+   "motivo": "La página de REGAFI no carga sus datos en la captura (se pintan con JavaScript). Se leyó la API pública de pasaportes salientes del mismo registro.",
+   "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 28/11/2026 a las 13:26:42 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6, igual que el 26 y el 27/11)",
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+   "literales": [
+    "\"type_passeport\": \"Libre prestation de services\"",
+    "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\""
+   ]
+  },
+  "paxg-occ": {
+   "motivo": "La captura recibe una respuesta que no es el PDF; con un navegador normal (Chromium, sin sesión) el servidor entrega el PDF.",
+   "metodo": "PDF descargado con Chromium el 28/11/2026 a las 13:27:03 UTC (SHA-256 b8cbc850db1698718fbe2d6bfe95659ed6db530ae614a5537f6cb66c6497a274, el mismo que el 26 y el 27/11); texto en radar-manual/occ-trust-by-name.txt (SHA-256 f21564dc5e73abee56adab8afd8d374932ae3b8e696d4326ff350dcea1d68239)",
+   "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+   "literales": [
+    "Trust Banks Active As of 10/31/2026",
+    "25379 Paxos Trust Company, National Association"
+   ]
+  },
+  "colb-web": {
+   "motivo": "La captura se quedó con la portada a medio cargar (menos texto); leída otra vez con Chromium, esperando a que cargue entera.",
+   "metodo": "Página leída con Chromium (sin sesión, cookies aceptadas) el 28/11/2026 a las 13:28:28 UTC; texto completo en radar-manual/colb-web.txt (SHA-256 8b38af4264b93b2876b1b4873632e6f47a43557ac11e100863672bb8e278fa2f); nombres de personas retirados",
+   "url": "https://www.colb.finance/",
+   "literales": [
+    "Colb Asset SA is a registered financial intermediary under Swiss law",
+    "member of ARIF",
+    "Pre-IPO opportunities"
+   ]
+  }
+ },
+ "sustituciones": {
+  "exio-ustnt": {
+   "motivo": "Desde este entorno EX.IO bloquea su web por país («Access to EX.IO is restricted due to your location - United States»). No se elude: para el radar se usa la lista oficial de plataformas con licencia de la SFC, que sí se lee.",
+   "nueva": {
+    "id": "sfc-vatp-licenciadas",
+    "tipo": "regulador",
+    "titulo": "SFC · List of licensed virtual asset trading platforms",
+    "url": "https://www.sfc.hk/en/Welcome-to-the-Fintech-Contact-Point/Virtual-assets/Virtual-asset-trading-platforms-operators/Lists-of-virtual-asset-trading-platforms"
+   },
+   "lectura": {
+    "horaUtc": "2026-11-28T13:27:41Z",
+    "http": 200,
+    "archivo": "fuentes/sfc-vatp-licenciadas.txt",
+    "sha256": "43ba5dce99b4bd77e94a1780a366bcb46246960911da3025bfe630755b33db44"
+   },
+   "comprobaciones": [
+    "List of licensed virtual asset trading platforms",
+    "BUT670 EXIO Limited N/A EX\\.IO 18/12/2024"
+   ]
+  }
+ },
+ "retiradas": {
+  "centrifuge-terms": {
+   "motivo": "Hoy centrifuge.io/terms responde 403 con un bloqueo de Cloudflare («Sorry, you have been blocked»), con Chromium a las 13:2x y a las 13:4x UTC y con curl. No se elude: la fuente sale del radar y lo que respaldaba pasa a «no verificable», con la web de Centrifuge (leída hoy) como fuente."
+  }
+ }
+}

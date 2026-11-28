@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "pase": 1,
+  "fecha": "2026-11-28",
+  "edicionSha256": "7b4beffd3376ce6b08ae2e6fc194255fb3aa019008269a5132ce4a5108c6989e",
+  "veredicto": "conforme",
+  "noticias": [
+    {
+      "id": "emiratos-bonos-soberanos-digitales-dirhams",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-first-aed-denominated-digital-sovereign-treasury-bonds/",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:35:01Z",
+        "sha256": "b2dd7c9d96cb775578e10f5115e6ef83b5cff112ce8aef1cc2c6cf3f984d50a6",
+        "caida": false
+      },
+      "literal": "The Digital T-Bonds issuance amounted to AED 180 million (approximately USD 50 million), with a two-year tenor and an annual yield to maturity of 4.98%.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "amf-euroclear-france-liquidacion-tokenizada",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.amf-france.org/fr/reglementation/regles-professionnelles-approuvees/decision-dapprobation-des-modifications-de-regles-de-fonctionnement-du-depositaire-central-euroclear",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:35:16Z",
+        "sha256": "496afbdaf5cbc3d3d5a44c1713c9906d415d18f3fe6f909ca53f883bde6864f9",
+        "caida": false
+      },
+      "literal": "Décision d’approbation des modifications de règles de fonctionnement du dépositaire central Euroclear France visant l’intégration du système de règlement DLT D-FMI+ au sein du système ESES France",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.poloniex.com/announcement/45050069368899",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:36:53Z",
+        "sha256": "18da952a04efd58e8e9a73c9cf582f9484abe5de2095ade4354f78e2f6de1c66",
+        "caida": false
+      },
+      "literal": "Poloniex to Open Trading for 16 Tokenized Stocks and ETFs",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:37:03Z",
+        "sha256": "d9cbb7018292a5f194b12af68aa71ff8d2b6fb0c67c6c4fc4c589ac8799b8889",
+        "caida": false
+      },
+      "literal": "Phase 2 of Project Tokenization, inviting firms to submit proposals for tokenized products, services, infrastructure and business models relevant to Canadian capital markets",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:37:13Z",
+        "sha256": "46e02669ecde5619d6791d433af3e0dbefc5fca3ebf50b8ab00cd49cd1a4de1c",
+        "caida": false
+      },
+      "literal": "supports the tokenisation of traditional debt securitie",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:37:49Z",
+        "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+        "caida": false
+      },
+      "literal": "La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:37:29Z",
+        "sha256": "cc8884103a5ed38738cbbd85b68384dc979368e8046fc233ebeba8d108729979",
+        "caida": false
+      },
+      "literal": "ECB expands acceptance of DLT-based assets as eligible Eurosystem collateral",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "austria-delphi-liquidacion-dinero-banco-central",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.oekb-csd.at/news/news/2026/delphi-erfolgreicher-praxistest.html",
+        "http": 200,
+        "horaUtc": "2026-11-28T13:35:28Z",
+        "sha256": "d9d48a184cd1ff91d85f3d18d0095b40328a68029bc6437d6b9a393f88eca066",
+        "caida": false
+      },
+      "literal": "wurden erstmals Wertpapiersettlement-Transaktionen zwischen traditioneller und DLT-basierter Marktinfrastruktur erfolgreich mit Zahlung in Zentralbankgeld abgewickelt",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    }
+  ],
+  "hoyCorrecto": true,
+  "faltaAlgo": [],
+  "correcciones": []
+}
