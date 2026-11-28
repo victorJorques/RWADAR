@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-28 publicado en Supabase (revisión 4f87fe7f, 79 plataformas y 44 ofertas) con las 4 ofertas y 6 plataformas nuevas del informe de Codex del 28/11, el radar comprobado ese día, las noticias del 28/11 y la foto del gráfico; revisado por la sesión principal.",
+  "nota": "Cabecera del móvil en la web: la cápsula del idioma ES · EN se coloca a 3 px de los iconos también cuando el iPhone, con RWAdar en la pantalla de inicio, oculta la descarga (antes dejaba un hueco de unos 50 px). Revisado por la sesión principal.",
   "revisionAprobada": {
-    "commit": "ee435feb05f2a360fbc898b5f4e3f9c6f14fd7f4",
-    "contenidoSha256": "sha256:b7254944e9bd5a1e77b9b095da9a99a3cfd861fcd84b6746919945ee19749d82",
+    "commit": "2d0828faac7524b4f3c28d4935f143e04e8a2cee",
+    "contenidoSha256": "sha256:f6fd5f2b8bc9509b2382f08cdece784a6a696768b8c6a5786a5be8657f5d351c",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
