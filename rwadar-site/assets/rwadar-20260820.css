@@ -1522,14 +1522,14 @@ body.detalle-local-abierto{overflow:hidden}
 /* 20 · BÚSQUEDA MÓVIL · jerarquía y detalle progresivo, con el negro cálido y el verde de RWAdar. */
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
-  html{scroll-padding-top:72px;scroll-padding-bottom:calc(var(--movil-nav-alto) + 12px + env(safe-area-inset-bottom))}
+  html{scroll-padding-top:calc(78px + env(safe-area-inset-top));scroll-padding-bottom:calc(var(--movil-nav-alto) + 12px + env(safe-area-inset-bottom))}
   body::after{opacity:.018}
   .solo-escritorio{display:none!important}
   .solo-movil{display:inline}
 
   /* Barra compacta: marca, destino y ayuda; solo el título central cede, con «…». */
   .movil-cabecera{display:grid;grid-template-columns:minmax(max-content,1fr) minmax(0,auto) minmax(max-content,1fr);
-    column-gap:10px;align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
+    column-gap:10px;align-items:center;padding:calc(12px + env(safe-area-inset-top)) var(--movil-margen) 9px;
     background:var(--noche);border-color:var(--linea)}
   .movil-cabecera-superior{display:contents}
   .movil-marca{grid-column:1;grid-row:1;justify-self:start;min-height:44px;gap:7px;font-size:1.08rem}
@@ -1700,7 +1700,8 @@ body.detalle-local-abierto{overflow:hidden}
 
 @media (max-width:767px) and (display-mode:standalone),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse) and (display-mode:standalone){
-  .movil-cabecera{background:var(--noche)}
+  /* Con RWAdar en la pantalla de inicio la barra empieza bajo el reloj: más aire para no quedar pegada (28/11/2026). */
+  .movil-cabecera{background:var(--noche);padding-top:calc(16px + env(safe-area-inset-top))}
 }
 
 @media (max-width:960px) and (max-height:540px) and (orientation:landscape) and (hover:none) and (pointer:coarse){
