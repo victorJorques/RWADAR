@@ -1,0 +1,130 @@
+{
+ "atlantida-emisiones": {
+  "url": "https://www.bancoatlantida.com.sv/emisiones/",
+  "horaUtc": "2026-11-28T13:08:49Z",
+  "http": 200,
+  "archivo": "fuentes/atlantida-emisiones.txt",
+  "sha256": "9f1b70f84c1c1bb9a16108354c1540462ef84fc7aa6ddbfa68dd4a78595d084e",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "atlantida-t40": {
+  "url": "https://www.bancoatlantida.com.sv/utils/docs/emisiones/20261112_ANUNCIO_OFERTA_PUBLICA_LEASING_T40.pdf",
+  "horaUtc": "2026-11-28T13:11:18Z",
+  "http": 200,
+  "archivo": "fuentes/atlantida-t40.txt",
+  "sha256": "f82686a84fb4dd197ec6225c3a07e1f9de6e90a5411f2e18aa3715ffb666a2d4",
+  "nota": "PDF: pdftotext; nombres de personas retirados"
+ },
+ "bondea-duk": {
+  "url": "https://bondea.lt/lt/duk",
+  "horaUtc": "2026-11-28T13:14:06Z",
+  "http": 200,
+  "archivo": "fuentes/bondea-duk.txt",
+  "sha256": "05d8c13620de95dfe7a3edd1983ed20427d8fd829286dc1be734e3b8d956d0f1",
+  "nota": "texto visible con Chromium, sin sesión; incluye el texto de las respuestas plegadas; nombres de personas retirados"
+ },
+ "bondea-proyectos": {
+  "url": "https://bondea.lt/lt/projektai",
+  "horaUtc": "2026-11-28T13:14:15Z",
+  "http": 200,
+  "archivo": "fuentes/bondea-proyectos.txt",
+  "sha256": "ae18bd5bc7927eafe038b94e8f24f07037c6ef135a09ba4760bed6911d4c2443",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "bondea-vph6": {
+  "url": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+  "horaUtc": "2026-11-28T13:09:01Z",
+  "http": 200,
+  "archivo": "fuentes/bondea-vph6.txt",
+  "sha256": "c2f309171c9ff68b484e35820f773492ecb66424a4913a8cf8e10fe706ee5aba",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "axiology-bonos": {
+  "url": "https://tss.axiology.xyz/bonds",
+  "horaUtc": "2026-11-28T13:13:44Z",
+  "http": 200,
+  "archivo": "fuentes/axiology-bonos.txt",
+  "sha256": "ad47983a131a234cf0caeb336dd6b960acc056f34267e9d290802eff7ccd2923",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "axiology-web": {
+  "url": "https://www.axiologyfinance.com/",
+  "horaUtc": "2026-11-28T13:13:54Z",
+  "http": 200,
+  "archivo": "fuentes/axiology-web.txt",
+  "sha256": "7fa30812e264517bb9da5bd79e54a5da285f6d0b76e0f61edca1dad2d5fdc6e3",
+  "nota": "texto visible con Chromium, sin sesión (cookies aceptadas); nombres de personas retirados"
+ },
+ "marketnode-web": {
+  "url": "https://www.marketnode.com/",
+  "horaUtc": "2026-11-28T13:14:26Z",
+  "http": 200,
+  "archivo": "fuentes/marketnode-web.txt",
+  "sha256": "f7c2e7285cf4a5b6e6185412878d31d50da827d3df47ee95a74bd11786f0ca67",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "mas-marketnode": {
+  "url": "https://eservices.mas.gov.sg/fid/institution/detail/429075-MARKETNODE-PTE-LTD",
+  "horaUtc": "2026-11-28T13:15:05Z",
+  "http": 200,
+  "archivo": "fuentes/mas-marketnode.txt",
+  "sha256": "784ad363c50b78bdfb6f25660b39dc8f5ed19b45b3c56076084359e4538120eb",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "winvesta-web": {
+  "url": "https://www.winvesta.de/",
+  "horaUtc": "2026-11-28T13:15:25Z",
+  "http": 200,
+  "archivo": "fuentes/winvesta-web.txt",
+  "sha256": "dc35cfe5acc85d24e1985b76ed8fb2986d7859d7af971257032026f1f9d37a84",
+  "nota": "texto visible con Chromium, sin sesión (cookies aceptadas); nombres de personas retirados"
+ },
+ "winvesta-faq": {
+  "url": "https://www.winvesta.de/faq/",
+  "horaUtc": "2026-11-28T13:15:42Z",
+  "http": 200,
+  "archivo": "fuentes/winvesta-faq.txt",
+  "sha256": "7c6bad7348883def18b07272c346191862e86a2ef6ab587135324256894d722e",
+  "nota": "texto visible con Chromium, sin sesión; incluye el texto de las respuestas plegadas; nombres de personas retirados"
+ },
+ "schindlersx-marketplace": {
+  "url": "https://schindlersx.io/browse-by-project",
+  "horaUtc": "2026-11-28T13:15:53Z",
+  "http": 200,
+  "archivo": "fuentes/schindlersx-marketplace.txt",
+  "sha256": "2eb190b685acd202cd1c0e2502ad1bc0010d2438153dd396b2edad29289f8089",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "schindlersx-about": {
+  "url": "https://schindlersx.io/about",
+  "horaUtc": "2026-11-28T13:17:25Z",
+  "http": 200,
+  "archivo": "fuentes/schindlersx-about.txt",
+  "sha256": "bfebeabc463e6c63afe5a98c088ac781474c37e5c74f60ff688bde9aea900f12",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "schindlersx-silverbits": {
+  "url": "https://schindlersx.io/silverbits",
+  "horaUtc": "2026-11-28T13:17:05Z",
+  "http": 200,
+  "archivo": "fuentes/schindlersx-silverbits.txt",
+  "sha256": "c5ecde5fb0b3e7ae5139bccb0735a44e86aea253547ab3ebd522dbdb28cee756",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "superstate-iroxx": {
+  "url": "https://superstate.com/assets/iroxx",
+  "horaUtc": "2026-11-28T13:09:34Z",
+  "http": 200,
+  "archivo": "fuentes/superstate-iroxx.txt",
+  "sha256": "ad0807f67233b987fc96727844619e3403058e66595634e1803a2353723df96e",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ },
+ "tokinvest-lynxcap": {
+  "url": "https://tokinvest.capital/case-studies/lynxcap",
+  "horaUtc": "2026-11-28T13:09:44Z",
+  "http": 200,
+  "archivo": "fuentes/tokinvest-lynxcap.txt",
+  "sha256": "017f16a56eb4b602d0a3b4dd25d875ce3c9a6171f5d5bd47df97b6e8dd3c226c",
+  "nota": "texto visible con Chromium, sin sesión; nombres de personas retirados"
+ }
+}

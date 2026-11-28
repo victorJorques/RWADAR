@@ -1,0 +1,53 @@
+{
+  "nota": "Portadas de las 6 plataformas nuevas de la entrega 2026-11-28: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto).",
+  "portadas": [
+    {
+      "empresa": "Banco Atlántida El Salvador",
+      "maestro": "banco-atlantida.webp",
+      "semilla": 1201,
+      "descripcionVisual": "Calle con fachadas coloniales de colores en una ciudad de El Salvador, por el país de las ofertas; no es el banco.",
+      "prompt": "quiet colonial street with pastel painted facades and terracotta roofs in a small town in El Salvador, volcano in the distance, morning light, no signs",
+      "paginaReferencia": "https://www.bancoatlantida.com.sv/emisiones/"
+    },
+    {
+      "empresa": "Bondea",
+      "maestro": "bondea.webp",
+      "semilla": 1213,
+      "descripcionVisual": "Tejados del casco antiguo de Vilna en otoño, por la plataforma lituana; no es su sede.",
+      "prompt": "rooftops of Vilnius old town with church towers in autumn, soft overcast light, seen from a hill, no people",
+      "paginaReferencia": "https://bondea.lt/lt/projektai"
+    },
+    {
+      "empresa": "Axiology",
+      "maestro": "axiology.webp",
+      "semilla": 1223,
+      "descripcionVisual": "Sala de servidores ordenada con luz fría, por la infraestructura técnica; no es la de la empresa.",
+      "prompt": "tidy server room aisle with racks and cable trays, cool neutral light, no screens with text, no logos",
+      "paginaReferencia": "https://www.axiologyfinance.com/"
+    },
+    {
+      "empresa": "Marketnode",
+      "maestro": "marketnode.webp",
+      "semilla": 1231,
+      "descripcionVisual": "La bahía de Marina en Singapur al amanecer, por su sede; no es su oficina.",
+      "prompt": "Singapore Marina Bay waterfront skyline at dawn seen across calm water, soft light, no logos",
+      "paginaReferencia": "https://www.marketnode.com/"
+    },
+    {
+      "empresa": "winvesta",
+      "maestro": "winvesta.webp",
+      "semilla": 1237,
+      "descripcionVisual": "Una playa larga de arena con colinas secas en Cabo Verde, por el proyecto que capta ahora; no es el terreno del proyecto.",
+      "prompt": "long empty sandy beach with dry brown hills behind on Santiago island Cape Verde, calm Atlantic sea, clear morning, no buildings, no people",
+      "paginaReferencia": "https://www.winvesta.de/"
+    },
+    {
+      "empresa": "SchindlersX",
+      "maestro": "schindlersx.webp",
+      "semilla": 1249,
+      "descripcionVisual": "Rascacielos de Johannesburgo al atardecer, por su sede; no es su edificio.",
+      "prompt": "Johannesburg skyline at golden hour seen from a distance, jacaranda trees in the foreground, no logos",
+      "paginaReferencia": "https://schindlersx.io/browse-by-project"
+    }
+  ]
+}

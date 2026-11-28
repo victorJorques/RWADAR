@@ -1,0 +1,131 @@
+How it works
+What you can buy
+Tokenise with us
+Questions
+Log in
+Open app
+All case studies
+Private credit, reimagined
+
+We distribute a digital bond token from LynxCap Investments AG, a Swiss specialist in loans secured on European real estate. It gives eligible investors in the UAE access, from EUR 10,000, to a type of credit usually held by funds and institutions. The token is now live on our platform.
+
+WHY DISTRIBUTE WITH US
+EUR 10,000
+Ticket, opening an institutional asset class
+No change
+To how LynxCap buys and manages its assets
+VARA
+Licensed onboarding and investor record
+Daily
+Custody reconciliation, Hex Trust MENA
+Issuer
+LynxCap Investments AG, Zug, Switzerland
+Product
+Digital bond token issued by LCL Opportunities 3 S.à r.l., Luxembourg
+Underlying bond
+Senior secured bond, ISIN XS3356029788, issued by LCL Opportunities SCS
+Underlying credit
+Non-performing and sub-performing loans, and repossessed real estate
+Term
+Four years; early redemption dates in 2028 and 2029
+Minimum investment
+EUR 10,000 or USD equivalent
+Our role and custody
+Distributor under our VARA licence; tokens held by Hex Trust MENA
+The issuer and the product
+
+LynxCap is a Swiss investment firm based in Zug. It buys and manages loans secured on real estate across Europe, and has done so for more than 15 years. At April 2025 it managed more than €295m of collateral by market value, and had invested more than €138m since 2019 across Spain, Slovenia, Croatia, Serbia and other European markets. Its own system, LISA, links more than 30,000 active claims with legal and collections partners, giving it data on each asset.
+
+The bond is issued by LCL Opportunities SCS under a programme on the Luxembourg Stock Exchange. It is backed by portfolios of non-performing loans (where the borrower has stopped paying), sub-performing loans (where payments are behind) and real estate owned, meaning property lenders have taken back. A separate Luxembourg company, LCL Opportunities 3 S.à r.l., issues an ERC-20 token that references the bond, and passes the money raised through to the bond issuer.
+
+The token pays a fixed coupon quarterly. It runs for four years, with an issuer call and investor put in 2028 and a further put in 2029.
+
+Why distribute in the UAE
+
+Distressed real estate credit has mostly been open only to private equity funds and large institutions, because of high minimums, long lock-ups and complex structures. LynxCap wanted to reach a wider range of qualified investors without changing how the assets are bought and managed.
+
+A token brings the ticket down to EUR 10,000. Selling in the UAE needs a locally licensed firm to onboard investors, run identity and anti-money-laundering checks and keep the investor record. We do that under our VARA licence, so LynxCap can reach UAE investors without building its own local operation.
+
+What we did
+
+We announced the partnership with LynxCap in April 2025, and distribute the token under our VARA licence. Tokinvest is the holder of record on the token issuer’s register, and we keep the register of individual investors behind that holding. Investors hold their exposure through Tokinvest rather than directly with the token issuer or the bond issuer.
+
+Tokens are held by Hex Trust MENA in segregated wallets, reconciled daily. The token contract is built on Defactor’s ERC-20 contract and was audited by Zokyo in March 2025. The token whitepaper, dated 11 May 2026, is filed with VARA.
+
+Every investor goes through our onboarding and eligibility checks before they can subscribe, and transfers are restricted to verified, eligible wallets. Coupons are paid quarterly through the platform. The product is governed by English law, with disputes heard in the DIFC courts.
+
+Where it stands
+
+The token went live on Tokinvest in July 2026 and is open to eligible investors now.
+
+We’re tokenising more than real estate, we’re tokenising complexity. This is about giving investors access to real, hard assets that have historically been restricted to specialised funds and institutions. Together with Tokinvest, we’re delivering a smart and transparent way to engage with European credit.
+[nombre retirado], Managing Director of Transactions, LynxCap
+Distribute with us
+
+If you issue bonds or private credit and already have a token, or are close to one, we can distribute it to eligible investors in the UAE under our VARA licence, handling onboarding, custody and the investor record.
+
+Talk to us
+More case studies
+The first regulated build-to-rent token
+A record silver bar, split into tokens
+A global money market fund, on chain
+The world’s first tokenised racehorse
+tokinvest
+
+Office 4, Level 12, Uptown Tower, Jumeirah Lakes Towers, Dubai
+
+REGULATED BY
+
+TOKENISE
+
+Tokenise with us
+Case studies
+Apply to tokenise
+
+PRODUCTS
+
+Property
+Bonds
+Racehorses
+Commodities
+Funds
+Great Hampton Street Works
+
+LEARN
+
+Insights and news
+Questions
+Help Center
+
+COMPANY
+
+About us
+Partners
+Contact us
+
+LEGAL
+
+Risk disclosure statement
+Complaints policy
+Security and scam warnings
+Conflict of interest policy
+Brokerage services terms
+Virtual assets standards
+Whistleblowing policy
+Reporting bribery and corruption
+
+Tokinvest FZCO (DMCC-928046) is licensed by the Dubai Virtual Assets Regulatory Authority (VL/2024/12/004) to provide Virtual Asset Broker Dealer Services and Category 1 VA Issuance. CMA Registration Number: CMA-VASP-0100000-0025.
+
+Capital at risk. Virtual assets may lose some or all of their value and may be subject to extreme volatility. You may lose all money invested and do not benefit from any form of financial protection. Past performance is not a guide to future returns. Investments are subject to eligibility and jurisdictional restrictions. Not available to U.S. persons.
+
+Landline: (04) 824 4146
+Website terms of use
+Privacy and cookie policy
+Close
+✕
+Join our list for the latest news, and updates.
+Sign Up Now
+
+By sharing your email address, you agree to receive marketing emails. You may opt out at any time.
+
+Close

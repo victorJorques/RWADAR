@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-28",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "emiratos-bonos-soberanos-digitales-dirhams",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Emiratos coloca 180 millones de dírhams en bonos digitales",
+      "resumen": "El Ministerio de Finanzas de Emiratos Árabes Unidos anuncia el 27/11 su primera emisión de bonos del Tesoro digitales en dírhams: 180 millones (unos 50 millones de dólares) a dos años. Se emiten y liquidan en la infraestructura digital D-FMI de Euroclear.",
+      "porQueImporta": "Se repartieron a partes iguales entre los seis creadores de mercado de la deuda del país, no entre particulares. Se admitirán a negociación en Nasdaq Dubai y el ministerio evaluará el resultado para próximas emisiones.",
+      "en": {
+        "titulo": "UAE issues AED 180m in its first digital treasury bonds",
+        "resumen": "The UAE Ministry of Finance announces on 27/11 its first issue of dirham-denominated digital treasury bonds: AED 180 million (about USD 50 million) with a two-year tenor. They are issued and settled on Euroclear’s Digital Financial Market Infrastructure (D-FMI).",
+        "porQueImporta": "They were allocated equally among the country’s six primary dealers, not to retail investors. They will be admitted to trading on Nasdaq Dubai, and the ministry will assess the results for future issues.",
+        "tituloInformativo": "UAE Ministry of Finance issues its first dirham-denominated digital treasury bonds through Euroclear"
+      },
+      "fuente": {
+        "nombre": "Ministerio de Finanzas de Emiratos Árabes Unidos, comunicado del 27/11/2026 sobre sus primeros bonos del Tesoro digitales",
+        "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-first-aed-denominated-digital-sovereign-treasury-bonds/",
+        "tipo": "organismo"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "El Ministerio de Finanzas de Emiratos emite sus primeros bonos del Tesoro digitales en dírhams con Euroclear",
+      "imagen": "bonos-emision"
+    },
+    {
+      "id": "amf-euroclear-france-liquidacion-tokenizada",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "Euroclear France podrá liquidar valores tokenizados",
+      "resumen": "El supervisor de los mercados de Francia (AMF) publica el 27/11 su decisión, firmada el 26/11, que aprueba los cambios en las reglas de Euroclear France para integrar D-FMI+, un sistema de liquidación con tecnología de registro distribuido, en su sistema ESES France, al amparo del régimen piloto DLT de la UE.",
+      "porQueImporta": "Según las reglas aprobadas, D-FMI+ se ocupa de la parte de los valores y otra plataforma de la del efectivo, en tokens. Los cambios entran en vigor en la fecha que fije Euroclear France.",
+      "en": {
+        "titulo": "Euroclear France to be able to settle tokenised securities",
+        "resumen": "France’s markets regulator (AMF) publishes on 27/11 its decision, signed on 26/11, approving changes to Euroclear France’s rules to integrate D-FMI+, a settlement system based on distributed ledger technology, into its ESES France system under the EU DLT Pilot Regime.",
+        "porQueImporta": "Under the approved rules, D-FMI+ handles the securities leg while another platform handles the cash leg in tokens. The changes take effect on a date to be set by Euroclear France.",
+        "tituloInformativo": "France’s AMF approves Euroclear France rule changes to integrate the D-FMI+ DLT settlement system into ESES France"
+      },
+      "fuente": {
+        "nombre": "Autoridad de los Mercados Financieros de Francia (AMF), decisión publicada el 27/11/2026 sobre las reglas de Euroclear France",
+        "url": "https://www.amf-france.org/fr/reglementation/regles-professionnelles-approuvees/decision-dapprobation-des-modifications-de-regles-de-fonctionnement-du-depositaire-central-euroclear",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "La AMF aprueba que Euroclear France integre el sistema de liquidación DLT D-FMI+ en ESES France",
+      "imagen": "real-servidores-cables"
+    },
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "fecha": "2026-11-27",
+      "seccion": "hoy",
+      "categoria": "producto",
+      "ambito": "Mundo",
+      "titulo": "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
+      "resumen": "El mercado de criptoactivos Poloniex abre el 27/11 a las 05:00 (UTC) la compraventa en USDT de 16 acciones y ETF de EE. UU. tokenizados de la serie bStocks, entre ellos Apple, Microsoft, Amazon y un ETF del S&P 500. Forman parte de un lote de 21 que anunció el 25/11.",
+      "porQueImporta": "El propio anuncio avisa de que tener el token no es tener la acción y no da derecho a voto. Según el emisor, cada token está respaldado 1 a 1 por una acción guardada en un intermediario regulado de EE. UU.",
+      "en": {
+        "titulo": "Poloniex opens trading in 16 tokenised US stocks and ETFs",
+        "resumen": "Crypto exchange Poloniex opens USDT trading in 16 tokenised US stocks and ETFs from the bStocks series at 05:00 (UTC) on 27/11, including Apple, Microsoft, Amazon and an S&P 500 ETF. They are part of a batch of 21 announced on 25/11.",
+        "porQueImporta": "The announcement itself warns that holding the token is not owning the share and carries no voting rights. According to the issuer, each token is backed 1:1 by a share held at a regulated US broker-dealer.",
+        "tituloInformativo": "Poloniex opens spot trading in 16 bStocks tokenised US stocks and ETFs"
+      },
+      "fuente": {
+        "nombre": "Poloniex, anuncio del 27/11/2026 sobre la apertura de 16 acciones y ETF tokenizados",
+        "url": "https://www.poloniex.com/announcement/45050069368899",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "Poloniex abre la negociación de 16 acciones y ETF tokenizados de la serie bStocks",
+      "imagen": "real-bolsa-nueva-york-fachada"
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "fecha": "2026-11-26",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "Mundo",
+      "titulo": "Los supervisores de Canadá buscan proyectos tokenizados",
+      "resumen": "Los supervisores de valores de Canadá (CSA) abren el 26/11 la fase 2 de su proyecto de tokenización: invitan a las empresas a presentar productos, servicios, infraestructuras y modelos de negocio tokenizados hasta el 26/03/2027, para ver con ellas cómo encajan en las normas actuales.",
+      "porQueImporta": "En la fase 1 participaron 233 organizaciones. Ahora los supervisores pasan a trabajar con proyectos concretos y podrían publicar guías o cambios. Presentar una propuesta no es una autorización ni cambia las leyes.",
+      "en": {
+        "titulo": "Canadian regulators seek tokenised projects",
+        "resumen": "Canada’s securities regulators (CSA) launch phase 2 of their tokenisation project on 26/11, inviting firms to submit tokenised products, services, infrastructure and business models by 26/03/2027 to work out how existing rules apply.",
+        "porQueImporta": "Phase 1 involved 233 organisations. Regulators now move to specific projects and may issue guidance or policy changes. Submitting a proposal is not an approval and does not change the law.",
+        "tituloInformativo": "Canadian Securities Administrators launch phase 2 of Project Tokenization and invite proposals"
+      },
+      "fuente": {
+        "nombre": "Comisión de Valores de Alberta, comunicado de los supervisores canadienses (CSA) del 26/11/2026",
+        "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "Los supervisores de valores de Canadá abren la fase 2 de su proyecto de tokenización y piden propuestas",
+      "imagen": "documentos-consulta"
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "fecha": "2026-11-25",
+      "seccion": "importante",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Hong Kong estrena una plataforma de bonos tokenizados",
+      "resumen": "La autoridad monetaria de Hong Kong anuncia el lanzamiento de CMU Digital Asset Platform. La infraestructura permite emitir deuda, liquidar compras y ventas, pagar cupones y amortizar los títulos al vencimiento. También permite tokenizar deuda existente.",
+      "porQueImporta": "El sistema permite liquidar operaciones en varias monedas las 24 horas mediante tokens de efectivo. La posible incorporación de fondos y otros activos queda en la hoja de ruta.",
+      "en": {
+        "titulo": "Hong Kong launches a platform for tokenised bonds",
+        "resumen": "Hong Kong’s monetary authority announces the launch of CMU Digital Asset Platform. The infrastructure supports debt issuance, trade settlement, coupon payments and redemption at maturity. Existing debt securities can also be tokenised.",
+        "porQueImporta": "The system supports round-the-clock settlement in several currencies using digital cash tokens. Funds and other assets are possible additions on the roadmap.",
+        "tituloInformativo": "Hong Kong’s monetary authority launches a platform for issuing and settling tokenised debt"
+      },
+      "fuente": {
+        "nombre": "Autoridad Monetaria de Hong Kong, comunicado del 25/11/2026 sobre CMU Digital Asset Platform",
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada",
+      "imagen": "real-sala-servidores-bastidores"
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "fecha": "2026-11-25",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "La CNMV difunde alertas del supervisor belga",
+      "resumen": "La CNMV publica una lista de entidades no registradas que le ha remitido el supervisor financiero de Bélgica, la FSMA. El documento identifica por nombre y dirección web las entidades advertidas y marca expresamente un caso de suplantación.",
+      "porQueImporta": "El aviso permite distinguir a las entidades que figuran en la lista, incluso cuando un nombre comercial se parece al de una empresa legítima.",
+      "en": {
+        "titulo": "Spain’s CNMV shares warnings from the Belgian regulator",
+        "resumen": "Spain’s CNMV publishes a list of unregistered entities reported by Belgium’s financial regulator, the FSMA. The document identifies the entities by name and website and explicitly flags one case of impersonation.",
+        "porQueImporta": "The warning helps distinguish the entities listed, including when a trading name resembles that of a legitimate firm.",
+        "tituloInformativo": "Spain’s CNMV publishes Belgian regulator warnings about unregistered entities"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencias de supervisores internacionales del 25/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas",
+      "imagen": "real-cnmv-sede-madrid"
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "El BCE aceptará ciertos valores tokenizados en garantía",
+      "resumen": "El BCE ha aprobado que ciertos valores negociables emitidos en plataformas autorizadas bajo el régimen piloto DLT de la UE puedan servir de garantía en operaciones de crédito del Eurosistema. La aplicación está prevista para junio de 2027.",
+      "porQueImporta": "Las entidades que se financian con el Eurosistema podrán aportar esos valores como respaldo si cumplen los criterios habituales y los requisitos específicos. El sistema de liquidación tendrá que ofrecer acceso a TARGET2-Securities.",
+      "en": {
+        "titulo": "ECB to accept some tokenised securities as collateral",
+        "resumen": "The ECB has approved the use of certain marketable securities issued on platforms authorised under the EU DLT Pilot Regime as collateral in Eurosystem credit operations. Implementation is planned for June 2027.",
+        "porQueImporta": "Institutions borrowing from the Eurosystem will be able to pledge those securities if they meet standard and specific requirements. Their settlement system must offer settlement in TARGET2-Securities.",
+        "tituloInformativo": "The ECB expands eligible Eurosystem collateral to certain marketable securities issued on authorised DLT platforms"
+      },
+      "fuente": {
+        "nombre": "Banco Central Europeo, comunicado del 23/11/2026 sobre activos basados en DLT como garantía",
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "El BCE amplía las garantías admisibles del Eurosistema a ciertos valores negociables emitidos en plataformas DLT autorizadas",
+      "imagen": "real-bce-francfort"
+    },
+    {
+      "id": "austria-delphi-liquidacion-dinero-banco-central",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "mercado",
+      "ambito": "UE",
+      "titulo": "Austria liquida bonos tokenizados en dinero de banco central",
+      "resumen": "El depositario central austriaco OeKB CSD, Erste Group, Raiffeisen Bank International y el socio tecnológico SWIAT anuncian el 23/11 que liquidaron por primera vez operaciones con valores entre la infraestructura tradicional y una basada en DLT, con el pago en dinero de banco central mediante Pontes, del Eurosistema.",
+      "porQueImporta": "Los bonos se emitieron en la plataforma digital de OeKB CSD y las operaciones se cerraron en minutos y en firme; después, los valores volvieron a la infraestructura habitual. Es una prueba en real, no un servicio abierto al público.",
+      "en": {
+        "titulo": "Austria settles tokenised bonds in central bank money",
+        "resumen": "Austrian central securities depository OeKB CSD, Erste Group, Raiffeisen Bank International and technology partner SWIAT announce on 23/11 the first settlement of securities transactions between traditional and DLT-based infrastructure, paid in central bank money via the Eurosystem’s Pontes.",
+        "porQueImporta": "The bonds were issued on OeKB CSD’s digital issuer platform and the trades settled within minutes with immediate finality; the securities then returned to the existing infrastructure. It is a live test, not a service open to the public.",
+        "tituloInformativo": "OeKB CSD, Erste Group, RBI and SWIAT settle DLT securities trades in central bank money via Pontes (DELPHI)"
+      },
+      "fuente": {
+        "nombre": "OeKB CSD, noticia del 23/11/2026 sobre la iniciativa DELPHI (en alemán)",
+        "url": "https://www.oekb-csd.at/news/news/2026/delphi-erfolgreicher-praxistest.html",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-28",
+      "tituloInformativo": "OeKB CSD, Erste Group, RBI y SWIAT liquidan operaciones con valores en DLT y dinero de banco central vía Pontes (DELPHI)",
+      "imagen": "red-europea"
+    }
+  ]
+}

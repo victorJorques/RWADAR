@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "fecha": "2026-11-28",
+  "generado": "2026-11-28T13:19:39.864Z",
+  "fuentes": [
+    {
+      "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-first-aed-denominated-digital-sovereign-treasury-bonds/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 282321,
+      "sha256": "bdf85a8c5e0c5963a392dc9b38637cf325b3fafe3ef122dc8b323e481e1f8fa0",
+      "horaUtc": "2026-11-28T13:19:36.748Z",
+      "error": null
+    },
+    {
+      "url": "https://www.amf-france.org/fr/reglementation/regles-professionnelles-approuvees/decision-dapprobation-des-modifications-de-regles-de-fonctionnement-du-depositaire-central-euroclear",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 66935,
+      "sha256": "9666aaf221f4ef24b5295a52fe29c43cb6d8277d86d3de8025235a097980fc9e",
+      "horaUtc": "2026-11-28T13:19:36.778Z",
+      "error": null
+    },
+    {
+      "url": "https://www.poloniex.com/announcement/45050069368899",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 11883,
+      "sha256": "d87c763ff9c35006bbfd11455e03efd94802a649b63b86d382ae33e8c89c63ec",
+      "horaUtc": "2026-11-28T13:19:36.779Z",
+      "error": null
+    },
+    {
+      "url": "https://www.asc.ca/en/news-and-publications/news-releases/2026/11/26-csa-launches-phase-2-of-project-tokenization-invites-proposals-from-market-participants",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 156552,
+      "sha256": "93f9a42784eac8923bdebf70f3b7f6ca791a823d62be18ac60dd18d51661965c",
+      "horaUtc": "2026-11-28T13:19:36.780Z",
+      "error": null
+    },
+    {
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 82379,
+      "sha256": "fd43825668828c3f840918c161d409c04ec51f16ef7bc5310acc7a7ea502168c",
+      "horaUtc": "2026-11-28T13:19:36.781Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 177715,
+      "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+      "horaUtc": "2026-11-28T13:19:36.782Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 105545,
+      "sha256": "8942dffd2338c40382ae97eec0699e1939a12b0be4fb24734d9073d8b15d6f03",
+      "horaUtc": "2026-11-28T13:19:36.782Z",
+      "error": null
+    },
+    {
+      "url": "https://www.oekb-csd.at/news/news/2026/delphi-erfolgreicher-praxistest.html",
+      "http": 200,
+      "tipo": "text/html;charset=UTF-8",
+      "bytes": 29983,
+      "sha256": "ca0d8779f192e06a5e30965a77cc63a150f45458a05c53462a81bc51ba27ee08",
+      "horaUtc": "2026-11-28T13:19:36.783Z",
+      "error": null
+    }
+  ]
+}

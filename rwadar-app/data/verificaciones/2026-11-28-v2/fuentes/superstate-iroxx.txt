@@ -1,0 +1,272 @@
+Issuers
+Investors
+Assets
+About
+Sign In
+Register
+IROXX
+Invesco Stablecoin Reserves Onchain Fund
+TOKENIZED PUBLIC FUND
+
+ASSETS UNDER MANAGEMENT
+
+$10,087,998
+$10,087,998
+
+NAV PER SHARE
+
+$1.00
+
+7-DAY SEC YIELD
+
+3.61%
+
+7-DAY UNSUBSIDIZED YIELD
+
+3.41%
+
+EXPENSE RATIO (GROSS/NET)⁠1
+
+0.36%/0.20%
+
+AS OF NOV 26, 2026
+
+Historical data
+Download
+AUM
+7-Day SEC yield
+7-Day unsubsidized yield
+
+LAST 90 DAYS
+
+The performance data quoted represents past performance. Past performance does not guarantee future results and current performance may be lower or higher than the performance data quoted above. The investment return and principal value of your investment will fluctuate so that your shares, when redeemed, may be worth more or less than their original cost. You may obtain performance data current to the most recent month-end by visiting invesco.com. Fund performance reflects fee waivers, absent which, performance data quoted would have been lower.
+
+Networks
+
+This fund can be held on select networks.
+
+NAME
+	
+SHARES
+	
+VALUE
+	
+DISTRIBUTION
+	
+DETAILS
+
+
+
+Ethereum
+
+	10,087,997.91 IROXX	$10,087,997.91	99.98%	
+
+0x2160...c77AdF
+
+DeFi Integrations
+
+Tokenized shares are supported in the following DeFi protocols
+
+NAME
+	
+NETWORK
+	
+TYPE
+	
+SHARES
+	
+VALUE
+	
+DETAILS
+
+
+
+Coming soon
+
+					
+About IROXX
+
+The Invesco Stablecoin Reserves Onchain Fund (the “Fund”) offers access to short-term U.S. government securities through a tokenized money market fund. The Fund’s investment objective is to seek current income as is consistent with liquidity and the preservation of capital, while maintaining a stable $1.00 net asset value per share. Ownership in the Fund is represented by IROXX, held as a token. Subscriptions and redemptions are facilitated through USD or USDC, with liquidity each market day, and the Fund’s income is distributed daily.
+
+DETAILS
+
+Eligible investors
+
+	Investors in supported jurisdictions →
+
+
+Minimum investment
+
+	
+
+$1,000,000
+
+
+
+
+Structure
+
+	
+
+SEC Rule 2a-7 Money Market Fund
+
+
+
+
+Subscription timing
+
+	
+
+Same-day, 5pm ET
+
+
+
+
+Redemption timing
+
+	
+
+Same-day, 5pm ET
+
+SERVICE PROVIDERS
+
+Custodian
+
+	
+
+The Bank of New York
+
+
+
+
+Auditor
+
+	
+
+PriceWaterhouseCoopers
+
+
+
+
+Investment manager
+
+	
+
+Invesco Advisers, Inc.
+
+
+
+
+Fund administrator
+
+	
+
+The Bank of New York
+
+
+
+
+Sub-transfer agent
+
+	
+
+Superstate Services LLC
+
+RESOURCES
+
+Prospectus
+
+	Download →
+
+
+Website
+
+	View →
+MORE INFORMATION
+
+QII Estimate Notice for 2026
+
+	Download →
+Invest in IROXX
+
+Sign up for a Superstate account to access tokenized shares of the Invesco Stablecoin Reserves Onchain Fund. Once your account is approved, you can add your wallet to the allowlist to hold, trade, and use IROXX onchain.
+
+Register
+How it works
+Disclosures
+
+1 The Adviser has contractually agreed to waive fees and/or pay certain Fund expenses through at least Dec. 31, 2027. Fund shares may be purchased without paying a sales charge. Shareholders will be required to pay “gas” fees in connection with shareholder-initiated transactions, including peer-to-peer transactions and redemptions. The Adviser, Superstate, or their affiliates will pay gas fees associated with share purchases (including as a result of dividend reinvestments).”
+
+You could lose money by investing in the Fund. Although the Fund seeks to preserve your investment at $1.00 per share, it cannot guarantee it will do so. An investment in the Fund is not a bank account and is not insured or guaranteed by the Federal Deposit Insurance Corporation or any other government agency. The Fund’s sponsor is not required to reimburse the Fund for losses, and you should not expect that the sponsor will provide financial support to the Fund at any time, including during periods of market stress.
+The Fund does not invest in stablecoins or in stablecoin issuers.
+The Fund expects stablecoin issuers to hold a significant portion of its shares as reserve assets. Stablecoin market volatility, issuer-specific events, changes in redemption activity, or legal and regulatory developments may cause rapid or substantial Fund purchases or redemptions, which could adversely affect the Fund’s liquidity, yield, expenses, remaining shareholders, and ability to maintain a stable share price. The Fund’s limited universe of eligible reserve assets may also result in a lower yield than other money market funds, and evolving stablecoin regulation may require changes to the Fund’s investments or operations.
+Large purchases or redemptions may adversely affect the Fund’s liquidity, yield, expense ratio and net asset value, increase transaction costs, and negatively impact remaining shareholders. This risk may be heightened if multiple stablecoin issuers redeem Fund shares at the same time.
+The Fund’s yield will vary as the short-term securities in its portfolio mature or are sold and the proceeds are reinvested in other securities. Additionally, inflation may outpace and diminish investment returns over time.
+The investment techniques and risk analysis used by the portfolio managers may not produce the desired results.
+The Fund’s use of blockchain technology is subject to operational, technological and cybersecurity risks, including network outages or congestion, transaction delays or increased fees, coding or cryptographic flaws, cyberattacks, compromised digital wallets, unauthorized transfers, and network modifications or forks. These events could disrupt or incorrectly record transactions, delay or prevent access to tokenized Fund shares, and result in the loss of some or all of an investment. Because the Fund is new, there is limited operating history on which to evaluate these risks.
+Decentralized blockchain networks rely on evolving governance processes that may lack consensus or clarity. Changes in network protocols or applicable laws, regulations or regulatory interpretations could impair network functionality; delay, restrict or prevent transactions in Fund shares; require changes to the Fund’s operations; or otherwise adversely affect the Fund and its shareholders.
+Transactions in tokenized Fund shares, including redemptions and peer-to-peer transfers, require payment of variable blockchain transaction fees known as “gas” in the applicable network’s native digital asset. Gas prices and processing times may fluctuate significantly based on network congestion, transaction complexity, demand and the fee selected by a shareholder, and the Fund cannot control these conditions. Higher gas prices may increase shareholder costs, while an inadequate gas fee, insufficient wallet assets, network or wallet disruptions, or smart-contract errors could delay, reject, incorrectly process or prevent a transaction and may result in excessive or unintended gas usage. A redemption initiated before the Fund’s cutoff time may therefore be received in good order after the cutoff, delaying proceeds and leaving the shareholder exposed to changes in the value of Fund shares until the Fund next calculates its net asset value. Because the Fund is new, there is limited operating history regarding these transaction risks.
+The Fund relies on a blockchain-integrated sub-transfer agent recordkeeping system and Investor Portal that are subject to operational, technological, recordkeeping and cybersecurity risks. System flaws, outages, integration errors, technological changes, inaccurate or incomplete investor information, or compromised credentials could impair Investor Portal access; delay, prevent or incorrectly record transactions; affect investor eligibility or regulatory determinations; or permit unauthorized activity. Participants are responsible for maintaining accurate information and restricting access to authorized persons. Unauthorized or erroneous actions may not be detected or disputed promptly, may not be reversible, and could result in inaccurate ownership records, loss of access to Fund shares, financial loss, or other adverse effects on the Fund and its shareholders.
+There are a limited number of funds that maintain shares in the form of digital securities. Given the novel nature of this product, the Fund, Adviser, Transfer Agent, Sub-Transfer Agent and other service providers have relatively limited experience using blockchain technology to maintain records and facilitate transactions in the interests of digital securities of a registered fund. Accordingly, there may be an increased risk of errors or unauthorized transactions involving Fund shares. Any such errors or unauthorized transactions could adversely affect the Fund.
+The Fund is subject to certain other risks. Please see the current prospectus for more information regarding the risks associated with an investment in the fund.
+
+Important Information
+
+Not a Deposit | Not FDIC Insured | Not Guaranteed by the Bank | May Lose Value | Not Insured by any Federal Government Agency
+
+This information is intended for US residents.
+
+The information on this site does not constitute a recommendation of any investment strategy or product for a particular investor. Investors should consult a financial professional/financial consultant before making any investment decisions.
+
+This webpage must be preceded or accompanied by a currently effective fund prospectus, which contains more complete information, including fees and expenses. Read it carefully before investing.
+
+Invesco is not affiliated with the Bank of New York, PriceWaterhouseCoopers or Superstate Services LLC.
+
+Invesco Advisers, Inc. is an investment adviser; it provides investment advisory services to individual and institutional clients and does not sell securities. Invesco Distributors, Inc. is the US distributor for Invesco’s retail products and private placements. Each entity is an indirect, wholly owned subsidiary of Invesco Ltd.
+
+ISSUERS
+
+FundOS
+
+Opening Bell
+
+Integrations
+
+INVESTORS
+
+Overview
+
+USTB
+
+USCC
+
+CUSHY
+
+VBDC
+
+IROXX
+
+View all assets
+
+ABOUT
+
+Company
+
+Newsroom
+
+Pop Podcast
+
+Industry Council
+
+Documentation
+
+Careers
+
+Terms of Service
+
+Get Superstate news and updates
+Subscribe
+
+All content available on this Website is general in nature, not directed or tailored to any particular person, and is for informational purposes only. Neither the Website nor any of its content is offered as, nor should be relied on as providing, investment, tax or legal advice or a recommendation to purchase or sell any specific security. The information provided on this Website is not intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to applicable law or regulation. For more important disclaimers, please visit superstate.com/terms#disclaimers.
+
+Superstate Advisers LLC is a registered investment adviser under the Investment Advisers Act of 1940. Information about Superstate can be found by visiting the SEC website adviserinfo.sec.gov and searching for our firm name. Superstate Services LLC is a registered transfer agent with the SEC. Superstate is a registered service mark of Superstate Inc.

@@ -1,0 +1,1435 @@
+{
+ "fecha": "2026-11-28",
+ "regiones": [],
+ "plataformas": [
+  {
+   "slug": "banco-atlantida",
+   "nombre": "Banco Atlántida El Salvador",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "latinoamerica",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://www.bancoatlantida.com.sv/emisiones/",
+    "aval": "Banco salvadoreño. En sus avisos de oferta figura como proveedor de servicios de activos digitales registrado en la CNAD (PSAD-0035); no lo hemos comprobado en el registro de la CNAD.",
+    "nota": "Publica las ofertas públicas de activos digitales que coloca en El Salvador: tramos del token de deuda ALDT001 de Leasing Atlántida y tokens ligados a proyectos inmobiliarios."
+   },
+   "fuentes": [
+    {
+     "id": "atlantida-emisiones",
+     "tipo": "empresa",
+     "titulo": "Banco Atlántida El Salvador · Emisiones de activos digitales",
+     "url": "https://www.bancoatlantida.com.sv/emisiones/",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "atlantida-t40",
+     "tipo": "documento",
+     "titulo": "Leasing Atlántida · Aviso de oferta pública de activos digitales ALDT001-T40 (13/11/2026)",
+     "url": "https://www.bancoatlantida.com.sv/utils/docs/emisiones/20261112_ANUNCIO_OFERTA_PUBLICA_LEASING_T40.pdf",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "atlantida-emisiones": [
+     "ofertas públicas y privadas de activos digitales",
+     "Oferta Pública ALDT001 \\(TRAMO 40\\)"
+    ],
+    "atlantida-t40": [
+     "PSAD-0035",
+     "ALDT001-T40",
+     "asiento registral AD-00016"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web lista ofertas públicas de activos digitales. El último aviso, del tramo ALDT001-T40 de Leasing Atlántida (1.000.000 de tokens de 1 USD al 5,55 % anual a 181 días), dice que está disponible desde el 16/11/2026.",
+     "fuentes": [
+      "atlantida-emisiones",
+      "atlantida-t40"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Los avisos dicen que el banco es proveedor registrado en la CNAD (PSAD-0035) y que la oferta está aprobada (asiento AD-00016); no lo hemos comprobado en el registro de la CNAD.",
+     "fuentes": [
+      "atlantida-t40"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Ni la web ni los avisos dicen quién puede comprar, desde qué países ni cuántos tokens quedan de cada tramo.",
+     "fuentes": [
+      "atlantida-emisiones",
+      "atlantida-t40"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Ofertas de El Salvador. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "atlantida-t40"
+      ]
+     },
+     {
+      "codigo": "acceso_sin_publicar",
+      "detalle": "No publica cuántos tokens quedan ni cómo se compran desde fuera de El Salvador.",
+      "fuentes": [
+       "atlantida-emisiones"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bondea",
+   "nombre": "Bondea",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "union-europea",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://bondea.lt/lt/projektai",
+    "aval": "Plataforma lituana de financiación participativa. Dice tener licencia y supervisión del Banco de Lituania y que los bonos se anotan en una cuenta de valores de Axiology DLT; no lo hemos comprobado en el registro del banco.",
+    "nota": "Bonos de empresas, sobre todo de proyectos inmobiliarios del Báltico y Polonia, desde 500 o 1.000 € según el proyecto; Bondea no cobra comisiones al inversor."
+   },
+   "fuentes": [
+    {
+     "id": "bondea-proyectos",
+     "tipo": "empresa",
+     "titulo": "Bondea · Proyectos de inversión",
+     "url": "https://bondea.lt/lt/projektai",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "bondea-duk",
+     "tipo": "empresa",
+     "titulo": "Bondea · Preguntas frecuentes",
+     "url": "https://bondea.lt/lt/duk",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "bondea-proyectos": [
+     "Mūsų investiciniai projektai",
+     "VPH vystomas prekybos parkas su Rimi parduotuve Rygoje \\(VI etapas\\)"
+    ],
+    "bondea-duk": [
+     "Lietuvos banko licencijuota ir prižiūrima",
+     "Axiology DLT",
+     "Minimali investavimo suma „Bondea“ platformoje yra 500 arba 1000 EUR"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web tiene en captación el bono de la fase VI del parque comercial de VPH en Riga y muestra las fases anteriores ya financiadas.",
+     "fuentes": [
+      "bondea-proyectos"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser una plataforma de financiación participativa con licencia y supervisión del Banco de Lituania; la página del registro del banco no se dejó leer el 28/11/2026 (control anti-bots), así que no lo hemos comprobado.",
+     "fuentes": [
+      "bondea-duk"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Pueden invertir personas físicas y jurídicas mayores de 18 años, residentes en Lituania o en otros países, tras registrarse y verificar su identidad; no dice qué países admite.",
+     "fuentes": [
+      "bondea-duk"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "riesgo_alto",
+      "detalle": "Son bonos de empresas que no cotizan: si el emisor no paga, puedes perder lo invertido.",
+      "fuentes": [
+       "bondea-proyectos"
+      ]
+     },
+     {
+      "codigo": "licencia_no_identificada",
+      "detalle": "La licencia que declara no la hemos podido comprobar el 28/11/2026 en el registro del Banco de Lituania.",
+      "fuentes": [
+       "bondea-duk"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "axiology",
+   "nombre": "Axiology",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "union-europea",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "XRP Ledger",
+    "web": "https://www.axiologyfinance.com/",
+    "aval": "Empresa lituana que dice estar autorizada como sistema DLT de negociación y liquidación (régimen piloto de la UE, Reglamento 2022/858) y como empresa de servicios de inversión por el Banco de Lituania; no lo hemos comprobado en el registro.",
+    "nota": "Emite, custodia, negocia y liquida bonos tokenizados en el XRP Ledger para brókeres y plataformas de financiación participativa; su registro público lista 10 bonos de empresas lituanas."
+   },
+   "fuentes": [
+    {
+     "id": "axiology-web",
+     "tipo": "empresa",
+     "titulo": "Axiology · Capital Markets Made Easy",
+     "url": "https://www.axiologyfinance.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "axiology-bonos",
+     "tipo": "empresa",
+     "titulo": "Axiology TSS · Bond List",
+     "url": "https://tss.axiology.xyz/bonds",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "axiology-web": [
+     "Authorised under Regulation \\(EU\\) 2022/858",
+     "MIFID Investment firm authorised by the Bank of Lithuania",
+     "Permissioned infrastructure built on the XRP Ledger"
+    ],
+    "axiology-bonos": [
+     "all digital securities registered within Axiology",
+     "LT0000139503",
+     "LT0000135352"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su registro público lista 10 bonos tokenizados emitidos entre el 31/08/2025 y el 25/11/2026; ninguno figura aún como admitido a negociación en Axiology.",
+     "fuentes": [
+      "axiology-bonos"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice estar autorizada como sistema DLT de negociación y liquidación (Reglamento 2022/858) y como empresa de inversión por el Banco de Lituania; el registro del banco no se dejó leer el 28/11/2026.",
+     "fuentes": [
+      "axiology-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Da servicio a bancos, brókeres y plataformas de financiación participativa; el particular invierte a través de ellos.",
+     "fuentes": [
+      "axiology-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "infraestructura_b2b",
+      "detalle": "No vende a particulares: es la infraestructura que usan otras plataformas.",
+      "fuentes": [
+       "axiology-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "marketnode",
+   "nombre": "Marketnode",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "asia-pacifico",
+    "actor": "Infraestructura",
+    "acceso": "Institucional",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://www.marketnode.com/",
+    "aval": "Sociedad de Singapur con licencia de servicios de mercados de capitales de la MAS para negociar valores y participaciones de fondos y para custodia, según el directorio de la MAS (actualizado el 28/10/2026).",
+    "nota": "Infraestructura de mercado digital de Asia-Pacífico para que bancos y gestoras emitan, distribuyan y gestionen fondos y activos tokenizados para clientes institucionales. Cita como accionistas a Euroclear, HSBC, SGX Group, Stellar y Temasek."
+   },
+   "fuentes": [
+    {
+     "id": "marketnode-web",
+     "tipo": "empresa",
+     "titulo": "Marketnode · Digital market infrastructure",
+     "url": "https://www.marketnode.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "mas-marketnode",
+     "tipo": "regulador",
+     "titulo": "MAS · Financial Institutions Directory · Marketnode Pte. Ltd.",
+     "url": "https://eservices.mas.gov.sg/fid/institution/detail/429075-MARKETNODE-PTE-LTD",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "marketnode-web": [
+     "digital market infrastructure \\(DMI\\) operator",
+     "Euroclear · HSBC · SGX Group · Stellar · Temasek",
+     "Tokenised RWAs, Built"
+    ],
+    "mas-marketnode": [
+     "MARKETNODE PTE\\. LTD\\.",
+     "Capital Markets Services Licensee",
+     "Providing Custodial Services"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web presenta su pasarela de activos reales tokenizados para acceso institucional y su red de transacciones de fondos.",
+     "fuentes": [
+      "marketnode-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "confirmada_regulador",
+     "detalle": "El directorio de la MAS la da como titular de una licencia de servicios de mercados de capitales (negociación de valores y de participaciones de fondos, y custodia).",
+     "fuentes": [
+      "mas-marketnode"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Trabaja con entidades financieras; no ofrece inversión a particulares.",
+     "fuentes": [
+      "marketnode-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "infraestructura_b2b",
+      "detalle": "No vende a particulares: da servicio a bancos, gestoras y distribuidores.",
+      "fuentes": [
+       "marketnode-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "winvesta",
+   "nombre": "winvesta",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "union-europea",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://www.winvesta.de/",
+    "aval": "Plataforma de Hamburgo; según su web, actúa como agente vinculado de Effecta GmbH (§ 3.2 de la ley alemana WpIG). No lo hemos comprobado en el registro de la BaFin.",
+    "nota": "Bonos tokenizados de proyectos inmobiliarios y otros activos reales desde 500 €; ahora capta para un terreno de playa en Cabo Verde, con rentabilidades solo previstas."
+   },
+   "fuentes": [
+    {
+     "id": "winvesta-web",
+     "tipo": "empresa",
+     "titulo": "winvesta · Alternative Assets. Für alle.",
+     "url": "https://www.winvesta.de/",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "winvesta-faq",
+     "tipo": "empresa",
+     "titulo": "winvesta · Häufig gestellte Fragen",
+     "url": "https://www.winvesta.de/faq/",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "winvesta-web": [
+     "tokenisierte Anlageklassen",
+     "ab 500 € Investment",
+     "gebundener Vermittler gemäß § 3 \\(2\\) WpIG der Effecta GmbH"
+    ],
+    "winvesta-faq": [
+     "tokenisierte Schuldverschreibung"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web muestra en «Aktuelle Projekte» tres clases del bono Verde Beach São Francisco (Cabo Verde), desde 5.000, 25.000 y 100.000 €, con rentabilidad solo prevista.",
+     "fuentes": [
+      "winvesta-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice actuar como agente vinculado de Effecta GmbH, no con licencia propia; no lo hemos comprobado en el registro de la BaFin.",
+     "fuentes": [
+      "winvesta-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Su web no dice desde qué países se puede invertir.",
+     "fuentes": [
+      "winvesta-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "licencia_de_tercero",
+      "detalle": "Opera como agente vinculado de Effecta GmbH, no con una licencia propia.",
+      "fuentes": [
+       "winvesta-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "schindlersx",
+   "nombre": "SchindlersX",
+   "publica": {
+    "categoria_slug": "materias-primas",
+    "region_slug": "africa",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://schindlersx.io/browse-by-project",
+    "aval": "La opera Schindlers Digital Assets (Pty) Ltd, que dice ser proveedor de servicios financieros registrado en Sudáfrica (FSP 53789, autorizado por la FSCA); no lo hemos comprobado en el registro de la FSCA.",
+    "nota": "Mercado sudafricano de activos tokenizados: plata (SilverBits), inmuebles y capital privado. Muchas de sus fichas están «próximamente», agotadas o cerradas."
+   },
+   "fuentes": [
+    {
+     "id": "schindlersx-marketplace",
+     "tipo": "empresa",
+     "titulo": "SchindlersX · Marketplace",
+     "url": "https://schindlersx.io/browse-by-project",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "schindlersx-about",
+     "tipo": "empresa",
+     "titulo": "SchindlersX · About",
+     "url": "https://schindlersx.io/about",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    },
+    {
+     "id": "schindlersx-silverbits",
+     "tipo": "empresa",
+     "titulo": "SchindlersX · SilverBits SLVR",
+     "url": "https://schindlersx.io/silverbits",
+     "primaria": true,
+     "consultadaEl": "2026-11-28"
+    }
+   ],
+   "comprobaciones": {
+    "schindlersx-marketplace": [
+     "SilverBits SLVR",
+     "Fully raised",
+     "Offer closed"
+    ],
+    "schindlersx-about": [
+     "Schindlers Digital Assets \\(Pty\\) Ltd, a registered Financial Services Provider, FSP 53789"
+    ],
+    "schindlersx-silverbits": [
+     "Open to South African and international investors",
+     "Restrictions apply"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su mercado muestra en directo el token de plata SilverBits; muchas de las demás fichas están «próximamente», agotadas o cerradas.",
+     "fuentes": [
+      "schindlersx-marketplace"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice operar con Schindlers Digital Assets (Pty) Ltd, proveedor de servicios financieros FSP 53789 autorizado por la FSCA; no lo hemos comprobado en el registro de la FSCA.",
+     "fuentes": [
+      "schindlersx-about"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "SilverBits se abre a inversores de Sudáfrica y de otros países, con restricciones que la ficha no detalla.",
+     "fuentes": [
+      "schindlersx-silverbits"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Plataforma sudafricana. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "schindlersx-about"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "ofertas": [
+  {
+   "oferta": {
+    "slug": "superstate-invesco-iroxx",
+    "tipo": "rendimiento",
+    "titulo": "Invesco IROXX: el monetario tokenizado para las reservas de las monedas estables",
+    "plataformaSlug": "superstate",
+    "plataformaNombre": "Superstate",
+    "categoria": "Tesoro y fondos",
+    "pais": "US",
+    "resumen": "Fondo monetario estadounidense de Invesco (Rule 2a-7) en Ethereum, pensado para guardar las reservas de emisores de monedas estables: invierte en deuda pública de EE. UU. a corto plazo y busca mantener 1 USD por participación. Desde 1.000.000 USD, en Superstate.",
+    "url": "https://superstate.com/assets/iroxx",
+    "cta": "Ver fuente",
+    "imagenAlt": "Invesco IROXX: el monetario tokenizado para las reservas de las monedas estables",
+    "verificadaEl": "2026-11-28",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "3,61 %",
+     "literal": "Rentabilidad SEC a 7 días a 26/11/2026 (3,41 % sin la renuncia de comisiones), según Superstate (consultada el 28/11/2026). Es pasada y cambia cada día; no está garantizada."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "USD",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1.000.000 USD"
+     },
+     {
+      "etiqueta": "Gestora",
+      "valor": "Invesco Advisers, Inc."
+     },
+     {
+      "etiqueta": "Fondo",
+      "valor": "Monetario de EE. UU. (SEC Rule 2a-7); custodio y administrador, The Bank of New York"
+     },
+     {
+      "etiqueta": "Suscripción y reembolso",
+      "valor": "El mismo día, hasta las 17:00 (hora de Nueva York), en USD o USDC"
+     },
+     {
+      "etiqueta": "Gastos",
+      "valor": "0,36 % bruto y 0,20 % neto al año (renuncia de la gestora hasta el 31/12/2027)"
+     },
+     {
+      "etiqueta": "Patrimonio",
+      "valor": "10.087.998 USD (26/11/2026)"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Solo para inversores de los países que admite Superstate y desde 1.000.000 USD: no es para particulares.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Un fondo monetario no es un depósito: busca mantener 1 USD por participación, pero no lo garantiza y puedes perder dinero.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Está pensado para emisores de monedas estables: si varios reembolsan a la vez, el fondo puede sufrir en liquidez, rentabilidad y gastos.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "El fondo no invierte en monedas estables ni en sus emisores.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Es nuevo y la tecnología blockchain añade riesgos de red, de wallet y de ciberataques.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Fondo de EE. UU. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     }
+    ],
+    "fuentesActuales": [
+     "https://superstate.com/assets/iroxx"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-28",
+    "descripcion": "El Invesco Stablecoin Reserves Onchain Fund (IROXX) es un fondo monetario de EE. UU. (Rule 2a-7) que gestiona Invesco Advisers y que invierte en deuda pública estadounidense a corto plazo, con el objetivo de mantener 1 USD por participación. La propiedad de las participaciones se lleva como un token en Ethereum. Se suscribe y reembolsa el mismo día en USD o USDC, desde 1.000.000 USD, a través de Superstate (agente de transferencias delegado); el custodio y administrador es The Bank of New York. Superstate da a 26/11/2026 un patrimonio de 10.087.998 USD y una rentabilidad SEC a 7 días del 3,61 % (3,41 % sin la renuncia de comisiones).",
+    "fuentes": [
+     "https://superstate.com/assets/iroxx"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Superstate (agente de transferencias delegado: Superstate Services LLC)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "Invesco Stablecoin Reserves Onchain Fund (gestora: Invesco Advisers, Inc.)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Participaciones del fondo monetario, registradas como token IROXX en Ethereum"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "USD"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1.000.000 USD",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://superstate.com/assets/iroxx",
+      "alcance": "Ficha de IROXX en Superstate (Minimum investment)."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: solo inversores de los países que admite Superstate, sin lista en la ficha",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://superstate.com/assets/iroxx",
+      "alcance": "Ficha de IROXX (Eligible investors: «Investors in supported jurisdictions»)."
+     },
+     {
+      "etiqueta": "Reembolso",
+      "valor": "El mismo día, hasta las 17:00 de Nueva York, en USD o USDC",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://superstate.com/assets/iroxx",
+      "alcance": "Ficha de IROXX (Redemption timing)."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "3,61 % SEC a 7 días (3,41 % sin subvención) a 26/11/2026",
+      "fechaDato": "2026-11-26",
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://superstate.com/assets/iroxx",
+      "alcance": "Ficha de IROXX en Superstate, datos a 26/11/2026; rentabilidad pasada."
+     },
+     {
+      "etiqueta": "Gastos",
+      "valor": "0,36 % bruto y 0,20 % neto al año",
+      "fechaDato": "2026-11-26",
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://superstate.com/assets/iroxx",
+      "alcance": "Ficha de IROXX: la gestora renuncia a parte de las comisiones al menos hasta el 31/12/2027."
+     }
+    ],
+    "disponibilidad": {
+     "admitidos": [],
+     "excluidos": [],
+     "conRequisitos": [],
+     "fuentes": [
+      {
+       "url": "https://superstate.com/assets/iroxx",
+       "titulo": "Superstate · ficha de IROXX",
+       "literal": "Investors in supported jurisdictions",
+       "consultadaEl": "2026-11-28"
+      }
+     ],
+     "nota": "Superstate solo lo abre a inversores de los países que admite, pero la ficha no publica la lista. Pide además 1.000.000 USD como mínimo.",
+     "notaEn": "Superstate only opens it to investors in the jurisdictions it supports, but the page does not list them. It also requires a USD 1,000,000 minimum.",
+     "verificadaEl": "2026-11-28"
+    }
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Fondo monetario registrado en EE. UU. y supervisado por la SEC, no por un supervisor de la UE; no está inscrito en la CNMV.",
+     "fuente": {
+      "titulo": "Superstate · IROXX",
+      "url": "https://superstate.com/assets/iroxx"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Hay folleto en inglés para EE. UU.; no hay KID europeo ni documento en castellano.",
+     "fuente": {
+      "titulo": "Superstate · IROXX",
+      "url": "https://superstate.com/assets/iroxx"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1.000.000 USD",
+    "salidaCorta": "Reembolso el mismo día",
+    "puntos": [
+     {
+      "texto": "Custodio: The Bank of New York",
+      "fuente": {
+       "titulo": "Superstate · IROXX",
+       "url": "https://superstate.com/assets/iroxx"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "tesoro",
+    "lugar": "Nueva York · EE. UU.",
+    "pasos": [
+     "Abres cuenta en Superstate",
+     "El fondo invierte a corto plazo",
+     "Reembolsas el mismo día"
+    ],
+    "concepto": "deuda pública de EE. UU. a corto plazo",
+    "foto": {
+     "semilla": 1101,
+     "encuadre": "70% 55%",
+     "concepto": "fachadas de piedra de bancos del sur de Manhattan, imagen genérica; no la sede de la gestora",
+     "prompt": "classic stone bank facades on a narrow street in lower Manhattan, early morning light, empty sidewalk, no signs or logos"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "tokinvest-lynxcap-bono",
+    "tipo": "rendimiento",
+    "titulo": "LynxCap: bono tokenizado sobre préstamos impagados e inmuebles recuperados en Europa",
+    "plataformaSlug": "tokinvest",
+    "plataformaNombre": "Tokinvest",
+    "categoria": "Crédito privado",
+    "pais": "AE",
+    "resumen": "Token de un bono senior garantizado de LynxCap (Suiza) respaldado por préstamos impagados o con retrasos e inmuebles recuperados por bancos en Europa. Cupón fijo cada trimestre, a 4 años con salidas anticipadas en 2028 y 2029. Desde 10.000 €, solo para inversores elegibles de Emiratos, en Tokinvest.",
+    "url": "https://tokinvest.capital/case-studies/lynxcap",
+    "cta": "Ver fuente",
+    "imagenAlt": "LynxCap: bono tokenizado sobre préstamos impagados e inmuebles recuperados en Europa",
+    "verificadaEl": "2026-11-28",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": false,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "10.000 EUR o su equivalente en USD"
+     },
+     {
+      "etiqueta": "Gestora",
+      "valor": "LynxCap Investments AG (Zug, Suiza)"
+     },
+     {
+      "etiqueta": "Emisor del token",
+      "valor": "LCL Opportunities 3 S.à r.l. (Luxemburgo)"
+     },
+     {
+      "etiqueta": "Bono de referencia",
+      "valor": "Senior garantizado, ISIN XS3356029788, de LCL Opportunities SCS"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "4 años; salidas anticipadas en 2028 y 2029"
+     },
+     {
+      "etiqueta": "Cupón",
+      "valor": "Fijo, cada trimestre (la ficha no publica el tipo)"
+     },
+     {
+      "etiqueta": "Custodia",
+      "valor": "Hex Trust MENA, en wallets segregadas"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Solo para inversores elegibles de Emiratos que pasen la verificación de Tokinvest.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "La ficha no publica el tipo de interés: pídelo antes de invertir.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Los préstamos impagados y los inmuebles recuperados son activos de riesgo: si no se cobran o se venden por menos, puedes perder parte o todo.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Tienes la exposición a través de Tokinvest, que figura como titular en el registro del emisor del token; no frente al emisor del bono.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Regulado en Dubái (VARA), no en la UE. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     }
+    ],
+    "fuentesActuales": [
+     "https://tokinvest.capital/case-studies/lynxcap"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-28",
+    "descripcion": "Tokinvest distribuye en Emiratos, con su licencia de VARA, un token de bono de LynxCap Investments AG (Zug, Suiza), especialista en préstamos con garantía inmobiliaria en Europa. El token lo emite LCL Opportunities 3 S.à r.l. (Luxemburgo) y remite a un bono senior garantizado (ISIN XS3356029788) de LCL Opportunities SCS, emitido en un programa de la Bolsa de Luxemburgo y respaldado por carteras de préstamos impagados o con retrasos e inmuebles recuperados. Paga un cupón fijo cada trimestre, dura cuatro años y tiene salidas anticipadas en 2028 y 2029. Desde 10.000 €; los tokens los custodia Hex Trust MENA. El token está en Tokinvest desde julio de 2026 y abierto a inversores elegibles.",
+    "fuentes": [
+     "https://tokinvest.capital/case-studies/lynxcap"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Tokinvest (distribuidor con licencia de VARA)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "LCL Opportunities 3 S.à r.l. (token); LCL Opportunities SCS (bono)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un token que remite a un bono senior garantizado, a través de Tokinvest; no los préstamos ni los inmuebles"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR (o su equivalente en USD)"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 10.000 € o su equivalente en USD",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://tokinvest.capital/case-studies/lynxcap",
+      "alcance": "Ficha de LynxCap en Tokinvest (Minimum investment)."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "No disponible: solo para inversores elegibles de Emiratos",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://tokinvest.capital/case-studies/lynxcap",
+      "alcance": "Ficha de LynxCap: «eligible investors in the UAE»."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (4 años) o en las salidas anticipadas de 2028 y 2029",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://tokinvest.capital/case-studies/lynxcap",
+      "alcance": "Ficha de LynxCap (Term): «issuer call and investor put in 2028 and a further put in 2029»."
+     },
+     {
+      "etiqueta": "Estado de la oferta · 28/11/2026",
+      "valor": "En Tokinvest desde julio de 2026 y abierta a inversores elegibles",
+      "fechaDato": "2026-11-28",
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://tokinvest.capital/case-studies/lynxcap",
+      "alcance": "Ficha de LynxCap: «open to eligible investors now»."
+     }
+    ],
+    "disponibilidad": {
+     "admitidos": [],
+     "excluidos": [
+      "*"
+     ],
+     "conRequisitos": [
+      {
+       "paises": [
+        "AE"
+       ],
+       "requisito": "Ser inversor elegible en Emiratos y superar la verificación de Tokinvest",
+       "requisitoEn": "Be an eligible investor in the UAE and pass Tokinvest’s onboarding checks"
+      }
+     ],
+     "fuentes": [
+      {
+       "url": "https://tokinvest.capital/case-studies/lynxcap",
+       "titulo": "Tokinvest · ficha de LynxCap",
+       "literal": "It gives eligible investors in the UAE access, from EUR 10,000, to a type of credit usually held by funds and institutions.",
+       "consultadaEl": "2026-11-28"
+      },
+      {
+       "url": "https://tokinvest.capital/case-studies/lynxcap",
+       "titulo": "Tokinvest · ficha de LynxCap",
+       "literal": "Every investor goes through our onboarding and eligibility checks before they can subscribe, and transfers are restricted to verified, eligible wallets.",
+       "consultadaEl": "2026-11-28"
+      }
+     ],
+     "nota": "Tokinvest lo distribuye solo a inversores elegibles de Emiratos, que antes pasan su verificación. Fuera de Emiratos, no disponible.",
+     "notaEn": "Tokinvest only distributes it to eligible investors in the UAE, after its checks. Outside the UAE, not available.",
+     "verificadaEl": "2026-11-28"
+    }
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La distribuye Tokinvest con su licencia de VARA (Dubái), no un supervisor de la UE; no está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Tokinvest · LynxCap",
+      "url": "https://tokinvest.capital/case-studies/lynxcap"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay folleto ni KID europeos para este token; la ficha y el whitepaper están en inglés.",
+     "fuente": {
+      "titulo": "Tokinvest · LynxCap",
+      "url": "https://tokinvest.capital/case-studies/lynxcap"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "10.000 €",
+    "salidaCorta": "Al vencimiento (4 años)",
+    "puntos": [
+     {
+      "texto": "Tokens custodiados por Hex Trust MENA",
+      "fuente": {
+       "titulo": "Tokinvest · LynxCap",
+       "url": "https://tokinvest.capital/case-studies/lynxcap"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "oficina"
+    },
+    "lugar": "Zug · Suiza",
+    "pasos": [
+     "Compras el token del bono",
+     "Cobras el cupón cada trimestre",
+     "Recuperas el nominal al final"
+    ],
+    "concepto": "préstamos con garantía inmobiliaria en Europa",
+    "foto": {
+     "semilla": 1117,
+     "encuadre": "70% 55%",
+     "concepto": "un bloque de pisos antiguo y vacío en una ciudad del sur de Europa, imagen genérica de inmuebles recuperados; no un activo del bono",
+     "prompt": "empty older apartment building with closed shutters on a quiet street in a southern European town, overcast daylight, no people, no signs"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "bondea-vph-riga-vi",
+    "tipo": "rendimiento",
+    "titulo": "Parque comercial con Rimi en Riga: bono a 16 meses al 9 % en Bondea, desde 1.000 €",
+    "plataformaSlug": "bondea",
+    "plataformaNombre": "Bondea",
+    "categoria": "Inmobiliario",
+    "pais": "LV",
+    "resumen": "Bono de financiación participativa para la fase VI de un parque comercial con supermercado Rimi que promueve VPH en Riga (Letonia): 9 % anual, intereses cada seis meses y devolución a los 16 meses. Desde 1.000 €. El 28/11 llevaba 415.000 € de 750.000 € y le quedaban 7 días.",
+    "url": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+    "cta": "Ver fuente",
+    "imagenAlt": "Parque comercial con Rimi en Riga: bono a 16 meses al 9 % en Bondea, desde 1.000 €",
+    "verificadaEl": "2026-11-28",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": true,
+    "fueraLadrillo": false,
+    "puntuacion": null,
+    "rentabilidad": {
+     "mostrada": "9,00 %",
+     "literal": "Interés anual del 9 %, pagado cada seis meses, según la ficha de Bondea (consultada el 28/11/2026). La ficha anuncia hasta un 10,5 % que no se explica sin entrar en la cuenta: aquí solo se muestra el 9 %."
+    },
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "EUR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1.000 EUR (una obligación)"
+     },
+     {
+      "etiqueta": "Proyecto",
+      "valor": "Parque comercial con supermercado Rimi, Valmieras iela 2, Riga (fase VI)"
+     },
+     {
+      "etiqueta": "Plazo",
+      "valor": "16 meses; intereses cada seis meses"
+     },
+     {
+      "etiqueta": "Préstamo sobre garantía",
+      "valor": "LTV del 80 %"
+     },
+     {
+      "etiqueta": "Captado",
+      "valor": "415.000 € de 750.000 € (28/11/2026)"
+     },
+     {
+      "etiqueta": "Plazo de suscripción",
+      "valor": "Quedaban 7 días el 28/11/2026"
+     },
+     {
+      "etiqueta": "Registro",
+      "valor": "Los bonos de Bondea se anotan en una cuenta de valores de Axiology DLT"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Es financiación participativa a un promotor: si el proyecto no va bien, puedes perder lo invertido.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Un LTV del 80 % significa que el préstamo es el 80 % de la garantía: un margen estrecho si el inmueble vale menos.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "La información completa del proyecto solo se ve con una cuenta de Bondea.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Quedan pocos días de suscripción y la ficha no dice qué pasa si no se llega a los 750.000 €.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "A los no residentes, Bondea les retiene un 15 % de impuesto lituano sobre los intereses.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Esta fase aún no aparece en el registro público de Axiology; sí aparecen bonos anteriores de Bondea.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     }
+    ],
+    "fuentesActuales": [
+     "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+     "https://bondea.lt/lt/duk",
+     "https://tss.axiology.xyz/bonds"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-28",
+    "descripcion": "Bondea, plataforma lituana de financiación participativa, capta 750.000 € para la fase VI del parque comercial con supermercado Rimi que desarrolla VPH en Valmieras iela 2 (Riga, Letonia). Son obligaciones a 16 meses de 1.000 € cada una, con un 9 % de interés anual pagado cada seis meses (la ficha anuncia una horquilla del 9 % al 10,5 %) y un LTV del 80 %. El 28/11/2026 llevaba 415.000 € y le quedaban 7 días. Según Bondea, los bonos que se compran en su plataforma se anotan en una cuenta de valores de Axiology DLT, sistema DLT lituano; esta fase todavía no figura en el registro público de Axiology.",
+    "fuentes": [
+     "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+     "https://bondea.lt/lt/duk",
+     "https://tss.axiology.xyz/bonds"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "Bondea (UAB Bondea, Lituania)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "La sociedad del proyecto de VPH (la ficha pública no da su nombre)"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Obligaciones (bonos) del proyecto; no la propiedad del parque comercial"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "EUR"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1.000 € (una obligación)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+      "alcance": "Ficha del proyecto en Bondea (Obligacijos kaina)."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: admite residentes de Lituania y de otros países, sin lista",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://bondea.lt/lt/duk",
+      "alcance": "Preguntas frecuentes de Bondea: quién puede invertir."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Al vencimiento (16 meses); la ficha no menciona venta antes",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+      "alcance": "Ficha del proyecto (Obligacijų terminas: 16 mėn.)."
+     },
+     {
+      "etiqueta": "Rentabilidad publicada",
+      "valor": "9 % anual, cada seis meses (horquilla anunciada del 9 % al 10,5 %)",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+      "alcance": "Ficha del proyecto (Metinė palūkanų norma 9 %; Metinis pajamingumas 9 %-10.50 %)."
+     },
+     {
+      "etiqueta": "Estado de la oferta · 28/11/2026",
+      "valor": "415.000 € de 750.000 €; quedaban 7 días",
+      "fechaDato": "2026-11-28",
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas",
+      "alcance": "Ficha del proyecto (Surinkta, Tikslas, Liko 7 dienos)."
+     },
+     {
+      "etiqueta": "Registro en DLT",
+      "valor": "Bonos anotados en Axiology DLT; esta fase aún no figura en su registro",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://tss.axiology.xyz/bonds",
+      "alcance": "Preguntas frecuentes de Bondea y registro público de bonos de Axiology."
+     }
+    ],
+    "disponibilidad": {
+     "admitidos": [
+      "LT"
+     ],
+     "excluidos": [],
+     "conRequisitos": [],
+     "fuentes": [
+      {
+       "url": "https://bondea.lt/lt/duk",
+       "titulo": "Bondea · preguntas frecuentes",
+       "literal": "Investuoti ir registruotis gali ne jaunesni nei 18 metų asmenys – tiek Lietuvos, tiek užsienio valstybių gyventojai.",
+       "consultadaEl": "2026-11-28"
+      }
+     ],
+     "nota": "Bondea admite a residentes de Lituania y de otros países, mayores de 18 años y con la identidad verificada, pero no publica qué países: fuera de Lituania, sin confirmar.",
+     "notaEn": "Bondea accepts residents of Lithuania and other countries, aged 18+ with verified identity, but does not say which countries: outside Lithuania, unconfirmed.",
+     "verificadaEl": "2026-11-28"
+    }
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "Bondea dice tener licencia de financiación participativa del Banco de Lituania; no lo hemos podido comprobar el 28/11/2026 en el registro, y no está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "Bondea · preguntas frecuentes",
+      "url": "https://bondea.lt/lt/duk"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "No hay documento en castellano a la vista: la ficha está en lituano y la información completa pide cuenta.",
+     "fuente": {
+      "titulo": "Bondea · ficha del proyecto",
+      "url": "https://www.bondea.lt/lt/projektai/vph-vystomas-prekybos-parkas-su-rimi-parduotuve-rygoje-vi-etapas"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1.000 €",
+    "salidaCorta": "Al vencimiento (16 meses)",
+    "puntos": []
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "tienda"
+    },
+    "lugar": "Riga · Letonia",
+    "pasos": [
+     "Suscribes el bono",
+     "Cobras el interés cada semestre",
+     "Recuperas el nominal al final"
+    ],
+    "concepto": "un parque comercial en Riga",
+    "foto": {
+     "semilla": 1129,
+     "encuadre": "70% 55%",
+     "concepto": "un parque comercial de una planta con aparcamiento en las afueras de una ciudad báltica, imagen genérica; no el del proyecto",
+     "prompt": "single-storey retail park with large glass entrance and car park on the outskirts of a Baltic city, birch trees, overcast autumn day, no logos or signs"
+    }
+   }
+  },
+  {
+   "oferta": {
+    "slug": "schindlersx-silverbits-slvr",
+    "tipo": "valor",
+    "titulo": "SilverBits: plata en tokens de una onza, canjeables por lingotes de 1 kg en Sudáfrica",
+    "plataformaSlug": "schindlersx",
+    "plataformaNombre": "SchindlersX",
+    "categoria": "Materias primas",
+    "pais": "ZA",
+    "resumen": "Cada token SLVR equivale a una onza troy de plata fina al 99,9 %, guardada en Union Vault y asegurada por Lloyd’s de Londres. Se compra desde 1 token en SchindlersX (unos 1.021 rand, 58,84 USD, el 28/11) y se puede canjear por lingotes de 1 kg que se recogen en Sudáfrica.",
+    "url": "https://schindlersx.io/silverbits",
+    "cta": "Ver fuente",
+    "imagenAlt": "SilverBits: plata en tokens de una onza, canjeables por lingotes de 1 kg en Sudáfrica",
+    "verificadaEl": "2026-11-28",
+    "vigenciaDias": 7,
+    "permanente": false,
+    "disponibleEs": null,
+    "eu": false,
+    "fueraLadrillo": true,
+    "puntuacion": null,
+    "rentabilidad": null,
+    "precio": null,
+    "estadoRevision": "actual",
+    "coleccion": "principales",
+    "moneda": "ZAR",
+    "patrocinada": false,
+    "metricas": [
+     {
+      "etiqueta": "Mínimo",
+      "valor": "1 token (1 onza de plata): 1.021,36 ZAR, 58,84 USD (28/11/2026)"
+     },
+     {
+      "etiqueta": "Respaldo",
+      "valor": "1 token = 1 onza troy (31,1035 g) de plata fina al 99,9 %"
+     },
+     {
+      "etiqueta": "Custodia",
+      "valor": "Union Vault, con seguro de Lloyd’s de Londres"
+     },
+     {
+      "etiqueta": "Canje",
+      "valor": "Desde 32,1507 tokens, un lingote de 1 kg; se recoge en Sudáfrica o queda en Union Vault a tu nombre"
+     },
+     {
+      "etiqueta": "Reservas",
+      "valor": "Atestación mensual con informes de auditoría independiente"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "SA SilverBits (Pty) Ltd"
+     }
+    ],
+    "avisos": [
+     {
+      "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "El precio sigue a la plata y va en rand: si la plata o el rand caen frente al euro, pierdes.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Canjear por un lingote tiene su propia comisión, que cubre la fundición y se presupuesta en cada caso.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "SilverBits no envía ni exporta la plata: el lingote se recoge en persona en Sudáfrica o se queda en Union Vault.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Abierto a inversores de Sudáfrica y de otros países, con restricciones que la ficha no detalla.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     },
+     {
+      "texto": "Producto sudafricano. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "tono": "warn",
+      "esAntiguedad": false,
+      "verificadaEl": "2026-11-28"
+     }
+    ],
+    "fuentesActuales": [
+     "https://schindlersx.io/silverbits"
+    ]
+   },
+   "documentacion": {
+    "revisadaEl": "2026-11-28",
+    "descripcion": "SilverBits es un token (SLVR) de SA SilverBits (Pty) Ltd que se compra y vende en SchindlersX, el mercado de Schindlers Digital Assets (Pty) Ltd (FSP 53789 en Sudáfrica). Cada token representa una onza troy (31,1035 g) de plata fina al 99,9 %, guardada en Union Vault y asegurada por Lloyd’s de Londres, con atestaciones mensuales de las reservas. Se compra desde 1 token (1.021,36 rand o 58,84 USD el 28/11/2026) y se negocia en SchindlersX a cualquier hora. Desde 32,1507 tokens se puede canjear por un lingote de 1 kg, pagando su fundición, que se recoge en Sudáfrica o se deja en Union Vault a nombre del titular.",
+    "fuentes": [
+     "https://schindlersx.io/silverbits"
+    ],
+    "caracteristicas": [
+     {
+      "etiqueta": "Proveedor",
+      "valor": "SchindlersX (Schindlers Digital Assets (Pty) Ltd, FSP 53789)"
+     },
+     {
+      "etiqueta": "Emisor",
+      "valor": "SA SilverBits (Pty) Ltd"
+     },
+     {
+      "etiqueta": "Qué se adquiere",
+      "valor": "Un token respaldado por una onza de plata guardada en Union Vault, canjeable por lingotes de 1 kg"
+     },
+     {
+      "etiqueta": "Moneda",
+      "valor": "ZAR (también se muestra en USD)"
+     }
+    ],
+    "referencias": [
+     {
+      "etiqueta": "Mínimo de inversión",
+      "valor": "Desde 1 token (1 onza de plata): 1.021,36 ZAR (28/11)",
+      "fechaDato": "2026-11-28",
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://schindlersx.io/silverbits",
+      "alcance": "Ficha de SilverBits en SchindlersX (Price per token; Start from 1 SLVR)."
+     },
+     {
+      "etiqueta": "Acceso desde España",
+      "valor": "Sin confirmar: abierto a inversores internacionales con restricciones sin detallar",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://schindlersx.io/silverbits",
+      "alcance": "Ficha de SilverBits: «Open to South African and international investors… Restrictions apply»."
+     },
+     {
+      "etiqueta": "Salida",
+      "valor": "Venta en SchindlersX a cualquier hora, o canje por lingotes de 1 kg en Sudáfrica",
+      "fechaDato": null,
+      "fechaConsulta": "2026-11-28",
+      "fuente": "https://schindlersx.io/silverbits",
+      "alcance": "Ficha de SilverBits (Flexible exit; Redemption)."
+     }
+    ],
+    "disponibilidad": {
+     "admitidos": [
+      "ZA"
+     ],
+     "excluidos": [],
+     "conRequisitos": [],
+     "fuentes": [
+      {
+       "url": "https://schindlersx.io/silverbits",
+       "titulo": "SchindlersX · ficha de SilverBits",
+       "literal": "Open to South African and international investors. Physical redemption is fulfilled in South Africa. * Restrictions apply.",
+       "consultadaEl": "2026-11-28"
+      }
+     ],
+     "nota": "Abierto a inversores de Sudáfrica y de otros países, pero con restricciones que la ficha no detalla: fuera de Sudáfrica, sin confirmar.",
+     "notaEn": "Open to South African and international investors, but with restrictions the page does not detail: outside South Africa, unconfirmed.",
+     "verificadaEl": "2026-11-28"
+    }
+   },
+   "transparencia": {
+    "verificadaEl": "2026-11-28",
+    "anadidaEl": "2026-11-28",
+    "supervisada": {
+     "cumple": false,
+     "motivo": "La plataforma dice ser proveedor de servicios financieros autorizado en Sudáfrica (FSCA); no es un supervisor de la UE y no está inscrita en la CNMV.",
+     "fuente": {
+      "titulo": "SchindlersX · SilverBits SLVR",
+      "url": "https://schindlersx.io/silverbits"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "documentoEspana": {
+     "cumple": false,
+     "motivo": "Hay memorando y términos en inglés; no hay folleto ni KID europeos.",
+     "fuente": {
+      "titulo": "SchindlersX · SilverBits SLVR",
+      "url": "https://schindlersx.io/silverbits"
+     },
+     "consultadaEl": "2026-11-28"
+    },
+    "minimoCorto": "1 onza de plata",
+    "salidaCorta": "Venta o canje por lingote",
+    "puntos": [
+     {
+      "texto": "Plata guardada en Union Vault y asegurada",
+      "fuente": {
+       "titulo": "SchindlersX · SilverBits SLVR",
+       "url": "https://schindlersx.io/silverbits"
+      }
+     }
+    ]
+   },
+   "editorial": {
+    "escena": "empresa",
+    "op": {
+     "forma": "nave"
+    },
+    "lugar": "Johannesburgo · Sudáfrica",
+    "pasos": [
+     "Compras onzas en tokens",
+     "Union Vault guarda la plata",
+     "Vendes o canjeas un lingote"
+    ],
+    "concepto": "lingotes de plata",
+    "foto": {
+     "semilla": 1151,
+     "encuadre": "70% 55%",
+     "concepto": "plata fundida vertiéndose en un molde de lingote en una fundición, imagen genérica; no la del producto",
+     "prompt": "close-up of glowing molten silver being poured from a crucible into a plain steel ingot mold in a small foundry, sparks, dark background, no text, no people"
+    }
+   }
+  }
+ ]
+}

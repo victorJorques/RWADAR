@@ -137,6 +137,20 @@
     "nyala-registro": ["DEVOLO solutions - Anleihe 2026", "supervised by BaFin"],
     "onex-oportunidades": ["Recognised Market Operator", "Accredited Investors or Institutional Investors", "View all 22 tokens"],
     "pruv-web": ["OJK Financial Sector Technology Innovation Sandbox", "S-445/IK\\.01/2025"],
-    "pruv-productos": ["Minimum Investment", "Time to Redemption"]
+    "pruv-productos": ["Minimum Investment", "Time to Redemption"],
+    "atlantida-emisiones": ["ofertas públicas y privadas de activos digitales", "Oferta Pública ALDT001 \\(TRAMO 40\\)"],
+    "atlantida-t40": ["PSAD-0035", "ALDT001-T40", "asiento registral AD-00016"],
+    "bondea-proyectos": ["Mūsų investiciniai projektai", "VPH vystomas prekybos parkas su Rimi parduotuve Rygoje \\(VI etapas\\)"],
+    "bondea-duk": ["Lietuvos banko licencijuota ir prižiūrima", "Axiology DLT", "Minimali investavimo suma „Bondea“ platformoje yra 500 arba 1000 EUR"],
+    "axiology-web": ["Authorised under Regulation \\(EU\\) 2022/858", "MIFID Investment firm authorised by the Bank of Lithuania", "Permissioned infrastructure built on the XRP Ledger"],
+    "axiology-bonos": ["all digital securities registered within Axiology", "LT0000139503", "LT0000135352"],
+    "marketnode-web": ["digital market infrastructure \\(DMI\\) operator", "Euroclear · HSBC · SGX Group · Stellar · Temasek", "Tokenised RWAs, Built"],
+    "mas-marketnode": ["MARKETNODE PTE\\. LTD\\.", "Capital Markets Services Licensee", "Providing Custodial Services"],
+    "winvesta-web": ["tokenisierte Anlageklassen", "ab 500 € Investment", "gebundener Vermittler gemäß § 3 \\(2\\) WpIG der Effecta GmbH"],
+    "winvesta-faq": ["tokenisierte Schuldverschreibung"],
+    "schindlersx-marketplace": ["SilverBits SLVR", "Fully raised", "Offer closed"],
+    "schindlersx-about": ["Schindlers Digital Assets \\(Pty\\) Ltd, a registered Financial Services Provider, FSP 53789"],
+    "schindlersx-silverbits": ["Open to South African and international investors", "Restrictions apply"],
+    "sfc-vatp-licenciadas": ["List of licensed virtual asset trading platforms", "BUT670 EXIO Limited N/A EX\\.IO 18/12/2024"]
   }
 }

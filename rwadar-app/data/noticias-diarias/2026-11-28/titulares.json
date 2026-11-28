@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "fecha": "2026-11-28",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "728b4c59aa61ee47b0e3eaabc1a30e826866c9859f3c40e4777a675b4a57de6f"
+  },
+  "noticias": [
+    {
+      "id": "emiratos-bonos-soberanos-digitales-dirhams",
+      "propuestas": {
+        "es": [
+          "Emiratos coloca 180 millones de dírhams en bonos digitales",
+          "Emiratos estrena sus primeros bonos del Tesoro digitales",
+          "Bonos del Estado en tokens: Emiratos emite los primeros"
+        ],
+        "en": [
+          "UAE issues AED 180m in its first digital treasury bonds",
+          "The UAE launches its first digital sovereign bonds",
+          "Sovereign bonds go digital in the UAE with Euroclear"
+        ]
+      },
+      "elegido": {
+        "es": "Emiratos coloca 180 millones de dírhams en bonos digitales",
+        "en": "UAE issues AED 180m in its first digital treasury bonds"
+      },
+      "motivo": "Lleva la cifra de la fuente y el verbo de una emisión, sin dar a entender que un particular pueda comprarlos. Ninguna foto real encaja (el Tesoro de EE. UU. es otro país): escena de IA de títulos de deuda.",
+      "heredado": null,
+      "foto": {
+        "clave": "bonos-emision",
+        "encaje": "propia",
+        "alternativas": [
+          "pagares-deuda",
+          "real-tesoro-eeuu-fachada"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "amf-euroclear-france-liquidacion-tokenizada",
+      "propuestas": {
+        "es": [
+          "Euroclear France podrá liquidar valores tokenizados",
+          "Francia aprueba la liquidación tokenizada de Euroclear",
+          "El supervisor francés abre Euroclear a los valores en DLT"
+        ],
+        "en": [
+          "Euroclear France to be able to settle tokenised securities",
+          "France approves tokenised settlement at Euroclear France",
+          "French regulator backs DLT settlement at Euroclear France"
+        ]
+      },
+      "elegido": {
+        "es": "Euroclear France podrá liquidar valores tokenizados",
+        "en": "Euroclear France to be able to settle tokenised securities"
+      },
+      "motivo": "Dice qué cambia («podrá», porque entra en vigor cuando lo fije Euroclear France) sin la sigla DLT y con el sujeto exacto; la tercera usaba jerga y la segunda atribuía a «Francia» lo que aprueba su supervisor. Foto real de servidores para infraestructura, sin presentarla como la de Euroclear.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-servidores-cables",
+        "encaje": "propia",
+        "alternativas": [
+          "real-sala-servidores-bastidores",
+          "servidores-seguridad"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "poloniex-abre-16-acciones-etf-tokenizados",
+      "elegido": {
+        "es": "Poloniex abre 16 acciones y ETF tokenizados de EE. UU.",
+        "en": "Poloniex opens trading in 16 tokenised US stocks and ETFs"
+      },
+      "motivo": "Mismo titular que el publicado el 27/11; la fuente, abierta hoy, dice lo mismo.",
+      "heredado": "2026-11-27",
+      "foto": {
+        "clave": "real-bolsa-nueva-york-fachada",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-movil",
+          "real-pantalla-cotizaciones-grafico"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "canada-csa-proyecto-tokenizacion-fase-2",
+      "elegido": {
+        "es": "Los supervisores de Canadá buscan proyectos tokenizados",
+        "en": "Canadian regulators seek tokenised projects"
+      },
+      "motivo": "Mismo titular que el publicado el 27/11; la fuente, abierta hoy, dice lo mismo.",
+      "heredado": "2026-11-27",
+      "foto": {
+        "clave": "documentos-consulta",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "elegido": {
+        "es": "Hong Kong estrena una plataforma de bonos tokenizados",
+        "en": "Hong Kong launches a platform for tokenised bonds"
+      },
+      "motivo": "Mismo titular que el publicado el 27/11; la fuente, abierta hoy, dice lo mismo.",
+      "heredado": "2026-11-27",
+      "foto": {
+        "clave": "real-sala-servidores-bastidores",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "elegido": {
+        "es": "La CNMV difunde alertas del supervisor belga",
+        "en": "Spain’s CNMV shares warnings from the Belgian regulator"
+      },
+      "motivo": "Mismo titular que el publicado el 27/11; la fuente, abierta hoy, dice lo mismo.",
+      "heredado": "2026-11-27",
+      "foto": {
+        "clave": "real-cnmv-sede-madrid",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "elegido": {
+        "es": "El BCE aceptará ciertos valores tokenizados en garantía",
+        "en": "ECB to accept some tokenised securities as collateral"
+      },
+      "motivo": "Mismo titular que el publicado el 27/11; la fuente, abierta hoy, dice lo mismo.",
+      "heredado": "2026-11-27",
+      "foto": {
+        "clave": "real-bce-francfort",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "austria-delphi-liquidacion-dinero-banco-central",
+      "propuestas": {
+        "es": [
+          "Austria liquida bonos tokenizados en dinero de banco central",
+          "Bancos austriacos unen la bolsa clásica y la tokenizada",
+          "Prueba real en Austria: valores en DLT pagados vía Pontes"
+        ],
+        "en": [
+          "Austria settles tokenised bonds in central bank money",
+          "Austrian banks link classic and tokenised settlement",
+          "Live test in Austria: DLT trades paid via Pontes"
+        ]
+      },
+      "elegido": {
+        "es": "Austria liquida bonos tokenizados en dinero de banco central",
+        "en": "Austria settles tokenised bonds in central bank money"
+      },
+      "motivo": "Cuenta el hecho (liquidar bonos tokenizados con pago en dinero de banco central) con el verbo de la fuente; la segunda metía «bolsa», que no aparece, y la tercera tenía jerga (DLT, Pontes). Escena de IA de una red sobre una ciudad europea: no hay foto real de la infraestructura austriaca.",
+      "heredado": null,
+      "foto": {
+        "clave": "red-europea",
+        "encaje": "propia",
+        "alternativas": [
+          "real-sala-servidores-bastidores",
+          "instituciones-ue"
+        ],
+        "faltaria": null
+      }
+    }
+  ]
+}

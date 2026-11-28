@@ -304,6 +304,34 @@
    "encuadre": "70% 55%",
    "concepto": "un aparato de red doméstica sin marca sobre una estantería de un salón, imagen genérica de los productos de la empresa",
    "prompt": "plain white unbranded wifi router on a wooden shelf in a bright living room, soft daylight, shallow depth of field"
+  },
+  "superstate-invesco-iroxx": {
+   "modelo": "realvisxl",
+   "semilla": 1101,
+   "encuadre": "70% 55%",
+   "concepto": "fachadas de piedra de bancos del sur de Manhattan, imagen genérica; no la sede de la gestora",
+   "prompt": "classic stone bank facades on a narrow street in lower Manhattan, early morning light, empty sidewalk, no signs or logos"
+  },
+  "tokinvest-lynxcap-bono": {
+   "modelo": "realvisxl",
+   "semilla": 1117,
+   "encuadre": "70% 55%",
+   "concepto": "un bloque de pisos antiguo y vacío en una ciudad del sur de Europa, imagen genérica de inmuebles recuperados; no un activo del bono",
+   "prompt": "empty older apartment building with closed shutters on a quiet street in a southern European town, overcast daylight, no people, no signs"
+  },
+  "bondea-vph-riga-vi": {
+   "modelo": "realvisxl",
+   "semilla": 1129,
+   "encuadre": "70% 55%",
+   "concepto": "un parque comercial de una planta con aparcamiento en las afueras de una ciudad báltica, imagen genérica; no el del proyecto",
+   "prompt": "single-storey retail park with large glass entrance and car park on the outskirts of a Baltic city, birch trees, overcast autumn day, no logos or signs"
+  },
+  "schindlersx-silverbits-slvr": {
+   "modelo": "realvisxl",
+   "semilla": 1151,
+   "encuadre": "70% 55%",
+   "concepto": "plata fundida vertiéndose en un molde de lingote en una fundición, imagen genérica; no la del producto",
+   "prompt": "close-up of glowing molten silver being poured from a crucible into a plain steel ingot mold in a small foundry, sparks, dark background, no text, no people"
   }
  }
 }

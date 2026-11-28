@@ -1,0 +1,170 @@
+{
+  "fecha": "2026-11-28",
+  "fuentesNuevas": 13,
+  "correctas": 13,
+  "contraste": [
+    {
+      "id": "atlantida-emisiones",
+      "url": "https://www.bancoatlantida.com.sv/emisiones/",
+      "horaUtc": "2026-11-28T13:08:49Z",
+      "copia": "fuentes/atlantida-emisiones.txt",
+      "sha256": "9f1b70f84c1c1bb9a16108354c1540462ef84fc7aa6ddbfa68dd4a78595d084e",
+      "comprobaciones": [
+        "ofertas públicas y privadas de activos digitales",
+        "Oferta Pública ALDT001 \\(TRAMO 40\\)"
+      ],
+      "ok": true
+    },
+    {
+      "id": "atlantida-t40",
+      "url": "https://www.bancoatlantida.com.sv/utils/docs/emisiones/20261112_ANUNCIO_OFERTA_PUBLICA_LEASING_T40.pdf",
+      "horaUtc": "2026-11-28T13:11:18Z",
+      "copia": "fuentes/atlantida-t40.txt",
+      "sha256": "f82686a84fb4dd197ec6225c3a07e1f9de6e90a5411f2e18aa3715ffb666a2d4",
+      "comprobaciones": [
+        "PSAD-0035",
+        "ALDT001-T40",
+        "asiento registral AD-00016"
+      ],
+      "ok": true
+    },
+    {
+      "id": "bondea-proyectos",
+      "url": "https://bondea.lt/lt/projektai",
+      "horaUtc": "2026-11-28T13:14:15Z",
+      "copia": "fuentes/bondea-proyectos.txt",
+      "sha256": "ae18bd5bc7927eafe038b94e8f24f07037c6ef135a09ba4760bed6911d4c2443",
+      "comprobaciones": [
+        "Mūsų investiciniai projektai",
+        "VPH vystomas prekybos parkas su Rimi parduotuve Rygoje \\(VI etapas\\)"
+      ],
+      "ok": true
+    },
+    {
+      "id": "bondea-duk",
+      "url": "https://bondea.lt/lt/duk",
+      "horaUtc": "2026-11-28T13:14:06Z",
+      "copia": "fuentes/bondea-duk.txt",
+      "sha256": "05d8c13620de95dfe7a3edd1983ed20427d8fd829286dc1be734e3b8d956d0f1",
+      "comprobaciones": [
+        "Lietuvos banko licencijuota ir prižiūrima",
+        "Axiology DLT",
+        "Minimali investavimo suma „Bondea“ platformoje yra 500 arba 1000 EUR"
+      ],
+      "ok": true
+    },
+    {
+      "id": "axiology-web",
+      "url": "https://www.axiologyfinance.com/",
+      "horaUtc": "2026-11-28T13:13:54Z",
+      "copia": "fuentes/axiology-web.txt",
+      "sha256": "7fa30812e264517bb9da5bd79e54a5da285f6d0b76e0f61edca1dad2d5fdc6e3",
+      "comprobaciones": [
+        "Authorised under Regulation \\(EU\\) 2022/858",
+        "MIFID Investment firm authorised by the Bank of Lithuania",
+        "Permissioned infrastructure built on the XRP Ledger"
+      ],
+      "ok": true
+    },
+    {
+      "id": "axiology-bonos",
+      "url": "https://tss.axiology.xyz/bonds",
+      "horaUtc": "2026-11-28T13:13:44Z",
+      "copia": "fuentes/axiology-bonos.txt",
+      "sha256": "ad47983a131a234cf0caeb336dd6b960acc056f34267e9d290802eff7ccd2923",
+      "comprobaciones": [
+        "all digital securities registered within Axiology",
+        "LT0000139503",
+        "LT0000135352"
+      ],
+      "ok": true
+    },
+    {
+      "id": "marketnode-web",
+      "url": "https://www.marketnode.com/",
+      "horaUtc": "2026-11-28T13:14:26Z",
+      "copia": "fuentes/marketnode-web.txt",
+      "sha256": "f7c2e7285cf4a5b6e6185412878d31d50da827d3df47ee95a74bd11786f0ca67",
+      "comprobaciones": [
+        "digital market infrastructure \\(DMI\\) operator",
+        "Euroclear · HSBC · SGX Group · Stellar · Temasek",
+        "Tokenised RWAs, Built"
+      ],
+      "ok": true
+    },
+    {
+      "id": "mas-marketnode",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/429075-MARKETNODE-PTE-LTD",
+      "horaUtc": "2026-11-28T13:15:05Z",
+      "copia": "fuentes/mas-marketnode.txt",
+      "sha256": "784ad363c50b78bdfb6f25660b39dc8f5ed19b45b3c56076084359e4538120eb",
+      "comprobaciones": [
+        "MARKETNODE PTE\\. LTD\\.",
+        "Capital Markets Services Licensee",
+        "Providing Custodial Services"
+      ],
+      "ok": true
+    },
+    {
+      "id": "winvesta-web",
+      "url": "https://www.winvesta.de/",
+      "horaUtc": "2026-11-28T13:15:25Z",
+      "copia": "fuentes/winvesta-web.txt",
+      "sha256": "dc35cfe5acc85d24e1985b76ed8fb2986d7859d7af971257032026f1f9d37a84",
+      "comprobaciones": [
+        "tokenisierte Anlageklassen",
+        "ab 500 € Investment",
+        "gebundener Vermittler gemäß § 3 \\(2\\) WpIG der Effecta GmbH"
+      ],
+      "ok": true
+    },
+    {
+      "id": "winvesta-faq",
+      "url": "https://www.winvesta.de/faq/",
+      "horaUtc": "2026-11-28T13:15:42Z",
+      "copia": "fuentes/winvesta-faq.txt",
+      "sha256": "7c6bad7348883def18b07272c346191862e86a2ef6ab587135324256894d722e",
+      "comprobaciones": [
+        "tokenisierte Schuldverschreibung"
+      ],
+      "ok": true
+    },
+    {
+      "id": "schindlersx-marketplace",
+      "url": "https://schindlersx.io/browse-by-project",
+      "horaUtc": "2026-11-28T13:15:53Z",
+      "copia": "fuentes/schindlersx-marketplace.txt",
+      "sha256": "2eb190b685acd202cd1c0e2502ad1bc0010d2438153dd396b2edad29289f8089",
+      "comprobaciones": [
+        "SilverBits SLVR",
+        "Fully raised",
+        "Offer closed"
+      ],
+      "ok": true
+    },
+    {
+      "id": "schindlersx-about",
+      "url": "https://schindlersx.io/about",
+      "horaUtc": "2026-11-28T13:17:25Z",
+      "copia": "fuentes/schindlersx-about.txt",
+      "sha256": "bfebeabc463e6c63afe5a98c088ac781474c37e5c74f60ff688bde9aea900f12",
+      "comprobaciones": [
+        "Schindlers Digital Assets \\(Pty\\) Ltd, a registered Financial Services Provider, FSP 53789"
+      ],
+      "ok": true
+    },
+    {
+      "id": "schindlersx-silverbits",
+      "url": "https://schindlersx.io/silverbits",
+      "horaUtc": "2026-11-28T13:17:05Z",
+      "copia": "fuentes/schindlersx-silverbits.txt",
+      "sha256": "c5ecde5fb0b3e7ae5139bccb0735a44e86aea253547ab3ebd522dbdb28cee756",
+      "comprobaciones": [
+        "Open to South African and international investors",
+        "Restrictions apply"
+      ],
+      "ok": true
+    }
+  ],
+  "nota": "Las 134 fuentes de antes se comprobaron hoy: radar-contraste-2026-11-28.json (comprobar-radar.mjs y cambios-radar.json)."
+}

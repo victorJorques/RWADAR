@@ -1,0 +1,326 @@
+SECURITIES
+
+TRADING
+
+ISSUE YOUR BOND
+
+Axiology Trading and Settlement Platform
+
+Axiology delivers integrated capital markets infrastructure across the entire value chain: issuance, custody, trading, and settlement of digital securities using distributed ledger technology (DLT). On this page, you can find all digital securities registered within Axiology’s infrastructure, along with key details on trading status within a fully regulated trading venue under the European Union’s DLT Regime.
+
+Bond List
+EUR 8.50 UAB LAISVĖS 59 OBLIGACIJOS 26-2028
+Issuer Name
+
+UAB Laisvės 59
+
+ISIN
+
+LT0000139503
+
+Issue Volume
+
+656 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-11-25
+
+VIEW DETAILS
+
+EUR 12.00 VENTUS ARTIS OBLIGACIJOS 26-2028
+Issuer Name
+
+Ventus artis MB
+
+ISIN
+
+LT0000139537
+
+Issue Volume
+
+500 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-11-20
+
+VIEW DETAILS
+
+SKAWINA INVESTMENTS UAB 8% EUR 2026-2028 BONDS
+Issuer Name
+
+Skawina Investments UAB
+
+ISIN
+
+LT0000139354
+
+Issue Volume
+
+1 500 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-10-31
+
+VIEW DETAILS
+
+EUR 8.00 UAB NSP3 OBLIGACIJOS 26-2028
+Issuer Name
+
+NSP3, UAB
+
+ISIN
+
+LT0000139040
+
+Issue Volume
+
+1 100 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-09-29
+
+VIEW DETAILS
+
+EUR 9.50 UTIISIB UAB RIVERSIDE REAL ESTATE FUND OBLIGACIJOS 26-2029
+Issuer Name
+
+UTIISIB UAB Riverside real estate fund
+
+ISIN
+
+LT0000137994
+
+Issue Volume
+
+2 855 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-06-03
+
+VIEW DETAILS
+
+EUR 6.50-9.50 UAB GESONS OBLIGACIJOS 26-2028
+Issuer Name
+
+UAB Gesons
+
+ISIN
+
+LT0000137671
+
+Issue Volume
+
+3 443 500.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-05-08
+
+VIEW DETAILS
+
+EUR 9.00 VERSLO PARKO PROJEKTAI OBLIGACIJOS 26-2028
+Issuer Name
+
+UAB Verslo parko projektai
+
+ISIN
+
+LT0000137457
+
+Issue Volume
+
+4 250 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-04-08
+
+VIEW DETAILS
+
+EUR 8.00 NORDSPACE PROJEKTAI OBLIGACIJOS 26-2027
+Issuer Name
+
+UAB NordSpace Projektai
+
+ISIN
+
+LT0000137069
+
+Issue Volume
+
+4 000 000.00 EUR
+
+DTI
+
+-
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2026-02-18
+
+VIEW DETAILS
+
+LHM 9% 2Y BOND
+Issuer Name
+
+LHM Holding UAB
+
+ISIN
+
+LT0000135774
+
+Issue Volume
+
+2 591 000.00 EUR
+
+DTI
+
+2Z3NCT0CN
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2025-10-15
+
+VIEW DETAILS
+
+EUR VENTUS ARTIS BONDS 25-2027
+Issuer Name
+
+Ventus artis MB
+
+ISIN
+
+LT0000135352
+
+Issue Volume
+
+500 000.00 EUR
+
+DTI
+
+TB01WHNTB
+
+Listed on Axiology
+
+No
+
+Issue Date
+
+2025-08-31
+
+VIEW DETAILS
+
+Axiology Participants
+Axiology DLT, UAB
+
+Roles
+
+OperatorIssuer AgentBroker
+BIC Code
+
+UABDLT22XXX
+
+MIC Code
+
+AXIO
+
+Blue EMI LT, UAB
+
+Roles
+
+EMT Issuer
+BIC Code
+
+UALELT22
+
+Fundvest, UAB
+
+Roles
+
+Broker
+BIC Code
+
+FUNALT22XXX
+
+FMĮ "Myriad capital", UAB
+
+Roles
+
+Broker
+BIC Code
+
+UAMALT21XXX
+
+Privacy Policy
+Regulatory Compliance
+Technology
+Post Trade Reports
