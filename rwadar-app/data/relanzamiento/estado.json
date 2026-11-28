@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Cabecera del móvil en la web: la cápsula del idioma ES · EN se coloca a 3 px de los iconos también cuando el iPhone, con RWAdar en la pantalla de inicio, oculta la descarga (antes dejaba un hueco de unos 50 px). Revisado por la sesión principal.",
+  "nota": "Cabecera del móvil en la web: en iPhone con RWAdar en la pantalla de inicio, una regla solo de CSS (Safari de iOS y modo pantalla de inicio) oculta la descarga y pega la cápsula del idioma a los iconos sin depender del JavaScript. Android y escritorio sin cambios. Revisado por la sesión principal.",
   "revisionAprobada": {
-    "commit": "2d0828faac7524b4f3c28d4935f143e04e8a2cee",
-    "contenidoSha256": "sha256:f6fd5f2b8bc9509b2382f08cdece784a6a696768b8c6a5786a5be8657f5d351c",
+    "commit": "4324b6181eacf49bc9266dac6a2f3e2bf7ac2d02",
+    "contenidoSha256": "sha256:17ad8a384ad66999ab5cc46c94bb96fdd82d4b75fc04230baf8f0ecfa90ac5d5",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
