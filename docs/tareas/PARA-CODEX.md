@@ -28,6 +28,11 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 - **Pendiente:** corregir el `aval` público de EX.IO (aún dice «licencia provisional; no lo hemos comprobado»; la SFC
   la da como licencia formal desde el 18/12/2024). La rama `claude/catalogo-2026-11-28` sobra (el PR salió de
   `claude/happy-cannon-aqu5o8`) y el cerrojo `claude/cerrojo-ciclo-2026-11-28`, si no se pudo borrar: «Limpiar ramas».
+- **Publicado:** PR #245 (entrega) y #246 (sincronización y sello); «Aplicar catálogo» con lectura como visitante
+  después (`4f87fe7f`, 79/44); «Publicar web» revisión 46154212628 y producción 46155015127, comprobadas en vivo a 390 y
+  1366 px (10 fichas nuevas en 200, noticias y serie del 28/11, sin errores); OTA Android 46154215410
+  (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» 46155481504: «Emiratos lleva su deuda al token. Y 4
+  ofertas nuevas, de Riga a Sudáfrica».
 - Detalle: `docs/INVESTIGACION-CATALOGO-2026-11-28.md`.
 
 ## 27 de noviembre de 2026 (58) · Claude · Avisos: diagnóstico y ventana «Activa los avisos» al entrar · PUBLICADO
