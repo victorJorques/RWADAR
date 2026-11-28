@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Cabecera del móvil en la web: en iPhone con RWAdar en la pantalla de inicio, una regla solo de CSS (Safari de iOS y modo pantalla de inicio) oculta la descarga y pega la cápsula del idioma a los iconos sin depender del JavaScript. Android y escritorio sin cambios. Revisado por la sesión principal.",
+  "nota": "Cabecera del móvil en la web: más margen arriba (12 px, y 16 px bajo el reloj con RWAdar en la pantalla de inicio) y 9 px abajo; el desplazamiento a los anclajes cuenta la zona segura. Revisado por la sesión principal.",
   "revisionAprobada": {
-    "commit": "4324b6181eacf49bc9266dac6a2f3e2bf7ac2d02",
-    "contenidoSha256": "sha256:17ad8a384ad66999ab5cc46c94bb96fdd82d4b75fc04230baf8f0ecfa90ac5d5",
+    "commit": "3e6c24e4d5a035893fa966a2b3927cc26a97f9c9",
+    "contenidoSha256": "sha256:51970287bfee7067edef74477ac762ffdccf6ccbbb5bf921677431a69e47fba8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
